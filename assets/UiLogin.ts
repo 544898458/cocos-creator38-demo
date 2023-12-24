@@ -1,4 +1,6 @@
 import { _decorator, Component,EditBox,Button } from 'cc';
+import msgpack from "msgpack-lite/dist/msgpack.min.js";
+
 const { ccclass, property } = _decorator;
 
 @ccclass('UiLogin')
@@ -36,6 +38,13 @@ export class UiLogin extends Component {
            //连接成功建立的回调方法
            websocket.onopen = function () {
                console.log("WebSocket连接成功");
+               const object = [
+                editBox.string,
+                'Hello, world!pwd',
+               ];
+              
+              const encoded: Uint8Array = msgpack.encode(object);
+              websocket.send(encoded);
            }
 
           //接收到消息的回调方法
