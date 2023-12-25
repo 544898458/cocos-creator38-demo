@@ -44,14 +44,16 @@ export class UiLogin extends Component {
                ];
               
               const encoded: Uint8Array = msgpack.encode(object);
+              console.log(encoded);
               websocket.send(encoded);
            }
 
           //接收到消息的回调方法
-           websocket.onmessage = function (event) {
-               var data = event.data
-               console.log("收到数据：", typeof(data), data.length);
-               gameclient.onRecvData(data)
+           websocket.onmessage = function (event: MessageEvent) {
+               let data = event.data as ArrayBuffer
+               console.log("收到数据：", data, data.byteLength);
+               const arr = msgpack.decode(new Uint8Array(data))
+               console.log(arr);
           }
 
            //连接关闭的回调方法
