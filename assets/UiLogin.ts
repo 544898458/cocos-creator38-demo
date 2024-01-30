@@ -2,9 +2,12 @@ import {Node,resources,Prefab,instantiate, _decorator, Component,EditBox,Button,
 import msgpack from "msgpack-lite/dist/msgpack.min.js";
 
 const { ccclass, property } = _decorator;
-
+class ClientEntityComponent extends Component{
+    view :Node
+}
 @ccclass('UiLogin')
 export class UiLogin extends Component {
+    entities : { [key: number]: ClientEntityComponent; } ={};
     start() {
 
     }
@@ -49,6 +52,7 @@ export class UiLogin extends Component {
            }
 
            let plane = this.node.parent.getChildByName("Plane");
+           let entites = this.entities;
           //接收到消息的回调方法
            websocket.onmessage = function (event: MessageEvent) {
                let data = event.data as ArrayBuffer
@@ -58,16 +62,24 @@ export class UiLogin extends Component {
                let posX = arr[1];
                console.log(arr);
 
-               
-               resources.load("altman-blue", Prefab, (err, prefab) => 
+               let old = entites[id]
+               if( old==undefined)
+               {
+                    entites[id]=new ClientEntityComponent();
+                    resources.load("altman-blue", Prefab, (err, prefab) => 
+                    {
+                        console.log('resources.load callback:',err,prefab);
+                        const newNode = instantiate(prefab);
+                        plane.addChild(newNode);
+                        newNode.position =new Vec3(posX,0,0);
+                        console.log('resources.load newNode',newNode);
+                        entites[id].view=newNode;
+                    });
+                }else
                 {
-                    console.log('resources.load callback:',err,prefab);
-                    const newNode = instantiate(prefab);
-                    plane.addChild(newNode);
-                    newNode.position = Vec3(posX,0,0);
-                    console.log('resources.load newNode',newNode);
-                    // this.view=newNode;
-                });
+                    if( old != undefined )
+                        old.view.position=new Vec3(posX,0,0);
+                }
           }
 
            //连接关闭的回调方法
