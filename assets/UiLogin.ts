@@ -27,7 +27,7 @@ export class UiLogin extends Component {
         const editBox = editNode.getComponent(EditBox);
         console.log(editBox.string); 
 
-        let websocket = new WebSocket("ws://127.0.0.1:12345/");
+        let websocket = new WebSocket("ws://192.168.31.138:12345/");
 
         websocket.binaryType = 'arraybuffer'
         console.log(websocket)
@@ -75,7 +75,8 @@ export class UiLogin extends Component {
                         console.log('resources.load newNode',newNode);
                         entites[id].view=newNode;
                     });
-                }else
+                }
+                else
                 {
                     if( old != undefined )
                         old.view.position=new Vec3(posX,0,0);
