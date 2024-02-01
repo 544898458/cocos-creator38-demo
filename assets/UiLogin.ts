@@ -1,4 +1,4 @@
-import {Node,resources,Prefab,instantiate, _decorator, Component,EditBox,Button,Vec3 } from 'cc';
+import {Node,resources,Prefab,instantiate, _decorator, Component,EditBox,Button,Vec3,NodeEventType,EventMouse,geometry,PhysicsSystem,Camera  } from 'cc';
 import msgpack from "msgpack-lite/dist/msgpack.min.js";
 
 const { ccclass, property } = _decorator;
@@ -9,7 +9,26 @@ class ClientEntityComponent extends Component{
 export class UiLogin extends Component {
     entities : { [key: number]: ClientEntityComponent; } ={};
     start() {
-
+        this.node.on(NodeEventType.MOUSE_DOWN, (event: EventMouse) => {
+            console.log('MOUSE_DOWN',event)
+            var uiPos = event.getLocation();
+            var ray = new geometry.Ray();
+            // const camera = cc.find("Camera",this.node).getComponent(Camera);
+            const camera = cc.find("Main Camera",this.node.parent).getComponent(Camera);
+            camera.screenPointToRay(uiPos.x, uiPos.y, ray);
+            if (PhysicsSystem.instance.raycast(ray)) {
+                const raycastResults = PhysicsSystem.instance.raycastResults;
+                for (let i = 0; i < raycastResults.length; i++) {
+                    const item = raycastResults[i];
+                    console.log('射线碰撞',i,item);
+                    if (item.collider.node.name == "Plane") 
+                    {
+                    }
+                }
+            } else {
+                console.log('raycast does not hit the target node !');
+            }
+        }, this);
     }
 
     update(deltaTime: number) {
