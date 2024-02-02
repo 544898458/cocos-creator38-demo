@@ -20,7 +20,7 @@ export class UiLogin extends Component {
                 const raycastResults = PhysicsSystem.instance.raycastResults;
                 for (let i = 0; i < raycastResults.length; i++) {
                     const item = raycastResults[i];
-                    console.log('射线碰撞',i,item);
+                    console.log('射线碰撞',i,item.collider.node.name,item.hitPoint);
                     if (item.collider.node.name == "Plane") 
                     {
                     }
