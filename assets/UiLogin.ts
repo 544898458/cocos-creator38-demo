@@ -8,6 +8,7 @@ class ClientEntityComponent extends Component{
 @ccclass('UiLogin')
 export class UiLogin extends Component {
     entities : { [key: number]: ClientEntityComponent; } ={};
+    websocket : WebSocket
     start() {
         this.node.on(NodeEventType.MOUSE_DOWN, (event: EventMouse) => {
             console.log('MOUSE_DOWN',event)
@@ -23,6 +24,12 @@ export class UiLogin extends Component {
                     console.log('射线碰撞',i,item.collider.node.name,item.hitPoint);
                     if (item.collider.node.name == "Plane") 
                     {
+                        const object = item.hitPoint;
+                          
+                          const encoded: Uint8Array = msgpack.encode(object);
+                          console.log(encoded);
+                          if(this.websocket!=undefined)
+                          this.websocket.send(encoded);
                     }
                 }
             } else {
@@ -46,19 +53,19 @@ export class UiLogin extends Component {
         const editBox = editNode.getComponent(EditBox);
         console.log(editBox.string); 
 
-        let websocket = new WebSocket("ws://192.168.31.138:12345/");
+        this.websocket = new WebSocket("ws://192.168.31.138:12345/");
 
-        websocket.binaryType = 'arraybuffer'
-        console.log(websocket)
+        this.websocket.binaryType = 'arraybuffer'
+        console.log(this.websocket)
         var gameclient = this
 
           //连接发生错误的回调方法
-          websocket.onerror = function () {
+          this.websocket.onerror = function () {
                console.log("WebSocket连接发生错误");
           };
 
            //连接成功建立的回调方法
-           websocket.onopen = function () {
+           this.websocket.onopen = (event: Event)=> {
                console.log("WebSocket连接成功");
                const object = [
                 editBox.string,
@@ -67,13 +74,13 @@ export class UiLogin extends Component {
               
               const encoded: Uint8Array = msgpack.encode(object);
               console.log(encoded);
-              websocket.send(encoded);
+              this.websocket.send(encoded);
            }
 
            let plane = this.node.parent.getChildByName("Plane");
            let entites = this.entities;
           //接收到消息的回调方法
-           websocket.onmessage = function (event: MessageEvent) {
+          this.websocket.onmessage = function (event: MessageEvent) {
                let data = event.data as ArrayBuffer
                console.log("收到数据：", data, data.byteLength);
                const arr = msgpack.decode(new Uint8Array(data))
@@ -103,7 +110,7 @@ export class UiLogin extends Component {
           }
 
            //连接关闭的回调方法
-           websocket.onclose = function (e) {
+           this.websocket.onclose = function (e) {
             console.log('websocket 断开: ' + e.code + ' ' + e.reason + ' ' + e.wasClean)
             console.log(e)
           }
