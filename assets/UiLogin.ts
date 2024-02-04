@@ -5,6 +5,13 @@ const { ccclass, property } = _decorator;
 class ClientEntityComponent extends Component{
     view :Node
 }
+
+enum MsgId
+{
+	Login,
+	Move,
+}
+
 @ccclass('UiLogin')
 export class UiLogin extends Component {
     entities : { [key: number]: ClientEntityComponent; } ={};
@@ -24,7 +31,8 @@ export class UiLogin extends Component {
                     console.log('射线碰撞',i,item.collider.node.name,item.hitPoint);
                     if (item.collider.node.name == "Plane") 
                     {
-                        const object = item.hitPoint;
+                        const object = [MsgId.Move,
+                            item.hitPoint.x,item.hitPoint.y,item.hitPoint.z];
                           
                           const encoded: Uint8Array = msgpack.encode(object);
                           console.log(encoded);
@@ -68,6 +76,7 @@ export class UiLogin extends Component {
            this.websocket.onopen = (event: Event)=> {
                console.log("WebSocket连接成功");
                const object = [
+                MsgId.Login,
                 editBox.string,
                 'Hello, world!pwd',
                ];
