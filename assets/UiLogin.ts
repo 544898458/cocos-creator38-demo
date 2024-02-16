@@ -5,6 +5,12 @@ const { ccclass, property } = _decorator;
 class ClientEntityComponent extends Component{
     view :Node
 }
+enum MsgId
+{
+	Login,
+	Move,
+};
+
 @ccclass('UiLogin')
 export class UiLogin extends Component {
     entities : { [key: number]: ClientEntityComponent; } ={};
@@ -24,12 +30,20 @@ export class UiLogin extends Component {
                     console.log('射线碰撞',i,item.collider.node.name,item.hitPoint);
                     if (item.collider.node.name == "Plane") 
                     {
-                        const object = item.hitPoint;
+                        const object = //item.hitPoint;
+                        [
+                            MsgId.Move,
+                            item.hitPoint.x,
+                            item.hitPoint.y,
+                            item.hitPoint.z
+                        ];
                           
                           const encoded: Uint8Array = msgpack.encode(object);
-                          console.log(encoded);
                           if(this.websocket!=undefined)
-                          this.websocket.send(encoded);
+                          {
+                            console.log(encoded);
+                            this.websocket.send(encoded);
+                          }
                     }
                 }
             } else {
@@ -53,7 +67,8 @@ export class UiLogin extends Component {
         const editBox = editNode.getComponent(EditBox);
         console.log(editBox.string); 
 
-        this.websocket = new WebSocket("ws://192.168.31.138:12345/");
+        //this.websocket = new WebSocket("ws://192.168.31.138:12345/");
+        this.websocket = new WebSocket("ws://10.0.35.76:12345/");
 
         this.websocket.binaryType = 'arraybuffer'
         console.log(this.websocket)
@@ -68,6 +83,7 @@ export class UiLogin extends Component {
            this.websocket.onopen = (event: Event)=> {
                console.log("WebSocket连接成功");
                const object = [
+                MsgId.Login,
                 editBox.string,
                 'Hello, world!pwd',
                ];
