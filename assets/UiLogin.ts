@@ -92,7 +92,7 @@ export class UiLogin extends Component {
             this.websocket.send(encoded);
         }
 
-        let plane = this.node.parent.getChildByName("Plane");
+        let roles = this.node.parent.getChildByName("Roles");
         let entites = this.entities;
         //接收到消息的回调方法
         this.websocket.onmessage = function (event: MessageEvent) {
@@ -109,6 +109,7 @@ export class UiLogin extends Component {
                 case MsgId.NotifyPos:
                     let id = arr[1]
                     let posX = arr[2]
+                    let posZ = arr[3]
                     console.log(arr)
 
                     let old = entites[id]
@@ -117,7 +118,7 @@ export class UiLogin extends Component {
                         resources.load("altman-blue", Prefab, (err, prefab) => {
                             console.log('resources.load callback:', err, prefab);
                             const newNode = instantiate(prefab);
-                            plane.addChild(newNode);
+                            roles.addChild(newNode);
                             newNode.position = new Vec3(posX, 0, 0);
                             console.log('resources.load newNode', newNode);
                             entites[id].view = newNode;
@@ -125,7 +126,7 @@ export class UiLogin extends Component {
                     }
                     else {
                         if (old != undefined && old.view != undefined)
-                            old.view.position = new Vec3(posX, 0, 0);
+                            old.view.position = new Vec3(posX, 0, posZ);
                     }
                     break;
             }
