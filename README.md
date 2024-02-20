@@ -10,12 +10,12 @@
 
 1.  首先要有npm命令，安装了node.js才会有npm这个命令
 2.  在本项目根目录执行
-
+```PowerShell
     npm install msgpack-lite
-
     npm i --save-dev @types/msgpack-lite
-    
+```
 3.  用Cocos Creator 3.8.0打开本项目
+4.  找到UiLogin.ts文件里的onClickLogin方法，修改要连接的服务器IP
 
 #### 使用说明
 
