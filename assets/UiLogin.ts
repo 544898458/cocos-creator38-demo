@@ -16,7 +16,10 @@ enum MsgId {
 export class UiLogin extends Component {
     entities: { [key: number]: ClientEntityComponent; } = {};
     websocket: WebSocket
+    targetFlag: Node//走路走向的目标点
     start() {
+        this.targetFlag = cc.find("Roles/TargetFlag", this.node.parent);
+        let targetFlag = this.targetFlag;
         this.node.on(NodeEventType.MOUSE_DOWN, (event: EventMouse) => {
             console.log('MOUSE_DOWN', event)
             var uiPos = event.getLocation();
@@ -29,6 +32,7 @@ export class UiLogin extends Component {
                 for (let i = 0; i < raycastResults.length; i++) {
                     const item = raycastResults[i];
                     console.log('射线碰撞', i, item.collider.node.name, item.hitPoint);
+                    targetFlag.position=item.hitPoint;
                     if (item.collider.node.name == "Plane") {
                         const object = //item.hitPoint;
                             [
@@ -66,8 +70,8 @@ export class UiLogin extends Component {
         const editBox = editNode.getComponent(EditBox);
         console.log(editBox.string);
 
-        //this.websocket = new WebSocket("ws://192.168.31.138:12345/");
-        this.websocket = new WebSocket("ws://10.0.35.76:12345/");
+        this.websocket = new WebSocket("ws://192.168.31.138:12345/");
+        // this.websocket = new WebSocket("ws://10.0.35.76:12345/");
 
         this.websocket.binaryType = 'arraybuffer'
         console.log(this.websocket)
