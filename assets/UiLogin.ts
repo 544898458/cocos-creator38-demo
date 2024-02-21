@@ -1,15 +1,18 @@
-import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera } from 'cc';
+import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation } from 'cc';
 import msgpack from "msgpack-lite/dist/msgpack.min.js";
 
 const { ccclass, property } = _decorator;
 class ClientEntityComponent extends Component {
     view: Node
+    anim: SkeletalAnimation 
+    initClipName: string = 'idle'
 }
 enum MsgId {
     Login,
     Move,
     LoginRet,
     NotifyPos,
+    ChangeSkeleAnim,
 };
 
 @ccclass('UiLogin')
@@ -108,29 +111,69 @@ export class UiLogin extends Component {
             switch (msgId)
             {
                 case MsgId.LoginRet:
-                    console.log('登录成功');
+                    {
+                        console.log('登录成功');
+                        let id = arr[1]
+                        let nickName = arr[2]
+                        console.log(id, '进来了');
+                        let old = entites[id]
+                        if (old == undefined) {
+                            old = entites[id] = new ClientEntityComponent();
+                            resources.load("altman-blue", Prefab, (err, prefab) => {
+                                console.log('resources.load callback:', err, prefab);
+                                const newNode = instantiate(prefab);
+                                roles.addChild(newNode);
+                                //newNode.position = new Vec3(posX, 0, 0);
+                                console.log('resources.load newNode', newNode);
+                                old.view = newNode;
+                                old.skeletalAnimation = newNode.getComponent(SkeletalAnimation)
+                                old.skeletalAnimation.play(old.initClipName)
+                            });
+                        }
+                        else {
+                            console.error('重复进入',id);
+                        }
+                    }
                     break;
                 case MsgId.NotifyPos:
-                    let id = arr[1]
-                    let posX = arr[2]
-                    let posZ = arr[3]
-                    console.log(arr)
+                    {
+                        let id = arr[1]
+                        let posX = arr[2]
+                        let posZ = arr[3]
+                        console.log(arr)
 
-                    let old = entites[id]
-                    if (old == undefined) {
-                        entites[id] = new ClientEntityComponent();
-                        resources.load("altman-blue", Prefab, (err, prefab) => {
-                            console.log('resources.load callback:', err, prefab);
-                            const newNode = instantiate(prefab);
-                            roles.addChild(newNode);
-                            newNode.position = new Vec3(posX, 0, 0);
-                            console.log('resources.load newNode', newNode);
-                            entites[id].view = newNode;
-                        });
+                        let old = entites[id]
+                        if (old == undefined) {
+                        //    old = entites[id] = new ClientEntityComponent();
+                        //    resources.load("altman-blue", Prefab, (err, prefab) => {
+                        //        console.log('resources.load callback:', err, prefab);
+                        //        const newNode = instantiate(prefab);
+                        //        roles.addChild(newNode);
+                        //        newNode.position = new Vec3(posX, 0, 0);
+                        //        console.log('resources.load newNode', newNode);
+                        //        old.view = newNode;
+                        //        old.skeletalAnimation = newNode.getComponent(SkeletalAnimation)
+                        //        old.skeletalAnimation.play(old.initClipName )
+                        //    });
+                        }
+                        else {
+                            if (old != undefined && old.view != undefined){
+                                // old.skeletalAnimation.play('run')
+                                old.view.position = new Vec3(posX, 0, posZ);
+                            }
+                        }
                     }
-                    else {
-                        if (old != undefined && old.view != undefined)
-                            old.view.position = new Vec3(posX, 0, posZ);
+                    break;
+                case MsgId.ChangeSkeleAnim:
+                    {
+                        let id = arr[1]
+                        let clipName = arr[2]
+                        console.log(id, '动作改为', clipName)
+                        let old = entites[id]
+                        if( old.skeletalAnimation == undefined )
+                            old.initClipName = clipName
+                        else
+                            old.skeletalAnimation.play(clipName)
                     }
                     break;
             }

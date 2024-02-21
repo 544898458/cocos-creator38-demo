@@ -16,6 +16,7 @@
 ```
 3.  用Cocos Creator 3.8.0打开本项目
 4.  找到UiLogin.ts文件里的onClickLogin方法，修改要连接的服务器IP
+5.  服务器代码在 https://gitee.com/griffon2/iocp20coroutine
 
 #### 使用说明
 
