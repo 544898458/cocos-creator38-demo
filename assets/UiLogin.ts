@@ -4,10 +4,11 @@ import msgpack from "msgpack-lite/dist/msgpack.min.js";
 const { ccclass, property } = _decorator;
 class ClientEntityComponent extends Component {
     view: Node
-    anim: SkeletalAnimation 
+    skeletalAnimation: SkeletalAnimation 
     initClipName: string = 'idle'
 }
 enum MsgId {
+    Invalid_0,
     Login,
     Move,
     LoginRet,
@@ -73,7 +74,7 @@ export class UiLogin extends Component {
         const editBox = editNode.getComponent(EditBox);
         console.log(editBox.string);
 
-        this.websocket = new WebSocket("ws://192.168.31.138:12345/");
+        this.websocket = new WebSocket("ws://192.168.31.194:12345/");
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/");
 
         this.websocket.binaryType = 'arraybuffer'
@@ -170,6 +171,11 @@ export class UiLogin extends Component {
                         let clipName = arr[2]
                         console.log(id, '动作改为', clipName)
                         let old = entites[id]
+                        if( old == undefined )
+                        {
+                            console.log(id,"还没加载好");
+                            return
+                        }
                         if( old.skeletalAnimation == undefined )
                             old.initClipName = clipName
                         else
