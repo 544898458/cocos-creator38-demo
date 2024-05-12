@@ -48,7 +48,7 @@ export class UiLogin extends Component {
 
                         const encoded: Uint8Array = msgpack.encode(object);
                         if (this.websocket != undefined) {
-                            console.log(encoded);
+                            console.log('send',encoded);
                             this.websocket.send(encoded);
                         }
                     }
