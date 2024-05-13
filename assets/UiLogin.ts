@@ -14,6 +14,7 @@ enum MsgId {
     LoginRet,
     NotifyPos,
     ChangeSkeleAnim,
+    Say,
 };
 
 @ccclass('UiLogin')
@@ -196,7 +197,27 @@ export class UiLogin extends Component {
             console.log("onbeforeunload");
         }
     }
+    onClickSay(event: Event, customEventData: string) {
+        const node = event.target as Node;
+        const button = node.getComponent(Button);
+        const editNode = cc.find("Name", this.node) as Node;
+        console.log(button);
+        console.log(editNode);
 
+        const editBox = editNode.getComponent(EditBox);
+        console.log(editBox.string);
+        const object = //item.hitPoint;
+        [
+            MsgId.Say,
+            editBox.string
+        ];
+
+        const encoded: Uint8Array = msgpack.encode(object);
+        if (this.websocket != undefined) {
+            console.log('send',encoded);
+            this.websocket.send(encoded);
+        }
+    }
 }
 
 
