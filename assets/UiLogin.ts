@@ -32,11 +32,12 @@ export class UiLogin extends Component {
             // const camera = cc.find("Camera",this.node).getComponent(Camera);
             const camera = cc.find("Main Camera", this.node.parent).getComponent(Camera);
             camera.screenPointToRay(uiPos.x, uiPos.y, ray);
-            if (PhysicsSystem.instance.raycast(ray)) {
-                const raycastResults = PhysicsSystem.instance.raycastResults;
-                for (let i = 0; i < raycastResults.length; i++) {
-                    const item = raycastResults[i];
-                    console.log('射线碰撞', i, item.collider.node.name, item.hitPoint);
+            if (PhysicsSystem.instance.raycastClosest(ray)) {
+                const raycastResults = PhysicsSystem.instance.raycastClosestResult;
+                // for (let i = 0; i < raycastResults.length; i++) 
+                {
+                    const item = raycastResults//[i];
+                    console.log('射线碰撞', item.collider.node.name, item.hitPoint);
                     targetFlag.position=item.hitPoint;
                     if (item.collider.node.name == "Plane") {
                         const object = //item.hitPoint;
@@ -57,6 +58,7 @@ export class UiLogin extends Component {
             } else {
                 console.log('raycast does not hit the target node !');
             }
+            return false
         }, this);
     }
 
