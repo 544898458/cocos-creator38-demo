@@ -112,6 +112,7 @@ export class UiLogin extends Component {
             const arr = msgpack.decode(new Uint8Array(data))
             console.log("msgpack.decode结果：", data, data.byteLength)
             let msgId = arr[0] as MsgId
+            console.log("msgId：",   msgId)
             switch (msgId)
             {
                 case MsgId.LoginRet:
@@ -176,13 +177,19 @@ export class UiLogin extends Component {
                         let old = entites[id]
                         if( old == undefined )
                         {
-                            console.log(id,"还没加载好");
+                            console.log(id,"还没加载好")
                             return
                         }
                         if( old.skeletalAnimation == undefined )
                             old.initClipName = clipName
                         else
                             old.skeletalAnimation.play(clipName)
+                    }
+                    break;
+                case MsgId.Say:
+                    {
+                        let content = arr[1]
+                        console.log('有人说:', content)
                     }
                     break;
             }
