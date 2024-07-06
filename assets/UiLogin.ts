@@ -1,4 +1,4 @@
-import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label } from 'cc';
+import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils } from 'cc';
 import msgpack from "msgpack-lite/dist/msgpack.min.js";
 import { HeadScale } from './head-scale';
 
@@ -26,14 +26,14 @@ export class UiLogin extends Component {
     websocket: WebSocket
     targetFlag: Node//走路走向的目标点
     start() {
-        this.targetFlag = cc.find("Roles/TargetFlag", this.node.parent);
+        this.targetFlag = utils.find("Roles/TargetFlag", this.node.parent);
         let targetFlag = this.targetFlag;
         this.node.on(NodeEventType.MOUSE_DOWN, (event: EventMouse) => {
             console.log('MOUSE_DOWN', event)
             var uiPos = event.getLocation();
             var ray = new geometry.Ray();
             // const camera = cc.find("Camera",this.node).getComponent(Camera);
-            const camera = cc.find("Main Camera", this.node.parent).getComponent(Camera);
+            const camera = utils.find("Main Camera", this.node.parent).getComponent(Camera);
             camera.screenPointToRay(uiPos.x, uiPos.y, ray);
             if (PhysicsSystem.instance.raycastClosest(ray)) {
                 const raycastResults = PhysicsSystem.instance.raycastClosestResult;
@@ -73,7 +73,7 @@ export class UiLogin extends Component {
         // 这里 event 是一个 Touch Event 对象，你可以通过 event.target 取到事件的发送节点
         const node = event.target as Node;
         const button = node.getComponent(Button);
-        const editNode = cc.find("Name", this.node) as Node;
+        const editNode = utils.find("Name", this.node) as Node;
         console.log(button);
         console.log(editNode);
 
@@ -136,8 +136,8 @@ export class UiLogin extends Component {
                                 old.view = newNode;
                                 old.skeletalAnimation = newNode.getComponent(SkeletalAnimation)
                                 old.skeletalAnimation.play(old.initClipName)
-                                let nodeCanvas = cc.find("Canvas", roles.parent);
-                                let nodeRoleName = cc.find("RoleName", nodeCanvas);
+                                let nodeCanvas = utils.find("Canvas", roles.parent);
+                                let nodeRoleName = utils.find("RoleName", nodeCanvas);
                                 // console.log('RoleName',this.nodeRoleName);
                                 // this.nodeRoleName.getComponent(HeadScale).target = this.nodeRoleName;
 
@@ -145,8 +145,8 @@ export class UiLogin extends Component {
                                 nodeCanvas.addChild(old.nodeName)
                                 old.labelName = old.nodeName.getComponent(Label);
                                 let headScal = old.nodeName.getComponent(HeadScale)
-                                headScal.target = old.view
-                                let camera3D = cc.find("Main Camera", roles.parent).getComponent(Camera)
+                                headScal.target = utils.find("RootNode/NamePos",newNode);
+                                let camera3D = utils.find("Main Camera", roles.parent).getComponent(Camera)
                                 console.log('Main Camera',camera3D)
                                 //  headScal.camera = camera3D
                                 // headScal.distance = 55
@@ -227,7 +227,7 @@ export class UiLogin extends Component {
     onClickSay(event: Event, customEventData: string) {
         const node = event.target as Node;
         const button = node.getComponent(Button);
-        const editNode = cc.find("Name", this.node) as Node;
+        const editNode = utils.find("Name", this.node) as Node;
         console.log(button);
         console.log(editNode);
 

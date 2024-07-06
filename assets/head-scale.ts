@@ -17,7 +17,7 @@ export class HeadScale extends Component {
         const wpos = this.target.worldPosition;
         // @ts-ignore
         if (!this.camera!._camera || this._lastWPos.equals(wpos)) {
-            console.log(wpos);
+            // console.log(wpos);
             return;
         }
 
@@ -32,7 +32,7 @@ export class HeadScale extends Component {
         Vec3.transformMat4(this._pos, this.target.worldPosition, camera._camera!.matView);
 
         const ratio = this.distance / Math.abs(this._pos.z);
-        console.log('ratio',ratio);
+        // console.log('ratio',ratio);
         const value = Math.floor(ratio * 100) / 100;
         this.node.setScale(value, value, 1);
     }

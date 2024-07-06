@@ -1,4 +1,4 @@
-import { _decorator, Component, Label, Node,Canvas, Camera, UITransform } from 'cc';
+import { _decorator, Component, Label, Node,Canvas, Camera, UITransform, utils } from 'cc';
 import { HeadScale } from './head-scale';
 const { ccclass, property } = _decorator;
 
@@ -11,7 +11,7 @@ export class Role extends Component {
     start() {
         console.log(this.node);
 
-        this.nodeCanvas = cc.find("Canvas", this.node.parent.parent);
+        this.nodeCanvas = find("Canvas", this.node.parent.parent);
         console.log(this.nodeCanvas);
 
         this.uiTransformCanvas = this.nodeCanvas.getComponent(UITransform);
