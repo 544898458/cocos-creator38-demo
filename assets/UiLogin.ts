@@ -25,8 +25,10 @@ export class UiLogin extends Component {
     entities: { [key: number]: ClientEntityComponent; } = {};
     websocket: WebSocket
     targetFlag: Node//走路走向的目标点
+    lableMessage: Label
     start() {
         this.targetFlag = utils.find("Roles/TargetFlag", this.node.parent);
+        this.lableMessage = utils.find("Canvas/Message", this.node.parent).getComponent(Label);
         let targetFlag = this.targetFlag;
         this.node.on(NodeEventType.MOUSE_DOWN, (event: EventMouse) => {
             console.log('MOUSE_DOWN', event)
@@ -108,6 +110,7 @@ export class UiLogin extends Component {
 
         let roles = this.node.parent.getChildByName("Roles");
         let entites = this.entities;
+        let lableMessage = this.lableMessage
         //接收到消息的回调方法
         this.websocket.onmessage = function (event: MessageEvent) {
             let data = event.data as ArrayBuffer
@@ -121,9 +124,9 @@ export class UiLogin extends Component {
                 case MsgId.LoginRet:
                     {
                         console.log('登录成功');
-                        let id = arr[1]
-                        let nickName = arr[2]
-                        console.log(id, '进来了');
+                        let id:number = arr[1]
+                        let nickName:string = arr[2]
+                        console.log(id, nickName, '进来了');
                         let old = entites[id]
                         if (old == undefined) {
                             old = entites[id] = new ClientEntityComponent();
@@ -150,7 +153,7 @@ export class UiLogin extends Component {
                                 console.log('Main Camera',camera3D)
                                 //  headScal.camera = camera3D
                                 // headScal.distance = 55
-                                old.labelName.string = id
+                                old.labelName.string = nickName +'('+ id + ')'
                             });
                         }
                         else {
@@ -208,6 +211,7 @@ export class UiLogin extends Component {
                     {
                         let content = arr[1]
                         console.log('有人说:', content)
+                        lableMessage.string = content
                     }
                     break;
             }
