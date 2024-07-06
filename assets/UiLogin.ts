@@ -1,9 +1,12 @@
-import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation } from 'cc';
+import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label } from 'cc';
 import msgpack from "msgpack-lite/dist/msgpack.min.js";
+import { HeadScale } from './head-scale';
 
 const { ccclass, property } = _decorator;
-class ClientEntityComponent extends Component {
+class ClientEntityComponent{
     view: Node
+    nodeName:Node
+    labelName:Label
     skeletalAnimation: SkeletalAnimation 
     initClipName: string = 'idle'
 }
@@ -133,6 +136,21 @@ export class UiLogin extends Component {
                                 old.view = newNode;
                                 old.skeletalAnimation = newNode.getComponent(SkeletalAnimation)
                                 old.skeletalAnimation.play(old.initClipName)
+                                let nodeCanvas = cc.find("Canvas", roles.parent);
+                                let nodeRoleName = cc.find("RoleName", nodeCanvas);
+                                // console.log('RoleName',this.nodeRoleName);
+                                // this.nodeRoleName.getComponent(HeadScale).target = this.nodeRoleName;
+
+                                old.nodeName = instantiate(nodeRoleName);
+                                nodeCanvas.addChild(old.nodeName)
+                                old.labelName = old.nodeName.getComponent(Label);
+                                let headScal = old.nodeName.getComponent(HeadScale)
+                                headScal.target = old.view
+                                let camera3D = cc.find("Main Camera", roles.parent).getComponent(Camera)
+                                console.log('Main Camera',camera3D)
+                                //  headScal.camera = camera3D
+                                // headScal.distance = 55
+                                old.labelName.string = id
                             });
                         }
                         else {
