@@ -49,7 +49,7 @@ export class UiLogin extends Component {
                             [
                                 MsgId.Move,
                                 item.hitPoint.x,
-                                item.hitPoint.y,
+                                // item.hitPoint.y,
                                 item.hitPoint.z
                             ];
 
