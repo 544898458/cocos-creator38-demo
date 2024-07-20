@@ -166,6 +166,7 @@ export class UiLogin extends Component {
                         let id = arr[1]
                         let posX = arr[2]
                         let posZ = arr[3]
+                        let eulerAnglesY = arr[4]
                         console.log(arr)
 
                         let old = entites[id]
@@ -185,7 +186,9 @@ export class UiLogin extends Component {
                         else {
                             if (old != undefined && old.view != undefined){
                                 // old.skeletalAnimation.play('run')
-                                old.view.position = new Vec3(posX, 0, posZ);
+                                old.view.position = new Vec3(posX, 0, posZ)
+                                old.view.eulerAngles = new Vec3(0,eulerAnglesY,0);
+                                //console.log('angle',old.view.angle)
                             }
                         }
                     }
