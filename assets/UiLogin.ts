@@ -1,4 +1,4 @@
-import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils } from 'cc';
+import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip } from 'cc';
 import msgpack from "msgpack-lite/dist/msgpack.min.js";
 import { HeadScale } from './head-scale';
 
@@ -9,6 +9,8 @@ class ClientEntityComponent{
     labelName:Label
     skeletalAnimation: SkeletalAnimation 
     initClipName: string = 'idle'
+    nickName:string
+    hp:number=0
 }
 enum MsgId {
     Invalid_0,
@@ -154,6 +156,7 @@ export class UiLogin extends Component {
                                 //  headScal.camera = camera3D
                                 // headScal.distance = 55
                                 old.labelName.string = nickName +'('+ id + ')'
+                                old.nickName=nickName
                             });
                         }
                         else {
@@ -167,6 +170,7 @@ export class UiLogin extends Component {
                         let posX = arr[2]
                         let posZ = arr[3]
                         let eulerAnglesY = arr[4]
+                        let hp = arr[5]
                         console.log(arr)
 
                         let old = entites[id]
@@ -187,7 +191,9 @@ export class UiLogin extends Component {
                             if (old != undefined && old.view != undefined){
                                 // old.skeletalAnimation.play('run')
                                 old.view.position = new Vec3(posX, 0, posZ)
-                                old.view.eulerAngles = new Vec3(0,eulerAnglesY,0);
+                                old.view.eulerAngles = new Vec3(0,eulerAnglesY,0)
+                                old.hp = hp
+                                old.labelName.string = old.nickName +'('+ id + ')hp=' + hp
                                 //console.log('angle',old.view.angle)
                             }
                         }
@@ -196,7 +202,8 @@ export class UiLogin extends Component {
                 case MsgId.ChangeSkeleAnim:
                     {
                         let id = arr[1]
-                        let clipName = arr[2]
+                        let loop:Boolean = arr[2]
+                        let clipName:string = arr[3]
                         console.log(id, '动作改为', clipName)
                         let old = entites[id]
                         if( old == undefined )
@@ -207,7 +214,11 @@ export class UiLogin extends Component {
                         if( old.skeletalAnimation == undefined )
                             old.initClipName = clipName
                         else
+                        {
+
                             old.skeletalAnimation.play(clipName)
+                            old.skeletalAnimation.getState(clipName).wrapMode = loop ? AnimationClip.WrapMode.Loop : AnimationClip.WrapMode.Normal
+                        }
                     }
                     break;
                 case MsgId.Say:
