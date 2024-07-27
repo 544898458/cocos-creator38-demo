@@ -128,11 +128,12 @@ export class UiLogin extends Component {
                         console.log('登录成功');
                         let id:number = arr[1]
                         let nickName:string = arr[2]
-                        console.log(id, nickName, '进来了');
+                        let prefabName:string = arr[3]
+                        console.log(id, nickName, prefabName, '进来了');
                         let old = entites[id]
                         if (old == undefined) {
                             old = entites[id] = new ClientEntityComponent();
-                            resources.load("altman-blue", Prefab, (err, prefab) => {
+                            resources.load(prefabName, Prefab, (err, prefab) => {
                                 console.log('resources.load callback:', err, prefab);
                                 const newNode = instantiate(prefab);
                                 roles.addChild(newNode);
