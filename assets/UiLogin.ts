@@ -10,6 +10,7 @@ class ClientEntityComponent{
     skeletalAnimation: SkeletalAnimation 
     initClipName: string = 'idle'
     nickName:string
+    position:Vec3//刚进地图Load没结束无法设置node坐标，暂存
     hp:number=0
 }
 enum MsgId {
@@ -21,6 +22,7 @@ enum MsgId {
     ChangeSkeleAnim,
     Say,
     SelectRoles,
+    AddRole,
 };
 
 @ccclass('UiLogin')
@@ -69,7 +71,7 @@ export class UiLogin extends Component {
                     this.websocket.send(encoded)
                 }
             }
-            else if (item.collider.node.name == "altman-blue" || item.collider.node.name == "altman-red") 
+            else if (item.collider.node.name == "altman-blue" )//|| item.collider.node.name == "altman-red") 
             {
                 let id = this.entityId[item.collider.node.uuid]
                 if( id == undefined)
@@ -110,7 +112,11 @@ export class UiLogin extends Component {
     update(deltaTime: number) {
 
     }
-
+    onClickAddRole(event: Event, customEventData: string):void {
+        const encoded: Uint8Array = msgpack.encode([MsgId.AddRole]);
+        console.log(encoded);
+        this.websocket.send(encoded);
+    }
     onClickLogin(event: Event, customEventData: string) {
         // 这里 event 是一个 Touch Event 对象，你可以通过 event.target 取到事件的发送节点
         const node = event.target as Node;
@@ -199,6 +205,7 @@ export class UiLogin extends Component {
                                 // headScal.distance = 55
                                 old.labelName.string = nickName +'('+ id + ')'
                                 old.nickName=nickName
+                                old.view.position = old.position;
                             });
                         }
                         else {
@@ -230,13 +237,18 @@ export class UiLogin extends Component {
                         //    });
                         }
                         else {
-                            if (old != undefined && old.view != undefined){
+                            if (old != undefined )
+                            {
                                 // old.skeletalAnimation.play('run')
-                                old.view.position = new Vec3(posX, 0, posZ)
-                                old.view.eulerAngles = new Vec3(0,eulerAnglesY,0)
+                                old.position = new Vec3(posX, 0, posZ);
                                 old.hp = hp
-                                old.labelName.string = old.nickName +'('+ id + ')hp=' + hp
                                 //console.log('angle',old.view.angle)
+                            }
+                            if( old.view != undefined)
+                            {
+                                old.view.position = old.position;
+                                old.view.eulerAngles = new Vec3(0,eulerAnglesY,0)
+                                old.labelName.string = old.nickName +'('+ id + ')hp=' + hp
                             }
                         }
                     }
