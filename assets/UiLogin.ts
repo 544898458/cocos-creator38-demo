@@ -20,11 +20,13 @@ enum MsgId {
     NotifyPos,
     ChangeSkeleAnim,
     Say,
+    SelectRoles,
 };
 
 @ccclass('UiLogin')
 export class UiLogin extends Component {
-    entities: { [key: number]: ClientEntityComponent; } = {};
+    entities: Map<number,ClientEntityComponent> = new Map<number,ClientEntityComponent>;
+    entityId = new Map<string, number>;//uuid=>服务器ID
     websocket: WebSocket
     targetFlag: Node//走路走向的目标点
     lableMessage: Label
@@ -39,32 +41,68 @@ export class UiLogin extends Component {
             // const camera = cc.find("Camera",this.node).getComponent(Camera);
             const camera = utils.find("Main Camera", this.node.parent).getComponent(Camera);
             camera.screenPointToRay(uiPos.x, uiPos.y, ray);
-            if (PhysicsSystem.instance.raycastClosest(ray)) {
-                const raycastResults = PhysicsSystem.instance.raycastClosestResult;
-                // for (let i = 0; i < raycastResults.length; i++) 
-                {
-                    const item = raycastResults//[i];
-                    console.log('射线碰撞', item.collider.node.name, item.hitPoint);
-                    targetFlag.position=item.hitPoint;
-                    if (item.collider.node.name == "Plane") {
-                        const object = //item.hitPoint;
-                            [
-                                MsgId.Move,
-                                item.hitPoint.x,
-                                // item.hitPoint.y,
-                                item.hitPoint.z
-                            ];
-
-                        const encoded: Uint8Array = msgpack.encode(object);
-                        if (this.websocket != undefined) {
-                            console.log('send',encoded);
-                            this.websocket.send(encoded);
-                        }
-                    }
-                }
-            } else {
+            if (!PhysicsSystem.instance.raycastClosest(ray)) 
+            {
                 console.log('raycast does not hit the target node !');
+                return false;
             }
+
+            const raycastResults = PhysicsSystem.instance.raycastClosestResult;
+            
+            const item = raycastResults//[i];
+            console.log('射线碰撞', item.collider.node.name, item.hitPoint);
+            if (item.collider.node.name == "Plane") 
+            {
+                targetFlag.position = item.hitPoint;
+            
+                const object = //item.hitPoint;
+                    [
+                        MsgId.Move,
+                        item.hitPoint.x,
+                        // item.hitPoint.y,
+                        item.hitPoint.z
+                    ];
+
+                const encoded: Uint8Array = msgpack.encode(object);
+                if (this.websocket != undefined) {
+                    console.log('send',encoded)
+                    this.websocket.send(encoded)
+                }
+            }
+            else if (item.collider.node.name == "altman-blue" || item.collider.node.name == "altman-red") 
+            {
+                let id = this.entityId[item.collider.node.uuid]
+                if( id == undefined)
+                {
+                    console.log('还没加载')
+                    return
+                }
+                const object =
+                    [
+                        MsgId.SelectRoles,
+                        [id]//虽然是整数，但是也强制转成FLOAT64发出去了/*  */
+                    ];
+
+                const encoded: Uint8Array = msgpack.encode(object);
+                if (this.websocket != undefined) {
+                    console.log('send',encoded)
+                    this.websocket.send(encoded)
+                }
+                const prefabName = 'colorBar'
+                this.entities.forEach((clientEntityComponent,k,map) => {
+                    let nodEffect = clientEntityComponent.view.getChildByName(prefabName)
+                    console.log('准备删除',nodEffect)
+                    clientEntityComponent.view.removeChild(nodEffect)
+                });
+                resources.load(prefabName, Prefab, (err, prefab) => {
+                    console.log('resources.load callback:', err, prefab);
+                    const newNode = instantiate(prefab);
+                    newNode.name = prefabName
+                    this.entities.get(id).view.addChild(newNode);
+                });
+            }
+        
+        
             return false
         }, this);
     }
@@ -111,7 +149,8 @@ export class UiLogin extends Component {
         }
 
         let roles = this.node.parent.getChildByName("Roles");
-        let entites = this.entities;
+        let entities = this.entities;
+        let entityId = this.entityId;
         let lableMessage = this.lableMessage
         //接收到消息的回调方法
         this.websocket.onmessage = function (event: MessageEvent) {
@@ -130,13 +169,15 @@ export class UiLogin extends Component {
                         let nickName:string = arr[2]
                         let prefabName:string = arr[3]
                         console.log(id, nickName, prefabName, '进来了');
-                        let old = entites[id]
+                        let old = entities.get(id)
                         if (old == undefined) {
-                            old = entites[id] = new ClientEntityComponent();
+                            old = new ClientEntityComponent();
+                            entities.set(id, old)
                             resources.load(prefabName, Prefab, (err, prefab) => {
                                 console.log('resources.load callback:', err, prefab);
                                 const newNode = instantiate(prefab);
                                 roles.addChild(newNode);
+                                entityId[newNode.uuid]=id;
                                 //newNode.position = new Vec3(posX, 0, 0);
                                 console.log('resources.load newNode', newNode);
                                 old.view = newNode;
@@ -174,7 +215,7 @@ export class UiLogin extends Component {
                         let hp = arr[5]
                         console.log(arr)
 
-                        let old = entites[id]
+                        let old = entities.get(id)
                         if (old == undefined) {
                         //    old = entites[id] = new ClientEntityComponent();
                         //    resources.load("altman-blue", Prefab, (err, prefab) => {
@@ -206,7 +247,7 @@ export class UiLogin extends Component {
                         let loop:Boolean = arr[2]
                         let clipName:string = arr[3]
                         console.log(id, '动作改为', clipName)
-                        let old = entites[id]
+                        let old = entities.get(id)
                         if( old == undefined )
                         {
                             console.log(id,"还没加载好")
