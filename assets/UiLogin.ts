@@ -289,7 +289,8 @@ export class UiLogin extends Component {
                         let id = arr[1]
                         console.log('删除:', id)
                         let old = entities.get(id)
-                        old.view.removeFromParent()
+                        old.view?.removeFromParent()
+                        old.nodeName?.removeFromParent()
                         entities.delete(id)
                     }
                     break;
