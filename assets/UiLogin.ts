@@ -33,9 +33,11 @@ export class UiLogin extends Component {
     websocket: WebSocket
     targetFlag: Node//走路走向的目标点
     lableMessage: Label
+    lableCount: Label
     start() {
         this.targetFlag = utils.find("Roles/TargetFlag", this.node.parent)
         this.lableMessage = utils.find("Canvas/Message", this.node.parent).getComponent(Label)
+        this.lableCount = utils.find("Canvas/Count", this.node.parent).getComponent(Label)
         let targetFlag = this.targetFlag
         this.node.on(NodeEventType.MOUSE_DOWN, (event: EventMouse) => {
             console.log('MOUSE_DOWN', event)
@@ -115,7 +117,7 @@ export class UiLogin extends Component {
     }
     onClickAddRole(event: Event, customEventData: string):void {
         const encoded: Uint8Array = msgpack.encode([MsgId.AddRole])
-        console.log(encoded)
+        // console.log(encoded)
         this.websocket.send(encoded)
     }
     onClickLogin(event: Event, customEventData: string) {
@@ -159,34 +161,36 @@ export class UiLogin extends Component {
         let entities = this.entities
         let entityId = this.entityId
         let lableMessage = this.lableMessage
+        let lableCount = this.lableCount
         //接收到消息的回调方法
         this.websocket.onmessage = function (event: MessageEvent) {
             let data = event.data as ArrayBuffer
-            console.log("收到数据：", data, data.byteLength)
+            // console.log("收到数据：", data, data.byteLength)
             const arr = msgpack.decode(new Uint8Array(data))
-            console.log("msgpack.decode结果：", data, data.byteLength)
+            // console.log("msgpack.decode结果：", data, data.byteLength)
             let msgId = arr[0] as MsgId
-            console.log("msgId：",   msgId)
+            // console.log("msgId：",   msgId)
             switch (msgId)
             {
                 case MsgId.AddRoleRet:
                     {
-                        console.log('登录成功')
+                        // console.log('登录成功')
                         let id:number = arr[1]
                         let nickName:string = arr[2]
                         let prefabName:string = arr[3]
-                        console.log(id, nickName, prefabName, '进来了')
+                        // console.log(id, nickName, prefabName, '进来了')
                         let old = entities.get(id)
                         if (old == undefined) {
                             old = new ClientEntityComponent()
                             entities.set(id, old)
+                            lableCount.string = '共' + entities.size + '单位'
                             resources.load(prefabName, Prefab, (err, prefab) => {
-                                console.log('resources.load callback:', err, prefab)
+                                // console.log('resources.load callback:', err, prefab)
                                 const newNode = instantiate(prefab)
                                 roles.addChild(newNode)
                                 entityId[newNode.uuid]=id
                                 //newNode.position = new Vec3(posX, 0, 0)
-                                console.log('resources.load newNode', newNode)
+                                // console.log('resources.load newNode', newNode)
                                 old.view = newNode
                                 old.skeletalAnimation = newNode.getComponent(SkeletalAnimation)
                                 old.skeletalAnimation.play(old.initClipName)
@@ -201,7 +205,7 @@ export class UiLogin extends Component {
                                 let headScal = old.nodeName.getComponent(HeadScale)
                                 headScal.target = utils.find("RootNode/NamePos",newNode)
                                 let camera3D = utils.find("Main Camera", roles.parent).getComponent(Camera)
-                                console.log('Main Camera',camera3D)
+                                // console.log('Main Camera',camera3D)
                                 //  headScal.camera = camera3D
                                 // headScal.distance = 55
                                 old.labelName.string = nickName +'('+ id + ')'
@@ -222,7 +226,7 @@ export class UiLogin extends Component {
                         let posZ = arr[3]
                         let eulerAnglesY = arr[4]
                         let hp = arr[5]
-                        console.log(arr)
+                        // console.log(arr)
 
                         let old = entities.get(id)
                         if (old == undefined) {
@@ -260,11 +264,11 @@ export class UiLogin extends Component {
                         let id = arr[1]
                         let loop:Boolean = arr[2]
                         let clipName:string = arr[3]
-                        console.log(id, '动作改为', clipName)
+                        // console.log(id, '动作改为', clipName)
                         let old = entities.get(id)
                         if( old == undefined )
                         {
-                            console.log(id,"还没加载好")
+                            console.log(id,"还没加载好,没有播放动作",clipName)
                             return
                         }
                         if( old.skeletalAnimation == undefined )
@@ -292,6 +296,7 @@ export class UiLogin extends Component {
                         old.view?.removeFromParent()
                         old.nodeName?.removeFromParent()
                         entities.delete(id)
+                        lableCount.string = '共' + entities.size + '单位'
                     }
                     break;
                 default:

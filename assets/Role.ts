@@ -9,7 +9,7 @@ export class Role extends Component {
     nodeCanvas:Node
     uiTransformCanvas:UITransform
     start() {
-        console.log(this.node);
+        // console.log(this.node);
 
         // this.nodeCanvas = utils.find("Canvas", this.node.parent.parent);
         // console.log(this.nodeCanvas);
