@@ -23,7 +23,10 @@ enum MsgId {
     Say,
     SelectRoles,
     AddRole,
-    DelRoleRet
+    DelRoleRet,
+    ChangeMoney,
+    ChangeMoneyResponce,
+    AddBuilding,
 }
 
 @ccclass('UiLogin')
@@ -120,6 +123,11 @@ export class UiLogin extends Component {
         // console.log(encoded)
         this.websocket.send(encoded)
     }
+    onClickAddBuilding(event: Event, customEventData: string):void {
+        const encoded: Uint8Array = msgpack.encode([MsgId.AddBuilding])
+        // console.log(encoded)
+        this.websocket.send(encoded)
+    }
     onClickLogin(event: Event, customEventData: string) {
         // 这里 event 是一个 Touch Event 对象，你可以通过 event.target 取到事件的发送节点
         const node = event.target as Node
@@ -131,7 +139,7 @@ export class UiLogin extends Component {
         const editBox = editNode.getComponent(EditBox)
         console.log(editBox.string)
 
-        this.websocket = new WebSocket("ws://192.168.31.194:12345/")
+        this.websocket = new WebSocket("ws://192.168.31.196:12345/")
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
 
         this.websocket.binaryType = 'arraybuffer'

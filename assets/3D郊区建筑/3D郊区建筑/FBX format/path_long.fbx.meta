@@ -1,0 +1,115 @@
+{
+  "ver": "2.3.8",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "a850a1e9-cb13-4bf6-958c-fed8a0315393",
+  "files": [],
+  "subMetas": {
+    "1dfcc": {
+      "importer": "gltf-mesh",
+      "uuid": "a850a1e9-cb13-4bf6-958c-fed8a0315393@1dfcc",
+      "displayName": "",
+      "id": "1dfcc",
+      "name": "path_long_Material0.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 12
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "cb799": {
+      "importer": "gltf-material",
+      "uuid": "a850a1e9-cb13-4bf6-958c-fed8a0315393@cb799",
+      "displayName": "",
+      "id": "cb799",
+      "name": "border.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e4014": {
+      "importer": "gltf-material",
+      "uuid": "a850a1e9-cb13-4bf6-958c-fed8a0315393@e4014",
+      "displayName": "",
+      "id": "e4014",
+      "name": "wood.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "52dd3": {
+      "importer": "gltf-scene",
+      "uuid": "a850a1e9-cb13-4bf6-958c-fed8a0315393@52dd3",
+      "displayName": "",
+      "id": "52dd3",
+      "name": "path_long.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true,
+      "matchMeshNames": false
+    },
+    "redirect": "a850a1e9-cb13-4bf6-958c-fed8a0315393@52dd3",
+    "assetFinder": {
+      "meshes": [
+        "a850a1e9-cb13-4bf6-958c-fed8a0315393@1dfcc"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "a850a1e9-cb13-4bf6-958c-fed8a0315393@cb799",
+        "a850a1e9-cb13-4bf6-958c-fed8a0315393@e4014"
+      ],
+      "scenes": [
+        "a850a1e9-cb13-4bf6-958c-fed8a0315393@52dd3"
+      ]
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    }
+  }
+}

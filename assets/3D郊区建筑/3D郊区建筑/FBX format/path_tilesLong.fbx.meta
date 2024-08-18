@@ -1,0 +1,115 @@
+{
+  "ver": "2.3.8",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "0ebcb5b4-a1bf-4704-9fa5-270fc5024c79",
+  "files": [],
+  "subMetas": {
+    "0ce51": {
+      "importer": "gltf-mesh",
+      "uuid": "0ebcb5b4-a1bf-4704-9fa5-270fc5024c79@0ce51",
+      "displayName": "",
+      "id": "0ce51",
+      "name": "path_tilesLong_Material0.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 76
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e2243": {
+      "importer": "gltf-material",
+      "uuid": "0ebcb5b4-a1bf-4704-9fa5-270fc5024c79@e2243",
+      "displayName": "",
+      "id": "e2243",
+      "name": "pavement.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "0ee4f": {
+      "importer": "gltf-material",
+      "uuid": "0ebcb5b4-a1bf-4704-9fa5-270fc5024c79@0ee4f",
+      "displayName": "",
+      "id": "0ee4f",
+      "name": "_defaultMat.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "dd5bf": {
+      "importer": "gltf-scene",
+      "uuid": "0ebcb5b4-a1bf-4704-9fa5-270fc5024c79@dd5bf",
+      "displayName": "",
+      "id": "dd5bf",
+      "name": "path_tilesLong.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true,
+      "matchMeshNames": false
+    },
+    "redirect": "0ebcb5b4-a1bf-4704-9fa5-270fc5024c79@dd5bf",
+    "assetFinder": {
+      "meshes": [
+        "0ebcb5b4-a1bf-4704-9fa5-270fc5024c79@0ce51"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "0ebcb5b4-a1bf-4704-9fa5-270fc5024c79@e2243",
+        "0ebcb5b4-a1bf-4704-9fa5-270fc5024c79@0ee4f"
+      ],
+      "scenes": [
+        "0ebcb5b4-a1bf-4704-9fa5-270fc5024c79@dd5bf"
+      ]
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    }
+  }
+}

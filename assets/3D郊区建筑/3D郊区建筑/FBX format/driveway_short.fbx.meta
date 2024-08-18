@@ -1,0 +1,115 @@
+{
+  "ver": "2.3.8",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "bf0abf12-833a-4f2c-8571-007013680d03",
+  "files": [],
+  "subMetas": {
+    "14648": {
+      "importer": "gltf-scene",
+      "uuid": "bf0abf12-833a-4f2c-8571-007013680d03@14648",
+      "displayName": "",
+      "id": "14648",
+      "name": "driveway_short.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "8d6b3": {
+      "importer": "gltf-mesh",
+      "uuid": "bf0abf12-833a-4f2c-8571-007013680d03@8d6b3",
+      "displayName": "",
+      "id": "8d6b3",
+      "name": "driveway_short_Material0.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 12
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "7bf25": {
+      "importer": "gltf-material",
+      "uuid": "bf0abf12-833a-4f2c-8571-007013680d03@7bf25",
+      "displayName": "",
+      "id": "7bf25",
+      "name": "door.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "cb799": {
+      "importer": "gltf-material",
+      "uuid": "bf0abf12-833a-4f2c-8571-007013680d03@cb799",
+      "displayName": "",
+      "id": "cb799",
+      "name": "border.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true,
+      "matchMeshNames": false
+    },
+    "redirect": "bf0abf12-833a-4f2c-8571-007013680d03@14648",
+    "assetFinder": {
+      "meshes": [
+        "bf0abf12-833a-4f2c-8571-007013680d03@8d6b3"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "bf0abf12-833a-4f2c-8571-007013680d03@7bf25",
+        "bf0abf12-833a-4f2c-8571-007013680d03@cb799"
+      ],
+      "scenes": [
+        "bf0abf12-833a-4f2c-8571-007013680d03@14648"
+      ]
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    }
+  }
+}

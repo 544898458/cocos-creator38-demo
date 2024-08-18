@@ -1,0 +1,115 @@
+{
+  "ver": "2.3.8",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "513d755b-e8bc-4cb6-9a2e-15dfba56508e",
+  "files": [],
+  "subMetas": {
+    "a63b2": {
+      "importer": "gltf-mesh",
+      "uuid": "513d755b-e8bc-4cb6-9a2e-15dfba56508e@a63b2",
+      "displayName": "",
+      "id": "a63b2",
+      "name": "path_short_Material0.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 12
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "cb799": {
+      "importer": "gltf-material",
+      "uuid": "513d755b-e8bc-4cb6-9a2e-15dfba56508e@cb799",
+      "displayName": "",
+      "id": "cb799",
+      "name": "border.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e4014": {
+      "importer": "gltf-material",
+      "uuid": "513d755b-e8bc-4cb6-9a2e-15dfba56508e@e4014",
+      "displayName": "",
+      "id": "e4014",
+      "name": "wood.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "3bf9a": {
+      "importer": "gltf-scene",
+      "uuid": "513d755b-e8bc-4cb6-9a2e-15dfba56508e@3bf9a",
+      "displayName": "",
+      "id": "3bf9a",
+      "name": "path_short.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true,
+      "matchMeshNames": false
+    },
+    "redirect": "513d755b-e8bc-4cb6-9a2e-15dfba56508e@3bf9a",
+    "assetFinder": {
+      "meshes": [
+        "513d755b-e8bc-4cb6-9a2e-15dfba56508e@a63b2"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "513d755b-e8bc-4cb6-9a2e-15dfba56508e@cb799",
+        "513d755b-e8bc-4cb6-9a2e-15dfba56508e@e4014"
+      ],
+      "scenes": [
+        "513d755b-e8bc-4cb6-9a2e-15dfba56508e@3bf9a"
+      ]
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    }
+  }
+}

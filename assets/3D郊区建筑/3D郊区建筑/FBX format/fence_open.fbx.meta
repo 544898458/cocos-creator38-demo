@@ -1,0 +1,98 @@
+{
+  "ver": "2.3.8",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "6dc5b4ed-a80e-4941-a05a-c8bdf953d39f",
+  "files": [],
+  "subMetas": {
+    "d8879": {
+      "importer": "gltf-mesh",
+      "uuid": "6dc5b4ed-a80e-4941-a05a-c8bdf953d39f@d8879",
+      "displayName": "",
+      "id": "d8879",
+      "name": "fence_open.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 56
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e4014": {
+      "importer": "gltf-material",
+      "uuid": "6dc5b4ed-a80e-4941-a05a-c8bdf953d39f@e4014",
+      "displayName": "",
+      "id": "e4014",
+      "name": "wood.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "ceeb3": {
+      "importer": "gltf-scene",
+      "uuid": "6dc5b4ed-a80e-4941-a05a-c8bdf953d39f@ceeb3",
+      "displayName": "",
+      "id": "ceeb3",
+      "name": "fence_open.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true,
+      "matchMeshNames": false
+    },
+    "redirect": "6dc5b4ed-a80e-4941-a05a-c8bdf953d39f@ceeb3",
+    "assetFinder": {
+      "meshes": [
+        "6dc5b4ed-a80e-4941-a05a-c8bdf953d39f@d8879"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "6dc5b4ed-a80e-4941-a05a-c8bdf953d39f@e4014"
+      ],
+      "scenes": [
+        "6dc5b4ed-a80e-4941-a05a-c8bdf953d39f@ceeb3"
+      ]
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    }
+  }
+}
