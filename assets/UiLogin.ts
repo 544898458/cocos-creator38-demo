@@ -201,7 +201,10 @@ export class UiLogin extends Component {
                                 // console.log('resources.load newNode', newNode)
                                 old.view = newNode
                                 old.skeletalAnimation = newNode.getComponent(SkeletalAnimation)
-                                old.skeletalAnimation.play(old.initClipName)
+                                if( old.skeletalAnimation != undefined)
+                                {
+                                    old.skeletalAnimation.play(old.initClipName)
+                                }
                                 let nodeCanvas = utils.find("Canvas", roles.parent)
                                 let nodeRoleName = utils.find("RoleName", nodeCanvas)
                                 // console.log('RoleName',this.nodeRoleName)
