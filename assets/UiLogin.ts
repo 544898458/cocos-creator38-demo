@@ -27,6 +27,7 @@ enum MsgId {
     ChangeMoney,
     ChangeMoneyResponce,
     AddBuilding,
+	NotifyeMoney,
 }
 
 @ccclass('UiLogin')
@@ -37,10 +38,12 @@ export class UiLogin extends Component {
     targetFlag: Node//走路走向的目标点
     lableMessage: Label
     lableCount: Label
+    lableMoney: Label
     start() {
         this.targetFlag = utils.find("Roles/TargetFlag", this.node.parent)
         this.lableMessage = utils.find("Canvas/Message", this.node.parent).getComponent(Label)
         this.lableCount = utils.find("Canvas/Count", this.node.parent).getComponent(Label)
+        this.lableMoney = utils.find("Canvas/Money", this.node.parent).getComponent(Label)
         let targetFlag = this.targetFlag
         this.node.on(NodeEventType.MOUSE_DOWN, (event: EventMouse) => {
             console.log('MOUSE_DOWN', event)
@@ -170,6 +173,7 @@ export class UiLogin extends Component {
         let entityId = this.entityId
         let lableMessage = this.lableMessage
         let lableCount = this.lableCount
+        let lableMoney = this.lableMoney
         //接收到消息的回调方法
         this.websocket.onmessage = function (event: MessageEvent) {
             let data = event.data as ArrayBuffer
@@ -214,7 +218,7 @@ export class UiLogin extends Component {
                                 nodeCanvas.addChild(old.nodeName)
                                 old.labelName = old.nodeName.getComponent(Label)
                                 let headScal = old.nodeName.getComponent(HeadScale)
-                                headScal.target = utils.find("RootNode/NamePos",newNode)
+                                headScal.target = utils.find("NamePos",newNode)
                                 let camera3D = utils.find("Main Camera", roles.parent).getComponent(Camera)
                                 // console.log('Main Camera',camera3D)
                                 //  headScal.camera = camera3D
@@ -310,6 +314,12 @@ export class UiLogin extends Component {
                         lableCount.string = '共' + entities.size + '单位'
                     }
                     break;
+                case MsgId.NotifyeMoney:
+                    {
+                        let finalMoney = arr[1]
+                        lableMoney.string = '钱:' + finalMoney
+                    }
+                    break
                 default:
                     console.error('msgId=',msgId)
                     break
