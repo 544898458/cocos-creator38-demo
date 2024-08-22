@@ -283,7 +283,7 @@ export class UiLogin extends Component {
                         let old = entities.get(id)
                         if( old == undefined )
                         {
-                            console.log(id,"还没加载好,没有播放动作",clipName)
+                            // console.log(id,"还没加载好,没有播放动作",clipName)
                             return
                         }
                         if( old.skeletalAnimation == undefined )
