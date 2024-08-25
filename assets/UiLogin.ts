@@ -142,7 +142,7 @@ export class UiLogin extends Component {
         const editBox = editNode.getComponent(EditBox)
         console.log(editBox.string)
 
-        this.websocket = new WebSocket("ws://192.168.31.196:12345/")
+        this.websocket = new WebSocket("ws://192.168.31.196:12348/")
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
 
         this.websocket.binaryType = 'arraybuffer'
