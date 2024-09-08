@@ -39,6 +39,7 @@ export class UiLogin extends Component {
     lableMessage: Label
     lableCount: Label
     lableMoney: Label
+    recvMsgSn: number = 0
     start() {
         this.targetFlag = utils.find("Roles/TargetFlag", this.node.parent)
         this.lableMessage = utils.find("Canvas/Message", this.node.parent).getComponent(Label)
@@ -68,7 +69,7 @@ export class UiLogin extends Component {
             
                 const object = //item.hitPoint
                     [
-                        MsgId.Move,
+                        [MsgId.Move,0],
                         item.hitPoint.x,
                         // item.hitPoint.y,
                         item.hitPoint.z
@@ -122,12 +123,12 @@ export class UiLogin extends Component {
 
     }
     onClickAddRole(event: Event, customEventData: string):void {
-        const encoded: Uint8Array = msgpack.encode([MsgId.AddRole])
+        const encoded: Uint8Array = msgpack.encode([[MsgId.AddRole,0]])
         // console.log(encoded)
         this.websocket.send(encoded)
     }
     onClickAddBuilding(event: Event, customEventData: string):void {
-        const encoded: Uint8Array = msgpack.encode([MsgId.AddBuilding])
+        const encoded: Uint8Array = msgpack.encode([[MsgId.AddBuilding,0]])
         // console.log(encoded)
         this.websocket.send(encoded)
     }
@@ -158,7 +159,7 @@ export class UiLogin extends Component {
         this.websocket.onopen = (event: Event) => {
             console.log("WebSocket连接成功")
             const object = [
-                MsgId.Login,
+                [MsgId.Login,0],
                 editBox.string,
                 'Hello, world!pwd',
             ]
@@ -174,22 +175,29 @@ export class UiLogin extends Component {
         let lableMessage = this.lableMessage
         let lableCount = this.lableCount
         let lableMoney = this.lableMoney
+        let thisLocal = this
         //接收到消息的回调方法
         this.websocket.onmessage = function (event: MessageEvent) {
             let data = event.data as ArrayBuffer
             // console.log("收到数据：", data, data.byteLength)
             const arr = msgpack.decode(new Uint8Array(data))
             // console.log("msgpack.decode结果：", data, data.byteLength)
-            let msgId = arr[0] as MsgId
+            let idxArr = 0
+            let msgBase = arr[idxArr++]
+            let msgId = msgBase[0] as MsgId
+            let sn = msgBase[1] as number
             // console.log("msgId：",   msgId)
+            ++thisLocal.recvMsgSn 
+            console.assert( thisLocal.recvMsgSn == sn)
+            // console.log("sn", sn)
             switch (msgId)
             {
                 case MsgId.AddRoleRet:
                     {
                         // console.log('登录成功')
-                        let id:number = arr[1]
-                        let nickName:string = arr[2]
-                        let prefabName:string = arr[3]
+                        let id:number = arr[idxArr++]
+                        let nickName:string = arr[idxArr++]
+                        let prefabName:string = arr[idxArr++]
                         // console.log(id, nickName, prefabName, '进来了')
                         let old = entities.get(id)
                         if (old == undefined) {
@@ -236,10 +244,10 @@ export class UiLogin extends Component {
                     break
                 case MsgId.NotifyPos:
                     {
-                        let id = arr[1]
-                        let posX = arr[2]
-                        let posZ = arr[3]
-                        let eulerAnglesY = arr[4]
+                        let id = arr[idxArr++]
+                        let posX = arr[idxArr++]
+                        let posZ = arr[idxArr++]
+                        let eulerAnglesY = arr[idxArr++]
                         let hp = arr[5]
                         // console.log(arr)
 
@@ -276,9 +284,9 @@ export class UiLogin extends Component {
                     break
                 case MsgId.ChangeSkeleAnim:
                     {
-                        let id = arr[1]
-                        let loop:Boolean = arr[2]
-                        let clipName:string = arr[3]
+                        let id = arr[idxArr++]
+                        let loop:Boolean = arr[idxArr++]
+                        let clipName:string = arr[idxArr++]
                         // console.log(id, '动作改为', clipName)
                         let old = entities.get(id)
                         if( old == undefined )
@@ -298,14 +306,14 @@ export class UiLogin extends Component {
                     break
                 case MsgId.Say:
                     {
-                        let content = arr[1]
+                        let content = arr[idxArr++]
                         console.log('有人说:', content)
                         lableMessage.string = content
                     }
                     break
                 case MsgId.DelRoleRet:
                     {
-                        let id = arr[1]
+                        let id = arr[idxArr++]
                         console.log('删除:', id)
                         let old = entities.get(id)
                         old.view?.removeFromParent()
@@ -316,7 +324,7 @@ export class UiLogin extends Component {
                     break;
                 case MsgId.NotifyeMoney:
                     {
-                        let finalMoney = arr[1]
+                        let finalMoney = arr[idxArr++]
                         lableMoney.string = '钱:' + finalMoney
                     }
                     break
@@ -348,7 +356,7 @@ export class UiLogin extends Component {
         console.log(editBox.string)
         const object = //item.hitPoint
         [
-            MsgId.Say,
+            [MsgId.Say,0],
             editBox.string
         ]
 
