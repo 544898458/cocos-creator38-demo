@@ -14,6 +14,8 @@
     npm install msgpack-lite
     npm i --save-dev @types/msgpack-lite
 ```
+否则可能报下面的错误：
+![输入图片说明](README%E6%96%B0%E5%BB%BA%E4%BD%8D%E5%9B%BE%E5%9B%BE%E5%83%8F.png)
 3.  用Cocos Creator 3.8.0打开本项目
 4.  找到UiLogin.ts文件里的onClickLogin方法，修改要连接的服务器IP
 5.  服务器代码在 https://gitee.com/griffon2/iocp20coroutine
