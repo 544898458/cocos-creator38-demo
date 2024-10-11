@@ -1,6 +1,7 @@
 import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip } from 'cc'
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { HeadScale } from './head-scale'
+import { FollowTarget } from './FollowTarget'
 
 const { ccclass, property } = _decorator
 class ClientEntityComponent {
@@ -41,19 +42,23 @@ export class UiLogin extends Component {
     lableMoney: Label
     recvMsgSn: number = 0
     sendMsgSn: number = 0
+    mainCamera: Camera
+    mainCameraFollowTarget:FollowTarget
     start() {
         this.targetFlag = utils.find("Roles/TargetFlag", this.node.parent)
         this.lableMessage = utils.find("Canvas/Message", this.node.parent).getComponent(Label)
         this.lableCount = utils.find("Canvas/Count", this.node.parent).getComponent(Label)
         this.lableMoney = utils.find("Canvas/Money", this.node.parent).getComponent(Label)
+        const nodeMainCamera = utils.find("Main Camera", this.node.parent);
+        this.mainCamera = nodeMainCamera.getComponent(Camera);
+        this.mainCameraFollowTarget = nodeMainCamera.getComponent(FollowTarget);
         let targetFlag = this.targetFlag
         this.node.on(NodeEventType.MOUSE_DOWN, (event: EventMouse) => {
             console.log('MOUSE_DOWN', event)
             var uiPos = event.getLocation()
             var ray = new geometry.Ray()
             // const camera = cc.find("Camera",this.node).getComponent(Camera)
-            const camera = utils.find("Main Camera", this.node.parent).getComponent(Camera)
-            camera.screenPointToRay(uiPos.x, uiPos.y, ray)
+            this.mainCamera.screenPointToRay(uiPos.x, uiPos.y, ray)
             if (!PhysicsSystem.instance.raycastClosest(ray)) {
                 console.log('raycast does not hit the target node !')
                 return false
@@ -82,6 +87,7 @@ export class UiLogin extends Component {
             }
             else if (item.collider.node.name == "altman-blue")//|| item.collider.node.name == "altman-red") 
             {
+                this.mainCameraFollowTarget.target = item.collider.node
                 let id = this.entityId[item.collider.node.uuid]
                 if (id == undefined) {
                     console.log('还没加载')
@@ -89,8 +95,8 @@ export class UiLogin extends Component {
                 }
                 const object =
                     [
-                        MsgId.SelectRoles,
-                        [id]//虽然是整数，但是也强制转成FLOAT64发出去了/*  */
+                        [MsgId.SelectRoles, ++this.sendMsgSn, 0, 0],
+                        [id]//虽然是整数，但是也强制转成FLOAT64发出去了
                     ]
 
                 const encoded: Uint8Array = msgpack.encode(object)
