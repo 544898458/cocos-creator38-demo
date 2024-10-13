@@ -18,9 +18,9 @@ export class FollowTarget extends Component {
         if(this.target == undefined)
             return
         
-        this.target.getPosition(this.tmpPos);
+        this.target.getPosition(this.tmpPos)
         this.tmpPos.add(this.offset)
-        this.node.position = this.tmpPos
+        // this.node.position = this.tmpPos
     }
 }
 

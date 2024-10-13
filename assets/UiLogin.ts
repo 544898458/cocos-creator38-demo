@@ -30,6 +30,11 @@ enum MsgId {
     AddBuilding,
     NotifyeMoney,
 }
+enum 建筑类型
+{
+	基地,//造工人
+	兵厂,//造兵
+};
 
 @ccclass('UiLogin')
 export class UiLogin extends Component {
@@ -85,7 +90,7 @@ export class UiLogin extends Component {
                     this.websocket.send(encoded)
                 }
             }
-            else if (item.collider.node.name == "altman-blue")//|| item.collider.node.name == "altman-red") 
+            else// if (item.collider.node.name == "altman-blue")//|| item.collider.node.name == "altman-red") 
             {
                 this.mainCameraFollowTarget.target = item.collider.node
                 let id = this.entityId[item.collider.node.uuid]
@@ -131,8 +136,14 @@ export class UiLogin extends Component {
         // console.log(encoded)
         this.websocket.send(encoded)
     }
-    onClickAddBuilding(event: Event, customEventData: string): void {
-        const encoded: Uint8Array = msgpack.encode([[MsgId.AddBuilding, 0]])
+    onClickAdd基地(event: Event, customEventData: string): void {
+        const encoded: Uint8Array = msgpack.encode([[MsgId.AddBuilding, 0],建筑类型.基地])
+        // console.log(encoded)
+        this.websocket.send(encoded)
+    }
+    
+    onClickAdd兵厂(event: Event, customEventData: string): void {
+        const encoded: Uint8Array = msgpack.encode([[MsgId.AddBuilding, 0],建筑类型.兵厂])
         // console.log(encoded)
         this.websocket.send(encoded)
     }
@@ -200,6 +211,7 @@ export class UiLogin extends Component {
                         // console.log('登录成功')
                         let id: number = arr[idxArr++]
                         let nickName: string = arr[idxArr++]
+                        let entityName: string = arr[idxArr++]
                         let prefabName: string = arr[idxArr++]
                         // console.log(id, nickName, prefabName, '进来了')
                         let old = entities.get(id)
@@ -233,8 +245,9 @@ export class UiLogin extends Component {
                                 // console.log('Main Camera',camera3D)
                                 //  headScal.camera = camera3D
                                 // headScal.distance = 55
-                                old.labelName.string = nickName + '(' + id + ')'
-                                old.nickName = nickName
+                                old.nickName = nickName  + '(' + entityName + ')'
+                                old.labelName.string = old.nickName + '(' + id + ')hp=' + old.hp
+                                
                                 if (old.position != undefined)
                                     old.view.position = old.position
                             })
