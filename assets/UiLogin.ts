@@ -358,7 +358,7 @@ export class UiLogin extends Component {
                 case MsgId.NotifyeMoney:
                     {
                         let finalMoney = arr[idxArr++]
-                        lableMoney.string = '钱:' + finalMoney
+                        lableMoney.string = '晶体矿:' + finalMoney
                     }
                     break
                 default:
