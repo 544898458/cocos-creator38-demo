@@ -29,6 +29,12 @@ enum MsgId {
     ChangeMoneyResponce,
     AddBuilding,
     NotifyeMoney,
+    Gate转发,
+    GateAddSession,
+    GateAddSessionResponce,
+    GateDeleteSession,
+    GateDeleteSessionResponce,
+    采集,
 }
 enum 建筑类型
 {
@@ -90,6 +96,23 @@ export class UiLogin extends Component {
                     this.websocket.send(encoded)
                 }
             }
+            else if (item.collider.node.name == "tree_large")//点击晶体矿
+            {
+                this.mainCameraFollowTarget.target = item.collider.node
+                let id = this.entityId[item.collider.node.uuid]
+                
+                const object =
+                    [
+                        [MsgId.SelectRoles, ++this.sendMsgSn, 0],
+                        [id]
+                    ]
+
+                const encoded: Uint8Array = msgpack.encode(object)
+                if (this.websocket != undefined) {
+                    console.log('send', encoded)
+                    this.websocket.send(encoded)
+                }
+            }
             else// if (item.collider.node.name == "altman-blue")//|| item.collider.node.name == "altman-red") 
             {
                 this.mainCameraFollowTarget.target = item.collider.node
@@ -100,7 +123,7 @@ export class UiLogin extends Component {
                 }
                 const object =
                     [
-                        [MsgId.SelectRoles, ++this.sendMsgSn, 0, 0],
+                        [MsgId.采集, ++this.sendMsgSn, 0],
                         [id]//虽然是整数，但是也强制转成FLOAT64发出去了
                     ]
 
