@@ -103,8 +103,8 @@ export class UiLogin extends Component {
                 
                 const object =
                     [
-                        [MsgId.SelectRoles, ++this.sendMsgSn, 0],
-                        [id]
+                        [MsgId.采集, ++this.sendMsgSn, 0],
+                        id
                     ]
 
                 const encoded: Uint8Array = msgpack.encode(object)
@@ -123,7 +123,7 @@ export class UiLogin extends Component {
                 }
                 const object =
                     [
-                        [MsgId.采集, ++this.sendMsgSn, 0],
+                        [MsgId.SelectRoles, ++this.sendMsgSn, 0],
                         [id]//虽然是整数，但是也强制转成FLOAT64发出去了
                     ]
 
@@ -145,7 +145,6 @@ export class UiLogin extends Component {
                     this.entities.get(id).view.addChild(newNode)
                 })
             }
-
 
             return false
         }, this)
