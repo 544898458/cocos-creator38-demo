@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.Prefab",
-    "_name": "tree_large",
+    "_name": "house_type03",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_native": "",
@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "tree_large",
+    "_name": "house_type03",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": null,
@@ -29,19 +29,16 @@
     "_components": [
       {
         "__id__": 11
-      },
-      {
-        "__id__": 13
       }
     ],
     "_prefab": {
-      "__id__": 15
+      "__id__": 13
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0,
+      "x": -4.800000000000001,
       "y": 0,
-      "z": 0
+      "z": -4.799999999999999
     },
     "_lrot": {
       "__type__": "cc.Quat",
@@ -68,7 +65,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "tree_large",
+    "_name": "house_type03",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
@@ -99,9 +96,9 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 15,
-      "y": 3,
-      "z": 15
+      "x": 3,
+      "y": 2,
+      "z": 3
     },
     "_mobility": 0,
     "_layer": 1073741824,
@@ -127,11 +124,23 @@
     },
     "_materials": [
       {
-        "__uuid__": "a2d7a791-026e-481c-9fbc-e49caabe4b4b@accad",
+        "__uuid__": "84bc8d92-60c5-4164-a0d8-713a88318ebf@cb799",
         "__expectedType__": "cc.Material"
       },
       {
-        "__uuid__": "a2d7a791-026e-481c-9fbc-e49caabe4b4b@e4014",
+        "__uuid__": "84bc8d92-60c5-4164-a0d8-713a88318ebf@d4d9d",
+        "__expectedType__": "cc.Material"
+      },
+      {
+        "__uuid__": "84bc8d92-60c5-4164-a0d8-713a88318ebf@7bf25",
+        "__expectedType__": "cc.Material"
+      },
+      {
+        "__uuid__": "84bc8d92-60c5-4164-a0d8-713a88318ebf@0ee4f",
+        "__expectedType__": "cc.Material"
+      },
+      {
+        "__uuid__": "84bc8d92-60c5-4164-a0d8-713a88318ebf@accad",
         "__expectedType__": "cc.Material"
       }
     ],
@@ -140,7 +149,7 @@
       "__id__": 5
     },
     "_mesh": {
-      "__uuid__": "a2d7a791-026e-481c-9fbc-e49caabe4b4b@ce37a",
+      "__uuid__": "84bc8d92-60c5-4164-a0d8-713a88318ebf@4452d",
       "__expectedType__": "cc.Mesh"
     },
     "_shadowCastingMode": 0,
@@ -156,7 +165,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "648TVZLhpYxJbjw2OFT5ss"
+    "fileId": "7fgaSakS5bmrQc8J+eAA+4"
   },
   {
     "__type__": "cc.ModelBakeSettings",
@@ -186,7 +195,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "29INXSN1dYMbX7rP6Tpe7x",
+    "fileId": "famEeClhFcWrPou82Nz0FT",
     "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
@@ -264,7 +273,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "82ygl0diRGcY6DM33585Z9"
+    "fileId": "fdvSYCH8tNVoRtJmhDF1Bl"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -274,7 +283,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "52CVTPSY5BdILCOWs0Iv6a",
+    "fileId": "59swrp59VNuZ+yPEriZ0M/",
     "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
@@ -305,39 +314,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "28gtjNsNJIdYZJoSqODFoP"
-  },
-  {
-    "__type__": "cc.BoxCollider",
-    "_name": "",
-    "_objFlags": 0,
-    "__editorExtras__": {},
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "__prefab": {
-      "__id__": 14
-    },
-    "_material": null,
-    "_isTrigger": false,
-    "_center": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 2,
-      "z": 0
-    },
-    "_size": {
-      "__type__": "cc.Vec3",
-      "x": 2,
-      "y": 4,
-      "z": 2
-    },
-    "_id": ""
-  },
-  {
-    "__type__": "cc.CompPrefabInfo",
-    "fileId": "1cYoE+gYNHabp7SedN/6j+"
+    "fileId": "a7xaX/Li5BtpTqVsqOxuOK"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -347,7 +324,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "68aiGYzD5VkI5mn3K+Kn7C",
+    "fileId": "6e27/H+ntZsr2HacVQ3kXP",
     "instance": null,
     "targetOverrides": null
   }
