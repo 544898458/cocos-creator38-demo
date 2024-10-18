@@ -268,7 +268,8 @@ export class UiLogin extends Component {
                                 //  headScal.camera = camera3D
                                 // headScal.distance = 55
                                 old.nickName = nickName  + '(' + entityName + ')'
-                                old.labelName.string = old.nickName + '(' + id + ')hp=' + old.hp
+                                // old.labelName.string = old.nickName + '(' + id + ')hp=' + old.hp
+                                old.labelName.string = old.nickName + ',hp=' + old.hp
                                 
                                 if (old.position != undefined)
                                     old.view.position = old.position
@@ -312,7 +313,8 @@ export class UiLogin extends Component {
                             if (old.view != undefined) {
                                 old.view.position = old.position
                                 old.view.eulerAngles = new Vec3(0, eulerAnglesY, 0)
-                                old.labelName.string = old.nickName + '(' + id + ')hp=' + hp
+                                // old.labelName.string = old.nickName + '(' + id + ')hp=' + hp
+                                old.labelName.string = old.nickName + 'hp=' + hp
                             }
                         }
                     }
