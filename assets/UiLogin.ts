@@ -37,11 +37,13 @@ enum MsgId {
     采集,
     资源,
 }
-enum 建筑类型
+enum 建筑单位类型
 {
-	基地,//造工人
-	兵厂,//造兵
+	基地,//指挥中心(Command Center),用来造工程车()
+	兵厂,//兵营Barracks，用来造兵
+	民房,//供给站(Supply Depot)
 };
+
 
 @ccclass('UiLogin')
 export class UiLogin extends Component {
@@ -53,6 +55,7 @@ export class UiLogin extends Component {
     lableCount: Label
     lableMoney: Label
     lable燃气矿: Label
+    lable我的单位: Label
     recvMsgSn: number = 0
     sendMsgSn: number = 0
     mainCamera: Camera
@@ -63,6 +66,7 @@ export class UiLogin extends Component {
         this.lableCount = utils.find("Canvas/Count", this.node.parent).getComponent(Label)
         this.lableMoney = utils.find("Canvas/Money", this.node.parent).getComponent(Label)
         this.lable燃气矿 = utils.find("Canvas/燃气矿", this.node.parent).getComponent(Label)
+        this.lable我的单位 = utils.find("Canvas/我的单位", this.node.parent).getComponent(Label)
         const nodeMainCamera = utils.find("Main Camera", this.node.parent);
         this.mainCamera = nodeMainCamera.getComponent(Camera);
         this.mainCameraFollowTarget = nodeMainCamera.getComponent(FollowTarget);
@@ -162,13 +166,19 @@ export class UiLogin extends Component {
         this.websocket.send(encoded)
     }
     onClickAdd基地(event: Event, customEventData: string): void {
-        const encoded: Uint8Array = msgpack.encode([[MsgId.AddBuilding, 0],建筑类型.基地])
+        const encoded: Uint8Array = msgpack.encode([[MsgId.AddBuilding, 0],建筑单位类型.基地])
         // console.log(encoded)
         this.websocket.send(encoded)
     }
     
     onClickAdd兵厂(event: Event, customEventData: string): void {
-        const encoded: Uint8Array = msgpack.encode([[MsgId.AddBuilding, 0],建筑类型.兵厂])
+        const encoded: Uint8Array = msgpack.encode([[MsgId.AddBuilding, 0],建筑单位类型.兵厂])
+        // console.log(encoded)
+        this.websocket.send(encoded)
+    }
+
+    onClickAdd民房(event: Event, customEventData: string): void {
+        const encoded: Uint8Array = msgpack.encode([[MsgId.AddBuilding, 0],建筑单位类型.民房])
         // console.log(encoded)
         this.websocket.send(encoded)
     }
@@ -369,7 +379,10 @@ export class UiLogin extends Component {
                     case MsgId.资源:
                     {
                         let 燃气矿 = arr[idxArr++]
+                        let 活动单位 = arr[idxArr++]
+                        let 活动单位上限 = arr[idxArr++]
                         thisLocal.lable燃气矿.string = '燃气矿:' + 燃气矿
+                        thisLocal.lable我的单位.string = '我的活动单位:' + 活动单位 + '/' + 活动单位上限
                     }
                     break
                 default:
