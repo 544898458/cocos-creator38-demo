@@ -35,6 +35,7 @@ enum MsgId {
     GateDeleteSession,
     GateDeleteSessionResponce,
     采集,
+    资源,
 }
 enum 建筑类型
 {
@@ -51,6 +52,7 @@ export class UiLogin extends Component {
     lableMessage: Label
     lableCount: Label
     lableMoney: Label
+    lable燃气矿: Label
     recvMsgSn: number = 0
     sendMsgSn: number = 0
     mainCamera: Camera
@@ -60,6 +62,7 @@ export class UiLogin extends Component {
         this.lableMessage = utils.find("Canvas/Message", this.node.parent).getComponent(Label)
         this.lableCount = utils.find("Canvas/Count", this.node.parent).getComponent(Label)
         this.lableMoney = utils.find("Canvas/Money", this.node.parent).getComponent(Label)
+        this.lable燃气矿 = utils.find("Canvas/燃气矿", this.node.parent).getComponent(Label)
         const nodeMainCamera = utils.find("Main Camera", this.node.parent);
         this.mainCamera = nodeMainCamera.getComponent(Camera);
         this.mainCameraFollowTarget = nodeMainCamera.getComponent(FollowTarget);
@@ -96,7 +99,7 @@ export class UiLogin extends Component {
                     this.websocket.send(encoded)
                 }
             }
-            else if (item.collider.node.name == "tree_large")//点击晶体矿
+            else if (item.collider.node.name == "tree_large" || item.collider.node.name == "house_type03" )//点击晶体矿或者燃气狂
             {
                 this.mainCameraFollowTarget.target = item.collider.node
                 let id = this.entityId[item.collider.node.uuid]
@@ -356,11 +359,17 @@ export class UiLogin extends Component {
                         entities.delete(id)
                         lableCount.string = '共' + entities.size + '单位'
                     }
-                    break;
+                    break
                 case MsgId.NotifyeMoney:
                     {
                         let finalMoney = arr[idxArr++]
                         lableMoney.string = '晶体矿:' + finalMoney
+                    }
+                    break
+                    case MsgId.资源:
+                    {
+                        let 燃气矿 = arr[idxArr++]
+                        thisLocal.lable燃气矿.string = '燃气矿:' + 燃气矿
                     }
                     break
                 default:
