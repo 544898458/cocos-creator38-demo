@@ -37,6 +37,7 @@ enum MsgId {
     采集,
     资源,
 }
+
 enum 建筑单位类型
 {
 	基地,//指挥中心(Command Center),用来造工程车()
@@ -44,6 +45,12 @@ enum 建筑单位类型
 	民房,//供给站(Supply Depot)
 };
 
+enum 活动单位类型
+{
+	工程车,//空间工程车Space Construction Vehicle。可以采矿，采气，也可以简单攻击
+	兵,//陆战队员Marine。只能攻击，不能采矿
+	近战兵,//火蝠，喷火兵Firebat
+};
 
 @ccclass('UiLogin')
 export class UiLogin extends Component {
@@ -160,13 +167,23 @@ export class UiLogin extends Component {
     update(deltaTime: number) {
 
     }
-    onClickAddRole(event: Event, customEventData: string): void {
-        const encoded: Uint8Array = msgpack.encode([[MsgId.AddRole, 0]])
+    onClickAdd兵(event: Event, customEventData: string): void {
+        const encoded: Uint8Array = msgpack.encode([[MsgId.AddRole, 0, 0],活动单位类型.兵])
+        // console.log(encoded)
+        this.websocket.send(encoded)
+    }
+    onClickAdd近战兵(event: Event, customEventData: string): void {
+        const encoded: Uint8Array = msgpack.encode([[MsgId.AddRole, 0, 0],活动单位类型.近战兵])
+        // console.log(encoded)
+        this.websocket.send(encoded)
+    }
+    onClickAdd工程车(event: Event, customEventData: string): void {
+        const encoded: Uint8Array = msgpack.encode([[MsgId.AddRole, 0, 0],活动单位类型.工程车])
         // console.log(encoded)
         this.websocket.send(encoded)
     }
     onClickAdd基地(event: Event, customEventData: string): void {
-        const encoded: Uint8Array = msgpack.encode([[MsgId.AddBuilding, 0],建筑单位类型.基地])
+        const encoded: Uint8Array = msgpack.encode([[MsgId.AddBuilding, 0, 0],建筑单位类型.基地])
         // console.log(encoded)
         this.websocket.send(encoded)
     }
