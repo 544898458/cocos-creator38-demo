@@ -36,6 +36,7 @@ enum MsgId {
     GateDeleteSessionResponce,
     采集,
     资源,
+    进地堡
 }
 
 enum 建筑单位类型
@@ -111,7 +112,7 @@ export class UiLogin extends Component {
                     this.websocket.send(encoded)
                 }
             }
-            else if (item.collider.node.name == "tree_large" || item.collider.node.name == "house_type03" )//点击晶体矿或者燃气狂
+            else if (item.collider.node.name == "tree_large" || item.collider.node.name == "house_type03" )//点击晶体矿或者燃气矿
             {
                 this.mainCameraFollowTarget.target = item.collider.node
                 let id = this.entityId[item.collider.node.uuid]
@@ -119,6 +120,23 @@ export class UiLogin extends Component {
                 const object =
                     [
                         [MsgId.采集, ++this.sendMsgSn, 0],
+                        id
+                    ]
+
+                const encoded: Uint8Array = msgpack.encode(object)
+                if (this.websocket != undefined) {
+                    console.log('send', encoded)
+                    this.websocket.send(encoded)
+                }
+            }
+            else if (item.collider.node.name == "house_type17" )//点击地堡
+            {
+                this.mainCameraFollowTarget.target = item.collider.node
+                let id = this.entityId[item.collider.node.uuid]
+                
+                const object =
+                    [
+                        [MsgId.进地堡, ++this.sendMsgSn, 0],
                         id
                     ]
 
