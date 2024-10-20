@@ -43,6 +43,7 @@ enum 建筑单位类型
 	基地,//指挥中心(Command Center),用来造工程车()
 	兵厂,//兵营Barracks，用来造兵
 	民房,//供给站(Supply Depot)
+    地堡,//掩体; 地堡(Bunker),可以进兵
 };
 
 enum 活动单位类型
@@ -187,7 +188,11 @@ export class UiLogin extends Component {
         // console.log(encoded)
         this.websocket.send(encoded)
     }
-    
+    onClickAdd地堡(event: Event, customEventData: string): void {
+        const encoded: Uint8Array = msgpack.encode([[MsgId.AddBuilding, 0, 0],建筑单位类型.地堡])
+        // console.log(encoded)
+        this.websocket.send(encoded)
+    }
     onClickAdd兵厂(event: Event, customEventData: string): void {
         const encoded: Uint8Array = msgpack.encode([[MsgId.AddBuilding, 0],建筑单位类型.兵厂])
         // console.log(encoded)
