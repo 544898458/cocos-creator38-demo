@@ -36,7 +36,8 @@ enum MsgId {
     GateDeleteSessionResponce,
     采集,
     资源,
-    进地堡
+    进地堡,
+    出地堡,
 }
 
 enum 建筑单位类型
@@ -134,10 +135,16 @@ export class UiLogin extends Component {
                 this.mainCameraFollowTarget.target = item.collider.node
                 let id = this.entityId[item.collider.node.uuid]
                 
-                const object =
+                const object = event.getButton() == EventMouse.BUTTON_LEFT ?
                     [
                         [MsgId.进地堡, ++this.sendMsgSn, 0],
                         id
+                    ]
+                    :
+                    [
+                        [MsgId.出地堡, ++this.sendMsgSn, 0],
+                        id,
+                        [0.0]
                     ]
 
                 const encoded: Uint8Array = msgpack.encode(object)
