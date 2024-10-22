@@ -54,6 +54,11 @@ enum 活动单位类型
 	兵,//陆战队员Marine。只能攻击，不能采矿
 	近战兵,//火蝠，喷火兵Firebat
 };
+// enum 点击地面操作类型
+// {
+//     移动单位,
+//     放置建筑
+// }
 
 @ccclass('UiLogin')
 export class UiLogin extends Component {
@@ -69,6 +74,11 @@ export class UiLogin extends Component {
     recvMsgSn: number = 0
     sendMsgSn: number = 0
     mainCamera: Camera
+    fun创建消息:(Vec3)=>object = this.createMsgMove//点击地面操作 = 点击地面操作类型.移动单位
+    createMsgMove(hitPoint:Vec3)
+    {
+        return [[MsgId.Move, 0],hitPoint.x,hitPoint.z]
+    }
     mainCameraFollowTarget:FollowTarget
     start() {
         this.targetFlag = utils.find("Roles/TargetFlag", this.node.parent)
@@ -99,13 +109,14 @@ export class UiLogin extends Component {
             if (item.collider.node.name == "Plane") {
                 targetFlag.position = item.hitPoint
 
-                const object = //item.hitPoint
-                    [
-                        [MsgId.Move, 0],
-                        item.hitPoint.x,
-                        // item.hitPoint.y,
-                        item.hitPoint.z
-                    ]
+                const object = this.fun创建消息(item.hitPoint)
+                // const object = //item.hitPoint
+                //     [
+                //         [MsgId.Move, 0],
+                //         item.hitPoint.x,
+                //         // item.hitPoint.y,
+                //         item.hitPoint.z
+                //     ]
 
                 const encoded: Uint8Array = msgpack.encode(object)
                 if (this.websocket != undefined) {
@@ -113,77 +124,82 @@ export class UiLogin extends Component {
                     this.websocket.send(encoded)
                 }
             }
-            else if (item.collider.node.name == "tree_large" || item.collider.node.name == "house_type03" )//点击晶体矿或者燃气矿
+            else
             {
-                this.mainCameraFollowTarget.target = item.collider.node
-                let id = this.entityId[item.collider.node.uuid]
-                
-                const object =
-                    [
-                        [MsgId.采集, ++this.sendMsgSn, 0],
-                        id
-                    ]
+                this.fun创建消息 = this.createMsgMove
+            
+                if (item.collider.node.name == "tree_large" || item.collider.node.name == "house_type03" )//点击晶体矿或者燃气矿
+                {
+                    this.mainCameraFollowTarget.target = item.collider.node
+                    let id = this.entityId[item.collider.node.uuid]
+                    
+                    const object =
+                        [
+                            [MsgId.采集, ++this.sendMsgSn, 0],
+                            id
+                        ]
 
-                const encoded: Uint8Array = msgpack.encode(object)
-                if (this.websocket != undefined) {
-                    console.log('send', encoded)
-                    this.websocket.send(encoded)
+                    const encoded: Uint8Array = msgpack.encode(object)
+                    if (this.websocket != undefined) {
+                        console.log('send', encoded)
+                        this.websocket.send(encoded)
+                    }
                 }
-            }
-            else if (item.collider.node.name == "house_type17" )//点击地堡
-            {
-                this.mainCameraFollowTarget.target = item.collider.node
-                let id = this.entityId[item.collider.node.uuid]
-                
-                const object = event.getButton() == EventMouse.BUTTON_LEFT ?
-                    [
-                        [MsgId.进地堡, ++this.sendMsgSn, 0],
-                        id
-                    ]
-                    :
-                    [
-                        [MsgId.出地堡, ++this.sendMsgSn, 0],
-                        id,
-                        [0.0]
-                    ]
+                else if (item.collider.node.name == "house_type17" )//点击地堡
+                {
+                    this.mainCameraFollowTarget.target = item.collider.node
+                    let id = this.entityId[item.collider.node.uuid]
+                    
+                    const object = event.getButton() == EventMouse.BUTTON_LEFT ?
+                        [
+                            [MsgId.进地堡, ++this.sendMsgSn, 0],
+                            id
+                        ]
+                        :
+                        [
+                            [MsgId.出地堡, ++this.sendMsgSn, 0],
+                            id,
+                            [0.0]
+                        ]
 
-                const encoded: Uint8Array = msgpack.encode(object)
-                if (this.websocket != undefined) {
-                    console.log('send', encoded)
-                    this.websocket.send(encoded)
+                    const encoded: Uint8Array = msgpack.encode(object)
+                    if (this.websocket != undefined) {
+                        console.log('send', encoded)
+                        this.websocket.send(encoded)
+                    }
                 }
-            }
-            else// if (item.collider.node.name == "altman-blue")//|| item.collider.node.name == "altman-red") 
-            {
-                this.mainCameraFollowTarget.target = item.collider.node
-                let id = this.entityId[item.collider.node.uuid]
-                if (id == undefined) {
-                    console.log('还没加载')
-                    return
-                }
-                const object =
-                    [
-                        [MsgId.SelectRoles, ++this.sendMsgSn, 0],
-                        [id]//虽然是整数，但是也强制转成FLOAT64发出去了
-                    ]
+                else// if (item.collider.node.name == "altman-blue")//|| item.collider.node.name == "altman-red") 
+                {
+                    this.mainCameraFollowTarget.target = item.collider.node
+                    let id = this.entityId[item.collider.node.uuid]
+                    if (id == undefined) {
+                        console.log('还没加载')
+                        return
+                    }
+                    const object =
+                        [
+                            [MsgId.SelectRoles, ++this.sendMsgSn, 0],
+                            [id]//虽然是整数，但是也强制转成FLOAT64发出去了
+                        ]
 
-                const encoded: Uint8Array = msgpack.encode(object)
-                if (this.websocket != undefined) {
-                    console.log('send', encoded)
-                    this.websocket.send(encoded)
+                    const encoded: Uint8Array = msgpack.encode(object)
+                    if (this.websocket != undefined) {
+                        console.log('send', encoded)
+                        this.websocket.send(encoded)
+                    }
+                    const prefabName = 'colorBar'
+                    this.entities.forEach((clientEntityComponent, k, map) => {
+                        let nodEffect = clientEntityComponent.view.getChildByName(prefabName)
+                        console.log('准备删除', nodEffect)
+                        clientEntityComponent.view.removeChild(nodEffect)
+                    })
+                    resources.load(prefabName, Prefab, (err, prefab) => {
+                        console.log('resources.load callback:', err, prefab)
+                        const newNode = instantiate(prefab)
+                        newNode.name = prefabName
+                        this.entities.get(id).view.addChild(newNode)
+                    })
                 }
-                const prefabName = 'colorBar'
-                this.entities.forEach((clientEntityComponent, k, map) => {
-                    let nodEffect = clientEntityComponent.view.getChildByName(prefabName)
-                    console.log('准备删除', nodEffect)
-                    clientEntityComponent.view.removeChild(nodEffect)
-                })
-                resources.load(prefabName, Prefab, (err, prefab) => {
-                    console.log('resources.load callback:', err, prefab)
-                    const newNode = instantiate(prefab)
-                    newNode.name = prefabName
-                    this.entities.get(id).view.addChild(newNode)
-                })
             }
 
             return false
@@ -208,26 +224,27 @@ export class UiLogin extends Component {
         // console.log(encoded)
         this.websocket.send(encoded)
     }
+    createMsg造建筑(hitPoint:Vec3,类型:建筑单位类型)
+    {
+        return[[MsgId.AddBuilding, ++this.sendMsgSn, 0],类型,[hitPoint.x, hitPoint.z]]
+    }
+    on点击按钮_造建筑(类型:建筑单位类型)
+    {
+        this.fun创建消息 = (hitPoint:Vec3)=>this.createMsg造建筑(hitPoint,类型)
+        this.lableMessage.string = '请点击地面放置建筑'
+    }
     onClickAdd基地(event: Event, customEventData: string): void {
-        const encoded: Uint8Array = msgpack.encode([[MsgId.AddBuilding, 0, 0],建筑单位类型.基地])
-        // console.log(encoded)
-        this.websocket.send(encoded)
+        this.on点击按钮_造建筑(建筑单位类型.基地)
     }
     onClickAdd地堡(event: Event, customEventData: string): void {
-        const encoded: Uint8Array = msgpack.encode([[MsgId.AddBuilding, 0, 0],建筑单位类型.地堡])
-        // console.log(encoded)
-        this.websocket.send(encoded)
+        this.on点击按钮_造建筑(建筑单位类型.地堡)
     }
     onClickAdd兵厂(event: Event, customEventData: string): void {
-        const encoded: Uint8Array = msgpack.encode([[MsgId.AddBuilding, 0],建筑单位类型.兵厂])
-        // console.log(encoded)
-        this.websocket.send(encoded)
+        this.on点击按钮_造建筑(建筑单位类型.兵厂)
     }
 
     onClickAdd民房(event: Event, customEventData: string): void {
-        const encoded: Uint8Array = msgpack.encode([[MsgId.AddBuilding, 0],建筑单位类型.民房])
-        // console.log(encoded)
-        this.websocket.send(encoded)
+        this.on点击按钮_造建筑(建筑单位类型.民房)
     }
     onClickLogin(event: Event, customEventData: string) {
         // 这里 event 是一个 Touch Event 对象，你可以通过 event.target 取到事件的发送节点
