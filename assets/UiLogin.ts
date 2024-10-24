@@ -312,7 +312,7 @@ export class UiLogin extends Component {
                         let nickName: string = arr[idxArr++]
                         let entityName: string = arr[idxArr++]
                         let prefabName: string = arr[idxArr++]
-                        // console.log(id, nickName, prefabName, '进来了')
+                        console.log(id, nickName, prefabName, '进来了')
                         let old = entities.get(id)
                         if (old == undefined) {
                             old = new ClientEntityComponent()
