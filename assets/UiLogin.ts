@@ -39,6 +39,7 @@ enum MsgId {
     进地堡,
     出地堡,
     进Space,
+    进单人剧情副本,
 }
 
 enum 建筑单位类型
@@ -254,6 +255,11 @@ export class UiLogin extends Component {
     onClickToggle进Space1(event: Event, customEventData: string) {
         this.nodeSelectSpace.active = false
         const encoded: Uint8Array = msgpack.encode([[MsgId.进Space, 0, 0],1])
+        this.websocket.send(encoded)
+    }
+    onClickToggle进单人剧情副本(event: Event, customEventData: string) {
+        this.nodeSelectSpace.active = false
+        const encoded: Uint8Array = msgpack.encode([[MsgId.进单人剧情副本, 0, 0],1])
         this.websocket.send(encoded)
     }
     onClickLogin(event: Event, customEventData: string) {
