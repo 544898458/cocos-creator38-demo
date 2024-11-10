@@ -38,6 +38,7 @@ enum MsgId {
     资源,
     进地堡,
     出地堡,
+    进Space,
 }
 
 enum 建筑单位类型
@@ -66,6 +67,8 @@ export class UiLogin extends Component {
     entityId = new Map<string, number>//uuid=>服务器ID
     websocket: WebSocket
     targetFlag: Node//走路走向的目标点
+    nodeLoginPanel: Node
+    nodeSelectSpace: Node
     lableMessage: Label
     lableCount: Label
     lableMoney: Label
@@ -88,6 +91,8 @@ export class UiLogin extends Component {
         this.lable燃气矿 = utils.find("Canvas/燃气矿", this.node.parent).getComponent(Label)
         this.lable我的单位 = utils.find("Canvas/我的单位", this.node.parent).getComponent(Label)
         const nodeMainCamera = utils.find("Main Camera", this.node.parent);
+        this.nodeLoginPanel = utils.find("Canvas/LoginPanel", this.node.parent);
+        this.nodeSelectSpace = utils.find("Canvas/ToggleGroupSpace", this.node.parent);
         this.mainCamera = nodeMainCamera.getComponent(Camera);
         this.mainCameraFollowTarget = nodeMainCamera.getComponent(FollowTarget);
         let targetFlag = this.targetFlag
@@ -246,8 +251,13 @@ export class UiLogin extends Component {
     onClickAdd民房(event: Event, customEventData: string): void {
         this.on点击按钮_造建筑(建筑单位类型.民房)
     }
+    onClickToggle进Space1(event: Event, customEventData: string) {
+        const encoded: Uint8Array = msgpack.encode([[MsgId.进Space, 0, 0],1])
+        this.websocket.send(encoded)
+    }
     onClickLogin(event: Event, customEventData: string) {
         // 这里 event 是一个 Touch Event 对象，你可以通过 event.target 取到事件的发送节点
+        this.nodeLoginPanel.active = false//隐藏
         const node = event.target as Node
         const button = node.getComponent(Button)
         const editNode = utils.find("Name", this.node) as Node
