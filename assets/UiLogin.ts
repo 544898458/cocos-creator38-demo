@@ -252,6 +252,7 @@ export class UiLogin extends Component {
         this.on点击按钮_造建筑(建筑单位类型.民房)
     }
     onClickToggle进Space1(event: Event, customEventData: string) {
+        this.nodeSelectSpace.active = false
         const encoded: Uint8Array = msgpack.encode([[MsgId.进Space, 0, 0],1])
         this.websocket.send(encoded)
     }
@@ -260,7 +261,7 @@ export class UiLogin extends Component {
         this.nodeLoginPanel.active = false//隐藏
         const node = event.target as Node
         const button = node.getComponent(Button)
-        const editNode = utils.find("Name", this.node) as Node
+        const editNode = utils.find("Name", this.nodeLoginPanel) as Node
         console.log(button)
         console.log(editNode)
 
