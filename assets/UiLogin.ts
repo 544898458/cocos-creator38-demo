@@ -70,6 +70,7 @@ export class UiLogin extends Component {
     targetFlag: Node//走路走向的目标点
     nodeLoginPanel: Node
     nodeSelectSpace: Node
+    node战斗面板: Node
     lableMessage: Label
     lableCount: Label
     lableMoney: Label
@@ -94,6 +95,7 @@ export class UiLogin extends Component {
         const nodeMainCamera = utils.find("Main Camera", this.node.parent);
         this.nodeLoginPanel = utils.find("Canvas/LoginPanel", this.node.parent);
         this.nodeSelectSpace = utils.find("Canvas/ToggleGroupSpace", this.node.parent);
+        this.node战斗面板 = utils.find("Canvas/FightPanel", this.node.parent);
         this.mainCamera = nodeMainCamera.getComponent(Camera);
         this.mainCameraFollowTarget = nodeMainCamera.getComponent(FollowTarget);
         let targetFlag = this.targetFlag
@@ -298,6 +300,8 @@ export class UiLogin extends Component {
             const encoded: Uint8Array = msgpack.encode(object)
             console.log(encoded)
             this.websocket.send(encoded)
+
+            this.nodeSelectSpace.active = true
         }
 
         let roles = this.node.parent.getChildByName("Roles")
@@ -457,13 +461,18 @@ export class UiLogin extends Component {
                         lableMoney.string = '晶体矿:' + finalMoney
                     }
                     break
-                    case MsgId.资源:
+                case MsgId.资源:
                     {
                         let 燃气矿 = arr[idxArr++]
                         let 活动单位 = arr[idxArr++]
                         let 活动单位上限 = arr[idxArr++]
                         thisLocal.lable燃气矿.string = '燃气矿:' + 燃气矿
                         thisLocal.lable我的单位.string = '我的活动单位:' + 活动单位 + '/' + 活动单位上限
+                    }
+                    break
+                case MsgId.进Space:
+                    {
+                        thisLocal.node战斗面板.active = true
                     }
                     break
                 default:
