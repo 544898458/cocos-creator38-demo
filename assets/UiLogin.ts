@@ -40,6 +40,7 @@ enum MsgId {
     出地堡,
     进Space,
     进单人剧情副本,
+    显示界面,
 }
 
 enum 建筑单位类型
@@ -492,6 +493,11 @@ export class UiLogin extends Component {
                 case MsgId.进Space:
                     {
                         thisLocal.node战斗面板.active = true
+                    }
+                    break
+                case MsgId.显示界面:
+                    {
+                        thisLocal.nodeSelectSpace.active = true
                     }
                     break
                 default:
