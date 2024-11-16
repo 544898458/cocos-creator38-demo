@@ -13,6 +13,11 @@ class ClientEntityComponent {
     nickName: string
     position: Vec3//刚进地图Load没结束无法设置node坐标，暂存
     hp: number = 0
+    removeFromParent()
+    {
+        this.view?.removeFromParent()
+        this.nodeName?.removeFromParent()
+    }
 }
 enum MsgId {
     Invalid_0,
@@ -41,6 +46,7 @@ enum MsgId {
     进Space,
     进单人剧情副本,
     显示界面,
+    离开Space,
 }
 
 enum 建筑单位类型
@@ -468,9 +474,7 @@ export class UiLogin extends Component {
                     {
                         let id = arr[idxArr++]
                         console.log('删除:', id)
-                        let old = entities.get(id)
-                        old.view?.removeFromParent()
-                        old.nodeName?.removeFromParent()
+                        entities.get(id).removeFromParent()
                         entities.delete(id)
                         lableCount.string = '共' + entities.size + '单位'
                     }
@@ -498,6 +502,15 @@ export class UiLogin extends Component {
                 case MsgId.显示界面:
                     {
                         thisLocal.nodeSelectSpace.active = true
+                    }
+                    break
+                    case MsgId.离开Space:
+                    {
+                        thisLocal.entities.forEach((clientEntityComponent, k, map) => {
+                            clientEntityComponent.removeFromParent()
+                        })
+                        thisLocal.entities.clear()
+                        thisLocal.entityId.clear()
                     }
                     break
                 default:
