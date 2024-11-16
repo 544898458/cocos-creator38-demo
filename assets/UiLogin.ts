@@ -56,11 +56,18 @@ enum 活动单位类型
 	兵,//陆战队员Marine。只能攻击，不能采矿
 	近战兵,//火蝠，喷火兵Firebat
 };
+
 // enum 点击地面操作类型
 // {
 //     移动单位,
 //     放置建筑
 // }
+
+enum SayChannel
+{
+	系统,
+	语音提示,
+};
 
 @ccclass('UiLogin')
 export class UiLogin extends Component {
@@ -72,6 +79,7 @@ export class UiLogin extends Component {
     nodeSelectSpace: Node
     node战斗面板: Node
     lableMessage: Label
+    lableMessage语音提示: Label
     lableCount: Label
     lableMoney: Label
     lable燃气矿: Label
@@ -88,6 +96,7 @@ export class UiLogin extends Component {
     start() {
         this.targetFlag = utils.find("Roles/TargetFlag", this.node.parent)
         this.lableMessage = utils.find("Canvas/Message", this.node.parent).getComponent(Label)
+        this.lableMessage语音提示 = utils.find("Canvas/Message语音提示", this.node.parent).getComponent(Label)
         this.lableCount = utils.find("Canvas/Count", this.node.parent).getComponent(Label)
         this.lableMoney = utils.find("Canvas/Money", this.node.parent).getComponent(Label)
         this.lable燃气矿 = utils.find("Canvas/燃气矿", this.node.parent).getComponent(Label)
@@ -440,8 +449,18 @@ export class UiLogin extends Component {
                 case MsgId.Say:
                     {
                         let content = arr[idxArr++]
-                        console.log('有人说:', content)
-                        lableMessage.string = content
+                        let channel = arr[idxArr++] as SayChannel
+                        console.log(channel, '有人说:', content)
+                        switch(channel)
+                        {
+                            case SayChannel.系统:
+                                lableMessage.string = content
+                            break
+                            case SayChannel.语音提示:
+                                thisLocal.lableMessage语音提示.string = content
+                            break
+                        }
+                        
                     }
                     break
                 case MsgId.DelRoleRet:
