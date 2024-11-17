@@ -386,6 +386,7 @@ export class UiLogin extends Component {
                         })
                         thisLocal.scene战斗.entities.clear()
                         thisLocal.scene战斗.entityId.clear()
+                        thisLocal.回到登录场景()
                     }
                     break
                 default:

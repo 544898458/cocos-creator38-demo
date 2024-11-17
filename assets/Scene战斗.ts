@@ -198,7 +198,8 @@ export class Scene战斗 extends Component {
         this.uiLogin.onClickSay(event,customEventData)
     }
     onClick退出此场景(event: Event, customEventData: string) {
-        this.uiLogin.回到登录场景()
+        //this.uiLogin.回到登录场景()
+        this.uiLogin.send离开Space()
     }
 }
 
