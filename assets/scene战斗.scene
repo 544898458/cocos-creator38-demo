@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.SceneAsset",
-    "_name": "scene",
+    "_name": "scene战斗",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_native": "",
@@ -11,7 +11,7 @@
   },
   {
     "__type__": "cc.Scene",
-    "_name": "scene",
+    "_name": "scene战斗",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": null,
@@ -26,7 +26,7 @@
         "__id__": 8
       },
       {
-        "__id__": 166
+        "__id__": 167
       },
       {
         "__id__": 25
@@ -35,7 +35,7 @@
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 181
+      "__id__": 182
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -66,7 +66,7 @@
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 182
+      "__id__": 183
     },
     "_id": "a2a6dcbf-5442-46e3-be3b-a623e01230cf"
   },
@@ -338,6 +338,9 @@
       },
       {
         "__id__": 165
+      },
+      {
+        "__id__": 166
       }
     ],
     "_prefab": null,
@@ -2486,7 +2489,7 @@
         "__id__": 82
       }
     ],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 95
@@ -2734,7 +2737,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 80,
+      "x": 15,
       "y": 0,
       "z": 0
     },
@@ -2778,7 +2781,7 @@
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
+      "x": 0,
       "y": 0.5
     },
     "_id": "25Ja/CmcdFRpqUBBaPu7ys"
@@ -2804,7 +2807,7 @@
       "a": 255
     },
     "_string": "切到战斗服1公共",
-    "_horizontalAlign": 1,
+    "_horizontalAlign": 0,
     "_verticalAlign": 1,
     "_actualFontSize": 20,
     "_fontSize": 20,
@@ -3187,7 +3190,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 80,
+      "x": 15,
       "y": 0,
       "z": 0
     },
@@ -3231,7 +3234,7 @@
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
+      "x": 0,
       "y": 0.5
     },
     "_id": "ffBTn4ICVAtZs0yp4U1N+6"
@@ -5844,6 +5847,18 @@
     "_id": "65zH8yOMhNUbwKiu2xohUQ"
   },
   {
+    "__type__": "56691oZhhFAFrBwflhedmGn",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 8
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_id": "7fdLpRgiZNNbHM6z8RJ3uW"
+  },
+  {
     "__type__": "cc.Node",
     "_name": "Plane",
     "_objFlags": 0,
@@ -5853,16 +5868,16 @@
     },
     "_children": [
       {
-        "__id__": 167
+        "__id__": 168
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 178
+        "__id__": 179
       },
       {
-        "__id__": 180
+        "__id__": 181
       }
     ],
     "_prefab": null,
@@ -5899,17 +5914,17 @@
     "__type__": "cc.Node",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 166
+      "__id__": 167
     },
     "_prefab": {
-      "__id__": 168
+      "__id__": 169
     },
     "__editorExtras__": {}
   },
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 167
+      "__id__": 168
     },
     "asset": {
       "__uuid__": "6b10a4f0-2ced-4974-9238-9b7a8e9da3db@fcbcf",
@@ -5917,7 +5932,7 @@
     },
     "fileId": "b16NGWX4hSl4VbNLyYjYSP",
     "instance": {
-      "__id__": 169
+      "__id__": 170
     },
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
@@ -5930,10 +5945,7 @@
     "mountedComponents": [],
     "propertyOverrides": [
       {
-        "__id__": 170
-      },
-      {
-        "__id__": 172
+        "__id__": 171
       },
       {
         "__id__": 173
@@ -5946,6 +5958,9 @@
       },
       {
         "__id__": 176
+      },
+      {
+        "__id__": 177
       }
     ],
     "removedComponents": []
@@ -5953,7 +5968,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 171
+      "__id__": 172
     },
     "propertyPath": [
       "_name"
@@ -5969,7 +5984,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 171
+      "__id__": 172
     },
     "propertyPath": [
       "_lpos"
@@ -5984,7 +5999,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 171
+      "__id__": 172
     },
     "propertyPath": [
       "_lrot"
@@ -6000,7 +6015,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 171
+      "__id__": 172
     },
     "propertyPath": [
       "_euler"
@@ -6015,7 +6030,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 171
+      "__id__": 172
     },
     "propertyPath": [
       "_lscale"
@@ -6030,7 +6045,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 177
+      "__id__": 178
     },
     "propertyPath": [
       "_lpos"
@@ -6054,7 +6069,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 166
+      "__id__": 167
     },
     "_enabled": true,
     "__prefab": null,
@@ -6066,7 +6081,7 @@
     ],
     "_visFlags": 0,
     "bakeSettings": {
-      "__id__": 179
+      "__id__": 180
     },
     "_mesh": {
       "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@2e76e",
@@ -6109,7 +6124,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 166
+      "__id__": 167
     },
     "_enabled": true,
     "__prefab": null,
@@ -6138,32 +6153,32 @@
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": [
       {
-        "__id__": 167
+        "__id__": 168
       }
     ]
   },
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 183
-    },
-    "shadows": {
       "__id__": 184
     },
-    "_skybox": {
+    "shadows": {
       "__id__": 185
     },
-    "fog": {
+    "_skybox": {
       "__id__": 186
     },
-    "octree": {
+    "fog": {
       "__id__": 187
     },
-    "skin": {
+    "octree": {
       "__id__": 188
     },
-    "lightProbeInfo": {
+    "skin": {
       "__id__": 189
+    },
+    "lightProbeInfo": {
+      "__id__": 190
     },
     "bakedWithStationaryMainLight": false,
     "bakedWithHighpLightmap": false

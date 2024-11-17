@@ -1,4 +1,4 @@
-import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip, director } from 'cc'
+import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip } from 'cc'
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { HeadScale } from './head-scale'
 import { FollowTarget } from './FollowTarget'
@@ -76,8 +76,8 @@ enum SayChannel
 	语音提示,
 };
 
-@ccclass('UiLogin')
-export class UiLogin extends Component {
+@ccclass('Scene战斗')
+export class Scene战斗 extends Component {
     entities: Map<number, ClientEntityComponent> = new Map<number, ClientEntityComponent>
     entityId = new Map<string, number>//uuid=>服务器ID
     websocket: WebSocket
@@ -100,26 +100,134 @@ export class UiLogin extends Component {
         return [[MsgId.Move, 0],hitPoint.x,hitPoint.z]
     }
     mainCameraFollowTarget:FollowTarget
-    onLoad() 
-    {
-        //添加dataNode为常驻节点
-       director.addPersistRootNode(this.node);
-    }
     start() {
-        // this.targetFlag = utils.find("Roles/TargetFlag", this.node.parent)
+        this.targetFlag = utils.find("Roles/TargetFlag", this.node.parent)
         this.lableMessage = utils.find("Canvas/Message", this.node.parent).getComponent(Label)
         this.lableMessage语音提示 = utils.find("Canvas/Message语音提示", this.node.parent).getComponent(Label)
-        // this.lableCount = utils.find("Canvas/Count", this.node.parent).getComponent(Label)
-        // this.lableMoney = utils.find("Canvas/Money", this.node.parent).getComponent(Label)
-        // this.lable燃气矿 = utils.find("Canvas/燃气矿", this.node.parent).getComponent(Label)
-        // this.lable我的单位 = utils.find("Canvas/我的单位", this.node.parent).getComponent(Label)
+        this.lableCount = utils.find("Canvas/Count", this.node.parent).getComponent(Label)
+        this.lableMoney = utils.find("Canvas/Money", this.node.parent).getComponent(Label)
+        this.lable燃气矿 = utils.find("Canvas/燃气矿", this.node.parent).getComponent(Label)
+        this.lable我的单位 = utils.find("Canvas/我的单位", this.node.parent).getComponent(Label)
         const nodeMainCamera = utils.find("Main Camera", this.node.parent);
         this.nodeLoginPanel = utils.find("Canvas/LoginPanel", this.node.parent);
-        this.nodeSelectSpace = utils.find("Canvas/选择玩法", this.node.parent);
-        // this.node战斗面板 = utils.find("Canvas/FightPanel", this.node.parent);
+        this.nodeSelectSpace = utils.find("Canvas/ToggleGroupSpace", this.node.parent);
+        this.node战斗面板 = utils.find("Canvas/FightPanel", this.node.parent);
         this.mainCamera = nodeMainCamera.getComponent(Camera);
         this.mainCameraFollowTarget = nodeMainCamera.getComponent(FollowTarget);
-        // let targetFlag = this.targetFlag
+        let targetFlag = this.targetFlag
+        this.node.on(NodeEventType.MOUSE_DOWN, (event: EventMouse) => {
+            console.log('MOUSE_DOWN', event)
+            var uiPos = event.getLocation()
+            var ray = new geometry.Ray()
+            // const camera = cc.find("Camera",this.node).getComponent(Camera)
+            this.mainCamera.screenPointToRay(uiPos.x, uiPos.y, ray)
+            if (!PhysicsSystem.instance.raycastClosest(ray)) {
+                console.log('raycast does not hit the target node !')
+                return false
+            }
+
+            const raycastResults = PhysicsSystem.instance.raycastClosestResult
+
+            const item = raycastResults//[i]
+            console.log('射线碰撞', item.collider.node.name, item.hitPoint)
+            if (item.collider.node.name == "Plane") {
+                targetFlag.position = item.hitPoint
+
+                const object = this.fun创建消息(item.hitPoint)
+                // const object = //item.hitPoint
+                //     [
+                //         [MsgId.Move, 0],
+                //         item.hitPoint.x,
+                //         // item.hitPoint.y,
+                //         item.hitPoint.z
+                //     ]
+
+                const encoded: Uint8Array = msgpack.encode(object)
+                if (this.websocket != undefined) {
+                    console.log('send', encoded)
+                    this.websocket.send(encoded)
+                }
+            }
+            else
+            {
+                this.fun创建消息 = this.createMsgMove
+            
+                if (item.collider.node.name == "tree_large" || item.collider.node.name == "house_type03" )//点击晶体矿或者燃气矿
+                {
+                    this.mainCameraFollowTarget.target = item.collider.node
+                    let id = this.entityId[item.collider.node.uuid]
+                    
+                    const object =
+                        [
+                            [MsgId.采集, ++this.sendMsgSn, 0],
+                            id
+                        ]
+
+                    const encoded: Uint8Array = msgpack.encode(object)
+                    if (this.websocket != undefined) {
+                        console.log('send', encoded)
+                        this.websocket.send(encoded)
+                    }
+                }
+                else if (item.collider.node.name == "house_type17" )//点击地堡
+                {
+                    this.mainCameraFollowTarget.target = item.collider.node
+                    let id = this.entityId[item.collider.node.uuid]
+                    
+                    const object = event.getButton() == EventMouse.BUTTON_LEFT ?
+                        [
+                            [MsgId.进地堡, ++this.sendMsgSn, 0],
+                            id
+                        ]
+                        :
+                        [
+                            [MsgId.出地堡, ++this.sendMsgSn, 0],
+                            id,
+                            [0.0]
+                        ]
+
+                    const encoded: Uint8Array = msgpack.encode(object)
+                    if (this.websocket != undefined) {
+                        console.log('send', encoded)
+                        this.websocket.send(encoded)
+                    }
+                }
+                else// if (item.collider.node.name == "altman-blue")//|| item.collider.node.name == "altman-red") 
+                {
+                    this.mainCameraFollowTarget.target = item.collider.node
+                    let id = this.entityId[item.collider.node.uuid]
+                    if (id == undefined) {
+                        console.log('还没加载')
+                        return
+                    }
+                    const object =
+                        [
+                            [MsgId.SelectRoles, ++this.sendMsgSn, 0],
+                            [id]//虽然是整数，但是也强制转成FLOAT64发出去了
+                        ]
+
+                    const encoded: Uint8Array = msgpack.encode(object)
+                    if (this.websocket != undefined) {
+                        console.log('send', encoded)
+                        this.websocket.send(encoded)
+                    }
+                    const prefabName = 'colorBar'
+                    this.entities.forEach((clientEntityComponent, k, map) => {
+                        let nodEffect = clientEntityComponent.view.getChildByName(prefabName)
+                        console.log('准备删除', nodEffect)
+                        clientEntityComponent.view.removeChild(nodEffect)
+                    })
+                    resources.load(prefabName, Prefab, (err, prefab) => {
+                        console.log('resources.load callback:', err, prefab)
+                        const newNode = instantiate(prefab)
+                        newNode.name = prefabName
+                        this.entities.get(id).view.addChild(newNode)
+                    })
+                }
+            }
+
+            return false
+        }, this)
     }
 
     update(deltaTime: number) {
