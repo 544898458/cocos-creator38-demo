@@ -143,18 +143,20 @@ export class UiLogin extends Component {
     onClickAdd民房(event: Event, customEventData: string): void {
         this.on点击按钮_造建筑(建筑单位类型.民房)
     }
-    onClickToggle进Space1(event: Event, customEventData: string) {
+    进Scene战斗(idMsg: MsgId){
         director.loadScene('scene战斗', ()=>
         {
             this.nodeSelectSpace.active = false
-            const encoded: Uint8Array = msgpack.encode([[MsgId.进Space, 0, 0],1])
+            const encoded: Uint8Array = msgpack.encode([[idMsg, 0, 0],1])
             this.websocket.send(encoded)
         })
+
+    }
+    onClickToggle进Space1(event: Event, customEventData: string) {
+        this.进Scene战斗(MsgId.进Space)
     }
     onClickToggle进单人剧情副本(event: Event, customEventData: string) {
-        this.nodeSelectSpace.active = false
-        const encoded: Uint8Array = msgpack.encode([[MsgId.进单人剧情副本, 0, 0],1])
-        this.websocket.send(encoded)
+        this.进Scene战斗(MsgId.进单人剧情副本)
     }
     onClickLogin(event: Event, customEventData: string) {
         // 这里 event 是一个 Touch Event 对象，你可以通过 event.target 取到事件的发送节点
@@ -374,7 +376,7 @@ export class UiLogin extends Component {
                     break
                 case MsgId.显示界面:
                     {
-                        thisLocal.nodeSelectSpace.active = true
+                        thisLocal.scene战斗.node退出此场景.active = true
                     }
                     break
                     case MsgId.离开Space:
@@ -423,6 +425,23 @@ export class UiLogin extends Component {
             console.log('send', encoded)
             this.websocket.send(encoded)
         }
+    }
+    回到登录场景(){
+        director.loadScene('scene登录',()=>{
+            this.nodeSelectSpace.active = true
+        })
+    }
+    send离开Space(){
+        const object = //item.hitPoint
+        [
+            [MsgId.离开Space, 0, 0],
+        ]
+
+        const encoded: Uint8Array = msgpack.encode(object)
+        if (this.websocket != undefined) {
+            console.log('send', encoded)
+            this.websocket.send(encoded)
+        }        
     }
 }
 

@@ -27,6 +27,7 @@ export class Scene战斗 extends Component {
     entityId = new Map<string, number>//uuid=>服务器ID
     targetFlag: Node//走路走向的目标点
     node战斗面板: Node
+    node退出此场景: Node
     lableMessage: Label
     lableMessage语音提示: Label
     lableCount: Label
@@ -53,6 +54,7 @@ export class Scene战斗 extends Component {
         this.lable我的单位 = utils.find("Canvas/我的单位", this.node.parent).getComponent(Label)
         const nodeMainCamera = utils.find("Main Camera", this.node.parent);
         this.node战斗面板 = utils.find("Canvas/FightPanel", this.node.parent);
+        this.node退出此场景 = utils.find("Canvas/Button退出此场景", this.node.parent);
         this.mainCamera = nodeMainCamera.getComponent(Camera);
         this.mainCameraFollowTarget = nodeMainCamera.getComponent(FollowTarget);
         this.roles = this.node.parent.getChildByName("Roles")
@@ -194,6 +196,9 @@ export class Scene战斗 extends Component {
 
     onClickSay(event: Event, customEventData: string) {
         this.uiLogin.onClickSay(event,customEventData)
+    }
+    onClick退出此场景(event: Event, customEventData: string) {
+        this.uiLogin.回到登录场景()
     }
 }
 
