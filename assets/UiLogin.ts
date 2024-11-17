@@ -5,7 +5,7 @@ import { FollowTarget } from './FollowTarget'
 import { Scene战斗, ClientEntityComponent } from './Scene战斗'
 
 const { ccclass, property } = _decorator
-enum MsgId {
+export enum MsgId {
     Invalid_0,
     Login,
     Move,

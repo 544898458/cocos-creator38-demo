@@ -2,7 +2,7 @@ import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, B
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { HeadScale } from './head-scale'
 import { FollowTarget } from './FollowTarget'
-import { UiLogin,MsgId } from './UiLogin'
+import { UiLogin, MsgId } from './UiLogin'
 
 const { ccclass, property } = _decorator
 export class ClientEntityComponent {
