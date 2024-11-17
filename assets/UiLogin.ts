@@ -2,24 +2,9 @@ import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, B
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { HeadScale } from './head-scale'
 import { FollowTarget } from './FollowTarget'
-import { Scene战斗 } from './Scene战斗'
+import { Scene战斗, ClientEntityComponent } from './Scene战斗'
 
 const { ccclass, property } = _decorator
-class ClientEntityComponent {
-    view: Node
-    nodeName: Node
-    labelName: Label
-    skeletalAnimation: SkeletalAnimation
-    initClipName: string = 'idle'
-    nickName: string
-    position: Vec3//刚进地图Load没结束无法设置node坐标，暂存
-    hp: number = 0
-    removeFromParent()
-    {
-        this.view?.removeFromParent()
-        this.nodeName?.removeFromParent()
-    }
-}
 enum MsgId {
     Invalid_0,
     Login,
@@ -79,14 +64,12 @@ enum SayChannel
 
 @ccclass('UiLogin')
 export class UiLogin extends Component {
-    entities: Map<number, ClientEntityComponent> = new Map<number, ClientEntityComponent>
-    entityId = new Map<string, number>//uuid=>服务器ID
     websocket: WebSocket
     targetFlag: Node//走路走向的目标点
     nodeLoginPanel: Node
     nodeSelectSpace: Node
-    lableMessage: Label
-    lableMessage语音提示: Label
+    // lableMessage: Label
+    // lableMessage语音提示: Label
     recvMsgSn: number = 0
     sendMsgSn: number = 0
     mainCamera: Camera
@@ -104,8 +87,8 @@ export class UiLogin extends Component {
     }
     start() {
         // this.targetFlag = utils.find("Roles/TargetFlag", this.node.parent)
-        this.lableMessage = utils.find("Canvas/Message", this.node.parent).getComponent(Label)
-        this.lableMessage语音提示 = utils.find("Canvas/Message语音提示", this.node.parent).getComponent(Label)
+        // this.lableMessage = utils.find("Canvas/Message", this.node.parent).getComponent(Label)
+        // this.lableMessage语音提示 = utils.find("Canvas/Message语音提示", this.node.parent).getComponent(Label)
         // this.lableCount = utils.find("Canvas/Count", this.node.parent).getComponent(Label)
         // this.lableMoney = utils.find("Canvas/Money", this.node.parent).getComponent(Label)
         // this.lable燃气矿 = utils.find("Canvas/燃气矿", this.node.parent).getComponent(Label)
@@ -139,12 +122,13 @@ export class UiLogin extends Component {
     }
     createMsg造建筑(hitPoint:Vec3,类型:建筑单位类型)
     {
+        console.log('createMsg造建筑', hitPoint)
         return[[MsgId.AddBuilding, ++this.sendMsgSn, 0],类型,[hitPoint.x, hitPoint.z]]
     }
     on点击按钮_造建筑(类型:建筑单位类型)
     {
         this.fun创建消息 = (hitPoint:Vec3)=>this.createMsg造建筑(hitPoint,类型)
-        this.lableMessage.string = '请点击地面放置建筑'
+        this.scene战斗.lableMessage.string = '请点击地面放置建筑'
     }
     onClickAdd基地(event: Event, customEventData: string): void {
         this.on点击按钮_造建筑(建筑单位类型.基地)
@@ -212,9 +196,7 @@ export class UiLogin extends Component {
             this.nodeSelectSpace.active = true
         }
 
-        let entities = this.entities
-        let entityId = this.entityId
-        let lableMessage = this.lableMessage
+        // let lableMessage = this.lableMessage
         let thisLocal = this
         //接收到消息的回调方法
         this.websocket.onmessage = function (event: MessageEvent) {
@@ -239,17 +221,17 @@ export class UiLogin extends Component {
                         let entityName: string = arr[idxArr++]
                         let prefabName: string = arr[idxArr++]
                         console.log(id, nickName, prefabName, '进来了')
-                        let old = entities.get(id)
+                        let old = thisLocal.scene战斗.entities.get(id)
                         if (old == undefined) {
                             old = new ClientEntityComponent()
-                            entities.set(id, old)
+                            thisLocal.scene战斗.entities.set(id, old)
                             
-                            thisLocal.scene战斗.lableCount.string = '共' + entities.size + '单位'
+                            thisLocal.scene战斗.lableCount.string = '共' + thisLocal.scene战斗.entities.size + '单位'
                             resources.load(prefabName, Prefab, (err, prefab) => {
                                 // console.log('resources.load callback:', err, prefab)
                                 const newNode = instantiate(prefab)
                                 thisLocal.scene战斗.roles.addChild(newNode)
-                                entityId[newNode.uuid] = id
+                                thisLocal.scene战斗.entityId[newNode.uuid] = id
                                 //newNode.position = new Vec3(posX, 0, 0)
                                 // console.log('resources.load newNode', newNode)
                                 old.view = newNode
@@ -293,7 +275,7 @@ export class UiLogin extends Component {
                         let hp = arr[5]
                         // console.log(arr)
 
-                        let old = entities.get(id)
+                        let old = thisLocal.scene战斗.entities.get(id)
                         if (old == undefined) {
                             //    old = entites[id] = new ClientEntityComponent()
                             //    resources.load("altman-blue", Prefab, (err, prefab) => {
@@ -329,7 +311,7 @@ export class UiLogin extends Component {
                         let loop: Boolean = arr[idxArr++]
                         let clipName: string = arr[idxArr++]
                         // console.log(id, '动作改为', clipName)
-                        let old = entities.get(id)
+                        let old = thisLocal.scene战斗.entities.get(id)
                         if (old == undefined) {
                             // console.log(id,"还没加载好,没有播放动作",clipName)
                             return
@@ -351,10 +333,10 @@ export class UiLogin extends Component {
                         switch(channel)
                         {
                             case SayChannel.系统:
-                                lableMessage.string = content
+                                thisLocal.scene战斗.lableMessage.string = content
                             break
                             case SayChannel.语音提示:
-                                thisLocal.lableMessage语音提示.string = content
+                                thisLocal.scene战斗.lableMessage语音提示.string = content
                             break
                         }
                         
@@ -364,9 +346,9 @@ export class UiLogin extends Component {
                     {
                         let id = arr[idxArr++]
                         console.log('删除:', id)
-                        entities.get(id).removeFromParent()
-                        entities.delete(id)
-                        thisLocal.scene战斗.lableCount.string = '共' + entities.size + '单位'
+                        thisLocal.scene战斗.entities.get(id).removeFromParent()
+                        thisLocal.scene战斗.entities.delete(id)
+                        thisLocal.scene战斗.lableCount.string = '共' + thisLocal.scene战斗.entities.size + '单位'
                     }
                     break
                 case MsgId.NotifyeMoney:
@@ -397,11 +379,11 @@ export class UiLogin extends Component {
                     break
                     case MsgId.离开Space:
                     {
-                        thisLocal.entities.forEach((clientEntityComponent, k, map) => {
+                        thisLocal.scene战斗.entities.forEach((clientEntityComponent, k, map) => {
                             clientEntityComponent.removeFromParent()
                         })
-                        thisLocal.entities.clear()
-                        thisLocal.entityId.clear()
+                        thisLocal.scene战斗.entities.clear()
+                        thisLocal.scene战斗.entityId.clear()
                     }
                     break
                 default:
