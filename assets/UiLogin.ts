@@ -2,6 +2,7 @@ import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, B
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { HeadScale } from './head-scale'
 import { FollowTarget } from './FollowTarget'
+import { Scene战斗 } from './Scene战斗'
 
 const { ccclass, property } = _decorator
 class ClientEntityComponent {
@@ -84,16 +85,12 @@ export class UiLogin extends Component {
     targetFlag: Node//走路走向的目标点
     nodeLoginPanel: Node
     nodeSelectSpace: Node
-    node战斗面板: Node
     lableMessage: Label
     lableMessage语音提示: Label
-    lableCount: Label
-    lableMoney: Label
-    lable燃气矿: Label
-    lable我的单位: Label
     recvMsgSn: number = 0
     sendMsgSn: number = 0
     mainCamera: Camera
+    scene战斗: Scene战斗
     fun创建消息:(Vec3)=>object = this.createMsgMove//点击地面操作 = 点击地面操作类型.移动单位
     createMsgMove(hitPoint:Vec3)
     {
@@ -163,9 +160,12 @@ export class UiLogin extends Component {
         this.on点击按钮_造建筑(建筑单位类型.民房)
     }
     onClickToggle进Space1(event: Event, customEventData: string) {
-        this.nodeSelectSpace.active = false
-        const encoded: Uint8Array = msgpack.encode([[MsgId.进Space, 0, 0],1])
-        this.websocket.send(encoded)
+        director.loadScene('scene战斗', ()=>
+        {
+            this.nodeSelectSpace.active = false
+            const encoded: Uint8Array = msgpack.encode([[MsgId.进Space, 0, 0],1])
+            this.websocket.send(encoded)
+        })
     }
     onClickToggle进单人剧情副本(event: Event, customEventData: string) {
         this.nodeSelectSpace.active = false
@@ -212,12 +212,9 @@ export class UiLogin extends Component {
             this.nodeSelectSpace.active = true
         }
 
-        let roles = this.node.parent.getChildByName("Roles")
         let entities = this.entities
         let entityId = this.entityId
         let lableMessage = this.lableMessage
-        let lableCount = this.lableCount
-        let lableMoney = this.lableMoney
         let thisLocal = this
         //接收到消息的回调方法
         this.websocket.onmessage = function (event: MessageEvent) {
@@ -246,11 +243,12 @@ export class UiLogin extends Component {
                         if (old == undefined) {
                             old = new ClientEntityComponent()
                             entities.set(id, old)
-                            lableCount.string = '共' + entities.size + '单位'
+                            
+                            thisLocal.scene战斗.lableCount.string = '共' + entities.size + '单位'
                             resources.load(prefabName, Prefab, (err, prefab) => {
                                 // console.log('resources.load callback:', err, prefab)
                                 const newNode = instantiate(prefab)
-                                roles.addChild(newNode)
+                                thisLocal.scene战斗.roles.addChild(newNode)
                                 entityId[newNode.uuid] = id
                                 //newNode.position = new Vec3(posX, 0, 0)
                                 // console.log('resources.load newNode', newNode)
@@ -259,7 +257,7 @@ export class UiLogin extends Component {
                                 if (old.skeletalAnimation != undefined) {
                                     old.skeletalAnimation.play(old.initClipName)
                                 }
-                                let nodeCanvas = utils.find("Canvas", roles.parent)
+                                let nodeCanvas = utils.find("Canvas", thisLocal.scene战斗.roles.parent)
                                 let nodeRoleName = utils.find("RoleName", nodeCanvas)
                                 // console.log('RoleName',this.nodeRoleName)
                                 // this.nodeRoleName.getComponent(HeadScale).target = this.nodeRoleName
@@ -269,7 +267,7 @@ export class UiLogin extends Component {
                                 old.labelName = old.nodeName.getComponent(Label)
                                 let headScal = old.nodeName.getComponent(HeadScale)
                                 headScal.target = utils.find("NamePos", newNode)
-                                let camera3D = utils.find("Main Camera", roles.parent).getComponent(Camera)
+                                let camera3D = utils.find("Main Camera", thisLocal.scene战斗.roles.parent).getComponent(Camera)
                                 // console.log('Main Camera',camera3D)
                                 //  headScal.camera = camera3D
                                 // headScal.distance = 55
@@ -368,13 +366,13 @@ export class UiLogin extends Component {
                         console.log('删除:', id)
                         entities.get(id).removeFromParent()
                         entities.delete(id)
-                        lableCount.string = '共' + entities.size + '单位'
+                        thisLocal.scene战斗.lableCount.string = '共' + entities.size + '单位'
                     }
                     break
                 case MsgId.NotifyeMoney:
                     {
                         let finalMoney = arr[idxArr++]
-                        lableMoney.string = '晶体矿:' + finalMoney
+                        thisLocal.scene战斗.lableMoney.string = '晶体矿:' + finalMoney
                     }
                     break
                 case MsgId.资源:
@@ -382,13 +380,14 @@ export class UiLogin extends Component {
                         let 燃气矿 = arr[idxArr++]
                         let 活动单位 = arr[idxArr++]
                         let 活动单位上限 = arr[idxArr++]
-                        thisLocal.lable燃气矿.string = '燃气矿:' + 燃气矿
-                        thisLocal.lable我的单位.string = '我的活动单位:' + 活动单位 + '/' + 活动单位上限
+                        thisLocal.scene战斗.lable燃气矿.string = '燃气矿:' + 燃气矿
+                        thisLocal.scene战斗.lable我的单位.string = '我的活动单位:' + 活动单位 + '/' + 活动单位上限
                     }
                     break
                 case MsgId.进Space:
                     {
-                        thisLocal.node战斗面板.active = true
+                        thisLocal.scene战斗.node战斗面板.active = true
+                        // director.loadScene('scene战斗')
                     }
                     break
                 case MsgId.显示界面:

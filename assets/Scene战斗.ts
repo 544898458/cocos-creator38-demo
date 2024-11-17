@@ -1,7 +1,8 @@
-import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip } from 'cc'
+import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip, director } from 'cc'
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { HeadScale } from './head-scale'
 import { FollowTarget } from './FollowTarget'
+import { UiLogin } from './UiLogin'
 
 const { ccclass, property } = _decorator
 class ClientEntityComponent {
@@ -94,12 +95,19 @@ export class Scene战斗 extends Component {
     recvMsgSn: number = 0
     sendMsgSn: number = 0
     mainCamera: Camera
+    roles: Node
     fun创建消息:(Vec3)=>object = this.createMsgMove//点击地面操作 = 点击地面操作类型.移动单位
     createMsgMove(hitPoint:Vec3)
     {
         return [[MsgId.Move, 0],hitPoint.x,hitPoint.z]
     }
     mainCameraFollowTarget:FollowTarget
+    protected onLoad(): void{
+        //获取常驻节点
+        let uiLogin = director.getScene().getChildByName('常驻').getComponent(UiLogin);
+        uiLogin.scene战斗 = this
+    }
+            
     start() {
         this.targetFlag = utils.find("Roles/TargetFlag", this.node.parent)
         this.lableMessage = utils.find("Canvas/Message", this.node.parent).getComponent(Label)
@@ -114,6 +122,7 @@ export class Scene战斗 extends Component {
         this.node战斗面板 = utils.find("Canvas/FightPanel", this.node.parent);
         this.mainCamera = nodeMainCamera.getComponent(Camera);
         this.mainCameraFollowTarget = nodeMainCamera.getComponent(FollowTarget);
+        this.roles = this.node.parent.getChildByName("Roles")
         let targetFlag = this.targetFlag
         this.node.on(NodeEventType.MOUSE_DOWN, (event: EventMouse) => {
             console.log('MOUSE_DOWN', event)
@@ -320,7 +329,6 @@ export class Scene战斗 extends Component {
             this.nodeSelectSpace.active = true
         }
 
-        let roles = this.node.parent.getChildByName("Roles")
         let entities = this.entities
         let entityId = this.entityId
         let lableMessage = this.lableMessage
