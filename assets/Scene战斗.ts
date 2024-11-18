@@ -39,6 +39,7 @@ export class Scene战斗 extends Component {
     uiLogin: UiLogin
     mainCameraFollowTarget:FollowTarget
     protected onLoad(): void{
+        console.log('Scene战斗.onLoad')
         //获取常驻节点
         this.uiLogin = director.getScene().getChildByName('常驻').getComponent(UiLogin);
         this.uiLogin.scene战斗 = this

@@ -3,6 +3,7 @@ import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { HeadScale } from './head-scale'
 import { FollowTarget } from './FollowTarget'
 import { Scene战斗, ClientEntityComponent } from './Scene战斗'
+import { Scene登录 } from './Scene登录'
 
 const { ccclass, property } = _decorator
 export enum MsgId {
@@ -65,41 +66,25 @@ enum SayChannel
 @ccclass('UiLogin')
 export class UiLogin extends Component {
     websocket: WebSocket
-    targetFlag: Node//走路走向的目标点
-    nodeLoginPanel: Node
-    nodeSelectSpace: Node
     // lableMessage: Label
     // lableMessage语音提示: Label
     recvMsgSn: number = 0
     sendMsgSn: number = 0
-    mainCamera: Camera
-    scene战斗: Scene战斗
+    scene战斗: Scene战斗 = null
+    scene登录: Scene登录 = null
     fun创建消息:(Vec3)=>object = this.createMsgMove//点击地面操作 = 点击地面操作类型.移动单位
     createMsgMove(hitPoint:Vec3)
     {
         return [[MsgId.Move, 0],hitPoint.x,hitPoint.z]
     }
-    mainCameraFollowTarget:FollowTarget
     onLoad() 
     {
+        console.log('onLoad')
         //添加dataNode为常驻节点
        director.addPersistRootNode(this.node);
     }
     start() {
-        // this.targetFlag = utils.find("Roles/TargetFlag", this.node.parent)
-        // this.lableMessage = utils.find("Canvas/Message", this.node.parent).getComponent(Label)
-        // this.lableMessage语音提示 = utils.find("Canvas/Message语音提示", this.node.parent).getComponent(Label)
-        // this.lableCount = utils.find("Canvas/Count", this.node.parent).getComponent(Label)
-        // this.lableMoney = utils.find("Canvas/Money", this.node.parent).getComponent(Label)
-        // this.lable燃气矿 = utils.find("Canvas/燃气矿", this.node.parent).getComponent(Label)
-        // this.lable我的单位 = utils.find("Canvas/我的单位", this.node.parent).getComponent(Label)
-        const nodeMainCamera = utils.find("Main Camera", this.node.parent);
-        this.nodeLoginPanel = utils.find("Canvas/LoginPanel", this.node.parent);
-        this.nodeSelectSpace = utils.find("Canvas/选择玩法", this.node.parent);
-        // this.node战斗面板 = utils.find("Canvas/FightPanel", this.node.parent);
-        this.mainCamera = nodeMainCamera.getComponent(Camera);
-        this.mainCameraFollowTarget = nodeMainCamera.getComponent(FollowTarget);
-        // let targetFlag = this.targetFlag
+        console.log('start')
     }
 
     update(deltaTime: number) {
@@ -144,9 +129,9 @@ export class UiLogin extends Component {
         this.on点击按钮_造建筑(建筑单位类型.民房)
     }
     进Scene战斗(idMsg: MsgId){
-        director.loadScene('scene战斗', ()=>
+        director.loadScene('scene战斗', (err,scene)=>
         {
-            this.nodeSelectSpace.active = false
+            // this.nodeSelectSpace.active = false
             const encoded: Uint8Array = msgpack.encode([[idMsg, 0, 0],1])
             this.websocket.send(encoded)
         })
@@ -160,10 +145,10 @@ export class UiLogin extends Component {
     }
     onClickLogin(event: Event, customEventData: string) {
         // 这里 event 是一个 Touch Event 对象，你可以通过 event.target 取到事件的发送节点
-        this.nodeLoginPanel.active = false//隐藏
+        this.scene登录.nodeLoginPanel.active = false//隐藏
         const node = event.target as Node
         const button = node.getComponent(Button)
-        const editNode = utils.find("Name", this.nodeLoginPanel) as Node
+        const editNode = utils.find("Name", this.scene登录.nodeLoginPanel) as Node
         console.log(button)
         console.log(editNode)
 
@@ -195,7 +180,7 @@ export class UiLogin extends Component {
             console.log(encoded)
             this.websocket.send(encoded)
 
-            this.nodeSelectSpace.active = true
+            this.scene登录.nodeSelectSpace.active = true
         }
 
         // let lableMessage = this.lableMessage
@@ -428,8 +413,11 @@ export class UiLogin extends Component {
         }
     }
     回到登录场景(){
-        director.loadScene('scene登录',()=>{
-            this.nodeSelectSpace.active = true
+        director.loadScene('scene登录',(err, scene)=>{
+            console.log('回到登录场景', this.scene登录.nodeSelectSpace.active)
+            // director.runScene(scene);
+            this.scene登录.nodeSelectSpace.active = true
+            this.scene登录.nodeLoginPanel.active = false
         })
     }
     send离开Space(){
