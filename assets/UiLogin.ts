@@ -129,6 +129,8 @@ export class UiLogin extends Component {
         this.on点击按钮_造建筑(建筑单位类型.民房)
     }
     进Scene战斗(idMsg: MsgId){
+        this.scene登录.uiLogin = null
+        this.scene登录 = null
         director.loadScene('scene战斗', (err,scene)=>
         {
             // this.nodeSelectSpace.active = false

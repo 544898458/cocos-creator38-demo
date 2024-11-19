@@ -15,14 +15,12 @@ export class Scene登录 extends Component {
     onLoad() 
     {
         console.log('onLoad')
-        //添加dataNode为常驻节点
-       director.addPersistRootNode(this.node);
-       this.nodeSelectSpace = utils.find("Canvas/选择玩法", this.node.parent);
-       this.nodeLoginPanel = utils.find("Canvas/LoginPanel", this.node.parent);
+        this.nodeSelectSpace = utils.find("Canvas/选择玩法", this.node.parent);
+        this.nodeLoginPanel = utils.find("Canvas/LoginPanel", this.node.parent);
 
-       //获取常驻节点
-       this.uiLogin = director.getScene().getChildByName('常驻').getComponent(UiLogin);
-       this.uiLogin.scene登录 = this
+        //获取常驻节点
+        this.uiLogin = director.getScene().getChildByName('常驻').getComponent(UiLogin);
+        this.uiLogin.scene登录 = this
     }
     start() {
         console.log('start')
