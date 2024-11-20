@@ -34,6 +34,7 @@ export enum MsgId {
     进单人剧情副本,
     显示界面,
     离开Space,
+    Entity描述,
 }
 
 enum 建筑单位类型
@@ -236,8 +237,21 @@ export class UiLogin extends Component {
                                 old.nodeName = instantiate(nodeRoleName)
                                 nodeCanvas.addChild(old.nodeName)
                                 old.labelName = old.nodeName.getComponent(Label)
-                                let headScal = old.nodeName.getComponent(HeadScale)
-                                headScal.target = utils.find("NamePos", newNode)
+                                {
+                                    let headScal = old.nodeName.getComponent(HeadScale)
+                                    headScal.target = utils.find("NamePos", newNode)
+                                }
+
+                                old.node描述 = instantiate(nodeRoleName)
+                                nodeCanvas.addChild(old.node描述)
+                                old.label描述 = old.node描述.getComponent(Label)
+                                {
+                                    let headScal = old.node描述.getComponent(HeadScale)
+                                    headScal.target = utils.find("描述", newNode)
+                                    console.log(headScal.target)
+                                }
+
+                                
                                 let camera3D = utils.find("Main Camera", thisLocal.scene战斗.roles.parent).getComponent(Camera)
                                 // console.log('Main Camera',camera3D)
                                 //  headScal.camera = camera3D
@@ -374,6 +388,23 @@ export class UiLogin extends Component {
                         thisLocal.scene战斗.entities.clear()
                         thisLocal.scene战斗.entityId.clear()
                         thisLocal.回到登录场景()
+                    }
+                    break
+                    case MsgId.Entity描述:
+                    {
+                        let id = arr[idxArr++]
+                        let desc = arr[idxArr++]
+                        console.log('描述:', id, desc)
+                        let entity = thisLocal.scene战斗.entities.get(id)
+                        if (entity == undefined) {
+                            // console.log(id,"还没加载好,没有播放动作",clipName)
+                            return
+                        }
+                        if(entity.label描述 != undefined)
+                        {
+                            entity.label描述.string = desc
+                        }
+                        
                     }
                     break
                 default:

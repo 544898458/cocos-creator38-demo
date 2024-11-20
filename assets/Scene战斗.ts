@@ -8,7 +8,9 @@ const { ccclass, property } = _decorator
 export class ClientEntityComponent {
     view: Node
     nodeName: Node
+    node描述: Node
     labelName: Label
+    label描述: Label
     skeletalAnimation: SkeletalAnimation
     initClipName: string = 'idle'
     nickName: string
@@ -18,6 +20,7 @@ export class ClientEntityComponent {
     {
         this.view?.removeFromParent()
         this.nodeName?.removeFromParent()
+        this.node描述?.removeFromParent()
     }
 }
 
