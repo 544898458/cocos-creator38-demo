@@ -66,6 +66,7 @@ export class Scene战斗 extends Component {
         this.node.on(NodeEventType.MOUSE_DOWN, (event: EventMouse) => {
             console.log('MOUSE_DOWN', event)
             var uiPos = event.getLocation()
+            let button = event.getButton()
             var ray = new geometry.Ray()
             // const camera = cc.find("Camera",this.node).getComponent(Camera)
             this.mainCamera.screenPointToRay(uiPos.x, uiPos.y, ray)
@@ -81,8 +82,13 @@ export class Scene战斗 extends Component {
             if (item.collider.node.name == "Plane") {
                 targetFlag.position = item.hitPoint
 
-                const object = this.uiLogin.fun创建消息(item.hitPoint)
-
+                let object
+                if(EventMouse.BUTTON_RIGHT == button)
+                {
+                    object = this.uiLogin.createMsgMove(item.hitPoint)
+                }else{
+                    object = this.uiLogin.fun创建消息(item.hitPoint)
+                }
 
                 const encoded: Uint8Array = msgpack.encode(object)
                 if (this.uiLogin.websocket != undefined) {
