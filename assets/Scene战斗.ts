@@ -95,6 +95,8 @@ export class Scene战斗 extends Component {
                     console.log('send', encoded)
                     this.uiLogin.websocket.send(encoded)
                 }
+                
+                this.uiLogin.fun创建消息 = this.uiLogin.createMsgMove
             }
             else
             {
