@@ -85,7 +85,7 @@ export class Scene战斗 extends Component {
                 let object
                 if(EventMouse.BUTTON_RIGHT == button)
                 {
-                    object = this.uiLogin.createMsgMove(item.hitPoint)
+                    object = this.uiLogin.createMsgMove强行走(item.hitPoint)
                 }else{
                     object = this.uiLogin.fun创建消息(item.hitPoint)
                 }
@@ -96,11 +96,11 @@ export class Scene战斗 extends Component {
                     this.uiLogin.websocket.send(encoded)
                 }
                 
-                this.uiLogin.fun创建消息 = this.uiLogin.createMsgMove
+                this.uiLogin.fun创建消息 = this.uiLogin.createMsgMove遇敌自动攻击
             }
             else
             {
-                this.uiLogin.fun创建消息 = this.uiLogin.createMsgMove
+                this.uiLogin.fun创建消息 = this.uiLogin.createMsgMove遇敌自动攻击
             
                 if (item.collider.node.name == "tree_large" || item.collider.node.name == "house_type03" )//点击晶体矿或者燃气矿
                 {

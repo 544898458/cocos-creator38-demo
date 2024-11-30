@@ -73,10 +73,19 @@ export class UiLogin extends Component {
     sendMsgSn: number = 0
     scene战斗: Scene战斗 = null
     scene登录: Scene登录 = null
-    fun创建消息:(Vec3)=>object = this.createMsgMove//点击地面操作 = 点击地面操作类型.移动单位
-    createMsgMove(hitPoint:Vec3)
+    fun创建消息:(Vec3)=>object = this.createMsgMove强行走//点击地面操作 = 点击地面操作类型.移动单位
+    createMsgMove强行走(hitPoint:Vec3){
+        return this.createMsgMove(hitPoint,false)
+    }
+    createMsgMove遇敌自动攻击(hitPoint:Vec3){
+        return this.createMsgMove(hitPoint,true)
+    }
+    createMsgMove(hitPoint:Vec3,b遇敌自动攻击:boolean)
     {
-        return [[MsgId.Move, 0],hitPoint.x,hitPoint.z]
+        return [[MsgId.Move, 0],
+                [hitPoint.x,hitPoint.z],
+                b遇敌自动攻击
+            ]
     }
     onLoad() 
     {
