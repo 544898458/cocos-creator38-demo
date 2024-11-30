@@ -37,6 +37,12 @@ export enum MsgId {
     Entity描述,
 }
 
+enum 单人剧情副本ID
+{
+    训练战,
+    防守战
+}
+
 enum 建筑单位类型
 {
 	基地,//指挥中心(Command Center),用来造工程车()
@@ -138,22 +144,24 @@ export class UiLogin extends Component {
     onClickAdd民房(event: Event, customEventData: string): void {
         this.on点击按钮_造建筑(建筑单位类型.民房)
     }
-    进Scene战斗(idMsg: MsgId){
+    进Scene战斗(sceneName:string, encoded: Uint8Array){
         this.scene登录.uiLogin = null
         this.scene登录 = null
-        director.loadScene('scene战斗', (err,scene)=>
+        director.loadScene(sceneName, (err,scene)=>
         {
             // this.nodeSelectSpace.active = false
-            const encoded: Uint8Array = msgpack.encode([[idMsg, 0, 0],1])
+            
             this.websocket.send(encoded)
         })
-
     }
-    onClickToggle进Space1(event: Event, customEventData: string) {
-        this.进Scene战斗(MsgId.进Space)
+    进Scene战斗单人剧情副本(sceneName:string,id:单人剧情副本ID){
+        this.进Scene战斗(sceneName, msgpack.encode([[MsgId.进单人剧情副本, 0, 0], id]))
     }
-    onClickToggle进单人剧情副本(event: Event, customEventData: string) {
-        this.进Scene战斗(MsgId.进单人剧情副本)
+    onClickToggle进训练战() {
+        this.进Scene战斗单人剧情副本('scene战斗', 单人剧情副本ID.训练战)
+    }
+    onClickToggle进防守战() {
+        this.进Scene战斗单人剧情副本('scene防守战',单人剧情副本ID.防守战)
     }
     onClickLogin(event: Event, customEventData: string) {
         // 这里 event 是一个 Touch Event 对象，你可以通过 event.target 取到事件的发送节点

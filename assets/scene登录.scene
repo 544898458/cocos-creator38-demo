@@ -32,7 +32,7 @@
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 62
+      "__id__": 70
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -63,7 +63,7 @@
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 63
+      "__id__": 71
     },
     "_id": "5a529a1a-acd9-483f-8e6d-aa2f3d1b0919"
   },
@@ -304,16 +304,16 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 58
+        "__id__": 66
       },
       {
-        "__id__": 59
+        "__id__": 67
       },
       {
-        "__id__": 60
+        "__id__": 68
       },
       {
-        "__id__": 61
+        "__id__": 69
       }
     ],
     "_prefab": null,
@@ -1487,12 +1487,15 @@
       },
       {
         "__id__": 49
+      },
+      {
+        "__id__": 57
       }
     ],
     "_active": false,
     "_components": [
       {
-        "__id__": 57
+        "__id__": 65
       }
     ],
     "_prefab": null,
@@ -1527,7 +1530,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Button公共地图",
+    "_name": "Button单人剧情",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
@@ -1554,7 +1557,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -70.08499999999998,
+      "y": -21.085,
       "z": 0
     },
     "_lrot": {
@@ -1578,7 +1581,7 @@
       "y": 0,
       "z": 0
     },
-    "_id": "45rF0+QCNPUb5EmR+ZAjgK"
+    "_id": "fegz7Y6G9KvbnUMjOxUWtH"
   },
   {
     "__type__": "cc.Node",
@@ -1626,7 +1629,7 @@
       "y": 0,
       "z": 0
     },
-    "_id": "3c02A2dXhGrrQBc/aL4Mzq"
+    "_id": "20nLw+vvRH5KQpDGX1AyZ7"
   },
   {
     "__type__": "cc.UITransform",
@@ -1648,7 +1651,7 @@
       "x": 0.5,
       "y": 0.5
     },
-    "_id": "2epGBT8SNM+5UjxeC4PVpv"
+    "_id": "74YzCwG1pFd5Lq8GiYdp6l"
   },
   {
     "__type__": "cc.Label",
@@ -1670,7 +1673,7 @@
       "b": 0,
       "a": 255
     },
-    "_string": "进公共地图",
+    "_string": "训练战",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 20,
@@ -1687,7 +1690,7 @@
     "_isUnderline": false,
     "_underlineHeight": 2,
     "_cacheMode": 0,
-    "_id": "adYaiV4rBPxIs/JXl2fOir"
+    "_id": "ff2iW2q3NNUrf0CdSv8wtJ"
   },
   {
     "__type__": "cc.UITransform",
@@ -1709,7 +1712,7 @@
       "x": 0.5,
       "y": 0.5
     },
-    "_id": "6amvhDRVFDKJuSGf8vqxQC"
+    "_id": "b8L1mABWFJwoJ1egOwS4/Y"
   },
   {
     "__type__": "cc.Sprite",
@@ -1748,7 +1751,7 @@
     "_isTrimmedMode": true,
     "_useGrayscale": false,
     "_atlas": null,
-    "_id": "c4CGkDIvpNSZ57RaL5WLsv"
+    "_id": "f7hOWS6bZChaDOGdGPALVI"
   },
   {
     "__type__": "cc.Button",
@@ -1816,7 +1819,7 @@
     "_target": {
       "__id__": 41
     },
-    "_id": "5cPCjoMyxI5bHi9YrpVwwR"
+    "_id": "7eZV6VRjNAQKsvCuIMyBwF"
   },
   {
     "__type__": "cc.ClickEvent",
@@ -1825,12 +1828,12 @@
     },
     "component": "",
     "_componentId": "98cbd4d3zNLzrS8gPNAzQyB",
-    "handler": "onClickToggle进Space1",
+    "handler": "onClickToggle进单人剧情副本",
     "customEventData": ""
   },
   {
     "__type__": "cc.Node",
-    "_name": "Button单人剧情",
+    "_name": "Button防守战",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
@@ -1857,7 +1860,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -21.085,
+      "y": -66.863,
       "z": 0
     },
     "_lrot": {
@@ -1881,7 +1884,7 @@
       "y": 0,
       "z": 0
     },
-    "_id": "fegz7Y6G9KvbnUMjOxUWtH"
+    "_id": "9bDyvu4WhJ9K1OV84dqMgz"
   },
   {
     "__type__": "cc.Node",
@@ -1929,7 +1932,7 @@
       "y": 0,
       "z": 0
     },
-    "_id": "20nLw+vvRH5KQpDGX1AyZ7"
+    "_id": "34pVKLmMxK3ZY1AMu4J4Po"
   },
   {
     "__type__": "cc.UITransform",
@@ -1951,7 +1954,7 @@
       "x": 0.5,
       "y": 0.5
     },
-    "_id": "74YzCwG1pFd5Lq8GiYdp6l"
+    "_id": "007xrj5ANJBoTawbFiBdaN"
   },
   {
     "__type__": "cc.Label",
@@ -1973,7 +1976,7 @@
       "b": 0,
       "a": 255
     },
-    "_string": "进单人剧情",
+    "_string": "防守战",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 20,
@@ -1990,7 +1993,7 @@
     "_isUnderline": false,
     "_underlineHeight": 2,
     "_cacheMode": 0,
-    "_id": "ff2iW2q3NNUrf0CdSv8wtJ"
+    "_id": "a23cH3fcJAEpltXa6ksxB8"
   },
   {
     "__type__": "cc.UITransform",
@@ -2012,7 +2015,7 @@
       "x": 0.5,
       "y": 0.5
     },
-    "_id": "b8L1mABWFJwoJ1egOwS4/Y"
+    "_id": "ffBq13RPZM5aIhgHW7nXfQ"
   },
   {
     "__type__": "cc.Sprite",
@@ -2051,7 +2054,7 @@
     "_isTrimmedMode": true,
     "_useGrayscale": false,
     "_atlas": null,
-    "_id": "f7hOWS6bZChaDOGdGPALVI"
+    "_id": "91TxROZ7RBPqFyDYRvjGoD"
   },
   {
     "__type__": "cc.Button",
@@ -2119,7 +2122,7 @@
     "_target": {
       "__id__": 49
     },
-    "_id": "7eZV6VRjNAQKsvCuIMyBwF"
+    "_id": "ceZeu9LuNDt6mn6qmAYOUJ"
   },
   {
     "__type__": "cc.ClickEvent",
@@ -2128,7 +2131,310 @@
     },
     "component": "",
     "_componentId": "98cbd4d3zNLzrS8gPNAzQyB",
-    "handler": "onClickToggle进单人剧情副本",
+    "handler": "onClickToggle进单人防守战",
+    "customEventData": ""
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Button公共地图",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "_parent": {
+      "__id__": 40
+    },
+    "_children": [
+      {
+        "__id__": 58
+      }
+    ],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 61
+      },
+      {
+        "__id__": 62
+      },
+      {
+        "__id__": 63
+      }
+    ],
+    "_prefab": null,
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": -116.605,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_mobility": 0,
+    "_layer": 33554432,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": "45rF0+QCNPUb5EmR+ZAjgK"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Label",
+    "_objFlags": 512,
+    "__editorExtras__": {},
+    "_parent": {
+      "__id__": 57
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 59
+      },
+      {
+        "__id__": 60
+      }
+    ],
+    "_prefab": null,
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_mobility": 0,
+    "_layer": 33554432,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": "3c02A2dXhGrrQBc/aL4Mzq"
+  },
+  {
+    "__type__": "cc.UITransform",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 58
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 120,
+      "height": 40
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_id": "2epGBT8SNM+5UjxeC4PVpv"
+  },
+  {
+    "__type__": "cc.Label",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 58
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_customMaterial": null,
+    "_srcBlendFactor": 2,
+    "_dstBlendFactor": 4,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 255
+    },
+    "_string": "多人连接地图",
+    "_horizontalAlign": 1,
+    "_verticalAlign": 1,
+    "_actualFontSize": 20,
+    "_fontSize": 20,
+    "_fontFamily": "Arial",
+    "_lineHeight": 40,
+    "_overflow": 1,
+    "_enableWrapText": false,
+    "_font": null,
+    "_isSystemFontUsed": true,
+    "_spacingX": 0,
+    "_isItalic": false,
+    "_isBold": false,
+    "_isUnderline": false,
+    "_underlineHeight": 2,
+    "_cacheMode": 0,
+    "_id": "adYaiV4rBPxIs/JXl2fOir"
+  },
+  {
+    "__type__": "cc.UITransform",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 57
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 150,
+      "height": 40
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_id": "6amvhDRVFDKJuSGf8vqxQC"
+  },
+  {
+    "__type__": "cc.Sprite",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 57
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_customMaterial": null,
+    "_srcBlendFactor": 2,
+    "_dstBlendFactor": 4,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_spriteFrame": {
+      "__uuid__": "20835ba4-6145-4fbc-a58a-051ce700aa3e@f9941",
+      "__expectedType__": "cc.SpriteFrame"
+    },
+    "_type": 1,
+    "_fillType": 0,
+    "_sizeMode": 0,
+    "_fillCenter": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_fillStart": 0,
+    "_fillRange": 0,
+    "_isTrimmedMode": true,
+    "_useGrayscale": false,
+    "_atlas": null,
+    "_id": "c4CGkDIvpNSZ57RaL5WLsv"
+  },
+  {
+    "__type__": "cc.Button",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 57
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "clickEvents": [
+      {
+        "__id__": 64
+      }
+    ],
+    "_interactable": true,
+    "_transition": 2,
+    "_normalColor": {
+      "__type__": "cc.Color",
+      "r": 214,
+      "g": 214,
+      "b": 214,
+      "a": 255
+    },
+    "_hoverColor": {
+      "__type__": "cc.Color",
+      "r": 211,
+      "g": 211,
+      "b": 211,
+      "a": 255
+    },
+    "_pressedColor": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_disabledColor": {
+      "__type__": "cc.Color",
+      "r": 124,
+      "g": 124,
+      "b": 124,
+      "a": 255
+    },
+    "_normalSprite": {
+      "__uuid__": "20835ba4-6145-4fbc-a58a-051ce700aa3e@f9941",
+      "__expectedType__": "cc.SpriteFrame"
+    },
+    "_hoverSprite": {
+      "__uuid__": "20835ba4-6145-4fbc-a58a-051ce700aa3e@f9941",
+      "__expectedType__": "cc.SpriteFrame"
+    },
+    "_pressedSprite": {
+      "__uuid__": "544e49d6-3f05-4fa8-9a9e-091f98fc2ce8@f9941",
+      "__expectedType__": "cc.SpriteFrame"
+    },
+    "_disabledSprite": {
+      "__uuid__": "951249e0-9f16-456d-8b85-a6ca954da16b@f9941",
+      "__expectedType__": "cc.SpriteFrame"
+    },
+    "_duration": 0.1,
+    "_zoomScale": 1.2,
+    "_target": {
+      "__id__": 57
+    },
+    "_id": "5cPCjoMyxI5bHi9YrpVwwR"
+  },
+  {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 8
+    },
+    "component": "",
+    "_componentId": "98cbd4d3zNLzrS8gPNAzQyB",
+    "handler": "onClickToggle进Space1",
     "customEventData": ""
   },
   {
@@ -2244,25 +2550,25 @@
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 64
+      "__id__": 72
     },
     "shadows": {
-      "__id__": 65
+      "__id__": 73
     },
     "_skybox": {
-      "__id__": 66
+      "__id__": 74
     },
     "fog": {
-      "__id__": 67
+      "__id__": 75
     },
     "octree": {
-      "__id__": 68
+      "__id__": 76
     },
     "skin": {
-      "__id__": 69
+      "__id__": 77
     },
     "lightProbeInfo": {
-      "__id__": 70
+      "__id__": 78
     },
     "bakedWithStationaryMainLight": false,
     "bakedWithHighpLightmap": false
