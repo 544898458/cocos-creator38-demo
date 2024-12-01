@@ -411,7 +411,7 @@ export class UiLogin extends Component {
                     {
                         let id = arr[idxArr++]
                         let desc = arr[idxArr++]
-                        console.log('描述:', id, desc)
+                        // console.log('描述:', id, desc)
                         let entity = thisLocal.scene战斗.entities.get(id)
                         if (entity == undefined) {
                             // console.log(id,"还没加载好,没有播放动作",clipName)
