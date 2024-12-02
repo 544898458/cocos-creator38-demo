@@ -35,7 +35,7 @@
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 139
+      "__id__": 140
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -66,7 +66,7 @@
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 140
+      "__id__": 141
     },
     "_id": "a2a6dcbf-5442-46e3-be3b-a623e01230cf"
   },
@@ -426,7 +426,7 @@
     "_priority": 1073741824,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 508.3743842364532,
+    "_orthoHeight": 508.5362853628536,
     "_near": 1,
     "_far": 2000,
     "_color": {
@@ -4439,6 +4439,9 @@
       },
       {
         "__id__": 138
+      },
+      {
+        "__id__": 139
       }
     ],
     "_prefab": null,
@@ -4706,6 +4709,25 @@
     "_id": "81taZtrQdMTqI4gO5bNt4s"
   },
   {
+    "__type__": "cc.AudioSource",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 124
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_clip": {
+      "__uuid__": "e17bbfb3-c0c0-434e-a03a-a429f36816f8",
+      "__expectedType__": "cc.AudioClip"
+    },
+    "_loop": true,
+    "_playOnAwake": true,
+    "_volume": 1,
+    "_id": "23Ubo7m5dM0IFzf/mpx2p3"
+  },
+  {
     "__type__": "cc.PrefabInfo",
     "root": null,
     "asset": null,
@@ -4721,25 +4743,25 @@
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 141
-    },
-    "shadows": {
       "__id__": 142
     },
-    "_skybox": {
+    "shadows": {
       "__id__": 143
     },
-    "fog": {
+    "_skybox": {
       "__id__": 144
     },
-    "octree": {
+    "fog": {
       "__id__": 145
     },
-    "skin": {
+    "octree": {
       "__id__": 146
     },
-    "lightProbeInfo": {
+    "skin": {
       "__id__": 147
+    },
+    "lightProbeInfo": {
+      "__id__": 148
     },
     "bakedWithStationaryMainLight": false,
     "bakedWithHighpLightmap": false

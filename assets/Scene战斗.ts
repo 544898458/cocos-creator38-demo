@@ -47,7 +47,7 @@ export class Scene战斗 extends Component {
         this.uiLogin = director.getScene().getChildByName('常驻').getComponent(UiLogin);
         this.uiLogin.scene战斗 = this
     }
-            
+    
     start() {
         this.targetFlag = utils.find("Roles/TargetFlag", this.node.parent)
         this.lableMessage = utils.find("Canvas/Message", this.node.parent).getComponent(Label)
@@ -155,7 +155,7 @@ export class Scene战斗 extends Component {
                             [MsgId.SelectRoles, ++this.uiLogin.sendMsgSn, 0],
                             [id]//虽然是整数，但是也强制转成FLOAT64发出去了
                         ]
-
+                    
                     const encoded: Uint8Array = msgpack.encode(object)
                     if (this.uiLogin.websocket != undefined) {
                         console.log('send', encoded)

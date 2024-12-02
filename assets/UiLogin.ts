@@ -1,9 +1,9 @@
 import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip, director } from 'cc'
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { HeadScale } from './head-scale'
-import { FollowTarget } from './FollowTarget'
 import { Scene战斗, ClientEntityComponent } from './Scene战斗'
 import { Scene登录 } from './Scene登录'
+import { AudioMgr } from './AudioMgr'
 
 const { ccclass, property } = _decorator
 export enum MsgId {
@@ -35,6 +35,7 @@ export enum MsgId {
     显示界面,
     离开Space,
     Entity描述,
+    播放声音,
 }
 
 enum 单人剧情副本ID
@@ -175,7 +176,8 @@ export class UiLogin extends Component {
         const editBox = editNode.getComponent(EditBox)
         console.log(editBox.string)
 
-        this.websocket = new WebSocket("ws://192.168.31.196:12348/")
+        // this.websocket = new WebSocket("ws://192.168.31.196:12348/")
+        this.websocket = new WebSocket("ws://192.168.43.109:12348/")
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
 
         this.websocket.binaryType = 'arraybuffer'
@@ -407,7 +409,7 @@ export class UiLogin extends Component {
                         thisLocal.回到登录场景()
                     }
                     break
-                    case MsgId.Entity描述:
+                case MsgId.Entity描述:
                     {
                         let id = arr[idxArr++]
                         let desc = arr[idxArr++]
@@ -422,6 +424,12 @@ export class UiLogin extends Component {
                             entity.label描述.string = desc
                         }
                         
+                    }
+                    break
+                case MsgId.播放声音:
+                    {
+                        let str声音 = arr[idxArr++]
+                        AudioMgr.inst.play(str声音)
                     }
                     break
                 default:
