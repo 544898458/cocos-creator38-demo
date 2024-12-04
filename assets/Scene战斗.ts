@@ -3,6 +3,7 @@ import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { HeadScale } from './head-scale'
 import { FollowTarget } from './FollowTarget'
 import { UiLogin, MsgId } from './UiLogin'
+import { Vec2 } from 'cc'
 
 const { ccclass, property } = _decorator
 export class ClientEntityComponent {
@@ -41,6 +42,9 @@ export class Scene战斗 extends Component {
     roles: Node
     uiLogin: UiLogin
     mainCameraFollowTarget:FollowTarget
+    posWorldMouseDown: Vec3
+    prefabName选中特效 = 'colorBar'
+    
     protected onLoad(): void{
         console.log('Scene战斗.onLoad')
         //获取常驻节点
@@ -63,13 +67,37 @@ export class Scene战斗 extends Component {
         this.mainCameraFollowTarget = nodeMainCamera.getComponent(FollowTarget);
         this.roles = this.node.parent.getChildByName("Roles")
         let targetFlag = this.targetFlag
+        this.node.on(NodeEventType.MOUSE_WHEEL, (event: EventMouse) => {
+            var y = event.getScrollY()
+            y /= 300
+            // vec2Delta = vec2Delta.divide2f(10,10)
+            // this.mainCamera.node.position = this.mainCamera.node.position.add3f(0, y, 0)
+            this.mainCamera.fov = Math.max( this.mainCamera.fov - y , 5 )
+            console.log('fov', this.mainCamera.fov);
+        })
+        this.node.on(NodeEventType.MOUSE_UP, (event: EventMouse) => {
+            this.posWorldMouseDown = undefined
+        })
+        this.node.on(NodeEventType.MOUSE_MOVE, (event: EventMouse) => {
+            // console.log('鼠标移动了', event.getButton());
+            // if(event.getButton() != EventMouse.BUTTON_MIDDLE)
+            //     return
+            
+            if(this.posWorldMouseDown)
+            {
+                var vec2Delta = event.getDelta()
+                var div = this.mainCamera.fov/400;
+                vec2Delta = vec2Delta.multiply2f(div,div)
+                this.mainCamera.node.position = this.mainCamera.node.position.add3f(-vec2Delta.x, 0, vec2Delta.y)
+            }
+        })
         this.node.on(NodeEventType.MOUSE_DOWN, (event: EventMouse) => {
             console.log('MOUSE_DOWN', event)
-            var uiPos = event.getLocation()
+            let posMouseDown = event.getLocation()
             let button = event.getButton()
             var ray = new geometry.Ray()
             // const camera = cc.find("Camera",this.node).getComponent(Camera)
-            this.mainCamera.screenPointToRay(uiPos.x, uiPos.y, ray)
+            this.mainCamera.screenPointToRay(posMouseDown.x, posMouseDown.y, ray)
             if (!PhysicsSystem.instance.raycastClosest(ray)) {
                 console.log('raycast does not hit the target node !')
                 return false
@@ -78,10 +106,11 @@ export class Scene战斗 extends Component {
             const raycastResults = PhysicsSystem.instance.raycastClosestResult
 
             const item = raycastResults//[i]
+            this.posWorldMouseDown = undefined
             console.log('射线碰撞', item.collider.node.name, item.hitPoint)
             if (item.collider.node.name == "Plane") {
                 targetFlag.position = item.hitPoint
-
+                this.posWorldMouseDown = item.hitPoint
                 let object
                 if(EventMouse.BUTTON_RIGHT == button)
                 {
@@ -150,27 +179,20 @@ export class Scene战斗 extends Component {
                         console.log('还没加载')
                         return
                     }
-                    const object =
-                        [
-                            [MsgId.SelectRoles, ++this.uiLogin.sendMsgSn, 0],
-                            [id]//虽然是整数，但是也强制转成FLOAT64发出去了
-                        ]
                     
-                    const encoded: Uint8Array = msgpack.encode(object)
-                    if (this.uiLogin.websocket != undefined) {
-                        console.log('send', encoded)
-                        this.uiLogin.websocket.send(encoded)
-                    }
-                    const prefabName = 'colorBar'
+                    this.clear选中()
+                    this.uiLogin.send选中([id])
+                    
+                    
                     this.entities.forEach((clientEntityComponent, k, map) => {
-                        let nodEffect = clientEntityComponent.view.getChildByName(prefabName)
+                        let nodEffect = clientEntityComponent.view.getChildByName(this.prefabName选中特效)
                         console.log('准备删除', nodEffect)
                         clientEntityComponent.view.removeChild(nodEffect)
                     })
-                    resources.load(prefabName, Prefab, (err, prefab) => {
+                    resources.load(this.prefabName选中特效, Prefab, (err, prefab) => {
                         console.log('resources.load callback:', err, prefab)
                         const newNode = instantiate(prefab)
-                        newNode.name = prefabName
+                        newNode.name = this.prefabName选中特效
                         this.entities.get(id).view.addChild(newNode)
                     })
                 }
@@ -212,6 +234,25 @@ export class Scene战斗 extends Component {
     onClick退出此场景(event: Event, customEventData: string) {
         //this.uiLogin.回到登录场景()
         this.uiLogin.send离开Space()
+    }
+    onClick取消选中(event: Event, customEventData: string) {
+        //this.uiLogin.回到登录场景()
+        this.clear选中()
+        this.uiLogin.send选中([])
+    }
+
+    clear选中()
+    {
+        for(let id of this.uiLogin.arr选中)
+        {
+            let entity = this.entities.get(id)
+            if(entity)
+            {
+                let node选中特效 = entity.view.getChildByName(this.prefabName选中特效)
+                if(node选中特效)
+                    node选中特效.removeFromParent()
+            }
+        }
     }
 }
 

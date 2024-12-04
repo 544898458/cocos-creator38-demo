@@ -80,6 +80,7 @@ export class UiLogin extends Component {
     sendMsgSn: number = 0
     scene战斗: Scene战斗 = null
     scene登录: Scene登录 = null
+    arr选中: number[] = []
     fun创建消息:(Vec3)=>object = this.createMsgMove强行走//点击地面操作 = 点击地面操作类型.移动单位
     createMsgMove强行走(hitPoint:Vec3){
         return this.createMsgMove(hitPoint,false)
@@ -176,8 +177,8 @@ export class UiLogin extends Component {
         const editBox = editNode.getComponent(EditBox)
         console.log(editBox.string)
 
-        // this.websocket = new WebSocket("ws://192.168.31.196:12348/")
-        this.websocket = new WebSocket("ws://192.168.43.109:12348/")
+        this.websocket = new WebSocket("ws://192.168.31.194:12348/")
+        // this.websocket = new WebSocket("ws://192.168.43.109:12348/")
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
 
         this.websocket.binaryType = 'arraybuffer'
@@ -429,7 +430,9 @@ export class UiLogin extends Component {
                 case MsgId.播放声音:
                     {
                         let str声音 = arr[idxArr++]
-                        AudioMgr.inst.play(str声音)
+                        let str文本 = arr[idxArr++]
+                        AudioMgr.inst.playOneShot(str声音)
+                        thisLocal.scene战斗.lableMessage.string = str文本
                     }
                     break
                 default:
@@ -489,6 +492,21 @@ export class UiLogin extends Component {
             console.log('send', encoded)
             this.websocket.send(encoded)
         }        
+    }
+    send选中(arr选中:number[]){
+        const object =
+        [
+            [MsgId.SelectRoles, ++this.sendMsgSn, 0],
+            arr选中//虽然是整数，但是也强制转成FLOAT64发出去了
+        ]
+    
+        const encoded: Uint8Array = msgpack.encode(object)
+        if (this.websocket != undefined) {
+            console.log('send', encoded)
+            this.websocket.send(encoded)
+        }
+
+        this.arr选中 = arr选中     
     }
 }
 

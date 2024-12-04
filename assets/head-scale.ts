@@ -16,7 +16,7 @@ export class HeadScale extends Component {
     update(){
         const wpos = this.target.worldPosition;
         // @ts-ignore
-        if (!this.camera!._camera || this._lastWPos.equals(wpos)) {
+        if (!this.camera!._camera ){//|| this._lastWPos.equals(wpos)) {
             // console.log(wpos);
             return;
         }
