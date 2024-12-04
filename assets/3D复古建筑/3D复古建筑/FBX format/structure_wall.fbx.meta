@@ -1,0 +1,218 @@
+{
+  "ver": "2.3.8",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "e8a330fa-99ae-4b34-adea-7a7cd76a8155",
+  "files": [],
+  "subMetas": {
+    "3d28c": {
+      "importer": "gltf-mesh",
+      "uuid": "e8a330fa-99ae-4b34-adea-7a7cd76a8155@3d28c",
+      "displayName": "",
+      "id": "3d28c",
+      "name": "structure_wall_Material0.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 84
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "40d02": {
+      "importer": "texture",
+      "uuid": "e8a330fa-99ae-4b34-adea-7a7cd76a8155@40d02",
+      "displayName": "",
+      "id": "40d02",
+      "name": "planks.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/3D复古建筑/3D复古建筑/FBX format/Textures/planks.png"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "0b01f": {
+      "importer": "texture",
+      "uuid": "e8a330fa-99ae-4b34-adea-7a7cd76a8155@0b01f",
+      "displayName": "",
+      "id": "0b01f",
+      "name": "stones.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/3D复古建筑/3D复古建筑/FBX format/Textures/stones.png"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "18d18": {
+      "importer": "texture",
+      "uuid": "e8a330fa-99ae-4b34-adea-7a7cd76a8155@18d18",
+      "displayName": "",
+      "id": "18d18",
+      "name": "bricks.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/3D复古建筑/3D复古建筑/FBX format/Textures/bricks.png"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "ff906": {
+      "importer": "gltf-material",
+      "uuid": "e8a330fa-99ae-4b34-adea-7a7cd76a8155@ff906",
+      "displayName": "",
+      "id": "ff906",
+      "name": "planks.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "a22da": {
+      "importer": "gltf-material",
+      "uuid": "e8a330fa-99ae-4b34-adea-7a7cd76a8155@a22da",
+      "displayName": "",
+      "id": "a22da",
+      "name": "stones.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "5674b": {
+      "importer": "gltf-material",
+      "uuid": "e8a330fa-99ae-4b34-adea-7a7cd76a8155@5674b",
+      "displayName": "",
+      "id": "5674b",
+      "name": "bricks.material",
+      "userData": {
+        "gltfIndex": 2
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "54e30": {
+      "importer": "gltf-scene",
+      "uuid": "e8a330fa-99ae-4b34-adea-7a7cd76a8155@54e30",
+      "displayName": "",
+      "id": "54e30",
+      "name": "structure_wall.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "planks",
+        "uri": "db://assets/3D复古建筑/3D复古建筑/FBX format/Textures/planks.png"
+      },
+      {
+        "name": "stones",
+        "uri": "db://assets/3D复古建筑/3D复古建筑/FBX format/Textures/stones.png"
+      },
+      {
+        "name": "bricks",
+        "uri": "db://assets/3D复古建筑/3D复古建筑/FBX format/Textures/bricks.png"
+      }
+    ],
+    "fbx": {
+      "smartMaterialEnabled": true,
+      "matchMeshNames": false
+    },
+    "redirect": "e8a330fa-99ae-4b34-adea-7a7cd76a8155@54e30",
+    "assetFinder": {
+      "meshes": [
+        "e8a330fa-99ae-4b34-adea-7a7cd76a8155@3d28c"
+      ],
+      "skeletons": [],
+      "textures": [
+        "e8a330fa-99ae-4b34-adea-7a7cd76a8155@40d02",
+        "e8a330fa-99ae-4b34-adea-7a7cd76a8155@0b01f",
+        "e8a330fa-99ae-4b34-adea-7a7cd76a8155@18d18"
+      ],
+      "materials": [
+        "e8a330fa-99ae-4b34-adea-7a7cd76a8155@ff906",
+        "e8a330fa-99ae-4b34-adea-7a7cd76a8155@a22da",
+        "e8a330fa-99ae-4b34-adea-7a7cd76a8155@5674b"
+      ],
+      "scenes": [
+        "e8a330fa-99ae-4b34-adea-7a7cd76a8155@54e30"
+      ]
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    }
+  }
+}

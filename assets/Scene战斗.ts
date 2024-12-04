@@ -108,9 +108,13 @@ export class Scene战斗 extends Component {
             const item = raycastResults//[i]
             this.posWorldMouseDown = undefined
             console.log('射线碰撞', item.collider.node.name, item.hitPoint)
-            if (item.collider.node.name == "Plane") {
-                targetFlag.position = item.hitPoint
+            if (item.collider.node.name == "Plane") 
+            {
                 this.posWorldMouseDown = item.hitPoint
+                if(0 == this.uiLogin.arr选中.length)
+                    return
+
+                targetFlag.position = item.hitPoint
                 let object
                 if(EventMouse.BUTTON_RIGHT == button)
                 {
