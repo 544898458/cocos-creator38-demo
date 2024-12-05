@@ -1,4 +1,4 @@
-import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip, director } from 'cc'
+import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip, director, Animation } from 'cc'
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { HeadScale } from './head-scale'
 import { FollowTarget } from './FollowTarget'
@@ -43,7 +43,7 @@ export class Scene战斗 extends Component {
     uiLogin: UiLogin
     mainCameraFollowTarget:FollowTarget
     posWorldMouseDown: Vec3
-    prefabName选中特效 = 'colorBar'
+    prefabName选中特效 = 'Select'//这里不能用中文，原因不明
     
     protected onLoad(): void{
         console.log('Scene战斗.onLoad')
@@ -198,6 +198,9 @@ export class Scene战斗 extends Component {
                         const newNode = instantiate(prefab)
                         newNode.name = this.prefabName选中特效
                         this.entities.get(id).view.addChild(newNode)
+                        let ani = newNode.getChildByName('lightQ').getComponent(Animation)
+                        const [ clip ] = ani.clips;
+                        ani.getState(clip.name).repeatCount = Infinity
                     })
                 }
             }
