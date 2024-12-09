@@ -115,6 +115,9 @@ export class Scene战斗 extends Component {
                     return
 
                 targetFlag.position = item.hitPoint
+                let ani = targetFlag.getChildByName('lightQ').getComponent(Animation)
+                ani.play('lightQ')
+
                 let object
                 if(EventMouse.BUTTON_RIGHT == button)
                 {
