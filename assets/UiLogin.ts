@@ -177,9 +177,10 @@ export class UiLogin extends Component {
         const editBox = editNode.getComponent(EditBox)
         console.log(editBox.string)
 
-        this.websocket = new WebSocket("ws://192.168.31.194:12348/")
+        // this.websocket = new WebSocket("ws://192.168.31.194:12348/")
         // this.websocket = new WebSocket("ws://192.168.43.109:12348/")
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
+        this.websocket = new WebSocket("ws://192.168.0.100:12348/")
 
         this.websocket.binaryType = 'arraybuffer'
         console.log(this.websocket)
@@ -369,7 +370,11 @@ export class UiLogin extends Component {
                     {
                         let id = arr[idxArr++]
                         console.log('删除:', id)
-                        thisLocal.scene战斗.entities.get(id).removeFromParent()
+                        let entity = thisLocal.scene战斗.entities.get(id)
+                        if(entity == undefined)
+                            return
+                        
+                        entity.removeFromParent()
                         thisLocal.scene战斗.entities.delete(id)
                         thisLocal.scene战斗.lableCount.string = '共' + thisLocal.scene战斗.entities.size + '单位'
                     }

@@ -4,6 +4,7 @@ import { HeadScale } from './head-scale'
 import { FollowTarget } from './FollowTarget'
 import { UiLogin, MsgId } from './UiLogin'
 import { Vec2 } from 'cc'
+import { EventTouch } from 'cc'
 
 const { ccclass, property } = _decorator
 export class ClientEntityComponent {
@@ -66,7 +67,6 @@ export class Scene战斗 extends Component {
         this.mainCamera = nodeMainCamera.getComponent(Camera);
         this.mainCameraFollowTarget = nodeMainCamera.getComponent(FollowTarget);
         this.roles = this.node.parent.getChildByName("Roles")
-        let targetFlag = this.targetFlag
         this.node.on(NodeEventType.MOUSE_WHEEL, (event: EventMouse) => {
             var y = event.getScrollY()
             y /= 300
@@ -75,143 +75,174 @@ export class Scene战斗 extends Component {
             this.mainCamera.fov = Math.max( this.mainCamera.fov - y , 5 )
             console.log('fov', this.mainCamera.fov);
         })
-        this.node.on(NodeEventType.MOUSE_UP, (event: EventMouse) => {
-            this.posWorldMouseDown = undefined
+        // this.node.on(NodeEventType.MOUSE_UP, this.onMouseUp)
+        this.node.on(NodeEventType.TOUCH_END, (event:TouchEvent)=>{
+            console.log('TOUCH_END', event)
+            if(this.posWorldMouseDown==undefined)
+                return
+
+            this.onMouseUp()
         })
-        this.node.on(NodeEventType.MOUSE_MOVE, (event: EventMouse) => {
-            // console.log('鼠标移动了', event.getButton());
-            // if(event.getButton() != EventMouse.BUTTON_MIDDLE)
-            //     return
-            
-            if(this.posWorldMouseDown)
-            {
-                var vec2Delta = event.getDelta()
-                var div = this.mainCamera.fov/400;
-                vec2Delta = vec2Delta.multiply2f(div,div)
-                this.mainCamera.node.position = this.mainCamera.node.position.add3f(-vec2Delta.x, 0, vec2Delta.y)
-            }
+
+        this.node.on(NodeEventType.MOUSE_MOVE, (event :EventMouse)=>{
+            this.onMove(event.getDelta())
         })
-        this.node.on(NodeEventType.MOUSE_DOWN, (event: EventMouse) => {
-            console.log('MOUSE_DOWN', event)
-            let posMouseDown = event.getLocation()
+        this.node.on(NodeEventType.TOUCH_MOVE, (event :EventTouch)=>{
+            if(this.posWorldMouseDown == undefined)
+                return
+
+            this.onMove(event.getDelta())
+        })
+        
+        this.node.on(NodeEventType.MOUSE_DOWN, (event: EventMouse)=>{
             let button = event.getButton()
-            var ray = new geometry.Ray()
-            // const camera = cc.find("Camera",this.node).getComponent(Camera)
-            this.mainCamera.screenPointToRay(posMouseDown.x, posMouseDown.y, ray)
-            if (!PhysicsSystem.instance.raycastClosest(ray)) {
-                console.log('raycast does not hit the target node !')
-                return false
+            let posMouseDown = event.getLocation()
+            if(button == EventMouse.BUTTON_RIGHT )
+            {   
+                this.onMouseDown(posMouseDown, true)
+                return true
+            }
+            return false
+        })
+        this.node.on(NodeEventType.TOUCH_START, (event: EventTouch)=>{
+            
+            this.onMouseDown(event.getLocation(), false)
+        })
+    }
+    onMouseUp(){
+        this.posWorldMouseDown = undefined
+    }
+    onMove(vec2Delta:Vec2){
+        // console.log('鼠标移动了', event.getButton());
+        // if(event.getButton() != EventMouse.BUTTON_MIDDLE)
+        //     return
+
+
+        if(this.posWorldMouseDown)
+        {
+            // var vec2Delta = event.getDelta()
+            var div = this.mainCamera.fov/400;
+            vec2Delta = vec2Delta.multiply2f(div,div)
+            this.mainCamera.node.position = this.mainCamera.node.position.add3f(-vec2Delta.x, 0, vec2Delta.y)
+        }
+    }
+    onMouseDown(posMouseDown:Vec2, b鼠标右键:boolean){
+        console.log('MOUSE_DOWN', posMouseDown)
+        
+        
+        var ray = new geometry.Ray()
+        // const camera = cc.find("Camera",this.node).getComponent(Camera)
+        this.mainCamera.screenPointToRay(posMouseDown.x, posMouseDown.y, ray)
+        if (!PhysicsSystem.instance.raycastClosest(ray)) {
+            console.log('raycast does not hit the target node !')
+            return false
+        }
+
+        const raycastResults = PhysicsSystem.instance.raycastClosestResult
+
+        const item = raycastResults//[i]
+        this.posWorldMouseDown = undefined
+        console.log('射线碰撞', item.collider.node.name, item.hitPoint)
+        if (item.collider.node.name == "Plane") 
+        {
+            this.posWorldMouseDown = item.hitPoint
+            if(0 == this.uiLogin.arr选中.length)
+                return
+
+            this.targetFlag.position = item.hitPoint
+            let ani = this.targetFlag.getChildByName('lightQ').getComponent(Animation)
+            ani.play('lightQ')
+
+            let object
+            if(b鼠标右键)
+            {
+                object = this.uiLogin.createMsgMove强行走(item.hitPoint)
+            }else{
+                object = this.uiLogin.fun创建消息(item.hitPoint)
             }
 
-            const raycastResults = PhysicsSystem.instance.raycastClosestResult
-
-            const item = raycastResults//[i]
-            this.posWorldMouseDown = undefined
-            console.log('射线碰撞', item.collider.node.name, item.hitPoint)
-            if (item.collider.node.name == "Plane") 
+            const encoded: Uint8Array = msgpack.encode(object)
+            if (this.uiLogin.websocket != undefined) {
+                console.log('send', encoded)
+                this.uiLogin.websocket.send(encoded)
+            }
+            
+            this.uiLogin.fun创建消息 = this.uiLogin.createMsgMove遇敌自动攻击
+        }
+        else
+        {
+            this.uiLogin.fun创建消息 = this.uiLogin.createMsgMove遇敌自动攻击
+        
+            if (item.collider.node.name == "tree_large" || item.collider.node.name == "house_type03" )//点击晶体矿或者燃气矿
             {
-                this.posWorldMouseDown = item.hitPoint
-                if(0 == this.uiLogin.arr选中.length)
-                    return
-
-                targetFlag.position = item.hitPoint
-                let ani = targetFlag.getChildByName('lightQ').getComponent(Animation)
-                ani.play('lightQ')
-
-                let object
-                if(EventMouse.BUTTON_RIGHT == button)
-                {
-                    object = this.uiLogin.createMsgMove强行走(item.hitPoint)
-                }else{
-                    object = this.uiLogin.fun创建消息(item.hitPoint)
-                }
+                this.mainCameraFollowTarget.target = item.collider.node
+                let id = this.entityId[item.collider.node.uuid]
+                
+                const object =
+                    [
+                        [MsgId.采集, ++this.uiLogin.sendMsgSn, 0],
+                        id
+                    ]
 
                 const encoded: Uint8Array = msgpack.encode(object)
                 if (this.uiLogin.websocket != undefined) {
                     console.log('send', encoded)
                     this.uiLogin.websocket.send(encoded)
                 }
-                
-                this.uiLogin.fun创建消息 = this.uiLogin.createMsgMove遇敌自动攻击
             }
-            else
+            else if (item.collider.node.name == "house_type17" )//点击地堡
             {
-                this.uiLogin.fun创建消息 = this.uiLogin.createMsgMove遇敌自动攻击
-            
-                if (item.collider.node.name == "tree_large" || item.collider.node.name == "house_type03" )//点击晶体矿或者燃气矿
-                {
-                    this.mainCameraFollowTarget.target = item.collider.node
-                    let id = this.entityId[item.collider.node.uuid]
-                    
-                    const object =
-                        [
-                            [MsgId.采集, ++this.uiLogin.sendMsgSn, 0],
-                            id
-                        ]
+                this.mainCameraFollowTarget.target = item.collider.node
+                let id = this.entityId[item.collider.node.uuid]
+                
+                const object = b鼠标右键 ?
+                    [
+                        [MsgId.出地堡, ++this.uiLogin.sendMsgSn, 0],
+                        id
+                    ]
+                    :
+                    [
+                        [MsgId.进地堡, ++this.uiLogin.sendMsgSn, 0],
+                        id,
+                        [0.0]
+                    ]
 
-                    const encoded: Uint8Array = msgpack.encode(object)
-                    if (this.uiLogin.websocket != undefined) {
-                        console.log('send', encoded)
-                        this.uiLogin.websocket.send(encoded)
-                    }
-                }
-                else if (item.collider.node.name == "house_type17" )//点击地堡
-                {
-                    this.mainCameraFollowTarget.target = item.collider.node
-                    let id = this.entityId[item.collider.node.uuid]
-                    
-                    const object = event.getButton() == EventMouse.BUTTON_LEFT ?
-                        [
-                            [MsgId.进地堡, ++this.uiLogin.sendMsgSn, 0],
-                            id
-                        ]
-                        :
-                        [
-                            [MsgId.出地堡, ++this.uiLogin.sendMsgSn, 0],
-                            id,
-                            [0.0]
-                        ]
-
-                    const encoded: Uint8Array = msgpack.encode(object)
-                    if (this.uiLogin.websocket != undefined) {
-                        console.log('send', encoded)
-                        this.uiLogin.websocket.send(encoded)
-                    }
-                }
-                else// if (item.collider.node.name == "altman-blue")//|| item.collider.node.name == "altman-red") 
-                {
-                    this.mainCameraFollowTarget.target = item.collider.node
-                    let id = this.entityId[item.collider.node.uuid]
-                    if (id == undefined) {
-                        console.log('还没加载')
-                        return
-                    }
-                    
-                    this.clear选中()
-                    this.uiLogin.send选中([id])
-                    
-                    
-                    this.entities.forEach((clientEntityComponent, k, map) => {
-                        let nodEffect = clientEntityComponent.view.getChildByName(this.prefabName选中特效)
-                        console.log('准备删除', nodEffect)
-                        clientEntityComponent.view.removeChild(nodEffect)
-                    })
-                    resources.load(this.prefabName选中特效, Prefab, (err, prefab) => {
-                        console.log('resources.load callback:', err, prefab)
-                        const newNode = instantiate(prefab)
-                        newNode.name = this.prefabName选中特效
-                        this.entities.get(id).view.addChild(newNode)
-                        let ani = newNode.getChildByName('lightQ').getComponent(Animation)
-                        const [ clip ] = ani.clips;
-                        ani.getState(clip.name).repeatCount = Infinity
-                    })
+                const encoded: Uint8Array = msgpack.encode(object)
+                if (this.uiLogin.websocket != undefined) {
+                    console.log('send', encoded)
+                    this.uiLogin.websocket.send(encoded)
                 }
             }
-
-            return false
-        }, this)
+            else// if (item.collider.node.name == "altman-blue")//|| item.collider.node.name == "altman-red") 
+            {
+                this.mainCameraFollowTarget.target = item.collider.node
+                let id = this.entityId[item.collider.node.uuid]
+                if (id == undefined) {
+                    console.log('还没加载')
+                    return
+                }
+                
+                this.clear选中()
+                this.uiLogin.send选中([id])
+                
+                
+                this.entities.forEach((clientEntityComponent, k, map) => {
+                    let nodEffect = clientEntityComponent.view.getChildByName(this.prefabName选中特效)
+                    console.log('准备删除', nodEffect)
+                    clientEntityComponent.view.removeChild(nodEffect)
+                })
+                resources.load(this.prefabName选中特效, Prefab, (err, prefab) => {
+                    console.log('resources.load callback:', err, prefab)
+                    const newNode = instantiate(prefab)
+                    newNode.name = this.prefabName选中特效
+                    this.entities.get(id).view.addChild(newNode)
+                    let ani = newNode.getChildByName('lightQ').getComponent(Animation)
+                    const [ clip ] = ani.clips;
+                    ani.getState(clip.name).repeatCount = Infinity
+                })
+            }
+        }
     }
-
     update(deltaTime: number) {
 
     }

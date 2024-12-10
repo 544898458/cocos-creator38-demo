@@ -30,7 +30,7 @@ export class Scene登录 extends Component {
 
     }
     onClickToggle进Space1(event: Event, customEventData: string) {
-        this.uiLogin.进Scene战斗('scene战斗', msgpack.encode([[MsgId.进Space, 0, 0]]))
+        this.uiLogin.进Scene战斗('scene战斗', msgpack.encode([[MsgId.进Space, 0, 0], 1]))
     }
     onClickToggle进单人剧情副本(event: Event, customEventData: string) {
         this.uiLogin.onClickToggle进训练战()
