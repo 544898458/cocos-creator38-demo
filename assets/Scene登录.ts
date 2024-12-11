@@ -12,12 +12,13 @@ export class Scene登录 extends Component {
     nodeLoginPanel: Node
     nodeSelectSpace: Node
     uiLogin: UiLogin
+    lableMessage: Label
     onLoad() 
     {
         console.log('onLoad')
         this.nodeSelectSpace = utils.find("Canvas/选择玩法", this.node.parent);
         this.nodeLoginPanel = utils.find("Canvas/LoginPanel", this.node.parent);
-
+        this.lableMessage = utils.find("Canvas/Message", this.node.parent).getComponent(Label)
         //获取常驻节点
         this.uiLogin = director.getScene().getChildByName('常驻').getComponent(UiLogin);
         this.uiLogin.scene登录 = this

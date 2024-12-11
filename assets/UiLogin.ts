@@ -147,13 +147,18 @@ export class UiLogin extends Component {
         this.on点击按钮_造建筑(建筑单位类型.民房)
     }
     进Scene战斗(sceneName:string, encoded: Uint8Array){
-        this.scene登录.uiLogin = null
-        this.scene登录 = null
-        director.loadScene(sceneName, (err,scene)=>
-        {
-            // this.nodeSelectSpace.active = false
-            
-            this.websocket.send(encoded)
+        this.scene登录.nodeSelectSpace.active = false
+        director.preloadScene(sceneName, (completedCount: number, totalCount: number, item: any)=>{
+            this.scene登录.lableMessage.string = completedCount + '/' + totalCount
+        },()=>{
+            this.scene登录.uiLogin = null
+            this.scene登录 = null
+            director.loadScene(sceneName, (err,scene)=>
+            {
+                // this.nodeSelectSpace.active = false
+                
+                this.websocket.send(encoded)
+            })
         })
     }
     进Scene战斗单人剧情副本(sceneName:string,id:单人剧情副本ID){
@@ -166,8 +171,6 @@ export class UiLogin extends Component {
         this.进Scene战斗单人剧情副本('scene防守战',单人剧情副本ID.防守战)
     }
     onClickLogin(event: Event, customEventData: string) {
-        // 这里 event 是一个 Touch Event 对象，你可以通过 event.target 取到事件的发送节点
-        this.scene登录.nodeLoginPanel.active = false//隐藏
         const node = event.target as Node
         const button = node.getComponent(Button)
         const editNode = utils.find("Name", this.scene登录.nodeLoginPanel) as Node
@@ -176,7 +179,14 @@ export class UiLogin extends Component {
 
         const editBox = editNode.getComponent(EditBox)
         console.log(editBox.string)
+        if(editBox.string.length == 0)
+        {
+            this.scene登录.lableMessage.string = '请输入账号名字（随便什么都可以）'
+            return
+        }
 
+        this.scene登录.nodeLoginPanel.active = false//隐藏
+                
         // this.websocket = new WebSocket("ws://192.168.31.194:12348/")
         // this.websocket = new WebSocket("ws://192.168.43.109:12348/")
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
@@ -185,18 +195,17 @@ export class UiLogin extends Component {
 
         this.websocket.binaryType = 'arraybuffer'
         console.log(this.websocket)
-        var gameclient = this
-
+        
         //连接发生错误的回调方法
-        this.websocket.onerror = function () {
-            console.log("WebSocket连接发生错误")
+        this.websocket.onerror = () => {
+            this.scene登录.lableMessage.string = "连接错误"
         }
 
         //连接成功建立的回调方法
         this.websocket.onopen = (event: Event) => {
-            console.log("WebSocket连接成功")
+            this.scene登录.lableMessage.string = "连接成功"
             const object = [
-                [MsgId.Login, ++gameclient.sendMsgSn, 0, 0],
+                [MsgId.Login, ++this.sendMsgSn, 0, 0],
                 editBox.string,
                 'Hello, world!pwd',
             ]
