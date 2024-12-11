@@ -1,0 +1,128 @@
+{
+  "ver": "2.3.8",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "b042fdb4-81e2-450e-ab9d-0b242871e302",
+  "files": [],
+  "subMetas": {
+    "841c1": {
+      "importer": "gltf-mesh",
+      "uuid": "b042fdb4-81e2-450e-ab9d-0b242871e302@841c1",
+      "displayName": "",
+      "id": "841c1",
+      "name": "fence.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 8
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "ff17f": {
+      "importer": "texture",
+      "uuid": "b042fdb4-81e2-450e-ab9d-0b242871e302@ff17f",
+      "displayName": "",
+      "id": "ff17f",
+      "name": "fence.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/mapres/3D复古建筑/3D复古建筑/FBX format/Textures/fence.png"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "a953b": {
+      "importer": "gltf-material",
+      "uuid": "b042fdb4-81e2-450e-ab9d-0b242871e302@a953b",
+      "displayName": "",
+      "id": "a953b",
+      "name": "fence.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "4379c": {
+      "importer": "gltf-scene",
+      "uuid": "b042fdb4-81e2-450e-ab9d-0b242871e302@4379c",
+      "displayName": "",
+      "id": "4379c",
+      "name": "fence.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "fence",
+        "uri": "db://assets/mapres/3D复古建筑/3D复古建筑/FBX format/Textures/fence.png"
+      }
+    ],
+    "fbx": {
+      "smartMaterialEnabled": true,
+      "matchMeshNames": false
+    },
+    "redirect": "b042fdb4-81e2-450e-ab9d-0b242871e302@4379c",
+    "assetFinder": {
+      "meshes": [
+        "b042fdb4-81e2-450e-ab9d-0b242871e302@841c1"
+      ],
+      "skeletons": [],
+      "textures": [
+        "b042fdb4-81e2-450e-ab9d-0b242871e302@ff17f"
+      ],
+      "materials": [
+        "b042fdb4-81e2-450e-ab9d-0b242871e302@a953b"
+      ],
+      "scenes": [
+        "b042fdb4-81e2-450e-ab9d-0b242871e302@4379c"
+      ]
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    }
+  }
+}

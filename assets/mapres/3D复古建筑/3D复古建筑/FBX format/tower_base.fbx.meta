@@ -1,0 +1,173 @@
+{
+  "ver": "2.3.8",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "e5cb81e4-1dd0-44c8-8124-40baaaccd8cc",
+  "files": [],
+  "subMetas": {
+    "97008": {
+      "importer": "gltf-scene",
+      "uuid": "e5cb81e4-1dd0-44c8-8124-40baaaccd8cc@97008",
+      "displayName": "",
+      "id": "97008",
+      "name": "tower_base.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "0630b": {
+      "importer": "gltf-mesh",
+      "uuid": "e5cb81e4-1dd0-44c8-8124-40baaaccd8cc@0630b",
+      "displayName": "",
+      "id": "0630b",
+      "name": "tower_base_Material0.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 60
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "18d18": {
+      "importer": "texture",
+      "uuid": "e5cb81e4-1dd0-44c8-8124-40baaaccd8cc@18d18",
+      "displayName": "",
+      "id": "18d18",
+      "name": "bricks.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/mapres/3D复古建筑/3D复古建筑/FBX format/Textures/bricks.png"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "0b01f": {
+      "importer": "texture",
+      "uuid": "e5cb81e4-1dd0-44c8-8124-40baaaccd8cc@0b01f",
+      "displayName": "",
+      "id": "0b01f",
+      "name": "stones.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/mapres/3D复古建筑/3D复古建筑/FBX format/Textures/stones.png"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "5674b": {
+      "importer": "gltf-material",
+      "uuid": "e5cb81e4-1dd0-44c8-8124-40baaaccd8cc@5674b",
+      "displayName": "",
+      "id": "5674b",
+      "name": "bricks.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "a22da": {
+      "importer": "gltf-material",
+      "uuid": "e5cb81e4-1dd0-44c8-8124-40baaaccd8cc@a22da",
+      "displayName": "",
+      "id": "a22da",
+      "name": "stones.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "bricks",
+        "uri": "db://assets/mapres/3D复古建筑/3D复古建筑/FBX format/Textures/bricks.png"
+      },
+      {
+        "name": "stones",
+        "uri": "db://assets/mapres/3D复古建筑/3D复古建筑/FBX format/Textures/stones.png"
+      }
+    ],
+    "fbx": {
+      "smartMaterialEnabled": true,
+      "matchMeshNames": false
+    },
+    "redirect": "e5cb81e4-1dd0-44c8-8124-40baaaccd8cc@97008",
+    "assetFinder": {
+      "meshes": [
+        "e5cb81e4-1dd0-44c8-8124-40baaaccd8cc@0630b"
+      ],
+      "skeletons": [],
+      "textures": [
+        "e5cb81e4-1dd0-44c8-8124-40baaaccd8cc@18d18",
+        "e5cb81e4-1dd0-44c8-8124-40baaaccd8cc@0b01f"
+      ],
+      "materials": [
+        "e5cb81e4-1dd0-44c8-8124-40baaaccd8cc@5674b",
+        "e5cb81e4-1dd0-44c8-8124-40baaaccd8cc@a22da"
+      ],
+      "scenes": [
+        "e5cb81e4-1dd0-44c8-8124-40baaaccd8cc@97008"
+      ]
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    }
+  }
+}
