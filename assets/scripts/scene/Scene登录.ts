@@ -1,9 +1,10 @@
 import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip, director } from 'cc'
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { HeadScale } from './head-scale'
-import { FollowTarget } from './FollowTarget'
+import { FollowTarget } from '../mode/FollowTarget'
 import { Scene战斗, ClientEntityComponent } from './Scene战斗'
 import { UiLogin, MsgId } from '../mode/UiLogin'
+import { ProgressBar } from 'cc'
 
 const { ccclass, property } = _decorator
 
@@ -13,6 +14,13 @@ export class Scene登录 extends Component {
     nodeSelectSpace: Node
     uiLogin: UiLogin
     lableMessage: Label
+    //加载
+    @property(Node)
+    loadNode:Node;
+    //加载时间
+    loadtime:number=0;
+    //加载时间总长 1s
+    loadlen:number=1;
     onLoad() 
     {
         console.log('onLoad')
@@ -28,7 +36,17 @@ export class Scene登录 extends Component {
     }
 
     update(deltaTime: number) {
-
+        this.onloading(deltaTime)
+       
+    }
+    onloading(det:number){
+        this.loadtime+=det;
+        if(this.loadtime>this.loadlen){
+            this.loadNode.active=false;
+            return;
+        }else{
+            this.loadNode.getComponentInChildren(ProgressBar).progress=this.loadtime/this.loadlen
+        }
     }
     onClickToggle进Space1(event: Event, customEventData: string) {
         this.uiLogin.进Scene战斗('scene战斗', msgpack.encode([[MsgId.进Space, 0, 0], 1]))
