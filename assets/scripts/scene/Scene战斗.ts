@@ -216,7 +216,10 @@ export class Scene战斗 extends Component {
                     this.uiLogin.websocket.send(encoded)
                 }
             }
-            else// if (item.collider.node.name == "altman-blue")//|| item.collider.node.name == "altman-red") 
+            else if (   item.collider.node.name == "altman-blue"
+                    ||  item.collider.node.name == "altman-yellow"
+                    ||  item.collider.node.name == "axe-yellow"
+                    ) 
             {
                 this.mainCameraFollowTarget.target = item.collider.node
                 let id = this.entityId[item.collider.node.uuid]
