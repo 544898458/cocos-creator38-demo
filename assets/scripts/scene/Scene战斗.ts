@@ -219,6 +219,10 @@ export class Scene战斗 extends Component {
             else if (   item.collider.node.name == "altman-blue"
                     ||  item.collider.node.name == "altman-yellow"
                     ||  item.collider.node.name == "axe-yellow"
+                    ||  item.collider.node.name == "house_type06"
+                    ||  item.collider.node.name == "house_type17"
+                    ||  item.collider.node.name == "house_type19"
+                    ||  item.collider.node.name == "house_type21"
                     ) 
             {
                 this.mainCameraFollowTarget.target = item.collider.node
