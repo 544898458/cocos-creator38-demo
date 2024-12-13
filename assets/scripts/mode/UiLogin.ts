@@ -189,10 +189,11 @@ export class UiLogin extends Component {
         this.scene登录.nodeLoginPanel.active = false//隐藏
                 
         // this.websocket = new WebSocket("ws://192.168.31.194:12348/")
+        this.websocket = new WebSocket("ws://192.168.31.170:12348/")
         // this.websocket = new WebSocket("ws://192.168.43.109:12348/")
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
         // this.websocket = new WebSocket("ws://192.168.0.100:12348/")
-        this.websocket = new WebSocket("ws://47.119.184.177:12348/")
+        // this.websocket = new WebSocket("ws://47.119.184.177:12348/")
 
         this.websocket.binaryType = 'arraybuffer'
         console.log(this.websocket)
@@ -247,8 +248,9 @@ export class UiLogin extends Component {
                         if (old == undefined) {
                             old = new ClientEntityComponent()
                             thisLocal.scene战斗.entities.set(id, old)
-                            
-                            thisLocal.scene战斗.lableCount.string = '共' + thisLocal.scene战斗.entities.size + '单位'
+                            if(thisLocal.scene战斗.lableCount!=undefined)
+                                thisLocal.scene战斗.lableCount.string = '共' + thisLocal.scene战斗.entities.size + '单位'
+
                             resources.load(prefabName, Prefab, (err, prefab) => {
                                 // console.log('resources.load callback:', err, prefab)
                                 const newNode = instantiate(prefab)
@@ -387,7 +389,8 @@ export class UiLogin extends Component {
 
                         entity.removeFromParent()
                         thisLocal.scene战斗.entities.delete(id)
-                        thisLocal.scene战斗.lableCount.string = '共' + thisLocal.scene战斗.entities.size + '单位'
+                        if(thisLocal.scene战斗.lableCount!=undefined)
+                            thisLocal.scene战斗.lableCount.string = '共' + thisLocal.scene战斗.entities.size + '单位'
                     }
                     break
                 case MsgId.NotifyeMoney:
@@ -448,7 +451,7 @@ export class UiLogin extends Component {
                         let str声音 = arr[idxArr++]
                         let str文本 = arr[idxArr++]
                         AudioMgr.inst.playOneShot(str声音)
-                        thisLocal.scene战斗.lableMessage.string = str文本
+                        thisLocal.scene战斗.lableMessage语音提示.string = str文本
                     }
                     break
                 default:
