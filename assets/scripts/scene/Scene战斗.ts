@@ -53,6 +53,7 @@ export class Scene战斗 extends Component {
     }
     
     start() {
+        //初始化
         this.targetFlag = utils.find("Roles/TargetFlag", this.node.parent)
         this.lableMessage = utils.find("Canvas/Message", this.node.parent).getComponent(Label)
         this.lableMessage语音提示 = utils.find("Canvas/Message语音提示", this.node.parent).getComponent(Label)
@@ -66,14 +67,17 @@ export class Scene战斗 extends Component {
         this.mainCamera = nodeMainCamera.getComponent(Camera);
         this.mainCameraFollowTarget = nodeMainCamera.getComponent(FollowTarget);
         this.roles = this.node.parent.getChildByName("Roles")
+
+        //摄像机鼠标滑轮（放大缩小）
         this.node.on(NodeEventType.MOUSE_WHEEL, (event: EventMouse) => {
             var y = event.getScrollY()
             y /= 300
             // vec2Delta = vec2Delta.divide2f(10,10)
             // this.mainCamera.node.position = this.mainCamera.node.position.add3f(0, y, 0)
             this.mainCamera.fov = Math.max( this.mainCamera.fov - y , 5 )
-            console.log('fov', this.mainCamera.fov);
+            //console.log('fov', this.mainCamera.fov);
         })
+        //不知道有啥用
         // this.node.on(NodeEventType.MOUSE_UP, this.onMouseUp)
         this.node.on(NodeEventType.TOUCH_END, (event:TouchEvent)=>{
             console.log('TOUCH_END', event)
@@ -82,7 +86,7 @@ export class Scene战斗 extends Component {
 
             this.onMouseUp()
         })
-
+        //视角移动
         this.node.on(NodeEventType.MOUSE_MOVE, (event :EventMouse)=>{
             this.onMove(event.getDelta())
         })
@@ -92,7 +96,7 @@ export class Scene战斗 extends Component {
 
             this.onMove(event.getDelta())
         })
-        
+        //
         this.node.on(NodeEventType.MOUSE_DOWN, (event: EventMouse)=>{
             let button = event.getButton()
             let posMouseDown = event.getLocation()

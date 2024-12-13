@@ -1,4 +1,4 @@
-import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip, director } from 'cc'
+import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip, director, AssetManager } from 'cc'
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { HeadScale } from '../../head-scale'
 import { Scene战斗, ClientEntityComponent } from '../scene/Scene战斗'
@@ -148,8 +148,9 @@ export class UiLogin extends Component {
     }
     进Scene战斗(sceneName:string, encoded: Uint8Array){
         this.scene登录.nodeSelectSpace.active = false
-        director.preloadScene(sceneName, (completedCount: number, totalCount: number, item: any)=>{
-            this.scene登录.lableMessage.string = completedCount + '/' + totalCount
+        director.preloadScene(sceneName, (completedCount: number, totalCount: number, item: AssetManager.RequestItem )=>{
+            console.log(completedCount, totalCount, item)
+            this.scene登录.lableMessage.string = completedCount + '/' + totalCount + ',' + item.url
         },()=>{
             this.scene登录.uiLogin = null
             this.scene登录 = null
