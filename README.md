@@ -61,6 +61,14 @@ Error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} Error: Error: M
 3.  xxxx
 
 #### 参与贡献
+CC协议署名：
+    QQ网友“受不鸟”：
+        语音/无法在这里建造可爱版
+        语音/无法在这里建造正经版
+        语音/燃气矿不足可爱版
+        语音/燃气矿不足正经版
+        语音/晶体矿不足可爱版
+        语音/晶体矿不足正经版
 
 
 
