@@ -151,7 +151,7 @@ export class UiLogin extends Component {
         this.scene登录.nodeSelectSpace.active = false
         director.preloadScene(sceneName, (completedCount: number, totalCount: number, item: AssetManager.RequestItem )=>{
             console.log(completedCount, totalCount, item)
-            this.scene登录.lableMessage.string = completedCount + '/' + totalCount + ',' + item.url
+            this.scene登录.lableMessage.string = completedCount + '/' + totalCount + '\n' + item.url
         },()=>{
             this.scene登录.uiLogin = null
             this.scene登录 = null
