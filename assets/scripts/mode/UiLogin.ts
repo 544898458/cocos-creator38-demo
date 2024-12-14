@@ -190,11 +190,11 @@ export class UiLogin extends Component {
         this.scene登录.nodeLoginPanel.active = false//隐藏
         this.scene登录.lableMessage.string = '正在连接'
         // this.websocket = new WebSocket("ws://192.168.31.194:12348/")
-        this.websocket = new WebSocket("ws://192.168.31.170:12348/")
+        // this.websocket = new WebSocket("ws://192.168.31.170:12348/")
         // this.websocket = new WebSocket("ws://192.168.43.109:12348/")
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
         // this.websocket = new WebSocket("ws://192.168.0.100:12348/")
-        // this.websocket = new WebSocket("ws://47.119.184.177:12348/")
+        this.websocket = new WebSocket("ws://47.119.184.177:12348/")
 
         this.websocket.binaryType = 'arraybuffer'
         console.log(this.websocket)
