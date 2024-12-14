@@ -374,7 +374,7 @@ export class UiLogin extends Component {
                                 thisLocal.scene战斗.lableMessage.string = content
                             break
                             case SayChannel.语音提示:
-                                thisLocal.scene战斗.lableMessage语音提示.string = content
+                                thisLocal.scene战斗.lableMessageVoice.string = content
                             break
                         }
                         
@@ -397,7 +397,7 @@ export class UiLogin extends Component {
                 case MsgId.NotifyeMoney:
                     {
                         let finalMoney = arr[idxArr++]
-                        thisLocal.scene战斗.lableMoney.string = '晶体矿:' + finalMoney
+                        thisLocal.scene战斗.lableCrystal.string = '晶体矿:' + finalMoney
                     }
                     break
                 case MsgId.资源:
@@ -405,19 +405,19 @@ export class UiLogin extends Component {
                         let 燃气矿 = arr[idxArr++]
                         let 活动单位 = arr[idxArr++]
                         let 活动单位上限 = arr[idxArr++]
-                        thisLocal.scene战斗.lable燃气矿.string = '燃气矿:' + 燃气矿
-                        thisLocal.scene战斗.lable我的单位.string = '我的活动单位:' + 活动单位 + '/' + 活动单位上限
+                        thisLocal.scene战斗.lableGas.string = '燃气矿:' + 燃气矿
+                        thisLocal.scene战斗.lableUnit.string = '我的活动单位:' + 活动单位 + '/' + 活动单位上限
                     }
                     break
                 case MsgId.进Space:
                     {
-                        thisLocal.scene战斗.node战斗面板.active = true
+                        thisLocal.scene战斗.battleUI.active = true
                         // director.loadScene('scene战斗')
                     }
                     break
                 case MsgId.显示界面:
                     {
-                        thisLocal.scene战斗.node退出此场景.active = true
+                        //thisLocal.scene战斗.quitGame.active = true
                     }
                     break
                     case MsgId.离开Space:
@@ -452,7 +452,7 @@ export class UiLogin extends Component {
                         let str声音 = arr[idxArr++]
                         let str文本 = arr[idxArr++]
                         AudioMgr.inst.playOneShot(str声音)
-                        thisLocal.scene战斗.lableMessage语音提示.string = str文本
+                        thisLocal.scene战斗.lableMessageVoice.string = str文本
                     }
                     break
                 case MsgId.设置视口:
