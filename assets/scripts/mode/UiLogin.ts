@@ -36,6 +36,7 @@ export enum MsgId {
     离开Space,
     Entity描述,
     播放声音,
+    设置视口,
 }
 
 enum 单人剧情副本ID
@@ -187,13 +188,13 @@ export class UiLogin extends Component {
         }
 
         this.scene登录.nodeLoginPanel.active = false//隐藏
-                
+        this.scene登录.lableMessage.string = '正在连接'
         // this.websocket = new WebSocket("ws://192.168.31.194:12348/")
-        // this.websocket = new WebSocket("ws://192.168.31.170:12348/")
+        this.websocket = new WebSocket("ws://192.168.31.170:12348/")
         // this.websocket = new WebSocket("ws://192.168.43.109:12348/")
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
         // this.websocket = new WebSocket("ws://192.168.0.100:12348/")
-        this.websocket = new WebSocket("ws://47.119.184.177:12348/")
+        // this.websocket = new WebSocket("ws://47.119.184.177:12348/")
 
         this.websocket.binaryType = 'arraybuffer'
         console.log(this.websocket)
@@ -452,6 +453,13 @@ export class UiLogin extends Component {
                         let str文本 = arr[idxArr++]
                         AudioMgr.inst.playOneShot(str声音)
                         thisLocal.scene战斗.lableMessage语音提示.string = str文本
+                    }
+                    break
+                case MsgId.设置视口:
+                    {
+                        let arrPos视口 =  arr[idxArr++] as number[]
+                        console.log(arrPos视口)
+                        thisLocal.scene战斗.mainCameraFollowTarget.对准此处(new Vec3(arrPos视口[0],0,arrPos视口[1]))
                     }
                     break
                 default:
