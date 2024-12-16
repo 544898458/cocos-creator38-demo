@@ -173,10 +173,7 @@ export class UiLogin extends Component {
         this.进Scene战斗单人剧情副本('scene防守战',单人剧情副本ID.防守战)
     }
     onClickLogin(event: Event, customEventData: string) {
-        const node = event.target as Node
-        const button = node.getComponent(Button)
         const editNode = utils.find("Name", this.scene登录.nodeLoginPanel) as Node
-        console.log(button)
         console.log(editNode)
 
         const editBox = editNode.getComponent(EditBox)
@@ -480,10 +477,7 @@ export class UiLogin extends Component {
         }
     }
     onClickSay(event: Event, customEventData: string) {
-        const node = event.target as Node
-        const button = node.getComponent(Button)
         const editNode = utils.find("Name", this.node) as Node
-        console.log(button)
         console.log(editNode)
 
         const editBox = editNode.getComponent(EditBox)
