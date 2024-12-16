@@ -232,10 +232,12 @@ export class UiLogin extends Component {
                         let nickName: string = arr[idxArr++]
                         let entityName: string = arr[idxArr++]
                         let prefabName: string = arr[idxArr++]
-                        console.log(id, nickName, prefabName, '进来了')
+                        let hpMax: number = arr[idxArr++]
+                        console.log(id, nickName, prefabName, '进来了,hpMax', hpMax)
                         let old = thisLocal.scene战斗.entities.get(id)
                         if (old == undefined) {
                             old = new ClientEntityComponent()
+                            old.hpMax = hpMax
                             thisLocal.scene战斗.entities.set(id, old)
                             if (thisLocal.scene战斗.lableCount != undefined)
                                 thisLocal.scene战斗.lableCount.string = '共' + thisLocal.scene战斗.entities.size + '单位'
@@ -329,15 +331,21 @@ export class UiLogin extends Component {
                                 // old.skeletalAnimation.play('run')
                                 old.position = new Vec3(posX, 0, posZ)
                                 old.hp = hp
-                                old.hpbar&&(old.hpbar.getComponent(ProgressBar).progress = hp / 20);//todo等后端传最大血量 20测试用
-                                //console.log('angle',old.view.angle)
+                                if(old.hpbar){
+                                    let progressBar = old.hpbar.getComponent(ProgressBar)
+                                    if(old.hpMax>0)
+                                        progressBar.progress = hp / old.hpMax//todo等后端传最大血量 20测试用
+                                    else
+                                        old.hpbar.active = false //资源没有血量
+                                }
+                                //console.log('hp', hp, old.hpMax)
                             }
                             if (old && old.view != undefined) {
                                 old.view.position = old.position
                                 old.view.eulerAngles = new Vec3(0, eulerAnglesY, 0)
                                 // old.labelName.string = old.nickName + '(' + id + ')hp=' + hp
-                                old.labelName.string = old.nickName + 'hp=' + hp
-                                old.hpbar&&(old.hpbar.getComponent(ProgressBar).progress = old.hp / 20);//todo等后端传最大血量 20测试用
+                                old.labelName.string = old.nickName// + 'hp=' + hp
+                                // old.hpbar&&(old.hpbar.getComponent(ProgressBar).progress = old.hp / old.hpMax);//todo等后端传最大血量 20测试用
 
                             }
                         }

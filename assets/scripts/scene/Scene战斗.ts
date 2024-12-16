@@ -18,10 +18,12 @@ export class ClientEntityComponent {
     position: Vec3//刚进地图Load没结束无法设置node坐标，暂存
     hpbar: Node;
     hp: number = 0
+    hpMax: number = 0
     removeFromParent() {
         this.view?.removeFromParent()
         this.nodeName?.removeFromParent()
         this.node描述?.removeFromParent()
+        this.hpbar?.removeFromParent()
     }
 }
 
