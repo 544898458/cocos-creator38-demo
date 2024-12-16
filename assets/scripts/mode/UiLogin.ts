@@ -391,7 +391,8 @@ export class UiLogin extends Component {
                     {
                         let id = arr[idxArr++]
                         console.log('删除:', id)
-                        let entity = thisLocal.scene战斗.entities.get(id)
+                        let entity = thisLocal.scene战斗.entities.get(id);
+                        entity.hpbar?.destroy();
                         if (entity == undefined)
                             return
 

@@ -38,5 +38,7 @@ export class HeadScale extends Component {
         const ratio = this.distance / Math.abs(this._pos.z);
         const value = Math.floor(ratio * 100) / 100;
         this.node.setScale(value, value, 1);
+        if(!this.target)
+            this.node?.destroy();
     }
 }
