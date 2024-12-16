@@ -1,6 +1,5 @@
 import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip, director } from 'cc'
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
-import { HeadScale } from './head-scale'
 import { FollowTarget } from '../mode/FollowTarget'
 import { Scene战斗, ClientEntityComponent } from './Scene战斗'
 import { UiLogin, MsgId } from '../mode/UiLogin'
