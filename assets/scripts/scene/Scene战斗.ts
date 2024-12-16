@@ -16,6 +16,7 @@ export class ClientEntityComponent {
     initClipName: string = 'idle'
     nickName: string
     position: Vec3//刚进地图Load没结束无法设置node坐标，暂存
+    hpbar: Node;
     hp: number = 0
     removeFromParent() {
         this.view?.removeFromParent()

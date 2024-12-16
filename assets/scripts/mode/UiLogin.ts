@@ -1,9 +1,10 @@
 import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip, director, AssetManager } from 'cc'
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
-import { HeadScale } from '../../head-scale'
+import { HeadScale } from '../component/head-scale'
 import { Scene战斗, ClientEntityComponent } from '../scene/Scene战斗'
 import { Scene登录 } from '../scene/Scene登录'
 import { AudioMgr } from '../manager/AudioMgr'
+import { ProgressBar } from 'cc'
 
 const { ccclass, property } = _decorator
 export enum MsgId {
@@ -39,25 +40,22 @@ export enum MsgId {
     设置视口,
 }
 
-enum 单人剧情副本ID
-{
+enum 单人剧情副本ID {
     训练战,
     防守战
 }
 
-enum 建筑单位类型
-{
-	基地,//指挥中心(Command Center),用来造工程车()
-	兵厂,//兵营Barracks，用来造兵
-	民房,//供给站(Supply Depot)
+enum 建筑单位类型 {
+    基地,//指挥中心(Command Center),用来造工程车()
+    兵厂,//兵营Barracks，用来造兵
+    民房,//供给站(Supply Depot)
     地堡,//掩体; 地堡(Bunker),可以进兵
 };
 
-enum 活动单位类型
-{
-	工程车,//空间工程车Space Construction Vehicle。可以采矿，采气，也可以简单攻击
-	兵,//陆战队员Marine。只能攻击，不能采矿
-	近战兵,//火蝠，喷火兵Firebat
+enum 活动单位类型 {
+    工程车,//空间工程车Space Construction Vehicle。可以采矿，采气，也可以简单攻击
+    兵,//陆战队员Marine。只能攻击，不能采矿
+    近战兵,//火蝠，喷火兵Firebat
 };
 
 // enum 点击地面操作类型
@@ -66,10 +64,9 @@ enum 活动单位类型
 //     放置建筑
 // }
 
-enum SayChannel
-{
-	系统,
-	语音提示,
+enum SayChannel {
+    系统,
+    语音提示,
 };
 
 @ccclass('UiLogin')
@@ -82,25 +79,23 @@ export class UiLogin extends Component {
     scene战斗: Scene战斗 = null
     scene登录: Scene登录 = null
     arr选中: number[] = []
-    fun创建消息:(Vec3)=>object = this.createMsgMove强行走//点击地面操作 = 点击地面操作类型.移动单位
-    createMsgMove强行走(hitPoint:Vec3){
-        return this.createMsgMove(hitPoint,false)
+    fun创建消息: (Vec3) => object = this.createMsgMove强行走//点击地面操作 = 点击地面操作类型.移动单位
+    createMsgMove强行走(hitPoint: Vec3) {
+        return this.createMsgMove(hitPoint, false)
     }
-    createMsgMove遇敌自动攻击(hitPoint:Vec3){
-        return this.createMsgMove(hitPoint,true)
+    createMsgMove遇敌自动攻击(hitPoint: Vec3) {
+        return this.createMsgMove(hitPoint, true)
     }
-    createMsgMove(hitPoint:Vec3,b遇敌自动攻击:boolean)
-    {
+    createMsgMove(hitPoint: Vec3, b遇敌自动攻击: boolean) {
         return [[MsgId.Move, 0],
-                [hitPoint.x,hitPoint.z],
-                b遇敌自动攻击
-            ]
+        [hitPoint.x, hitPoint.z],
+            b遇敌自动攻击
+        ]
     }
-    onLoad() 
-    {
+    onLoad() {
         console.log('onLoad')
         //添加dataNode为常驻节点
-       director.addPersistRootNode(this.node);
+        director.addPersistRootNode(this.node);
     }
     start() {
         console.log('start')
@@ -110,28 +105,26 @@ export class UiLogin extends Component {
 
     }
     onClickAdd兵(event: Event, customEventData: string): void {
-        const encoded: Uint8Array = msgpack.encode([[MsgId.AddRole, 0, 0],活动单位类型.兵])
+        const encoded: Uint8Array = msgpack.encode([[MsgId.AddRole, 0, 0], 活动单位类型.兵])
         // console.log(encoded)
         this.websocket.send(encoded)
     }
     onClickAdd近战兵(event: Event, customEventData: string): void {
-        const encoded: Uint8Array = msgpack.encode([[MsgId.AddRole, 0, 0],活动单位类型.近战兵])
+        const encoded: Uint8Array = msgpack.encode([[MsgId.AddRole, 0, 0], 活动单位类型.近战兵])
         // console.log(encoded)
         this.websocket.send(encoded)
     }
     onClickAdd工程车(event: Event, customEventData: string): void {
-        const encoded: Uint8Array = msgpack.encode([[MsgId.AddRole, 0, 0],活动单位类型.工程车])
+        const encoded: Uint8Array = msgpack.encode([[MsgId.AddRole, 0, 0], 活动单位类型.工程车])
         // console.log(encoded)
         this.websocket.send(encoded)
     }
-    createMsg造建筑(hitPoint:Vec3,类型:建筑单位类型)
-    {
+    createMsg造建筑(hitPoint: Vec3, 类型: 建筑单位类型) {
         console.log('createMsg造建筑', hitPoint)
-        return[[MsgId.AddBuilding, ++this.sendMsgSn, 0],类型,[hitPoint.x, hitPoint.z]]
+        return [[MsgId.AddBuilding, ++this.sendMsgSn, 0], 类型, [hitPoint.x, hitPoint.z]]
     }
-    on点击按钮_造建筑(类型:建筑单位类型)
-    {
-        this.fun创建消息 = (hitPoint:Vec3)=>this.createMsg造建筑(hitPoint,类型)
+    on点击按钮_造建筑(类型: 建筑单位类型) {
+        this.fun创建消息 = (hitPoint: Vec3) => this.createMsg造建筑(hitPoint, 类型)
         this.scene战斗.lableMessage.string = '请点击地面放置建筑'
     }
     onClickAdd基地(event: Event, customEventData: string): void {
@@ -147,30 +140,29 @@ export class UiLogin extends Component {
     onClickAdd民房(event: Event, customEventData: string): void {
         this.on点击按钮_造建筑(建筑单位类型.民房)
     }
-    进Scene战斗(sceneName:string, encoded: Uint8Array){
+    进Scene战斗(sceneName: string, encoded: Uint8Array) {
         this.scene登录.nodeSelectSpace.active = false
-        director.preloadScene(sceneName, (completedCount: number, totalCount: number, item: AssetManager.RequestItem )=>{
+        director.preloadScene(sceneName, (completedCount: number, totalCount: number, item: AssetManager.RequestItem) => {
             console.log(completedCount, totalCount, item)
             this.scene登录.lableMessage.string = completedCount + '/' + totalCount + '\n' + item.url
-        },()=>{
+        }, () => {
             this.scene登录.uiLogin = null
             this.scene登录 = null
-            director.loadScene(sceneName, (err,scene)=>
-            {
+            director.loadScene(sceneName, (err, scene) => {
                 // this.nodeSelectSpace.active = false
-                
+
                 this.websocket.send(encoded)
             })
         })
     }
-    进Scene战斗单人剧情副本(sceneName:string,id:单人剧情副本ID){
+    进Scene战斗单人剧情副本(sceneName: string, id: 单人剧情副本ID) {
         this.进Scene战斗(sceneName, msgpack.encode([[MsgId.进单人剧情副本, 0, 0], id]))
     }
     onClickToggle进训练战() {
         this.进Scene战斗单人剧情副本('scene战斗', 单人剧情副本ID.训练战)
     }
     onClickToggle进防守战() {
-        this.进Scene战斗单人剧情副本('scene防守战',单人剧情副本ID.防守战)
+        this.进Scene战斗单人剧情副本('scene防守战', 单人剧情副本ID.防守战)
     }
     onClickLogin(event: Event, customEventData: string) {
         const editNode = utils.find("Name", this.scene登录.nodeLoginPanel) as Node
@@ -178,8 +170,7 @@ export class UiLogin extends Component {
 
         const editBox = editNode.getComponent(EditBox)
         console.log(editBox.string)
-        if(editBox.string.length == 0)
-        {
+        if (editBox.string.length == 0) {
             this.scene登录.lableMessage.string = '请输入账号名字（随便什么都可以）'
             return
         }
@@ -195,7 +186,7 @@ export class UiLogin extends Component {
 
         this.websocket.binaryType = 'arraybuffer'
         console.log(this.websocket)
-        
+
         //连接发生错误的回调方法
         this.websocket.onerror = () => {
             this.scene登录.lableMessage.string = "连接错误"
@@ -246,7 +237,7 @@ export class UiLogin extends Component {
                         if (old == undefined) {
                             old = new ClientEntityComponent()
                             thisLocal.scene战斗.entities.set(id, old)
-                            if(thisLocal.scene战斗.lableCount!=undefined)
+                            if (thisLocal.scene战斗.lableCount != undefined)
                                 thisLocal.scene战斗.lableCount.string = '共' + thisLocal.scene战斗.entities.size + '单位'
 
                             resources.load(prefabName, Prefab, (err, prefab) => {
@@ -268,6 +259,15 @@ export class UiLogin extends Component {
 
                                 old.nodeName = instantiate(nodeRoleName)
                                 nodeCanvas.addChild(old.nodeName)
+                                if (newNode.name != "smoke") {
+                                    let nodeRoleHp = utils.find("RoleHp", nodeCanvas)
+                                    old.hpbar = instantiate(nodeRoleHp)
+                                    old.hpbar.active = true;
+                                    nodeCanvas.addChild(old.hpbar)
+                                    old.hpbar.getComponent(ProgressBar).progress = old.hp / 20;//todo等后端传最大血量 20测试用
+                                    let headScal = old.hpbar.getComponent(HeadScale)
+                                    headScal.target = utils.find("描述", newNode)
+                                }
                                 old.labelName = old.nodeName.getComponent(Label)
                                 {
                                     let headScal = old.nodeName.getComponent(HeadScale)
@@ -283,15 +283,15 @@ export class UiLogin extends Component {
                                     console.log(headScal.target)
                                 }
 
-                                
+
                                 let camera3D = utils.find("Main Camera", thisLocal.scene战斗.roles.parent).getComponent(Camera)
                                 // console.log('Main Camera',camera3D)
                                 //  headScal.camera = camera3D
                                 // headScal.distance = 55
-                                old.nickName = nickName  + '(' + entityName + ')'
+                                old.nickName = nickName + '(' + entityName + ')'
                                 // old.labelName.string = old.nickName + '(' + id + ')hp=' + old.hp
                                 old.labelName.string = old.nickName + ',hp=' + old.hp
-                                
+
                                 if (old.position != undefined)
                                     old.view.position = old.position
                             })
@@ -325,17 +325,20 @@ export class UiLogin extends Component {
                             //    })
                         }
                         else {
-                            if (old != undefined) {
+                            if (old && old != undefined) {
                                 // old.skeletalAnimation.play('run')
                                 old.position = new Vec3(posX, 0, posZ)
                                 old.hp = hp
+                                old.hpbar&&(old.hpbar.getComponent(ProgressBar).progress = hp / 20);//todo等后端传最大血量 20测试用
                                 //console.log('angle',old.view.angle)
                             }
-                            if (old.view != undefined) {
+                            if (old && old.view != undefined) {
                                 old.view.position = old.position
                                 old.view.eulerAngles = new Vec3(0, eulerAnglesY, 0)
                                 // old.labelName.string = old.nickName + '(' + id + ')hp=' + hp
                                 old.labelName.string = old.nickName + 'hp=' + hp
+                                old.hpbar&&(old.hpbar.getComponent(ProgressBar).progress = old.hp / 20);//todo等后端传最大血量 20测试用
+
                             }
                         }
                     }
@@ -365,16 +368,15 @@ export class UiLogin extends Component {
                         let content = arr[idxArr++]
                         let channel = arr[idxArr++] as SayChannel
                         console.log(channel, '有人说:', content)
-                        switch(channel)
-                        {
+                        switch (channel) {
                             case SayChannel.系统:
                                 thisLocal.scene战斗.lableMessage.string = content
-                            break
+                                break
                             case SayChannel.语音提示:
                                 thisLocal.scene战斗.lableMessageVoice.string = content
-                            break
+                                break
                         }
-                        
+
                     }
                     break
                 case MsgId.DelRoleRet:
@@ -382,12 +384,12 @@ export class UiLogin extends Component {
                         let id = arr[idxArr++]
                         console.log('删除:', id)
                         let entity = thisLocal.scene战斗.entities.get(id)
-                        if(entity == undefined)
+                        if (entity == undefined)
                             return
 
                         entity.removeFromParent()
                         thisLocal.scene战斗.entities.delete(id)
-                        if(thisLocal.scene战斗.lableCount!=undefined)
+                        if (thisLocal.scene战斗.lableCount != undefined)
                             thisLocal.scene战斗.lableCount.string = '共' + thisLocal.scene战斗.entities.size + '单位'
                     }
                     break
@@ -417,7 +419,7 @@ export class UiLogin extends Component {
                         //thisLocal.scene战斗.quitGame.active = true
                     }
                     break
-                    case MsgId.离开Space:
+                case MsgId.离开Space:
                     {
                         thisLocal.scene战斗.entities.forEach((clientEntityComponent, k, map) => {
                             clientEntityComponent.removeFromParent()
@@ -437,11 +439,10 @@ export class UiLogin extends Component {
                             // console.log(id,"还没加载好,没有播放动作",clipName)
                             return
                         }
-                        if(entity.label描述 != undefined)
-                        {
+                        if (entity.label描述 != undefined) {
                             entity.label描述.string = desc
                         }
-                        
+
                     }
                     break
                 case MsgId.播放声音:
@@ -454,9 +455,9 @@ export class UiLogin extends Component {
                     break
                 case MsgId.设置视口:
                     {
-                        let arrPos视口 =  arr[idxArr++] as number[]
+                        let arrPos视口 = arr[idxArr++] as number[]
                         console.log(arrPos视口)
-                        thisLocal.scene战斗.mainCameraFollowTarget.对准此处(new Vec3(arrPos视口[0],0,arrPos视口[1]))
+                        thisLocal.scene战斗.mainCameraFollowTarget.对准此处(new Vec3(arrPos视口[0], 0, arrPos视口[1]))
                     }
                     break
                 default:
@@ -494,40 +495,40 @@ export class UiLogin extends Component {
             this.websocket.send(encoded)
         }
     }
-    回到登录场景(){
-        director.loadScene('scene登录',(err, scene)=>{
+    回到登录场景() {
+        director.loadScene('scene登录', (err, scene) => {
             console.log('回到登录场景', this.scene登录.nodeSelectSpace.active)
             // director.runScene(scene);
             this.scene登录.nodeSelectSpace.active = true
             this.scene登录.nodeLoginPanel.active = false
         })
     }
-    send离开Space(){
+    send离开Space() {
         const object = //item.hitPoint
-        [
-            [MsgId.离开Space, 0, 0],
-        ]
+            [
+                [MsgId.离开Space, 0, 0],
+            ]
 
         const encoded: Uint8Array = msgpack.encode(object)
         if (this.websocket != undefined) {
             console.log('send', encoded)
             this.websocket.send(encoded)
-        }        
+        }
     }
-    send选中(arr选中:number[]){
+    send选中(arr选中: number[]) {
         const object =
-        [
-            [MsgId.SelectRoles, ++this.sendMsgSn, 0],
-            arr选中//虽然是整数，但是也强制转成FLOAT64发出去了
-        ]
-    
+            [
+                [MsgId.SelectRoles, ++this.sendMsgSn, 0],
+                arr选中//虽然是整数，但是也强制转成FLOAT64发出去了
+            ]
+
         const encoded: Uint8Array = msgpack.encode(object)
         if (this.websocket != undefined) {
             console.log('send', encoded)
             this.websocket.send(encoded)
         }
 
-        this.arr选中 = arr选中     
+        this.arr选中 = arr选中
     }
 }
 

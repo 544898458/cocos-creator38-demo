@@ -1,5 +1,4 @@
 import { _decorator, Component, Label, Node,Canvas, Camera, UITransform, utils } from 'cc';
-import { HeadScale } from '../head-scale';
 const { ccclass, property } = _decorator;
 
 @ccclass('Role')

@@ -27,12 +27,15 @@ export class HeadScale extends Component {
         // @ts-ignore
         camera._camera.update();
         camera.convertToUINode(wpos, this.node.parent!, this._pos);
+        if(this.node.name == "RoleName"){
+             this._pos.y+=30;//往上偏差30
+        }
+        
         this.node.setPosition(this._pos);
         // @ts-ignore
         Vec3.transformMat4(this._pos, this.target.worldPosition, camera._camera!.matView);
 
         const ratio = this.distance / Math.abs(this._pos.z);
-        // console.log('ratio',ratio);
         const value = Math.floor(ratio * 100) / 100;
         this.node.setScale(value, value, 1);
     }
