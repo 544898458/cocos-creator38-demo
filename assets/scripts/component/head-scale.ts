@@ -14,7 +14,7 @@ export class HeadScale extends Component {
     private _pos: Vec3 = new Vec3();
 
     update(){
-        const wpos = this.target.worldPosition;
+        let wpos = this.target.worldPosition;
         // @ts-ignore
         if (!this.camera!._camera ){//|| this._lastWPos.equals(wpos)) {
             // console.log(wpos);
@@ -22,14 +22,15 @@ export class HeadScale extends Component {
         }
 
         this._lastWPos.set(wpos);
+    //     if(this.node.name == "RoleName"){
+    //         this._lastWPos.y += 1;//往上偏差30
+    //    }
         const camera = this.camera!;
         // [HACK]
         // @ts-ignore
         camera._camera.update();
-        camera.convertToUINode(wpos, this.node.parent!, this._pos);
-        if(this.node.name == "RoleName"){
-             this._pos.y+=30;//往上偏差30
-        }
+        camera.convertToUINode(this._lastWPos, this.node.parent!, this._pos);
+
         
         this.node.setPosition(this._pos);
         // @ts-ignore

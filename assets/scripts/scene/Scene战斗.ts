@@ -130,8 +130,9 @@ export class Scene战斗 extends Component {
         if (this.posWorldMouseDown) {
             // var vec2Delta = event.getDelta()
             var div = this.mainCamera.fov / 400;
-            vec2Delta = vec2Delta.multiply2f(div, div)
-            this.mainCamera.node.position = this.mainCamera.node.position.add3f(-vec2Delta.x, 0, vec2Delta.y)
+            let vec3 =  new Vec3(-vec2Delta.x, 0, vec2Delta.y).multiplyScalar(div)
+            vec3.add(this.mainCamera.node.position)
+            this.mainCamera.node.position = vec3
         }
     }
     //点击处理
