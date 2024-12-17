@@ -178,11 +178,11 @@ export class UiLogin extends Component {
         this.scene登录.nodeLoginPanel.active = false//隐藏
         this.scene登录.lableMessage.string = '正在连接'
         // this.websocket = new WebSocket("ws://192.168.31.194:12348/")
-        // this.websocket = new WebSocket("ws://192.168.31.170:12348/")
+        this.websocket = new WebSocket("ws://192.168.31.170:12348/")
         // this.websocket = new WebSocket("ws://192.168.43.109:12348/")
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
         // this.websocket = new WebSocket("ws://192.168.0.100:12348/")
-        this.websocket = new WebSocket("ws://47.119.184.177:12348/")
+        // this.websocket = new WebSocket("ws://47.119.184.177:12348/")
 
         this.websocket.binaryType = 'arraybuffer'
         console.log(this.websocket)
@@ -266,7 +266,12 @@ export class UiLogin extends Component {
                                     old.hpbar = instantiate(nodeRoleHp)
                                     old.hpbar.active = true;
                                     nodeCanvas.addChild(old.hpbar)
-                                    old.hpbar.getComponent(ProgressBar).progress = old.hp / 20;//todo等后端传最大血量 20测试用
+                                    
+                                    if(hpMax<=0)
+                                        old.hpbar.active = false
+                                    else
+                                        old.hpbar.getComponent(ProgressBar).progress = old.hp / old.hpMax;//todo等后端传最大血量 20测试用
+
                                     let headScal = old.hpbar.getComponent(HeadScale)
                                     headScal.target = utils.find("描述", newNode)
                                 }
@@ -292,7 +297,7 @@ export class UiLogin extends Component {
                                 // headScal.distance = 55
                                 old.nickName = nickName + '(' + entityName + ')'
                                 // old.labelName.string = old.nickName + '(' + id + ')hp=' + old.hp
-                                old.labelName.string = old.nickName + ',hp=' + old.hp
+                                old.labelName.string = old.nickName //+ ',hp=' + old.hp
 
                                 if (old.position != undefined)
                                     old.view.position = old.position
@@ -356,7 +361,7 @@ export class UiLogin extends Component {
                         let id = arr[idxArr++]
                         let loop: Boolean = arr[idxArr++]
                         let clipName: string = arr[idxArr++]
-                        // console.log(id, '动作改为', clipName)
+                        console.log(id, '动作改为', clipName)
                         let old = thisLocal.scene战斗.entities.get(id)
                         if (old == undefined) {
                             // console.log(id,"还没加载好,没有播放动作",clipName)
@@ -367,7 +372,7 @@ export class UiLogin extends Component {
                         else {
 
                             old.skeletalAnimation.play(clipName)
-                            old.skeletalAnimation.getState(clipName).wrapMode = loop ? AnimationClip.WrapMode.Loop : AnimationClip.WrapMode.Normal
+                            old.skeletalAnimation.getState(clipName).wrapMode = AnimationClip.WrapMode.Loop//loop ? AnimationClip.WrapMode.Loop : AnimationClip.WrapMode.Normal
                         }
                     }
                     break
