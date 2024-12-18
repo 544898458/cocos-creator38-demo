@@ -178,11 +178,12 @@ export class UiLogin extends Component {
         this.scene登录.nodeLoginPanel.active = false//隐藏
         this.scene登录.lableMessage.string = '正在连接'
         // this.websocket = new WebSocket("ws://192.168.31.194:12348/")
-        // this.websocket = new WebSocket("ws://192.168.31.170:12348/")
+        this.websocket = new WebSocket("ws://192.168.31.170:12348/")
         // this.websocket = new WebSocket("ws://192.168.43.109:12348/")
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
         // this.websocket = new WebSocket("ws://192.168.0.100:12348/")
-        this.websocket = new WebSocket("ws://47.119.184.177:12348/")
+        // this.websocket = new WebSocket("ws://47.119.184.177:12348/")
+        // this.websocket = new WebSocket("ws://ws.rtsgame.cn:12348/")
 
         this.websocket.binaryType = 'arraybuffer'
         console.log(this.websocket)
@@ -252,6 +253,8 @@ export class UiLogin extends Component {
                                 old.view = newNode
                                 if(newNode.name=='基地')
                                     old.skeletalAnimation = newNode.getChildByName('p_Base_02').getComponent(SkeletalAnimation)
+                                else if(newNode.name=='步兵')
+                                    old.skeletalAnimation = newNode.getChildByName('p_A_rifle_01').getComponent(SkeletalAnimation)
                                 else
                                     old.skeletalAnimation = newNode.getComponent(SkeletalAnimation)
 
@@ -374,9 +377,16 @@ export class UiLogin extends Component {
                         if (old.skeletalAnimation == undefined)
                             old.initClipName = clipName
                         else {
-
+                            console.log( 'old.view.name', old.view.name)
                             old.skeletalAnimation.play(clipName)
-                            old.skeletalAnimation.getState(clipName).wrapMode = loop ? AnimationClip.WrapMode.Loop : AnimationClip.WrapMode.Normal
+                            let state = old.skeletalAnimation.getState(clipName)
+                            state.wrapMode = loop ? AnimationClip.WrapMode.Loop : AnimationClip.WrapMode.Normal
+                            if(old.view.name == '步兵' && clipName == 'run')
+                            {
+                                // .startTime = 0;
+                                // clip.repeatCount = 0; // 重复次数，0表示无限循环
+                                state.playbackRange = {min:0, max:0.8} // 动画总长度
+                            }
                         }
                     }
                     break
