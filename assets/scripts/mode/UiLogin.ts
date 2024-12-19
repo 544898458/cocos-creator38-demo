@@ -179,12 +179,11 @@ export class UiLogin extends Component {
         this.scene登录.nodeLoginPanel.active = false//隐藏
         this.scene登录.lableMessage.string = '正在连接'
         // this.websocket = new WebSocket("ws://192.168.31.194:12348/")
-        this.websocket = new WebSocket("ws://192.168.31.170:12348/")
+        // this.websocket = new WebSocket("ws://192.168.31.170:12348/")
         // this.websocket = new WebSocket("ws://192.168.43.109:12348/")
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
         // this.websocket = new WebSocket("ws://192.168.0.100:12348/")
-        // this.websocket = new WebSocket("ws://47.119.184.177:12348/")
-        // this.websocket = new WebSocket("ws://ws.rtsgame.cn:12348/")
+        this.websocket = new WebSocket("ws://47.119.184.177:12348/")
 
         this.websocket.binaryType = 'arraybuffer'
         console.log(this.websocket)
@@ -378,15 +377,16 @@ export class UiLogin extends Component {
                         if (old.skeletalAnimation == undefined)
                             old.initClipName = clipName
                         else {
-                            console.log( 'old.view.name', old.view.name)
+                            // console.log( 'old.view.name', old.view.name)
                             old.skeletalAnimation.play(clipName)
                             let state = old.skeletalAnimation.getState(clipName)
                             state.wrapMode = loop ? AnimationClip.WrapMode.Loop : AnimationClip.WrapMode.Normal
-                            if(old.view.name == '步兵' && clipName == 'run')
+                            if(old.view.name == '步兵' )
                             {
-                                // .startTime = 0;
-                                // clip.repeatCount = 0; // 重复次数，0表示无限循环
-                                state.playbackRange = {min:0, max:0.8} // 动画总长度
+                                if(clipName == 'run')
+                                    state.playbackRange = {min:0, max:0.8} // 动画总长度
+                                else if(clipName == 'idle')
+                                    state.playbackRange = {min:0, max:2.0} // 动画总长度
                             }
                         }
                     }

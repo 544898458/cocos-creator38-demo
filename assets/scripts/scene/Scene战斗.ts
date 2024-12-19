@@ -1,9 +1,13 @@
-import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip, director, Animation } from 'cc'
+import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip, director, Animation, Color} from 'cc'
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { FollowTarget } from '../mode/FollowTarget'
 import { UiLogin, MsgId } from '../mode/UiLogin'
 import { Vec2 } from 'cc'
 import { EventTouch } from 'cc'
+import { Graphics } from 'cc'
+import { math } from 'cc'
+import { UITransform } from 'cc'
+import { PhysicsRayResult } from 'cc'
 
 const { ccclass, property } = _decorator
 export class ClientEntityComponent {
@@ -62,8 +66,9 @@ export class Scene战斗 extends Component {
     //鼠标点击世界坐标
     posWorld按下准备拖动地面: Vec3
 
-    b框选等待按下起始点:boolean = false
+    b框选等待按下起始点: boolean = false
     posWorld框选起始点: Vec3 = null
+    graphics: Graphics
     protected onLoad(): void {
         console.log('Scene战斗.onLoad')
 
@@ -73,6 +78,7 @@ export class Scene战斗 extends Component {
         //初始化
         //获取常驻节点
         this.uiLogin = director.getScene().getChildByName('常驻').getComponent(UiLogin);
+        this.graphics = director.getScene().getChildByName('Canvas').getComponent(Graphics);
         this.uiLogin.scene战斗 = this.node.getComponent(Scene战斗);
         this.mainCameraFollowTarget = this.mainCamera.getComponent(FollowTarget);
 
@@ -93,14 +99,11 @@ export class Scene战斗 extends Component {
             this.onMouseUp(event.getLocation())
         })
         //视角移动
-        this.node.on(NodeEventType.MOUSE_MOVE, (event: EventMouse) => {
-            this.onMove(event.getDelta())
-        })
+        // this.node.on(NodeEventType.MOUSE_MOVE, (event: EventMouse) => {
+        //     this.onMove(event.getDelta())
+        // })
         this.node.on(NodeEventType.TOUCH_MOVE, (event: EventTouch) => {
-            if (this.posWorld按下准备拖动地面 == undefined)
-                return
-
-            this.onMove(event.getDelta())
+             this.onMove(event.getDelta(), event.getLocation())
         })
         //
         this.node.on(NodeEventType.MOUSE_DOWN, (event: EventMouse) => {
@@ -118,46 +121,65 @@ export class Scene战斗 extends Component {
         })
     }
     onMouseUp(pos:Vec2) {
-        this.posWorld按下准备拖动地面 = undefined
+        this.posWorld按下准备拖动地面 = null
         
         if(this.posWorld框选起始点 != null){
             var ray = new geometry.Ray()
             // const camera = cc.find("Camera",this.node).getComponent(Camera)
             this.mainCamera.screenPointToRay(pos.x, pos.y, ray)
-            if (!PhysicsSystem.instance.raycastClosest(ray)) {
+            if (!PhysicsSystem.instance.raycast(ray)) {
                 console.log('raycast does not hit the target node !')
                 return false
             }
     
-            const item = PhysicsSystem.instance.raycastClosestResult
-            console.log('射线碰撞', item.collider.node.name, item.hitPoint)
-            if (item.collider.node.name != nodeName地板) 
+            PhysicsSystem.instance.raycastResults.forEach((item:PhysicsRayResult)=>{
+                console.log('射线碰撞', item.collider.node.name, item.hitPoint)
+                if (item.collider.node.name != nodeName地板) 
+                    return
+
+                const object = 
+                [
+                    [MsgId.框选, ++this.uiLogin.sendMsgSn, 0],
+                    [this.posWorld框选起始点.x, this.posWorld框选起始点.z],
+                    [item.hitPoint.x, item.hitPoint.z]
+                ]
+                console.log('send', this.posWorld框选起始点, item.hitPoint)
+                const encoded: Uint8Array = msgpack.encode(object)
+                if (this.uiLogin.websocket != undefined) {
+                    console.log('send', encoded)
+                    this.uiLogin.websocket.send(encoded)
+                }
+
+                this.posWorld框选起始点 = null
+                this.lableMessageVoice.string ='已退出框选状态'
+                this.graphics.clear()//清掉框选框
                 return
-
-            const object = 
-            [
-                [MsgId.框选, ++this.uiLogin.sendMsgSn, 0],
-                [this.posWorld框选起始点.x, this.posWorld框选起始点.z],
-                [item.hitPoint.x, item.hitPoint.z]
-            ]
-            console.log('send', this.posWorld框选起始点, item.hitPoint)
-            const encoded: Uint8Array = msgpack.encode(object)
-            if (this.uiLogin.websocket != undefined) {
-                console.log('send', encoded)
-                this.uiLogin.websocket.send(encoded)
-            }
-
-            this.posWorld框选起始点 = null
-            this.lableMessageVoice.string ='已退出框选状态'
-            return
+            })
         }
     }
     //视角移动
-    onMove(vec2Delta: Vec2) {
-        // console.log('鼠标移动了', event.getButton());
+    onMove(vec2Delta: Vec2, vec屏幕坐标) {
+        console.log('鼠标移动了', vec屏幕坐标);
         // if(event.getButton() != EventMouse.BUTTON_MIDDLE)
         //     return
+        var ray = new geometry.Ray()
+        // const camera = cc.find("Camera",this.node).getComponent(Camera)
+        this.mainCamera.screenPointToRay(vec屏幕坐标.x, vec屏幕坐标.y, ray)
+        if (!PhysicsSystem.instance.raycast(ray)) {
+            console.log('raycast does not hit the target node !')
+            return false
+        }
 
+        if( this.posWorld框选起始点 != null)
+        {
+            PhysicsSystem.instance.raycastResults.forEach(
+                (result)=>{
+                    console.log('鼠标移动触碰对象',result.collider.node)
+                    if (result.collider.node.name == nodeName地板) 
+                        this.画斜的选中框(this.posWorld框选起始点, result.hitPoint)
+                })
+            return
+        }
 
         if (this.posWorld按下准备拖动地面) {
             // var vec2Delta = event.getDelta()
@@ -181,13 +203,14 @@ export class Scene战斗 extends Component {
 
         const item = PhysicsSystem.instance.raycastClosestResult
         
-        this.posWorld按下准备拖动地面 = undefined
+        this.posWorld按下准备拖动地面 = null
         console.log('射线碰撞', item.collider.node.name, item.hitPoint)
         if (item.collider.node.name == nodeName地板) {
             if(this.b框选等待按下起始点){//
                 this.b框选等待按下起始点 = false
                 this.posWorld框选起始点 = new Vec3(item.hitPoint)
                 this.lableMessageVoice.string ='已开始框选，请拖动后放开'
+
                 return
             }
 
@@ -331,6 +354,63 @@ export class Scene战斗 extends Component {
             })
         }
     }
+    worldToGraphics(graphicsNode:Node, worldPoint:Vec3) {
+        // 获取graphics节点在世界坐标系中的位置
+        let graphicsWorldPos = graphicsNode.getComponent(UITransform).convertToWorldSpaceAR(new Vec3(0,0, 0));
+        // 转换为局部坐标
+        let localPoint = graphicsNode.getComponent(UITransform).convertToNodeSpaceAR(worldPoint);
+        // 转换为graphics的局部坐标
+        let graphicsLocalPos = localPoint.subtract(graphicsWorldPos);
+        return graphicsLocalPos;
+    }
+    画斜的选中框(posWorld起始点:Vec3, posWorld结束点:Vec3){
+        let 上 = Math.min(posWorld起始点.z, posWorld结束点.z)
+        let 下 = Math.max(posWorld起始点.z, posWorld结束点.z)
+        let 左 = Math.min(posWorld起始点.x, posWorld结束点.x)
+        let 右 = Math.max(posWorld起始点.x, posWorld结束点.x)
+        // console.log('左',左, '上',上,'右', 右, '下', 下)
+        let pos左上 = new Vec3(左,0,上)
+        let pos左下 = new Vec3(左,0,下)
+        let pos右上 = new Vec3(右,0,上)
+        let pos右下 = new Vec3(右,0,下)
+        let transform = this.graphics.node.getComponent(UITransform);
+        let posScreen左上 = this.mainCamera.worldToScreen(pos左上)
+        let posScreen左下 = this.mainCamera.worldToScreen(pos左下)
+        let posScreen右上 = this.mainCamera.worldToScreen(pos右上)
+        let posScreen右下 = this.mainCamera.worldToScreen(pos右下)
+        let posNode左上 = transform.convertToNodeSpaceAR(posScreen左上)
+        let posNode左下 = transform.convertToNodeSpaceAR(posScreen左下)
+        let posNode右上 = transform.convertToNodeSpaceAR(posScreen右上)
+        let posNode右下 = transform.convertToNodeSpaceAR(posScreen右下)
+        console.log(posNode左上, posNode左下, posNode右上, posNode右下)
+        // posNode左上 = posNode左上.subtract(this.graphics.node.position).clone()
+        // posNode左下 = posNode左下.subtract(this.graphics.node.position).clone()
+        // posNode右上 = posNode右上.subtract(this.graphics.node.position).clone()
+        // posNode右下 = posNode右下.subtract(this.graphics.node.position).clone()
+        // posNode左上 = pos左上.subtract(this.graphics.node.position).clone()
+        // posNode左下 = pos左下.subtract(this.graphics.node.position).clone()
+        // posNode右上 = pos右上.subtract(this.graphics.node.position).clone()
+        // posNode右下 = pos右下.subtract(this.graphics.node.position).clone()
+        let graphicsWorldPos = this.graphics.node.getComponent(UITransform).convertToWorldSpaceAR(new Vec3(0,0, 0));
+        
+        console.log(graphicsWorldPos)
+
+        // posNode左上 = pos左上.subtract(graphicsWorldPos).clone()
+        // posNode左下 = pos左下.subtract(graphicsWorldPos).clone()
+        // posNode右上 = pos右上.subtract(graphicsWorldPos).clone()
+        // posNode右下 = pos右下.subtract(graphicsWorldPos).clone()
+        this.graphics.clear()
+        this.graphics.moveTo(posNode左上.x, posNode左上.y);
+        this.graphics.lineTo(posNode左下.x, posNode左下.y);
+        this.graphics.lineTo(posNode右下.x, posNode右下.y);
+        this.graphics.lineTo(posNode右上.x, posNode右上.y);
+        this.graphics.lineTo(posNode左上.x, posNode左上.y);
+
+        // let pos = this.worldToGraphics(this.graphics.node, posWorld结束点)
+        this.graphics.circle(graphicsWorldPos.x,graphicsWorldPos.y,30)
+
+        this.graphics.stroke();
+  }
 }
 
 
