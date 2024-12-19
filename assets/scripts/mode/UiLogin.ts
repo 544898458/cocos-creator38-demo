@@ -38,6 +38,7 @@ export enum MsgId {
     Entity描述,
     播放声音,
     设置视口,
+    框选,
 }
 
 enum 单人剧情副本ID {
@@ -486,6 +487,12 @@ export class UiLogin extends Component {
                         let arrPos视口 = arr[idxArr++] as number[]
                         console.log(arrPos视口)
                         thisLocal.scene战斗.mainCameraFollowTarget.对准此处(new Vec3(arrPos视口[0], 0, arrPos视口[1]))
+                    }
+                    break
+                case MsgId.SelectRoles:
+                    {
+                        let arr选中 = arr[idxArr++] as number[]
+                        thisLocal.scene战斗.选中(arr选中)
                     }
                     break
                 default:

@@ -25,9 +25,10 @@ export class BattleUI extends Component {
     onHelp(event: Event, customEventData: string){
         this.scene战斗.lableMessageVoice.string="功能待开发"
     }
-    //加速
-    onAddSpeed(event: Event, customEventData: string){
-        this.scene战斗.lableMessageVoice.string="功能待开发"
+    on框选(event: Event, customEventData: string){
+        this.scene战斗.posWorld框选起始点 = null
+        this.scene战斗.b框选等待按下起始点 = true
+        this.scene战斗.lableMessageVoice.string ='请在地面上拖动框选'
     }
     //取消选择
     onClick取消选中(event: Event, customEventData: string) {

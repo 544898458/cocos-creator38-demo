@@ -27,6 +27,9 @@ export class ClientEntityComponent {
     }
 }
 
+const prefabName选中特效:string = 'Select'//这里不能用中文，原因不明
+const nodeName地板:string = "Plane" //地板对象名字
+
 @ccclass('Scene战斗')
 export class Scene战斗 extends Component {
     entities: Map<number, ClientEntityComponent> = new Map<number, ClientEntityComponent>
@@ -57,10 +60,10 @@ export class Scene战斗 extends Component {
     //摄像
     mainCameraFollowTarget: FollowTarget
     //鼠标点击世界坐标
-    posWorldMouseDown: Vec3
-    //选中特效
-    prefabName选中特效 = 'Select'//这里不能用中文，原因不明
+    posWorld按下准备拖动地面: Vec3
 
+    b框选等待按下起始点:boolean = false
+    posWorld框选起始点: Vec3 = null
     protected onLoad(): void {
         console.log('Scene战斗.onLoad')
 
@@ -85,19 +88,16 @@ export class Scene战斗 extends Component {
         })
         //不知道有啥用
         // this.node.on(NodeEventType.MOUSE_UP, this.onMouseUp)
-        this.node.on(NodeEventType.TOUCH_END, (event: TouchEvent) => {
+        this.node.on(NodeEventType.TOUCH_END, (event: EventTouch) => {
             console.log('TOUCH_END', event)
-            if (this.posWorldMouseDown == undefined)
-                return
-
-            this.onMouseUp()
+            this.onMouseUp(event.getLocation())
         })
         //视角移动
         this.node.on(NodeEventType.MOUSE_MOVE, (event: EventMouse) => {
             this.onMove(event.getDelta())
         })
         this.node.on(NodeEventType.TOUCH_MOVE, (event: EventTouch) => {
-            if (this.posWorldMouseDown == undefined)
+            if (this.posWorld按下准备拖动地面 == undefined)
                 return
 
             this.onMove(event.getDelta())
@@ -117,8 +117,40 @@ export class Scene战斗 extends Component {
             this.onMouseDown(event.getLocation(), false)
         })
     }
-    onMouseUp() {
-        this.posWorldMouseDown = undefined
+    onMouseUp(pos:Vec2) {
+        this.posWorld按下准备拖动地面 = undefined
+        
+        if(this.posWorld框选起始点 != null){
+            var ray = new geometry.Ray()
+            // const camera = cc.find("Camera",this.node).getComponent(Camera)
+            this.mainCamera.screenPointToRay(pos.x, pos.y, ray)
+            if (!PhysicsSystem.instance.raycastClosest(ray)) {
+                console.log('raycast does not hit the target node !')
+                return false
+            }
+    
+            const item = PhysicsSystem.instance.raycastClosestResult
+            console.log('射线碰撞', item.collider.node.name, item.hitPoint)
+            if (item.collider.node.name != nodeName地板) 
+                return
+
+            const object = 
+            [
+                [MsgId.框选, ++this.uiLogin.sendMsgSn, 0],
+                [this.posWorld框选起始点.x, this.posWorld框选起始点.z],
+                [item.hitPoint.x, item.hitPoint.z]
+            ]
+            console.log('send', this.posWorld框选起始点, item.hitPoint)
+            const encoded: Uint8Array = msgpack.encode(object)
+            if (this.uiLogin.websocket != undefined) {
+                console.log('send', encoded)
+                this.uiLogin.websocket.send(encoded)
+            }
+
+            this.posWorld框选起始点 = null
+            this.lableMessageVoice.string ='已退出框选状态'
+            return
+        }
     }
     //视角移动
     onMove(vec2Delta: Vec2) {
@@ -127,7 +159,7 @@ export class Scene战斗 extends Component {
         //     return
 
 
-        if (this.posWorldMouseDown) {
+        if (this.posWorld按下准备拖动地面) {
             // var vec2Delta = event.getDelta()
             var div = this.mainCamera.fov / 400;
             let vec3 =  new Vec3(-vec2Delta.x, 0, vec2Delta.y).multiplyScalar(div)
@@ -139,7 +171,6 @@ export class Scene战斗 extends Component {
     onMouseDown(posMouseDown: Vec2, b鼠标右键: boolean) {
         console.log('MOUSE_DOWN', posMouseDown)
 
-
         var ray = new geometry.Ray()
         // const camera = cc.find("Camera",this.node).getComponent(Camera)
         this.mainCamera.screenPointToRay(posMouseDown.x, posMouseDown.y, ray)
@@ -148,13 +179,19 @@ export class Scene战斗 extends Component {
             return false
         }
 
-        const raycastResults = PhysicsSystem.instance.raycastClosestResult
-
-        const item = raycastResults//[i]
-        this.posWorldMouseDown = undefined
+        const item = PhysicsSystem.instance.raycastClosestResult
+        
+        this.posWorld按下准备拖动地面 = undefined
         console.log('射线碰撞', item.collider.node.name, item.hitPoint)
-        if (item.collider.node.name == "Plane") {
-            this.posWorldMouseDown = item.hitPoint
+        if (item.collider.node.name == nodeName地板) {
+            if(this.b框选等待按下起始点){//
+                this.b框选等待按下起始点 = false
+                this.posWorld框选起始点 = new Vec3(item.hitPoint)
+                this.lableMessageVoice.string ='已开始框选，请拖动后放开'
+                return
+            }
+
+            this.posWorld按下准备拖动地面 = item.hitPoint
             if (0 == this.uiLogin.arr选中.length)
                 return
 
@@ -241,20 +278,21 @@ export class Scene战斗 extends Component {
                 this.uiLogin.send选中([id])
 
 
-                this.entities.forEach((clientEntityComponent, k, map) => {
-                    let nodEffect = clientEntityComponent.view.getChildByName(this.prefabName选中特效)
-                    console.log('准备删除', nodEffect)
-                    clientEntityComponent.view.removeChild(nodEffect)
-                })
-                resources.load(this.prefabName选中特效, Prefab, (err, prefab) => {
-                    console.log('resources.load callback:', err, prefab)
-                    const newNode = instantiate(prefab)
-                    newNode.name = this.prefabName选中特效
-                    this.entities.get(id).view.addChild(newNode)
-                    let ani = newNode.getChildByName('lightQ').getComponent(Animation)
-                    const [clip] = ani.clips;
-                    ani.getState(clip.name).repeatCount = Infinity
-                })
+                // this.entities.forEach((clientEntityComponent, k, map) => {
+                //     let nodEffect = clientEntityComponent.view.getChildByName(this.prefabName选中特效)
+                //     console.log('准备删除', nodEffect)
+                //     clientEntityComponent.view.removeChild(nodEffect)
+                // })
+                // this.选中([id])
+                // resources.load(this.prefabName选中特效, Prefab, (err, prefab) => {
+                //     console.log('resources.load callback:', err, prefab)
+                //     const newNode = instantiate(prefab)
+                //     newNode.name = this.prefabName选中特效
+                //     this.entities.get(id).view.addChild(newNode)
+                //     let ani = newNode.getChildByName('lightQ').getComponent(Animation)
+                //     const [clip] = ani.clips;
+                //     ani.getState(clip.name).repeatCount = Infinity
+                // })
             }
         }
     }
@@ -272,10 +310,25 @@ export class Scene战斗 extends Component {
         for (let id of this.uiLogin.arr选中) {
             let entity = this.entities.get(id)
             if (entity) {
-                let node选中特效 = entity.view.getChildByName(this.prefabName选中特效)
+                let node选中特效 = entity.view.getChildByName(prefabName选中特效)
                 if (node选中特效)
                     node选中特效.removeFromParent()
             }
+        }
+    }
+    选中(arr: number[]) {
+        this.clear选中()
+        this.uiLogin.arr选中 = arr
+        for (let id of this.uiLogin.arr选中) {
+            resources.load(prefabName选中特效, Prefab, (err, prefab) => {
+                console.log('resources.load callback:', err, prefab)
+                const newNode = instantiate(prefab)
+                newNode.name = prefabName选中特效
+                this.entities.get(id).view.addChild(newNode)
+                let ani = newNode.getChildByName('lightQ').getComponent(Animation)
+                const [clip] = ani.clips;
+                ani.getState(clip.name).repeatCount = Infinity
+            })
         }
     }
 }
