@@ -8,6 +8,8 @@ import { Graphics } from 'cc'
 import { math } from 'cc'
 import { UITransform } from 'cc'
 import { PhysicsRayResult } from 'cc'
+import { Canvas } from 'cc'
+import { view } from 'cc'
 
 const { ccclass, property } = _decorator
 export class ClientEntityComponent {
@@ -103,6 +105,7 @@ export class Scene战斗 extends Component {
         //     this.onMove(event.getDelta())
         // })
         this.node.on(NodeEventType.TOUCH_MOVE, (event: EventTouch) => {
+            console.log('TOUCH_MOVE', event)
              this.onMove(event.getDelta(), event.getLocation())
         })
         //
@@ -360,8 +363,20 @@ export class Scene战斗 extends Component {
         // 转换为局部坐标
         let localPoint = graphicsNode.getComponent(UITransform).convertToNodeSpaceAR(worldPoint);
         // 转换为graphics的局部坐标
-        let graphicsLocalPos = localPoint.subtract(graphicsWorldPos);
+        let graphicsLocalPos = localPoint//.subtract(graphicsWorldPos);
         return graphicsLocalPos;
+    }
+    Wolrd3D转Graphics绘图坐标(posWorld3D:Vec3)
+    {
+        let pos屏幕坐标 = this.mainCamera.worldToScreen(posWorld3D)//纯整数，无小数，左下角为0
+        let size = view.getVisibleSize()
+        let sizeInPixel = view.getVisibleSizeInPixel()
+        console.log('size', size)
+        console.log('sizeInPixel', sizeInPixel)
+        pos屏幕坐标.multiply3f(size.x/sizeInPixel.x, size.y/sizeInPixel.y, 1)
+        let transform = this.graphics.node.getComponent(UITransform)
+        let posGraphics绘图坐标 = transform.convertToNodeSpaceAR(pos屏幕坐标)
+        return posGraphics绘图坐标
     }
     画斜的选中框(posWorld起始点:Vec3, posWorld结束点:Vec3){
         let 上 = Math.min(posWorld起始点.z, posWorld结束点.z)
@@ -369,36 +384,14 @@ export class Scene战斗 extends Component {
         let 左 = Math.min(posWorld起始点.x, posWorld结束点.x)
         let 右 = Math.max(posWorld起始点.x, posWorld结束点.x)
         // console.log('左',左, '上',上,'右', 右, '下', 下)
-        let pos左上 = new Vec3(左,0,上)
-        let pos左下 = new Vec3(左,0,下)
-        let pos右上 = new Vec3(右,0,上)
-        let pos右下 = new Vec3(右,0,下)
-        let transform = this.graphics.node.getComponent(UITransform);
-        let posScreen左上 = this.mainCamera.worldToScreen(pos左上)
-        let posScreen左下 = this.mainCamera.worldToScreen(pos左下)
-        let posScreen右上 = this.mainCamera.worldToScreen(pos右上)
-        let posScreen右下 = this.mainCamera.worldToScreen(pos右下)
-        let posNode左上 = transform.convertToNodeSpaceAR(posScreen左上)
-        let posNode左下 = transform.convertToNodeSpaceAR(posScreen左下)
-        let posNode右上 = transform.convertToNodeSpaceAR(posScreen右上)
-        let posNode右下 = transform.convertToNodeSpaceAR(posScreen右下)
-        console.log(posNode左上, posNode左下, posNode右上, posNode右下)
-        // posNode左上 = posNode左上.subtract(this.graphics.node.position).clone()
-        // posNode左下 = posNode左下.subtract(this.graphics.node.position).clone()
-        // posNode右上 = posNode右上.subtract(this.graphics.node.position).clone()
-        // posNode右下 = posNode右下.subtract(this.graphics.node.position).clone()
-        // posNode左上 = pos左上.subtract(this.graphics.node.position).clone()
-        // posNode左下 = pos左下.subtract(this.graphics.node.position).clone()
-        // posNode右上 = pos右上.subtract(this.graphics.node.position).clone()
-        // posNode右下 = pos右下.subtract(this.graphics.node.position).clone()
-        let graphicsWorldPos = this.graphics.node.getComponent(UITransform).convertToWorldSpaceAR(new Vec3(0,0, 0));
-        
-        console.log(graphicsWorldPos)
-
-        // posNode左上 = pos左上.subtract(graphicsWorldPos).clone()
-        // posNode左下 = pos左下.subtract(graphicsWorldPos).clone()
-        // posNode右上 = pos右上.subtract(graphicsWorldPos).clone()
-        // posNode右下 = pos右下.subtract(graphicsWorldPos).clone()
+        let posWorld3D左上 = new Vec3(左,0,上)
+        let posWorld3D左下 = new Vec3(左,0,下)
+        let posWorld3D右上 = new Vec3(右,0,上)
+        let posWorld3D右下 = new Vec3(右,0,下)
+        let posNode左上 = this.Wolrd3D转Graphics绘图坐标(posWorld3D左上)
+        let posNode左下 = this.Wolrd3D转Graphics绘图坐标(posWorld3D左下)
+        let posNode右上 = this.Wolrd3D转Graphics绘图坐标(posWorld3D右上)
+        let posNode右下 = this.Wolrd3D转Graphics绘图坐标(posWorld3D右下)
         this.graphics.clear()
         this.graphics.moveTo(posNode左上.x, posNode左上.y);
         this.graphics.lineTo(posNode左下.x, posNode左下.y);
@@ -406,9 +399,10 @@ export class Scene战斗 extends Component {
         this.graphics.lineTo(posNode右上.x, posNode右上.y);
         this.graphics.lineTo(posNode左上.x, posNode左上.y);
 
-        // let pos = this.worldToGraphics(this.graphics.node, posWorld结束点)
-        this.graphics.circle(graphicsWorldPos.x,graphicsWorldPos.y,30)
-
+        let pos = this.worldToGraphics(this.graphics.node, posWorld结束点)
+        // this.graphics.circle(graphicsWorldPos.x,graphicsWorldPos.y,30)
+        // this.graphics.circle(0,0,10)
+        // this.graphics.circle(pos.x,pos.y,0)
         this.graphics.stroke();
   }
 }

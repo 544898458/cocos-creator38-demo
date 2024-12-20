@@ -19,6 +19,26 @@
     "__original-animation-9.cconb"
   ],
   "subMetas": {
+    "6e8b7": {
+      "importer": "gltf-embeded-image",
+      "uuid": "1417a0f7-bfea-4eb9-a4d6-e46f234b1108@6e8b7",
+      "displayName": "",
+      "id": "6e8b7",
+      "name": "A_rifel_01_D.png.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": true,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
     "0215e": {
       "importer": "gltf-mesh",
       "uuid": "1417a0f7-bfea-4eb9-a4d6-e46f234b1108@0215e",
@@ -371,26 +391,6 @@
       ],
       "subMetas": {}
     },
-    "6e8b7": {
-      "importer": "gltf-embeded-image",
-      "uuid": "1417a0f7-bfea-4eb9-a4d6-e46f234b1108@6e8b7",
-      "displayName": "",
-      "id": "6e8b7",
-      "name": "A_rifel_01_D.png.image",
-      "userData": {
-        "gltfIndex": 0,
-        "fixAlphaTransparencyArtifacts": true,
-        "hasAlpha": true,
-        "type": "texture"
-      },
-      "ver": "1.0.3",
-      "imported": true,
-      "files": [
-        ".json",
-        ".png"
-      ],
-      "subMetas": {}
-    },
     "a59ab": {
       "importer": "texture",
       "uuid": "1417a0f7-bfea-4eb9-a4d6-e46f234b1108@a59ab",
@@ -404,8 +404,8 @@
         "magfilter": "linear",
         "mipfilter": "none",
         "anisotropy": 0,
-        "isUuid": true,
-        "imageUuidOrDatabaseUri": "1417a0f7-bfea-4eb9-a4d6-e46f234b1108@6e8b7"
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/mapres/坦格利安/A_rifel_01_D.png"
       },
       "ver": "1.0.22",
       "imported": true,
@@ -451,7 +451,7 @@
     "imageMetas": [
       {
         "name": "A_rifel_01_D.png",
-        "uri": "1417a0f7-bfea-4eb9-a4d6-e46f234b1108@6e8b7"
+        "uri": "db://assets/mapres/坦格利安/A_rifel_01_D.png"
       }
     ],
     "fbx": {
