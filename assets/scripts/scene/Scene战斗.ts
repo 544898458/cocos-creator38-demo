@@ -292,6 +292,7 @@ export class Scene战斗 extends Component {
                 || item.collider.node.name == "house_type21"
                 || item.collider.node.name == "基地"//这个名字不带目录
                 || item.collider.node.name == "步兵"
+                || item.collider.node.name == "三色坦克"
             ) {
                 this.mainCameraFollowTarget.target = item.collider.node
                 let id = this.entityId[item.collider.node.uuid]

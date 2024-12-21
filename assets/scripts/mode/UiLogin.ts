@@ -57,6 +57,7 @@ enum 活动单位类型 {
     工程车,//空间工程车Space Construction Vehicle。可以采矿，采气，也可以简单攻击
     兵,//陆战队员Marine。只能攻击，不能采矿
     近战兵,//火蝠，喷火兵Firebat
+    三色坦克,
 };
 
 // enum 点击地面操作类型
@@ -104,6 +105,11 @@ export class UiLogin extends Component {
 
     update(deltaTime: number) {
 
+    }
+    onClick造坦克(event: Event, customEventData: string): void {
+        const encoded: Uint8Array = msgpack.encode([[MsgId.AddRole, 0, 0], 活动单位类型.三色坦克])
+        // console.log(encoded)
+        this.websocket.send(encoded)
     }
     onClickAdd兵(event: Event, customEventData: string): void {
         const encoded: Uint8Array = msgpack.encode([[MsgId.AddRole, 0, 0], 活动单位类型.兵])
@@ -179,11 +185,11 @@ export class UiLogin extends Component {
         this.scene登录.nodeLoginPanel.active = false//隐藏
         this.scene登录.lableMessage.string = '正在连接'
         // this.websocket = new WebSocket("ws://192.168.31.194:12348/")
-        // this.websocket = new WebSocket("ws://192.168.31.170:12348/")
+        this.websocket = new WebSocket("ws://192.168.31.170:12348/")
         // this.websocket = new WebSocket("ws://192.168.43.109:12348/")
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
         // this.websocket = new WebSocket("ws://192.168.0.100:12348/")
-        this.websocket = new WebSocket("ws://47.119.184.177:12348/")
+        // this.websocket = new WebSocket("ws://47.119.184.177:12348/")
 
         this.websocket.binaryType = 'arraybuffer'
         console.log(this.websocket)
@@ -255,6 +261,8 @@ export class UiLogin extends Component {
                                     old.skeletalAnimation = newNode.getChildByName('p_Base_02').getComponent(SkeletalAnimation)
                                 else if(newNode.name=='步兵')
                                     old.skeletalAnimation = newNode.getChildByName('p_A_rifle_01').getComponent(SkeletalAnimation)
+                                else if(newNode.name=='三色坦克')
+                                    old.skeletalAnimation = newNode.getChildByName('p_B_tank_03').getComponent(SkeletalAnimation)
                                 else
                                     old.skeletalAnimation = newNode.getComponent(SkeletalAnimation)
 

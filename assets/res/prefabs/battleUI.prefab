@@ -6316,7 +6316,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "ButtonAdd机关枪",
+    "_name": "ButtonAdd坦克",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
@@ -6502,10 +6502,7 @@
       "b": 124,
       "a": 255
     },
-    "_normalSprite": {
-      "__uuid__": "9c549081-4ebd-4540-8b44-ec785abedca5@f9941",
-      "__expectedType__": "cc.SpriteFrame"
-    },
+    "_normalSprite": null,
     "_hoverSprite": null,
     "_pressedSprite": null,
     "_disabledSprite": null,
@@ -6527,7 +6524,7 @@
     },
     "component": "",
     "_componentId": "ba985/FGklKdYpL9XgoQFoE",
-    "handler": "onClickAdd机关枪",
+    "handler": "onClick造坦克",
     "customEventData": ""
   },
   {
@@ -6706,7 +6703,7 @@
       "b": 82,
       "a": 255
     },
-    "_string": "机关枪",
+    "_string": "造坦克",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 12,

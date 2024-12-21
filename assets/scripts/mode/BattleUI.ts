@@ -45,6 +45,9 @@ export class BattleUI extends Component {
     onClickAdd兵(event: Event, customEventData: string): void {
         this.uiLogin.onClickAdd兵(event,customEventData)
     }
+    onClick造坦克(event: Event, customEventData: string): void {
+        this.uiLogin.onClick造坦克(event,customEventData)
+    }
     //造近战
     onClickAdd近战兵(event: Event, customEventData: string): void {
         this.uiLogin.onClickAdd近战兵(event,customEventData)
