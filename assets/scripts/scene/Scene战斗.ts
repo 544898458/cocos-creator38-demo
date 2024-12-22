@@ -77,11 +77,13 @@ export class Scene战斗 extends Component {
     }
 
     start() {
+        console.log('Scene战斗.start')
         //初始化
         //获取常驻节点
         this.uiLogin = director.getScene().getChildByName('常驻').getComponent(UiLogin);
         this.graphics = director.getScene().getChildByName('Canvas').getComponent(Graphics);
         this.uiLogin.scene战斗 = this.node.getComponent(Scene战斗);
+        console.log(this.uiLogin.scene战斗)
         this.mainCameraFollowTarget = this.mainCamera.getComponent(FollowTarget);
 
 
