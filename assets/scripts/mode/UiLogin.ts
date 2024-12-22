@@ -5,6 +5,7 @@ import { Scene战斗, ClientEntityComponent } from '../scene/Scene战斗'
 import { Scene登录 } from '../scene/Scene登录'
 import { AudioMgr } from '../manager/AudioMgr'
 import { ProgressBar } from 'cc'
+import { ParticleSystem } from 'cc'
 
 const { ccclass, property } = _decorator
 export enum MsgId {
@@ -316,6 +317,11 @@ export class UiLogin extends Component {
 
                                 if (old.position != undefined)
                                     old.view.position = old.position
+
+                                if(old.view.name == '黄光爆闪'){
+                                    var particleSystem = old.view.getChildByPath('collectYellow/collectYellow').getComponent(ParticleSystem)
+                                    particleSystem.play()
+                                }
                             })
                         }
                         else {
@@ -420,7 +426,7 @@ export class UiLogin extends Component {
                         let id = arr[idxArr++]
                         console.log('删除:', id)
                         let entity = thisLocal.scene战斗.entities.get(id);
-                        entity.hpbar?.destroy();
+                        // entity.hpbar?.destroy();
                         if (entity == undefined)
                             return
 
