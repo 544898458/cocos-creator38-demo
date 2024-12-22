@@ -427,8 +427,10 @@ export class UiLogin extends Component {
                         console.log('删除:', id)
                         let entity = thisLocal.scene战斗.entities.get(id);
                         // entity.hpbar?.destroy();
-                        if (entity == undefined)
+                        if (entity == undefined){
+                            console.warn('无法删除',id)
                             return
+                        }
 
                         entity.removeFromParent()
                         thisLocal.scene战斗.entities.delete(id)
