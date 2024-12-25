@@ -1,4 +1,4 @@
-import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip, director, AssetManager } from 'cc'
+import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip, director, AssetManager, Asset, assetManager } from 'cc'
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { HeadScale } from '../component/head-scale'
 import { Scene战斗, ClientEntityComponent } from '../scene/Scene战斗'
@@ -77,6 +77,9 @@ export class UiLogin extends Component {
     websocket: WebSocket
     // lableMessage: Label
     // lableMessage语音提示: Label
+    @property({type: Asset})
+    public wssCacert: Asset = null!;
+
     recvMsgSn: number = 0
     sendMsgSn: number = 0
     scene战斗: Scene战斗 = null
@@ -186,12 +189,24 @@ export class UiLogin extends Component {
         this.scene登录.nodeLoginPanel.active = false//隐藏
         this.scene登录.lableMessage.string = '正在连接'
         // this.websocket = new WebSocket("ws://192.168.31.194:12348/")
-        // this.websocket = new WebSocket("ws://192.168.31.170:12348/")
+        // this.websocket = new WebSocket("wss://192.168.31.170/")
         // this.websocket = new WebSocket("ws://192.168.43.109:12348/")
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
         // this.websocket = new WebSocket("ws://192.168.0.100:12348/")
-        this.websocket = new WebSocket("ws://47.119.184.177:12348/")
-
+        // this.websocket = new WebSocket("ws://47.119.184.177:12348/")
+        // this.websocket = new WebSocket("wss://wss.iotlabor.cn/")
+        // We should pass the cacert to libwebsockets used in native platform, otherwise the wss connection would be closed.
+        // let url = this.wssCacert.nativeUrl;
+        // if (assetManager.cacheManager) {
+        //     url = assetManager.cacheManager.getCache(url) || assetManager.cacheManager.getTemp(url) || url;
+        // }
+        // We should pass the cacert to libwebsockets used in native platform, otherwise the wss connection would be closed.
+        // this._wsiSendBinary = new WebSocket('wss://echo.websocket.events', [], url);
+        // console.log(url)
+        
+        this.websocket = new WebSocket('wss://wss2.iotlabor.cn/',[])//, url)
+        // this.websocket = new WebSocket('wss://wss.iotlabor.cn/',[], url)
+        // this.websocket = new WebSocket('wss://echo.websocket.events', [])//, url);
         this.websocket.binaryType = 'arraybuffer'
         console.log(this.websocket)
 
@@ -203,6 +218,7 @@ export class UiLogin extends Component {
         //连接成功建立的回调方法
         this.websocket.onopen = (event: Event) => {
             this.scene登录.lableMessage.string = "连接成功"
+            console.log(this.scene登录.lableMessage.string)
             const object = [
                 [MsgId.Login, ++this.sendMsgSn, 0, 0],
                 editBox.string,
