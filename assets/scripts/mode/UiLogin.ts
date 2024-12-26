@@ -221,7 +221,8 @@ export class UiLogin extends Component {
 
         //连接发生错误的回调方法
         this.websocket.onerror = () => {
-            this.scene登录.lableMessage.string = "连接错误"
+            this.scene登录.lableMessage.string = "连接错误，您可以再试一次"
+            this.scene登录.nodeLoginPanel.active = true//再次显示，可以再点登录
         }
 
         //连接成功建立的回调方法
@@ -255,7 +256,8 @@ export class UiLogin extends Component {
             let sn = msgBase[1] as number
             // console.log("msgId：",   msgId)
             ++thisLocal.recvMsgSn
-            console.assert(thisLocal.recvMsgSn == sn)
+            if(thisLocal.recvMsgSn != sn)
+            console.error('recvMsgSn ', thisLocal.recvMsgSn , 'sn', sn)
             // console.log("sn", sn)
             switch (msgId) {
                 case MsgId.AddRoleRet:
