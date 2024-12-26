@@ -89,6 +89,15 @@ export class UiLogin extends Component {
     createMsgMove强行走(hitPoint: Vec3) {
         return this.createMsgMove(hitPoint, false)
     }
+    send(buf:Buffer){
+        if (this.websocket == undefined) 
+        {
+            console.error('this.websocket is undefined')
+            return
+        }
+            
+        this.websocket.send(buf.buffer)
+    }
     createMsgMove遇敌自动攻击(hitPoint: Vec3) {
         return this.createMsgMove(hitPoint, true)
     }
@@ -111,24 +120,24 @@ export class UiLogin extends Component {
 
     }
     onClick造坦克(event: Event, customEventData: string): void {
-        const encoded: Uint8Array = msgpack.encode([[MsgId.AddRole, 0, 0], 活动单位类型.三色坦克])
+        const encoded = msgpack.encode([[MsgId.AddRole, 0, 0], 活动单位类型.三色坦克])
         // console.log(encoded)
-        this.websocket.send(encoded)
+        this.send(encoded)
     }
     onClickAdd兵(event: Event, customEventData: string): void {
-        const encoded: Uint8Array = msgpack.encode([[MsgId.AddRole, 0, 0], 活动单位类型.兵])
+        const encoded = msgpack.encode([[MsgId.AddRole, 0, 0], 活动单位类型.兵])
         // console.log(encoded)
-        this.websocket.send(encoded)
+        this.send(encoded)
     }
     onClickAdd近战兵(event: Event, customEventData: string): void {
-        const encoded: Uint8Array = msgpack.encode([[MsgId.AddRole, 0, 0], 活动单位类型.近战兵])
+        const encoded = msgpack.encode([[MsgId.AddRole, 0, 0], 活动单位类型.近战兵])
         // console.log(encoded)
-        this.websocket.send(encoded)
+        this.send(encoded)
     }
     onClickAdd工程车(event: Event, customEventData: string): void {
-        const encoded: Uint8Array = msgpack.encode([[MsgId.AddRole, 0, 0], 活动单位类型.工程车])
+        const encoded = msgpack.encode([[MsgId.AddRole, 0, 0], 活动单位类型.工程车])
         // console.log(encoded)
-        this.websocket.send(encoded)
+        this.send(encoded)
     }
     createMsg造建筑(hitPoint: Vec3, 类型: 建筑单位类型) {
         console.log('createMsg造建筑', hitPoint)
@@ -151,7 +160,7 @@ export class UiLogin extends Component {
     onClickAdd民房(event: Event, customEventData: string): void {
         this.on点击按钮_造建筑(建筑单位类型.民房)
     }
-    进Scene战斗(sceneName: string, encoded: Uint8Array) {
+    进Scene战斗(sceneName: string, encoded: Buffer) {
         this.scene登录.nodeSelectSpace.active = false
         director.preloadScene(sceneName, (completedCount: number, totalCount: number, item: AssetManager.RequestItem) => {
             console.log(completedCount, totalCount, item)
@@ -162,7 +171,7 @@ export class UiLogin extends Component {
             director.loadScene(sceneName, (err, scene) => {
                 // this.nodeSelectSpace.active = false
 
-                this.websocket.send(encoded)
+                this.send(encoded)
             })
         })
     }
@@ -225,9 +234,9 @@ export class UiLogin extends Component {
                 'Hello, world!pwd',
             ]
 
-            const encoded: Uint8Array = msgpack.encode(object)
+            const encoded = msgpack.encode(object)
             console.log(encoded)
-            this.websocket.send(encoded)
+            this.send(encoded)
 
             this.scene登录.nodeSelectSpace.active = true
         }
@@ -556,10 +565,10 @@ export class UiLogin extends Component {
                 editBox.string
             ]
 
-        const encoded: Uint8Array = msgpack.encode(object)
+        const encoded = msgpack.encode(object)
         if (this.websocket != undefined) {
             console.log('send', encoded)
-            this.websocket.send(encoded)
+            this.send(encoded)
         }
     }
     回到登录场景() {
@@ -576,10 +585,10 @@ export class UiLogin extends Component {
                 [MsgId.离开Space, 0, 0],
             ]
 
-        const encoded: Uint8Array = msgpack.encode(object)
+        const encoded = msgpack.encode(object)
         if (this.websocket != undefined) {
             console.log('send', encoded)
-            this.websocket.send(encoded)
+            this.send(encoded)
         }
     }
     send选中(arr选中: number[]) {
@@ -589,10 +598,10 @@ export class UiLogin extends Component {
                 arr选中//虽然是整数，但是也强制转成FLOAT64发出去了
             ]
 
-        const encoded: Uint8Array = msgpack.encode(object)
+        const encoded = msgpack.encode(object)
         if (this.websocket != undefined) {
             console.log('send', encoded)
-            this.websocket.send(encoded)
+            this.send(encoded)
         }
 
         this.arr选中 = arr选中

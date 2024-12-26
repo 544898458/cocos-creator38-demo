@@ -149,11 +149,10 @@ export class Scene战斗 extends Component {
                     [item.hitPoint.x, item.hitPoint.z]
                 ]
                 console.log('send', this.posWorld框选起始点, item.hitPoint)
-                const encoded: Uint8Array = msgpack.encode(object)
-                if (this.uiLogin.websocket != undefined) {
-                    console.log('send', encoded)
-                    this.uiLogin.websocket.send(encoded)
-                }
+                const encoded = msgpack.encode(object)
+                console.log('send', encoded)
+                this.uiLogin.send(encoded)
+            
 
                 this.posWorld框选起始点 = null
                 this.lableMessageVoice.string ='已退出框选状态'
@@ -234,11 +233,11 @@ export class Scene战斗 extends Component {
                 object = this.uiLogin.fun创建消息(item.hitPoint)
             }
 
-            const encoded: Uint8Array = msgpack.encode(object)
-            if (this.uiLogin.websocket != undefined) {
+            const encoded = msgpack.encode(object)
+            
                 console.log('send', encoded)
-                this.uiLogin.websocket.send(encoded)
-            }
+                this.uiLogin.send(encoded)
+            
 
             this.uiLogin.fun创建消息 = this.uiLogin.createMsgMove遇敌自动攻击
         }
@@ -256,11 +255,10 @@ export class Scene战斗 extends Component {
                         id
                     ]
 
-                const encoded: Uint8Array = msgpack.encode(object)
-                if (this.uiLogin.websocket != undefined) {
-                    console.log('send', encoded)
-                    this.uiLogin.websocket.send(encoded)
-                }
+                const encoded = msgpack.encode(object)
+                console.log('send', encoded)
+                this.uiLogin.send(encoded)
+                
             }
             else if (item.collider.node.name == "house_type17")//点击地堡
             {
@@ -279,11 +277,11 @@ export class Scene战斗 extends Component {
                         [0.0]
                     ]
 
-                const encoded: Uint8Array = msgpack.encode(object)
-                if (this.uiLogin.websocket != undefined) {
-                    console.log('send', encoded)
-                    this.uiLogin.websocket.send(encoded)
-                }
+                const encoded = msgpack.encode(object)
+
+                console.log('send', encoded)
+                this.uiLogin.send(encoded)
+        
             }
             else if (item.collider.node.name == "altman-blue"
                 || item.collider.node.name == "altman-yellow"
