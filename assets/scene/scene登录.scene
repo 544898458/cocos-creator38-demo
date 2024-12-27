@@ -32,7 +32,7 @@
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 91
+      "__id__": 94
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -63,7 +63,7 @@
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 92
+      "__id__": 95
     },
     "_id": "5a529a1a-acd9-483f-8e6d-aa2f3d1b0919"
   },
@@ -286,21 +286,24 @@
       },
       {
         "__id__": 72
+      },
+      {
+        "__id__": 87
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 87
-      },
-      {
-        "__id__": 88
-      },
-      {
-        "__id__": 89
-      },
-      {
         "__id__": 90
+      },
+      {
+        "__id__": 91
+      },
+      {
+        "__id__": 92
+      },
+      {
+        "__id__": 93
       }
     ],
     "_prefab": null,
@@ -496,8 +499,8 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 176.413,
+      "x": -2.842170943040401e-14,
+      "y": 343.41300000000007,
       "z": 0
     },
     "_lrot": {
@@ -1042,8 +1045,8 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0,
-      "y": -60.828,
+      "x": -2.842170943040401e-14,
+      "y": -21.418999999999926,
       "z": 0
     },
     "_lrot": {
@@ -1878,8 +1881,8 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 58.638,
+      "x": -2.842170943040401e-14,
+      "y": -44.430999999999926,
       "z": 0
     },
     "_lrot": {
@@ -2053,7 +2056,7 @@
     "_string": "训练战",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 71.81159420289856,
+    "_actualFontSize": 20,
     "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -2367,7 +2370,7 @@
     "_string": "防守战",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 71.81159420289856,
+    "_actualFontSize": 20,
     "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -2681,7 +2684,7 @@
     "_string": "多人联机地图",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 71.81159420289856,
+    "_actualFontSize": 20,
     "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -3428,6 +3431,138 @@
     "_id": "c3LJTVgN9O6LhDx45o0Aky"
   },
   {
+    "__type__": "cc.Node",
+    "_name": "操作说明",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "_parent": {
+      "__id__": 7
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 88
+      },
+      {
+        "__id__": 89
+      }
+    ],
+    "_prefab": null,
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": -2.842170943040401e-14,
+      "y": 188.00000000000006,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_mobility": 0,
+    "_layer": 33554432,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": "3fDBOXYtFMgZC1kwWHbSeI"
+  },
+  {
+    "__type__": "cc.UITransform",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 87
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 408,
+      "height": 270.94
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_id": "813ac8MUpGlpvDbyZlVGN1"
+  },
+  {
+    "__type__": "cc.Label",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 87
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_customMaterial": null,
+    "_srcBlendFactor": 2,
+    "_dstBlendFactor": 4,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_string": "  选中工程车再点基地再点 \n  空地可以造基地\n  选中基地再点造工程车可以造工程车\n  选中工程车再点资源可以采集资源\n  资源足够时工程车还可以造民房、地堡、兵厂\n  在兵厂可以造兵、近战兵、也可以造坦克\n  造民房可以增加人口上限\n  地堡里面可以进入10个兵，地堡血量很高\n  如果开局不利，点右上角退出此场景按钮，再次进入\n可以反复开局\n\n训练战：引导熟悉一些基础操作\n防守战：怪物会一波一波地进攻玩家\n多人联机地图：所有玩家相互作为敌人进一个公共地图",
+    "_horizontalAlign": 0,
+    "_verticalAlign": 1,
+    "_actualFontSize": 17,
+    "_fontSize": 17,
+    "_fontFamily": "Arial",
+    "_lineHeight": 19,
+    "_overflow": 0,
+    "_enableWrapText": true,
+    "_font": null,
+    "_isSystemFontUsed": true,
+    "_spacingX": 0,
+    "_isItalic": false,
+    "_isBold": false,
+    "_isUnderline": false,
+    "_underlineHeight": 2,
+    "_cacheMode": 0,
+    "_enableOutline": false,
+    "_outlineColor": {
+      "__type__": "cc.Color",
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 255
+    },
+    "_outlineWidth": 2,
+    "_enableShadow": false,
+    "_shadowColor": {
+      "__type__": "cc.Color",
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 255
+    },
+    "_shadowOffset": {
+      "__type__": "cc.Vec2",
+      "x": 2,
+      "y": 2
+    },
+    "_shadowBlur": 2,
+    "_id": "77qiiR3qNJmZDL/n3s9RHg"
+  },
+  {
     "__type__": "cc.UITransform",
     "_name": "",
     "_objFlags": 0,
@@ -3521,28 +3656,28 @@
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 93
-    },
-    "shadows": {
-      "__id__": 94
-    },
-    "_skybox": {
-      "__id__": 95
-    },
-    "fog": {
       "__id__": 96
     },
-    "octree": {
+    "shadows": {
       "__id__": 97
     },
-    "skin": {
+    "_skybox": {
       "__id__": 98
     },
-    "lightProbeInfo": {
+    "fog": {
       "__id__": 99
     },
-    "postSettings": {
+    "octree": {
       "__id__": 100
+    },
+    "skin": {
+      "__id__": 101
+    },
+    "lightProbeInfo": {
+      "__id__": 102
+    },
+    "postSettings": {
+      "__id__": 103
     },
     "bakedWithStationaryMainLight": false,
     "bakedWithHighpLightmap": false
