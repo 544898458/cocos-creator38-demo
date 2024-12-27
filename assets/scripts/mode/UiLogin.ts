@@ -213,7 +213,7 @@ export class UiLogin extends Component {
         // this._wsiSendBinary = new WebSocket('wss://echo.websocket.events', [], url);
         // console.log(url)
         
-        this.websocket = new WebSocket('wss://wss2.iotlabor.cn/',[])//, url)
+        this.websocket = new WebSocket('wss://wss2.iotlabor.cn:12348/',[])//, url)
         // this.websocket = new WebSocket('wss://wss.iotlabor.cn/',[], url)
         // this.websocket = new WebSocket('wss://echo.websocket.events', [])//, url);
         this.websocket.binaryType = 'arraybuffer'
