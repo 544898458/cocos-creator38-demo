@@ -21,9 +21,8 @@ export class BattleUI extends Component {
     onSetting(event: Event, customEventData: string){
         this.scene战斗.lableMessageVoice.string="功能待开发"
     }
-    //帮助
-    onHelp(event: Event, customEventData: string){
-        this.scene战斗.lableMessageVoice.string="功能待开发"
+    on强行走(event: Event, customEventData: string){
+        this.scene战斗.b强行走 = true
     }
     on框选(event: Event, customEventData: string){
         this.scene战斗.posWorld框选起始点 = null

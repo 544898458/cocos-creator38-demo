@@ -70,6 +70,7 @@ export class Scene战斗 extends Component {
 
     b框选等待按下起始点: boolean = false
     posWorld框选起始点: Vec3 = null
+    b强行走: boolean = false
     graphics: Graphics
     protected onLoad(): void {
         console.log('Scene战斗.onLoad')
@@ -227,11 +228,12 @@ export class Scene战斗 extends Component {
             ani.play('lightQ')
 
             let object
-            if (b鼠标右键) {
+            if (b鼠标右键||this.b强行走) {
                 object = this.uiLogin.createMsgMove强行走(item.hitPoint)
             } else {
                 object = this.uiLogin.fun创建消息(item.hitPoint)
             }
+            this.b强行走 = false
 
             const encoded = msgpack.encode(object)
             

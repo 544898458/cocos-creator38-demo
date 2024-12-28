@@ -919,7 +919,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "help",
+    "_name": "强行走",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
@@ -998,7 +998,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -25.12,
+      "y": -15,
       "z": 0
     },
     "_lrot": {
@@ -1038,7 +1038,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 24,
+      "width": 36,
       "height": 20.16
     },
     "_anchorPoint": {
@@ -1069,12 +1069,12 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 218,
-      "g": 66,
-      "b": 7,
+      "r": 255,
+      "g": 246,
+      "b": 146,
       "a": 255
     },
-    "_string": "帮助",
+    "_string": "强行走",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 12,
@@ -1276,7 +1276,7 @@
     },
     "component": "",
     "_componentId": "ba985/FGklKdYpL9XgoQFoE",
-    "handler": "onHelp",
+    "handler": "on强行走",
     "customEventData": ""
   },
   {
@@ -1373,7 +1373,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -26.249,
+      "y": -12,
       "z": 0
     },
     "_lrot": {
@@ -1413,7 +1413,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 30,
+      "width": 40,
       "height": 20.16
     },
     "_anchorPoint": {
@@ -1452,8 +1452,8 @@
     "_string": "框选",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 15,
-    "_fontSize": 15,
+    "_actualFontSize": 20,
+    "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 16,
     "_overflow": 0,
@@ -7168,6 +7168,7 @@
     "__prefab": {
       "__id__": 302
     },
+    "scene战斗": null,
     "_id": ""
   },
   {
@@ -7183,7 +7184,6 @@
       "__id__": 0
     },
     "fileId": "7dGq1TwhpD0oWH64AIRR8J",
-    "instance": null,
     "targetOverrides": null
   }
 ]
