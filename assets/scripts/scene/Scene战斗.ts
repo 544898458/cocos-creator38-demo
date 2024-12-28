@@ -10,6 +10,7 @@ import { UITransform } from 'cc'
 import { PhysicsRayResult } from 'cc'
 import { Canvas } from 'cc'
 import { view } from 'cc'
+import { BattleUI } from '../mode/BattleUI'
 
 const { ccclass, property } = _decorator
 export class ClientEntityComponent {
@@ -43,20 +44,12 @@ export class Scene战斗 extends Component {
 
     @property({ type: Node, displayName: "走向的目标点" })
     targetFlag: Node
-    @property({ type: Node, displayName: "战斗面板" })
-    public battleUI: Node
+    @property({ type: Component, displayName: "战斗面板" })
+    public battleUI: BattleUI
     @property({ type: Label, displayName: "消息提示" })
     lableMessage: Label
     @property({ type: Label, displayName: "语言提示" })
     lableMessageVoice: Label
-    @property({ type: Label, displayName: "数量单位" })
-    lableCount: Label
-    @property({ type: Label, displayName: "晶体矿" })
-    lableCrystal: Label
-    @property({ type: Label, displayName: "燃气矿" })
-    lableGas: Label
-    @property({ type: Label, displayName: "活动单位" })
-    lableUnit: Label
     @property({ type: Camera, displayName: "3D摄像" })
     mainCamera: Camera
     @property({ type: Node, displayName: "英雄" })

@@ -66,7 +66,7 @@
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 91
+      "__id__": 93
     },
     "_id": "a2a6dcbf-5442-46e3-be3b-a623e01230cf"
   },
@@ -2483,26 +2483,12 @@
     "targetFlag": {
       "__id__": 8
     },
-    "battleUI": {
-      "__id__": 59
-    },
+    "battleUI": null,
     "lableMessage": {
       "__id__": 55
     },
     "lableMessageVoice": {
       "__id__": 58
-    },
-    "lableCount": {
-      "__id__": 41
-    },
-    "lableCrystal": {
-      "__id__": 44
-    },
-    "lableGas": {
-      "__id__": 47
-    },
-    "lableUnit": {
-      "__id__": 50
     },
     "mainCamera": {
       "__id__": 6
@@ -2934,7 +2920,11 @@
     "asset": null,
     "fileId": "a2a6dcbf-5442-46e3-be3b-a623e01230cf",
     "instance": null,
-    "targetOverrides": null,
+    "targetOverrides": [
+      {
+        "__id__": 91
+      }
+    ],
     "nestedPrefabInstanceRoots": [
       {
         "__id__": 59
@@ -2945,30 +2935,52 @@
     ]
   },
   {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 69
+    },
+    "sourceInfo": null,
+    "propertyPath": [
+      "battleUI"
+    ],
+    "target": {
+      "__id__": 59
+    },
+    "targetInfo": {
+      "__id__": 92
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 92
-    },
-    "shadows": {
-      "__id__": 93
-    },
-    "_skybox": {
       "__id__": 94
     },
-    "fog": {
+    "shadows": {
       "__id__": 95
     },
-    "octree": {
+    "_skybox": {
       "__id__": 96
     },
-    "skin": {
+    "fog": {
       "__id__": 97
     },
-    "lightProbeInfo": {
+    "octree": {
       "__id__": 98
     },
-    "postSettings": {
+    "skin": {
       "__id__": 99
+    },
+    "lightProbeInfo": {
+      "__id__": 100
+    },
+    "postSettings": {
+      "__id__": 101
     },
     "bakedWithStationaryMainLight": false,
     "bakedWithHighpLightmap": false

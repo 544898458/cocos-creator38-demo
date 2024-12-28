@@ -198,11 +198,11 @@ export class UiLogin extends Component {
         this.scene登录.nodeLoginPanel.active = false//隐藏
         this.scene登录.lableMessage.string = '正在连接'
         // this.websocket = new WebSocket("ws://192.168.31.194:12348/")
-        // this.websocket = new WebSocket("ws://192.168.31.170:12348/")
+        this.websocket = new WebSocket("ws://192.168.31.170:12348/")
         // this.websocket = new WebSocket("ws://192.168.43.109:12348/")
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
         // this.websocket = new WebSocket("ws://192.168.0.100:12348/")
-        this.websocket = new WebSocket("ws://47.119.184.177:12348/")
+        // this.websocket = new WebSocket("ws://47.119.184.177:12348/")
         // this.websocket = new WebSocket("wss://wss.iotlabor.cn/")
         // We should pass the cacert to libwebsockets used in native platform, otherwise the wss connection would be closed.
         // let url = this.wssCacert.nativeUrl;
@@ -274,8 +274,8 @@ export class UiLogin extends Component {
                             old = new ClientEntityComponent()
                             old.hpMax = hpMax
                             thisLocal.scene战斗.entities.set(id, old)
-                            if (thisLocal.scene战斗.lableCount != undefined)
-                                thisLocal.scene战斗.lableCount.string = '共' + thisLocal.scene战斗.entities.size + '单位'
+                            if (thisLocal.scene战斗.battleUI.lableCount != undefined)
+                                thisLocal.scene战斗.battleUI.lableCount.string = '共' + thisLocal.scene战斗.entities.size + '单位'
 
                             resources.load(prefabName, Prefab, (err, prefab) => {
                                 // console.log('resources.load callback:', err, prefab)
@@ -461,14 +461,14 @@ export class UiLogin extends Component {
 
                         entity.removeFromParent()
                         thisLocal.scene战斗.entities.delete(id)
-                        if (thisLocal.scene战斗.lableCount != undefined)
-                            thisLocal.scene战斗.lableCount.string = '共' + thisLocal.scene战斗.entities.size + '单位'
+                        if (thisLocal.scene战斗.battleUI.lableCount != undefined)
+                            thisLocal.scene战斗.battleUI.lableCount.string = '共' + thisLocal.scene战斗.entities.size + '单位'
                     }
                     break
                 case MsgId.NotifyeMoney:
                     {
                         let finalMoney = arr[idxArr++]
-                        thisLocal.scene战斗.lableCrystal.string = '晶体矿:' + finalMoney
+                        thisLocal.scene战斗.battleUI.lableCrystal.string = '晶体矿:' + finalMoney
                     }
                     break
                 case MsgId.资源:
@@ -476,13 +476,13 @@ export class UiLogin extends Component {
                         let 燃气矿 = arr[idxArr++]
                         let 活动单位 = arr[idxArr++]
                         let 活动单位上限 = arr[idxArr++]
-                        thisLocal.scene战斗.lableGas.string = '燃气矿:' + 燃气矿
-                        thisLocal.scene战斗.lableUnit.string = '我的活动单位:' + 活动单位 + '/' + 活动单位上限
+                        thisLocal.scene战斗.battleUI.lableGas.string = '燃气矿:' + 燃气矿
+                        thisLocal.scene战斗.battleUI.lableUnit.string = '我的活动单位:' + 活动单位 + '/' + 活动单位上限
                     }
                     break
                 case MsgId.进Space:
                     {
-                        thisLocal.scene战斗.battleUI.active = true
+                        thisLocal.scene战斗.battleUI.node.active = true
                         // director.loadScene('scene战斗')
                     }
                     break
@@ -555,18 +555,14 @@ export class UiLogin extends Component {
             console.log("onbeforeunload")
         }
     }
-    onClickSay(event: Event, customEventData: string) {
-        const editNode = utils.find("Name", this.node) as Node
-        console.log(editNode)
-
-        const editBox = editNode.getComponent(EditBox)
-        console.log(editBox.string)
+    onClickSay(str: string) {
         const object = //item.hitPoint
             [
                 [MsgId.Say, 0, 0],
-                editBox.string
+                str
             ]
-
+            
+        console.log('send', object)
         const encoded = msgpack.encode(object)
         if (this.websocket != undefined) {
             console.log('send', encoded)
