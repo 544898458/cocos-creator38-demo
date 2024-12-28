@@ -791,7 +791,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "美术：流盏、坦格利安\n语音：受不鸟\n程序：江沉晚吟时\n",
+    "_string": "美术：流盏、坦格利安\n语音：凌枭\n程序：江沉晚吟时\n",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 20,
@@ -3490,7 +3490,7 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 408,
+      "width": 410,
       "height": 270.94
     },
     "_anchorPoint": {
@@ -3520,14 +3520,14 @@
       "b": 255,
       "a": 255
     },
-    "_string": "  选中工程车再点基地再点 \n  空地可以造基地\n  选中基地再点造工程车可以造工程车\n  选中工程车再点资源可以采集资源\n  资源足够时工程车还可以造民房、地堡、兵厂\n  在兵厂可以造兵、近战兵、也可以造坦克\n  造民房可以增加人口上限\n  地堡里面可以进入10个兵，地堡血量很高\n  如果开局不利，点右上角退出此场景按钮，再次进入\n可以反复开局\n\n训练战：引导熟悉一些基础操作\n防守战：怪物会一波一波地进攻玩家\n多人联机地图：所有玩家相互作为敌人进一个公共地图",
+    "_string": "  造基地：点击选中工程车=>点击“造基地”按钮=>点击地面\n  造工程车：点击选中基地=>点击“造工程车”按钮\n  采集资源：点击选中工程车=>点击晶体矿或燃气矿\n  资源足够时工程车还可以造民房、地堡、兵厂\n  在兵厂可以造兵、近战兵、也可以造坦克\n  造民房可以增加人口上限\n  地堡里面可以进入10个兵，地堡血量很高\n  如果开局不利，点右上角退出此场景按钮，再次进入可以反复开局\n\n训练战：引导熟悉一些基础操作\n防守战：怪物会一波一波地进攻玩家\n多人联机地图：所有玩家相互作为敌人进一个公共地图",
     "_horizontalAlign": 0,
     "_verticalAlign": 1,
     "_actualFontSize": 17,
     "_fontSize": 17,
     "_fontFamily": "Arial",
     "_lineHeight": 19,
-    "_overflow": 0,
+    "_overflow": 3,
     "_enableWrapText": true,
     "_font": null,
     "_isSystemFontUsed": true,
@@ -3545,7 +3545,7 @@
       "b": 0,
       "a": 255
     },
-    "_outlineWidth": 2,
+    "_outlineWidth": 0.1,
     "_enableShadow": false,
     "_shadowColor": {
       "__type__": "cc.Color",
