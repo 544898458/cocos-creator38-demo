@@ -40,6 +40,8 @@ export enum MsgId {
     播放声音,
     设置视口,
     框选,
+    玩家个人战局列表,
+    进入别的玩家个人战局
 }
 
 enum 单人剧情副本ID {
@@ -85,6 +87,7 @@ export class UiLogin extends Component {
     scene战斗: Scene战斗 = null
     scene登录: Scene登录 = null
     arr选中: number[] = []
+    map玩家场景 = new Map<string, string>//NickName=>SceneName
     fun创建消息: (Vec3) => object = this.createMsgMove强行走//点击地面操作 = 点击地面操作类型.移动单位
     createMsgMove强行走(hitPoint: Vec3) {
         return this.createMsgMove(hitPoint, false)
@@ -97,6 +100,12 @@ export class UiLogin extends Component {
         }
             
         this.websocket.send(buf.buffer)
+    }
+    sendArray(arr:(string|number[])[])
+    {
+        const encoded = msgpack.encode(arr)
+        console.log(encoded)
+        this.send(encoded)
     }
     createMsgMove遇敌自动攻击(hitPoint: Vec3) {
         return this.createMsgMove(hitPoint, true)
@@ -184,6 +193,15 @@ export class UiLogin extends Component {
     onClickToggle进防守战() {
         this.进Scene战斗单人剧情副本('scene防守战', 单人剧情副本ID.防守战)
     }
+    onClick获取别人的个人战局列表(event: Event, customEventData: string) {
+        console.log(event,customEventData)
+        this.sendArray([[MsgId.玩家个人战局列表, ++this.sendMsgSn, 0, 0]])
+    }
+    onClick进入别人的个人战局( Event, customEventData: string) {
+        console.log(event,customEventData)
+        this.进Scene战斗(this.map玩家场景.get(customEventData), msgpack.encode([[MsgId.进入别的玩家个人战局, ++this.sendMsgSn, 0, 0],customEventData]))
+    }
+    
     onClickLogin(event: Event, customEventData: string) {
         const editNode = utils.find("Name", this.scene登录.nodeLoginPanel) as Node
         console.log(editNode)
@@ -536,6 +554,13 @@ export class UiLogin extends Component {
                     {
                         let arr选中 = arr[idxArr++] as number[]
                         thisLocal.scene战斗.选中(arr选中)
+                    }
+                    break
+                case MsgId.玩家个人战局列表:
+                    {
+                        let arr玩家 = arr[idxArr++] as string[][]
+                        console.log(arr玩家)
+                        thisLocal.scene登录.显示个人战局列表(arr玩家)
                     }
                     break
                 default:

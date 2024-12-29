@@ -4,11 +4,18 @@ import { FollowTarget } from '../mode/FollowTarget'
 import { Scene战斗, ClientEntityComponent } from './Scene战斗'
 import { UiLogin, MsgId } from '../mode/UiLogin'
 import { ProgressBar } from 'cc'
+import { EventHandler } from 'cc'
 
 const { ccclass, property } = _decorator
 
 @ccclass('Scene登录')
 export class Scene登录 extends Component {
+    @property({ type: Node, displayName: "个人战局列表面板" })
+    node个人战局列表面板: Node
+    @property({ type: Node, displayName: "个人战局列表" })
+    node个人战局列表: Node
+    @property({ type: Node, displayName: "个人战局按钮模板" })
+    node个人战局按钮模板: Node
     nodeLoginPanel: Node
     nodeSelectSpace: Node
     uiLogin: UiLogin
@@ -59,6 +66,40 @@ export class Scene登录 extends Component {
 
     onClickLogin(event: Event, customEventData: string) {
        this.uiLogin.onClickLogin(event,customEventData)
+    }
+    onClick别人的个人战局列表(event: Event, customEventData: string) {
+        this.uiLogin.onClick获取别人的个人战局列表(event,customEventData)
+    }
+    onClick进入别人的个人战局(event: Event, customEventData: string) {
+        this.uiLogin.onClick进入别人的个人战局(event,customEventData)
+    }
+    onClick返回主界面(event: Event, customEventData: string) {
+        this.nodeSelectSpace.active = true
+        this.node个人战局列表面板.active = false
+    }
+    显示个人战局列表(arrPlayer: string[][]) {
+        this.nodeSelectSpace.active = false
+        this.node个人战局列表面板.active = true
+        this.node个人战局列表.removeAllChildren()
+
+        for( let arrNikcScene of arrPlayer)
+        {
+            let nickName = arrNikcScene[0]
+            let sceneName = arrNikcScene[1]
+            let node按钮 = instantiate(this.node个人战局按钮模板)
+            node按钮.active = true
+            node按钮.getChildByName('Label').getComponent(Label).string = nickName + ' 的战局'
+            let button = node按钮.getComponent(Button)
+            const clickEventHandler = new EventHandler();
+            clickEventHandler.target = this.node; // 这个 node 节点是你的事件处理代码组件所属的节点
+            clickEventHandler.component = 'Scene登录';// 这个是脚本类名
+            clickEventHandler.handler = 'onClick进入别人的个人战局';
+            clickEventHandler.customEventData = nickName;
+            button.clickEvents.push(clickEventHandler)
+            this.node个人战局列表.addChild(node按钮)
+
+            this.uiLogin.map玩家场景.set(nickName, sceneName)
+        }
     }
 }
 
