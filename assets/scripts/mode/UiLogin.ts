@@ -486,15 +486,17 @@ export class UiLogin extends Component {
                 case MsgId.NotifyeMoney:
                     {
                         let finalMoney = arr[idxArr++]
-                        thisLocal.scene战斗.battleUI.lableCrystal.string = '晶体矿:' + finalMoney
+                        // thisLocal.scene战斗.battleUI.lableCrystal.string = '晶体矿:' + finalMoney
                     }
                     break
                 case MsgId.资源:
                     {
+                        let 晶体矿 = arr[idxArr++]
                         let 燃气矿 = arr[idxArr++]
                         let 活动单位 = arr[idxArr++]
                         let 活动单位上限 = arr[idxArr++]
                         thisLocal.scene战斗.battleUI.lableGas.string = '燃气矿:' + 燃气矿
+                        thisLocal.scene战斗.battleUI.lableCrystal.string = '晶体矿:' + 晶体矿
                         thisLocal.scene战斗.battleUI.lableUnit.string = '我的活动单位:' + 活动单位 + '/' + 活动单位上限
                     }
                     break

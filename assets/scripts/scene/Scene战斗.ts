@@ -65,6 +65,7 @@ export class Scene战斗 extends Component {
     posWorld框选起始点: Vec3 = null
     b强行走: boolean = false
     graphics: Graphics
+    b电脑鼠标操作: boolean = false
     protected onLoad(): void {
         console.log('Scene战斗.onLoad')
 
@@ -108,17 +109,17 @@ export class Scene战斗 extends Component {
         this.node.on(NodeEventType.MOUSE_DOWN, (event: EventMouse) => {
             let button = event.getButton()
             let posMouseDown = event.getLocation()
-            if (button == EventMouse.BUTTON_RIGHT) {
-                this.onMouseDown(posMouseDown, true)
-                return true
-            }
-            return false
+            this.b电脑鼠标操作 = true
+            this.onMouseDown(posMouseDown, button == EventMouse.BUTTON_RIGHT)
         })
         this.node.on(NodeEventType.TOUCH_START, (event: EventTouch) => {
+            if(this.b电脑鼠标操作)
+                return
 
             this.onMouseDown(event.getLocation(), false)
         })
     }
+    
     onMouseUp(pos:Vec2) {
         this.posWorld按下准备拖动地面 = null
         
@@ -189,7 +190,7 @@ export class Scene战斗 extends Component {
     }
     //点击处理
     onMouseDown(posMouseDown: Vec2, b鼠标右键: boolean) {
-        console.log('MOUSE_DOWN', posMouseDown)
+        console.log('MOUSE_DOWN', posMouseDown, b鼠标右键)
 
         var ray = new geometry.Ray()
         // const camera = cc.find("Camera",this.node).getComponent(Camera)
