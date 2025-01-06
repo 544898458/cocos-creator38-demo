@@ -256,7 +256,7 @@ export class Scene战斗 extends Component {
                 this.uiLogin.send(encoded)
                 
             }
-            else if (item.collider.node.name == "house_type17")//点击地堡
+            else if (item.collider.node.name == "地堡")//点击地堡
             {
                 this.mainCameraFollowTarget.target = item.collider.node
                 let id = this.entityId[item.collider.node.uuid]
@@ -283,9 +283,9 @@ export class Scene战斗 extends Component {
                 || item.collider.node.name == "altman-yellow"
                 || item.collider.node.name == "axe-yellow"
                 || item.collider.node.name == "house_type06"
-                || item.collider.node.name == "house_type17"
-                || item.collider.node.name == "house_type19"
-                || item.collider.node.name == "house_type21"
+                || item.collider.node.name == "地堡"
+                || item.collider.node.name == "民房"
+                || item.collider.node.name == "兵厂"
                 || item.collider.node.name == "基地"//这个名字不带目录
                 || item.collider.node.name == "步兵"
                 || item.collider.node.name == "三色坦克"
