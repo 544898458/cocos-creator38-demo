@@ -57,6 +57,26 @@
       ],
       "subMetas": {}
     },
+    "fbad4": {
+      "importer": "gltf-embeded-image",
+      "uuid": "e21bec06-19d1-412f-958d-a584a508bd72@fbad4",
+      "displayName": "",
+      "id": "fbad4",
+      "name": "Bunker_Diffuse.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": false,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".jpg",
+        ".json"
+      ],
+      "subMetas": {}
+    },
     "582cc": {
       "importer": "texture",
       "uuid": "e21bec06-19d1-412f-958d-a584a508bd72@582cc",
@@ -70,8 +90,8 @@
         "magfilter": "linear",
         "mipfilter": "none",
         "anisotropy": 0,
-        "isUuid": false,
-        "imageUuidOrDatabaseUri": "db://assets/mapres/星2/bunker/Bunker_Diffuse.jpg"
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "e21bec06-19d1-412f-958d-a584a508bd72@fbad4"
       },
       "ver": "1.0.22",
       "imported": true,
@@ -117,7 +137,7 @@
     "imageMetas": [
       {
         "name": "Bunker_Diffuse",
-        "uri": "db://assets/mapres/星2/bunker/Bunker_Diffuse.jpg"
+        "uri": "e21bec06-19d1-412f-958d-a584a508bd72@fbad4"
       }
     ],
     "fbx": {
