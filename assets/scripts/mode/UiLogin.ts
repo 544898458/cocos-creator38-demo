@@ -291,6 +291,7 @@ export class UiLogin extends Component {
                         if (old == undefined) {
                             old = new ClientEntityComponent()
                             old.hpMax = hpMax
+                            old.prefabName = prefabName
                             thisLocal.scene战斗.entities.set(id, old)
                             if (thisLocal.scene战斗.battleUI.lableCount != undefined)
                                 thisLocal.scene战斗.battleUI.lableCount.string = '共' + thisLocal.scene战斗.entities.size + '单位'
@@ -309,6 +310,10 @@ export class UiLogin extends Component {
                                     old.skeletalAnimation = newNode.getChildByName('p_A_rifle_01').getComponent(SkeletalAnimation)
                                 else if(newNode.name=='三色坦克')
                                     old.skeletalAnimation = newNode.getChildByName('p_B_tank_03').getComponent(SkeletalAnimation)
+                                else if(newNode.name=='跳虫'){
+                                    old.skeletalAnimation = newNode.getChildByName('Zergling').getComponent(SkeletalAnimation)
+                                    old.initClipName = 'Take 001'
+                                }
                                 else
                                     old.skeletalAnimation = newNode.getComponent(SkeletalAnimation)
 
@@ -433,19 +438,44 @@ export class UiLogin extends Component {
                             // console.log(id,"还没加载好,没有播放动作",clipName)
                             return
                         }
-                        if (old.skeletalAnimation == undefined)
-                            old.initClipName = clipName
-                        else {
+                        if (old.skeletalAnimation == undefined){
+                            if( ! old.prefabName.endsWith('跳虫') )
+                                old.initClipName = clipName
+                        }else {
                             // console.log( 'old.view.name', old.view.name)
-                            old.skeletalAnimation.play(clipName)
-                            let state = old.skeletalAnimation.getState(clipName)
-                            state.wrapMode = loop ? AnimationClip.WrapMode.Loop : AnimationClip.WrapMode.Normal
-                            if(old.view.name == '步兵' )
+                            if(old.view.name == '跳虫')
                             {
-                                if(clipName == 'run')
-                                    state.playbackRange = {min:0, max:0.8} // 动画总长度
-                                else if(clipName == 'idle')
-                                    state.playbackRange = {min:0, max:2.0} // 动画总长度
+                                old.skeletalAnimation.play(old.initClipName)
+                                let state = old.skeletalAnimation.getState(old.initClipName)
+                                if(clipName == 'run'){
+                                    state.wrapMode = AnimationClip.WrapMode.Loop
+                                    state.playbackRange = {min:31.5, max:33.6}
+                                }else if(clipName == 'idle'){
+                                    state.wrapMode = AnimationClip.WrapMode.Loop
+                                    state.playbackRange = {min:14.8, max:18.3}
+                                }else if(clipName == 'attack'){
+                                    state.wrapMode =  AnimationClip.WrapMode.Normal
+                                    state.playbackRange = {min:5.2, max:5.8} // 动画总长度
+                                    state.time = 5.2
+                                }else if(clipName == 'died'){
+                                    state.wrapMode =  AnimationClip.WrapMode.Normal
+                                    state.playbackRange = {min:45.4, max:50.6} // 动画总长度
+                                    state.time = 45.4
+                                }
+                                
+                            }
+                            else
+                            {
+                                old.skeletalAnimation.play(clipName)
+                                let state = old.skeletalAnimation.getState(clipName)
+                                state.wrapMode = loop ? AnimationClip.WrapMode.Loop : AnimationClip.WrapMode.Normal
+                                if(old.view.name == '步兵')
+                                {
+                                    if(clipName == 'run')
+                                        state.playbackRange = {min:0, max:0.8}
+                                    else if(clipName == 'idle')
+                                        state.playbackRange = {min:0, max:2.0}
+                                }
                             }
                         }
                     }

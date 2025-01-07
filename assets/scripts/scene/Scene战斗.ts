@@ -26,6 +26,7 @@ export class ClientEntityComponent {
     hpbar: Node;
     hp: number = 0
     hpMax: number = 0
+    prefabName: string
     removeFromParent() {
         this.view?.removeFromParent()
         this.nodeName?.removeFromParent()
