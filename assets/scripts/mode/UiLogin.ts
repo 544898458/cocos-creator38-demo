@@ -216,11 +216,11 @@ export class UiLogin extends Component {
         this.scene登录.nodeLoginPanel.active = false//隐藏
         this.scene登录.lableMessage.string = '正在连接'
         // this.websocket = new WebSocket("ws://192.168.31.194:12348/")
-        // this.websocket = new WebSocket("ws://192.168.31.170:12348/")
+        this.websocket = new WebSocket("ws://192.168.31.170:12348/")
         // this.websocket = new WebSocket("ws://192.168.43.109:12348/")
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
         // this.websocket = new WebSocket("ws://192.168.0.100:12348/")
-        this.websocket = new WebSocket("ws://47.119.184.177:12348/")
+        // this.websocket = new WebSocket("ws://47.119.184.177:12348/")
         // this.websocket = new WebSocket("wss://wss.iotlabor.cn/")
         // We should pass the cacert to libwebsockets used in native platform, otherwise the wss connection would be closed.
         // let url = this.wssCacert.nativeUrl;
@@ -304,14 +304,17 @@ export class UiLogin extends Component {
                                 //newNode.position = new Vec3(posX, 0, 0)
                                 // console.log('resources.load newNode', newNode)
                                 old.view = newNode
-                                if(newNode.name=='基地')
+                                if(newNode.name =='基地')
                                     old.skeletalAnimation = newNode.getChildByName('p_Base_02').getComponent(SkeletalAnimation)
-                                else if(newNode.name=='步兵')
+                                else if(newNode.name =='步兵')
                                     old.skeletalAnimation = newNode.getChildByName('p_A_rifle_01').getComponent(SkeletalAnimation)
-                                else if(newNode.name=='三色坦克')
+                                else if(newNode.name == '三色坦克')
                                     old.skeletalAnimation = newNode.getChildByName('p_B_tank_03').getComponent(SkeletalAnimation)
-                                else if(newNode.name=='跳虫'){
+                                else if(newNode.name == '跳虫'){
                                     old.skeletalAnimation = newNode.getChildByName('Zergling').getComponent(SkeletalAnimation)
+                                    old.initClipName = 'Take 001'
+                                }else if(newNode.name == '刺蛇'){
+                                    old.skeletalAnimation = newNode.getChildByName('Hydralisk').getComponent(SkeletalAnimation)
                                     old.initClipName = 'Take 001'
                                 }
                                 else
@@ -439,7 +442,7 @@ export class UiLogin extends Component {
                             return
                         }
                         if (old.skeletalAnimation == undefined){
-                            if( ! old.prefabName.endsWith('跳虫') )
+                            if( ! old.prefabName.endsWith('跳虫') && ! old.prefabName.endsWith('刺蛇'))
                                 old.initClipName = clipName
                         }else {
                             // console.log( 'old.view.name', old.view.name)
@@ -462,8 +465,28 @@ export class UiLogin extends Component {
                                     state.playbackRange = {min:45.4, max:50.6} // 动画总长度
                                     state.time = 45.4
                                 }
-                                
                             }
+                            else if(old.view.name == '刺蛇')
+                            {
+                                old.skeletalAnimation.play(old.initClipName)
+                                let state = old.skeletalAnimation.getState(old.initClipName)
+                                if(clipName == 'run'){
+                                    state.wrapMode = AnimationClip.WrapMode.Loop
+                                    state.playbackRange = {min:0, max:1.8}
+                                }else if(clipName == 'idle'){
+                                    state.wrapMode = AnimationClip.WrapMode.Loop
+                                    state.playbackRange = {min:14.8, max:18.3}
+                                }else if(clipName == 'attack'){
+                                    state.wrapMode =  AnimationClip.WrapMode.Normal
+                                    state.playbackRange = {min:8.7, max:9.7}
+                                    state.time = 8.7
+                                }else if(clipName == 'died'){
+                                    state.wrapMode =  AnimationClip.WrapMode.Normal
+                                    state.playbackRange = {min:11.8, max:13.8} // 动画总长度
+                                    state.time = 11.8
+                                }
+                            }
+
                             else
                             {
                                 old.skeletalAnimation.play(clipName)
