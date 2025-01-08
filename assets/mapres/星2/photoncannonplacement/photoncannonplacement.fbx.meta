@@ -1,0 +1,230 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "ce891272-2546-4f44-bded-0ff79bed8a0b",
+  "files": [],
+  "subMetas": {
+    "81488": {
+      "importer": "gltf-embeded-image",
+      "uuid": "ce891272-2546-4f44-bded-0ff79bed8a0b@81488",
+      "displayName": "",
+      "id": "81488",
+      "name": "PhotonCannonBase_Holo.image",
+      "userData": {
+        "gltfIndex": 1,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": false,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".jpg",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "b28c7": {
+      "importer": "gltf-mesh",
+      "uuid": "ce891272-2546-4f44-bded-0ff79bed8a0b@b28c7",
+      "displayName": "",
+      "id": "b28c7",
+      "name": "Geoset_0.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 496
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "b9598": {
+      "importer": "gltf-mesh",
+      "uuid": "ce891272-2546-4f44-bded-0ff79bed8a0b@b9598",
+      "displayName": "",
+      "id": "b9598",
+      "name": "Geoset_1.mesh",
+      "userData": {
+        "gltfIndex": 1,
+        "triangleCount": 342
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "a6a77": {
+      "importer": "gltf-embeded-image",
+      "uuid": "ce891272-2546-4f44-bded-0ff79bed8a0b@a6a77",
+      "displayName": "",
+      "id": "a6a77",
+      "name": "PhotonCannon_Diffuse_Holo.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": false,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".jpg",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "ac368": {
+      "importer": "texture",
+      "uuid": "ce891272-2546-4f44-bded-0ff79bed8a0b@ac368",
+      "displayName": "",
+      "id": "ac368",
+      "name": "PhotonCannon_Diffuse_Holo.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "ce891272-2546-4f44-bded-0ff79bed8a0b@a6a77"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "0d020": {
+      "importer": "texture",
+      "uuid": "ce891272-2546-4f44-bded-0ff79bed8a0b@0d020",
+      "displayName": "",
+      "id": "0d020",
+      "name": "PhotonCannonBase_Holo.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "ce891272-2546-4f44-bded-0ff79bed8a0b@81488"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "f2301": {
+      "importer": "gltf-material",
+      "uuid": "ce891272-2546-4f44-bded-0ff79bed8a0b@f2301",
+      "displayName": "",
+      "id": "f2301",
+      "name": "Geoset_0Mat.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "68c98": {
+      "importer": "gltf-material",
+      "uuid": "ce891272-2546-4f44-bded-0ff79bed8a0b@68c98",
+      "displayName": "",
+      "id": "68c98",
+      "name": "Geoset_1Mat.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "23d49": {
+      "importer": "gltf-scene",
+      "uuid": "ce891272-2546-4f44-bded-0ff79bed8a0b@23d49",
+      "displayName": "",
+      "id": "23d49",
+      "name": "photoncannonplacement.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "PhotonCannon_Diffuse_Holo",
+        "uri": "ce891272-2546-4f44-bded-0ff79bed8a0b@a6a77"
+      },
+      {
+        "name": "PhotonCannonBase_Holo",
+        "uri": "ce891272-2546-4f44-bded-0ff79bed8a0b@81488"
+      }
+    ],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "ce891272-2546-4f44-bded-0ff79bed8a0b@b28c7",
+        "ce891272-2546-4f44-bded-0ff79bed8a0b@b9598"
+      ],
+      "skeletons": [],
+      "textures": [
+        "ce891272-2546-4f44-bded-0ff79bed8a0b@ac368",
+        "ce891272-2546-4f44-bded-0ff79bed8a0b@0d020"
+      ],
+      "materials": [
+        "ce891272-2546-4f44-bded-0ff79bed8a0b@f2301",
+        "ce891272-2546-4f44-bded-0ff79bed8a0b@68c98"
+      ],
+      "scenes": [
+        "ce891272-2546-4f44-bded-0ff79bed8a0b@23d49"
+      ]
+    }
+  }
+}

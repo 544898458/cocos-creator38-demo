@@ -49,18 +49,17 @@ enum 单人剧情副本ID {
     防守战
 }
 
-enum 建筑单位类型 {
-    基地,//指挥中心(Command Center),用来造工程车()
-    兵厂,//兵营Barracks，用来造兵
-    民房,//供给站(Supply Depot)
-    地堡,//掩体; 地堡(Bunker),可以进兵
-};
-
-enum 活动单位类型 {
+enum 单位类型 {
     工程车,//空间工程车Space Construction Vehicle。可以采矿，采气，也可以简单攻击
     兵,//陆战队员Marine。只能攻击，不能采矿
     近战兵,//火蝠，喷火兵Firebat
     三色坦克,
+
+    基地,//指挥中心(Command Center),用来造工程车()
+    兵厂,//兵营Barracks，用来造兵
+    民房,//供给站(Supply Depot)
+    地堡,//掩体; 地堡(Bunker),可以进兵
+    光子炮,
 };
 
 // enum 点击地面操作类型
@@ -129,45 +128,48 @@ export class UiLogin extends Component {
 
     }
     onClick造坦克(event: Event, customEventData: string): void {
-        const encoded = msgpack.encode([[MsgId.AddRole, 0, 0], 活动单位类型.三色坦克])
+        const encoded = msgpack.encode([[MsgId.AddRole, 0, 0], 单位类型.三色坦克])
         // console.log(encoded)
         this.send(encoded)
     }
     onClickAdd兵(event: Event, customEventData: string): void {
-        const encoded = msgpack.encode([[MsgId.AddRole, 0, 0], 活动单位类型.兵])
+        const encoded = msgpack.encode([[MsgId.AddRole, 0, 0], 单位类型.兵])
         // console.log(encoded)
         this.send(encoded)
     }
     onClickAdd近战兵(event: Event, customEventData: string): void {
-        const encoded = msgpack.encode([[MsgId.AddRole, 0, 0], 活动单位类型.近战兵])
+        const encoded = msgpack.encode([[MsgId.AddRole, 0, 0], 单位类型.近战兵])
         // console.log(encoded)
         this.send(encoded)
     }
     onClickAdd工程车(event: Event, customEventData: string): void {
-        const encoded = msgpack.encode([[MsgId.AddRole, 0, 0], 活动单位类型.工程车])
+        const encoded = msgpack.encode([[MsgId.AddRole, 0, 0], 单位类型.工程车])
         // console.log(encoded)
         this.send(encoded)
     }
-    createMsg造建筑(hitPoint: Vec3, 类型: 建筑单位类型) {
+    createMsg造建筑(hitPoint: Vec3, 类型: 单位类型) {
         console.log('createMsg造建筑', hitPoint)
         return [[MsgId.AddBuilding, ++this.sendMsgSn, 0], 类型, [hitPoint.x, hitPoint.z]]
     }
-    on点击按钮_造建筑(类型: 建筑单位类型) {
+    on点击按钮_造建筑(类型: 单位类型) {
         this.fun创建消息 = (hitPoint: Vec3) => this.createMsg造建筑(hitPoint, 类型)
         this.scene战斗.lableMessage.string = '请点击地面放置建筑'
     }
     onClickAdd基地(event: Event, customEventData: string): void {
-        this.on点击按钮_造建筑(建筑单位类型.基地)
+        this.on点击按钮_造建筑(单位类型.基地)
     }
     onClickAdd地堡(event: Event, customEventData: string): void {
-        this.on点击按钮_造建筑(建筑单位类型.地堡)
+        this.on点击按钮_造建筑(单位类型.地堡)
     }
     onClickAdd兵厂(event: Event, customEventData: string): void {
-        this.on点击按钮_造建筑(建筑单位类型.兵厂)
+        this.on点击按钮_造建筑(单位类型.兵厂)
     }
 
     onClickAdd民房(event: Event, customEventData: string): void {
-        this.on点击按钮_造建筑(建筑单位类型.民房)
+        this.on点击按钮_造建筑(单位类型.民房)
+    }
+    onClickAdd光子炮(event: Event, customEventData: string): void {
+        this.on点击按钮_造建筑(单位类型.光子炮)
     }
     进Scene战斗(sceneName: string, encoded: Buffer) {
         this.scene登录.nodeSelectSpace.active = false
@@ -216,11 +218,11 @@ export class UiLogin extends Component {
         this.scene登录.nodeLoginPanel.active = false//隐藏
         this.scene登录.lableMessage.string = '正在连接'
         // this.websocket = new WebSocket("ws://192.168.31.194:12348/")
-        this.websocket = new WebSocket("ws://192.168.31.170:12348/")
+        // this.websocket = new WebSocket("ws://192.168.31.170:12348/")
         // this.websocket = new WebSocket("ws://192.168.43.109:12348/")
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
         // this.websocket = new WebSocket("ws://192.168.0.100:12348/")
-        // this.websocket = new WebSocket("ws://47.119.184.177:12348/")
+        this.websocket = new WebSocket("ws://47.119.184.177:12348/")
         // this.websocket = new WebSocket("wss://wss.iotlabor.cn/")
         // We should pass the cacert to libwebsockets used in native platform, otherwise the wss connection would be closed.
         // let url = this.wssCacert.nativeUrl;
