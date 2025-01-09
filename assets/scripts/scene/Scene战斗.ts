@@ -241,7 +241,7 @@ export class Scene战斗 extends Component {
         else {
             this.uiLogin.fun创建消息 = this.uiLogin.createMsgMove遇敌自动攻击
 
-            if (item.collider.node.name == "tree_large" || item.collider.node.name == "house_type03")//点击晶体矿或者燃气矿
+            if (item.collider.node.name == "晶体矿" || item.collider.node.name == "燃气矿")//点击晶体矿或者燃气矿
             {
                 this.mainCameraFollowTarget.target = item.collider.node
                 let id = this.entityId[item.collider.node.uuid]

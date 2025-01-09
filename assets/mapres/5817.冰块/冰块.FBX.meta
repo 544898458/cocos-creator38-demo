@@ -1,0 +1,183 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "9d623ae0-11f8-4819-aa15-45d696eed65e",
+  "files": [],
+  "subMetas": {
+    "11873": {
+      "importer": "gltf-material",
+      "uuid": "9d623ae0-11f8-4819-aa15-45d696eed65e@11873",
+      "displayName": "",
+      "id": "11873",
+      "name": "Material #0.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "728d2": {
+      "importer": "gltf-mesh",
+      "uuid": "9d623ae0-11f8-4819-aa15-45d696eed65e@728d2",
+      "displayName": "",
+      "id": "728d2",
+      "name": "Box01.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 144
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "3f0c5": {
+      "importer": "gltf-mesh",
+      "uuid": "9d623ae0-11f8-4819-aa15-45d696eed65e@3f0c5",
+      "displayName": "",
+      "id": "3f0c5",
+      "name": "Box002.mesh",
+      "userData": {
+        "gltfIndex": 1,
+        "triangleCount": 144
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "d41e3": {
+      "importer": "gltf-mesh",
+      "uuid": "9d623ae0-11f8-4819-aa15-45d696eed65e@d41e3",
+      "displayName": "",
+      "id": "d41e3",
+      "name": "Box003.mesh",
+      "userData": {
+        "gltfIndex": 2,
+        "triangleCount": 144
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "7c652": {
+      "importer": "gltf-mesh",
+      "uuid": "9d623ae0-11f8-4819-aa15-45d696eed65e@7c652",
+      "displayName": "",
+      "id": "7c652",
+      "name": "Object001.mesh",
+      "userData": {
+        "gltfIndex": 3,
+        "triangleCount": 24
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "1da29": {
+      "importer": "texture",
+      "uuid": "9d623ae0-11f8-4819-aa15-45d696eed65e@1da29",
+      "displayName": "",
+      "id": "1da29",
+      "name": "Map #2.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/mapres/5817.冰块/冰块.psd"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "fd63b": {
+      "importer": "gltf-scene",
+      "uuid": "9d623ae0-11f8-4819-aa15-45d696eed65e@fd63b",
+      "displayName": "",
+      "id": "fd63b",
+      "name": "冰块.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "Map #2",
+        "uri": "db://assets/mapres/5817.冰块/冰块.psd"
+      }
+    ],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "9d623ae0-11f8-4819-aa15-45d696eed65e@728d2",
+        "9d623ae0-11f8-4819-aa15-45d696eed65e@3f0c5",
+        "9d623ae0-11f8-4819-aa15-45d696eed65e@d41e3",
+        "9d623ae0-11f8-4819-aa15-45d696eed65e@7c652"
+      ],
+      "skeletons": [],
+      "textures": [
+        "9d623ae0-11f8-4819-aa15-45d696eed65e@1da29"
+      ],
+      "materials": [
+        "9d623ae0-11f8-4819-aa15-45d696eed65e@11873"
+      ],
+      "scenes": [
+        "9d623ae0-11f8-4819-aa15-45d696eed65e@fd63b"
+      ]
+    }
+  }
+}

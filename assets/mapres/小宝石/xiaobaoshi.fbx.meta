@@ -1,0 +1,267 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "03d03fc6-75ea-46ce-b4b7-2762b0521b10",
+  "files": [],
+  "subMetas": {
+    "77085": {
+      "importer": "gltf-mesh",
+      "uuid": "03d03fc6-75ea-46ce-b4b7-2762b0521b10@77085",
+      "displayName": "",
+      "id": "77085",
+      "name": "dizuo_low.mesh",
+      "userData": {
+        "gltfIndex": 1,
+        "triangleCount": 1264
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "45ed6": {
+      "importer": "gltf-mesh",
+      "uuid": "03d03fc6-75ea-46ce-b4b7-2762b0521b10@45ed6",
+      "displayName": "",
+      "id": "45ed6",
+      "name": "baoshi_low.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 113
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "be5a9": {
+      "importer": "gltf-mesh",
+      "uuid": "03d03fc6-75ea-46ce-b4b7-2762b0521b10@be5a9",
+      "displayName": "",
+      "id": "be5a9",
+      "name": "xiaobaoshi_01_low.mesh",
+      "userData": {
+        "gltfIndex": 2,
+        "triangleCount": 104
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "1a512": {
+      "importer": "gltf-mesh",
+      "uuid": "03d03fc6-75ea-46ce-b4b7-2762b0521b10@1a512",
+      "displayName": "",
+      "id": "1a512",
+      "name": "xiaobaoshi_02_low.mesh",
+      "userData": {
+        "gltfIndex": 3,
+        "triangleCount": 176
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "2f972": {
+      "importer": "gltf-mesh",
+      "uuid": "03d03fc6-75ea-46ce-b4b7-2762b0521b10@2f972",
+      "displayName": "",
+      "id": "2f972",
+      "name": "xiaobaoshi_03_low.mesh",
+      "userData": {
+        "gltfIndex": 4,
+        "triangleCount": 228
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "8d883": {
+      "importer": "gltf-material",
+      "uuid": "03d03fc6-75ea-46ce-b4b7-2762b0521b10@8d883",
+      "displayName": "",
+      "id": "8d883",
+      "name": "lambert1.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "8f8dd": {
+      "importer": "gltf-scene",
+      "uuid": "03d03fc6-75ea-46ce-b4b7-2762b0521b10@8f8dd",
+      "displayName": "",
+      "id": "8f8dd",
+      "name": "xiaobaoshi.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "03d03fc6-75ea-46ce-b4b7-2762b0521b10@45ed6",
+        "03d03fc6-75ea-46ce-b4b7-2762b0521b10@77085",
+        "03d03fc6-75ea-46ce-b4b7-2762b0521b10@be5a9",
+        "03d03fc6-75ea-46ce-b4b7-2762b0521b10@1a512",
+        "03d03fc6-75ea-46ce-b4b7-2762b0521b10@2f972"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "03d03fc6-75ea-46ce-b4b7-2762b0521b10@8d883"
+      ],
+      "scenes": [
+        "03d03fc6-75ea-46ce-b4b7-2762b0521b10@8f8dd"
+      ]
+    },
+    "materials": {
+      "03d03fc6-75ea-46ce-b4b7-2762b0521b10@8d883": {
+        "__type__": "cc.Material",
+        "_name": "",
+        "_objFlags": 0,
+        "__editorExtras__": {},
+        "_native": "",
+        "_effectAsset": {
+          "__uuid__": "f648964e-8d32-41fc-9ac9-7a1e714dd17b",
+          "__expectedType__": "cc.EffectAsset"
+        },
+        "_techIdx": 0,
+        "_defines": [
+          {
+            "DCC_APP_NAME": 5,
+            "USE_SPECULAR_MAP": true,
+            "USE_ALBEDO_MAP": true,
+            "USE_TRANSPARENCY_MAP": true,
+            "USE_EMISSIVE_MAP": true
+          },
+          {},
+          {},
+          {}
+        ],
+        "_states": [
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          }
+        ],
+        "_props": [
+          {
+            "mainTexture": {
+              "__uuid__": "75128524-95b8-43bf-8afd-2feef3404953@6c48a",
+              "__expectedType__": "cc.Texture2D"
+            },
+            "mainColor": {
+              "__type__": "cc.Color",
+              "r": 188,
+              "g": 188,
+              "b": 188,
+              "a": 255
+            },
+            "albedoScale": 0.800000011920929,
+            "emissiveMap": {
+              "__uuid__": "2f39d390-1163-4bd5-9181-a2f9a6fd9a9a@6c48a",
+              "__expectedType__": "cc.Texture2D"
+            },
+            "specularMap": {
+              "__uuid__": "ce455bb2-5929-49c5-bd61-8642a46b4d1c@6c48a",
+              "__expectedType__": "cc.Texture2D"
+            },
+            "normalMap": {
+              "__uuid__": "f32c80fc-3bdf-457c-8a6e-443b7bcb99bf@6c48a",
+              "__expectedType__": "cc.Texture2D"
+            }
+          },
+          {},
+          {},
+          {}
+        ]
+      }
+    }
+  }
+}
