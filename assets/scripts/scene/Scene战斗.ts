@@ -257,33 +257,36 @@ export class Scene战斗 extends Component {
                 this.uiLogin.send(encoded)
                 
             }
-            else if (item.collider.node.name == "地堡")//点击地堡
+            else if (item.collider.node.name == "地堡" && b鼠标右键 )//点击地堡
             {
                 this.mainCameraFollowTarget.target = item.collider.node
                 let id = this.entityId[item.collider.node.uuid]
 
-                const object = b鼠标右键 ?
-                    [
-                        [MsgId.出地堡, ++this.uiLogin.sendMsgSn, 0],
-                        id
-                    ]
-                    :
-                    [
-                        [MsgId.进地堡, ++this.uiLogin.sendMsgSn, 0],
-                        id,
-                        [0.0]
-                    ]
-
-                const encoded = msgpack.encode(object)
+                const encoded = msgpack.encode([
+                    [MsgId.出地堡, ++this.uiLogin.sendMsgSn, 0],
+                    id
+                ])
 
                 console.log('send', encoded)
                 this.uiLogin.send(encoded)
-        
             }
-            else if (item.collider.node.name == "altman-blue"
-                || item.collider.node.name == "altman-yellow"
+            else if (item.collider.node.name == "地堡" && !b鼠标右键 && this.uiLogin.arr选中.length > 0)//左键点击地堡
+            {
+                this.mainCameraFollowTarget.target = item.collider.node
+                let id = this.entityId[item.collider.node.uuid]
+
+                const encoded = msgpack.encode([
+                    [MsgId.进地堡, ++this.uiLogin.sendMsgSn, 0],
+                    id,
+                    [0.0]
+                ])
+
+                console.log('send', encoded)
+                this.uiLogin.send(encoded)
+            }
+            else if (
+                   item.collider.node.name == "altman-yellow"
                 || item.collider.node.name == "axe-yellow"
-                || item.collider.node.name == "house_type06"
                 || item.collider.node.name == "地堡"
                 || item.collider.node.name == "民房"
                 || item.collider.node.name == "兵厂"

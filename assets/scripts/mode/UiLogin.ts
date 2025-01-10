@@ -686,6 +686,21 @@ export class UiLogin extends Component {
 
         this.arr选中 = arr选中
     }
+    onClick出地堡(){
+        if(0 == this.arr选中.length){
+            console.log('没选中任何单位')
+            return
+        }
+        const object = 
+        [
+            [MsgId.出地堡, ++this.sendMsgSn, 0],
+            this.arr选中[0]
+        ]
+
+        const encoded = msgpack.encode(object)
+        console.log('send', encoded)
+        this.send(encoded)
+    }
 }
 
 

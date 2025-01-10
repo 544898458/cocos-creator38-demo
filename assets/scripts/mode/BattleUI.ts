@@ -28,8 +28,8 @@ export class BattleUI extends Component {
         
     }
     //设置
-    onSetting(event: Event, customEventData: string){
-        this.scene战斗.lableMessageVoice.string="功能待开发"
+    on出地堡(event: Event, customEventData: string){
+        this.uiLogin.onClick出地堡()
     }
     on强行走(event: Event, customEventData: string){
         this.scene战斗.b强行走 = true
