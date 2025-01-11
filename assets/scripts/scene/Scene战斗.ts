@@ -349,9 +349,17 @@ export class Scene战斗 extends Component {
         for (let id of this.uiLogin.arr选中) {
             resources.load(prefabName选中特效, Prefab, (err, prefab) => {
                 console.log('resources.load callback:', err, prefab)
+                let old = this.entities.get(id)
+                if(!old)
+                {
+                    console.log('找不到:', id)
+                    return
+                }
+                
                 const newNode = instantiate(prefab)
                 newNode.name = prefabName选中特效
-                this.entities.get(id).view.addChild(newNode)
+                
+                old.view.addChild(newNode)
                 let ani = newNode.getChildByName('lightQ').getComponent(Animation)
                 const [clip] = ani.clips;
                 ani.getState(clip.name).repeatCount = Infinity
