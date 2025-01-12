@@ -54,21 +54,20 @@ Error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} Error: Error: M
 4.  找到UiLogin.ts文件里的onClickLogin方法，修改要连接的服务器IP
 5.  服务器代码在 https://gitee.com/griffon2/iocp20coroutine
 
-#### 使用说明
+#### 导出后端寻路文件的方法
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  地面y坐标0，高于或低于面的地方不可站立，无网格处不可站立
+2.  选中要导出的场景，必须双击选中打开“scene四方对战”
+3.  菜单，扩展，杨宗保，网格
+4.  选择Plane节点，保存为obj文件
+5.  obj文件复制到后端代码库的 Iocp20Coroutine\RecastDemo\Meshes
+6.  双击打开RecastDemo.exe，选择“Temp Obastacles”，“Agent Radius”改为1.0
 
 #### 参与贡献
 CC协议署名：
-    QQ网友“受不鸟”：
-        语音/无法在这里建造可爱版
-        语音/无法在这里建造正经版
-        语音/燃气矿不足可爱版
-        语音/燃气矿不足正经版
-        语音/晶体矿不足可爱版
-        语音/晶体矿不足正经版
+    美术：流盏、坦格利安
+    语音：潭、凌枭
+
 
 
 

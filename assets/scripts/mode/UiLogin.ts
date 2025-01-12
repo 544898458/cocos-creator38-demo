@@ -44,10 +44,13 @@ export enum MsgId {
     进入别的玩家个人战局
 }
 
-enum 单人剧情副本ID {
-    训练战,
-    防守战
-}
+enum 副本ID
+{
+	训练战,
+	防守战,
+	多人联机地图,
+	四方对战,
+};
 
 enum 单位类型
 {
@@ -197,14 +200,14 @@ export class UiLogin extends Component {
             })
         })
     }
-    进Scene战斗单人剧情副本(sceneName: string, id: 单人剧情副本ID) {
+    进Scene战斗单人剧情副本(sceneName: string, id: 副本ID) {
         this.进Scene战斗(sceneName, msgpack.encode([[MsgId.进单人剧情副本, 0, 0], id]))
     }
     onClickToggle进训练战() {
-        this.进Scene战斗单人剧情副本('scene战斗', 单人剧情副本ID.训练战)
+        this.进Scene战斗单人剧情副本('scene战斗', 副本ID.训练战)
     }
     onClickToggle进防守战() {
-        this.进Scene战斗单人剧情副本('scene防守战', 单人剧情副本ID.防守战)
+        this.进Scene战斗单人剧情副本('scene防守战', 副本ID.防守战)
     }
     onClick获取别人的个人战局列表(event: Event, customEventData: string) {
         console.log(event,customEventData)
