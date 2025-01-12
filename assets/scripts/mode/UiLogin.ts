@@ -1,4 +1,4 @@
-import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip, director, AssetManager, Asset, assetManager } from 'cc'
+import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip, director, AssetManager, Asset, assetManager, Animation} from 'cc'
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { HeadScale } from '../component/head-scale'
 import { Scene战斗, ClientEntityComponent } from '../scene/Scene战斗'
@@ -229,11 +229,11 @@ export class UiLogin extends Component {
         this.scene登录.nodeLoginPanel.active = false//隐藏
         this.scene登录.lableMessage.string = '正在连接'
         // this.websocket = new WebSocket("ws://192.168.31.194:12348/")
-        // this.websocket = new WebSocket("ws://192.168.31.170:12348/")
+        this.websocket = new WebSocket("ws://192.168.31.170:12348/")
         // this.websocket = new WebSocket("ws://192.168.43.109:12348/")
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
         // this.websocket = new WebSocket("ws://192.168.0.100:12348/")
-        this.websocket = new WebSocket("ws://47.119.184.177:12348/")
+        // this.websocket = new WebSocket("ws://47.119.184.177:12348/")
         // this.websocket = new WebSocket("wss://wss.iotlabor.cn/")
         // We should pass the cacert to libwebsockets used in native platform, otherwise the wss connection would be closed.
         // let url = this.wssCacert.nativeUrl;
@@ -321,6 +321,8 @@ export class UiLogin extends Component {
                                     old.skeletalAnimation = newNode.getChildByName('p_Base_02').getComponent(SkeletalAnimation)
                                 else if(newNode.name =='步兵')
                                     old.skeletalAnimation = newNode.getChildByName('p_A_rifle_01').getComponent(SkeletalAnimation)
+                                else if(newNode.name =='工程车')
+                                    old.skeletalAnimation = newNode.getChildByPath('scv/Geoset_0').getComponent(Animation)
                                 else if(newNode.name == '三色坦克')
                                     old.skeletalAnimation = newNode.getChildByName('p_B_tank_03').getComponent(SkeletalAnimation)
                                 else if(newNode.name == '跳虫'){
@@ -499,11 +501,13 @@ export class UiLogin extends Component {
                                     state.time = 11.8
                                 }
                             }
-
                             else
                             {
                                 old.skeletalAnimation.play(clipName)
                                 let state = old.skeletalAnimation.getState(clipName)
+                                if(null == state)
+                                    console.error(old.view.name, '缺动作:', clipName)
+
                                 state.wrapMode = loop ? AnimationClip.WrapMode.Loop : AnimationClip.WrapMode.Normal
                                 if(old.view.name == '步兵')
                                 {

@@ -19,7 +19,7 @@ export class ClientEntityComponent {
     node描述: Node
     labelName: Label
     label描述: Label
-    skeletalAnimation: SkeletalAnimation
+    skeletalAnimation: Animation
     initClipName: string = 'idle'
     nickName: string
     position: Vec3//刚进地图Load没结束无法设置node坐标，暂存
@@ -285,7 +285,7 @@ export class Scene战斗 extends Component {
                 this.uiLogin.send(encoded)
             }
             else if (
-                   item.collider.node.name == "altman-yellow"
+                   item.collider.node.name == "工程车"
                 || item.collider.node.name == "axe-yellow"
                 || item.collider.node.name == "地堡"
                 || item.collider.node.name == "民房"
