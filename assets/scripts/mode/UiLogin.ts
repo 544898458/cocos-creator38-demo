@@ -41,7 +41,8 @@ export enum MsgId {
     设置视口,
     框选,
     玩家个人战局列表,
-    进入别的玩家个人战局
+    进入别的玩家个人战局,
+	创建多人战局,
 }
 
 enum 副本ID
@@ -208,6 +209,9 @@ export class UiLogin extends Component {
     }
     onClickToggle进防守战() {
         this.进Scene战斗单人剧情副本('scene防守战', 副本ID.防守战)
+    }
+    onClick创建四方对战() {
+        this.进Scene战斗('scene四方对战', msgpack.encode([[MsgId.创建多人战局, 0, 0], 副本ID.四方对战]))
     }
     onClick获取别人的个人战局列表(event: Event, customEventData: string) {
         console.log(event,customEventData)

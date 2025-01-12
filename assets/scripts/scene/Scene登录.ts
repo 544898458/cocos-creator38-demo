@@ -73,6 +73,9 @@ export class Scene登录 extends Component {
     onClick进入别人的个人战局(event: Event, customEventData: string) {
         this.uiLogin.onClick进入别人的个人战局(event,customEventData)
     }
+    onClick创建四方对战(event: Event, customEventData: string) {
+        this.uiLogin.onClick创建四方对战()
+    }
     onClick返回主界面(event: Event, customEventData: string) {
         this.nodeSelectSpace.active = true
         this.node个人战局列表面板.active = false
