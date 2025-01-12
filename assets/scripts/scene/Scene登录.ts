@@ -70,8 +70,14 @@ export class Scene登录 extends Component {
     onClick别人的个人战局列表(event: Event, customEventData: string) {
         this.uiLogin.onClick获取别人的个人战局列表(event,customEventData)
     }
+    onClick别人的多人战局列表(event: Event, customEventData: string) {
+        this.uiLogin.onClick获取别人的多人战局列表(event,customEventData)
+    }
     onClick进入别人的个人战局(event: Event, customEventData: string) {
         this.uiLogin.onClick进入别人的个人战局(event,customEventData)
+    }
+    onClick进入别人的多人战局(event: Event, customEventData: string) {
+        this.uiLogin.onClick进入别人的多人战局(event,customEventData)
     }
     onClick创建四方对战(event: Event, customEventData: string) {
         this.uiLogin.onClick创建四方对战()
@@ -80,7 +86,7 @@ export class Scene登录 extends Component {
         this.nodeSelectSpace.active = true
         this.node个人战局列表面板.active = false
     }
-    显示个人战局列表(arrPlayer: string[][]) {
+    显示战局列表(arrPlayer: string[][], handler:string) {
         this.nodeSelectSpace.active = false
         this.node个人战局列表面板.active = true
         this.node个人战局列表.removeAllChildren()
@@ -96,7 +102,7 @@ export class Scene登录 extends Component {
             const clickEventHandler = new EventHandler();
             clickEventHandler.target = this.node; // 这个 node 节点是你的事件处理代码组件所属的节点
             clickEventHandler.component = 'Scene登录';// 这个是脚本类名
-            clickEventHandler.handler = 'onClick进入别人的个人战局';
+            clickEventHandler.handler = handler;
             clickEventHandler.customEventData = nickName;
             button.clickEvents.push(clickEventHandler)
             this.node个人战局列表.addChild(node按钮)

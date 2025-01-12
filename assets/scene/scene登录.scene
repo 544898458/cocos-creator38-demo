@@ -32,7 +32,7 @@
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 123
+      "__id__": 131
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -63,7 +63,7 @@
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 124
+      "__id__": 132
     },
     "_id": "5a529a1a-acd9-483f-8e6d-aa2f3d1b0919"
   },
@@ -285,28 +285,28 @@
         "__id__": 46
       },
       {
-        "__id__": 88
+        "__id__": 96
       },
       {
-        "__id__": 101
+        "__id__": 109
       },
       {
-        "__id__": 116
+        "__id__": 124
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 119
+        "__id__": 127
       },
       {
-        "__id__": 120
+        "__id__": 128
       },
       {
-        "__id__": 121
+        "__id__": 129
       },
       {
-        "__id__": 122
+        "__id__": 130
       }
     ],
     "_prefab": null,
@@ -725,8 +725,8 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0,
-      "y": -231.214,
+      "x": -2.842170943040401e-14,
+      "y": -254.31599999999995,
       "z": 0
     },
     "_lrot": {
@@ -765,7 +765,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 200,
-      "height": 106.5
+      "height": 81.5
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -794,7 +794,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "美术：流盏、坦格利安\n语音：潭、凌枭\n程序：江沉晚吟时\n",
+    "_string": "美术：流盏、坦格利安\n语音：潭、凌枭\n程序：江沉晚吟时",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 20,
@@ -858,7 +858,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": -2.842170943040401e-14,
-      "y": -294.66499999999996,
+      "y": -328.03399999999993,
       "z": 0
     },
     "_lrot": {
@@ -1879,12 +1879,15 @@
       },
       {
         "__id__": 79
-      }
-    ],
-    "_active": false,
-    "_components": [
+      },
       {
         "__id__": 87
+      }
+    ],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 95
       }
     ],
     "_prefab": null,
@@ -3058,7 +3061,7 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 220,
+      "width": 230,
       "height": 40
     },
     "_anchorPoint": {
@@ -3201,7 +3204,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0,
+      "x": -127.915,
       "y": -117.42600000000002,
       "z": 0
     },
@@ -3372,7 +3375,7 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 220,
+      "width": 150,
       "height": 40
     },
     "_anchorPoint": {
@@ -3488,6 +3491,320 @@
     "customEventData": ""
   },
   {
+    "__type__": "cc.Node",
+    "_name": "Button其他人的多人战局列表",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "_parent": {
+      "__id__": 46
+    },
+    "_children": [
+      {
+        "__id__": 88
+      }
+    ],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 91
+      },
+      {
+        "__id__": 92
+      },
+      {
+        "__id__": 93
+      }
+    ],
+    "_prefab": null,
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 69.094,
+      "y": -117.42600000000002,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_mobility": 0,
+    "_layer": 33554432,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": "8f/lxmLrtL84y4C/QmDw+k"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Label",
+    "_objFlags": 512,
+    "__editorExtras__": {},
+    "_parent": {
+      "__id__": 87
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 89
+      },
+      {
+        "__id__": 90
+      }
+    ],
+    "_prefab": null,
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_mobility": 0,
+    "_layer": 33554432,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": "2dyr57ScVOUbNF+8hNKHnS"
+  },
+  {
+    "__type__": "cc.UITransform",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 88
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 200,
+      "height": 50.4
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_id": "13LuxV70dESqXwumpXxYMt"
+  },
+  {
+    "__type__": "cc.Label",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 88
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_customMaterial": null,
+    "_srcBlendFactor": 2,
+    "_dstBlendFactor": 4,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 255
+    },
+    "_string": "其他人的多人战局列表",
+    "_horizontalAlign": 1,
+    "_verticalAlign": 1,
+    "_actualFontSize": 20,
+    "_fontSize": 20,
+    "_fontFamily": "Arial",
+    "_lineHeight": 40,
+    "_overflow": 0,
+    "_enableWrapText": false,
+    "_font": null,
+    "_isSystemFontUsed": true,
+    "_spacingX": 0,
+    "_isItalic": false,
+    "_isBold": false,
+    "_isUnderline": false,
+    "_underlineHeight": 2,
+    "_cacheMode": 0,
+    "_enableOutline": false,
+    "_outlineColor": {
+      "__type__": "cc.Color",
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 255
+    },
+    "_outlineWidth": 2,
+    "_enableShadow": false,
+    "_shadowColor": {
+      "__type__": "cc.Color",
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 255
+    },
+    "_shadowOffset": {
+      "__type__": "cc.Vec2",
+      "x": 2,
+      "y": 2
+    },
+    "_shadowBlur": 2,
+    "_id": "25SlgYlI5CUoU659tHYWNa"
+  },
+  {
+    "__type__": "cc.UITransform",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 87
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 230,
+      "height": 40
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_id": "ba+Alrx8VEXpGGndrFD2Jl"
+  },
+  {
+    "__type__": "cc.Sprite",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 87
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_customMaterial": null,
+    "_srcBlendFactor": 2,
+    "_dstBlendFactor": 4,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_spriteFrame": {
+      "__uuid__": "af3026ae-145d-46ce-9197-510ff5ec004c@f9941",
+      "__expectedType__": "cc.SpriteFrame"
+    },
+    "_type": 1,
+    "_fillType": 0,
+    "_sizeMode": 0,
+    "_fillCenter": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_fillStart": 0,
+    "_fillRange": 0,
+    "_isTrimmedMode": true,
+    "_useGrayscale": false,
+    "_atlas": null,
+    "_id": "fc6RjUN+pIbYe5zgxTVj+I"
+  },
+  {
+    "__type__": "cc.Button",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 87
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "clickEvents": [
+      {
+        "__id__": 94
+      }
+    ],
+    "_interactable": true,
+    "_transition": 3,
+    "_normalColor": {
+      "__type__": "cc.Color",
+      "r": 214,
+      "g": 214,
+      "b": 214,
+      "a": 255
+    },
+    "_hoverColor": {
+      "__type__": "cc.Color",
+      "r": 211,
+      "g": 211,
+      "b": 211,
+      "a": 255
+    },
+    "_pressedColor": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_disabledColor": {
+      "__type__": "cc.Color",
+      "r": 124,
+      "g": 124,
+      "b": 124,
+      "a": 255
+    },
+    "_normalSprite": null,
+    "_hoverSprite": null,
+    "_pressedSprite": null,
+    "_disabledSprite": null,
+    "_duration": 0.1,
+    "_zoomScale": 1.1,
+    "_target": {
+      "__id__": 87
+    },
+    "_id": "f26ENB++JP05vU+0ZTevqt"
+  },
+  {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 7
+    },
+    "component": "",
+    "_componentId": "98cbd4d3zNLzrS8gPNAzQyB",
+    "handler": "onClick别人的多人战局列表",
+    "customEventData": ""
+  },
+  {
     "__type__": "cc.UITransform",
     "_name": "",
     "_objFlags": 0,
@@ -3519,16 +3836,16 @@
     },
     "_children": [
       {
-        "__id__": 89
+        "__id__": 97
       },
       {
-        "__id__": 97
+        "__id__": 105
       }
     ],
     "_active": false,
     "_components": [
       {
-        "__id__": 100
+        "__id__": 108
       }
     ],
     "_prefab": null,
@@ -3567,23 +3884,23 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 88
+      "__id__": 96
     },
     "_children": [
       {
-        "__id__": 90
+        "__id__": 98
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 93
+        "__id__": 101
       },
       {
-        "__id__": 94
+        "__id__": 102
       },
       {
-        "__id__": 95
+        "__id__": 103
       }
     ],
     "_prefab": null,
@@ -3622,16 +3939,16 @@
     "_objFlags": 512,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 89
+      "__id__": 97
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 91
+        "__id__": 99
       },
       {
-        "__id__": 92
+        "__id__": 100
       }
     ],
     "_prefab": null,
@@ -3670,7 +3987,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 90
+      "__id__": 98
     },
     "_enabled": true,
     "__prefab": null,
@@ -3692,7 +4009,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 90
+      "__id__": 98
     },
     "_enabled": true,
     "__prefab": null,
@@ -3754,7 +4071,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 89
+      "__id__": 97
     },
     "_enabled": true,
     "__prefab": null,
@@ -3776,7 +4093,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 89
+      "__id__": 97
     },
     "_enabled": true,
     "__prefab": null,
@@ -3815,13 +4132,13 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 89
+      "__id__": 97
     },
     "_enabled": true,
     "__prefab": null,
     "clickEvents": [
       {
-        "__id__": 96
+        "__id__": 104
       }
     ],
     "_interactable": true,
@@ -3861,7 +4178,7 @@
     "_duration": 0.1,
     "_zoomScale": 1.1,
     "_target": {
-      "__id__": 89
+      "__id__": 97
     },
     "_id": "01dpsugvBPYa+xLXyY7Ppz"
   },
@@ -3881,16 +4198,16 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 88
+      "__id__": 96
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 98
+        "__id__": 106
       },
       {
-        "__id__": 99
+        "__id__": 107
       }
     ],
     "_prefab": null,
@@ -3929,7 +4246,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 97
+      "__id__": 105
     },
     "_enabled": true,
     "__prefab": null,
@@ -3951,7 +4268,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 97
+      "__id__": 105
     },
     "_enabled": true,
     "__prefab": null,
@@ -3983,7 +4300,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 88
+      "__id__": 96
     },
     "_enabled": true,
     "__prefab": null,
@@ -4009,22 +4326,22 @@
     },
     "_children": [
       {
-        "__id__": 102
+        "__id__": 110
       },
       {
-        "__id__": 110
+        "__id__": 118
       }
     ],
     "_active": false,
     "_components": [
       {
-        "__id__": 113
+        "__id__": 121
       },
       {
-        "__id__": 114
+        "__id__": 122
       },
       {
-        "__id__": 115
+        "__id__": 123
       }
     ],
     "_prefab": null,
@@ -4063,26 +4380,26 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 101
+      "__id__": 109
     },
     "_children": [
       {
-        "__id__": 103
+        "__id__": 111
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 106
+        "__id__": 114
       },
       {
-        "__id__": 107
+        "__id__": 115
       },
       {
-        "__id__": 108
+        "__id__": 116
       },
       {
-        "__id__": 109
+        "__id__": 117
       }
     ],
     "_prefab": null,
@@ -4121,16 +4438,16 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 102
+      "__id__": 110
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 104
+        "__id__": 112
       },
       {
-        "__id__": 105
+        "__id__": 113
       }
     ],
     "_prefab": null,
@@ -4169,7 +4486,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 103
+      "__id__": 111
     },
     "_enabled": true,
     "__prefab": null,
@@ -4191,7 +4508,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 103
+      "__id__": 111
     },
     "_enabled": true,
     "__prefab": null,
@@ -4230,7 +4547,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 102
+      "__id__": 110
     },
     "_enabled": true,
     "__prefab": null,
@@ -4252,7 +4569,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 102
+      "__id__": 110
     },
     "_enabled": true,
     "__prefab": null,
@@ -4291,12 +4608,12 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 102
+      "__id__": 110
     },
     "_enabled": true,
     "__prefab": null,
     "_barSprite": {
-      "__id__": 105
+      "__id__": 113
     },
     "_mode": 0,
     "_totalLength": 300,
@@ -4310,7 +4627,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 102
+      "__id__": 110
     },
     "_enabled": true,
     "__prefab": null,
@@ -4340,16 +4657,16 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 101
+      "__id__": 109
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 111
+        "__id__": 119
       },
       {
-        "__id__": 112
+        "__id__": 120
       }
     ],
     "_prefab": null,
@@ -4388,7 +4705,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 110
+      "__id__": 118
     },
     "_enabled": true,
     "__prefab": null,
@@ -4410,7 +4727,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 110
+      "__id__": 118
     },
     "_enabled": true,
     "__prefab": null,
@@ -4472,7 +4789,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 101
+      "__id__": 109
     },
     "_enabled": true,
     "__prefab": null,
@@ -4494,7 +4811,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 101
+      "__id__": 109
     },
     "_enabled": true,
     "__prefab": null,
@@ -4533,7 +4850,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 101
+      "__id__": 109
     },
     "_enabled": true,
     "__prefab": null,
@@ -4569,10 +4886,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 117
+        "__id__": 125
       },
       {
-        "__id__": 118
+        "__id__": 126
       }
     ],
     "_prefab": null,
@@ -4611,7 +4928,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 116
+      "__id__": 124
     },
     "_enabled": true,
     "__prefab": null,
@@ -4633,7 +4950,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 116
+      "__id__": 124
     },
     "_enabled": true,
     "__prefab": null,
@@ -4768,16 +5085,16 @@
     "_enabled": true,
     "__prefab": null,
     "node个人战局列表面板": {
-      "__id__": 88
+      "__id__": 96
     },
     "node个人战局列表": {
-      "__id__": 97
+      "__id__": 105
     },
     "node个人战局按钮模板": {
-      "__id__": 89
+      "__id__": 97
     },
     "loadNode": {
-      "__id__": 101
+      "__id__": 109
     },
     "_id": "7dlsrcFgxDgJ3SbtsHLDnA"
   },
@@ -4792,28 +5109,28 @@
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 125
+      "__id__": 133
     },
     "shadows": {
-      "__id__": 126
+      "__id__": 134
     },
     "_skybox": {
-      "__id__": 127
+      "__id__": 135
     },
     "fog": {
-      "__id__": 128
+      "__id__": 136
     },
     "octree": {
-      "__id__": 129
+      "__id__": 137
     },
     "skin": {
-      "__id__": 130
+      "__id__": 138
     },
     "lightProbeInfo": {
-      "__id__": 131
+      "__id__": 139
     },
     "postSettings": {
-      "__id__": 132
+      "__id__": 140
     },
     "bakedWithStationaryMainLight": false,
     "bakedWithHighpLightmap": false

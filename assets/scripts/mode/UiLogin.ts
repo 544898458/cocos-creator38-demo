@@ -40,9 +40,11 @@ export enum MsgId {
     播放声音,
     设置视口,
     框选,
-    玩家个人战局列表,
-    进入别的玩家个人战局,
+	玩家个人战局列表,
+	进其他玩家个人战局,
 	创建多人战局,
+	玩家多人战局列表,
+	进其他玩家多人战局,
 }
 
 enum 副本ID
@@ -217,9 +219,17 @@ export class UiLogin extends Component {
         console.log(event,customEventData)
         this.sendArray([[MsgId.玩家个人战局列表, ++this.sendMsgSn, 0, 0]])
     }
+    onClick获取别人的多人战局列表(event: Event, customEventData: string) {
+        console.log(event,customEventData)
+        this.sendArray([[MsgId.玩家多人战局列表, ++this.sendMsgSn, 0, 0]])
+    }
     onClick进入别人的个人战局( Event, customEventData: string) {
         console.log(event,customEventData)
-        this.进Scene战斗(this.map玩家场景.get(customEventData), msgpack.encode([[MsgId.进入别的玩家个人战局, ++this.sendMsgSn, 0, 0],customEventData]))
+        this.进Scene战斗(this.map玩家场景.get(customEventData), msgpack.encode([[MsgId.进其他玩家个人战局, ++this.sendMsgSn, 0, 0],customEventData]))
+    } 
+    onClick进入别人的多人战局( Event, customEventData: string) {
+        console.log(event,customEventData)
+        this.进Scene战斗(this.map玩家场景.get(customEventData), msgpack.encode([[MsgId.进其他玩家多人战局, ++this.sendMsgSn, 0, 0],customEventData]))
     }
     
     onClickLogin(event: Event, customEventData: string) {
@@ -236,11 +246,11 @@ export class UiLogin extends Component {
         this.scene登录.nodeLoginPanel.active = false//隐藏
         this.scene登录.lableMessage.string = '正在连接'
         // this.websocket = new WebSocket("ws://192.168.31.194:12348/")
-        this.websocket = new WebSocket("ws://192.168.31.170:12348/")
+        // this.websocket = new WebSocket("ws://192.168.31.170:12348/")
         // this.websocket = new WebSocket("ws://192.168.43.109:12348/")
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
         // this.websocket = new WebSocket("ws://192.168.0.100:12348/")
-        // this.websocket = new WebSocket("ws://47.119.184.177:12348/")
+        this.websocket = new WebSocket("ws://47.119.184.177:12348/")
         // this.websocket = new WebSocket("wss://wss.iotlabor.cn/")
         // We should pass the cacert to libwebsockets used in native platform, otherwise the wss connection would be closed.
         // let url = this.wssCacert.nativeUrl;
@@ -639,7 +649,14 @@ export class UiLogin extends Component {
                     {
                         let arr玩家 = arr[idxArr++] as string[][]
                         console.log(arr玩家)
-                        thisLocal.scene登录.显示个人战局列表(arr玩家)
+                        thisLocal.scene登录.显示战局列表(arr玩家,'onClick进入别人的个人战局')
+                    }
+                    break
+                case MsgId.玩家多人战局列表:
+                    {
+                        let arr玩家 = arr[idxArr++] as string[][]
+                        console.log(arr玩家)
+                        thisLocal.scene登录.显示战局列表(arr玩家,'onClick进入别人的多人战局')
                     }
                     break
                 default:
