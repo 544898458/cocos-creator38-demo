@@ -215,13 +215,12 @@ export class Scene战斗 extends Component {
             }
 
             this.posWorld按下准备拖动地面 = item.hitPoint
-            if (0 == this.uiLogin.arr选中.length)
-                return
-
-            this.targetFlag.position = item.hitPoint
-            let ani = this.targetFlag.getChildByName('lightQ').getComponent(Animation)
-            ani.play('lightQ')
-
+          
+            if (0 < this.uiLogin.arr选中.length){
+                this.targetFlag.position = item.hitPoint
+                let ani = this.targetFlag.getChildByName('lightQ').getComponent(Animation)
+                ani.play('lightQ')
+            }
             let object
             if (b鼠标右键||this.b强行走) {
                 object = this.uiLogin.createMsgMove强行走(item.hitPoint)
