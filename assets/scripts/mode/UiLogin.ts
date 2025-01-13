@@ -246,11 +246,11 @@ export class UiLogin extends Component {
         this.scene登录.nodeLoginPanel.active = false//隐藏
         this.scene登录.lableMessage.string = '正在连接'
         // this.websocket = new WebSocket("ws://192.168.31.194:12348/")
-        // this.websocket = new WebSocket("ws://192.168.31.170:12348/")
+        this.websocket = new WebSocket("ws://192.168.31.170:12348/")
         // this.websocket = new WebSocket("ws://192.168.43.109:12348/")
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
         // this.websocket = new WebSocket("ws://192.168.0.100:12348/")
-        this.websocket = new WebSocket("ws://47.119.184.177:12348/")
+        // this.websocket = new WebSocket("ws://47.119.184.177:12348/")
         // this.websocket = new WebSocket("wss://wss.iotlabor.cn/")
         // We should pass the cacert to libwebsockets used in native platform, otherwise the wss connection would be closed.
         // let url = this.wssCacert.nativeUrl;
@@ -544,10 +544,12 @@ export class UiLogin extends Component {
                         console.log(channel, '有人说:', content)
                         switch (channel) {
                             case SayChannel.系统:
-                                thisLocal.scene战斗.lableMessage.string = content
+                                if(content.length>0)
+                                    thisLocal.scene战斗.lableMessage.string = content
                                 break
                             case SayChannel.语音提示:
-                                thisLocal.scene战斗.lableMessageVoice.string = content
+                                if(content.length>0)
+                                    thisLocal.scene战斗.lableMessageVoice.string = content
                                 break
                         }
 
@@ -629,7 +631,8 @@ export class UiLogin extends Component {
                         let str声音 = arr[idxArr++]
                         let str文本 = arr[idxArr++]
                         AudioMgr.inst.playOneShot(str声音)
-                        thisLocal.scene战斗.lableMessageVoice.string = str文本
+                        if(str文本.length>0)
+                            thisLocal.scene战斗.lableMessageVoice.string = str文本
                     }
                     break
                 case MsgId.设置视口:
