@@ -19,6 +19,11 @@ export class BattleUI extends Component {
     lableGas: Label
     @property({ type: Label, displayName: "活动单位" })
     lableUnit: Label
+    @property({ type: Label, displayName: "消息提示" })
+    lable消息提示: Label
+    @property({ type: Label, displayName: "语音消息提示" })
+    lable语音消息提示: Label
+
     start() {
         this.uiLogin = director.getScene().getChildByName('常驻').getComponent(UiLogin);
         this.uiLogin.scene战斗 = this.scene战斗;
@@ -37,7 +42,7 @@ export class BattleUI extends Component {
     on框选(event: Event, customEventData: string){
         this.scene战斗.posWorld框选起始点 = null
         this.scene战斗.b框选等待按下起始点 = true
-        this.scene战斗.lableMessageVoice.string ='请在地面上拖动框选'
+        this.scene战斗.battleUI.lable消息提示.string ='请在地面上拖动框选'
     }
     on聊天框输入结束(editbox:EditBox, customEventData:String)
     {

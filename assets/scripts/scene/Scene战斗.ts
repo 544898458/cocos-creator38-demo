@@ -47,10 +47,6 @@ export class Scene战斗 extends Component {
     targetFlag: Node
     @property({ type: Component, displayName: "战斗面板" })
     public battleUI: BattleUI
-    @property({ type: Label, displayName: "消息提示" })
-    lableMessage: Label
-    @property({ type: Label, displayName: "语言提示" })
-    lableMessageVoice: Label
     @property({ type: Camera, displayName: "3D摄像" })
     mainCamera: Camera
     @property({ type: Node, displayName: "英雄" })
@@ -61,7 +57,7 @@ export class Scene战斗 extends Component {
     mainCameraFollowTarget: FollowTarget
     //鼠标点击世界坐标
     posWorld按下准备拖动地面: Vec3
-
+    pos上次按下: Vec2
     b框选等待按下起始点: boolean = false
     posWorld框选起始点: Vec3 = null
     b强行走: boolean = false
@@ -92,11 +88,18 @@ export class Scene战斗 extends Component {
             this.mainCamera.fov = Math.max(this.mainCamera.fov - y, 5)
             //console.log('fov', this.mainCamera.fov);
         })
-        //不知道有啥用
-        // this.node.on(NodeEventType.MOUSE_UP, this.onMouseUp)
+        
+        this.node.on(NodeEventType.MOUSE_UP,  (event: EventMouse) =>{
+            let button = event.getButton()
+            this.b电脑鼠标操作 = true
+            this.onMouseUp(event.getLocation(), button == EventMouse.BUTTON_RIGHT)
+        })
         this.node.on(NodeEventType.TOUCH_END, (event: EventTouch) => {
+            if(this.b电脑鼠标操作)
+                return
+
             console.log('TOUCH_END', event)
-            this.onMouseUp(event.getLocation())
+            this.onMouseUp(event.getLocation(), false)
         })
         //视角移动
         // this.node.on(NodeEventType.MOUSE_MOVE, (event: EventMouse) => {
@@ -121,8 +124,36 @@ export class Scene战斗 extends Component {
         })
     }
     
-    onMouseUp(pos:Vec2) {
+    onMouseUp(pos:Vec2, b鼠标右键:boolean) {
         this.posWorld按下准备拖动地面 = null
+        console.log(this.pos上次按下, pos)
+        if(this.pos上次按下?.equals(pos)){//单击
+            this.pos上次按下 = null
+
+            const item = PhysicsSystem.instance.raycastClosestResult
+        
+            if (0 < this.uiLogin.arr选中.length){
+                this.targetFlag.position = item.hitPoint
+                let ani = this.targetFlag.getChildByName('lightQ').getComponent(Animation)
+                ani.play('lightQ')
+            }
+            let object
+            if (b鼠标右键||this.b强行走) {
+                object = this.uiLogin.createMsgMove强行走(item.hitPoint)
+            } else {
+                object = this.uiLogin.fun创建消息(item.hitPoint)
+            }
+            this.b强行走 = false
+
+            const encoded = msgpack.encode(object)
+            
+            console.log('send', encoded)
+            this.uiLogin.send(encoded)
+            
+
+            this.uiLogin.fun创建消息 = this.uiLogin.createMsgMove遇敌自动攻击
+            return
+        }
         
         if(this.posWorld框选起始点 != null){
             var ray = new geometry.Ray()
@@ -151,7 +182,7 @@ export class Scene战斗 extends Component {
             
 
                 this.posWorld框选起始点 = null
-                this.lableMessageVoice.string ='已退出框选状态'
+                this.battleUI.lable语音消息提示.string ='已退出框选状态'
                 this.graphics.clear()//清掉框选框
                 return
             })
@@ -209,35 +240,16 @@ export class Scene战斗 extends Component {
             if(this.b框选等待按下起始点){//
                 this.b框选等待按下起始点 = false
                 this.posWorld框选起始点 = new Vec3(item.hitPoint)
-                this.lableMessageVoice.string ='已开始框选，请拖动后放开'
+                this.battleUI.lable语音消息提示.string ='已开始框选，请拖动后放开'
 
                 return
             }
 
+            this.pos上次按下 = posMouseDown.clone()
             this.posWorld按下准备拖动地面 = item.hitPoint
-          
-            if (0 < this.uiLogin.arr选中.length){
-                this.targetFlag.position = item.hitPoint
-                let ani = this.targetFlag.getChildByName('lightQ').getComponent(Animation)
-                ani.play('lightQ')
-            }
-            let object
-            if (b鼠标右键||this.b强行走) {
-                object = this.uiLogin.createMsgMove强行走(item.hitPoint)
-            } else {
-                object = this.uiLogin.fun创建消息(item.hitPoint)
-            }
-            this.b强行走 = false
-
-            const encoded = msgpack.encode(object)
-            
-                console.log('send', encoded)
-                this.uiLogin.send(encoded)
-            
-
-            this.uiLogin.fun创建消息 = this.uiLogin.createMsgMove遇敌自动攻击
         }
-        else {
+        else //点的是单位
+        {
             this.uiLogin.fun创建消息 = this.uiLogin.createMsgMove遇敌自动攻击
 
             if (item.collider.node.name == "晶体矿" || item.collider.node.name == "燃气矿")//点击晶体矿或者燃气矿
@@ -302,23 +314,6 @@ export class Scene战斗 extends Component {
 
                 this.clear选中()
                 this.uiLogin.send选中([id])
-
-
-                // this.entities.forEach((clientEntityComponent, k, map) => {
-                //     let nodEffect = clientEntityComponent.view.getChildByName(this.prefabName选中特效)
-                //     console.log('准备删除', nodEffect)
-                //     clientEntityComponent.view.removeChild(nodEffect)
-                // })
-                // this.选中([id])
-                // resources.load(this.prefabName选中特效, Prefab, (err, prefab) => {
-                //     console.log('resources.load callback:', err, prefab)
-                //     const newNode = instantiate(prefab)
-                //     newNode.name = this.prefabName选中特效
-                //     this.entities.get(id).view.addChild(newNode)
-                //     let ani = newNode.getChildByName('lightQ').getComponent(Animation)
-                //     const [clip] = ani.clips;
-                //     ani.getState(clip.name).repeatCount = Infinity
-                // })
             }
         }
     }
@@ -328,7 +323,7 @@ export class Scene战斗 extends Component {
 
 
     onClickSay(event: Event, customEventData: string) {
-        this.uiLogin.onClickSay(event, customEventData)
+        this.uiLogin.onClickSay(customEventData)
     }
 
 

@@ -170,7 +170,7 @@ export class UiLogin extends Component {
     }
     on点击按钮_造建筑(类型: 单位类型) {
         this.fun创建消息 = (hitPoint: Vec3) => this.createMsg造建筑(hitPoint, 类型)
-        this.scene战斗.lableMessage.string = '请点击地面放置建筑'
+        this.scene战斗.battleUI.lable消息提示.string = '请点击地面放置建筑'
     }
     onClickAdd基地(event: Event, customEventData: string): void {
         this.on点击按钮_造建筑(单位类型.基地)
@@ -545,11 +545,11 @@ export class UiLogin extends Component {
                         switch (channel) {
                             case SayChannel.系统:
                                 if(content.length>0)
-                                    thisLocal.scene战斗.lableMessage.string = content
+                                    thisLocal.scene战斗.battleUI.lable消息提示.string = content
                                 break
                             case SayChannel.语音提示:
                                 if(content.length>0)
-                                    thisLocal.scene战斗.lableMessageVoice.string = content
+                                    thisLocal.scene战斗.battleUI.lable语音消息提示.string = content
                                 break
                         }
 
@@ -586,7 +586,7 @@ export class UiLogin extends Component {
                         let 活动单位上限 = arr[idxArr++]
                         thisLocal.scene战斗.battleUI.lableGas.string = '燃气矿:' + 燃气矿
                         thisLocal.scene战斗.battleUI.lableCrystal.string = '晶体矿:' + 晶体矿
-                        thisLocal.scene战斗.battleUI.lableUnit.string = '我的活动单位:' + 活动单位 + '/' + 活动单位上限
+                        thisLocal.scene战斗.battleUI.lableUnit.string = '活动单位:' + 活动单位 + '/' + 活动单位上限
                     }
                     break
                 case MsgId.进Space:
@@ -632,7 +632,7 @@ export class UiLogin extends Component {
                         let str文本 = arr[idxArr++]
                         AudioMgr.inst.playOneShot(str声音)
                         if(str文本.length>0)
-                            thisLocal.scene战斗.lableMessageVoice.string = str文本
+                            thisLocal.scene战斗.battleUI.lable语音消息提示.string = str文本
                     }
                     break
                 case MsgId.设置视口:
