@@ -55,6 +55,7 @@ export class Scene战斗 extends Component {
     uiLogin: UiLogin
     //摄像
     mainCameraFollowTarget: FollowTarget
+    vec3WorldCamera = null
     //鼠标点击世界坐标
     posWorld按下准备拖动地面: Vec3
     pos上次按下: Vec2
@@ -82,10 +83,10 @@ export class Scene战斗 extends Component {
         //3D摄像机鼠标滑轮（放大缩小）
         this.node.on(NodeEventType.MOUSE_WHEEL, (event: EventMouse) => {
             var y = event.getScrollY()
-            y /= 300
+            y /= 100
             // vec2Delta = vec2Delta.divide2f(10,10)
             // this.mainCamera.node.position = this.mainCamera.node.position.add3f(0, y, 0)
-            this.mainCamera.fov = Math.max(this.mainCamera.fov - y, 5)
+            this.mainCamera.orthoHeight = Math.min(Math.max(this.mainCamera.orthoHeight - y, 5), 100)
             //console.log('fov', this.mainCamera.fov);
         })
         
@@ -124,6 +125,12 @@ export class Scene战斗 extends Component {
         })
     }
     
+    点击地面特效(vec3:Vec3)
+    {
+        this.targetFlag.position = vec3
+        let ani = this.targetFlag.getChildByName('lightQ').getComponent(Animation)
+        ani.play('lightQ')
+    }
     onMouseUp(pos:Vec2, b鼠标右键:boolean) {
         this.posWorld按下准备拖动地面 = null
         console.log(this.pos上次按下, pos)
@@ -131,16 +138,17 @@ export class Scene战斗 extends Component {
             this.pos上次按下 = null
 
             const item = PhysicsSystem.instance.raycastClosestResult
-        
-            if (0 < this.uiLogin.arr选中.length){
-                this.targetFlag.position = item.hitPoint
-                let ani = this.targetFlag.getChildByName('lightQ').getComponent(Animation)
-                ani.play('lightQ')
-            }
+
             let object
-            if (b鼠标右键||this.b强行走) {
+            if (b鼠标右键 || this.b强行走) {
+                if (0 == this.uiLogin.arr选中.length )
+                    return
+
                 object = this.uiLogin.createMsgMove强行走(item.hitPoint)
             } else {
+                if( null == this.uiLogin.fun创建消息)
+                    return
+
                 object = this.uiLogin.fun创建消息(item.hitPoint)
             }
             this.b强行走 = false
@@ -150,8 +158,9 @@ export class Scene战斗 extends Component {
             console.log('send', encoded)
             this.uiLogin.send(encoded)
             
+            this.点击地面特效(item.hitPoint)
 
-            this.uiLogin.fun创建消息 = this.uiLogin.createMsgMove遇敌自动攻击
+            this.uiLogin.fun创建消息 = 0 < this.uiLogin.arr选中.length ? this.uiLogin.createMsgMove遇敌自动攻击 : null
             return
         }
         
@@ -214,10 +223,21 @@ export class Scene战斗 extends Component {
 
         if (this.posWorld按下准备拖动地面) {
             // var vec2Delta = event.getDelta()
-            var div = this.mainCamera.fov / 400;
-            let vec3 =  new Vec3(-vec2Delta.x, 0, vec2Delta.y).multiplyScalar(div)
-            vec3.add(this.mainCamera.node.position)
-            this.mainCamera.node.position = vec3
+            // var div = this.mainCamera.orthoHeight / 400;
+            let vec3零 =  new Vec3(0, 0, 0)//.multiplyScalar(div)
+            let vec3 =  new Vec3(-vec2Delta.x, -vec2Delta.y, 0)//.multiplyScalar(div)
+            let vec3World零 = new Vec3()
+            this.vec3WorldCamera = new Vec3()
+            this.mainCamera.screenToWorld(vec3零, vec3World零)
+            this.mainCamera.screenToWorld(vec3, this.vec3WorldCamera)
+            console.log('vec3零', vec3零, 'vec3World零', vec3World零)
+            console.log('vec3', vec3, 'vec3World', this.vec3WorldCamera)
+            this.vec3WorldCamera.subtract(vec3World零)
+            this.vec3WorldCamera.add(this.mainCamera.node.position)
+            if( this.vec3WorldCamera != null ){
+                this.mainCamera.node.position = this.vec3WorldCamera
+                this.vec3WorldCamera = null
+            }
         }
     }
     //点击处理
@@ -318,7 +338,7 @@ export class Scene战斗 extends Component {
         }
     }
     update(deltaTime: number) {
-
+ 
     }
 
 

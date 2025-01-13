@@ -36,7 +36,8 @@ export class HeadScale extends Component {
         // @ts-ignore
         Vec3.transformMat4(this._pos, this.target.worldPosition, camera._camera!.matView);
 
-        const ratio = this.distance / Math.abs(this._pos.z);
+        // const ratio = this.distance / Math.abs(this._pos.z);
+        const ratio = this.distance /camera.orthoHeight
         const value = Math.floor(ratio * 100) / 100;
         this.node.setScale(value, value, 1);
         if(!this.target)

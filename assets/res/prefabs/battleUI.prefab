@@ -3998,7 +3998,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "ButtonAdd基地",
+    "_name": "ButtonAdd坦克",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
@@ -4082,7 +4082,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0,
+      "x": -0.061,
       "y": 0,
       "z": 0
     },
@@ -4135,7 +4135,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "ff0cyoWh1FL4LLpRvKc5mH"
+    "fileId": "3bESj1L4RLUYczpd6de3In"
   },
   {
     "__type__": "cc.Sprite",
@@ -4160,10 +4160,10 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "39257fff-85af-450b-aff0-91eb571dd184@f9941",
+      "__uuid__": "31c30623-083a-499a-b3d0-e7ef0f978699@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
-    "_type": 1,
+    "_type": 0,
     "_fillType": 0,
     "_sizeMode": 0,
     "_fillCenter": {
@@ -4180,7 +4180,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "a9bSrpo99BYqBdC6MeU+pF"
+    "fileId": "34NiVo5yJNOK5cmyrlUa/z"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -4190,7 +4190,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "2abwdXW8hCKJqjaPB+SKba",
+    "fileId": "1eX0Ca7RpAsLzQbf1OqFtW",
     "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
@@ -4271,7 +4271,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "2e68vIWt9K2KXPfNsHemMg"
+    "fileId": "42elAohXBILKd5c7H7Vct1"
   },
   {
     "__type__": "cc.Label",
@@ -4295,7 +4295,7 @@
       "b": 82,
       "a": 255
     },
-    "_string": "基地",
+    "_string": "坦克",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 12,
@@ -4339,7 +4339,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "65NepWyDJM45C/h6uEeOP5"
+    "fileId": "1dkKCvpuJEmLChteAVj7jt"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -4349,7 +4349,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "bapPYAtu9Dk6+UmVJyCQpp",
+    "fileId": "07Klbyr+lLqb8eAiCf36eZ",
     "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
@@ -4380,7 +4380,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "fdGCgr2E1BJJx5yTVlrdPa"
+    "fileId": "37qwpTBGRFK4/3zWByVd+D"
   },
   {
     "__type__": "cc.Sprite",
@@ -4425,7 +4425,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "b5SLXScxhNw7NNSAbGdRuK"
+    "fileId": "77b7UkY0xAcKLnYLSRA1FE"
   },
   {
     "__type__": "cc.Button",
@@ -4485,7 +4485,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "77V4fTtwREGJ0Z9a2BH/5Z"
+    "fileId": "84PY01mChCIKOBYZkLS5wL"
   },
   {
     "__type__": "cc.ClickEvent",
@@ -4494,7 +4494,7 @@
     },
     "component": "",
     "_componentId": "ba985/FGklKdYpL9XgoQFoE",
-    "handler": "onClickAdd基地",
+    "handler": "onClick造坦克",
     "customEventData": ""
   },
   {
@@ -4513,7 +4513,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "58wZlxZPZEo4v6kMlxJtqQ"
+    "fileId": "19znumgz9DcokigxCESf21"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -4523,14 +4523,14 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "dbqNMobUdLYoHLhqd4H6jQ",
+    "fileId": "25vdhgFW9JNJFSlzBtP3Ar",
     "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
   },
   {
     "__type__": "cc.Node",
-    "_name": "ButtonAdd兵厂",
+    "_name": "ButtonAdd基地",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
@@ -4564,7 +4564,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -5.329070518200751e-15,
+      "x": 0.09999999999999432,
       "y": 0,
       "z": 0
     },
@@ -4615,7 +4615,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 4.39,
+      "y": 0,
       "z": 0
     },
     "_lrot": {
@@ -4667,7 +4667,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "580KSSU3JEVZzzkqoYWDwc"
+    "fileId": "ff0cyoWh1FL4LLpRvKc5mH"
   },
   {
     "__type__": "cc.Sprite",
@@ -4692,7 +4692,7 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "465f094c-3862-4b45-b0b4-109748242b18@f9941",
+      "__uuid__": "39257fff-85af-450b-aff0-91eb571dd184@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 1,
@@ -4712,7 +4712,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "35kR/wdkBAyJV1A8URa4G7"
+    "fileId": "a9bSrpo99BYqBdC6MeU+pF"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -4722,7 +4722,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "5fr+4OnYNGrbxISGLoo9rL",
+    "fileId": "2abwdXW8hCKJqjaPB+SKba",
     "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
@@ -4803,7 +4803,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "80wEAbfyNP0JN3KEM/0Hn7"
+    "fileId": "2e68vIWt9K2KXPfNsHemMg"
   },
   {
     "__type__": "cc.Label",
@@ -4827,7 +4827,7 @@
       "b": 82,
       "a": 255
     },
-    "_string": "兵厂",
+    "_string": "基地",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 12,
@@ -4871,7 +4871,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "39VEeqPm5Kc7+isHtNCrXu"
+    "fileId": "65NepWyDJM45C/h6uEeOP5"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -4881,7 +4881,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "18z2+XeHJFA5G3A4CwONjE",
+    "fileId": "bapPYAtu9Dk6+UmVJyCQpp",
     "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
@@ -4900,7 +4900,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 29.8,
+      "width": 30,
       "height": 60
     },
     "_anchorPoint": {
@@ -4912,7 +4912,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "a4jTagKLxHRKzv4km4Yu6+"
+    "fileId": "fdGCgr2E1BJJx5yTVlrdPa"
   },
   {
     "__type__": "cc.Sprite",
@@ -4957,7 +4957,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "12cYj39ltCN6Q2utJDzkRG"
+    "fileId": "b5SLXScxhNw7NNSAbGdRuK"
   },
   {
     "__type__": "cc.Button",
@@ -5017,7 +5017,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "f3Y2BeTiRG7a3Gwunsp+17"
+    "fileId": "77V4fTtwREGJ0Z9a2BH/5Z"
   },
   {
     "__type__": "cc.ClickEvent",
@@ -5026,7 +5026,7 @@
     },
     "component": "",
     "_componentId": "ba985/FGklKdYpL9XgoQFoE",
-    "handler": "onClickAdd兵厂",
+    "handler": "onClickAdd基地",
     "customEventData": ""
   },
   {
@@ -5045,7 +5045,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "58jWnXamlBd5ORGjB+qAwJ"
+    "fileId": "58wZlxZPZEo4v6kMlxJtqQ"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -5055,7 +5055,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "06Oriv5dtAx4U5buuRTlkT",
+    "fileId": "dbqNMobUdLYoHLhqd4H6jQ",
     "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
@@ -5096,7 +5096,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 29.899999999999995,
+      "x": 30.099999999999994,
       "y": 0,
       "z": 0
     },
@@ -5594,7 +5594,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "ButtonAdd地堡",
+    "_name": "ButtonAdd兵厂",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
@@ -5628,7 +5628,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 59.89999999999999,
+      "x": 59.99999999999999,
       "y": 0,
       "z": 0
     },
@@ -5678,8 +5678,8 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -0.061,
-      "y": 0,
+      "x": 0,
+      "y": 4.39,
       "z": 0
     },
     "_lrot": {
@@ -5731,7 +5731,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "73WInbTfJBa7PzB4Ql67Kd"
+    "fileId": "580KSSU3JEVZzzkqoYWDwc"
   },
   {
     "__type__": "cc.Sprite",
@@ -5756,10 +5756,10 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "d0348a66-88a0-4374-82e3-330411c54682@f9941",
+      "__uuid__": "465f094c-3862-4b45-b0b4-109748242b18@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
-    "_type": 0,
+    "_type": 1,
     "_fillType": 0,
     "_sizeMode": 0,
     "_fillCenter": {
@@ -5776,7 +5776,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "4d2JAd2blGlJ1AZPVofTg7"
+    "fileId": "35kR/wdkBAyJV1A8URa4G7"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -5786,7 +5786,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "222A8x/8lN6YKXcxDmgdtg",
+    "fileId": "5fr+4OnYNGrbxISGLoo9rL",
     "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
@@ -5867,7 +5867,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "cfo8hkElFGL4rPxyYj0f77"
+    "fileId": "80wEAbfyNP0JN3KEM/0Hn7"
   },
   {
     "__type__": "cc.Label",
@@ -5891,7 +5891,7 @@
       "b": 82,
       "a": 255
     },
-    "_string": "地堡",
+    "_string": "兵厂",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 12,
@@ -5935,7 +5935,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "c673MO7QNLO4FVD4YFpyV6"
+    "fileId": "39VEeqPm5Kc7+isHtNCrXu"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -5945,7 +5945,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "e4h9CYdGpN0aZJANYH2lMz",
+    "fileId": "18z2+XeHJFA5G3A4CwONjE",
     "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
@@ -5964,7 +5964,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 30,
+      "width": 29.8,
       "height": 60
     },
     "_anchorPoint": {
@@ -5976,7 +5976,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "2alu33WtVJlZvUrl5ZlzWr"
+    "fileId": "a4jTagKLxHRKzv4km4Yu6+"
   },
   {
     "__type__": "cc.Sprite",
@@ -6021,7 +6021,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "b8x1ewvvBJ6rMPHjLULYqY"
+    "fileId": "12cYj39ltCN6Q2utJDzkRG"
   },
   {
     "__type__": "cc.Button",
@@ -6081,7 +6081,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "ffCI6CssRAOoCFK/guiTTY"
+    "fileId": "f3Y2BeTiRG7a3Gwunsp+17"
   },
   {
     "__type__": "cc.ClickEvent",
@@ -6090,7 +6090,7 @@
     },
     "component": "",
     "_componentId": "ba985/FGklKdYpL9XgoQFoE",
-    "handler": "onClickAdd地堡",
+    "handler": "onClickAdd兵厂",
     "customEventData": ""
   },
   {
@@ -6109,7 +6109,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "a3WMvVi4tG4oAWIMlSUWop"
+    "fileId": "58jWnXamlBd5ORGjB+qAwJ"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -6119,14 +6119,14 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "4fKlEGVeBHZqoBSKd/kUoK",
+    "fileId": "06Oriv5dtAx4U5buuRTlkT",
     "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
   },
   {
     "__type__": "cc.Node",
-    "_name": "ButtonAdd坦克",
+    "_name": "ButtonAdd地堡",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
@@ -6263,7 +6263,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "3bESj1L4RLUYczpd6de3In"
+    "fileId": "73WInbTfJBa7PzB4Ql67Kd"
   },
   {
     "__type__": "cc.Sprite",
@@ -6288,7 +6288,7 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "31c30623-083a-499a-b3d0-e7ef0f978699@f9941",
+      "__uuid__": "d0348a66-88a0-4374-82e3-330411c54682@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 0,
@@ -6308,7 +6308,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "34NiVo5yJNOK5cmyrlUa/z"
+    "fileId": "4d2JAd2blGlJ1AZPVofTg7"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -6318,7 +6318,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "1eX0Ca7RpAsLzQbf1OqFtW",
+    "fileId": "222A8x/8lN6YKXcxDmgdtg",
     "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
@@ -6399,7 +6399,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "42elAohXBILKd5c7H7Vct1"
+    "fileId": "cfo8hkElFGL4rPxyYj0f77"
   },
   {
     "__type__": "cc.Label",
@@ -6423,7 +6423,7 @@
       "b": 82,
       "a": 255
     },
-    "_string": "坦克",
+    "_string": "地堡",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 12,
@@ -6467,7 +6467,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "1dkKCvpuJEmLChteAVj7jt"
+    "fileId": "c673MO7QNLO4FVD4YFpyV6"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -6477,7 +6477,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "07Klbyr+lLqb8eAiCf36eZ",
+    "fileId": "e4h9CYdGpN0aZJANYH2lMz",
     "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
@@ -6508,7 +6508,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "37qwpTBGRFK4/3zWByVd+D"
+    "fileId": "2alu33WtVJlZvUrl5ZlzWr"
   },
   {
     "__type__": "cc.Sprite",
@@ -6553,7 +6553,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "77b7UkY0xAcKLnYLSRA1FE"
+    "fileId": "b8x1ewvvBJ6rMPHjLULYqY"
   },
   {
     "__type__": "cc.Button",
@@ -6613,7 +6613,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "84PY01mChCIKOBYZkLS5wL"
+    "fileId": "ffCI6CssRAOoCFK/guiTTY"
   },
   {
     "__type__": "cc.ClickEvent",
@@ -6622,7 +6622,7 @@
     },
     "component": "",
     "_componentId": "ba985/FGklKdYpL9XgoQFoE",
-    "handler": "onClick造坦克",
+    "handler": "onClickAdd地堡",
     "customEventData": ""
   },
   {
@@ -6641,7 +6641,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "19znumgz9DcokigxCESf21"
+    "fileId": "a3WMvVi4tG4oAWIMlSUWop"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -6651,7 +6651,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "25vdhgFW9JNJFSlzBtP3Ar",
+    "fileId": "4fKlEGVeBHZqoBSKd/kUoK",
     "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
