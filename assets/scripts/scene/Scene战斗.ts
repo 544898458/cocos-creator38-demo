@@ -36,7 +36,7 @@ export class ClientEntityComponent {
 }
 
 const prefabName选中特效:string = 'Select'//这里不能用中文，原因不明
-const nodeName地板:string = "Plane" //地板对象名字
+const nodeName地板:string = 'Plane' //地板对象名字
 
 @ccclass('Scene战斗')
 export class Scene战斗 extends Component {
@@ -49,6 +49,8 @@ export class Scene战斗 extends Component {
     public battleUI: BattleUI
     @property({ type: Camera, displayName: "3D摄像" })
     mainCamera: Camera
+    @property({ type: Camera, displayName: "小地图摄像及" })
+    camera小地图: Camera
     @property({ type: Node, displayName: "英雄" })
     roles: Node
     //ui登录
@@ -66,7 +68,7 @@ export class Scene战斗 extends Component {
     b电脑鼠标操作: boolean = false
     protected onLoad(): void {
         console.log('Scene战斗.onLoad')
-
+        this.Clear然后显示小地图视口框()
     }
 
     start() {
@@ -88,6 +90,7 @@ export class Scene战斗 extends Component {
             // this.mainCamera.node.position = this.mainCamera.node.position.add3f(0, y, 0)
             this.mainCamera.orthoHeight = Math.min(Math.max(this.mainCamera.orthoHeight - y, 5), 100)
             //console.log('fov', this.mainCamera.fov);
+            this.Clear然后显示小地图视口框()
         })
         
         this.node.on(NodeEventType.MOUSE_UP,  (event: EventMouse) =>{
@@ -123,6 +126,8 @@ export class Scene战斗 extends Component {
 
             this.onMouseDown(event.getLocation(), false)
         })
+
+        this.scheduleOnce(this.Clear然后显示小地图视口框, 1)
     }
     
     点击地面特效(vec3:Vec3)
@@ -192,7 +197,7 @@ export class Scene战斗 extends Component {
 
                 this.posWorld框选起始点 = null
                 this.battleUI.lable语音消息提示.string ='已退出框选状态'
-                this.graphics.clear()//清掉框选框
+                this.Clear然后显示小地图视口框()// this.graphics.clear()//清掉框选框
                 return
             })
         }
@@ -237,6 +242,7 @@ export class Scene战斗 extends Component {
             if( this.vec3WorldCamera != null ){
                 this.mainCamera.node.position = this.vec3WorldCamera
                 this.vec3WorldCamera = null
+                this.Clear然后显示小地图视口框()
             }
         }
     }
@@ -336,14 +342,60 @@ export class Scene战斗 extends Component {
         }
     }
     update(deltaTime: number) {
- 
     }
 
+    Clear然后显示小地图视口框()
+    {
+        if(!this.graphics)
+            return
 
-    onClickSay(event: Event, customEventData: string) {
-        this.uiLogin.onClickSay(customEventData)
+        this.graphics.clear()
+        this.显示小地图视口框()
     }
+    显示小地图视口框(){
+        let size = view.getVisibleSize()
+        let vec左下 = this.大屏幕坐标转小地图绘图坐标(0, 0)
+        let vec右下 = this.大屏幕坐标转小地图绘图坐标(size.x, 0)
+        let vec左上 = this.大屏幕坐标转小地图绘图坐标(0, size.y)
+        let vec右上 = this.大屏幕坐标转小地图绘图坐标(size.x, size.y)
+        if(!vec左下 || !vec右下 || !vec左上 || !vec右上)
+            return
 
+        // this.graphics.clear()
+        // this.graphics.circle(vec左下.x, vec左下.y, 30)
+        // this.graphics.circle(vec右下.x, vec右下.y, 30)
+        // this.graphics.circle(vec左上.x, vec左上.y, 30)
+        // this.graphics.circle(vec右上.x, vec右上.y, 30)
+        this.graphics.strokeColor = Color.WHITE;
+        this.graphics.moveTo(vec左上.x, vec左上.y);
+        this.graphics.lineTo(vec左下.x, vec左下.y);
+        this.graphics.lineTo(vec右下.x, vec右下.y);
+        this.graphics.lineTo(vec右上.x, vec右上.y);
+        this.graphics.lineTo(vec左上.x, vec左上.y);
+        this.graphics.stroke();
+    }
+    大屏幕坐标转小地图绘图坐标(x:number,y:number):Vec3
+    {
+        var ray = new geometry.Ray()
+        this.mainCamera.screenPointToRay(x, y, ray)
+        if (!PhysicsSystem.instance.raycast(ray)) {
+            console.log('raycast does not hit the target node !')
+            return null
+        }
+
+        let vec3Grapics:Vec3
+        PhysicsSystem.instance.raycastResults.forEach((item:PhysicsRayResult)=>{
+            if(item.collider.node.name != nodeName地板)
+                return
+
+            vec3Grapics = this.Wolrd3D转Graphics绘图坐标小地图(item.hitPoint)
+            console.log('item.hitPoint',item.hitPoint, 
+                        'vec3Grapics', vec3Grapics,
+                        'camera小地图', this.camera小地图)
+
+        })
+        return vec3Grapics
+    }
 
     clear选中() {
         for (let id of this.uiLogin.arr选中) {
@@ -389,9 +441,17 @@ export class Scene战斗 extends Component {
         let graphicsLocalPos = localPoint//.subtract(graphicsWorldPos);
         return graphicsLocalPos;
     }
-    Wolrd3D转Graphics绘图坐标(posWorld3D:Vec3)
+    Wolrd3D转Graphics绘图坐标(posWorld3D:Vec3):Vec3
     {
-        let pos屏幕坐标 = this.mainCamera.worldToScreen(posWorld3D)//纯整数，无小数，左下角为0
+        return this.Wolrd3D转Graphics绘图坐标3D摄像机(this.mainCamera, posWorld3D)
+    }
+    Wolrd3D转Graphics绘图坐标小地图(posWorld3D:Vec3):Vec3
+    {
+        return this.Wolrd3D转Graphics绘图坐标3D摄像机(this.camera小地图, posWorld3D)
+    }
+    Wolrd3D转Graphics绘图坐标3D摄像机(camera:Camera, posWorld3D:Vec3):Vec3
+    {
+        let pos屏幕坐标 = camera.worldToScreen(posWorld3D)//纯整数，无小数，左下角为0
         let size = view.getVisibleSize()
         let sizeInPixel = view.getVisibleSizeInPixel()
         console.log('size', size)
@@ -416,6 +476,7 @@ export class Scene战斗 extends Component {
         let posNode右上 = this.Wolrd3D转Graphics绘图坐标(posWorld3D右上)
         let posNode右下 = this.Wolrd3D转Graphics绘图坐标(posWorld3D右下)
         this.graphics.clear()
+        this.graphics.strokeColor = Color.GREEN;
         this.graphics.moveTo(posNode左上.x, posNode左上.y);
         this.graphics.lineTo(posNode左下.x, posNode左下.y);
         this.graphics.lineTo(posNode右下.x, posNode右下.y);
@@ -426,7 +487,13 @@ export class Scene战斗 extends Component {
         // this.graphics.circle(graphicsWorldPos.x,graphicsWorldPos.y,30)
         // this.graphics.circle(0,0,10)
         // this.graphics.circle(pos.x,pos.y,0)
-        this.graphics.stroke();
+        this.graphics.stroke()
+        this.显示小地图视口框()
+  }
+  视口对准此处(vec:Vec3)
+  {
+    this.mainCameraFollowTarget.对准此处(vec)
+    this.scheduleOnce(this.Clear然后显示小地图视口框,1)
   }
 }
 

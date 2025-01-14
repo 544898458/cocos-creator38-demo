@@ -639,7 +639,7 @@ export class UiLogin extends Component {
                     {
                         let arrPos视口 = arr[idxArr++] as number[]
                         console.log(arrPos视口)
-                        thisLocal.scene战斗.mainCameraFollowTarget.对准此处(new Vec3(arrPos视口[0], 0, arrPos视口[1]))
+                        thisLocal.scene战斗.视口对准此处(new Vec3(arrPos视口[0], 0, arrPos视口[1]))
                     }
                     break
                 case MsgId.SelectRoles:
