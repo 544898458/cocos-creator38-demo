@@ -11,6 +11,7 @@ import { PhysicsRayResult } from 'cc'
 import { Canvas } from 'cc'
 import { view } from 'cc'
 import { BattleUI } from '../mode/BattleUI'
+import { renderer } from 'cc'
 
 const { ccclass, property } = _decorator
 export class ClientEntityComponent {
@@ -57,9 +58,9 @@ export class Scene战斗 extends Component {
     uiLogin: UiLogin
     //摄像
     mainCameraFollowTarget: FollowTarget
-    vec3WorldCamera = null
     //鼠标点击世界坐标
     posWorld按下准备拖动地面: Vec3
+    posWorld按下准备拖动地面时Camera: Vec3
     pos上次按下: Vec2
     b框选等待按下起始点: boolean = false
     posWorld框选起始点: Vec3 = null
@@ -84,13 +85,27 @@ export class Scene战斗 extends Component {
 
         //3D摄像机鼠标滑轮（放大缩小）
         this.node.on(NodeEventType.MOUSE_WHEEL, (event: EventMouse) => {
-            var y = event.getScrollY()
-            y /= 100
-            // vec2Delta = vec2Delta.divide2f(10,10)
-            // this.mainCamera.node.position = this.mainCamera.node.position.add3f(0, y, 0)
-            this.mainCamera.orthoHeight = Math.min(Math.max(this.mainCamera.orthoHeight - y, 5), 100)
-            //console.log('fov', this.mainCamera.fov);
-            this.Clear然后显示小地图视口框()
+            this.镜头缩放(event.getScrollY())
+            // if(this.b正交投影)
+            // {
+            //     var y = event.getScrollY()
+            //     y /= 100
+            //     // vec2Delta = vec2Delta.divide2f(10,10)
+            //     // this.mainCamera.node.position = this.mainCamera.node.position.add3f(0, y, 0)
+            //     this.mainCamera.orthoHeight = Math.min(Math.max(this.mainCamera.orthoHeight - y, 5), 100)
+            //     //console.log('fov', this.mainCamera.fov);
+    
+            // }
+            // else//透视投影
+            // {
+            //     var y = event.getScrollY()
+            //     y /= 300
+            //     // vec2Delta = vec2Delta.divide2f(10,10)
+            //     // this.mainCamera.node.position = this.mainCamera.node.position.add3f(0, y, 0)
+            //     this.mainCamera.fov = Math.max(this.mainCamera.fov - y, 5)
+            //     //console.log('fov', this.mainCamera.fov);
+            // }
+            // this.Clear然后显示小地图视口框()
         })
         
         this.node.on(NodeEventType.MOUSE_UP,  (event: EventMouse) =>{
@@ -130,6 +145,35 @@ export class Scene战斗 extends Component {
         this.scheduleOnce(this.Clear然后显示小地图视口框, 1)
     }
     
+    static 缩放步长:number = 500
+    镜头缩小() {
+        this.镜头缩放(-Scene战斗.缩放步长)
+    }
+    镜头放大() {
+        this.镜头缩放(Scene战斗.缩放步长)
+    }
+    镜头缩放(鼠标滚轮变化: number){
+        if(this.是正交投影())
+        {
+            var y = 鼠标滚轮变化
+            y /= 100
+            // vec2Delta = vec2Delta.divide2f(10,10)
+            // this.mainCamera.node.position = this.mainCamera.node.position.add3f(0, y, 0)
+            this.mainCamera.orthoHeight = Math.min(Math.max(this.mainCamera.orthoHeight - y, 5), 100)
+            //console.log('fov', this.mainCamera.fov);
+
+        }
+        else//透视投影
+        {
+            var y = 鼠标滚轮变化
+            y /= 300
+            // vec2Delta = vec2Delta.divide2f(10,10)
+            // this.mainCamera.node.position = this.mainCamera.node.position.add3f(0, y, 0)
+            this.mainCamera.fov = Math.max(this.mainCamera.fov - y, 5)
+            //console.log('fov', this.mainCamera.fov);
+        }
+        this.Clear然后显示小地图视口框()
+    }
     点击地面特效(vec3:Vec3)
     {
         this.targetFlag.position = vec3
@@ -215,35 +259,49 @@ export class Scene战斗 extends Component {
             return false
         }
 
+        let vec点中地面WorldPos
+        PhysicsSystem.instance.raycastResults.forEach(
+            (result)=>{
+                console.log('鼠标移动触碰对象',result.collider.node)
+                if (result.collider.node.name == nodeName地板) 
+                vec点中地面WorldPos = result.hitPoint
+            })
+        if(!vec点中地面WorldPos)
+            return false
+
         if( this.posWorld框选起始点 != null)
         {
-            PhysicsSystem.instance.raycastResults.forEach(
-                (result)=>{
-                    console.log('鼠标移动触碰对象',result.collider.node)
-                    if (result.collider.node.name == nodeName地板) 
-                        this.画斜的选中框(this.posWorld框选起始点, result.hitPoint)
-                })
+            this.画斜的选中框(this.posWorld框选起始点, vec点中地面WorldPos)
             return
         }
 
         if (this.posWorld按下准备拖动地面) {
-            // var vec2Delta = event.getDelta()
-            // var div = this.mainCamera.orthoHeight / 400;
-            let vec3零 =  new Vec3(0, 0, 0)//.multiplyScalar(div)
-            let vec3 =  new Vec3(-vec2Delta.x, -vec2Delta.y, 0)//.multiplyScalar(div)
-            let vec3World零 = new Vec3()
-            this.vec3WorldCamera = new Vec3()
-            this.mainCamera.screenToWorld(vec3零, vec3World零)
-            this.mainCamera.screenToWorld(vec3, this.vec3WorldCamera)
-            console.log('vec3零', vec3零, 'vec3World零', vec3World零)
-            console.log('vec3', vec3, 'vec3World', this.vec3WorldCamera)
-            this.vec3WorldCamera.subtract(vec3World零)
-            this.vec3WorldCamera.add(this.mainCamera.node.position)
-            if( this.vec3WorldCamera != null ){
-                this.mainCamera.node.position = this.vec3WorldCamera
-                this.vec3WorldCamera = null
-                this.Clear然后显示小地图视口框()
+            if(this.是正交投影())
+            {
+                let vec3零 =  new Vec3(0, 0, 0)//.multiplyScalar(div)
+                let vec3 =  new Vec3(-vec2Delta.x, -vec2Delta.y, 0)//.multiplyScalar(div)
+                let vec3World零 = new Vec3()
+                let vec3WorldCamera = new Vec3()
+                this.mainCamera.screenToWorld(vec3零, vec3World零)
+                this.mainCamera.screenToWorld(vec3, vec3WorldCamera)
+                console.log('vec3零', vec3零, 'vec3World零', vec3World零)
+                console.log('vec3', vec3, 'vec3World', vec3WorldCamera)
+                vec3WorldCamera.subtract(vec3World零)
+                vec3WorldCamera.add(this.mainCamera.node.position)
+                this.mainCamera.node.position = vec3WorldCamera
+                vec3WorldCamera = null
             }
+            else//透视投影
+            {
+                let vec新 = vec点中地面WorldPos.clone()
+                let vec老 = this.posWorld按下准备拖动地面.clone()
+                let vec老Camera = this.posWorld按下准备拖动地面时Camera.clone()
+                vec老.subtract(vec新)
+                vec老.add(vec老Camera)
+                this.mainCamera.node.position = vec老
+            }
+
+            this.Clear然后显示小地图视口框()
         }
     }
     //点击处理
@@ -273,6 +331,7 @@ export class Scene战斗 extends Component {
 
             this.pos上次按下 = posMouseDown.clone()
             this.posWorld按下准备拖动地面 = item.hitPoint
+            this.posWorld按下准备拖动地面时Camera = this.mainCamera.node.position
         }
         else //点的是单位
         {
@@ -353,7 +412,7 @@ export class Scene战斗 extends Component {
         this.显示小地图视口框()
     }
     显示小地图视口框(){
-        let size = view.getVisibleSize()
+        let size = view.getVisibleSizeInPixel()
         let vec左下 = this.大屏幕坐标转小地图绘图坐标(0, 0)
         let vec右下 = this.大屏幕坐标转小地图绘图坐标(size.x, 0)
         let vec左上 = this.大屏幕坐标转小地图绘图坐标(0, size.y)
@@ -489,12 +548,23 @@ export class Scene战斗 extends Component {
         // this.graphics.circle(pos.x,pos.y,0)
         this.graphics.stroke()
         this.显示小地图视口框()
-  }
-  视口对准此处(vec:Vec3)
-  {
-    this.mainCameraFollowTarget.对准此处(vec)
-    this.scheduleOnce(this.Clear然后显示小地图视口框,1)
-  }
+    }
+    视口对准此处(vec:Vec3)
+    {
+        this.mainCameraFollowTarget.对准此处(vec)
+        this.scheduleOnce(this.Clear然后显示小地图视口框,1)
+    }
+    是正交投影():boolean
+    {
+        return this.mainCamera.projection == renderer.scene.CameraProjection.ORTHO
+    }
+    切换镜头投影() {
+        this.mainCamera.projection = this.是正交投影() ?
+            renderer.scene.CameraProjection.PERSPECTIVE:
+            renderer.scene.CameraProjection.ORTHO
+        
+        this.scheduleOnce(this.Clear然后显示小地图视口框,0.1)
+    }
 }
 
 

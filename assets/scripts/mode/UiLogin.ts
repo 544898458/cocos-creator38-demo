@@ -45,6 +45,7 @@ export enum MsgId {
 	创建多人战局,
 	玩家多人战局列表,
 	进其他玩家多人战局,
+    切换空闲工程车,
 }
 
 enum 副本ID
@@ -57,6 +58,8 @@ enum 副本ID
 
 enum 单位类型
 {
+    单位类型_Invalid_0,
+	
 	工程车,//空间工程车Space Construction Vehicle。可以采矿，采气，也可以简单攻击
 	兵,//陆战队员Marine。只能攻击，不能采矿
 	近战兵,//火蝠，喷火兵Firebat
@@ -355,18 +358,18 @@ export class UiLogin extends Component {
                                 if (old.skeletalAnimation != undefined) {
                                     old.skeletalAnimation.play(old.initClipName)
                                 }
-                                let nodeCanvas = utils.find("Canvas", thisLocal.scene战斗.roles.parent)
-                                let nodeRoleName = utils.find("RoleName", nodeCanvas)
+                                let node所有单位头顶名字 = thisLocal.scene战斗.battleUI.uiTransform所有单位头顶名字.node
+                                let nodeRoleName = utils.find("RoleName", node所有单位头顶名字)
                                 // console.log('RoleName',this.nodeRoleName)
                                 // this.nodeRoleName.getComponent(HeadScale).target = this.nodeRoleName
 
                                 old.nodeName = instantiate(nodeRoleName)
-                                nodeCanvas.addChild(old.nodeName)
+                                node所有单位头顶名字.addChild(old.nodeName)
                                 if (newNode.name != "smoke") {
-                                    let nodeRoleHp = utils.find("RoleHp", nodeCanvas)
+                                    let nodeRoleHp = utils.find("RoleHp", node所有单位头顶名字)
                                     old.hpbar = instantiate(nodeRoleHp)
                                     old.hpbar.active = true;
-                                    nodeCanvas.addChild(old.hpbar)
+                                    node所有单位头顶名字.addChild(old.hpbar)
                                     
                                     if(hpMax<=0)
                                         old.hpbar.active = false
@@ -383,7 +386,7 @@ export class UiLogin extends Component {
                                 }
 
                                 old.node描述 = instantiate(nodeRoleName)
-                                nodeCanvas.addChild(old.node描述)
+                                node所有单位头顶名字.addChild(old.node描述)
                                 old.label描述 = old.node描述.getComponent(Label)
                                 {
                                     let headScal = old.node描述.getComponent(HeadScale)
@@ -743,6 +746,12 @@ export class UiLogin extends Component {
         console.log('send', encoded)
         this.send(encoded)
     }
+    onClick空闲工程车() {
+        const encoded = msgpack.encode([[MsgId.切换空闲工程车, ++this.sendMsgSn, 0]])
+        console.log('send', encoded)
+        this.send(encoded)
+    }
+    
 }
 
 

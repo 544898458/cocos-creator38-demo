@@ -4,6 +4,7 @@ import { director } from 'cc';
 import { Scene战斗 } from '../scene/Scene战斗';
 import { Label } from 'cc';
 import { EditBox } from 'cc';
+import { UITransform } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('BattleUI')
@@ -23,6 +24,8 @@ export class BattleUI extends Component {
     lable消息提示: Label
     @property({ type: Label, displayName: "语音消息提示" })
     lable语音消息提示: Label
+    @property({ type: UITransform, displayName: "所有单位头顶名字" })
+    uiTransform所有单位头顶名字: UITransform
 
     start() {
         this.uiLogin = director.getScene().getChildByName('常驻').getComponent(UiLogin);
@@ -58,6 +61,15 @@ export class BattleUI extends Component {
         //this.uiLogin.回到登录场景()
         this.uiLogin.send离开Space()
     }
+    onClick镜头投影(event: Event, customEventData: string) {
+        this.scene战斗.切换镜头投影()
+    }
+    onClick镜头放大(event: Event, customEventData: string) {
+        this.scene战斗.镜头放大()
+    }
+    onClick镜头缩小(event: Event, customEventData: string) {
+        this.scene战斗.镜头缩小()
+    }
     onClickAdd兵(event: Event, customEventData: string): void {
         this.uiLogin.onClickAdd兵(event,customEventData)
     }
@@ -85,8 +97,8 @@ export class BattleUI extends Component {
     onClickAdd光子炮(event: Event, customEventData: string): void {
             this.uiLogin.onClickAdd光子炮(event,customEventData)
     }
-    onClickAdd机关枪(event: Event, customEventData: string): void {
-        this.scene战斗.lableMessage.string="功能待开发"
+    onClick空闲工程车(event: Event, customEventData: string): void {
+        this.uiLogin.onClick空闲工程车()
     }
 }
 
