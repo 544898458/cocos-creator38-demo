@@ -37,7 +37,7 @@ export class HeadScale extends Component {
         let sizeView = view.getVisibleSize()
         let 小地图左 = sizeView.x*(this.camera小地图.rect.x-0.5)
         let 小地图下 = sizeView.y*(this.camera小地图.rect.y-0.5)
-        console.log(this.node.name , 小地图左,小地图下, '_pos', this._pos)
+        // console.log(this.node.name , 小地图左,小地图下, '_pos', this._pos)
         if(this._pos.x > 小地图左 && this._pos.y>小地图下)
         {
             // this.node.active=false

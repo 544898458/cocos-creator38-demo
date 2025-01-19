@@ -649,7 +649,9 @@
         "_defines": [
           {
             "USE_VERTEX_COLOR": true,
-            "USE_ALBEDO_MAP": true
+            "USE_SPECULAR_MAP": true,
+            "USE_ALBEDO_MAP": true,
+            "USE_EMISSIVE_MAP": true
           },
           {},
           {},
@@ -699,12 +701,20 @@
               "__uuid__": "9d9d83f6-74ee-4929-8746-51f554ff21e2@6c48a",
               "__expectedType__": "cc.Texture2D"
             },
+            "emissiveMap": {
+              "__uuid__": "58183dd1-65fb-4703-9fa2-fb3a3c817bdc@6c48a",
+              "__expectedType__": "cc.Texture2D"
+            },
             "specularColor": {
               "__type__": "cc.Color",
               "r": 124,
               "g": 124,
               "b": 124,
               "a": 255
+            },
+            "specularMap": {
+              "__uuid__": "9b696630-3221-493c-9a01-8bdb191476b4@6c48a",
+              "__expectedType__": "cc.Texture2D"
             }
           },
           {},
