@@ -347,16 +347,21 @@ export class UiLogin extends Component {
                                     old.skeletalAnimation = newNode.getChildByName('p_B_tank_03').getComponent(SkeletalAnimation)
                                 else if(newNode.name == '跳虫'){
                                     old.skeletalAnimation = newNode.getChildByName('Zergling').getComponent(SkeletalAnimation)
-                                    old.initClipName = 'Take 001'
+                                    // old.initClipName = 'Take 001'
                                 }else if(newNode.name == '刺蛇'){
                                     old.skeletalAnimation = newNode.getChildByName('Hydralisk').getComponent(SkeletalAnimation)
-                                    old.initClipName = 'Take 001'
+                                    // old.initClipName = 'Take 001'
+                                }else if(newNode.name == '工蜂'){
+                                    old.skeletalAnimation = newNode.getChildByName('Drone').getComponent(SkeletalAnimation)
+                                    // old.initClipName = 'Take 001'
+                                    console.log('工蜂骨骼动画', old.skeletalAnimation)
                                 }
                                 else
                                     old.skeletalAnimation = newNode.getComponent(SkeletalAnimation)
 
                                 if (old.skeletalAnimation != undefined) {
-                                    old.skeletalAnimation.play(old.initClipName)
+                                    // old.skeletalAnimation.play(old.initClipName)
+                                    UiLogin.播放动作(old, old.initClipName, true)
                                 }
                                 let node所有单位头顶名字 = thisLocal.scene战斗.battleUI.uiTransform所有单位头顶名字.node
                                 let nodeRoleName = utils.find("RoleName", node所有单位头顶名字)
@@ -468,7 +473,7 @@ export class UiLogin extends Component {
                 case MsgId.ChangeSkeleAnim:
                     {
                         let id = arr[idxArr++]
-                        let loop: Boolean = arr[idxArr++]
+                        let loop: boolean = arr[idxArr++]
                         let clipName: string = arr[idxArr++]
                         // console.log(id, '动作改为', clipName)
                         let old = thisLocal.scene战斗.entities.get(id)
@@ -477,66 +482,9 @@ export class UiLogin extends Component {
                             return
                         }
                         if (old.skeletalAnimation == undefined){
-                            if( ! old.prefabName.endsWith('跳虫') && ! old.prefabName.endsWith('刺蛇'))
                                 old.initClipName = clipName
                         }else {
-                            // console.log( 'old.view.name', old.view.name)
-                            if(old.view.name == '跳虫')
-                            {
-                                old.skeletalAnimation.play(old.initClipName)
-                                let state = old.skeletalAnimation.getState(old.initClipName)
-                                if(clipName == 'run'){
-                                    state.wrapMode = AnimationClip.WrapMode.Loop
-                                    state.playbackRange = {min:31.5, max:33.6}
-                                }else if(clipName == 'idle'){
-                                    state.wrapMode = AnimationClip.WrapMode.Loop
-                                    state.playbackRange = {min:14.8, max:18.3}
-                                }else if(clipName == 'attack'){
-                                    state.wrapMode =  AnimationClip.WrapMode.Normal
-                                    state.playbackRange = {min:5.2, max:5.8} // 动画总长度
-                                    state.time = 5.2
-                                }else if(clipName == 'died'){
-                                    state.wrapMode =  AnimationClip.WrapMode.Normal
-                                    state.playbackRange = {min:45.4, max:50.6} // 动画总长度
-                                    state.time = 45.4
-                                }
-                            }
-                            else if(old.view.name == '刺蛇')
-                            {
-                                old.skeletalAnimation.play(old.initClipName)
-                                let state = old.skeletalAnimation.getState(old.initClipName)
-                                if(clipName == 'run'){
-                                    state.wrapMode = AnimationClip.WrapMode.Loop
-                                    state.playbackRange = {min:0, max:1.8}
-                                }else if(clipName == 'idle'){
-                                    state.wrapMode = AnimationClip.WrapMode.Loop
-                                    state.playbackRange = {min:14.8, max:18.3}
-                                }else if(clipName == 'attack'){
-                                    state.wrapMode =  AnimationClip.WrapMode.Normal
-                                    state.playbackRange = {min:8.7, max:9.7}
-                                    state.time = 8.7
-                                }else if(clipName == 'died'){
-                                    state.wrapMode =  AnimationClip.WrapMode.Normal
-                                    state.playbackRange = {min:11.8, max:13.8} // 动画总长度
-                                    state.time = 11.8
-                                }
-                            }
-                            else
-                            {
-                                old.skeletalAnimation.play(clipName)
-                                let state = old.skeletalAnimation.getState(clipName)
-                                if(null == state)
-                                    console.error(old.view.name, '缺动作:', clipName)
-
-                                state.wrapMode = loop ? AnimationClip.WrapMode.Loop : AnimationClip.WrapMode.Normal
-                                if(old.view.name == '步兵')
-                                {
-                                    if(clipName == 'run')
-                                        state.playbackRange = {min:0, max:0.8}
-                                    else if(clipName == 'idle')
-                                        state.playbackRange = {min:0, max:2.0}
-                                }
-                            }
+                            UiLogin.播放动作(old, clipName, loop)
                         }
                     }
                     break
@@ -752,6 +700,89 @@ export class UiLogin extends Component {
         this.send(encoded)
     }
     
+    static 播放动作(old:ClientEntityComponent, strClipName:string, loop:boolean){
+        // console.log( 'old.view.name', old.view.name)
+        const str星2动作:string = 'Take 001'
+        if(old.view.name == '跳虫')
+        {
+            old.skeletalAnimation.play(str星2动作)
+            let state = old.skeletalAnimation.getState(str星2动作)
+            if(strClipName == 'run'){
+                state.wrapMode = AnimationClip.WrapMode.Loop
+                state.playbackRange = {min:31.5, max:33.6}
+            }else if(strClipName == 'idle'){
+                state.wrapMode = AnimationClip.WrapMode.Loop
+                state.playbackRange = {min:14.8, max:18.3}
+            }else if(strClipName == 'attack'){
+                state.wrapMode =  AnimationClip.WrapMode.Normal
+                state.playbackRange = {min:5.2, max:5.8} // 动画总长度
+                state.time = 5.2
+            }else if(strClipName == 'died'){
+                state.wrapMode =  AnimationClip.WrapMode.Normal
+                state.playbackRange = {min:45.4, max:50.6} // 动画总长度
+                state.time = 45.4
+            }
+        }
+        else if(old.view.name == '工蜂')
+        {
+            console.log('工蜂播放动画', strClipName, str星2动作)
+            old.skeletalAnimation.play(str星2动作)
+            let state = old.skeletalAnimation.getState(str星2动作)
+            if(strClipName == 'run'){
+                state.wrapMode = AnimationClip.WrapMode.Loop
+                state.playbackRange = {min:4.2, max:5.3}
+                state.time = 4.2
+            }else if(strClipName == 'idle'){
+                state.wrapMode = AnimationClip.WrapMode.Loop
+                state.playbackRange = {min:0, max:2}
+                state.time = 0
+            }else if(strClipName == 'attack'){
+                state.wrapMode =  AnimationClip.WrapMode.Normal
+                state.playbackRange = {min:7.3, max:8.6} // 动画总长度
+                state.time = 7.3
+            }else if(strClipName == 'died'){
+                state.wrapMode =  AnimationClip.WrapMode.Normal
+                state.playbackRange = {min:13.8, max:14.6} // 动画总长度
+                state.time = 13.8
+            }
+        }
+        else if(old.view.name == '刺蛇')
+        {
+            old.skeletalAnimation.play(str星2动作)
+            let state = old.skeletalAnimation.getState(str星2动作)
+            if(strClipName == 'run'){
+                state.wrapMode = AnimationClip.WrapMode.Loop
+                state.playbackRange = {min:0, max:1.8}
+            }else if(strClipName == 'idle'){
+                state.wrapMode = AnimationClip.WrapMode.Loop
+                state.playbackRange = {min:14.8, max:18.3}
+            }else if(strClipName == 'attack'){
+                state.wrapMode =  AnimationClip.WrapMode.Normal
+                state.playbackRange = {min:8.7, max:9.7}
+                state.time = 8.7
+            }else if(strClipName == 'died'){
+                state.wrapMode =  AnimationClip.WrapMode.Normal
+                state.playbackRange = {min:11.8, max:13.8} // 动画总长度
+                state.time = 11.8
+            }
+        }
+        else
+        {
+            old.skeletalAnimation.play(strClipName)
+            let state = old.skeletalAnimation.getState(strClipName)
+            if(null == state)
+                console.error(old.view.name, '缺动作:', strClipName)
+
+            state.wrapMode = loop ? AnimationClip.WrapMode.Loop : AnimationClip.WrapMode.Normal
+            if(old.view.name == '步兵')
+            {
+                if(strClipName == 'run')
+                    state.playbackRange = {min:0, max:0.8}
+                else if(strClipName == 'idle')
+                    state.playbackRange = {min:0, max:2.0}
+            }
+        }
+    }
 }
 
 
