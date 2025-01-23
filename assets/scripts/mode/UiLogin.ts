@@ -58,28 +58,30 @@ enum 副本ID
 
 enum 单位类型
 {
-    单位类型_Invalid_0,
-	
+	单位类型_Invalid_0,
+
+	特效,
+	视口,
+
+	资源Min非法 = 100,
+	晶体矿,//Minerals
+	燃气矿,//Vespene Gas
+
+
+	活动单位Min非法 = 200,
 	工程车,//空间工程车Space Construction Vehicle。可以采矿，采气，也可以简单攻击
 	兵,//陆战队员Marine。只能攻击，不能采矿
 	近战兵,//火蝠，喷火兵Firebat
 	三色坦克,
+	工蜂,
 
-	建筑Min非法,
-
+	建筑Min非法 = 300,
 	基地,//指挥中心(Command Center),用来造工程车()
 	兵厂,//兵营(Barracks)，用来造兵
 	民房,//供给站(Supply Depot)
 	地堡,//掩体; 地堡(Bunker),可以进兵
 	光子炮,//Photon Cannon
-
 	建筑Max非法,
-
-	特效,
-	视口,
-
-	晶体矿,//Minerals
-	燃气矿,//Vespene Gas
 };
 
 // enum 点击地面操作类型
@@ -250,7 +252,7 @@ export class UiLogin extends Component {
         this.scene登录.lableMessage.string = '正在连接'
         // this.websocket = new WebSocket("ws://192.168.31.194:12348/")
         // this.websocket = new WebSocket("ws://192.168.31.170:12348/")
-        // this.websocket = new WebSocket("ws://192.168.43.109:12348/")
+        // this.websocket = new WebSocket("ws://192.168.43.186:12348/")
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
         // this.websocket = new WebSocket("ws://192.168.0.100:12348/")
         this.websocket = new WebSocket("ws://47.119.184.177:12348/")
@@ -589,7 +591,7 @@ export class UiLogin extends Component {
                 case MsgId.设置视口:
                     {
                         let arrPos视口 = arr[idxArr++] as number[]
-                        console.log(arrPos视口)
+                        console.log('arrPos视口', arrPos视口)
                         thisLocal.scene战斗.视口对准此处(new Vec3(arrPos视口[0], 0, arrPos视口[1]))
                     }
                     break

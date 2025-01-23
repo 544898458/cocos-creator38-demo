@@ -27,15 +27,12 @@
       },
       {
         "__id__": 32
-      },
-      {
-        "__id__": 131
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 139
+      "__id__": 131
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -66,7 +63,7 @@
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 140
+      "__id__": 132
     },
     "_id": "5a529a1a-acd9-483f-8e6d-aa2f3d1b0919"
   },
@@ -729,7 +726,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": -2.842170943040401e-14,
-      "y": -254.31599999999995,
+      "y": -209.31599999999995,
       "z": 0
     },
     "_lrot": {
@@ -767,8 +764,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 200,
-      "height": 81.5
+      "width": 150,
+      "height": 52.16
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -795,15 +792,15 @@
       "r": 255,
       "g": 255,
       "b": 255,
-      "a": 255
+      "a": 200
     },
     "_string": "美术：流盏、坦格利安\n语音：潭、凌枭\n程序：江沉晚吟时",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20,
-    "_fontSize": 20,
+    "_actualFontSize": 15,
+    "_fontSize": 15,
     "_fontFamily": "Arial",
-    "_lineHeight": 25,
+    "_lineHeight": 16,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": null,
@@ -861,7 +858,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": -2.842170943040401e-14,
-      "y": -328.03399999999993,
+      "y": -363.03399999999993,
       "z": 0
     },
     "_lrot": {
@@ -899,13 +896,13 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 262.34375,
-      "height": 81.5
+      "width": 210,
+      "height": 132.16
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
       "x": 0.5,
-      "y": 0.5
+      "y": 0
     },
     "_id": "b9QLNqpuBAyY7e6+D9t9MH"
   },
@@ -924,18 +921,18 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 156
+      "r": 231,
+      "g": 226,
+      "b": 91,
+      "a": 255
     },
-    "_string": "游戏版本：2025年1月19日\n玩家试玩QQ群：1015518075\n合作开发QQ群：285842297",
+    "_string": "游戏版本：2025年1月25日\n玩家试玩QQ群：1015518075\n合作开发QQ群：285842297\n健康游戏忠告\n抵制不良游戏，拒绝盗版游戏。\n注意自我保护，谨防受骗上当。\n适度游戏益脑，沉迷游戏伤身。\n合理安排时间，享受健康生活。",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20,
-    "_fontSize": 20,
+    "_actualFontSize": 15,
+    "_fontSize": 15,
     "_fontFamily": "Arial",
-    "_lineHeight": 25,
+    "_lineHeight": 16,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": null,
@@ -4899,7 +4896,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": -2.842170943040401e-14,
-      "y": 188.00000000000006,
+      "y": 199.00000000000006,
       "z": 0
     },
     "_lrot": {
@@ -4938,7 +4935,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 410,
-      "height": 259.42
+      "height": 244.16
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -4967,13 +4964,13 @@
       "b": 255,
       "a": 255
     },
-    "_string": "  造基地：点击选中工程车=>点击“造基地”按钮=>点击地面\n  造工程车：点击选中基地=>点击“造工程车”按钮\n  采集资源：点击选中工程车=>点击晶体矿或燃气矿\n  资源足够时工程车还可以造民房、地堡、兵厂\n  在兵厂可以造兵、近战兵、也可以造坦克\n  造民房可以增加人口上限\n  地堡里面可以进入10个兵，地堡血量很高\n  如果开局不利，点右上角退出此场景按钮，再次进入可以反复开局\n训练战：引导熟悉一些基础操作\n防守战：怪物会一波一波地进攻玩家\n多人联机地图：所有玩家相互作为敌人进一个公共地图\n其他人的个人战局列表：您可以旁观其他玩家的单人战局\n创建多人战局：其他玩家可加入您创建的战局\n其他人的多人战局列表：您可以加入其他玩家的多人战局",
+    "_string": "  造基地：点击选中工程车=>点击“造基地”按钮=>点击地面\n  造工程车：点击选中基地=>点击“造工程车”按钮\n  采集资源：点击选中工程车=>点击晶体矿或燃气矿\n  资源足够时工程车还可以造民房、地堡、兵厂\n  在兵厂可以造兵、近战兵、也可以造坦克\n  造民房可以增加人口上限\n  地堡里面可以进入10个兵，地堡血量很高\n  如果开局不利，点右上角退出此场景按钮，再次进入可以反复开局\n 训练战：引导熟悉一些基础操作\n 防守战：怪物会一波一波地进攻玩家\n 多人联机地图：所有玩家相互作为敌人进一个公共地图\n 其他人的个人战局列表：您可以旁观其他玩家的单人战局\n 创建多人战局：其他玩家可加入您创建的战局\n 其他人的多人战局列表：您可以加入其他玩家的多人战局",
     "_horizontalAlign": 0,
     "_verticalAlign": 1,
-    "_actualFontSize": 16,
-    "_fontSize": 16,
+    "_actualFontSize": 15,
+    "_fontSize": 15,
     "_fontFamily": "Arial",
-    "_lineHeight": 17,
+    "_lineHeight": 16,
     "_overflow": 3,
     "_enableWrapText": true,
     "_font": null,
@@ -5102,154 +5099,38 @@
     "_id": "7dlsrcFgxDgJ3SbtsHLDnA"
   },
   {
-    "__type__": "cc.Node",
-    "_objFlags": 0,
-    "_parent": {
-      "__id__": 1
-    },
-    "_prefab": {
-      "__id__": 132
-    },
-    "__editorExtras__": {}
-  },
-  {
-    "__type__": "cc.PrefabInfo",
-    "root": {
-      "__id__": 131
-    },
-    "asset": {
-      "__uuid__": "c8a5bd46-b3fc-4838-8c7c-2542392247a7@c65f4",
-      "__expectedType__": "cc.Prefab"
-    },
-    "fileId": "15oLzNCA5foqY40qpNh/sK",
-    "instance": {
-      "__id__": 133
-    },
-    "targetOverrides": null,
-    "nestedPrefabInstanceRoots": null
-  },
-  {
-    "__type__": "cc.PrefabInstance",
-    "fileId": "fb4vAl0zdKW4biEDzh0SD8",
-    "prefabRootNode": null,
-    "mountedChildren": [],
-    "mountedComponents": [],
-    "propertyOverrides": [
-      {
-        "__id__": 134
-      },
-      {
-        "__id__": 136
-      },
-      {
-        "__id__": 137
-      },
-      {
-        "__id__": 138
-      }
-    ],
-    "removedComponents": []
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 135
-    },
-    "propertyPath": [
-      "_name"
-    ],
-    "value": "hatchery"
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "15oLzNCA5foqY40qpNh/sK"
-    ]
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 135
-    },
-    "propertyPath": [
-      "_lpos"
-    ],
-    "value": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    }
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 135
-    },
-    "propertyPath": [
-      "_lrot"
-    ],
-    "value": {
-      "__type__": "cc.Quat",
-      "x": 0,
-      "y": 0,
-      "z": 0,
-      "w": 1
-    }
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 135
-    },
-    "propertyPath": [
-      "_euler"
-    ],
-    "value": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    }
-  },
-  {
     "__type__": "cc.PrefabInfo",
     "root": null,
     "asset": null,
     "fileId": "a2a6dcbf-5442-46e3-be3b-a623e01230cf",
     "instance": null,
-    "targetOverrides": null,
-    "nestedPrefabInstanceRoots": [
-      {
-        "__id__": 131
-      }
-    ]
+    "targetOverrides": null
   },
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 141
+      "__id__": 133
     },
     "shadows": {
-      "__id__": 142
+      "__id__": 134
     },
     "_skybox": {
-      "__id__": 143
+      "__id__": 135
     },
     "fog": {
-      "__id__": 144
+      "__id__": 136
     },
     "octree": {
-      "__id__": 145
+      "__id__": 137
     },
     "skin": {
-      "__id__": 146
+      "__id__": 138
     },
     "lightProbeInfo": {
-      "__id__": 147
+      "__id__": 139
     },
     "postSettings": {
-      "__id__": 148
+      "__id__": 140
     },
     "bakedWithStationaryMainLight": false,
     "bakedWithHighpLightmap": false
