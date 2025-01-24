@@ -183,33 +183,43 @@ export class Scene战斗 extends Component {
     onMouseUp(pos:Vec2, b鼠标右键:boolean) {
         this.posWorld按下准备拖动地面 = null
         console.log(this.pos上次按下, pos)
+        
         if(this.pos上次按下?.equals(pos)){//单击
             this.pos上次按下 = null
 
-            const item = PhysicsSystem.instance.raycastClosestResult
+            let b已处理:boolean = false
+            PhysicsSystem.instance.raycastResults.forEach((item:PhysicsRayResult)=>{
+                if (item.collider.node.name != nodeName地板) {//单击单位
+                    this.点击单位(item, b鼠标右键)
+                    b已处理 = true
+                    return true
+                }
+                if(b已处理)
+                    return true
+                let object
+                if (b鼠标右键 || this.b强行走) {
+                    if (0 == this.uiLogin.arr选中.length )
+                        return
 
-            let object
-            if (b鼠标右键 || this.b强行走) {
-                if (0 == this.uiLogin.arr选中.length )
-                    return
+                    object = this.uiLogin.createMsgMove强行走(item.hitPoint)
+                } else {
+                    if( null == this.uiLogin.fun创建消息)
+                        return
 
-                object = this.uiLogin.createMsgMove强行走(item.hitPoint)
-            } else {
-                if( null == this.uiLogin.fun创建消息)
-                    return
+                    object = this.uiLogin.fun创建消息(item.hitPoint)
+                }
+                this.b强行走 = false
 
-                object = this.uiLogin.fun创建消息(item.hitPoint)
-            }
-            this.b强行走 = false
+                const encoded = msgpack.encode(object)
+                
+                console.log('send', encoded)
+                this.uiLogin.send(encoded)
+                
+                this.点击地面特效(item.hitPoint)
 
-            const encoded = msgpack.encode(object)
-            
-            console.log('send', encoded)
-            this.uiLogin.send(encoded)
-            
-            this.点击地面特效(item.hitPoint)
+                this.uiLogin.fun创建消息 = 0 < this.uiLogin.arr选中.length ? this.uiLogin.createMsgMove遇敌自动攻击 : null
+            })
 
-            this.uiLogin.fun创建消息 = 0 < this.uiLogin.arr选中.length ? this.uiLogin.createMsgMove遇敌自动攻击 : null
             return
         }
         
@@ -261,10 +271,10 @@ export class Scene战斗 extends Component {
 
         let vec点中地面WorldPos
         PhysicsSystem.instance.raycastResults.forEach(
-            (result)=>{
-                console.log('鼠标移动触碰对象',result.collider.node)
+            (result:PhysicsRayResult)=>{
+                console.log('鼠标移动触碰对象', result.collider.node)
                 if (result.collider.node.name == nodeName地板) 
-                vec点中地面WorldPos = result.hitPoint
+                    vec点中地面WorldPos = result.hitPoint.clone()
             })
         if(!vec点中地面WorldPos)
             return false
@@ -275,6 +285,9 @@ export class Scene战斗 extends Component {
             return
         }
 
+        console.log('posWorld按下准备拖动地面', this.posWorld按下准备拖动地面)
+        console.log('posWorld按下准备拖动地面时Camera', this.posWorld按下准备拖动地面时Camera)
+        
         if (this.posWorld按下准备拖动地面) {
             if(this.是正交投影())
             {
@@ -304,101 +317,119 @@ export class Scene战斗 extends Component {
             this.Clear然后显示小地图视口框()
         }
     }
-    //点击处理
     onMouseDown(posMouseDown: Vec2, b鼠标右键: boolean) {
         console.log('MOUSE_DOWN', posMouseDown, b鼠标右键)
 
         var ray = new geometry.Ray()
         // const camera = cc.find("Camera",this.node).getComponent(Camera)
         this.mainCamera.screenPointToRay(posMouseDown.x, posMouseDown.y, ray)
-        if (!PhysicsSystem.instance.raycastClosest(ray)) {
+        if (!PhysicsSystem.instance.raycast(ray)) {
             console.log('raycast does not hit the target node !')
             return false
         }
-
-        const item = PhysicsSystem.instance.raycastClosestResult
-        
+        // if (!PhysicsSystem.instance.raycastClosest(ray)) {
+        //     console.log('raycast does not hit the target node !')
+        //     return false
+        // }
         this.posWorld按下准备拖动地面 = null
-        console.log('射线碰撞', item.collider.node.name, item.hitPoint)
-        if (item.collider.node.name == nodeName地板) {
+        PhysicsSystem.instance.raycastResults.forEach((item:PhysicsRayResult)=>{
+            if(item.collider.node.name != nodeName地板)
+                return
+
+            console.log('射线碰撞', item.collider.node.name, item.hitPoint)    
+            
             if(this.b框选等待按下起始点){//
                 this.b框选等待按下起始点 = false
-                this.posWorld框选起始点 = new Vec3(item.hitPoint)
+                this.posWorld框选起始点 = item.hitPoint.clone()
                 this.battleUI.lable语音消息提示.string ='已开始框选，请拖动后放开'
+                return
+            }
+            
+            this.pos上次按下 = posMouseDown.clone()
+            this.posWorld按下准备拖动地面 = item.hitPoint.clone()
+            this.posWorld按下准备拖动地面时Camera = this.mainCamera.node.position
+        })
+        
+        // const item = PhysicsSystem.instance.raycastClosestResult
+        // if (item.collider.node.name == nodeName地板) {
+        //     if(this.b框选等待按下起始点){//
+        //         this.b框选等待按下起始点 = false
+        //         this.posWorld框选起始点 = new Vec3(item.hitPoint)
+        //         this.battleUI.lable语音消息提示.string ='已开始框选，请拖动后放开'
 
+        //         return
+        //     }
+
+        //     this.pos上次按下 = posMouseDown.clone()
+        //     this.posWorld按下准备拖动地面 = item.hitPoint.clone()
+        //     this.posWorld按下准备拖动地面时Camera = this.mainCamera.node.position
+        // }
+    }
+    点击单位(item:PhysicsRayResult, b鼠标右键:boolean)
+    {
+        if (item.collider.node.name == "晶体矿" || item.collider.node.name == "燃气矿")//点击晶体矿或者燃气矿
+        {
+            this.mainCameraFollowTarget.target = item.collider.node
+            let id = this.entityId[item.collider.node.uuid]
+
+            const object =
+                [
+                    [MsgId.采集, ++this.uiLogin.sendMsgSn, 0],
+                    id
+                ]
+
+            const encoded = msgpack.encode(object)
+            console.log('send', encoded)
+            this.uiLogin.send(encoded)
+            
+        }
+        else if (item.collider.node.name == "地堡" && b鼠标右键 )//点击地堡
+        {
+            this.mainCameraFollowTarget.target = item.collider.node
+            let id = this.entityId[item.collider.node.uuid]
+
+            const encoded = msgpack.encode([
+                [MsgId.出地堡, ++this.uiLogin.sendMsgSn, 0],
+                id
+            ])
+
+            console.log('send', encoded)
+            this.uiLogin.send(encoded)
+        }
+        else if (item.collider.node.name == "地堡" && !b鼠标右键 && this.uiLogin.arr选中.length > 0)//左键点击地堡
+        {
+            this.mainCameraFollowTarget.target = item.collider.node
+            let id = this.entityId[item.collider.node.uuid]
+
+            const encoded = msgpack.encode([
+                [MsgId.进地堡, ++this.uiLogin.sendMsgSn, 0],
+                id,
+                [0.0]
+            ])
+
+            console.log('send', encoded)
+            this.uiLogin.send(encoded)
+        }
+        else if (
+               item.collider.node.name == "工程车"
+            || item.collider.node.name == "axe-yellow"
+            || item.collider.node.name == "地堡"
+            || item.collider.node.name == "民房"
+            || item.collider.node.name == "兵厂"
+            || item.collider.node.name == "基地"//这个名字不带目录
+            || item.collider.node.name == "步兵"
+            || item.collider.node.name == "三色坦克"
+            || item.collider.node.name == "工蜂"
+        ) {
+            this.mainCameraFollowTarget.target = item.collider.node
+            let id = this.entityId[item.collider.node.uuid]
+            if (id == undefined) {
+                console.log('还没加载')
                 return
             }
 
-            this.pos上次按下 = posMouseDown.clone()
-            this.posWorld按下准备拖动地面 = item.hitPoint
-            this.posWorld按下准备拖动地面时Camera = this.mainCamera.node.position
-        }
-        else //点的是单位
-        {
-            if (item.collider.node.name == "晶体矿" || item.collider.node.name == "燃气矿")//点击晶体矿或者燃气矿
-            {
-                this.mainCameraFollowTarget.target = item.collider.node
-                let id = this.entityId[item.collider.node.uuid]
-
-                const object =
-                    [
-                        [MsgId.采集, ++this.uiLogin.sendMsgSn, 0],
-                        id
-                    ]
-
-                const encoded = msgpack.encode(object)
-                console.log('send', encoded)
-                this.uiLogin.send(encoded)
-                
-            }
-            else if (item.collider.node.name == "地堡" && b鼠标右键 )//点击地堡
-            {
-                this.mainCameraFollowTarget.target = item.collider.node
-                let id = this.entityId[item.collider.node.uuid]
-
-                const encoded = msgpack.encode([
-                    [MsgId.出地堡, ++this.uiLogin.sendMsgSn, 0],
-                    id
-                ])
-
-                console.log('send', encoded)
-                this.uiLogin.send(encoded)
-            }
-            else if (item.collider.node.name == "地堡" && !b鼠标右键 && this.uiLogin.arr选中.length > 0)//左键点击地堡
-            {
-                this.mainCameraFollowTarget.target = item.collider.node
-                let id = this.entityId[item.collider.node.uuid]
-
-                const encoded = msgpack.encode([
-                    [MsgId.进地堡, ++this.uiLogin.sendMsgSn, 0],
-                    id,
-                    [0.0]
-                ])
-
-                console.log('send', encoded)
-                this.uiLogin.send(encoded)
-            }
-            else if (
-                   item.collider.node.name == "工程车"
-                || item.collider.node.name == "axe-yellow"
-                || item.collider.node.name == "地堡"
-                || item.collider.node.name == "民房"
-                || item.collider.node.name == "兵厂"
-                || item.collider.node.name == "基地"//这个名字不带目录
-                || item.collider.node.name == "步兵"
-                || item.collider.node.name == "三色坦克"
-                || item.collider.node.name == "工蜂"
-            ) {
-                this.mainCameraFollowTarget.target = item.collider.node
-                let id = this.entityId[item.collider.node.uuid]
-                if (id == undefined) {
-                    console.log('还没加载')
-                    return
-                }
-
-                this.clear选中()
-                this.uiLogin.send选中([id])
-            }
+            this.clear选中()
+            this.uiLogin.send选中([id])
         }
     }
     update(deltaTime: number) {
