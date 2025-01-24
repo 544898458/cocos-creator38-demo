@@ -182,12 +182,21 @@ export class Scene战斗 extends Component {
     }
     onMouseUp(pos:Vec2, b鼠标右键:boolean) {
         this.posWorld按下准备拖动地面 = null
-        console.log(this.pos上次按下, pos)
+        console.log('onMouseUp', this.pos上次按下, pos)
         
-        if(this.pos上次按下?.equals(pos)){//单击
+        if(this.pos上次按下 && this.pos上次按下.clone().subtract(pos).length() < 5){//单击
             this.pos上次按下 = null
 
+            var ray = new geometry.Ray()
+            // const camera = cc.find("Camera",this.node).getComponent(Camera)
+            this.mainCamera.screenPointToRay(pos.x, pos.y, ray)
+            if (!PhysicsSystem.instance.raycast(ray)) {
+                console.log('raycast does not hit the target node !')
+                return false
+            }
             let b已处理:boolean = false
+            let fun点击地面处理: () => void = null
+            console.log('length', PhysicsSystem.instance.raycastResults.length)
             PhysicsSystem.instance.raycastResults.forEach((item:PhysicsRayResult)=>{
                 if (item.collider.node.name != nodeName地板) {//单击单位
                     this.点击单位(item, b鼠标右键)
@@ -196,29 +205,35 @@ export class Scene战斗 extends Component {
                 }
                 if(b已处理)
                     return true
-                let object
-                if (b鼠标右键 || this.b强行走) {
-                    if (0 == this.uiLogin.arr选中.length )
-                        return
+                    
+                fun点击地面处理 = ()=>{
+                    let object
+                    if (b鼠标右键 || this.b强行走) {
+                        if (0 == this.uiLogin.arr选中.length )
+                            return
 
-                    object = this.uiLogin.createMsgMove强行走(item.hitPoint)
-                } else {
-                    if( null == this.uiLogin.fun创建消息)
-                        return
+                        object = this.uiLogin.createMsgMove强行走(item.hitPoint)
+                    } else {
+                        if( null == this.uiLogin.fun创建消息)
+                            return
 
-                    object = this.uiLogin.fun创建消息(item.hitPoint)
+                        object = this.uiLogin.fun创建消息(item.hitPoint)
+                    }
+                    this.b强行走 = false
+
+                    const encoded = msgpack.encode(object)
+                    
+                    console.log('send', encoded)
+                    this.uiLogin.send(encoded)
+                    
+                    this.点击地面特效(item.hitPoint)
+
+                    this.uiLogin.fun创建消息 = 0 < this.uiLogin.arr选中.length ? this.uiLogin.createMsgMove遇敌自动攻击 : null
                 }
-                this.b强行走 = false
-
-                const encoded = msgpack.encode(object)
-                
-                console.log('send', encoded)
-                this.uiLogin.send(encoded)
-                
-                this.点击地面特效(item.hitPoint)
-
-                this.uiLogin.fun创建消息 = 0 < this.uiLogin.arr选中.length ? this.uiLogin.createMsgMove遇敌自动攻击 : null
             })
+
+            if(!b已处理 && fun点击地面处理)
+                fun点击地面处理()
 
             return
         }
