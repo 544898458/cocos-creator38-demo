@@ -255,8 +255,8 @@ export class UiLogin extends Component {
         // this.websocket = new WebSocket("ws://192.168.31.170:12348/")
         // this.websocket = new WebSocket("ws://192.168.43.186:12348/")
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
-        this.websocket = new WebSocket("ws://192.168.0.98:12348/")
-        //this.websocket = new WebSocket("ws://47.119.184.177:12348/")
+        // this.websocket = new WebSocket("ws://192.168.0.98:12348/")
+        this.websocket = new WebSocket("ws://47.119.184.177:12348/")
         // this.websocket = new WebSocket("wss://wss.iotlabor.cn/")
         // We should pass the cacert to libwebsockets used in native platform, otherwise the wss connection would be closed.
         // let url = this.wssCacert.nativeUrl;
@@ -334,6 +334,10 @@ export class UiLogin extends Component {
 
                             resources.load(prefabName, Prefab, (err, prefab) => {
                                 // console.log('resources.load callback:', err, prefab)
+                                if(!thisLocal.scene战斗.roles){
+                                    console.warn('已离开战斗场景')
+                                    return
+                                }
                                 const newNode = instantiate(prefab)
                                 thisLocal.scene战斗.roles.addChild(newNode)
                                 thisLocal.scene战斗.entityId[newNode.uuid] = id
