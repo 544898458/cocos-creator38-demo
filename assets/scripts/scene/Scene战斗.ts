@@ -12,6 +12,7 @@ import { Canvas } from 'cc'
 import { view } from 'cc'
 import { BattleUI } from '../mode/BattleUI'
 import { renderer } from 'cc'
+import { tween } from 'cc'
 
 const { ccclass, property } = _decorator
 export class ClientEntityComponent {
@@ -611,6 +612,30 @@ export class Scene战斗 extends Component {
             renderer.scene.CameraProjection.ORTHO
         
         this.scheduleOnce(this.Clear然后显示小地图视口框,0.1)
+    }
+        
+    弹丸特效(idEntity:number, idEntityTarget:number, str特效:string):void{
+        resources.load(str特效, Prefab, (err, prefab) => {
+                console.log('resources.load callback:', err, prefab)
+                let entity起始 = this.entities.get(idEntity)
+                let entity目标 = this.entities.get(idEntityTarget)
+                if(!entity起始 || !entity目标)
+                {
+                    console.log('找不到:', idEntity)
+                    return
+                }
+                
+                const newNode = instantiate(prefab)
+                newNode.name = prefabName选中特效
+                newNode.position = entity起始.position.clone()
+                let 特效根 = this.roles.getChildByName('特效根')
+                特效根.addChild(newNode)
+                tween(newNode).to(0.5,{position:entity目标.position}).start()
+                this.scheduleOnce(()=>{特效根.removeChild(newNode)},2)
+                // let ani = newNode.getChildByName('lightQ').getComponent(Animation)
+                // const [clip] = ani.clips;
+                // ani.getState(clip.name).repeatCount = Infinity
+            })
     }
 }
 

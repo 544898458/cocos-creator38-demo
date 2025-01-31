@@ -46,6 +46,7 @@ export enum MsgId {
 	玩家多人战局列表,
 	进其他玩家多人战局,
     切换空闲工程车,
+	弹丸特效,
 }
 
 enum 副本ID
@@ -254,8 +255,8 @@ export class UiLogin extends Component {
         // this.websocket = new WebSocket("ws://192.168.31.170:12348/")
         // this.websocket = new WebSocket("ws://192.168.43.186:12348/")
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
-        // this.websocket = new WebSocket("ws://192.168.0.100:12348/")
-        this.websocket = new WebSocket("ws://47.119.184.177:12348/")
+        this.websocket = new WebSocket("ws://192.168.0.98:12348/")
+        //this.websocket = new WebSocket("ws://47.119.184.177:12348/")
         // this.websocket = new WebSocket("wss://wss.iotlabor.cn/")
         // We should pass the cacert to libwebsockets used in native platform, otherwise the wss connection would be closed.
         // let url = this.wssCacert.nativeUrl;
@@ -613,6 +614,15 @@ export class UiLogin extends Component {
                         let arr玩家 = arr[idxArr++] as string[][]
                         console.log(arr玩家)
                         thisLocal.scene登录.显示战局列表(arr玩家,'onClick进入别人的多人战局')
+                    }
+                    break
+                case MsgId.弹丸特效:
+                    {
+                        let idEntity = arr[idxArr++] as number
+                        let idEntityTarget = arr[idxArr++] as number
+                        let str特效 = arr[idxArr++] as string
+                        
+                        thisLocal.scene战斗.弹丸特效(idEntity, idEntityTarget, str特效)
                     }
                     break
                 default:
