@@ -47,6 +47,8 @@ export enum MsgId {
 	进其他玩家多人战局,
     切换空闲工程车,
 	弹丸特效,
+	剧情对话,
+    剧情对话已看完,
 }
 
 enum 副本ID
@@ -255,8 +257,8 @@ export class UiLogin extends Component {
         // this.websocket = new WebSocket("ws://192.168.31.170:12348/")
         // this.websocket = new WebSocket("ws://192.168.43.186:12348/")
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
-        // this.websocket = new WebSocket("ws://192.168.0.98:12348/")
-        this.websocket = new WebSocket("ws://47.119.184.177:12348/")
+        this.websocket = new WebSocket("ws://192.168.0.89:12348/")
+        // this.websocket = new WebSocket("ws://47.119.184.177:12348/")
         // this.websocket = new WebSocket("wss://wss.iotlabor.cn/")
         // We should pass the cacert to libwebsockets used in native platform, otherwise the wss connection would be closed.
         // let url = this.wssCacert.nativeUrl;
@@ -629,6 +631,20 @@ export class UiLogin extends Component {
                         thisLocal.scene战斗.弹丸特效(idEntity, idEntityTarget, str特效)
                     }
                     break
+                case MsgId.剧情对话:
+                    {
+                        let str头像左 = arr[idxArr++] as string
+                        let str头像右 = arr[idxArr++] as string
+                        let str对话内容 = arr[idxArr++] as string
+                        
+                        thisLocal.scene战斗.剧情对话(str头像左, str头像右, str对话内容)
+                    }
+                    break
+                case MsgId.剧情对话已看完:
+                    {
+                        thisLocal.scene战斗.battleUI.uiTransform剧情对话根.node.active = false
+                    }
+                    break
                 default:
                     console.error('msgId=', msgId)
                     break
@@ -799,6 +815,10 @@ export class UiLogin extends Component {
             }
         }
     }
+    
+    onClick剧情对话全屏点击() {
+        const encoded = msgpack.encode([[MsgId.剧情对话已看完, ++this.sendMsgSn, 0]])
+        console.log('send', encoded)
+        this.send(encoded)
+    }
 }
-
-

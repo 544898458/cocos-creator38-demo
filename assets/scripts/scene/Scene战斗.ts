@@ -13,6 +13,9 @@ import { view } from 'cc'
 import { BattleUI } from '../mode/BattleUI'
 import { renderer } from 'cc'
 import { tween } from 'cc'
+import { Sprite } from 'cc'
+import { SpriteFrame } from 'cc'
+import { ImageAsset } from 'cc'
 
 const { ccclass, property } = _decorator
 export class ClientEntityComponent {
@@ -630,12 +633,31 @@ export class Scene战斗 extends Component {
                 newNode.position = entity起始.position.clone()
                 let 特效根 = this.roles.getChildByName('特效根')
                 特效根.addChild(newNode)
-                tween(newNode).to(0.5,{position:entity目标.position}).start()
-                this.scheduleOnce(()=>{特效根.removeChild(newNode)},2)
-                // let ani = newNode.getChildByName('lightQ').getComponent(Animation)
-                // const [clip] = ani.clips;
-                // ani.getState(clip.name).repeatCount = Infinity
+                tween(newNode).to(0.5, {position:entity目标.position}).start()
+                this.scheduleOnce(()=>{特效根.removeChild(newNode)}, 2)
             })
+    }
+    剧情对话(str头像左:string, str头像右:string,str对话内容:string):void{
+        this.battleUI.uiTransform剧情对话根.node.active = true
+        this.battleUI.lable剧情对话内容.string = str对话内容
+        
+        if(str头像左.length > 0){
+            resources.load(str头像左, ImageAsset, (err, imageAsset) => {
+                console.log(err, imageAsset)
+                this.battleUI.sprite剧情对话头像左.spriteFrame = SpriteFrame.createWithImage(imageAsset)
+            })
+        }else{
+            this.battleUI.sprite剧情对话头像左.spriteFrame = null
+        }
+
+        if(str头像右.length > 0){
+            resources.load(str头像右, ImageAsset, (err, imageAsset) => {
+                console.log(err, imageAsset)
+                this.battleUI.sprite剧情对话头像右.spriteFrame = SpriteFrame.createWithImage(imageAsset)
+            })
+        }else{
+            this.battleUI.sprite剧情对话头像右.spriteFrame = null
+        }
     }
 }
 

@@ -5,6 +5,7 @@ import { Scene战斗 } from '../scene/Scene战斗';
 import { Label } from 'cc';
 import { EditBox } from 'cc';
 import { UITransform } from 'cc';
+import { Sprite } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('BattleUI')
@@ -26,7 +27,14 @@ export class BattleUI extends Component {
     lable语音消息提示: Label
     @property({ type: UITransform, displayName: "所有单位头顶名字" })
     uiTransform所有单位头顶名字: UITransform
-
+    @property({ type: UITransform, displayName: "剧情对话根" })
+    uiTransform剧情对话根: UITransform
+    @property({ type: Label, displayName: "剧情对话内容" })
+    lable剧情对话内容: Label
+    @property({ type: Sprite, displayName: "剧情对话头像左" })
+    sprite剧情对话头像左  : Sprite
+    @property({ type: Sprite, displayName: "剧情对话头像右" })
+    sprite剧情对话头像右: Sprite
     start() {
         this.uiLogin = director.getScene().getChildByName('常驻').getComponent(UiLogin);
         this.uiLogin.scene战斗 = this.scene战斗;
@@ -99,6 +107,10 @@ export class BattleUI extends Component {
     }
     onClick空闲工程车(event: Event, customEventData: string): void {
         this.uiLogin.onClick空闲工程车()
+    }
+    onClick剧情对话全屏点击():void{
+        this.uiLogin.onClick剧情对话全屏点击()
+        // this.uiTransform剧情对话根.node.active = false
     }
 }
 
