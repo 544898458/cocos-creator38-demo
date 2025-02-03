@@ -13,6 +13,10 @@
 ```PowerShell
     npm install msgpack-lite
     npm i --save-dev @types/msgpack-lite
+
+    如果报“因为在此系统上禁止运行脚本”，就先执行下面的
+    set-ExecutionPolicy RemoteSigned
+    然后输入“Y”
 ```
 否则可能报下面的错误：
 ![输入图片说明](README%E6%96%B0%E5%BB%BA%E4%BD%8D%E5%9B%BE%E5%9B%BE%E5%83%8F.png)

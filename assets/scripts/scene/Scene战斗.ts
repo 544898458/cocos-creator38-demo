@@ -637,10 +637,11 @@ export class Scene战斗 extends Component {
                 this.scheduleOnce(()=>{特效根.removeChild(newNode)}, 2)
             })
     }
-    剧情对话(str头像左:string, str头像右:string,str对话内容:string):void{
+    剧情对话(str头像左:string, str名字左:string, str头像右:string, str名字右:string, str对话内容:string):void{
         this.battleUI.uiTransform剧情对话根.node.active = true
         this.battleUI.lable剧情对话内容.string = str对话内容
-        
+        this.battleUI.lable剧情对话名字左.string = str名字左
+        this.battleUI.lable剧情对话名字右.string = str名字右
         if(str头像左.length > 0){
             resources.load(str头像左, ImageAsset, (err, imageAsset) => {
                 console.log(err, imageAsset)

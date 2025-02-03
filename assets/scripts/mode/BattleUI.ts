@@ -33,8 +33,12 @@ export class BattleUI extends Component {
     lable剧情对话内容: Label
     @property({ type: Sprite, displayName: "剧情对话头像左" })
     sprite剧情对话头像左  : Sprite
+    @property({ type: Label, displayName: "剧情对话名字左" })
+    lable剧情对话名字左: Label
     @property({ type: Sprite, displayName: "剧情对话头像右" })
     sprite剧情对话头像右: Sprite
+    @property({ type: Label, displayName: "剧情对话名字右" })
+    lable剧情对话名字右: Label
     start() {
         this.uiLogin = director.getScene().getChildByName('常驻').getComponent(UiLogin);
         this.uiLogin.scene战斗 = this.scene战斗;
