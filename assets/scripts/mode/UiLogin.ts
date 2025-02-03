@@ -257,8 +257,8 @@ export class UiLogin extends Component {
         // this.websocket = new WebSocket("ws://192.168.31.170:12348/")
         // this.websocket = new WebSocket("ws://192.168.43.186:12348/")
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
-        this.websocket = new WebSocket("ws://192.168.0.96:12348/")
-        // this.websocket = new WebSocket("ws://47.119.184.177:12348/")
+        // this.websocket = new WebSocket("ws://192.168.0.96:12348/")
+        this.websocket = new WebSocket("ws://47.119.184.177:12348/")
         // this.websocket = new WebSocket("wss://wss.iotlabor.cn/")
         // We should pass the cacert to libwebsockets used in native platform, otherwise the wss connection would be closed.
         // let url = this.wssCacert.nativeUrl;
@@ -638,8 +638,8 @@ export class UiLogin extends Component {
                         let str头像右 = arr[idxArr++] as string
                         let str名字右 = arr[idxArr++] as string
                         let str对话内容 = arr[idxArr++] as string
-                        
-                        thisLocal.scene战斗.剧情对话(str头像左, str名字左, str头像右, str名字右, str对话内容)
+                        let b显示退出面板 = arr[idxArr++] as boolean
+                        thisLocal.scene战斗.剧情对话(str头像左, str名字左, str头像右, str名字右, str对话内容, b显示退出面板)
                     }
                     break
                 case MsgId.剧情对话已看完:

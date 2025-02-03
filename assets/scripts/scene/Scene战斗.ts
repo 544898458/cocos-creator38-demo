@@ -637,7 +637,7 @@ export class Scene战斗 extends Component {
                 this.scheduleOnce(()=>{特效根.removeChild(newNode)}, 2)
             })
     }
-    剧情对话(str头像左:string, str名字左:string, str头像右:string, str名字右:string, str对话内容:string):void{
+    剧情对话(str头像左:string, str名字左:string, str头像右:string, str名字右:string, str对话内容:string, b显示退出面板:boolean):void{
         this.battleUI.uiTransform剧情对话根.node.active = true
         this.battleUI.lable剧情对话内容.string = str对话内容
         this.battleUI.lable剧情对话名字左.string = str名字左
@@ -659,6 +659,8 @@ export class Scene战斗 extends Component {
         }else{
             this.battleUI.sprite剧情对话头像右.spriteFrame = null
         }
+
+        this.battleUI.uiTransform剧情对话退出面板.node.active = b显示退出面板
     }
 }
 

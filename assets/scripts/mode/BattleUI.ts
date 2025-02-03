@@ -39,6 +39,8 @@ export class BattleUI extends Component {
     sprite剧情对话头像右: Sprite
     @property({ type: Label, displayName: "剧情对话名字右" })
     lable剧情对话名字右: Label
+    @property({ type: UITransform, displayName: "剧情对话退出面板" })
+    uiTransform剧情对话退出面板: UITransform
     start() {
         this.uiLogin = director.getScene().getChildByName('常驻').getComponent(UiLogin);
         this.uiLogin.scene战斗 = this.scene战斗;
@@ -115,6 +117,13 @@ export class BattleUI extends Component {
     onClick剧情对话全屏点击():void{
         this.uiLogin.onClick剧情对话全屏点击()
         // this.uiTransform剧情对话根.node.active = false
+    }
+    onClick剧情对话再看看():void{
+        this.uiLogin.onClick剧情对话全屏点击()
+        this.uiTransform剧情对话根.node.active = false
+    }
+    onClick剧情对话退出场景():void{
+        this.uiLogin.send离开Space()
     }
 }
 
