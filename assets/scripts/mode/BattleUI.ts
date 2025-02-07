@@ -1,4 +1,4 @@
-import { _decorator, Component } from 'cc';
+import { _decorator, Component,Node} from 'cc';
 import { UiLogin } from './UiLogin';
 import { director } from 'cc';
 import { Scene战斗 } from '../scene/Scene战斗';
@@ -13,6 +13,8 @@ export class BattleUI extends Component {
     uiLogin:UiLogin;
     @property(Scene战斗)
     scene战斗:Scene战斗
+    @property(Node)
+    游戏攻略:Node;
     @property({ type: Label, displayName: "数量单位" })
     lableCount: Label
     @property({ type: Label, displayName: "晶体矿" })
@@ -124,6 +126,9 @@ export class BattleUI extends Component {
     }
     onClick剧情对话退出场景():void{
         this.uiLogin.send离开Space()
+    }
+    onClick游戏攻略():void{
+        this.游戏攻略.active=!this.游戏攻略.active;
     }
 }
 
