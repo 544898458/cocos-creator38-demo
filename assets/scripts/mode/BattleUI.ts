@@ -67,6 +67,7 @@ export class BattleUI extends Component {
     {
         console.log(editbox, customEventData)
         this.uiLogin.onClickSay(editbox.textLabel.string)
+        editbox.textLabel.string = ''
     }
     onClick取消选中(event: Event, customEventData: string) {
         //this.uiLogin.回到登录场景()

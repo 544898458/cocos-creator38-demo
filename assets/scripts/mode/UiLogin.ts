@@ -665,6 +665,9 @@ export class UiLogin extends Component {
         }
     }
     onClickSay(str: string) {
+        if(str.length==0)
+            return
+        
         const object = //item.hitPoint
             [
                 [MsgId.Say, 0, 0],
