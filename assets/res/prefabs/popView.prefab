@@ -40,14 +40,14 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 175
+        "__id__": 177
       },
       {
-        "__id__": 177
+        "__id__": 179
       }
     ],
     "_prefab": {
-      "__id__": 179
+      "__id__": 181
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -1245,10 +1245,7 @@
       "b": 255,
       "a": 255
     },
-    "_spriteFrame": {
-      "__uuid__": "02eec4da-2560-4c10-9b92-c8e2e4d13465@f9941",
-      "__expectedType__": "cc.SpriteFrame"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_fillType": 0,
     "_sizeMode": 0,
@@ -1390,11 +1387,8 @@
     "_lineHeight": 26,
     "_overflow": 0,
     "_enableWrapText": true,
-    "_font": {
-      "__uuid__": "53b4dea9-0c71-4817-b777-c10c0270bad3",
-      "__expectedType__": "cc.TTFFont"
-    },
-    "_isSystemFontUsed": false,
+    "_font": null,
+    "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_isItalic": false,
     "_isBold": false,
@@ -1718,10 +1712,7 @@
       "b": 255,
       "a": 255
     },
-    "_spriteFrame": {
-      "__uuid__": "02eec4da-2560-4c10-9b92-c8e2e4d13465@f9941",
-      "__expectedType__": "cc.SpriteFrame"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_fillType": 0,
     "_sizeMode": 0,
@@ -1863,11 +1854,8 @@
     "_lineHeight": 26,
     "_overflow": 0,
     "_enableWrapText": true,
-    "_font": {
-      "__uuid__": "53b4dea9-0c71-4817-b777-c10c0270bad3",
-      "__expectedType__": "cc.TTFFont"
-    },
-    "_isSystemFontUsed": false,
+    "_font": null,
+    "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_isItalic": false,
     "_isBold": false,
@@ -2191,10 +2179,7 @@
       "b": 255,
       "a": 255
     },
-    "_spriteFrame": {
-      "__uuid__": "02eec4da-2560-4c10-9b92-c8e2e4d13465@f9941",
-      "__expectedType__": "cc.SpriteFrame"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_fillType": 0,
     "_sizeMode": 0,
@@ -2336,11 +2321,8 @@
     "_lineHeight": 26,
     "_overflow": 0,
     "_enableWrapText": true,
-    "_font": {
-      "__uuid__": "53b4dea9-0c71-4817-b777-c10c0270bad3",
-      "__expectedType__": "cc.TTFFont"
-    },
-    "_isSystemFontUsed": false,
+    "_font": null,
+    "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_isItalic": false,
     "_isBold": false,
@@ -3446,10 +3428,13 @@
       },
       {
         "__id__": 172
+      },
+      {
+        "__id__": 174
       }
     ],
     "_prefab": {
-      "__id__": 174
+      "__id__": 176
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -3659,7 +3644,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 385,
-      "height": 651.2800000000001
+      "height": 987.28
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -3685,7 +3670,7 @@
       "__id__": 154
     },
     "_lineHeight": 28,
-    "_string": "  造基地：点击选中工程车=>点击“造基地”按钮=>点击地面\n  造工程车：点击选中基地=>点击“造工程车”按钮\n  采集资源：点击选中工程车=>点击晶体矿或燃气矿\n  资源足够时工程车还可以造民房、地堡、兵厂\n  在兵厂可以造兵、近战兵、也可以造坦克\n  造民房可以增加人口上限\n  地堡里面可以进入10个兵，地堡血量很高\n  如果开局不利，点右上角退出此场景按钮，再次进入可以反复开局\n 训练战：引导熟悉一些基础操作\n 防守战：怪物会一波一波地进攻玩家\n 多人联机地图：所有玩家相互作为敌人进一个公共地图\n 其他人的个人战局列表：您可以旁观其他玩家的单人战局\n 创建多人战局：其他玩家可加入您创建的战局\n 其他人的多人战局列表：您可以加入其他玩家的多人战局",
+    "_string": "战斗界面：\n  造建筑单位：点击“基地/民房/地堡/兵厂/光子炮”按钮=>点击地面，最近的空闲工程车会走向目标位置建造。如果选中工程车再建造，则会强制指定这辆工程车前去建造。\n  造活动单位：点击“工程车/兵/近战兵/坦克”按钮。最空闲的基地或兵厂会开始产出活动单位。如果选中基地或兵厂，则会在指定的建筑中产出单位。\n  采集资源：点击选中工程车=>点击晶体矿或燃气矿。可以点击“空闲工程车”快速定位到空闲的工程车。\n  造民房可以增加活动单位上限。\n  地堡里面可以进入10个活动单位，地堡血量很高。\n  如果开局不利，点右上角退出此场景按钮，再次进入可以反复开局。\n\n战斗单位克制关系（类似石头剪刀布）：\n  坦克 克制 地堡和光子炮\n  光子炮和地堡 克制 小兵\n  小兵 克制 坦克\n\n主界面：\n 训练战：引导熟悉一些基础操作。\n 防守战：怪物会一波一波地进攻玩家。\n 多人联机地图：所有玩家相互作为敌人进一个公共地图。\n 其他人的个人战局列表：您可以旁观其他玩家的单人战局（训练战、防守战）\n 创建多人战局：其他玩家可加入您创建的战局（四方对战）\n 其他人的多人战局列表：您可以加入其他玩家的多人战局（四方对战）\n",
     "_horizontalAlign": 0,
     "_verticalAlign": 0,
     "_fontSize": 20,
@@ -3698,11 +3683,8 @@
     },
     "_maxWidth": 385,
     "_fontFamily": "Arial",
-    "_font": {
-      "__uuid__": "53b4dea9-0c71-4817-b777-c10c0270bad3",
-      "__expectedType__": "cc.TTFFont"
-    },
-    "_isSystemFontUsed": false,
+    "_font": null,
+    "_isSystemFontUsed": true,
     "_userDefinedFont": {
       "__uuid__": "53b4dea9-0c71-4817-b777-c10c0270bad3",
       "__expectedType__": "cc.TTFFont"
@@ -3744,7 +3726,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 384.738,
-      "height": 651.2800000000001
+      "height": 987.28
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -4013,6 +3995,24 @@
     "fileId": "04XM0JDS9BFYedZFNeTjgR"
   },
   {
+    "__type__": "cc.BlockInputEvents",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 147
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 175
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "49ZZMeAOtDwYg+NrW7lAWZ"
+  },
+  {
     "__type__": "cc.PrefabInfo",
     "root": {
       "__id__": 1
@@ -4035,7 +4035,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 176
+      "__id__": 178
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -4063,7 +4063,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 178
+      "__id__": 180
     },
     "_id": ""
   },
