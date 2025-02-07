@@ -291,7 +291,7 @@
         "__id__": 109
       },
       {
-        "__id__": 124
+        "__id__": 112
       }
     ],
     "_active": true,
@@ -503,7 +503,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": -2.842170943040401e-14,
-      "y": 343.41300000000007,
+      "y": 340.074,
       "z": 0
     },
     "_lrot": {
@@ -567,8 +567,8 @@
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
-      "g": 255,
-      "b": 255,
+      "g": 222,
+      "b": 51,
       "a": 255
     },
     "_string": "RTS即时战略游戏",
@@ -4318,6 +4318,138 @@
   },
   {
     "__type__": "cc.Node",
+    "_name": "操作说明",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "_parent": {
+      "__id__": 7
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 110
+      },
+      {
+        "__id__": 111
+      }
+    ],
+    "_prefab": null,
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 2.887999999999977,
+      "y": 195.531,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_mobility": 0,
+    "_layer": 33554432,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": "3fDBOXYtFMgZC1kwWHbSeI"
+  },
+  {
+    "__type__": "cc.UITransform",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 109
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 395.485,
+      "height": 244.16
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_id": "813ac8MUpGlpvDbyZlVGN1"
+  },
+  {
+    "__type__": "cc.Label",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 109
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_customMaterial": null,
+    "_srcBlendFactor": 2,
+    "_dstBlendFactor": 4,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 234,
+      "b": 80,
+      "a": 255
+    },
+    "_string": "  造基地：点击选中工程车=>点击“造基地”按钮=>点击地面\n  造工程车：点击选中基地=>点击“造工程车”按钮\n  采集资源：点击选中工程车=>点击晶体矿或燃气矿\n  资源足够时工程车还可以造民房、地堡、兵厂\n  在兵厂可以造兵、近战兵、也可以造坦克\n  造民房可以增加人口上限\n  地堡里面可以进入10个兵，地堡血量很高\n  如果开局不利，点右上角退出此场景按钮，再次进入可以反复开局\n 训练战：引导熟悉一些基础操作\n 防守战：怪物会一波一波地进攻玩家\n 多人联机地图：所有玩家相互作为敌人进一个公共地图\n 其他人的个人战局列表：您可以旁观其他玩家的单人战局\n 创建多人战局：其他玩家可加入您创建的战局\n 其他人的多人战局列表：您可以加入其他玩家的多人战局",
+    "_horizontalAlign": 0,
+    "_verticalAlign": 1,
+    "_actualFontSize": 15,
+    "_fontSize": 15,
+    "_fontFamily": "Arial",
+    "_lineHeight": 16,
+    "_overflow": 3,
+    "_enableWrapText": true,
+    "_font": null,
+    "_isSystemFontUsed": true,
+    "_spacingX": 0,
+    "_isItalic": false,
+    "_isBold": false,
+    "_isUnderline": false,
+    "_underlineHeight": 2,
+    "_cacheMode": 0,
+    "_enableOutline": false,
+    "_outlineColor": {
+      "__type__": "cc.Color",
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 255
+    },
+    "_outlineWidth": 0.1,
+    "_enableShadow": false,
+    "_shadowColor": {
+      "__type__": "cc.Color",
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 255
+    },
+    "_shadowOffset": {
+      "__type__": "cc.Vec2",
+      "x": 2,
+      "y": 2
+    },
+    "_shadowBlur": 2,
+    "_id": "77qiiR3qNJmZDL/n3s9RHg"
+  },
+  {
+    "__type__": "cc.Node",
     "_name": "load",
     "_objFlags": 0,
     "__editorExtras__": {},
@@ -4326,22 +4458,22 @@
     },
     "_children": [
       {
-        "__id__": 110
+        "__id__": 113
       },
       {
-        "__id__": 118
+        "__id__": 121
       }
     ],
     "_active": false,
     "_components": [
       {
-        "__id__": 121
+        "__id__": 124
       },
       {
-        "__id__": 122
+        "__id__": 125
       },
       {
-        "__id__": 123
+        "__id__": 126
       }
     ],
     "_prefab": null,
@@ -4380,26 +4512,26 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 109
+      "__id__": 112
     },
     "_children": [
       {
-        "__id__": 111
+        "__id__": 114
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 114
-      },
-      {
-        "__id__": 115
-      },
-      {
-        "__id__": 116
-      },
-      {
         "__id__": 117
+      },
+      {
+        "__id__": 118
+      },
+      {
+        "__id__": 119
+      },
+      {
+        "__id__": 120
       }
     ],
     "_prefab": null,
@@ -4438,16 +4570,16 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 110
+      "__id__": 113
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 112
+        "__id__": 115
       },
       {
-        "__id__": 113
+        "__id__": 116
       }
     ],
     "_prefab": null,
@@ -4486,7 +4618,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 111
+      "__id__": 114
     },
     "_enabled": true,
     "__prefab": null,
@@ -4508,7 +4640,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 111
+      "__id__": 114
     },
     "_enabled": true,
     "__prefab": null,
@@ -4547,7 +4679,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 110
+      "__id__": 113
     },
     "_enabled": true,
     "__prefab": null,
@@ -4569,7 +4701,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 110
+      "__id__": 113
     },
     "_enabled": true,
     "__prefab": null,
@@ -4608,12 +4740,12 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 110
+      "__id__": 113
     },
     "_enabled": true,
     "__prefab": null,
     "_barSprite": {
-      "__id__": 113
+      "__id__": 116
     },
     "_mode": 0,
     "_totalLength": 300,
@@ -4627,7 +4759,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 110
+      "__id__": 113
     },
     "_enabled": true,
     "__prefab": null,
@@ -4657,16 +4789,16 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 109
+      "__id__": 112
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 119
+        "__id__": 122
       },
       {
-        "__id__": 120
+        "__id__": 123
       }
     ],
     "_prefab": null,
@@ -4705,7 +4837,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 118
+      "__id__": 121
     },
     "_enabled": true,
     "__prefab": null,
@@ -4727,7 +4859,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 118
+      "__id__": 121
     },
     "_enabled": true,
     "__prefab": null,
@@ -4789,7 +4921,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 109
+      "__id__": 112
     },
     "_enabled": true,
     "__prefab": null,
@@ -4811,7 +4943,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 109
+      "__id__": 112
     },
     "_enabled": true,
     "__prefab": null,
@@ -4850,7 +4982,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 109
+      "__id__": 112
     },
     "_enabled": true,
     "__prefab": null,
@@ -4873,138 +5005,6 @@
     "_alignMode": 2,
     "_lockFlags": 0,
     "_id": "c3LJTVgN9O6LhDx45o0Aky"
-  },
-  {
-    "__type__": "cc.Node",
-    "_name": "操作说明",
-    "_objFlags": 0,
-    "__editorExtras__": {},
-    "_parent": {
-      "__id__": 7
-    },
-    "_children": [],
-    "_active": true,
-    "_components": [
-      {
-        "__id__": 125
-      },
-      {
-        "__id__": 126
-      }
-    ],
-    "_prefab": null,
-    "_lpos": {
-      "__type__": "cc.Vec3",
-      "x": -2.842170943040401e-14,
-      "y": 199.00000000000006,
-      "z": 0
-    },
-    "_lrot": {
-      "__type__": "cc.Quat",
-      "x": 0,
-      "y": 0,
-      "z": 0,
-      "w": 1
-    },
-    "_lscale": {
-      "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
-      "z": 1
-    },
-    "_mobility": 0,
-    "_layer": 33554432,
-    "_euler": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    },
-    "_id": "3fDBOXYtFMgZC1kwWHbSeI"
-  },
-  {
-    "__type__": "cc.UITransform",
-    "_name": "",
-    "_objFlags": 0,
-    "__editorExtras__": {},
-    "node": {
-      "__id__": 124
-    },
-    "_enabled": true,
-    "__prefab": null,
-    "_contentSize": {
-      "__type__": "cc.Size",
-      "width": 410,
-      "height": 244.16
-    },
-    "_anchorPoint": {
-      "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
-    },
-    "_id": "813ac8MUpGlpvDbyZlVGN1"
-  },
-  {
-    "__type__": "cc.Label",
-    "_name": "",
-    "_objFlags": 0,
-    "__editorExtras__": {},
-    "node": {
-      "__id__": 124
-    },
-    "_enabled": true,
-    "__prefab": null,
-    "_customMaterial": null,
-    "_srcBlendFactor": 2,
-    "_dstBlendFactor": 4,
-    "_color": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
-    "_string": "  造基地：点击选中工程车=>点击“造基地”按钮=>点击地面\n  造工程车：点击选中基地=>点击“造工程车”按钮\n  采集资源：点击选中工程车=>点击晶体矿或燃气矿\n  资源足够时工程车还可以造民房、地堡、兵厂\n  在兵厂可以造兵、近战兵、也可以造坦克\n  造民房可以增加人口上限\n  地堡里面可以进入10个兵，地堡血量很高\n  如果开局不利，点右上角退出此场景按钮，再次进入可以反复开局\n 训练战：引导熟悉一些基础操作\n 防守战：怪物会一波一波地进攻玩家\n 多人联机地图：所有玩家相互作为敌人进一个公共地图\n 其他人的个人战局列表：您可以旁观其他玩家的单人战局\n 创建多人战局：其他玩家可加入您创建的战局\n 其他人的多人战局列表：您可以加入其他玩家的多人战局",
-    "_horizontalAlign": 0,
-    "_verticalAlign": 1,
-    "_actualFontSize": 15,
-    "_fontSize": 15,
-    "_fontFamily": "Arial",
-    "_lineHeight": 16,
-    "_overflow": 3,
-    "_enableWrapText": true,
-    "_font": null,
-    "_isSystemFontUsed": true,
-    "_spacingX": 0,
-    "_isItalic": false,
-    "_isBold": false,
-    "_isUnderline": false,
-    "_underlineHeight": 2,
-    "_cacheMode": 0,
-    "_enableOutline": false,
-    "_outlineColor": {
-      "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
-      "a": 255
-    },
-    "_outlineWidth": 0.1,
-    "_enableShadow": false,
-    "_shadowColor": {
-      "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
-      "a": 255
-    },
-    "_shadowOffset": {
-      "__type__": "cc.Vec2",
-      "x": 2,
-      "y": 2
-    },
-    "_shadowBlur": 2,
-    "_id": "77qiiR3qNJmZDL/n3s9RHg"
   },
   {
     "__type__": "cc.UITransform",
@@ -5094,7 +5094,7 @@
       "__id__": 97
     },
     "loadNode": {
-      "__id__": 109
+      "__id__": 112
     },
     "_id": "7dlsrcFgxDgJ3SbtsHLDnA"
   },
