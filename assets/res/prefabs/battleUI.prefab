@@ -1214,7 +1214,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 78,
+      "y": 82,
       "z": 0
     },
     "_lrot": {
@@ -1609,7 +1609,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 26,
+      "y": 34,
       "z": 0
     },
     "_lrot": {
@@ -2007,7 +2007,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -26,
+      "y": -14,
       "z": 0
     },
     "_lrot": {
@@ -2264,8 +2264,8 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 185,
-      "g": 80,
+      "r": 255,
+      "g": 0,
       "b": 255,
       "a": 255
     },
@@ -2538,7 +2538,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -78,
+      "y": -62,
       "z": 0
     },
     "_lrot": {
@@ -2796,8 +2796,8 @@
     "_color": {
       "__type__": "cc.Color",
       "r": 252,
-      "g": 177,
-      "b": 109,
+      "g": 0,
+      "b": 255,
       "a": 255
     },
     "_string": "缩小",
@@ -3063,7 +3063,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -130,
+      "y": -110,
       "z": 0
     },
     "_lrot": {
@@ -3184,9 +3184,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 213,
-      "g": 211,
-      "b": 255,
+      "r": 255,
+      "g": 255,
+      "b": 0,
       "a": 255
     },
     "_string": "空闲\n工程车",
@@ -3435,7 +3435,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -182,
+      "y": -158,
       "z": 0
     },
     "_lrot": {
@@ -3807,7 +3807,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -234,
+      "y": -206,
       "z": 0
     },
     "_lrot": {
@@ -4179,7 +4179,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -286,
+      "y": -269,
       "z": 0
     },
     "_lrot": {
@@ -4229,7 +4229,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -20.834000000000003,
+      "y": -21.915999999999997,
       "z": 0
     },
     "_lrot": {
@@ -4269,8 +4269,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 32,
-      "height": 20.16
+      "width": 36,
+      "height": 25.2
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -4308,10 +4308,10 @@
     "_string": "框选",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 16,
-    "_fontSize": 16,
+    "_actualFontSize": 18,
+    "_fontSize": 18,
     "_fontFamily": "Arial",
-    "_lineHeight": 16,
+    "_lineHeight": 20,
     "_overflow": 0,
     "_enableWrapText": false,
     "_font": null,
@@ -4378,8 +4378,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 40,
-      "height": 40
+      "width": 70,
+      "height": 70
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -4490,7 +4490,9 @@
     "_disabledSprite": null,
     "_duration": 0.1,
     "_zoomScale": 1.2,
-    "_target": null,
+    "_target": {
+      "__id__": 173
+    },
     "_id": ""
   },
   {
@@ -4554,7 +4556,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -338,
+      "y": -347,
       "z": 0
     },
     "_lrot": {
@@ -4753,8 +4755,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 40,
-      "height": 40
+      "width": 70,
+      "height": 70
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -5022,7 +5024,7 @@
     "_paddingTop": 0,
     "_paddingBottom": 0,
     "_spacingX": 30,
-    "_spacingY": 12,
+    "_spacingY": 8,
     "_verticalDirection": 1,
     "_horizontalDirection": 0,
     "_constraint": 0,
@@ -10316,7 +10318,7 @@
       "__id__": 436
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 438
@@ -10372,7 +10374,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 128,
-      "height": 52.16
+      "height": 50
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -10407,7 +10409,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "啊手动阀手动阀啊手动阀手动阀手动阀十分的",
+    "_string": "",
     "_horizontalAlign": 0,
     "_verticalAlign": 0,
     "_actualFontSize": 15,
@@ -10987,7 +10989,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 400,
-      "height": 25.2
+      "height": 27.72
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -11028,7 +11030,7 @@
     "_actualFontSize": 18,
     "_fontSize": 18,
     "_fontFamily": "Arial",
-    "_lineHeight": 20,
+    "_lineHeight": 22,
     "_overflow": 3,
     "_enableWrapText": true,
     "_font": null,
