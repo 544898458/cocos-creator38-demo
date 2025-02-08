@@ -44,6 +44,7 @@ export class Scene登录 extends Component {
 
     update(deltaTime: number) {
         //加载进度条
+        if(this.loadtime<this.loadlen)
         this.onloading(deltaTime)
        
     }
