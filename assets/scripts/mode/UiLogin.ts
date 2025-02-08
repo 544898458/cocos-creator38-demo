@@ -505,11 +505,11 @@ export class UiLogin extends Component {
                         switch (channel) {
                             case SayChannel.系统:
                                 if(content.length>0)
-                                    thisLocal.scene战斗.battleUI.lable系统消息.string = content
+                                    thisLocal.scene战斗.battleUI.lable系统消息.string = '    ' + content
                                 break
                             case SayChannel.聊天:
                                 if(content.length>0)
-                                    thisLocal.scene战斗.battleUI.lable聊天消息.string = content
+                                    thisLocal.scene战斗.battleUI.lable聊天消息.string = '    ' + content
                                 break
                         }
 
