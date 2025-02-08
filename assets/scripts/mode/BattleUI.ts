@@ -23,10 +23,10 @@ export class BattleUI extends Component {
     lableGas: Label
     @property({ type: Label, displayName: "活动单位" })
     lableUnit: Label
-    @property({ type: Label, displayName: "消息提示" })
-    lable消息提示: Label
-    @property({ type: Label, displayName: "语音消息提示" })
-    lable语音消息提示: Label
+    @property({ type: Label, displayName: "聊天消息" })
+    lable聊天消息: Label
+    @property({ type: Label, displayName: "系统消息" })
+    lable系统消息: Label
     @property({ type: UITransform, displayName: "所有单位头顶名字" })
     uiTransform所有单位头顶名字: UITransform
     @property({ type: UITransform, displayName: "剧情对话根" })
@@ -61,7 +61,7 @@ export class BattleUI extends Component {
     on框选(event: Event, customEventData: string){
         this.scene战斗.posWorld框选起始点 = null
         this.scene战斗.b框选等待按下起始点 = true
-        this.scene战斗.battleUI.lable消息提示.string ='请在地面上拖动框选'
+        this.scene战斗.battleUI.lable系统消息.string ='请在地面上拖动框选'
     }
     on聊天框输入结束(editbox:EditBox, customEventData:String)
     {

@@ -10280,7 +10280,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -111.125,
+      "x": -103.55,
       "y": 26.369000000000028,
       "z": 0
     },
@@ -10316,7 +10316,7 @@
       "__id__": 436
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 438
@@ -10331,7 +10331,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 2,
-      "y": 20,
+      "y": 25,
       "z": 0
     },
     "_lrot": {
@@ -10371,8 +10371,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 98,
-      "height": 40
+      "width": 128,
+      "height": 52.16
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -10407,15 +10407,15 @@
       "b": 255,
       "a": 255
     },
-    "_string": "",
+    "_string": "啊手动阀手动阀啊手动阀手动阀手动阀十分的",
     "_horizontalAlign": 0,
-    "_verticalAlign": 1,
-    "_actualFontSize": 40,
-    "_fontSize": 20,
+    "_verticalAlign": 0,
+    "_actualFontSize": 15,
+    "_fontSize": 15,
     "_fontFamily": "Arial",
-    "_lineHeight": 40,
-    "_overflow": 1,
-    "_enableWrapText": false,
+    "_lineHeight": 16,
+    "_overflow": 3,
+    "_enableWrapText": true,
     "_font": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
@@ -10490,7 +10490,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 2,
-      "y": 20,
+      "y": 25,
       "z": 0
     },
     "_lrot": {
@@ -10530,8 +10530,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 98,
-      "height": 40
+      "width": 128,
+      "height": 50
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -10574,7 +10574,7 @@
     "_fontFamily": "Arial",
     "_lineHeight": 40,
     "_overflow": 1,
-    "_enableWrapText": false,
+    "_enableWrapText": true,
     "_font": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
@@ -10639,8 +10639,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 100,
-      "height": 40
+      "width": 130,
+      "height": 50
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -10732,7 +10732,7 @@
       "__expectedType__": "cc.SpriteFrame"
     },
     "_inputFlag": 5,
-    "_inputMode": 6,
+    "_inputMode": 0,
     "_maxLength": 30,
     "_id": ""
   },
@@ -10765,7 +10765,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Message语音提示",
+    "_name": "聊天消息",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
@@ -10786,8 +10786,8 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0,
-      "y": -18.009000000000015,
+      "x": -93.064,
+      "y": -2.8590000000000373,
       "z": 0
     },
     "_lrot": {
@@ -10827,13 +10827,13 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 120,
-      "height": 50.4
+      "width": 300,
+      "height": 21.42
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
+      "x": 0,
+      "y": 1
     },
     "_id": ""
   },
@@ -10863,14 +10863,14 @@
       "b": 184,
       "a": 255
     },
-    "_string": "语音消息提示",
-    "_horizontalAlign": 1,
+    "_string": "聊天消息",
+    "_horizontalAlign": 0,
     "_verticalAlign": 1,
-    "_actualFontSize": 20,
-    "_fontSize": 20,
+    "_actualFontSize": 15,
+    "_fontSize": 15,
     "_fontFamily": "Arial",
-    "_lineHeight": 40,
-    "_overflow": 0,
+    "_lineHeight": 17,
+    "_overflow": 3,
     "_enableWrapText": true,
     "_font": null,
     "_isSystemFontUsed": true,
@@ -10924,7 +10924,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Message",
+    "_name": "系统消息",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
@@ -10946,7 +10946,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -80.36699999999996,
+      "y": -66.29899999999998,
       "z": 0
     },
     "_lrot": {
@@ -11022,8 +11022,8 @@
       "b": 109,
       "a": 255
     },
-    "_string": "消息提示",
-    "_horizontalAlign": 1,
+    "_string": "系统消息",
+    "_horizontalAlign": 0,
     "_verticalAlign": 1,
     "_actualFontSize": 18,
     "_fontSize": 18,
@@ -12289,7 +12289,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 8.34228515625,
+      "width": 102.53173828125,
       "height": 25.2
     },
     "_anchorPoint": {
@@ -12325,7 +12325,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "0",
+    "_string": "活动单位:99/99",
     "_horizontalAlign": 0,
     "_verticalAlign": 1,
     "_actualFontSize": 15,
@@ -14870,11 +14870,11 @@
     "lableUnit": {
       "__id__": 518
     },
-    "lable消息提示": {
-      "__id__": 466
-    },
-    "lable语音消息提示": {
+    "lable聊天消息": {
       "__id__": 460
+    },
+    "lable系统消息": {
+      "__id__": 466
     },
     "uiTransform所有单位头顶名字": {
       "__id__": 27

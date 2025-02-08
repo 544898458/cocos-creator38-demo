@@ -95,7 +95,7 @@ enum 单位类型
 
 enum SayChannel {
     系统,
-    语音提示,
+    聊天,
 };
 
 @ccclass('UiLogin')
@@ -178,7 +178,7 @@ export class UiLogin extends Component {
     }
     on点击按钮_造建筑(类型: 单位类型) {
         this.fun创建消息 = (hitPoint: Vec3) => this.createMsg造建筑(hitPoint, 类型)
-        this.scene战斗.battleUI.lable消息提示.string = '请点击地面放置建筑'
+        this.scene战斗.battleUI.lable系统消息.string = '请点击地面放置建筑'
     }
     onClickAdd基地(event: Event, customEventData: string): void {
         this.on点击按钮_造建筑(单位类型.基地)
@@ -254,11 +254,11 @@ export class UiLogin extends Component {
         this.scene登录.nodeLoginPanel.active = false//隐藏
         this.scene登录.lableMessage.string = '正在连接'
         // this.websocket = new WebSocket("ws://192.168.31.194:12348/")
-        // this.websocket = new WebSocket("ws://192.168.31.170:12348/")
+        this.websocket = new WebSocket("ws://192.168.31.170:12348/")
         // this.websocket = new WebSocket("ws://192.168.43.186:12348/")
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
         // this.websocket = new WebSocket("ws://192.168.0.96:12348/")
-        this.websocket = new WebSocket("ws://47.119.184.177:12348/")
+        // this.websocket = new WebSocket("ws://47.119.184.177:12348/")
         // this.websocket = new WebSocket("wss://wss.iotlabor.cn/")
         // We should pass the cacert to libwebsockets used in native platform, otherwise the wss connection would be closed.
         // let url = this.wssCacert.nativeUrl;
@@ -505,11 +505,11 @@ export class UiLogin extends Component {
                         switch (channel) {
                             case SayChannel.系统:
                                 if(content.length>0)
-                                    thisLocal.scene战斗.battleUI.lable消息提示.string = content
+                                    thisLocal.scene战斗.battleUI.lable系统消息.string = content
                                 break
-                            case SayChannel.语音提示:
+                            case SayChannel.聊天:
                                 if(content.length>0)
-                                    thisLocal.scene战斗.battleUI.lable语音消息提示.string = content
+                                    thisLocal.scene战斗.battleUI.lable聊天消息.string = content
                                 break
                         }
 
@@ -592,7 +592,7 @@ export class UiLogin extends Component {
                         let str文本 = arr[idxArr++]
                         AudioMgr.inst.playOneShot(str声音)
                         if(str文本.length>0)
-                            thisLocal.scene战斗.battleUI.lable语音消息提示.string = str文本
+                            thisLocal.scene战斗.battleUI.lable系统消息.string = str文本
                     }
                     break
                 case MsgId.设置视口:

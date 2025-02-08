@@ -269,7 +269,7 @@ export class Scene战斗 extends Component {
             
 
                 this.posWorld框选起始点 = null
-                this.battleUI.lable语音消息提示.string ='已退出框选状态'
+                this.battleUI.lable系统消息.string ='已退出框选状态'
                 this.Clear然后显示小地图视口框()// this.graphics.clear()//清掉框选框
                 return
             })
@@ -360,7 +360,7 @@ export class Scene战斗 extends Component {
             if(this.b框选等待按下起始点){//
                 this.b框选等待按下起始点 = false
                 this.posWorld框选起始点 = item.hitPoint.clone()
-                this.battleUI.lable语音消息提示.string ='已开始框选，请拖动后放开'
+                this.battleUI.lable系统消息.string ='已开始框选，请拖动后放开'
                 return
             }
             
