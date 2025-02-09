@@ -43,17 +43,17 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 624
+        "__id__": 627
       },
       {
-        "__id__": 626
+        "__id__": 629
       },
       {
-        "__id__": 628
+        "__id__": 631
       }
     ],
     "_prefab": {
-      "__id__": 630
+      "__id__": 633
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -4229,7 +4229,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -21.915999999999997,
+      "y": -13.949000000000012,
       "z": 0
     },
     "_lrot": {
@@ -4269,8 +4269,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 36,
-      "height": 25.2
+      "width": 50,
+      "height": 35.28
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -4308,10 +4308,10 @@
     "_string": "框选",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 18,
-    "_fontSize": 18,
+    "_actualFontSize": 25,
+    "_fontSize": 25,
     "_fontFamily": "Arial",
-    "_lineHeight": 20,
+    "_lineHeight": 28,
     "_overflow": 0,
     "_enableWrapText": false,
     "_font": null,
@@ -4646,8 +4646,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 64,
-      "height": 20.16
+      "width": 72,
+      "height": 25.2
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -4685,10 +4685,10 @@
     "_string": "取消选中",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 16,
-    "_fontSize": 16,
+    "_actualFontSize": 18,
+    "_fontSize": 18,
     "_fontFamily": "Arial",
-    "_lineHeight": 16,
+    "_lineHeight": 20,
     "_overflow": 0,
     "_enableWrapText": false,
     "_font": null,
@@ -4792,7 +4792,7 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "5a5f0251-1128-444a-a3ab-247f2ac94ff9@f9941",
+      "__uuid__": "ac74fa2b-1f5b-4ff5-a3f0-f127f4483e91@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 1,
@@ -4861,22 +4861,10 @@
       "b": 124,
       "a": 255
     },
-    "_normalSprite": {
-      "__uuid__": "5a5f0251-1128-444a-a3ab-247f2ac94ff9@f9941",
-      "__expectedType__": "cc.SpriteFrame"
-    },
-    "_hoverSprite": {
-      "__uuid__": "20835ba4-6145-4fbc-a58a-051ce700aa3e@f9941",
-      "__expectedType__": "cc.SpriteFrame"
-    },
-    "_pressedSprite": {
-      "__uuid__": "544e49d6-3f05-4fa8-9a9e-091f98fc2ce8@f9941",
-      "__expectedType__": "cc.SpriteFrame"
-    },
-    "_disabledSprite": {
-      "__uuid__": "951249e0-9f16-456d-8b85-a6ca954da16b@f9941",
-      "__expectedType__": "cc.SpriteFrame"
-    },
+    "_normalSprite": null,
+    "_hoverSprite": null,
+    "_pressedSprite": null,
+    "_disabledSprite": null,
     "_duration": 0.1,
     "_zoomScale": 1.2,
     "_target": {
@@ -14704,6 +14692,12 @@
       },
       {
         "__id__": 623
+      },
+      {
+        "__id__": 624
+      },
+      {
+        "__id__": 626
       }
     ],
     "removedComponents": []
@@ -14781,6 +14775,32 @@
     "value": false
   },
   {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 625
+    },
+    "propertyPath": [
+      "_string"
+    ],
+    "value": "战斗界面：\n  造建筑单位：点击“基地/民房/地堡/兵厂/光子炮”按钮=>点击地面，最近的空闲工程车会走向目标位置建造。如果选中工程车再建造，则会强制指定这辆工程车前去建造。\n  造活动单位：点击“工程车/兵/近战兵/坦克”按钮。最空闲的基地或兵厂会开始产出活动单位。如果选中基地或兵厂，则会在指定的建筑中产出单位。\n  采集资源：点击选中工程车=>点击晶体矿或燃气矿。可以点击“空闲工程车”快速定位到空闲的工程车。\n  造民房可以增加活动单位上限。\n  地堡里面可以进入10个活动单位，地堡血量很高。\n  如果开局不利，点右上角退出此场景按钮，再次进入可以反复开局。\n  框选多个单位：点击右侧“框选”按钮，然后在屏幕中上下拖动，就可以框选多个单位。\n  让地堡里的单位出来：先单击选中地堡，然后点击右侧“出地堡”按钮。电脑浏览器可直接鼠标右击地堡。\n  强行走：希望单位走到目标点的过程中不要停下攻击敌人，可以选中单位后，先点一下右侧“强行走”按钮，然后再点击地面。\n  取消选中：不希望操作选中单位时，应该尽量点右侧“取消选中”按钮，取消所有选中状态，否则一旦误点击地面，选中单位可能会走向目标点。\n\n战斗单位克制关系（类似石头剪刀布）：\n  坦克 克制 地堡和光子炮\n  光子炮和地堡 克制 小兵\n  小兵 克制 坦克\n\n主界面：\n 训练战：引导熟悉一些基础操作。\n 防守战：怪物会一波一波地进攻玩家。\n 多人联机地图：所有玩家相互作为敌人进一个公共地图。\n 其他人的个人战局列表：您可以旁观其他玩家的单人战局（训练战、防守战）\n 创建多人战局：其他玩家可加入您创建的战局（四方对战）\n 其他人的多人战局列表：您可以加入其他玩家的多人战局（四方对战）\n"
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "1a3fBO5pBPd7+3oy3M3XP1"
+    ]
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 625
+    },
+    "propertyPath": [
+      "_lineHeight"
+    ],
+    "value": 30
+  },
+  {
     "__type__": "cc.UITransform",
     "_name": "",
     "_objFlags": 0,
@@ -14790,7 +14810,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 625
+      "__id__": 628
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -14818,7 +14838,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 627
+      "__id__": 630
     },
     "_alignFlags": 45,
     "_target": null,
@@ -14854,7 +14874,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 629
+      "__id__": 632
     },
     "scene战斗": null,
     "游戏攻略": {
