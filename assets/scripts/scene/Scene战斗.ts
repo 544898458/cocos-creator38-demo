@@ -73,6 +73,7 @@ export class Scene战斗 extends Component {
     b强行走: boolean = false
     graphics: Graphics
     b电脑鼠标操作: boolean = false
+    f双指缩放初始值: number = 0
     protected onLoad(): void {
         console.log('Scene战斗.onLoad')
         this.Clear然后显示小地图视口框()
@@ -92,26 +93,6 @@ export class Scene战斗 extends Component {
         //3D摄像机鼠标滑轮（放大缩小）
         this.node.on(NodeEventType.MOUSE_WHEEL, (event: EventMouse) => {
             this.镜头缩放(event.getScrollY())
-            // if(this.b正交投影)
-            // {
-            //     var y = event.getScrollY()
-            //     y /= 100
-            //     // vec2Delta = vec2Delta.divide2f(10,10)
-            //     // this.mainCamera.node.position = this.mainCamera.node.position.add3f(0, y, 0)
-            //     this.mainCamera.orthoHeight = Math.min(Math.max(this.mainCamera.orthoHeight - y, 5), 100)
-            //     //console.log('fov', this.mainCamera.fov);
-    
-            // }
-            // else//透视投影
-            // {
-            //     var y = event.getScrollY()
-            //     y /= 300
-            //     // vec2Delta = vec2Delta.divide2f(10,10)
-            //     // this.mainCamera.node.position = this.mainCamera.node.position.add3f(0, y, 0)
-            //     this.mainCamera.fov = Math.max(this.mainCamera.fov - y, 5)
-            //     //console.log('fov', this.mainCamera.fov);
-            // }
-            // this.Clear然后显示小地图视口框()
         })
         
         this.node.on(NodeEventType.MOUSE_UP,  (event: EventMouse) =>{
@@ -124,24 +105,43 @@ export class Scene战斗 extends Component {
                 return
 
             console.log('TOUCH_END', event)
+            this.f双指缩放初始值 = 0
             this.onMouseUp(event.getLocation(), false)
         })
-        //视角移动
-        // this.node.on(NodeEventType.MOUSE_MOVE, (event: EventMouse) => {
-        //     this.onMove(event.getDelta())
-        // })
+
+
         this.node.on(NodeEventType.TOUCH_MOVE, (event: EventTouch) => {
             console.log('TOUCH_MOVE', event)
-             this.onMove(event.getDelta(), event.getLocation())
+            let arrTouch = event.getTouches()
+            if(arrTouch.length >= 2 )//双指缩放
+            {
+                let f新值 = arrTouch[0].getLocation().clone().subtract(arrTouch[1].getLocation()).length();
+                
+                if( 0 == this.f双指缩放初始值 ){
+                    this.f双指缩放初始值 = f新值
+                    return
+                }else if(this.f双指缩放初始值 == f新值){
+                    return
+                }
+                console.log('f新值', f新值, 'f双指缩放初始值', this.f双指缩放初始值)
+                this.镜头缩放((f新值 - this.f双指缩放初始值)*5)
+                this.f双指缩放初始值 = f新值
+                return
+            }
+            this.onMove(event.getDelta(), event.getLocation())
         })
         //
         this.node.on(NodeEventType.MOUSE_DOWN, (event: EventMouse) => {
+            if(this.f双指缩放初始值 > 0)
+                return
+
             let button = event.getButton()
             let posMouseDown = event.getLocation()
             this.b电脑鼠标操作 = true
             this.onMouseDown(posMouseDown, button == EventMouse.BUTTON_RIGHT)
         })
         this.node.on(NodeEventType.TOUCH_START, (event: EventTouch) => {
+            console.log('TOUCH_START', event)
             if(this.b电脑鼠标操作)
                 return
 
@@ -339,7 +339,7 @@ export class Scene战斗 extends Component {
         }
     }
     onMouseDown(posMouseDown: Vec2, b鼠标右键: boolean) {
-        console.log('MOUSE_DOWN', posMouseDown, b鼠标右键)
+        console.log('onMouseDown', posMouseDown, b鼠标右键)
 
         var ray = new geometry.Ray()
         // const camera = cc.find("Camera",this.node).getComponent(Camera)
