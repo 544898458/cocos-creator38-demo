@@ -470,8 +470,9 @@ export class UiLogin extends Component {
                                 }
                                 //console.log('hp', hp, old.hpMax)
                             }
-                            if (old && old.view != undefined) {
-                                if(!old.position || old.position.clone().subtract(old.position).lengthSqr()>5)
+                            if (old && old.view) {
+
+                                if(!old.view.position || old.view.position.clone().subtract(old.position).lengthSqr() > 5)
                                     old.view.position = old.position
                                 else
                                     {

@@ -105,29 +105,35 @@ export class Scene战斗 extends Component {
                 return
 
             console.log('TOUCH_END', event)
-            this.f双指缩放初始值 = 0
+            this.f双指缩放初始值 = null
             this.onMouseUp(event.getLocation(), false)
         })
 
 
         this.node.on(NodeEventType.TOUCH_MOVE, (event: EventTouch) => {
             console.log('TOUCH_MOVE', event)
-            let arrTouch = event.getTouches()
-            if(arrTouch.length >= 2 )//双指缩放
+            let arrTouch = event.getAllTouches()
+            if(arrTouch.length >= 2)//双指缩放
             {
-                let f新值 = arrTouch[0].getLocation().clone().subtract(arrTouch[1].getLocation()).length();
-                
-                if( 0 == this.f双指缩放初始值 ){
+                if( null != this.f双指缩放初始值 )
+                {
+                    let f新值 = arrTouch[0].getLocation().clone().subtract(arrTouch[1].getLocation()).length();
+                    
+                    if( 0 == this.f双指缩放初始值 ){
+                        this.f双指缩放初始值 = f新值
+                        return
+                    }else if(this.f双指缩放初始值 == f新值){
+                        return
+                    }
+                    console.log('f新值', f新值, 'f双指缩放初始值', this.f双指缩放初始值)
+                    this.镜头缩放((f新值 - this.f双指缩放初始值)*5)
                     this.f双指缩放初始值 = f新值
-                    return
-                }else if(this.f双指缩放初始值 == f新值){
-                    return
                 }
-                console.log('f新值', f新值, 'f双指缩放初始值', this.f双指缩放初始值)
-                this.镜头缩放((f新值 - this.f双指缩放初始值)*5)
-                this.f双指缩放初始值 = f新值
+
                 return
             }
+            
+            this.f双指缩放初始值 = null
             this.onMove(event.getDelta(), event.getLocation())
         })
         //
@@ -144,7 +150,8 @@ export class Scene战斗 extends Component {
             console.log('TOUCH_START', event)
             if(this.b电脑鼠标操作)
                 return
-
+                
+            this.f双指缩放初始值 = 0
             this.onMouseDown(event.getLocation(), false)
         })
 
