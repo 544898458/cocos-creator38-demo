@@ -474,7 +474,11 @@ export class UiLogin extends Component {
                                 if(!old.position || old.position.clone().subtract(old.position).lengthSqr()>5)
                                     old.view.position = old.position
                                 else
-                                    tween(old.view).to(0.2, {position:old.position}).start()
+                                    {
+                                        old.tween移动?.stop()
+                                        old.tween移动 = tween(old.view).to(0.2, {position:old.position})
+                                        old.tween移动.start()
+                                    }
 
                                 
                                 old.view.eulerAngles = new Vec3(0, eulerAnglesY, 0)
@@ -501,8 +505,10 @@ export class UiLogin extends Component {
                                 old.initClipName = clipName
                         }else {
                             UiLogin.播放动作(old, clipName, loop)
+                            old.tween移动?.stop()
+                            old.tween移动 = null
                             // old.view.position = old.position
-                            tween(old.view).to(0.01, {position:old.position}).start()
+                            // tween(old.view).to(0.1, {position:old.position}).start()
                         }
                     }
                     break

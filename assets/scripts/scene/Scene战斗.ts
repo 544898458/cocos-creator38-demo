@@ -16,6 +16,7 @@ import { tween } from 'cc'
 import { Sprite } from 'cc'
 import { SpriteFrame } from 'cc'
 import { ImageAsset } from 'cc'
+import { Tween } from 'cc'
 
 const { ccclass, property } = _decorator
 export class ClientEntityComponent {
@@ -32,6 +33,7 @@ export class ClientEntityComponent {
     hp: number = 0
     hpMax: number = 0
     prefabName: string
+    tween移动: Tween<Node>
     removeFromParent() {
         this.view?.removeFromParent()
         this.nodeName?.removeFromParent()
