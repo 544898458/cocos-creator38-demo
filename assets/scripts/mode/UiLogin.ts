@@ -517,7 +517,11 @@ export class UiLogin extends Component {
                     {
                         let content = arr[idxArr++]
                         let channel = arr[idxArr++] as SayChannel
-                        console.log(channel, '有人说:', content)
+                        console.log(channel, '说:', content)
+                        AudioMgr.inst.playOneShot('音效/Transmission')
+                        if(!thisLocal.scene战斗.battleUI)
+                            return
+
                         switch (channel) {
                             case SayChannel.系统:
                                 if(content.length>0)
