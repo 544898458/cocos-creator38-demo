@@ -6,6 +6,7 @@ import { Scene登录 } from '../scene/Scene登录'
 import { AudioMgr } from '../manager/AudioMgr'
 import { ProgressBar } from 'cc'
 import { ParticleSystem } from 'cc'
+import { tween } from 'cc'
 
 const { ccclass, property } = _decorator
 export enum MsgId {
@@ -455,9 +456,10 @@ export class UiLogin extends Component {
                             //    })
                         }
                         else {
-                            if (old && old != undefined) {
+                            if (old) {
                                 // old.skeletalAnimation.play('run')
-                                old.position = new Vec3(posX, 0, posZ)
+                                let posNew = new Vec3(posX, 0, posZ)
+                                old.position = posNew
                                 old.hp = hp
                                 if(old.hpbar){
                                     let progressBar = old.hpbar.getComponent(ProgressBar)
@@ -469,7 +471,12 @@ export class UiLogin extends Component {
                                 //console.log('hp', hp, old.hpMax)
                             }
                             if (old && old.view != undefined) {
-                                old.view.position = old.position
+                                if(!old.position || old.position.clone().subtract(old.position).lengthSqr()>5)
+                                    old.view.position = old.position
+                                else
+                                    tween(old.view).to(0.2, {position:old.position}).start()
+
+                                
                                 old.view.eulerAngles = new Vec3(0, eulerAnglesY, 0)
                                 // old.labelName.string = old.nickName + '(' + id + ')hp=' + hp
                                 old.labelName.string = old.nickName// + 'hp=' + hp
@@ -494,6 +501,8 @@ export class UiLogin extends Component {
                                 old.initClipName = clipName
                         }else {
                             UiLogin.播放动作(old, clipName, loop)
+                            // old.view.position = old.position
+                            tween(old.view).to(0.01, {position:old.position}).start()
                         }
                     }
                     break
