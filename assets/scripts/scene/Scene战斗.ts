@@ -88,7 +88,7 @@ export class Scene战斗 extends Component {
         this.uiLogin.scene战斗 = this.node.getComponent(Scene战斗);
         console.log(this.uiLogin.scene战斗)
         this.mainCameraFollowTarget = this.mainCamera.getComponent(FollowTarget);
-
+        this.battleUI.lable在线人数.string = this.uiLogin.str在线人数
 
         //3D摄像机鼠标滑轮（放大缩小）
         this.node.on(NodeEventType.MOUSE_WHEEL, (event: EventMouse) => {

@@ -254,11 +254,14 @@ export class UiLogin extends Component {
     @property({type: Asset})
     public wssCacert: Asset = null!;
 
+    recvMsgSnGameSvr: number = 0
+    recvMsgSnWorldSvr: number = 0
     recvMsgSn: number = 0
     sendMsgSn: number = 0
     scene战斗: Scene战斗 = null
     scene登录: Scene登录 = null
     arr选中: number[] = []
+    str在线人数: string = ''
     map玩家场景 = new Map<string, string>//NickName=>SceneName
     fun创建消息: (Vec3) => object = null//this.createMsgMove强行走//点击地面操作 = 点击地面操作类型.移动单位
     createMsgMove强行走(hitPoint: Vec3) {
@@ -471,6 +474,9 @@ export class UiLogin extends Component {
                 }
                 break
             case MsgId.GateSvr转发WorldSvr消息给游戏前端:
+                let arrGameMsg = arr[idxArr++]
+                    console.log('收到WorldSvr消息',arrGameMsg)
+                    thisLocal.onRecvWorldSvr(arrGameMsg)
                 break
     
             }
@@ -489,6 +495,41 @@ export class UiLogin extends Component {
             console.log("onbeforeunload")
         }
     }
+    onRecvWorldSvr(data:ArrayBuffer)
+    {
+        let thisLocal = this
+        // console.log("收到数据：", data, data.byteLength)
+        const arr = msgpack.decode(new Uint8Array(data))
+        // console.log("msgpack.decode结果：", data, data.byteLength)
+        let idxArr = 0
+        let msgHead = arr[idxArr++]
+        let msgId = msgHead[0] as MsgId
+        let sn = msgHead[1] as number
+        console.log("收到,msgId：", msgId, ',recvMsgSnWorldSvr:', sn)
+        ++thisLocal.recvMsgSnWorldSvr
+        if(thisLocal.recvMsgSnWorldSvr != sn)
+            console.error('recvMsgSn ', thisLocal.recvMsgSnWorldSvr , 'recvMsgSnWorldSvr', sn)
+        // console.log("sn", sn)
+        switch (msgId) {
+        case MsgId.在线人数:
+            {
+                let 人数 = arr[idxArr++] as number
+                this.str在线人数 = 人数 + '人在线'
+                this.显示在线人数()
+            }
+            break
+            
+        }
+    }
+    显示在线人数():void
+    {
+        console.log(this.str在线人数)
+        if(this.scene战斗)
+            this.scene战斗.battleUI.lable在线人数.string = this.str在线人数
+
+        if(this.scene登录)
+            this.scene登录.lableMessage.string = this.str在线人数
+    }
     onRecvGameSvr(data:ArrayBuffer)
     {
         let thisLocal = this
@@ -500,9 +541,9 @@ export class UiLogin extends Component {
         let msgId = msgHead[0] as MsgId
         let sn = msgHead[1] as number
         console.log("收到,msgId：", msgId, ',sn:', sn)
-        ++thisLocal.recvMsgSn
-        if(thisLocal.recvMsgSn != sn)
-            console.error('recvMsgSn ', thisLocal.recvMsgSn , 'sn', sn)
+        ++thisLocal.recvMsgSnGameSvr
+        if(thisLocal.recvMsgSnGameSvr != sn)
+            console.error('recvMsgSn ', thisLocal.recvMsgSnGameSvr , 'sn', sn)
         // console.log("sn", sn)
         switch (msgId) {
             case MsgId.AddRoleRet:
@@ -853,18 +894,6 @@ export class UiLogin extends Component {
             case MsgId.剧情对话已看完:
                 {
                     thisLocal.scene战斗.battleUI.uiTransform剧情对话根.node.active = false
-                }
-                break
-            case MsgId.在线人数:
-                {
-                    let 人数 = arr[idxArr++] as number
-                    let str人数 = 人数 + '人在线'
-                    console.log(str人数)
-                    if(thisLocal.scene战斗)
-                        thisLocal.scene战斗.battleUI.lable在线人数.string = str人数
-
-                    if(thisLocal.scene登录)
-                        thisLocal.scene登录.lableMessage.string = str人数
                 }
                 break
             default:

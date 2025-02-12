@@ -36,7 +36,8 @@ export class Scene登录 extends Component {
         //获取常驻节点
         this.uiLogin = director.getScene().getChildByName('常驻').getComponent(UiLogin);
         this.uiLogin.scene登录 = this
-        this.loadNode.active=true;
+        this.loadNode.active = true;
+        this.lableMessage.string = this.uiLogin.str在线人数
     }
     start() {
         console.log('start')
