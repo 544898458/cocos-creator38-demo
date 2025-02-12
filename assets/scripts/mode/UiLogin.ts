@@ -382,11 +382,11 @@ export class UiLogin extends Component {
         console.log(event,customEventData)
         this.sendArray([[MsgId.玩家多人战局列表, ++this.sendMsgSn, 0, 0]])
     }
-    onClick进入别人的个人战局( Event, customEventData: string) {
-        console.log(event,customEventData)
+    onClick进入别人的个人战局(event: Event, customEventData: string) {
+        console.log(event, customEventData)
         this.进Scene战斗(this.map玩家场景.get(customEventData), msgpack.encode([[MsgId.进其他玩家个人战局, ++this.sendMsgSn, 0, 0],customEventData]))
     } 
-    onClick进入别人的多人战局( Event, customEventData: string) {
+    onClick进入别人的多人战局(event: Event, customEventData: string) {
         console.log(event,customEventData)
         this.进Scene战斗(this.map玩家场景.get(customEventData), msgpack.encode([[MsgId.进其他玩家多人战局, ++this.sendMsgSn, 0, 0],customEventData]))
     }
@@ -463,7 +463,7 @@ export class UiLogin extends Component {
             console.log("收到GateSvr消息,msgId：", msgId, ',sn收到:', sn收到)
             ++thisLocal.recvMsgSn
             if(thisLocal.recvMsgSn != sn收到)
-                console.error('收到GateSvr消息', thisLocal.recvMsgSn , 'sn收到:', sn收到)
+                console.error('收到GateSvr消息sn不同', thisLocal.recvMsgSn , 'sn收到:', sn收到)
             switch(msgId)
             {
             case MsgId.GateSvr转发GameSvr消息给游戏前端:
@@ -474,9 +474,9 @@ export class UiLogin extends Component {
                 }
                 break
             case MsgId.GateSvr转发WorldSvr消息给游戏前端:
-                let arrGameMsg = arr[idxArr++]
-                    console.log('收到WorldSvr消息',arrGameMsg)
-                    thisLocal.onRecvWorldSvr(arrGameMsg)
+                let arrWorldMsg = arr[idxArr++]
+                    console.log('收到WorldSvr消息',arrWorldMsg)
+                    thisLocal.onRecvWorldSvr(arrWorldMsg)
                 break
     
             }
@@ -504,11 +504,11 @@ export class UiLogin extends Component {
         let idxArr = 0
         let msgHead = arr[idxArr++]
         let msgId = msgHead[0] as MsgId
-        let sn = msgHead[1] as number
-        console.log("收到,msgId：", msgId, ',recvMsgSnWorldSvr:', sn)
+        let snFromWorldSvr = msgHead[1] as number
+        console.log("收到,msgId：", msgId, ',recvMsgSnWorldSvr:', snFromWorldSvr)
         ++thisLocal.recvMsgSnWorldSvr
-        if(thisLocal.recvMsgSnWorldSvr != sn)
-            console.error('recvMsgSn ', thisLocal.recvMsgSnWorldSvr , 'recvMsgSnWorldSvr', sn)
+        // if(thisLocal.recvMsgSnWorldSvr != snFromWorldSvr)
+            // console.error('recvMsgSn ', thisLocal.recvMsgSnWorldSvr , 'snFromWorldSvr', snFromWorldSvr)
         // console.log("sn", sn)
         switch (msgId) {
         case MsgId.在线人数:
@@ -754,11 +754,11 @@ export class UiLogin extends Component {
                     switch (channel) {
                         case SayChannel.系统:
                             if(content.length>0)
-                                thisLocal.scene战斗.battleUI.lable系统消息.string = '    ' + content
+                                thisLocal.scene战斗.battleUI.lable系统消息.string = content
                             break
                         case SayChannel.聊天:
                             if(content.length>0)
-                                thisLocal.scene战斗.battleUI.lable聊天消息.string = '    ' + content
+                                thisLocal.scene战斗.battleUI.lable聊天消息.string = content
                             break
                     }
 
@@ -800,7 +800,7 @@ export class UiLogin extends Component {
                 break
             case MsgId.进Space:
                 {
-                    thisLocal.scene战斗.battleUI.node.active = true
+                    // thisLocal.scene战斗.battleUI.node.active = true
                     // director.loadScene('scene战斗')
                 }
                 break
