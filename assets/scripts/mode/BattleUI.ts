@@ -43,6 +43,8 @@ export class BattleUI extends Component {
     lable剧情对话名字右: Label
     @property({ type: UITransform, displayName: "剧情对话退出面板" })
     uiTransform剧情对话退出面板: UITransform
+    @property({ type: Label, displayName: "在线人数" })
+    lable在线人数: Label
     start() {
         this.uiLogin = director.getScene().getChildByName('常驻').getComponent(UiLogin);
         this.uiLogin.scene战斗 = this.scene战斗;
