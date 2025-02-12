@@ -195,6 +195,8 @@ enum MsgId
 	/// </summary>
 	剧情对话已看完,
 	在线人数,
+    GateSvr转发GameSvr消息给游戏前端,
+    GateSvr转发WorldSvr消息给游戏前端,
 };
 
 enum 副本ID
@@ -449,385 +451,31 @@ export class UiLogin extends Component {
         //接收到消息的回调方法
         this.websocket.onmessage = function (event: MessageEvent) {
             let data = event.data as ArrayBuffer
-            // console.log("收到数据：", data, data.byteLength)
             const arr = msgpack.decode(new Uint8Array(data))
             // console.log("msgpack.decode结果：", data, data.byteLength)
             let idxArr = 0
-            let msgBase = arr[idxArr++]
-            let msgId = msgBase[0] as MsgId
-            let sn = msgBase[1] as number
-            // console.log("msgId：",   msgId)
+            let msgHead = arr[idxArr++]
+            let msgId = msgHead[0] as MsgId
+            let sn收到 = msgHead[1] as number
+            console.log("收到GateSvr消息,msgId：", msgId, ',sn收到:', sn收到)
             ++thisLocal.recvMsgSn
-            if(thisLocal.recvMsgSn != sn)
-            console.error('recvMsgSn ', thisLocal.recvMsgSn , 'sn', sn)
-            // console.log("sn", sn)
-            switch (msgId) {
-                case MsgId.AddRoleRet:
-                    {
-                        // console.log('登录成功')
-                        let id: number = arr[idxArr++]
-                        let nickName: string = arr[idxArr++]
-                        let entityName: string = arr[idxArr++]
-                        let prefabName: string = arr[idxArr++]
-                        let hpMax: number = arr[idxArr++]
-                        console.log(id, nickName, prefabName, '进来了,hpMax', hpMax)
-                        let old = thisLocal.scene战斗.entities.get(id)
-                        if (old == undefined) {
-                            old = new ClientEntityComponent()
-                            old.hpMax = hpMax
-                            old.prefabName = prefabName
-                            thisLocal.scene战斗.entities.set(id, old)
-                            if (thisLocal.scene战斗.battleUI.lableCount != undefined)
-                                thisLocal.scene战斗.battleUI.lableCount.string = '共' + thisLocal.scene战斗.entities.size + '单位'
-
-                            resources.load(prefabName, Prefab, (err, prefab) => {
-                                // console.log('resources.load callback:', err, prefab)
-                                if(!thisLocal.scene战斗.roles){
-                                    console.warn('已离开战斗场景')
-                                    return
-                                }
-                                const newNode = instantiate(prefab)
-                                thisLocal.scene战斗.roles.addChild(newNode)
-                                thisLocal.scene战斗.entityId[newNode.uuid] = id
-                                //newNode.position = new Vec3(posX, 0, 0)
-                                // console.log('resources.load newNode', newNode)
-                                old.view = newNode
-                                if(newNode.name =='基地')
-                                    old.skeletalAnimation = newNode.getChildByName('p_Base_02').getComponent(SkeletalAnimation)
-                                else if(newNode.name =='步兵')
-                                    old.skeletalAnimation = newNode.getChildByName('p_A_rifle_01').getComponent(SkeletalAnimation)
-                                else if(newNode.name =='工程车')
-                                    old.skeletalAnimation = newNode.getChildByPath('scv/Geoset_0').getComponent(Animation)
-                                else if(newNode.name == '三色坦克')
-                                    old.skeletalAnimation = newNode.getChildByName('p_B_tank_03').getComponent(SkeletalAnimation)
-                                else if(newNode.name == '跳虫'){
-                                    old.skeletalAnimation = newNode.getChildByName('Zergling').getComponent(SkeletalAnimation)
-                                    // old.initClipName = 'Take 001'
-                                }else if(newNode.name == '刺蛇'){
-                                    old.skeletalAnimation = newNode.getChildByName('Hydralisk').getComponent(SkeletalAnimation)
-                                    // old.initClipName = 'Take 001'
-                                }else if(newNode.name == '工蜂'){
-                                    old.skeletalAnimation = newNode.getChildByName('Drone').getComponent(SkeletalAnimation)
-                                    // old.initClipName = 'Take 001'
-                                    console.log('工蜂骨骼动画', old.skeletalAnimation)
-                                }
-                                else
-                                    old.skeletalAnimation = newNode.getComponent(SkeletalAnimation)
-
-                                if (old.skeletalAnimation != undefined) {
-                                    // old.skeletalAnimation.play(old.initClipName)
-                                    UiLogin.播放动作(old, old.initClipName, true)
-                                }
-                                let node所有单位头顶名字 = thisLocal.scene战斗.battleUI.uiTransform所有单位头顶名字.node
-                                let nodeRoleName = utils.find("RoleName", node所有单位头顶名字)
-                                // console.log('RoleName',this.nodeRoleName)
-                                // this.nodeRoleName.getComponent(HeadScale).target = this.nodeRoleName
-
-                                old.nodeName = instantiate(nodeRoleName)
-                                node所有单位头顶名字.addChild(old.nodeName)
-                                if (newNode.name != "smoke") {
-                                    let nodeRoleHp = utils.find("RoleHp", node所有单位头顶名字)
-                                    old.hpbar = instantiate(nodeRoleHp)
-                                    old.hpbar.active = true;
-                                    node所有单位头顶名字.addChild(old.hpbar)
-                                    
-                                    if(hpMax<=0)
-                                        old.hpbar.active = false
-                                    else
-                                        old.hpbar.getComponent(ProgressBar).progress = old.hp / old.hpMax;//todo等后端传最大血量 20测试用
-
-                                    let headScal = old.hpbar.getComponent(HeadScale)
-                                    headScal.target = utils.find("血条", newNode)
-                                }
-                                old.labelName = old.nodeName.getComponent(Label)
-                                {
-                                    let headScal = old.nodeName.getComponent(HeadScale)
-                                    headScal.target = utils.find("NamePos", newNode)
-                                }
-
-                                old.node描述 = instantiate(nodeRoleName)
-                                node所有单位头顶名字.addChild(old.node描述)
-                                old.label描述 = old.node描述.getComponent(Label)
-                                {
-                                    let headScal = old.node描述.getComponent(HeadScale)
-                                    headScal.target = utils.find("描述", newNode)
-                                    console.log(headScal.target)
-                                }
-
-
-                                let camera3D = utils.find("Main Camera", thisLocal.scene战斗.roles.parent).getComponent(Camera)
-                                // console.log('Main Camera',camera3D)
-                                //  headScal.camera = camera3D
-                                // headScal.distance = 55
-                                old.nickName = nickName + '(' + entityName + ')'
-                                // old.labelName.string = old.nickName + '(' + id + ')hp=' + old.hp
-                                old.labelName.string = old.nickName //+ ',hp=' + old.hp
-
-                                if (old.position != undefined)
-                                    old.view.position = old.position
-
-                                if(old.view.name == '黄光爆闪'){
-                                    var particleSystem = old.view.getChildByPath('collectYellow/collectYellow').getComponent(ParticleSystem)
-                                    particleSystem.play()
-                                }
-                            })
-                        }
-                        else {
-                            console.error('重复进入', id)
-                        }
-                    }
-                    break
-                case MsgId.NotifyPos:
-                    {
-                        let id = arr[idxArr++]
-                        let posX = arr[idxArr++]
-                        let posZ = arr[idxArr++]
-                        let eulerAnglesY = arr[idxArr++]
-                        let hp = arr[5]
-                        // console.log(arr)
-
-                        let old = thisLocal.scene战斗.entities.get(id)
-                        if (old == undefined) {
-                            //    old = entites[id] = new ClientEntityComponent()
-                            //    resources.load("altman-blue", Prefab, (err, prefab) => {
-                            //        console.log('resources.load callback:', err, prefab)
-                            //        const newNode = instantiate(prefab)
-                            //        roles.addChild(newNode)
-                            //        newNode.position = new Vec3(posX, 0, 0)
-                            //        console.log('resources.load newNode', newNode)
-                            //        old.view = newNode
-                            //        old.skeletalAnimation = newNode.getComponent(SkeletalAnimation)
-                            //        old.skeletalAnimation.play(old.initClipName )
-                            //    })
-                        }
-                        else {
-                            if (old) {
-                                // old.skeletalAnimation.play('run')
-                                let posNew = new Vec3(posX, 0, posZ)
-                                old.position = posNew
-                                old.hp = hp
-                                if(old.hpbar){
-                                    let progressBar = old.hpbar.getComponent(ProgressBar)
-                                    if(old.hpMax>0)
-                                        progressBar.progress = hp / old.hpMax//todo等后端传最大血量 20测试用
-                                    else
-                                        old.hpbar.active = false //资源没有血量
-                                }
-                                //console.log('hp', hp, old.hpMax)
-                            }
-                            if (old && old.view) {
-
-                                if(!old.view.position || old.view.position.clone().subtract(old.position).lengthSqr() > 5)
-                                    old.view.position = old.position
-                                else
-                                    {
-                                        old.tween移动?.stop()
-                                        old.tween移动 = tween(old.view).to(0.2, {position:old.position})
-                                        old.tween移动.start()
-                                    }
-
-                                
-                                old.view.eulerAngles = new Vec3(0, eulerAnglesY, 0)
-                                // old.labelName.string = old.nickName + '(' + id + ')hp=' + hp
-                                old.labelName.string = old.nickName// + 'hp=' + hp
-                                // old.hpbar&&(old.hpbar.getComponent(ProgressBar).progress = old.hp / old.hpMax);//todo等后端传最大血量 20测试用
-
-                            }
-                        }
-                    }
-                    break
-                case MsgId.ChangeSkeleAnim:
-                    {
-                        let id = arr[idxArr++]
-                        let loop: boolean = arr[idxArr++]
-                        let clipName: string = arr[idxArr++]
-                        // console.log(id, '动作改为', clipName)
-                        let old = thisLocal.scene战斗.entities.get(id)
-                        if (old == undefined) {
-                            // console.log(id,"还没加载好,没有播放动作",clipName)
-                            return
-                        }
-                        if (old.skeletalAnimation == undefined){
-                                old.initClipName = clipName
-                        }else {
-                            UiLogin.播放动作(old, clipName, loop)
-                            old.tween移动?.stop()
-                            old.tween移动 = null
-                            // old.view.position = old.position
-                            // tween(old.view).to(0.1, {position:old.position}).start()
-                        }
-                    }
-                    break
-                case MsgId.Say:
-                    {
-                        let content = arr[idxArr++]
-                        let channel = arr[idxArr++] as SayChannel
-                        console.log(channel, '说:', content)
-                        AudioMgr.inst.playOneShot('音效/Transmission')
-                        if(!thisLocal.scene战斗.battleUI)
-                            return
-
-                        switch (channel) {
-                            case SayChannel.系统:
-                                if(content.length>0)
-                                    thisLocal.scene战斗.battleUI.lable系统消息.string = '    ' + content
-                                break
-                            case SayChannel.聊天:
-                                if(content.length>0)
-                                    thisLocal.scene战斗.battleUI.lable聊天消息.string = '    ' + content
-                                break
-                        }
-
-                    }
-                    break
-                case MsgId.DelRoleRet:
-                    {
-                        let id = arr[idxArr++]
-                        console.log('删除:', id)
-                        let entity = thisLocal.scene战斗.entities.get(id);
-                        // entity.hpbar?.destroy();
-                        if (entity == undefined){
-                            console.warn('无法删除',id)
-                            return
-                        }
-
-                        entity.removeFromParent()
-                        thisLocal.scene战斗.entities.delete(id)
-                        if (thisLocal.scene战斗.battleUI.lableCount != undefined)
-                            thisLocal.scene战斗.battleUI.lableCount.string = '共' + thisLocal.scene战斗.entities.size + '单位'
-                    }
-                    break
-                case MsgId.NotifyeMoney:
-                    {
-                        let finalMoney = arr[idxArr++]
-                        // thisLocal.scene战斗.battleUI.lableCrystal.string = '晶体矿:' + finalMoney
-                    }
-                    break
-                case MsgId.资源:
-                    {
-                        let 晶体矿 = arr[idxArr++]
-                        let 燃气矿 = arr[idxArr++]
-                        let 活动单位 = arr[idxArr++]
-                        let 活动单位上限 = arr[idxArr++]
-                        thisLocal.scene战斗.battleUI.lableGas.string = '燃气矿:' + 燃气矿
-                        thisLocal.scene战斗.battleUI.lableCrystal.string = '晶体矿:' + 晶体矿
-                        thisLocal.scene战斗.battleUI.lableUnit.string = '活动单位:' + 活动单位 + '/' + 活动单位上限
-                    }
-                    break
-                case MsgId.进Space:
-                    {
-                        thisLocal.scene战斗.battleUI.node.active = true
-                        // director.loadScene('scene战斗')
-                    }
-                    break
-                case MsgId.显示界面:
-                    {
-                        //thisLocal.scene战斗.quitGame.active = true
-                    }
-                    break
-                case MsgId.离开Space:
-                    {
-                        thisLocal.scene战斗.entities.forEach((clientEntityComponent, k, map) => {
-                            clientEntityComponent.removeFromParent()
-                        })
-                        thisLocal.scene战斗.entities.clear()
-                        thisLocal.scene战斗.entityId.clear()
-                        thisLocal.回到登录场景()
-                    }
-                    break
-                case MsgId.Entity描述:
-                    {
-                        let id = arr[idxArr++]
-                        let desc = arr[idxArr++]
-                        // console.log('描述:', id, desc)
-                        let entity = thisLocal.scene战斗.entities.get(id)
-                        if (entity == undefined) {
-                            // console.log(id,"还没加载好,没有播放动作",clipName)
-                            return
-                        }
-                        if (entity.label描述 != undefined) {
-                            entity.label描述.string = desc
-                        }
-
-                    }
-                    break
-                case MsgId.播放声音:
-                    {
-                        let str声音 = arr[idxArr++]
-                        let str文本 = arr[idxArr++]
-                        AudioMgr.inst.playOneShot(str声音)
-                        if(str文本.length>0)
-                            thisLocal.scene战斗.battleUI.lable系统消息.string = str文本
-                    }
-                    break
-                case MsgId.设置视口:
-                    {
-                        let arrPos视口 = arr[idxArr++] as number[]
-                        console.log('arrPos视口', arrPos视口)
-                        thisLocal.scene战斗.视口对准此处(new Vec3(arrPos视口[0], 0, arrPos视口[1]))
-                    }
-                    break
-                case MsgId.SelectRoles:
-                    {
-                        let arr选中 = arr[idxArr++] as number[]
-                        thisLocal.scene战斗.选中(arr选中)
-                    }
-                    break
-                case MsgId.玩家个人战局列表:
-                    {
-                        let arr玩家 = arr[idxArr++] as string[][]
-                        console.log(arr玩家)
-                        thisLocal.scene登录.显示战局列表(arr玩家,'onClick进入别人的个人战局')
-                    }
-                    break
-                case MsgId.玩家多人战局列表:
-                    {
-                        let arr玩家 = arr[idxArr++] as string[][]
-                        console.log(arr玩家)
-                        thisLocal.scene登录.显示战局列表(arr玩家,'onClick进入别人的多人战局')
-                    }
-                    break
-                case MsgId.弹丸特效:
-                    {
-                        let idEntity = arr[idxArr++] as number
-                        let idEntityTarget = arr[idxArr++] as number
-                        let str特效 = arr[idxArr++] as string
-                        
-                        thisLocal.scene战斗.弹丸特效(idEntity, idEntityTarget, str特效)
-                    }
-                    break
-                case MsgId.剧情对话:
-                    {
-                        let str头像左 = arr[idxArr++] as string
-                        let str名字左 = arr[idxArr++] as string
-                        let str头像右 = arr[idxArr++] as string
-                        let str名字右 = arr[idxArr++] as string
-                        let str对话内容 = arr[idxArr++] as string
-                        let b显示退出面板 = arr[idxArr++] as boolean
-                        thisLocal.scene战斗.剧情对话(str头像左, str名字左, str头像右, str名字右, str对话内容, b显示退出面板)
-                    }
-                    break
-                case MsgId.剧情对话已看完:
-                    {
-                        thisLocal.scene战斗.battleUI.uiTransform剧情对话根.node.active = false
-                    }
-                    break
-                case MsgId.在线人数:
-                    {
-                        let 人数 = arr[idxArr++] as number
-                        let str人数 = 人数 + '人在线'
-                        console.log(str人数)
-                        if(thisLocal.scene战斗)
-                            thisLocal.scene战斗.battleUI.lable在线人数.string = str人数
-
-                        if(thisLocal.scene登录)
-                            thisLocal.scene登录.lableMessage.string = str人数
-                    }
-                    break
-                default:
-                    console.error('msgId=', msgId)
-                    break
+            if(thisLocal.recvMsgSn != sn收到)
+                console.error('收到GateSvr消息', thisLocal.recvMsgSn , 'sn收到:', sn收到)
+            switch(msgId)
+            {
+            case MsgId.GateSvr转发GameSvr消息给游戏前端:
+                {
+                    let arrGameMsg = arr[idxArr++]
+                    console.log('收到GameSvr消息',arrGameMsg)
+                    thisLocal.onRecvGameSvr(arrGameMsg)
+                }
+                break
+            case MsgId.GateSvr转发WorldSvr消息给游戏前端:
+                break
+    
             }
+            // console.log("sn", sn)
+            
         }
 
         //连接关闭的回调方法
@@ -839,6 +487,389 @@ export class UiLogin extends Component {
         //监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
         window.onbeforeunload = function () {
             console.log("onbeforeunload")
+        }
+    }
+    onRecvGameSvr(data:ArrayBuffer)
+    {
+        let thisLocal = this
+        // console.log("收到数据：", data, data.byteLength)
+        const arr = msgpack.decode(new Uint8Array(data))
+        // console.log("msgpack.decode结果：", data, data.byteLength)
+        let idxArr = 0
+        let msgHead = arr[idxArr++]
+        let msgId = msgHead[0] as MsgId
+        let sn = msgHead[1] as number
+        console.log("收到,msgId：", msgId, ',sn:', sn)
+        ++thisLocal.recvMsgSn
+        if(thisLocal.recvMsgSn != sn)
+            console.error('recvMsgSn ', thisLocal.recvMsgSn , 'sn', sn)
+        // console.log("sn", sn)
+        switch (msgId) {
+            case MsgId.AddRoleRet:
+                {
+                    // console.log('登录成功')
+                    let id: number = arr[idxArr++]
+                    let nickName: string = arr[idxArr++]
+                    let entityName: string = arr[idxArr++]
+                    let prefabName: string = arr[idxArr++]
+                    let hpMax: number = arr[idxArr++]
+                    console.log(id, nickName, prefabName, '进来了,hpMax', hpMax)
+                    let old = thisLocal.scene战斗.entities.get(id)
+                    if (old == undefined) {
+                        old = new ClientEntityComponent()
+                        old.hpMax = hpMax
+                        old.prefabName = prefabName
+                        thisLocal.scene战斗.entities.set(id, old)
+                        if (thisLocal.scene战斗.battleUI.lableCount != undefined)
+                            thisLocal.scene战斗.battleUI.lableCount.string = '共' + thisLocal.scene战斗.entities.size + '单位'
+
+                        resources.load(prefabName, Prefab, (err, prefab) => {
+                            // console.log('resources.load callback:', err, prefab)
+                            if(!thisLocal.scene战斗.roles){
+                                console.warn('已离开战斗场景')
+                                return
+                            }
+                            const newNode = instantiate(prefab)
+                            thisLocal.scene战斗.roles.addChild(newNode)
+                            thisLocal.scene战斗.entityId[newNode.uuid] = id
+                            //newNode.position = new Vec3(posX, 0, 0)
+                            // console.log('resources.load newNode', newNode)
+                            old.view = newNode
+                            if(newNode.name =='基地')
+                                old.skeletalAnimation = newNode.getChildByName('p_Base_02').getComponent(SkeletalAnimation)
+                            else if(newNode.name =='步兵')
+                                old.skeletalAnimation = newNode.getChildByName('p_A_rifle_01').getComponent(SkeletalAnimation)
+                            else if(newNode.name =='工程车')
+                                old.skeletalAnimation = newNode.getChildByPath('scv/Geoset_0').getComponent(Animation)
+                            else if(newNode.name == '三色坦克')
+                                old.skeletalAnimation = newNode.getChildByName('p_B_tank_03').getComponent(SkeletalAnimation)
+                            else if(newNode.name == '跳虫'){
+                                old.skeletalAnimation = newNode.getChildByName('Zergling').getComponent(SkeletalAnimation)
+                                // old.initClipName = 'Take 001'
+                            }else if(newNode.name == '刺蛇'){
+                                old.skeletalAnimation = newNode.getChildByName('Hydralisk').getComponent(SkeletalAnimation)
+                                // old.initClipName = 'Take 001'
+                            }else if(newNode.name == '工蜂'){
+                                old.skeletalAnimation = newNode.getChildByName('Drone').getComponent(SkeletalAnimation)
+                                // old.initClipName = 'Take 001'
+                                console.log('工蜂骨骼动画', old.skeletalAnimation)
+                            }
+                            else
+                                old.skeletalAnimation = newNode.getComponent(SkeletalAnimation)
+
+                            if (old.skeletalAnimation != undefined) {
+                                // old.skeletalAnimation.play(old.initClipName)
+                                UiLogin.播放动作(old, old.initClipName, true)
+                            }
+                            let node所有单位头顶名字 = thisLocal.scene战斗.battleUI.uiTransform所有单位头顶名字.node
+                            let nodeRoleName = utils.find("RoleName", node所有单位头顶名字)
+                            // console.log('RoleName',this.nodeRoleName)
+                            // this.nodeRoleName.getComponent(HeadScale).target = this.nodeRoleName
+
+                            old.nodeName = instantiate(nodeRoleName)
+                            node所有单位头顶名字.addChild(old.nodeName)
+                            if (newNode.name != "smoke") {
+                                let nodeRoleHp = utils.find("RoleHp", node所有单位头顶名字)
+                                old.hpbar = instantiate(nodeRoleHp)
+                                old.hpbar.active = true;
+                                node所有单位头顶名字.addChild(old.hpbar)
+                                
+                                if(hpMax<=0)
+                                    old.hpbar.active = false
+                                else
+                                    old.hpbar.getComponent(ProgressBar).progress = old.hp / old.hpMax;//todo等后端传最大血量 20测试用
+
+                                let headScal = old.hpbar.getComponent(HeadScale)
+                                headScal.target = utils.find("血条", newNode)
+                            }
+                            old.labelName = old.nodeName.getComponent(Label)
+                            {
+                                let headScal = old.nodeName.getComponent(HeadScale)
+                                headScal.target = utils.find("NamePos", newNode)
+                            }
+
+                            old.node描述 = instantiate(nodeRoleName)
+                            node所有单位头顶名字.addChild(old.node描述)
+                            old.label描述 = old.node描述.getComponent(Label)
+                            {
+                                let headScal = old.node描述.getComponent(HeadScale)
+                                headScal.target = utils.find("描述", newNode)
+                                console.log(headScal.target)
+                            }
+
+
+                            let camera3D = utils.find("Main Camera", thisLocal.scene战斗.roles.parent).getComponent(Camera)
+                            // console.log('Main Camera',camera3D)
+                            //  headScal.camera = camera3D
+                            // headScal.distance = 55
+                            old.nickName = nickName + '(' + entityName + ')'
+                            // old.labelName.string = old.nickName + '(' + id + ')hp=' + old.hp
+                            old.labelName.string = old.nickName //+ ',hp=' + old.hp
+
+                            if (old.position != undefined)
+                                old.view.position = old.position
+
+                            if(old.view.name == '黄光爆闪'){
+                                var particleSystem = old.view.getChildByPath('collectYellow/collectYellow').getComponent(ParticleSystem)
+                                particleSystem.play()
+                            }
+                        })
+                    }
+                    else {
+                        console.error('重复进入', id)
+                    }
+                }
+                break
+            case MsgId.NotifyPos:
+                {
+                    let id = arr[idxArr++]
+                    let posX = arr[idxArr++]
+                    let posZ = arr[idxArr++]
+                    let eulerAnglesY = arr[idxArr++]
+                    let hp = arr[5]
+                    // console.log(arr)
+
+                    let old = thisLocal.scene战斗.entities.get(id)
+                    if (old == undefined) {
+                        //    old = entites[id] = new ClientEntityComponent()
+                        //    resources.load("altman-blue", Prefab, (err, prefab) => {
+                        //        console.log('resources.load callback:', err, prefab)
+                        //        const newNode = instantiate(prefab)
+                        //        roles.addChild(newNode)
+                        //        newNode.position = new Vec3(posX, 0, 0)
+                        //        console.log('resources.load newNode', newNode)
+                        //        old.view = newNode
+                        //        old.skeletalAnimation = newNode.getComponent(SkeletalAnimation)
+                        //        old.skeletalAnimation.play(old.initClipName )
+                        //    })
+                    }
+                    else {
+                        if (old) {
+                            // old.skeletalAnimation.play('run')
+                            let posNew = new Vec3(posX, 0, posZ)
+                            old.position = posNew
+                            old.hp = hp
+                            if(old.hpbar){
+                                let progressBar = old.hpbar.getComponent(ProgressBar)
+                                if(old.hpMax>0)
+                                    progressBar.progress = hp / old.hpMax//todo等后端传最大血量 20测试用
+                                else
+                                    old.hpbar.active = false //资源没有血量
+                            }
+                            //console.log('hp', hp, old.hpMax)
+                        }
+                        if (old && old.view) {
+
+                            if(!old.view.position || old.view.position.clone().subtract(old.position).lengthSqr() > 5)
+                                old.view.position = old.position
+                            else
+                                {
+                                    old.tween移动?.stop()
+                                    old.tween移动 = tween(old.view).to(0.2, {position:old.position})
+                                    old.tween移动.start()
+                                }
+
+                            
+                            old.view.eulerAngles = new Vec3(0, eulerAnglesY, 0)
+                            // old.labelName.string = old.nickName + '(' + id + ')hp=' + hp
+                            old.labelName.string = old.nickName// + 'hp=' + hp
+                            // old.hpbar&&(old.hpbar.getComponent(ProgressBar).progress = old.hp / old.hpMax);//todo等后端传最大血量 20测试用
+
+                        }
+                    }
+                }
+                break
+            case MsgId.ChangeSkeleAnim:
+                {
+                    let id = arr[idxArr++]
+                    let loop: boolean = arr[idxArr++]
+                    let clipName: string = arr[idxArr++]
+                    // console.log(id, '动作改为', clipName)
+                    let old = thisLocal.scene战斗.entities.get(id)
+                    if (old == undefined) {
+                        // console.log(id,"还没加载好,没有播放动作",clipName)
+                        return
+                    }
+                    if (old.skeletalAnimation == undefined){
+                            old.initClipName = clipName
+                    }else {
+                        UiLogin.播放动作(old, clipName, loop)
+                        old.tween移动?.stop()
+                        old.tween移动 = null
+                        // old.view.position = old.position
+                        // tween(old.view).to(0.1, {position:old.position}).start()
+                    }
+                }
+                break
+            case MsgId.Say:
+                {
+                    let content = arr[idxArr++]
+                    let channel = arr[idxArr++] as SayChannel
+                    console.log(channel, '说:', content)
+                    AudioMgr.inst.playOneShot('音效/Transmission')
+                    if(!thisLocal.scene战斗.battleUI)
+                        return
+
+                    switch (channel) {
+                        case SayChannel.系统:
+                            if(content.length>0)
+                                thisLocal.scene战斗.battleUI.lable系统消息.string = '    ' + content
+                            break
+                        case SayChannel.聊天:
+                            if(content.length>0)
+                                thisLocal.scene战斗.battleUI.lable聊天消息.string = '    ' + content
+                            break
+                    }
+
+                }
+                break
+            case MsgId.DelRoleRet:
+                {
+                    let id = arr[idxArr++]
+                    console.log('删除:', id)
+                    let entity = thisLocal.scene战斗.entities.get(id);
+                    // entity.hpbar?.destroy();
+                    if (entity == undefined){
+                        console.warn('无法删除',id)
+                        return
+                    }
+
+                    entity.removeFromParent()
+                    thisLocal.scene战斗.entities.delete(id)
+                    if (thisLocal.scene战斗.battleUI.lableCount != undefined)
+                        thisLocal.scene战斗.battleUI.lableCount.string = '共' + thisLocal.scene战斗.entities.size + '单位'
+                }
+                break
+            case MsgId.NotifyeMoney:
+                {
+                    let finalMoney = arr[idxArr++]
+                    // thisLocal.scene战斗.battleUI.lableCrystal.string = '晶体矿:' + finalMoney
+                }
+                break
+            case MsgId.资源:
+                {
+                    let 晶体矿 = arr[idxArr++]
+                    let 燃气矿 = arr[idxArr++]
+                    let 活动单位 = arr[idxArr++]
+                    let 活动单位上限 = arr[idxArr++]
+                    thisLocal.scene战斗.battleUI.lableGas.string = '燃气矿:' + 燃气矿
+                    thisLocal.scene战斗.battleUI.lableCrystal.string = '晶体矿:' + 晶体矿
+                    thisLocal.scene战斗.battleUI.lableUnit.string = '活动单位:' + 活动单位 + '/' + 活动单位上限
+                }
+                break
+            case MsgId.进Space:
+                {
+                    thisLocal.scene战斗.battleUI.node.active = true
+                    // director.loadScene('scene战斗')
+                }
+                break
+            case MsgId.显示界面_没用到:
+                {
+                    //thisLocal.scene战斗.quitGame.active = true
+                }
+                break
+            case MsgId.离开Space:
+                {
+                    thisLocal.scene战斗.entities.forEach((clientEntityComponent, k, map) => {
+                        clientEntityComponent.removeFromParent()
+                    })
+                    thisLocal.scene战斗.entities.clear()
+                    thisLocal.scene战斗.entityId.clear()
+                    thisLocal.回到登录场景()
+                }
+                break
+            case MsgId.Entity描述:
+                {
+                    let id = arr[idxArr++]
+                    let desc = arr[idxArr++]
+                    // console.log('描述:', id, desc)
+                    let entity = thisLocal.scene战斗.entities.get(id)
+                    if (entity == undefined) {
+                        // console.log(id,"还没加载好,没有播放动作",clipName)
+                        return
+                    }
+                    if (entity.label描述 != undefined) {
+                        entity.label描述.string = desc
+                    }
+
+                }
+                break
+            case MsgId.播放声音:
+                {
+                    let str声音 = arr[idxArr++]
+                    let str文本 = arr[idxArr++]
+                    AudioMgr.inst.playOneShot(str声音)
+                    if(str文本.length>0)
+                        thisLocal.scene战斗.battleUI.lable系统消息.string = str文本
+                }
+                break
+            case MsgId.设置视口:
+                {
+                    let arrPos视口 = arr[idxArr++] as number[]
+                    console.log('arrPos视口', arrPos视口)
+                    thisLocal.scene战斗.视口对准此处(new Vec3(arrPos视口[0], 0, arrPos视口[1]))
+                }
+                break
+            case MsgId.SelectRoles:
+                {
+                    let arr选中 = arr[idxArr++] as number[]
+                    thisLocal.scene战斗.选中(arr选中)
+                }
+                break
+            case MsgId.玩家个人战局列表:
+                {
+                    let arr玩家 = arr[idxArr++] as string[][]
+                    console.log(arr玩家)
+                    thisLocal.scene登录.显示战局列表(arr玩家,'onClick进入别人的个人战局')
+                }
+                break
+            case MsgId.玩家多人战局列表:
+                {
+                    let arr玩家 = arr[idxArr++] as string[][]
+                    console.log(arr玩家)
+                    thisLocal.scene登录.显示战局列表(arr玩家,'onClick进入别人的多人战局')
+                }
+                break
+            case MsgId.弹丸特效:
+                {
+                    let idEntity = arr[idxArr++] as number
+                    let idEntityTarget = arr[idxArr++] as number
+                    let str特效 = arr[idxArr++] as string
+                    
+                    thisLocal.scene战斗.弹丸特效(idEntity, idEntityTarget, str特效)
+                }
+                break
+            case MsgId.剧情对话:
+                {
+                    let str头像左 = arr[idxArr++] as string
+                    let str名字左 = arr[idxArr++] as string
+                    let str头像右 = arr[idxArr++] as string
+                    let str名字右 = arr[idxArr++] as string
+                    let str对话内容 = arr[idxArr++] as string
+                    let b显示退出面板 = arr[idxArr++] as boolean
+                    thisLocal.scene战斗.剧情对话(str头像左, str名字左, str头像右, str名字右, str对话内容, b显示退出面板)
+                }
+                break
+            case MsgId.剧情对话已看完:
+                {
+                    thisLocal.scene战斗.battleUI.uiTransform剧情对话根.node.active = false
+                }
+                break
+            case MsgId.在线人数:
+                {
+                    let 人数 = arr[idxArr++] as number
+                    let str人数 = 人数 + '人在线'
+                    console.log(str人数)
+                    if(thisLocal.scene战斗)
+                        thisLocal.scene战斗.battleUI.lable在线人数.string = str人数
+
+                    if(thisLocal.scene登录)
+                        thisLocal.scene登录.lableMessage.string = str人数
+                }
+                break
+            default:
+                console.error('msgId=', msgId)
+                break
         }
     }
     onClickSay(str: string) {
