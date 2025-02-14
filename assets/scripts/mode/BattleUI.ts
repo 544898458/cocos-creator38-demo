@@ -1,4 +1,4 @@
-import { _decorator, Component,Node} from 'cc';
+import { _decorator, Component, Node } from 'cc';
 import { UiLogin } from './UiLogin';
 import { director } from 'cc';
 import { Scene战斗 } from '../scene/Scene战斗';
@@ -10,11 +10,15 @@ const { ccclass, property } = _decorator;
 
 @ccclass('BattleUI')
 export class BattleUI extends Component {
-    uiLogin:UiLogin;
+    uiLogin: UiLogin;
     @property(Scene战斗)
-    scene战斗:Scene战斗
+    scene战斗: Scene战斗
     @property(Node)
-    游戏攻略:Node;
+    游戏攻略: Node;
+    @property(Node)
+    游戏设置: Node;
+    @property(Node)
+    下部列表: Node;
     @property({ type: Label, displayName: "数量单位" })
     lableCount: Label
     @property({ type: Label, displayName: "晶体矿" })
@@ -34,7 +38,7 @@ export class BattleUI extends Component {
     @property({ type: Label, displayName: "剧情对话内容" })
     lable剧情对话内容: Label
     @property({ type: Sprite, displayName: "剧情对话头像左" })
-    sprite剧情对话头像左  : Sprite
+    sprite剧情对话头像左: Sprite
     @property({ type: Label, displayName: "剧情对话名字左" })
     lable剧情对话名字左: Label
     @property({ type: Sprite, displayName: "剧情对话头像右" })
@@ -45,28 +49,30 @@ export class BattleUI extends Component {
     uiTransform剧情对话退出面板: UITransform
     @property({ type: Label, displayName: "在线人数" })
     lable在线人数: Label
+
+    lastTitle: Node;
     start() {
         this.uiLogin = director.getScene().getChildByName('常驻').getComponent(UiLogin);
         this.uiLogin.scene战斗 = this.scene战斗;
+        this.lastTitle = this.下部列表.getChildByName("人类");
     }
 
     update(deltaTime: number) {
-        
+
     }
     //设置
-    on出地堡(event: Event, customEventData: string){
+    on出地堡(event: Event, customEventData: string) {
         this.uiLogin.onClick出地堡()
     }
-    on强行走(event: Event, customEventData: string){
+    on强行走(event: Event, customEventData: string) {
         this.scene战斗.b强行走 = true
     }
-    on框选(event: Event, customEventData: string){
+    on框选(event: Event, customEventData: string) {
         this.scene战斗.posWorld框选起始点 = null
         this.scene战斗.b框选等待按下起始点 = true
-        this.scene战斗.battleUI.lable系统消息.string ='请在地面上拖动框选'
+        this.scene战斗.battleUI.lable系统消息.string = '请在地面上拖动框选'
     }
-    on聊天框输入结束(editbox:EditBox, customEventData:String)
-    {
+    on聊天框输入结束(editbox: EditBox, customEventData: String) {
         console.log(editbox, customEventData)
         this.uiLogin.onClickSay(editbox.textLabel.string)
         editbox.textLabel.string = ''
@@ -90,48 +96,67 @@ export class BattleUI extends Component {
         this.scene战斗.镜头缩小()
     }
     onClickAdd兵(event: Event, customEventData: string): void {
-        this.uiLogin.onClickAdd兵(event,customEventData)
+        this.uiLogin.onClickAdd兵(event, customEventData)
     }
     onClick造坦克(event: Event, customEventData: string): void {
-        this.uiLogin.onClick造坦克(event,customEventData)
+        this.uiLogin.onClick造坦克(event, customEventData)
     }
     onClickAdd近战兵(event: Event, customEventData: string): void {
-        this.uiLogin.onClickAdd近战兵(event,customEventData)
+        this.uiLogin.onClickAdd近战兵(event, customEventData)
     }
     onClickAdd工程车(event: Event, customEventData: string): void {
-        this.uiLogin.onClickAdd工程车(event,customEventData)
+        this.uiLogin.onClickAdd工程车(event, customEventData)
     }
     onClickAdd基地(event: Event, customEventData: string): void {
-        this.uiLogin.onClickAdd基地(event,customEventData)
+        this.uiLogin.onClickAdd基地(event, customEventData)
     }
     onClickAdd地堡(event: Event, customEventData: string): void {
-        this.uiLogin.onClickAdd地堡(event,customEventData)
+        this.uiLogin.onClickAdd地堡(event, customEventData)
     }
     onClickAdd兵厂(event: Event, customEventData: string): void {
-        this.uiLogin.onClickAdd兵厂(event,customEventData)
+        this.uiLogin.onClickAdd兵厂(event, customEventData)
     }
     onClickAdd民房(event: Event, customEventData: string): void {
-        this.uiLogin.onClickAdd民房(event,customEventData)
+        this.uiLogin.onClickAdd民房(event, customEventData)
     }
     onClickAdd光子炮(event: Event, customEventData: string): void {
-            this.uiLogin.onClickAdd光子炮(event,customEventData)
+        this.uiLogin.onClickAdd光子炮(event, customEventData)
     }
     onClick空闲工程车(event: Event, customEventData: string): void {
         this.uiLogin.onClick空闲工程车()
     }
-    onClick剧情对话全屏点击():void{
+    onClick剧情对话全屏点击(): void {
         this.uiLogin.onClick剧情对话全屏点击()
         // this.uiTransform剧情对话根.node.active = false
     }
-    onClick剧情对话再看看():void{
+    onClick剧情对话再看看(): void {
         this.uiLogin.onClick剧情对话全屏点击()
         this.uiTransform剧情对话根.node.active = false
     }
-    onClick剧情对话退出场景():void{
+    onClick剧情对话退出场景(): void {
         this.uiLogin.send离开Space()
     }
-    onClick游戏攻略():void{
-        this.游戏攻略.active=!this.游戏攻略.active;
+    onClick游戏攻略(): void {
+        this.游戏攻略.active = !this.游戏攻略.active;
+    }
+    onClick游戏设置(): void {
+        this.游戏设置.active = !this.游戏设置.active;
+    }
+    onClickTitle(event: Event, customEventData: string): void {
+        let index = parseInt(customEventData)
+        this.lastTitle.active = false;
+        switch (index) {
+            case 1:
+                this.lastTitle = this.下部列表.getChildByName("人类");
+                break;
+            case 2:
+                this.lastTitle = this.下部列表.getChildByName("机械");
+                break;
+            case 3:
+                this.lastTitle = this.下部列表.getChildByName("建筑");
+                break;
+        }
+        this.lastTitle.active = true;
     }
 }
 
