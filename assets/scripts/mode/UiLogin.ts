@@ -488,6 +488,15 @@ export class UiLogin extends Component {
         this.websocket.onclose = function (e) {
             console.log('websocket 断开: ' + e.code + ' ' + e.reason + ' ' + e.wasClean)
             console.log(e)
+            if(thisLocal.scene登录){
+                thisLocal.scene登录.显示登录界面()
+            }else{
+                director.loadScene('scene登录', (err, scene) => {
+                    console.log('断网回到登录场景', thisLocal.scene登录.nodeSelectSpace.active)
+                    // director.runScene(scene);
+                    thisLocal.scene登录.显示登录界面()
+                })
+            }
         }
 
         //监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。

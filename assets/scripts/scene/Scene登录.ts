@@ -114,6 +114,13 @@ export class Scene登录 extends Component {
             this.uiLogin.map玩家场景.set(nickName, sceneName)
         }
     }
+
+    显示登录界面():void
+    {
+        this.nodeSelectSpace.active = false
+        this.nodeLoginPanel.active = true
+        this.lableMessage.string = '连接已断开，已回到登录界面'
+    }
 }
 
 
