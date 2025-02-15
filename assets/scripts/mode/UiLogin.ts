@@ -261,7 +261,7 @@ export class UiLogin extends Component {
     scene战斗: Scene战斗 = null
     scene登录: Scene登录 = null
     arr选中: number[] = []
-    str在线人数: string = ''
+    str在线人数: string = null
     map玩家场景 = new Map<string, string>//NickName=>SceneName
     fun创建消息: (Vec3) => object = null//this.createMsgMove强行走//点击地面操作 = 点击地面操作类型.移动单位
     createMsgMove强行走(hitPoint: Vec3) {
