@@ -276,13 +276,16 @@ export class Scene战斗 extends Component {
                 console.log('send', encoded)
                 this.uiLogin.send(encoded)
             
-
-                this.posWorld框选起始点 = null
-                this.battleUI.lable系统消息.string ='已退出框选状态'
-                this.Clear然后显示小地图视口框()// this.graphics.clear()//清掉框选框
+                this.结束框选模式()
                 return
             })
         }
+    }
+    结束框选模式(){
+        this.posWorld框选起始点 = null
+        this.battleUI.lable系统消息.string ='已退出框选状态'
+        this.battleUI.下部列表.active = true
+        this.Clear然后显示小地图视口框()// this.graphics.clear()//清掉框选框
     }
     //视角移动
     onMove(vec2Delta: Vec2, vec屏幕坐标) {
@@ -370,6 +373,10 @@ export class Scene战斗 extends Component {
                 this.b框选等待按下起始点 = false
                 this.posWorld框选起始点 = item.hitPoint.clone()
                 this.battleUI.lable系统消息.string ='已开始框选，请拖动后放开'
+                this.battleUI.下部列表.active = false
+                return
+            }else if( this.posWorld框选起始点){
+                this.结束框选模式()
                 return
             }
             

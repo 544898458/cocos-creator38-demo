@@ -19,6 +19,8 @@ export class BattleUI extends Component {
     游戏设置: Node;
     @property(Node)
     下部列表: Node;
+    @property(Node)
+    nodeFightPanel: Node;
     @property({ type: Label, displayName: "数量单位" })
     lableCount: Label
     @property({ type: Label, displayName: "晶体矿" })
@@ -54,7 +56,7 @@ export class BattleUI extends Component {
     start() {
         this.uiLogin = director.getScene().getChildByName('常驻').getComponent(UiLogin);
         this.uiLogin.scene战斗 = this.scene战斗;
-        this.lastTitle = this.下部列表.getChildByName("人类");
+        // this.lastTitle = this.下部列表.getChildByName("建筑单位");
     }
 
     update(deltaTime: number) {
@@ -66,11 +68,12 @@ export class BattleUI extends Component {
     }
     on强行走(event: Event, customEventData: string) {
         this.scene战斗.b强行走 = true
+        this.scene战斗.battleUI.lable系统消息.string = '行走过程不会攻击敌人，请点击地面确定目的地'
     }
     on框选(event: Event, customEventData: string) {
         this.scene战斗.posWorld框选起始点 = null
         this.scene战斗.b框选等待按下起始点 = true
-        this.scene战斗.battleUI.lable系统消息.string = '请在地面上拖动框选'
+        this.scene战斗.battleUI.lable系统消息.string = '请在屏幕上下拖动框选活动单位'
     }
     on聊天框输入结束(editbox: EditBox, customEventData: String) {
         console.log(editbox, customEventData)
@@ -143,19 +146,11 @@ export class BattleUI extends Component {
         this.游戏设置.active = !this.游戏设置.active;
     }
     onClickTitle(event: Event, customEventData: string): void {
-        let index = parseInt(customEventData)
-        this.lastTitle.active = false;
-        switch (index) {
-            case 1:
-                this.lastTitle = this.下部列表.getChildByName("人类");
-                break;
-            case 2:
-                this.lastTitle = this.下部列表.getChildByName("机械");
-                break;
-            case 3:
-                this.lastTitle = this.下部列表.getChildByName("建筑");
-                break;
-        }
+        console.log('选中', customEventData )
+        if(this.lastTitle)
+            this.lastTitle.active = false;
+
+        this.lastTitle = this.nodeFightPanel.getChildByName(customEventData);
         this.lastTitle.active = true;
     }
 }
