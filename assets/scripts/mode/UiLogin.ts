@@ -267,6 +267,13 @@ export class UiLogin extends Component {
     createMsgMove强行走(hitPoint: Vec3) {
         return this.createMsgMove(hitPoint, false)
     }
+
+    清零网络数据包序号(){
+        this.recvMsgSnGameSvr = 0
+        this.recvMsgSnWorldSvr = 0
+        this.recvMsgSn = 0
+        this.sendMsgSn = 0
+    }
     send(buf:Buffer){
         if (this.websocket == undefined) 
         {
@@ -488,6 +495,7 @@ export class UiLogin extends Component {
         this.websocket.onclose = function (e) {
             console.log('websocket 断开: ' + e.code + ' ' + e.reason + ' ' + e.wasClean)
             console.log(e)
+            thisLocal.清零网络数据包序号()
             if(thisLocal.scene登录){
                 thisLocal.scene登录.显示登录界面()
             }else{
