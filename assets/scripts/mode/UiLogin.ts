@@ -337,6 +337,7 @@ export class UiLogin extends Component {
     on点击按钮_造建筑(类型: 单位类型) {
         this.fun创建消息 = (hitPoint: Vec3) => this.createMsg造建筑(hitPoint, 类型)
         this.scene战斗.battleUI.lable系统消息.string = '请点击地面放置建筑'
+        this.scene战斗.battleUI.下部列表.active = false
     }
     onClickAdd基地(event: Event, customEventData: string): void {
         this.on点击按钮_造建筑(单位类型.基地)

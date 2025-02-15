@@ -242,6 +242,7 @@ export class Scene战斗 extends Component {
                     this.点击地面特效(item.hitPoint)
 
                     this.uiLogin.fun创建消息 = 0 < this.uiLogin.arr选中.length ? this.uiLogin.createMsgMove遇敌自动攻击 : null
+                    this.恢复战斗界面()
                 }
             })
 
@@ -276,12 +277,12 @@ export class Scene战斗 extends Component {
                 console.log('send', encoded)
                 this.uiLogin.send(encoded)
             
-                this.结束框选模式()
+                this.恢复战斗界面()
                 return
             })
         }
     }
-    结束框选模式(){
+    恢复战斗界面(){
         this.posWorld框选起始点 = null
         this.battleUI.lable系统消息.string ='已退出框选状态'
         this.battleUI.下部列表.active = true
@@ -375,8 +376,8 @@ export class Scene战斗 extends Component {
                 this.battleUI.lable系统消息.string ='已开始框选，请拖动后放开'
                 this.battleUI.下部列表.active = false
                 return
-            }else if( this.posWorld框选起始点){
-                this.结束框选模式()
+            }else if(this.posWorld框选起始点){
+                this.恢复战斗界面()
                 return
             }
             
