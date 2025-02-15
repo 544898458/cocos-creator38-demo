@@ -283,6 +283,7 @@ export class Scene战斗 extends Component {
         }
     }
     恢复战斗界面(){
+        console.log('恢复战斗界面');
         this.posWorld框选起始点 = null
         this.battleUI.lable系统消息.string ='已退出框选状态'
         this.battleUI.下部列表.active = true

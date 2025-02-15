@@ -6,6 +6,7 @@ import { Label } from 'cc';
 import { EditBox } from 'cc';
 import { UITransform } from 'cc';
 import { Sprite } from 'cc';
+import { AudioMgr } from '../manager/AudioMgr';
 const { ccclass, property } = _decorator;
 
 @ccclass('BattleUI')
@@ -70,17 +71,19 @@ export class BattleUI extends Component {
         if(0 == this.uiLogin.arr选中.length)
         {
             this.scene战斗.battleUI.lable系统消息.string = '请先选中活动单位'
+            AudioMgr.inst.playOneShot('BUZZ')
             return    
         }
         this.scene战斗.b强行走 = true
         this.scene战斗.battleUI.lable系统消息.string = '行走过程不会攻击敌人，请点击地面确定目的地'
         this.scene战斗.battleUI.下部列表.active = false
     }
-    // on框选(event: Event, customEventData: string) {
-    //     this.scene战斗.posWorld框选起始点 = null
-    //     this.scene战斗.b框选等待按下起始点 = true
-    //     this.scene战斗.battleUI.lable系统消息.string = '请在屏幕上下拖动框选活动单位'
-    // }
+    on框选(event: Event, customEventData: string) {
+        this.scene战斗.posWorld框选起始点 = null
+        this.scene战斗.b框选等待按下起始点 = true
+        this.scene战斗.battleUI.lable系统消息.string = '请在屏幕上下拖动框选活动单位'
+        this.scene战斗.battleUI.下部列表.active = false
+    }
     on聊天框输入结束(editbox: EditBox, customEventData: String) {
         console.log(editbox, customEventData)
         this.uiLogin.onClickSay(editbox.textLabel.string)
