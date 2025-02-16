@@ -504,7 +504,7 @@ export class Main extends Component {
             console.log(e)
             thisLocal.清零网络数据包序号()
             thisLocal.websocket = null
-            thisLocal.str在线人数 = null
+            thisLocal.str在线人数 = '连接已断开，已回到登录场景'
             if(thisLocal.scene登录){
                 thisLocal.scene登录.显示登录界面()
             }else{

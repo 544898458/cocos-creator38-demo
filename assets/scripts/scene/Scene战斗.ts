@@ -234,7 +234,7 @@ export class Scene战斗 extends Component {
                     if(!this.main.fun创建消息)
                         return
 
-                    let object = this.main.fun创建消息(item.hitPoint)
+                    let object = b鼠标右键 ? this.main.createMsgMove强行走(item.hitPoint) : this.main.fun创建消息(item.hitPoint)
                     if(object){
                         // this.b强行走 = false
                         // this.uiLogin.fun创建消息 = this.uiLogin.funCreateMsgMove遇敌自动攻击
