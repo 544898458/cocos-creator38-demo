@@ -126,7 +126,7 @@ export class Scene登录 extends Component {
     {
         this.nodeSelectSpace.active = false
         this.nodeLoginPanel.active = true
-        this.lableMessage.string = '连接已断开，已回到登录界面，如果无法登录请刷新游戏页面'
+        this.lableMessage.string = '连接已断开，已回到登录界面'
     }
 }
 
