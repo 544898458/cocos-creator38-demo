@@ -22,7 +22,7 @@
 ![输入图片说明](README%E6%96%B0%E5%BB%BA%E4%BD%8D%E5%9B%BE%E5%9B%BE%E5%83%8F.png)
 
 ```
-[Scene] {hidden(::SceneExecutorImportExceptionHandler::)} Error: Error: Module "msgpack-lite/dist/msgpack.min.js" not found for file:///C:/Users/Administrator/source/repos/cocos-creator38-demo/assets/UiLogin.ts 
+[Scene] {hidden(::SceneExecutorImportExceptionHandler::)} Error: Error: Module "msgpack-lite/dist/msgpack.min.js" not found for file:///C:/Users/Administrator/source/repos/cocos-creator38-demo/assets/Main.ts 
     at rejector (C:\ProgramData\cocos\editors\Creator\3.8.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:759:15) 
     at ExecutorSystem.resolve [as _detailResolve] (C:\ProgramData\cocos\editors\Creator\3.8.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:777:13) 
     at ExecutorSystem._resolve (C:\ProgramData\cocos\editors\Creator\3.8.0\resources\app.asar\node_modules\@editor\lib-programming\src\editor-systemjs\index.ts:137:14) 
@@ -33,7 +33,7 @@
     at file:///C:/Users/Administrator/source/repos/cocos-creator38-demo/temp/programming/packer-driver/targets/editor/chunks/52/cce:/internal/x/prerequisite-imports:8:13 
     at Object.execute (file:///C:/Users/Administrator/source/repos/cocos-creator38-demo/temp/programming/packer-driver/targets/editor/chunks/52/cce:/internal/x/prerequisite-imports:4:1) 
     at Executor._importPrerequisiteModules (C:\ProgramData\cocos\editors\Creator\3.8.0\resources\app.asar\node_modules\@editor\lib-programming\src\executor\index.ts:298:13) 
-Error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} Error: Error: Module "msgpack-lite/dist/msgpack.min.js" not found for file:///C:/Users/Administrator/source/repos/cocos-creator38-demo/assets/UiLogin.ts 
+Error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} Error: Error: Module "msgpack-lite/dist/msgpack.min.js" not found for file:///C:/Users/Administrator/source/repos/cocos-creator38-demo/assets/Main.ts 
     at SystemJS.resolve (C:\ProgramData\cocos\editors\Creator\3.8.0\resources\app.asar\node_modules\@editor\lib-programming\src\editor-systemjs\index.ts:36:23) 
     at C:\ProgramData\cocos\editors\Creator\3.8.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:355:37 
     at Array.map (<anonymous>) 

@@ -2,7 +2,7 @@ import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, B
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { FollowTarget } from '../mode/FollowTarget'
 import { Scene战斗, ClientEntityComponent } from './Scene战斗'
-import { UiLogin, MsgId } from '../mode/UiLogin'
+import { Main, MsgId } from '../mode/Main'
 import { ProgressBar } from 'cc'
 import { EventHandler } from 'cc'
 
@@ -18,7 +18,7 @@ export class Scene登录 extends Component {
     node个人战局按钮模板: Node
     nodeLoginPanel: Node
     nodeSelectSpace: Node
-    uiLogin: UiLogin
+    main: Main
     lableMessage: Label
     //加载
     @property(Node)
@@ -34,11 +34,17 @@ export class Scene登录 extends Component {
         this.nodeLoginPanel = utils.find("Canvas/LoginPanel", this.node.parent);
         this.lableMessage = utils.find("Canvas/Message", this.node.parent).getComponent(Label)
         //获取常驻节点
-        this.uiLogin = director.getScene().getChildByName('常驻').getComponent(UiLogin);
-        this.uiLogin.scene登录 = this
+        this.main = director.getScene().getChildByName('常驻').getComponent(Main);
+        this.main.scene登录 = this
         // this.loadNode.active = true;
-        if(this.uiLogin.str在线人数)
-            this.lableMessage.string = this.uiLogin.str在线人数
+        if(this.main.str在线人数)
+            this.lableMessage.string = this.main.str在线人数
+
+        if(this.main.websocket)
+        {
+            this.nodeSelectSpace.active = true
+            this.nodeLoginPanel.active = false
+        }
     }
     start() {
         console.log('start')
@@ -60,32 +66,32 @@ export class Scene登录 extends Component {
         }
     }
     onClickToggle进Space1(event: Event, customEventData: string) {
-        this.uiLogin.进Scene战斗('scene战斗', msgpack.encode([[MsgId.进Space, 0, 0], 1]))
+        this.main.进Scene战斗('scene战斗', msgpack.encode([[MsgId.进Space, 0, 0], 1]))
     }
     onClickToggle进单人剧情副本(event: Event, customEventData: string) {
-        this.uiLogin.onClickToggle进训练战()
+        this.main.onClickToggle进训练战()
     }
     onClickToggle进单人防守战(event: Event, customEventData: string) {
-        this.uiLogin.onClickToggle进防守战()
+        this.main.onClickToggle进防守战()
     }
 
     onClickLogin(event: Event, customEventData: string) {
-       this.uiLogin.onClickLogin(event,customEventData)
+       this.main.onClickLogin(event,customEventData)
     }
     onClick别人的个人战局列表(event: Event, customEventData: string) {
-        this.uiLogin.onClick获取别人的个人战局列表(event,customEventData)
+        this.main.onClick获取别人的个人战局列表(event,customEventData)
     }
     onClick别人的多人战局列表(event: Event, customEventData: string) {
-        this.uiLogin.onClick获取别人的多人战局列表(event,customEventData)
+        this.main.onClick获取别人的多人战局列表(event,customEventData)
     }
     onClick进入别人的个人战局(event: Event, customEventData: string) {
-        this.uiLogin.onClick进入别人的个人战局(event,customEventData)
+        this.main.onClick进入别人的个人战局(event,customEventData)
     }
     onClick进入别人的多人战局(event: Event, customEventData: string) {
-        this.uiLogin.onClick进入别人的多人战局(event,customEventData)
+        this.main.onClick进入别人的多人战局(event,customEventData)
     }
     onClick创建四方对战(event: Event, customEventData: string) {
-        this.uiLogin.onClick创建四方对战()
+        this.main.onClick创建四方对战()
     }
     onClick返回主界面(event: Event, customEventData: string) {
         this.nodeSelectSpace.active = true
@@ -112,7 +118,7 @@ export class Scene登录 extends Component {
             button.clickEvents.push(clickEventHandler)
             this.node个人战局列表.addChild(node按钮)
 
-            this.uiLogin.map玩家场景.set(nickName, sceneName)
+            this.main.map玩家场景.set(nickName, sceneName)
         }
     }
 
@@ -120,7 +126,7 @@ export class Scene登录 extends Component {
     {
         this.nodeSelectSpace.active = false
         this.nodeLoginPanel.active = true
-        this.lableMessage.string = '连接已断开，已回到登录界面'
+        this.lableMessage.string = '连接已断开，已回到登录界面，如果无法登录请刷新游戏页面'
     }
 }
 

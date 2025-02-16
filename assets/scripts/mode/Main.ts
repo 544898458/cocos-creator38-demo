@@ -246,8 +246,8 @@ enum SayChannel {
     聊天,
 };
 
-@ccclass('UiLogin')
-export class UiLogin extends Component {
+@ccclass('Main')
+export class Main extends Component {
     websocket: WebSocket
     // lableMessage: Label
     // lableMessage语音提示: Label
@@ -367,7 +367,7 @@ export class UiLogin extends Component {
             console.log(completedCount, totalCount, item)
             this.scene登录.lableMessage.string = completedCount + '/' + totalCount + '\n' + item.url
         }, () => {
-            this.scene登录.uiLogin = null
+            this.scene登录.main = null
             this.scene登录 = null
             director.loadScene(sceneName, (err, scene) => {
                 // this.nodeSelectSpace.active = false
@@ -500,19 +500,26 @@ export class UiLogin extends Component {
 
         //连接关闭的回调方法
         this.websocket.onclose = function (e) {
+            thisLocal.websocket = null
             console.log('websocket 断开: ' + e.code + ' ' + e.reason + ' ' + e.wasClean)
             console.log(e)
             thisLocal.清零网络数据包序号()
             if(thisLocal.scene登录){
                 thisLocal.scene登录.显示登录界面()
             }else{
-                thisLocal.scene战斗.uiLogin = null
-                thisLocal.scene战斗 = null
-                director.loadScene('scene登录', (err, scene) => {
-                    console.log('断网回到登录场景', thisLocal.scene登录.nodeSelectSpace.active)
-                    // director.runScene(scene);
-                    thisLocal.scene登录.显示登录界面()
-                })
+                director.loadScene('scene登录')
+                // thisLocal.scene战斗.main = null
+                // thisLocal.scene战斗 = null
+                // console.log('开始loadScene')
+                // director.loadScene('scene登录', (err, scene) => {
+                //     console.log('断网回到登录场景', thisLocal.scene登录.nodeSelectSpace.active)
+                //     // director.runScene(scene);
+                //     // thisLocal.scene登录.显示登录界面()
+                // })
+                //let fun = ()=>thisLocal.回到登录场景(true)
+                // fun()
+                // thisLocal.scheduleOnce(fun,0.1)
+                thisLocal.回到登录场景()
             }
         }
 
@@ -626,7 +633,7 @@ export class UiLogin extends Component {
 
                             if (old.skeletalAnimation != undefined) {
                                 // old.skeletalAnimation.play(old.initClipName)
-                                UiLogin.播放动作(old, old.initClipName, true)
+                                Main.播放动作(old, old.initClipName, true)
                             }
                             let node所有单位头顶名字 = thisLocal.scene战斗.battleUI.uiTransform所有单位头顶名字.node
                             let nodeRoleName = utils.find("RoleName", node所有单位头顶名字)
@@ -748,7 +755,7 @@ export class UiLogin extends Component {
                     if (old.skeletalAnimation == undefined){
                             old.initClipName = clipName
                     }else {
-                        UiLogin.播放动作(old, clipName, loop)
+                        Main.播放动作(old, clipName, loop)
                         old.tween移动?.stop()
                         old.tween移动 = null
                         // old.view.position = old.position
@@ -825,11 +832,6 @@ export class UiLogin extends Component {
                 break
             case MsgId.离开Space:
                 {
-                    thisLocal.scene战斗.entities.forEach((clientEntityComponent, k, map) => {
-                        clientEntityComponent.removeFromParent()
-                    })
-                    thisLocal.scene战斗.entities.clear()
-                    thisLocal.scene战斗.entityId.clear()
                     thisLocal.回到登录场景()
                 }
                 break
@@ -932,13 +934,27 @@ export class UiLogin extends Component {
             this.send(encoded)
         }
     }
-    回到登录场景() {
+    回到登录场景():void {
+        if(this.scene战斗){
+            this.scene战斗.entities.forEach((clientEntityComponent, k, map) => {
+                clientEntityComponent.removeFromParent()
+            })
+            this.scene战斗.entities.clear()
+            this.scene战斗.entityId.clear()
+        }
+
         director.loadScene('scene登录', (err, scene) => {
-            console.log('回到登录场景', this.scene登录.nodeSelectSpace.active)
+            // console.log('回到登录场景,nodeSelectSpace.active=', this.scene登录.nodeSelectSpace.active)
             // director.runScene(scene);
-            this.scene登录.nodeSelectSpace.active = true
-            this.scene登录.nodeLoginPanel.active = false
+            // this.scene登录.nodeSelectSpace.active = !b重新登录
+            // this.scene登录.nodeLoginPanel.active = b重新登录
         })
+        // director.loadScene('scene登录')
+        // console.log('回到登录场景,nodeSelectSpace.active=', this.scene登录.nodeSelectSpace.active)
+        // director.runScene(scene);
+        // this.scene登录.nodeSelectSpace.active = !b重新登录
+        // this.scene登录.nodeLoginPanel.active = b重新登录
+    
     }
     send离开Space() {
         const object = //item.hitPoint

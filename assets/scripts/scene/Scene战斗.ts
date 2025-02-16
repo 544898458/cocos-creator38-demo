@@ -1,7 +1,7 @@
 import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip, director, Animation, Color} from 'cc'
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { FollowTarget } from '../mode/FollowTarget'
-import { UiLogin, MsgId } from '../mode/UiLogin'
+import { Main, MsgId } from '../mode/Main'
 import { Vec2 } from 'cc'
 import { EventTouch } from 'cc'
 import { Graphics } from 'cc'
@@ -60,8 +60,7 @@ export class Scene战斗 extends Component {
     camera小地图: Camera
     @property({ type: Node, displayName: "英雄" })
     roles: Node
-    //ui登录
-    uiLogin: UiLogin
+    main: Main
     //摄像
     mainCameraFollowTarget: FollowTarget
     //鼠标点击世界坐标
@@ -83,12 +82,12 @@ export class Scene战斗 extends Component {
         console.log('Scene战斗.start')
         //初始化
         //获取常驻节点
-        this.uiLogin = director.getScene().getChildByName('常驻').getComponent(UiLogin);
+        this.main = director.getScene().getChildByName('常驻').getComponent(Main);
         this.graphics = director.getScene().getChildByName('Canvas').getComponent(Graphics);
-        this.uiLogin.scene战斗 = this.node.getComponent(Scene战斗);
-        console.log(this.uiLogin.scene战斗)
+        this.main.scene战斗 = this.node.getComponent(Scene战斗);
+        console.log(this.main.scene战斗)
         this.mainCameraFollowTarget = this.mainCamera.getComponent(FollowTarget);
-        this.battleUI.lable在线人数.string = this.uiLogin.str在线人数
+        this.battleUI.lable在线人数.string = this.main.str在线人数
 
         //3D摄像机鼠标滑轮（放大缩小）
         this.node.on(NodeEventType.MOUSE_WHEEL, (event: EventMouse) => {
@@ -196,13 +195,13 @@ export class Scene战斗 extends Component {
     onMouseUp(pos:Vec2, b鼠标右键:boolean) {
         if(this.posWorld按下准备拖动地面){
             this.posWorld按下准备拖动地面 = null
-            console.log('fun创建消息:', this.uiLogin.fun创建消息)
-            console.log('createMsgMove遇敌自动攻击', this.uiLogin.createMsgMove遇敌自动攻击)
-            console.log('createMsg造建筑', this.uiLogin.createMsg造建筑)
-            console.log('createMsgMove强行走', this.uiLogin.createMsgMove强行走)
+            console.log('fun创建消息:', this.main.fun创建消息)
+            console.log('createMsgMove遇敌自动攻击', this.main.createMsgMove遇敌自动攻击)
+            console.log('createMsg造建筑', this.main.createMsg造建筑)
+            console.log('createMsgMove强行走', this.main.createMsgMove强行走)
             
-            if(    this.uiLogin.funCreateMsg造建筑 !== this.uiLogin.fun创建消息 
-                && this.uiLogin.createMsgMove强行走 !== this.uiLogin.fun创建消息
+            if(    this.main.funCreateMsg造建筑 !== this.main.fun创建消息 
+                && this.main.createMsgMove强行走 !== this.main.fun创建消息
                 ){ //正在强行走、正在摆放建筑物
                 this.恢复战斗界面()
             }
@@ -232,10 +231,10 @@ export class Scene战斗 extends Component {
                     return true
                     
                 fun点击地面处理 = ()=>{
-                    if(!this.uiLogin.fun创建消息)
+                    if(!this.main.fun创建消息)
                         return
 
-                    let object = this.uiLogin.fun创建消息(item.hitPoint)
+                    let object = this.main.fun创建消息(item.hitPoint)
                     if(object){
                         // this.b强行走 = false
                         // this.uiLogin.fun创建消息 = this.uiLogin.funCreateMsgMove遇敌自动攻击
@@ -243,11 +242,11 @@ export class Scene战斗 extends Component {
                         const encoded = msgpack.encode(object)
                         
                         console.log('send', encoded)
-                        this.uiLogin.send(encoded)
+                        this.main.send(encoded)
                         
                         this.点击地面特效(item.hitPoint)
                     }
-                    this.uiLogin.fun创建消息 = 0 < this.uiLogin.arr选中.length ? this.uiLogin.createMsgMove遇敌自动攻击 : null
+                    this.main.fun创建消息 = 0 < this.main.arr选中.length ? this.main.createMsgMove遇敌自动攻击 : null
                     this.恢复战斗界面()
                 }
             })
@@ -274,14 +273,14 @@ export class Scene战斗 extends Component {
 
                 const object = 
                 [
-                    [MsgId.框选, ++this.uiLogin.sendMsgSn, 0],
+                    [MsgId.框选, ++this.main.sendMsgSn, 0],
                     [this.posWorld框选起始点.x, this.posWorld框选起始点.z],
                     [item.hitPoint.x, item.hitPoint.z]
                 ]
                 console.log('send', this.posWorld框选起始点, item.hitPoint)
                 const encoded = msgpack.encode(object)
                 console.log('send', encoded)
-                this.uiLogin.send(encoded)
+                this.main.send(encoded)
             
                 this.恢复战斗界面()
                 return
@@ -420,13 +419,13 @@ export class Scene战斗 extends Component {
 
             const object =
                 [
-                    [MsgId.采集, ++this.uiLogin.sendMsgSn, 0],
+                    [MsgId.采集, ++this.main.sendMsgSn, 0],
                     id
                 ]
 
             const encoded = msgpack.encode(object)
             console.log('send', encoded)
-            this.uiLogin.send(encoded)
+            this.main.send(encoded)
             
         }
         else if (item.collider.node.name == "地堡" && b鼠标右键 )//点击地堡
@@ -435,26 +434,26 @@ export class Scene战斗 extends Component {
             let id = this.entityId[item.collider.node.uuid]
 
             const encoded = msgpack.encode([
-                [MsgId.出地堡, ++this.uiLogin.sendMsgSn, 0],
+                [MsgId.出地堡, ++this.main.sendMsgSn, 0],
                 id
             ])
 
             console.log('send', encoded)
-            this.uiLogin.send(encoded)
+            this.main.send(encoded)
         }
-        else if (item.collider.node.name == "地堡" && !b鼠标右键 && this.uiLogin.arr选中.length > 0)//左键点击地堡
+        else if (item.collider.node.name == "地堡" && !b鼠标右键 && this.main.arr选中.length > 0)//左键点击地堡
         {
             this.mainCameraFollowTarget.target = item.collider.node
             let id = this.entityId[item.collider.node.uuid]
 
             const encoded = msgpack.encode([
-                [MsgId.进地堡, ++this.uiLogin.sendMsgSn, 0],
+                [MsgId.进地堡, ++this.main.sendMsgSn, 0],
                 id,
                 [0.0]
             ])
 
             console.log('send', encoded)
-            this.uiLogin.send(encoded)
+            this.main.send(encoded)
         }
         else if (
                item.collider.node.name == "工程车"
@@ -475,7 +474,7 @@ export class Scene战斗 extends Component {
             }
 
             this.clear选中()
-            this.uiLogin.send选中([id])
+            this.main.send选中([id])
         }
     }
     update(deltaTime: number) {
@@ -535,7 +534,7 @@ export class Scene战斗 extends Component {
     }
 
     clear选中() {
-        for (let id of this.uiLogin.arr选中) {
+        for (let id of this.main.arr选中) {
             let entity = this.entities.get(id)
             if (entity) {
                 let node选中特效 = entity.view.getChildByName(prefabName选中特效)
@@ -546,8 +545,8 @@ export class Scene战斗 extends Component {
     }
     选中(arr: number[]) {
         this.clear选中()
-        this.uiLogin.arr选中 = arr
-        for (let id of this.uiLogin.arr选中) {
+        this.main.arr选中 = arr
+        for (let id of this.main.arr选中) {
             resources.load(prefabName选中特效, Prefab, (err, prefab) => {
                 console.log('resources.load callback:', err, prefab)
                 let old = this.entities.get(id)
@@ -567,7 +566,7 @@ export class Scene战斗 extends Component {
             })
         }
         if(arr.length>0)
-            this.uiLogin.fun创建消息 = this.uiLogin.createMsgMove遇敌自动攻击
+            this.main.fun创建消息 = this.main.createMsgMove遇敌自动攻击
     }
     worldToGraphics(graphicsNode:Node, worldPoint:Vec3) {
         // 获取graphics节点在世界坐标系中的位置

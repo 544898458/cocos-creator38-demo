@@ -56,7 +56,7 @@ export class HeadScale extends Component {
              this.distance /camera.orthoHeight : this.distance*100/camera.fov / Math.abs(this._pos.z)
         const value = Math.floor(ratio * 100) / 100;
         this.node.setScale(value, value, 1);
-        if(!this.target)
-            this.node?.destroy();
+        // if(!this.target)
+        //     this.node?.destroy();
     }
 }
