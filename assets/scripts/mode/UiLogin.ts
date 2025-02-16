@@ -506,6 +506,8 @@ export class UiLogin extends Component {
             if(thisLocal.scene登录){
                 thisLocal.scene登录.显示登录界面()
             }else{
+                thisLocal.scene战斗.uiLogin = null
+                thisLocal.scene战斗 = null
                 director.loadScene('scene登录', (err, scene) => {
                     console.log('断网回到登录场景', thisLocal.scene登录.nodeSelectSpace.active)
                     // director.runScene(scene);
@@ -694,53 +696,41 @@ export class UiLogin extends Component {
                     let hp = arr[5]
                     // console.log(arr)
 
-                    let old = thisLocal.scene战斗.entities.get(id)
-                    if (old == undefined) {
-                        //    old = entites[id] = new ClientEntityComponent()
-                        //    resources.load("altman-blue", Prefab, (err, prefab) => {
-                        //        console.log('resources.load callback:', err, prefab)
-                        //        const newNode = instantiate(prefab)
-                        //        roles.addChild(newNode)
-                        //        newNode.position = new Vec3(posX, 0, 0)
-                        //        console.log('resources.load newNode', newNode)
-                        //        old.view = newNode
-                        //        old.skeletalAnimation = newNode.getComponent(SkeletalAnimation)
-                        //        old.skeletalAnimation.play(old.initClipName )
-                        //    })
+                    let old = thisLocal.scene战斗?.entities.get(id)
+                    if(!old){
+                        console.log('已离开战斗场景', id)
+                        return
                     }
-                    else {
-                        if (old) {
-                            // old.skeletalAnimation.play('run')
-                            let posNew = new Vec3(posX, 0, posZ)
-                            old.position = posNew
-                            old.hp = hp
-                            if(old.hpbar){
-                                let progressBar = old.hpbar.getComponent(ProgressBar)
-                                if(old.hpMax>0)
-                                    progressBar.progress = hp / old.hpMax//todo等后端传最大血量 20测试用
-                                else
-                                    old.hpbar.active = false //资源没有血量
+                    
+                    // old.skeletalAnimation.play('run')
+                    let posNew = new Vec3(posX, 0, posZ)
+                    old.position = posNew
+                    old.hp = hp
+                    if(old.hpbar){
+                        let progressBar = old.hpbar.getComponent(ProgressBar)
+                        if(old.hpMax>0)
+                            progressBar.progress = hp / old.hpMax//todo等后端传最大血量 20测试用
+                        else
+                            old.hpbar.active = false //资源没有血量
+                    }
+                    //console.log('hp', hp, old.hpMax)
+                
+                    if (old.view) {
+
+                        if(!old.view.position || old.view.position.clone().subtract(old.position).lengthSqr() > 5)
+                            old.view.position = old.position
+                        else
+                            {
+                                old.tween移动?.stop()
+                                old.tween移动 = tween(old.view).to(0.2, {position:old.position})
+                                old.tween移动.start()
                             }
-                            //console.log('hp', hp, old.hpMax)
-                        }
-                        if (old && old.view) {
 
-                            if(!old.view.position || old.view.position.clone().subtract(old.position).lengthSqr() > 5)
-                                old.view.position = old.position
-                            else
-                                {
-                                    old.tween移动?.stop()
-                                    old.tween移动 = tween(old.view).to(0.2, {position:old.position})
-                                    old.tween移动.start()
-                                }
-
-                            
-                            old.view.eulerAngles = new Vec3(0, eulerAnglesY, 0)
-                            // old.labelName.string = old.nickName + '(' + id + ')hp=' + hp
-                            old.labelName.string = old.nickName// + 'hp=' + hp
-                            // old.hpbar&&(old.hpbar.getComponent(ProgressBar).progress = old.hp / old.hpMax);//todo等后端传最大血量 20测试用
-
-                        }
+                        
+                        old.view.eulerAngles = new Vec3(0, eulerAnglesY, 0)
+                        // old.labelName.string = old.nickName + '(' + id + ')hp=' + hp
+                        old.labelName.string = old.nickName// + 'hp=' + hp
+                        // old.hpbar&&(old.hpbar.getComponent(ProgressBar).progress = old.hp / old.hpMax);//todo等后端传最大血量 20测试用
                     }
                 }
                 break

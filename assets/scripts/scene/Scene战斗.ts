@@ -290,8 +290,10 @@ export class Scene战斗 extends Component {
     }
     恢复战斗界面(){
         console.log('恢复战斗界面');
-        this.posWorld框选起始点 = null
-        this.battleUI.lable系统消息.string ='已退出框选状态'
+        if(this.posWorld框选起始点){
+            this.posWorld框选起始点 = null
+            this.battleUI.lable系统消息.string ='已退出框选状态'
+        }
         this.battleUI.下部列表.active = true
         this.Clear然后显示小地图视口框()// this.graphics.clear()//清掉框选框
     }
