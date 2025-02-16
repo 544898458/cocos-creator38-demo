@@ -500,10 +500,11 @@ export class Main extends Component {
 
         //连接关闭的回调方法
         this.websocket.onclose = function (e) {
-            thisLocal.websocket = null
             console.log('websocket 断开: ' + e.code + ' ' + e.reason + ' ' + e.wasClean)
             console.log(e)
             thisLocal.清零网络数据包序号()
+            thisLocal.websocket = null
+            thisLocal.str在线人数 = null
             if(thisLocal.scene登录){
                 thisLocal.scene登录.显示登录界面()
             }else{
