@@ -74,7 +74,8 @@ export class BattleUI extends Component {
             AudioMgr.inst.playOneShot('BUZZ')
             return    
         }
-        this.scene战斗.b强行走 = true
+        // this.scene战斗.b强行走 = true
+        this.scene战斗.uiLogin.fun创建消息 = this.scene战斗.uiLogin.createMsgMove强行走
         this.scene战斗.battleUI.lable系统消息.string = '行走过程不会攻击敌人，请点击地面确定目的地'
         this.scene战斗.battleUI.下部列表.active = false
     }

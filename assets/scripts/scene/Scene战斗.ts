@@ -70,7 +70,7 @@ export class Scene战斗 extends Component {
     pos上次按下: Vec2
     b框选等待按下起始点: boolean = false
     posWorld框选起始点: Vec3 = null
-    b强行走: boolean = false
+    // b强行走: boolean = false
     graphics: Graphics
     b电脑鼠标操作: boolean = false
     f双指缩放初始值: number = 0
@@ -194,7 +194,19 @@ export class Scene战斗 extends Component {
         ani.play('lightQ')
     }
     onMouseUp(pos:Vec2, b鼠标右键:boolean) {
-        this.posWorld按下准备拖动地面 = null
+        if(this.posWorld按下准备拖动地面){
+            this.posWorld按下准备拖动地面 = null
+            console.log('fun创建消息:', this.uiLogin.fun创建消息)
+            console.log('createMsgMove遇敌自动攻击', this.uiLogin.createMsgMove遇敌自动攻击)
+            console.log('createMsg造建筑', this.uiLogin.createMsg造建筑)
+            console.log('createMsgMove强行走', this.uiLogin.createMsgMove强行走)
+            
+            if(    this.uiLogin.funCreateMsg造建筑 !== this.uiLogin.fun创建消息 
+                && this.uiLogin.createMsgMove强行走 !== this.uiLogin.fun创建消息
+                ){ //正在强行走、正在摆放建筑物
+                this.恢复战斗界面()
+            }
+        }
         console.log('onMouseUp', this.pos上次按下, pos)
         
         if(this.pos上次按下 && this.pos上次按下.clone().subtract(pos).length() < 5){//单击
@@ -220,27 +232,21 @@ export class Scene战斗 extends Component {
                     return true
                     
                 fun点击地面处理 = ()=>{
-                    let object
-                    if (b鼠标右键 || this.b强行走) {
-                        if (0 == this.uiLogin.arr选中.length )
-                            return
+                    if(!this.uiLogin.fun创建消息)
+                        return
 
-                        object = this.uiLogin.createMsgMove强行走(item.hitPoint)
-                    } else {
-                        if( null == this.uiLogin.fun创建消息)
-                            return
+                    let object = this.uiLogin.fun创建消息(item.hitPoint)
+                    if(object){
+                        // this.b强行走 = false
+                        // this.uiLogin.fun创建消息 = this.uiLogin.funCreateMsgMove遇敌自动攻击
 
-                        object = this.uiLogin.fun创建消息(item.hitPoint)
+                        const encoded = msgpack.encode(object)
+                        
+                        console.log('send', encoded)
+                        this.uiLogin.send(encoded)
+                        
+                        this.点击地面特效(item.hitPoint)
                     }
-                    this.b强行走 = false
-
-                    const encoded = msgpack.encode(object)
-                    
-                    console.log('send', encoded)
-                    this.uiLogin.send(encoded)
-                    
-                    this.点击地面特效(item.hitPoint)
-
                     this.uiLogin.fun创建消息 = 0 < this.uiLogin.arr选中.length ? this.uiLogin.createMsgMove遇敌自动攻击 : null
                     this.恢复战斗界面()
                 }
@@ -348,6 +354,7 @@ export class Scene战斗 extends Component {
             }
 
             this.Clear然后显示小地图视口框()
+            this.battleUI.下部列表.active = false
         }
     }
     onMouseDown(posMouseDown: Vec2, b鼠标右键: boolean) {
@@ -380,11 +387,11 @@ export class Scene战斗 extends Component {
             }else if(this.posWorld框选起始点){
                 this.恢复战斗界面()
                 return
+            }else{
+                this.pos上次按下 = posMouseDown.clone()
+                this.posWorld按下准备拖动地面 = item.hitPoint.clone()
+                this.posWorld按下准备拖动地面时Camera = this.mainCamera.node.position
             }
-            
-            this.pos上次按下 = posMouseDown.clone()
-            this.posWorld按下准备拖动地面 = item.hitPoint.clone()
-            this.posWorld按下准备拖动地面时Camera = this.mainCamera.node.position
         })
         
         // const item = PhysicsSystem.instance.raycastClosestResult
