@@ -507,7 +507,7 @@ export class Main extends Component {
             if(thisLocal.scene登录){
                 thisLocal.scene登录.显示登录界面()
             }else{
-                director.loadScene('scene登录')
+                // director.loadScene('scene登录')
                 // thisLocal.scene战斗.main = null
                 // thisLocal.scene战斗 = null
                 // console.log('开始loadScene')
