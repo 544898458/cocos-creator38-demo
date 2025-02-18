@@ -53,7 +53,9 @@ export class BattleUI extends Component {
     @property({ type: Label, displayName: "在线人数" })
     lable在线人数: Label
 
-    lastTitle: Node;
+    lastTitle: Node
+    b菱形框选: boolean = false //切换菱形框选和矩形框选两种模式
+
     start() {
         this.main = director.getScene().getChildByName('常驻').getComponent(Main);
         this.main.scene战斗 = this.scene战斗;
@@ -161,6 +163,10 @@ export class BattleUI extends Component {
 
         this.lastTitle = this.nodeFightPanel.getChildByName(customEventData);
         this.lastTitle.active = true;
+    }
+    onClick框选模式(): void{
+        this.b菱形框选 = !this.b菱形框选
+        this.lable系统消息.string = '已切换到 ' + (this.b菱形框选 ? '菱形框选' : '方形框选') + '模式'
     }
 }
 

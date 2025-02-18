@@ -69,6 +69,7 @@ export class Scene战斗 extends Component {
     pos上次按下: Vec2
     b框选等待按下起始点: boolean = false
     posWorld框选起始点: Vec3 = null
+    pos屏幕框选起始点: Vec2 = null
     // b强行走: boolean = false
     graphics: Graphics
     b电脑鼠标操作: boolean = false
@@ -271,17 +272,40 @@ export class Scene战斗 extends Component {
                 if (item.collider.node.name != nodeName地板) 
                     return
 
-                const object = 
-                [
-                    [MsgId.框选, ++this.main.sendMsgSn, 0],
-                    [this.posWorld框选起始点.x, this.posWorld框选起始点.z],
-                    [item.hitPoint.x, item.hitPoint.z]
-                ]
-                console.log('send', this.posWorld框选起始点, item.hitPoint)
-                const encoded = msgpack.encode(object)
-                console.log('send', encoded)
-                this.main.send(encoded)
-            
+                if(this.battleUI.b菱形框选){
+                    const object = 
+                    [
+                        [MsgId.框选, ++this.main.sendMsgSn, 0],
+                        [this.posWorld框选起始点.x, this.posWorld框选起始点.z],
+                        [item.hitPoint.x, item.hitPoint.z]
+                    ]
+                    console.log('send', this.posWorld框选起始点, item.hitPoint)
+                    const encoded = msgpack.encode(object)
+                    console.log('send', encoded)
+                    this.main.send(encoded)
+                }else{//矩形框选
+                    let arr选中: Number[] = []
+                    this.entities.forEach((entity, id, _)=>{
+                        let pos屏幕坐标 = this.mainCamera.worldToScreen(entity.position)//纯整数，无小数，左下角为0
+                        let 上 = Math.max(this.pos屏幕框选起始点.y,pos.y)
+                        let 下 = Math.min(this.pos屏幕框选起始点.y,pos.y)
+                        let 左 = Math.min(this.pos屏幕框选起始点.x,pos.x)
+                        let 右 = Math.max(this.pos屏幕框选起始点.x,pos.x)
+                        console.log(上,下,左,右,pos屏幕坐标)
+                        if(左 < pos屏幕坐标.x && pos屏幕坐标.x < 右 && 
+                            下 < pos屏幕坐标.y && pos屏幕坐标.y < 上){
+                            arr选中.push(id)
+                        }
+                    })
+                    const object =
+                    [
+                        [MsgId.SelectRoles, ++this.main.sendMsgSn, 0],
+                        arr选中//虽然是整数，但是也强制转成FLOAT64发出去了
+                    ]
+                    const encoded = msgpack.encode(object)
+                    console.log('send', arr选中, encoded)
+                    this.main.send(encoded)
+                }
                 this.恢复战斗界面()
                 return
             })
@@ -321,7 +345,10 @@ export class Scene战斗 extends Component {
 
         if( this.posWorld框选起始点 != null)
         {
-            this.画斜的选中框(this.posWorld框选起始点, vec点中地面WorldPos)
+            if(this.battleUI.b菱形框选)
+                this.画斜的选中框(this.posWorld框选起始点, vec点中地面WorldPos)
+            else
+                this.画正矩形选中框(this.pos屏幕框选起始点, vec屏幕坐标)
             return
         }
 
@@ -382,6 +409,7 @@ export class Scene战斗 extends Component {
             if(this.b框选等待按下起始点){//
                 this.b框选等待按下起始点 = false
                 this.posWorld框选起始点 = item.hitPoint.clone()
+                this.pos屏幕框选起始点 = posMouseDown.clone() 
                 this.battleUI.lable系统消息.string ='已开始框选，请拖动后放开'
                 this.battleUI.下部列表.active = false
                 return
@@ -588,6 +616,11 @@ export class Scene战斗 extends Component {
     Wolrd3D转Graphics绘图坐标3D摄像机(camera:Camera, posWorld3D:Vec3):Vec3
     {
         let pos屏幕坐标 = camera.worldToScreen(posWorld3D)//纯整数，无小数，左下角为0
+        return this.屏幕坐标转Graphics绘图坐标(pos屏幕坐标)
+    
+    }
+    屏幕坐标转Graphics绘图坐标(pos屏幕坐标:Vec3):Vec3
+    {
         let size = view.getVisibleSize()
         let sizeInPixel = view.getVisibleSizeInPixel()
         console.log('size', size)
@@ -625,6 +658,35 @@ export class Scene战斗 extends Component {
         // this.graphics.circle(pos.x,pos.y,0)
         this.graphics.stroke()
         this.显示小地图视口框()
+    }
+    画正矩形选中框(pos屏幕起始点:Vec2, pos屏幕结束点:Vec2){
+        let 上 = Math.min(pos屏幕起始点.y, pos屏幕结束点.y)
+        let 下 = Math.max(pos屏幕起始点.y, pos屏幕结束点.y)
+        let 左 = Math.min(pos屏幕起始点.x, pos屏幕结束点.x)
+        let 右 = Math.max(pos屏幕起始点.x, pos屏幕结束点.x)
+        // console.log('左',左, '上',上,'右', 右, '下', 下)
+        let posWorld3D左上 = new Vec3(左,上,0)
+        let posWorld3D左下 = new Vec3(左,下,0)
+        let posWorld3D右上 = new Vec3(右,上,0)
+        let posWorld3D右下 = new Vec3(右,下,0)
+        let posNode左上 = this.屏幕坐标转Graphics绘图坐标(posWorld3D左上)
+        let posNode左下 = this.屏幕坐标转Graphics绘图坐标(posWorld3D左下)
+        let posNode右上 = this.屏幕坐标转Graphics绘图坐标(posWorld3D右上)
+        let posNode右下 = this.屏幕坐标转Graphics绘图坐标(posWorld3D右下)
+        this.graphics.clear()
+        this.graphics.strokeColor = Color.GREEN;
+        this.graphics.moveTo(posNode左上.x, posNode左上.y);
+        this.graphics.lineTo(posNode左下.x, posNode左下.y);
+        this.graphics.lineTo(posNode右下.x, posNode右下.y);
+        this.graphics.lineTo(posNode右上.x, posNode右上.y);
+        this.graphics.lineTo(posNode左上.x, posNode左上.y);
+
+        // let pos = this.worldToGraphics(this.graphics.node, posWorld结束点)
+        // this.graphics.circle(graphicsWorldPos.x,graphicsWorldPos.y,30)
+        // this.graphics.circle(0,0,10)
+        // this.graphics.circle(pos.x,pos.y,0)
+        this.graphics.stroke()
+        this.显示小地图视口框()  
     }
     视口对准此处(vec:Vec3)
     {
