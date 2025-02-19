@@ -27,12 +27,18 @@
       },
       {
         "__id__": 139
+      },
+      {
+        "__id__": 141
+      },
+      {
+        "__id__": 149
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 141
+      "__id__": 157
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -63,7 +69,7 @@
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 142
+      "__id__": 158
     },
     "_id": "5a529a1a-acd9-483f-8e6d-aa2f3d1b0919"
   },
@@ -947,7 +953,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": -2.842170943040401e-14,
-      "y": -209.31599999999995,
+      "y": -218.00899999999993,
       "z": 0
     },
     "_lrot": {
@@ -985,8 +991,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 226.7431640625,
-      "height": 52.16
+      "width": 346.8310546875,
+      "height": 84.16
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1013,9 +1019,9 @@
       "r": 255,
       "g": 255,
       "b": 255,
-      "a": 200
+      "a": 220
     },
-    "_string": "美术：不问清阴、坦格利安\n语音：潭、凌枭(QQ:2862703087)\n程序：江沉晚吟时",
+    "_string": "绑定/动作：适中(QQ:1136976220)\n首页底图：不问清阴\n模型带动作：坦格利安\n语音：潭(QQ:1514475926)、凌枭(QQ:2862703087)\n程序：江沉晚吟时(QQ:3380125833)",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 15,
@@ -1028,7 +1034,7 @@
     "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_isItalic": false,
-    "_isBold": true,
+    "_isBold": false,
     "_isUnderline": false,
     "_underlineHeight": 2,
     "_cacheMode": 0,
@@ -1079,7 +1085,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": -2.842170943040401e-14,
-      "y": -363.03399999999993,
+      "y": -405.4169999999999,
       "z": 0
     },
     "_lrot": {
@@ -1160,7 +1166,7 @@
     "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_isItalic": false,
-    "_isBold": true,
+    "_isBold": false,
     "_isUnderline": false,
     "_underlineHeight": 2,
     "_cacheMode": 0,
@@ -5449,38 +5455,268 @@
     "_id": "abpRI2ZotLOJSaHB7Qy1Gi"
   },
   {
+    "__type__": "cc.Node",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_prefab": {
+      "__id__": 142
+    },
+    "__editorExtras__": {}
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 141
+    },
+    "asset": {
+      "__uuid__": "68470bf0-33ba-428f-8f04-02a6910ff281@96d01",
+      "__expectedType__": "cc.Prefab"
+    },
+    "fileId": "14N4V7llNSWpDGUl/Af0xx",
+    "instance": {
+      "__id__": 143
+    },
+    "targetOverrides": null,
+    "nestedPrefabInstanceRoots": null
+  },
+  {
+    "__type__": "cc.PrefabInstance",
+    "fileId": "f4eDYuUgJK/IPW4glIS4S9",
+    "prefabRootNode": null,
+    "mountedChildren": [],
+    "mountedComponents": [],
+    "propertyOverrides": [
+      {
+        "__id__": 144
+      },
+      {
+        "__id__": 146
+      },
+      {
+        "__id__": 147
+      },
+      {
+        "__id__": 148
+      }
+    ],
+    "removedComponents": []
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 145
+    },
+    "propertyPath": [
+      "_lpos"
+    ],
+    "value": {
+      "__type__": "cc.Vec3",
+      "x": -146,
+      "y": 0,
+      "z": -5
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "14N4V7llNSWpDGUl/Af0xx"
+    ]
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 145
+    },
+    "propertyPath": [
+      "_name"
+    ],
+    "value": "barracksdeath"
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 145
+    },
+    "propertyPath": [
+      "_lrot"
+    ],
+    "value": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    }
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 145
+    },
+    "propertyPath": [
+      "_euler"
+    ],
+    "value": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_prefab": {
+      "__id__": 150
+    },
+    "__editorExtras__": {}
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 149
+    },
+    "asset": {
+      "__uuid__": "15fa8b6f-cc55-4691-b18a-52df14dbf387@1c3f5",
+      "__expectedType__": "cc.Prefab"
+    },
+    "fileId": "c4LJ9jiRVSPLe9zSJfp4ep",
+    "instance": {
+      "__id__": 151
+    },
+    "targetOverrides": null,
+    "nestedPrefabInstanceRoots": null
+  },
+  {
+    "__type__": "cc.PrefabInstance",
+    "fileId": "8c6tO+dYdAVbq9iszatOxc",
+    "prefabRootNode": null,
+    "mountedChildren": [],
+    "mountedComponents": [],
+    "propertyOverrides": [
+      {
+        "__id__": 152
+      },
+      {
+        "__id__": 154
+      },
+      {
+        "__id__": 155
+      },
+      {
+        "__id__": 156
+      }
+    ],
+    "removedComponents": []
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 153
+    },
+    "propertyPath": [
+      "_lpos"
+    ],
+    "value": {
+      "__type__": "cc.Vec3",
+      "x": 66,
+      "y": 0,
+      "z": 3711
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "c4LJ9jiRVSPLe9zSJfp4ep"
+    ]
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 153
+    },
+    "propertyPath": [
+      "_name"
+    ],
+    "value": "barracks"
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 153
+    },
+    "propertyPath": [
+      "_lrot"
+    ],
+    "value": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    }
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 153
+    },
+    "propertyPath": [
+      "_euler"
+    ],
+    "value": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    }
+  },
+  {
     "__type__": "cc.PrefabInfo",
     "root": null,
     "asset": null,
     "fileId": "a2a6dcbf-5442-46e3-be3b-a623e01230cf",
     "instance": null,
-    "targetOverrides": null
+    "targetOverrides": null,
+    "nestedPrefabInstanceRoots": [
+      {
+        "__id__": 141
+      },
+      {
+        "__id__": 149
+      }
+    ]
   },
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 143
+      "__id__": 159
     },
     "shadows": {
-      "__id__": 144
+      "__id__": 160
     },
     "_skybox": {
-      "__id__": 145
+      "__id__": 161
     },
     "fog": {
-      "__id__": 146
+      "__id__": 162
     },
     "octree": {
-      "__id__": 147
+      "__id__": 163
     },
     "skin": {
-      "__id__": 148
+      "__id__": 164
     },
     "lightProbeInfo": {
-      "__id__": 149
+      "__id__": 165
     },
     "postSettings": {
-      "__id__": 150
+      "__id__": 166
     },
     "bakedWithStationaryMainLight": false,
     "bakedWithHighpLightmap": false
