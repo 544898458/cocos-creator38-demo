@@ -3,7 +3,9 @@
   "importer": "fbx",
   "imported": true,
   "uuid": "15fa8b6f-cc55-4691-b18a-52df14dbf387",
-  "files": [],
+  "files": [
+    "__original-animation-0.cconb"
+  ],
   "subMetas": {
     "b28c7": {
       "importer": "gltf-mesh",
@@ -49,13 +51,150 @@
       "name": "Geoset_2.mesh",
       "userData": {
         "gltfIndex": 2,
-        "triangleCount": 2528
+        "triangleCount": 1370
       },
       "ver": "1.1.1",
       "imported": true,
       "files": [
         ".bin",
         ".json"
+      ],
+      "subMetas": {}
+    },
+    "41fcc": {
+      "importer": "gltf-mesh",
+      "uuid": "15fa8b6f-cc55-4691-b18a-52df14dbf387@41fcc",
+      "displayName": "",
+      "id": "41fcc",
+      "name": "Geoset_3.mesh",
+      "userData": {
+        "gltfIndex": 3,
+        "triangleCount": 214
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "16aad": {
+      "importer": "gltf-mesh",
+      "uuid": "15fa8b6f-cc55-4691-b18a-52df14dbf387@16aad",
+      "displayName": "",
+      "id": "16aad",
+      "name": "Geoset_4.mesh",
+      "userData": {
+        "gltfIndex": 4,
+        "triangleCount": 398
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "f5444": {
+      "importer": "gltf-mesh",
+      "uuid": "15fa8b6f-cc55-4691-b18a-52df14dbf387@f5444",
+      "displayName": "",
+      "id": "f5444",
+      "name": "Geoset_5.mesh",
+      "userData": {
+        "gltfIndex": 5,
+        "triangleCount": 498
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "39a9b": {
+      "importer": "gltf-mesh",
+      "uuid": "15fa8b6f-cc55-4691-b18a-52df14dbf387@39a9b",
+      "displayName": "",
+      "id": "39a9b",
+      "name": "Geoset_6.mesh",
+      "userData": {
+        "gltfIndex": 6,
+        "triangleCount": 56
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "1634f": {
+      "importer": "gltf-mesh",
+      "uuid": "15fa8b6f-cc55-4691-b18a-52df14dbf387@1634f",
+      "displayName": "",
+      "id": "1634f",
+      "name": "Geoset_7.mesh",
+      "userData": {
+        "gltfIndex": 7,
+        "triangleCount": 48
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "2dcf0": {
+      "importer": "gltf-mesh",
+      "uuid": "15fa8b6f-cc55-4691-b18a-52df14dbf387@2dcf0",
+      "displayName": "",
+      "id": "2dcf0",
+      "name": "Geoset_8.mesh",
+      "userData": {
+        "gltfIndex": 8,
+        "triangleCount": 48
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "0e942": {
+      "importer": "gltf-animation",
+      "uuid": "15fa8b6f-cc55-4691-b18a-52df14dbf387@0e942",
+      "displayName": "",
+      "id": "0e942",
+      "name": "barracksdeath.animation",
+      "userData": {
+        "gltfIndex": 0,
+        "wrapMode": 2,
+        "sample": 30,
+        "span": {
+          "from": 0,
+          "to": 2.0416667461395264
+        },
+        "events": [],
+        "embeddedPlayers": [],
+        "editorExtras": {
+          "embeddedPlayerGroups": []
+        },
+        "speed": 1,
+        "auxiliaryCurves": {}
+      },
+      "ver": "1.0.17",
+      "imported": true,
+      "files": [
+        ".cconb"
       ],
       "subMetas": {}
     },
@@ -151,7 +290,13 @@
       "meshes": [
         "15fa8b6f-cc55-4691-b18a-52df14dbf387@b28c7",
         "15fa8b6f-cc55-4691-b18a-52df14dbf387@b9598",
-        "15fa8b6f-cc55-4691-b18a-52df14dbf387@6ca36"
+        "15fa8b6f-cc55-4691-b18a-52df14dbf387@6ca36",
+        "15fa8b6f-cc55-4691-b18a-52df14dbf387@41fcc",
+        "15fa8b6f-cc55-4691-b18a-52df14dbf387@16aad",
+        "15fa8b6f-cc55-4691-b18a-52df14dbf387@f5444",
+        "15fa8b6f-cc55-4691-b18a-52df14dbf387@39a9b",
+        "15fa8b6f-cc55-4691-b18a-52df14dbf387@1634f",
+        "15fa8b6f-cc55-4691-b18a-52df14dbf387@2dcf0"
       ],
       "skeletons": [],
       "textures": [],
@@ -163,6 +308,276 @@
       "scenes": [
         "15fa8b6f-cc55-4691-b18a-52df14dbf387@1c3f5"
       ]
+    },
+    "animationImportSettings": [
+      {
+        "name": "barracksdeath",
+        "duration": 2.0416667461395264,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "barracksdeath",
+            "from": 0,
+            "to": 2.0416667461395264,
+            "wrapMode": 2,
+            "previousId": "0e942"
+          }
+        ]
+      }
+    ],
+    "materials": {
+      "15fa8b6f-cc55-4691-b18a-52df14dbf387@f2301": {
+        "__type__": "cc.Material",
+        "_name": "",
+        "_objFlags": 0,
+        "__editorExtras__": {},
+        "_native": "",
+        "_effectAsset": {
+          "__uuid__": "f648964e-8d32-41fc-9ac9-7a1e714dd17b",
+          "__expectedType__": "cc.EffectAsset"
+        },
+        "_techIdx": 0,
+        "_defines": [
+          {
+            "USE_ALBEDO_MAP": true
+          },
+          {},
+          {},
+          {}
+        ],
+        "_states": [
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          }
+        ],
+        "_props": [
+          {
+            "mainTexture": {
+              "__uuid__": "b09d8f2c-4a87-4c09-9e0c-f3ffb30f1eba@d0180",
+              "__expectedType__": "cc.Texture2D"
+            },
+            "mainColor": {
+              "__type__": "cc.Color",
+              "r": 231,
+              "g": 231,
+              "b": 231,
+              "a": 255
+            },
+            "shininessExponent": 20,
+            "specularColor": {
+              "__type__": "cc.Color",
+              "r": 124,
+              "g": 124,
+              "b": 124,
+              "a": 255
+            }
+          },
+          {},
+          {},
+          {}
+        ]
+      },
+      "15fa8b6f-cc55-4691-b18a-52df14dbf387@68c98": {
+        "__type__": "cc.Material",
+        "_name": "",
+        "_objFlags": 0,
+        "__editorExtras__": {},
+        "_native": "",
+        "_effectAsset": {
+          "__uuid__": "f648964e-8d32-41fc-9ac9-7a1e714dd17b",
+          "__expectedType__": "cc.EffectAsset"
+        },
+        "_techIdx": 0,
+        "_defines": [
+          {
+            "USE_ALBEDO_MAP": true
+          },
+          {},
+          {},
+          {}
+        ],
+        "_states": [
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          }
+        ],
+        "_props": [
+          {
+            "mainTexture": {
+              "__uuid__": "b09d8f2c-4a87-4c09-9e0c-f3ffb30f1eba@d0180",
+              "__expectedType__": "cc.Texture2D"
+            },
+            "mainColor": {
+              "__type__": "cc.Color",
+              "r": 231,
+              "g": 231,
+              "b": 231,
+              "a": 255
+            },
+            "shininessExponent": 20,
+            "specularColor": {
+              "__type__": "cc.Color",
+              "r": 124,
+              "g": 124,
+              "b": 124,
+              "a": 255
+            }
+          },
+          {},
+          {},
+          {}
+        ]
+      },
+      "15fa8b6f-cc55-4691-b18a-52df14dbf387@27b73": {
+        "__type__": "cc.Material",
+        "_name": "",
+        "_objFlags": 0,
+        "__editorExtras__": {},
+        "_native": "",
+        "_effectAsset": {
+          "__uuid__": "f648964e-8d32-41fc-9ac9-7a1e714dd17b",
+          "__expectedType__": "cc.EffectAsset"
+        },
+        "_techIdx": 0,
+        "_defines": [
+          {
+            "USE_ALBEDO_MAP": true
+          },
+          {},
+          {},
+          {}
+        ],
+        "_states": [
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          }
+        ],
+        "_props": [
+          {
+            "mainTexture": {
+              "__uuid__": "b09d8f2c-4a87-4c09-9e0c-f3ffb30f1eba@d0180",
+              "__expectedType__": "cc.Texture2D"
+            },
+            "mainColor": {
+              "__type__": "cc.Color",
+              "r": 231,
+              "g": 231,
+              "b": 231,
+              "a": 255
+            },
+            "shininessExponent": 20,
+            "specularColor": {
+              "__type__": "cc.Color",
+              "r": 124,
+              "g": 124,
+              "b": 124,
+              "a": 255
+            }
+          },
+          {},
+          {},
+          {}
+        ]
+      }
     }
   }
 }
