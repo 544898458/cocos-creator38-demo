@@ -1,0 +1,218 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "68470bf0-33ba-428f-8f04-02a6910ff281",
+  "files": [],
+  "subMetas": {
+    "30448": {
+      "importer": "gltf-embeded-image",
+      "uuid": "68470bf0-33ba-428f-8f04-02a6910ff281@30448",
+      "displayName": "",
+      "id": "30448",
+      "name": "Barracks_Diffuse.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": false,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".jpg",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "b28c7": {
+      "importer": "gltf-mesh",
+      "uuid": "68470bf0-33ba-428f-8f04-02a6910ff281@b28c7",
+      "displayName": "",
+      "id": "b28c7",
+      "name": "Geoset_0.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 370
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "b9598": {
+      "importer": "gltf-mesh",
+      "uuid": "68470bf0-33ba-428f-8f04-02a6910ff281@b9598",
+      "displayName": "",
+      "id": "b9598",
+      "name": "Geoset_1.mesh",
+      "userData": {
+        "gltfIndex": 1,
+        "triangleCount": 3104
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "6ca36": {
+      "importer": "gltf-mesh",
+      "uuid": "68470bf0-33ba-428f-8f04-02a6910ff281@6ca36",
+      "displayName": "",
+      "id": "6ca36",
+      "name": "Geoset_2.mesh",
+      "userData": {
+        "gltfIndex": 2,
+        "triangleCount": 2528
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "d0180": {
+      "importer": "texture",
+      "uuid": "68470bf0-33ba-428f-8f04-02a6910ff281@d0180",
+      "displayName": "",
+      "id": "d0180",
+      "name": "Barracks_Diffuse.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "68470bf0-33ba-428f-8f04-02a6910ff281@30448"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "f2301": {
+      "importer": "gltf-material",
+      "uuid": "68470bf0-33ba-428f-8f04-02a6910ff281@f2301",
+      "displayName": "",
+      "id": "f2301",
+      "name": "Geoset_0Mat.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "68c98": {
+      "importer": "gltf-material",
+      "uuid": "68470bf0-33ba-428f-8f04-02a6910ff281@68c98",
+      "displayName": "",
+      "id": "68c98",
+      "name": "Geoset_1Mat.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "27b73": {
+      "importer": "gltf-material",
+      "uuid": "68470bf0-33ba-428f-8f04-02a6910ff281@27b73",
+      "displayName": "",
+      "id": "27b73",
+      "name": "Geoset_2Mat.material",
+      "userData": {
+        "gltfIndex": 2
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "96d01": {
+      "importer": "gltf-scene",
+      "uuid": "68470bf0-33ba-428f-8f04-02a6910ff281@96d01",
+      "displayName": "",
+      "id": "96d01",
+      "name": "barracksdeath.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "Barracks_Diffuse",
+        "uri": "68470bf0-33ba-428f-8f04-02a6910ff281@30448"
+      }
+    ],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "68470bf0-33ba-428f-8f04-02a6910ff281@b28c7",
+        "68470bf0-33ba-428f-8f04-02a6910ff281@b9598",
+        "68470bf0-33ba-428f-8f04-02a6910ff281@6ca36"
+      ],
+      "skeletons": [],
+      "textures": [
+        "68470bf0-33ba-428f-8f04-02a6910ff281@d0180"
+      ],
+      "materials": [
+        "68470bf0-33ba-428f-8f04-02a6910ff281@f2301",
+        "68470bf0-33ba-428f-8f04-02a6910ff281@68c98",
+        "68470bf0-33ba-428f-8f04-02a6910ff281@27b73"
+      ],
+      "scenes": [
+        "68470bf0-33ba-428f-8f04-02a6910ff281@96d01"
+      ]
+    }
+  }
+}

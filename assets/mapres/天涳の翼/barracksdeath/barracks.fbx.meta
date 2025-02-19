@@ -1,0 +1,168 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "15fa8b6f-cc55-4691-b18a-52df14dbf387",
+  "files": [],
+  "subMetas": {
+    "b28c7": {
+      "importer": "gltf-mesh",
+      "uuid": "15fa8b6f-cc55-4691-b18a-52df14dbf387@b28c7",
+      "displayName": "",
+      "id": "b28c7",
+      "name": "Geoset_0.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 370
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "b9598": {
+      "importer": "gltf-mesh",
+      "uuid": "15fa8b6f-cc55-4691-b18a-52df14dbf387@b9598",
+      "displayName": "",
+      "id": "b9598",
+      "name": "Geoset_1.mesh",
+      "userData": {
+        "gltfIndex": 1,
+        "triangleCount": 3104
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "6ca36": {
+      "importer": "gltf-mesh",
+      "uuid": "15fa8b6f-cc55-4691-b18a-52df14dbf387@6ca36",
+      "displayName": "",
+      "id": "6ca36",
+      "name": "Geoset_2.mesh",
+      "userData": {
+        "gltfIndex": 2,
+        "triangleCount": 2528
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "f2301": {
+      "importer": "gltf-material",
+      "uuid": "15fa8b6f-cc55-4691-b18a-52df14dbf387@f2301",
+      "displayName": "",
+      "id": "f2301",
+      "name": "Geoset_0Mat.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "68c98": {
+      "importer": "gltf-material",
+      "uuid": "15fa8b6f-cc55-4691-b18a-52df14dbf387@68c98",
+      "displayName": "",
+      "id": "68c98",
+      "name": "Geoset_1Mat.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "27b73": {
+      "importer": "gltf-material",
+      "uuid": "15fa8b6f-cc55-4691-b18a-52df14dbf387@27b73",
+      "displayName": "",
+      "id": "27b73",
+      "name": "Geoset_2Mat.material",
+      "userData": {
+        "gltfIndex": 2
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "1c3f5": {
+      "importer": "gltf-scene",
+      "uuid": "15fa8b6f-cc55-4691-b18a-52df14dbf387@1c3f5",
+      "displayName": "",
+      "id": "1c3f5",
+      "name": "barracks.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "15fa8b6f-cc55-4691-b18a-52df14dbf387@b28c7",
+        "15fa8b6f-cc55-4691-b18a-52df14dbf387@b9598",
+        "15fa8b6f-cc55-4691-b18a-52df14dbf387@6ca36"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "15fa8b6f-cc55-4691-b18a-52df14dbf387@f2301",
+        "15fa8b6f-cc55-4691-b18a-52df14dbf387@68c98",
+        "15fa8b6f-cc55-4691-b18a-52df14dbf387@27b73"
+      ],
+      "scenes": [
+        "15fa8b6f-cc55-4691-b18a-52df14dbf387@1c3f5"
+      ]
+    }
+  }
+}

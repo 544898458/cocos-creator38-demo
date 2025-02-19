@@ -627,7 +627,11 @@ export class Main extends Component {
                             }else if(newNode.name == '工蜂'){
                                 old.skeletalAnimation = newNode.getChildByName('Drone').getComponent(SkeletalAnimation)
                                 // old.initClipName = 'Take 001'
-                                console.log('工蜂骨骼动画', old.skeletalAnimation)
+                                // console.log('工蜂骨骼动画', old.skeletalAnimation)
+                            }else if(newNode.name == '光子炮'){
+                                old.skeletalAnimation = newNode.getChildByName('平常状态').getComponent(Animation)
+                                old.initClipName = '平常状态'
+                                console.log('光子炮骨骼动画', old.skeletalAnimation)
                             }
                             else
                                 old.skeletalAnimation = newNode.getComponent(SkeletalAnimation)
@@ -747,7 +751,7 @@ export class Main extends Component {
                     let id = arr[idxArr++]
                     let loop: boolean = arr[idxArr++]
                     let clipName: string = arr[idxArr++]
-                    // console.log(id, '动作改为', clipName)
+                    console.log(id, '动作改为', clipName)
                     let old = thisLocal.scene战斗.entities.get(id)
                     if (old == undefined) {
                         // console.log(id,"还没加载好,没有播放动作",clipName)
@@ -1075,8 +1079,9 @@ export class Main extends Component {
         {
             old.skeletalAnimation.play(strClipName)
             let state = old.skeletalAnimation.getState(strClipName)
-            if(null == state)
+            if(null == state){
                 console.error(old.view.name, '缺动作:', strClipName)
+            }
 
             state.wrapMode = loop ? AnimationClip.WrapMode.Loop : AnimationClip.WrapMode.Normal
             if(old.view.name == '步兵')
