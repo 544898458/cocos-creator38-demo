@@ -232,6 +232,7 @@ enum 单位类型
 	民房,//供给站(Supply Depot)
 	地堡,//掩体; 地堡(Bunker),可以进兵
 	光子炮,//Photon Cannon
+    孵化场,//hatchery
 	建筑Max非法,
 };
 
@@ -361,6 +362,10 @@ export class Main extends Component {
     onClickAdd光子炮(event: Event, customEventData: string): void {
         this.on点击按钮_造建筑(单位类型.光子炮)
     }
+    onClickAdd孵化场(event: Event, customEventData: string): void {
+        this.on点击按钮_造建筑(单位类型.孵化场)
+    }
+    
     进Scene战斗(sceneName: string, encoded: Buffer) {
         this.scene登录.nodeSelectSpace.active = false
         director.preloadScene(sceneName, (completedCount: number, totalCount: number, item: AssetManager.RequestItem) => {
@@ -634,6 +639,10 @@ export class Main extends Component {
                                 // console.log('光子炮骨骼动画', old.skeletalAnimation)
                             }else if(newNode.name == '兵厂'){
                                 old.skeletalAnimation = newNode.getChildByName('barracks').getComponent(Animation)
+                                // old.initClipName = '平常状态'
+                                console.log('兵厂骨骼动画', old.skeletalAnimation)
+                            }else if(newNode.name == '孵化场'){
+                                old.skeletalAnimation = newNode.getChildByName('hatchery_skin').getComponent(SkeletalAnimation)
                                 // old.initClipName = '平常状态'
                                 console.log('兵厂骨骼动画', old.skeletalAnimation)
                             }
@@ -1091,6 +1100,17 @@ export class Main extends Component {
                 state.playbackRange = {min:0.4, max:2} // 动画总长度
                 state.time = 0.4
             }
+        }    
+        else if(old.view.name == '孵化场')
+        {
+            if(strClipName == 'idle'){
+                let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[0])
+                state.wrapMode = AnimationClip.WrapMode.Loop
+            }else if(strClipName == '孵化场死亡'){
+                let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[1])
+                state.wrapMode =  AnimationClip.WrapMode.Normal
+            }
+            old.skeletalAnimation.play()
         }
         else
         {
