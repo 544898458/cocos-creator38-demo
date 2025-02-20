@@ -631,7 +631,11 @@ export class Main extends Component {
                             }else if(newNode.name == '光子炮'){
                                 old.skeletalAnimation = newNode.getChildByName('平常状态').getComponent(Animation)
                                 old.initClipName = '平常状态'
-                                console.log('光子炮骨骼动画', old.skeletalAnimation)
+                                // console.log('光子炮骨骼动画', old.skeletalAnimation)
+                            }else if(newNode.name == '兵厂'){
+                                old.skeletalAnimation = newNode.getChildByName('barracks').getComponent(Animation)
+                                // old.initClipName = '平常状态'
+                                console.log('兵厂骨骼动画', old.skeletalAnimation)
                             }
                             else
                                 old.skeletalAnimation = newNode.getComponent(SkeletalAnimation)
@@ -1073,6 +1077,19 @@ export class Main extends Component {
                 state.wrapMode =  AnimationClip.WrapMode.Normal
                 state.playbackRange = {min:11.8, max:13.8} // 动画总长度
                 state.time = 11.8
+            }
+        }
+        else if(old.view.name == '兵厂')
+        {
+            old.skeletalAnimation.play()
+            let state = old.skeletalAnimation.getState('barracksdeath')
+            if(strClipName == 'idle'){
+                state.wrapMode = AnimationClip.WrapMode.Normal
+                state.playbackRange = {min:0, max:0.4}
+            }else if(strClipName == '兵厂损毁'){
+                state.wrapMode =  AnimationClip.WrapMode.Normal
+                state.playbackRange = {min:0.4, max:2} // 动画总长度
+                state.time = 0.4
             }
         }
         else

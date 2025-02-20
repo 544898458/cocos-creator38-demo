@@ -27,15 +27,12 @@
       },
       {
         "__id__": 139
-      },
-      {
-        "__id__": 141
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 154
+      "__id__": 141
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -66,7 +63,7 @@
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 155
+      "__id__": 142
     },
     "_id": "5a529a1a-acd9-483f-8e6d-aa2f3d1b0919"
   },
@@ -950,7 +947,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": -2.842170943040401e-14,
-      "y": -218.00899999999993,
+      "y": -224.00899999999993,
       "z": 0
     },
     "_lrot": {
@@ -989,7 +986,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 346.8310546875,
-      "height": 84.16
+      "height": 100.16
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1016,9 +1013,9 @@
       "r": 255,
       "g": 255,
       "b": 255,
-      "a": 220
+      "a": 230
     },
-    "_string": "绑定/动作：适中(QQ:1136976220)\n首页底图：不问清阴\n模型带动作：坦格利安\n语音：潭(QQ:1514475926)、凌枭(QQ:2862703087)\n程序：江沉晚吟时(QQ:3380125833)",
+    "_string": "绑定/动作：天涳の翼(QQ 349070005)\n绑定/动作：适中(QQ 1136976220)\n首页底图：不问清阴\n模型带动作：坦格利安\n语音：潭(QQ 1514475926)、凌枭(QQ 2862703087)\n程序：江沉晚吟时(QQ:3380125833)",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 15,
@@ -5452,218 +5449,38 @@
     "_id": "abpRI2ZotLOJSaHB7Qy1Gi"
   },
   {
-    "__type__": "cc.Node",
-    "_objFlags": 0,
-    "_parent": {
-      "__id__": 1
-    },
-    "_prefab": {
-      "__id__": 142
-    },
-    "__editorExtras__": {}
-  },
-  {
-    "__type__": "cc.PrefabInfo",
-    "root": {
-      "__id__": 141
-    },
-    "asset": {
-      "__uuid__": "35080390-426d-49eb-80f0-5cefc0b2030b@b4b02",
-      "__expectedType__": "cc.Prefab"
-    },
-    "fileId": "",
-    "instance": {
-      "__id__": 143
-    },
-    "targetOverrides": null,
-    "nestedPrefabInstanceRoots": null
-  },
-  {
-    "__type__": "cc.PrefabInstance",
-    "fileId": "3f9kr8N6xMz5OMD1HeN797",
-    "prefabRootNode": null,
-    "mountedChildren": [
-      {
-        "__id__": 144
-      }
-    ],
-    "mountedComponents": [],
-    "propertyOverrides": [],
-    "removedComponents": []
-  },
-  {
-    "__type__": "cc.MountedChildrenInfo",
-    "targetInfo": {
-      "__id__": 145
-    },
-    "nodes": [
-      {
-        "__id__": 146
-      }
-    ]
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      ""
-    ]
-  },
-  {
-    "__type__": "cc.Node",
-    "_objFlags": 0,
-    "_parent": {
-      "__id__": 141
-    },
-    "_prefab": {
-      "__id__": 147
-    },
-    "__editorExtras__": {
-      "mountedRoot": {
-        "__id__": 141
-      }
-    }
-  },
-  {
-    "__type__": "cc.PrefabInfo",
-    "root": {
-      "__id__": 146
-    },
-    "asset": {
-      "__uuid__": "15fa8b6f-cc55-4691-b18a-52df14dbf387@1c3f5",
-      "__expectedType__": "cc.Prefab"
-    },
-    "fileId": "c4LJ9jiRVSPLe9zSJfp4ep",
-    "instance": {
-      "__id__": 148
-    },
-    "targetOverrides": null,
-    "nestedPrefabInstanceRoots": null
-  },
-  {
-    "__type__": "cc.PrefabInstance",
-    "fileId": "d7eLtdyCJCRILIUBWwmnPq",
-    "prefabRootNode": null,
-    "mountedChildren": [],
-    "mountedComponents": [],
-    "propertyOverrides": [
-      {
-        "__id__": 149
-      },
-      {
-        "__id__": 151
-      },
-      {
-        "__id__": 152
-      },
-      {
-        "__id__": 153
-      }
-    ],
-    "removedComponents": []
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 150
-    },
-    "propertyPath": [
-      "_name"
-    ],
-    "value": "barracks"
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "c4LJ9jiRVSPLe9zSJfp4ep"
-    ]
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 150
-    },
-    "propertyPath": [
-      "_lpos"
-    ],
-    "value": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    }
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 150
-    },
-    "propertyPath": [
-      "_lrot"
-    ],
-    "value": {
-      "__type__": "cc.Quat",
-      "x": 0,
-      "y": 0,
-      "z": 0,
-      "w": 1
-    }
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 150
-    },
-    "propertyPath": [
-      "_euler"
-    ],
-    "value": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    }
-  },
-  {
     "__type__": "cc.PrefabInfo",
     "root": null,
     "asset": null,
     "fileId": "a2a6dcbf-5442-46e3-be3b-a623e01230cf",
     "instance": null,
-    "targetOverrides": null,
-    "nestedPrefabInstanceRoots": [
-      {
-        "__id__": 141
-      },
-      {
-        "__id__": 146
-      }
-    ]
+    "targetOverrides": null
   },
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 156
+      "__id__": 143
     },
     "shadows": {
-      "__id__": 157
+      "__id__": 144
     },
     "_skybox": {
-      "__id__": 158
+      "__id__": 145
     },
     "fog": {
-      "__id__": 159
+      "__id__": 146
     },
     "octree": {
-      "__id__": 160
+      "__id__": 147
     },
     "skin": {
-      "__id__": 161
+      "__id__": 148
     },
     "lightProbeInfo": {
-      "__id__": 162
+      "__id__": 149
     },
     "postSettings": {
-      "__id__": 163
+      "__id__": 150
     },
     "bakedWithStationaryMainLight": false,
     "bakedWithHighpLightmap": false
