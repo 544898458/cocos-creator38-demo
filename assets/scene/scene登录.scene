@@ -35,7 +35,7 @@
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 149
+      "__id__": 153
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -66,7 +66,7 @@
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 150
+      "__id__": 154
     },
     "_id": "5a529a1a-acd9-483f-8e6d-aa2f3d1b0919"
   },
@@ -950,7 +950,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": -2.842170943040401e-14,
-      "y": -224.00899999999993,
+      "y": -233.22699999999995,
       "z": 0
     },
     "_lrot": {
@@ -988,7 +988,7 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 346.8310546875,
+      "width": 361.00390625,
       "height": 100.16
     },
     "_anchorPoint": {
@@ -1018,11 +1018,11 @@
       "b": 255,
       "a": 230
     },
-    "_string": "绑定/动作：天涳の翼(QQ 349070005)\n绑定/动作：适中(QQ 1136976220)\n首页底图：不问清阴\n模型带动作：坦格利安\n语音：潭(QQ 1514475926)、凌枭(QQ 2862703087)\n程序：江沉晚吟时(QQ:3380125833)",
+    "_string": "绑定/动作：一方狂三(QQ 1256604813)\n绑定/动作：天涳の翼(QQ 349070005)、适中(QQ 1136976220)\n首页底图：不问清阴(QQ 3969340418)\n模型带动作：荒野乱斗(QQ 2930801690)\n语音：潭(QQ 1514475926)、凌枭(QQ 2862703087)\n程序：江沉晚吟时(QQ 3380125833)",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 15,
-    "_fontSize": 15,
+    "_actualFontSize": 13,
+    "_fontSize": 13,
     "_fontFamily": "Arial",
     "_lineHeight": 16,
     "_overflow": 0,
@@ -1082,7 +1082,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": -2.842170943040401e-14,
-      "y": -405.4169999999999,
+      "y": -414.6189999999999,
       "z": 0
     },
     "_lrot": {
@@ -1150,7 +1150,7 @@
       "b": 91,
       "a": 255
     },
-    "_string": "游戏版本：2025年2月20日\n玩家QQ群：1015518075\n开发QQ群：285842297\n健康游戏忠告\n抵制不良游戏，拒绝盗版游戏。\n注意自我保护，谨防受骗上当。\n适度游戏益脑，沉迷游戏伤身。\n合理安排时间，享受健康生活。",
+    "_string": "游戏版本：2025年2月25日\n玩家QQ群：1015518075\n开发QQ群：285842297\n健康游戏忠告\n抵制不良游戏，拒绝盗版游戏。\n注意自我保护，谨防受骗上当。\n适度游戏益脑，沉迷游戏伤身。\n合理安排时间，享受健康生活。",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 15,
@@ -5468,19 +5468,18 @@
       "__id__": 141
     },
     "asset": {
-      "__uuid__": "f50ab4a3-41a6-4f5b-86a8-a26f8d97ce76@0cd3b",
+      "__uuid__": "9fbdd885-b255-4fc2-92bc-3770de00654b",
       "__expectedType__": "cc.Prefab"
     },
-    "fileId": "c4IFQk1K5dqpg3eWSQLejq",
+    "fileId": "29uwZwL9RI/K5yFX+yNV8L",
     "instance": {
       "__id__": 143
     },
-    "targetOverrides": null,
-    "nestedPrefabInstanceRoots": null
+    "targetOverrides": null
   },
   {
     "__type__": "cc.PrefabInstance",
-    "fileId": "3bz+6MaxBFT4mqgmmrXm8C",
+    "fileId": "54I6t2U3REE5p6t4dqTIKl",
     "prefabRootNode": null,
     "mountedChildren": [],
     "mountedComponents": [],
@@ -5496,9 +5495,34 @@
       },
       {
         "__id__": 148
+      },
+      {
+        "__id__": 149
+      },
+      {
+        "__id__": 151
+      },
+      {
+        "__id__": 152
       }
     ],
     "removedComponents": []
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 145
+    },
+    "propertyPath": [
+      "_name"
+    ],
+    "value": "孵化场"
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "29uwZwL9RI/K5yFX+yNV8L"
+    ]
   },
   {
     "__type__": "CCPropertyOverrideInfo",
@@ -5510,26 +5534,10 @@
     ],
     "value": {
       "__type__": "cc.Vec3",
-      "x": 32,
+      "x": 0,
       "y": 0,
-      "z": 4036
+      "z": 0
     }
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "c4IFQk1K5dqpg3eWSQLejq"
-    ]
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 145
-    },
-    "propertyPath": [
-      "_name"
-    ],
-    "value": "hatchery_skin"
   },
   {
     "__type__": "CCPropertyOverrideInfo",
@@ -5563,6 +5571,52 @@
     }
   },
   {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 150
+    },
+    "propertyPath": [
+      "_clips",
+      "length"
+    ],
+    "value": 2
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "3bz+6MaxBFT4mqgmmrXm8C",
+      "1143w3gCdT3LCcAbz4r3Jz"
+    ]
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 150
+    },
+    "propertyPath": [
+      "_clips",
+      "0"
+    ],
+    "value": {
+      "__uuid__": "e77903c1-ee36-407f-9164-c30001788ab7@73b7f",
+      "__expectedType__": "cc.AnimationClip"
+    }
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 150
+    },
+    "propertyPath": [
+      "_clips",
+      "1"
+    ],
+    "value": {
+      "__uuid__": "e77903c1-ee36-407f-9164-c30001788ab7@73b7f",
+      "__expectedType__": "cc.AnimationClip"
+    }
+  },
+  {
     "__type__": "cc.PrefabInfo",
     "root": null,
     "asset": null,
@@ -5578,28 +5632,28 @@
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 151
-    },
-    "shadows": {
-      "__id__": 152
-    },
-    "_skybox": {
-      "__id__": 153
-    },
-    "fog": {
-      "__id__": 154
-    },
-    "octree": {
       "__id__": 155
     },
-    "skin": {
+    "shadows": {
       "__id__": 156
     },
-    "lightProbeInfo": {
+    "_skybox": {
       "__id__": 157
     },
-    "postSettings": {
+    "fog": {
       "__id__": 158
+    },
+    "octree": {
+      "__id__": 159
+    },
+    "skin": {
+      "__id__": 160
+    },
+    "lightProbeInfo": {
+      "__id__": 161
+    },
+    "postSettings": {
+      "__id__": 162
     },
     "bakedWithStationaryMainLight": false,
     "bakedWithHighpLightmap": false
