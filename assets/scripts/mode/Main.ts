@@ -787,7 +787,7 @@ export class Main extends Component {
                     let channel = arr[idxArr++] as SayChannel
                     console.log(channel, '说:', content)
                     AudioMgr.inst.playOneShot('音效/Transmission')
-                    if(!thisLocal.scene战斗.battleUI)
+                    if(!thisLocal.scene战斗 || !thisLocal.scene战斗.battleUI)
                         return
 
                     switch (channel) {
