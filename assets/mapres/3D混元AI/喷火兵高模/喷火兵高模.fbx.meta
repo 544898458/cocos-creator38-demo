@@ -1,0 +1,184 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "6cbdc528-19b3-4430-bd93-471409ff33d8",
+  "files": [],
+  "subMetas": {
+    "9ae49": {
+      "importer": "gltf-mesh",
+      "uuid": "6cbdc528-19b3-4430-bd93-471409ff33d8@9ae49",
+      "displayName": "",
+      "id": "9ae49",
+      "name": "棱角球.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 80
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "c74ba": {
+      "importer": "gltf-mesh",
+      "uuid": "6cbdc528-19b3-4430-bd93-471409ff33d8@c74ba",
+      "displayName": "",
+      "id": "c74ba",
+      "name": "texture_v100.002.mesh",
+      "userData": {
+        "gltfIndex": 1,
+        "triangleCount": 40000
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "438fe": {
+      "importer": "gltf-skeleton",
+      "uuid": "6cbdc528-19b3-4430-bd93-471409ff33d8@438fe",
+      "displayName": "",
+      "id": "438fe",
+      "name": "UnnamedSkeleton.skeleton",
+      "userData": {
+        "gltfIndex": 0,
+        "jointsLength": 17
+      },
+      "ver": "1.0.1",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "48b02": {
+      "importer": "gltf-embeded-image",
+      "uuid": "6cbdc528-19b3-4430-bd93-471409ff33d8@48b02",
+      "displayName": "",
+      "id": "48b02",
+      "name": "base_color_texture.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": false,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
+    "7d6ab": {
+      "importer": "texture",
+      "uuid": "6cbdc528-19b3-4430-bd93-471409ff33d8@7d6ab",
+      "displayName": "",
+      "id": "7d6ab",
+      "name": "base_color_texture.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "6cbdc528-19b3-4430-bd93-471409ff33d8@48b02"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "a9549": {
+      "importer": "gltf-material",
+      "uuid": "6cbdc528-19b3-4430-bd93-471409ff33d8@a9549",
+      "displayName": "",
+      "id": "a9549",
+      "name": "Material.003.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "a9dfd": {
+      "importer": "gltf-scene",
+      "uuid": "6cbdc528-19b3-4430-bd93-471409ff33d8@a9dfd",
+      "displayName": "",
+      "id": "a9dfd",
+      "name": "喷火兵高模.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "base_color_texture",
+        "uri": "6cbdc528-19b3-4430-bd93-471409ff33d8@48b02"
+      }
+    ],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "6cbdc528-19b3-4430-bd93-471409ff33d8@9ae49",
+        "6cbdc528-19b3-4430-bd93-471409ff33d8@c74ba"
+      ],
+      "skeletons": [
+        "6cbdc528-19b3-4430-bd93-471409ff33d8@438fe"
+      ],
+      "textures": [
+        "6cbdc528-19b3-4430-bd93-471409ff33d8@7d6ab"
+      ],
+      "materials": [
+        "6cbdc528-19b3-4430-bd93-471409ff33d8@a9549"
+      ],
+      "scenes": [
+        "6cbdc528-19b3-4430-bd93-471409ff33d8@a9dfd"
+      ]
+    }
+  }
+}
