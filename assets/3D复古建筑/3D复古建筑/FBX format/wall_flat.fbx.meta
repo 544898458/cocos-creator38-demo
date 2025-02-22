@@ -1,0 +1,127 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "48aa83b1-21db-4d23-91cb-5746e5375587",
+  "files": [],
+  "subMetas": {
+    "36e46": {
+      "importer": "gltf-mesh",
+      "uuid": "48aa83b1-21db-4d23-91cb-5746e5375587@36e46",
+      "displayName": "",
+      "id": "36e46",
+      "name": "wall_flat.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 4
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "0b01f": {
+      "importer": "texture",
+      "uuid": "48aa83b1-21db-4d23-91cb-5746e5375587@0b01f",
+      "displayName": "",
+      "id": "0b01f",
+      "name": "stones.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/3D复古建筑/3D复古建筑/FBX format/Textures/stones.png"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "a22da": {
+      "importer": "gltf-material",
+      "uuid": "48aa83b1-21db-4d23-91cb-5746e5375587@a22da",
+      "displayName": "",
+      "id": "a22da",
+      "name": "stones.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "a9c06": {
+      "importer": "gltf-scene",
+      "uuid": "48aa83b1-21db-4d23-91cb-5746e5375587@a9c06",
+      "displayName": "",
+      "id": "a9c06",
+      "name": "wall_flat.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "stones",
+        "uri": "db://assets/3D复古建筑/3D复古建筑/FBX format/Textures/stones.png"
+      }
+    ],
+    "fbx": {
+      "smartMaterialEnabled": true,
+      "matchMeshNames": false
+    },
+    "assetFinder": {
+      "meshes": [
+        "48aa83b1-21db-4d23-91cb-5746e5375587@36e46"
+      ],
+      "skeletons": [],
+      "textures": [
+        "48aa83b1-21db-4d23-91cb-5746e5375587@0b01f"
+      ],
+      "materials": [
+        "48aa83b1-21db-4d23-91cb-5746e5375587@a22da"
+      ],
+      "scenes": [
+        "48aa83b1-21db-4d23-91cb-5746e5375587@a9c06"
+      ]
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    }
+  }
+}

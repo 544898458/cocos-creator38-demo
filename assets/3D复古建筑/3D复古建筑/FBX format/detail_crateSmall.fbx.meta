@@ -1,0 +1,127 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "b11b3419-871c-4e87-8421-1b5f6f325bc4",
+  "files": [],
+  "subMetas": {
+    "03e86": {
+      "importer": "gltf-mesh",
+      "uuid": "b11b3419-871c-4e87-8421-1b5f6f325bc4@03e86",
+      "displayName": "",
+      "id": "03e86",
+      "name": "detail_crateSmall.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 12
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "6280c": {
+      "importer": "texture",
+      "uuid": "b11b3419-871c-4e87-8421-1b5f6f325bc4@6280c",
+      "displayName": "",
+      "id": "6280c",
+      "name": "barrel.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/3D复古建筑/3D复古建筑/FBX format/Textures/barrel.png"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e6ac7": {
+      "importer": "gltf-material",
+      "uuid": "b11b3419-871c-4e87-8421-1b5f6f325bc4@e6ac7",
+      "displayName": "",
+      "id": "e6ac7",
+      "name": "barrel.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "d2d63": {
+      "importer": "gltf-scene",
+      "uuid": "b11b3419-871c-4e87-8421-1b5f6f325bc4@d2d63",
+      "displayName": "",
+      "id": "d2d63",
+      "name": "detail_crateSmall.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "barrel",
+        "uri": "db://assets/3D复古建筑/3D复古建筑/FBX format/Textures/barrel.png"
+      }
+    ],
+    "fbx": {
+      "smartMaterialEnabled": true,
+      "matchMeshNames": false
+    },
+    "assetFinder": {
+      "meshes": [
+        "b11b3419-871c-4e87-8421-1b5f6f325bc4@03e86"
+      ],
+      "skeletons": [],
+      "textures": [
+        "b11b3419-871c-4e87-8421-1b5f6f325bc4@6280c"
+      ],
+      "materials": [
+        "b11b3419-871c-4e87-8421-1b5f6f325bc4@e6ac7"
+      ],
+      "scenes": [
+        "b11b3419-871c-4e87-8421-1b5f6f325bc4@d2d63"
+      ]
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    }
+  }
+}

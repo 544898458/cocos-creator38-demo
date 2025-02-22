@@ -1,0 +1,127 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "9a7080e4-b72b-4626-a49b-3988afd429b1",
+  "files": [],
+  "subMetas": {
+    "2caf2": {
+      "importer": "gltf-mesh",
+      "uuid": "9a7080e4-b72b-4626-a49b-3988afd429b1@2caf2",
+      "displayName": "",
+      "id": "2caf2",
+      "name": "floor_flat.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 2
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "18d18": {
+      "importer": "texture",
+      "uuid": "9a7080e4-b72b-4626-a49b-3988afd429b1@18d18",
+      "displayName": "",
+      "id": "18d18",
+      "name": "bricks.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/3D复古建筑/3D复古建筑/FBX format/Textures/bricks.png"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "5674b": {
+      "importer": "gltf-material",
+      "uuid": "9a7080e4-b72b-4626-a49b-3988afd429b1@5674b",
+      "displayName": "",
+      "id": "5674b",
+      "name": "bricks.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "c967a": {
+      "importer": "gltf-scene",
+      "uuid": "9a7080e4-b72b-4626-a49b-3988afd429b1@c967a",
+      "displayName": "",
+      "id": "c967a",
+      "name": "floor_flat.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "bricks",
+        "uri": "db://assets/3D复古建筑/3D复古建筑/FBX format/Textures/bricks.png"
+      }
+    ],
+    "fbx": {
+      "smartMaterialEnabled": true,
+      "matchMeshNames": false
+    },
+    "assetFinder": {
+      "meshes": [
+        "9a7080e4-b72b-4626-a49b-3988afd429b1@2caf2"
+      ],
+      "skeletons": [],
+      "textures": [
+        "9a7080e4-b72b-4626-a49b-3988afd429b1@18d18"
+      ],
+      "materials": [
+        "9a7080e4-b72b-4626-a49b-3988afd429b1@5674b"
+      ],
+      "scenes": [
+        "9a7080e4-b72b-4626-a49b-3988afd429b1@c967a"
+      ]
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    }
+  }
+}
