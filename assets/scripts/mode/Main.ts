@@ -932,7 +932,7 @@ export class Main extends Component {
                     let str名字右 = arr[idxArr++] as string
                     let str对话内容 = arr[idxArr++] as string
                     let b显示退出面板 = arr[idxArr++] as boolean
-                    thisLocal.scene战斗.剧情对话(str头像左, str名字左, str头像右, str名字右, str对话内容, b显示退出面板)
+                    thisLocal.scene战斗?.剧情对话(str头像左, str名字左, str头像右, str名字右, str对话内容, b显示退出面板)
                 }
                 break
             case MsgId.剧情对话已看完:

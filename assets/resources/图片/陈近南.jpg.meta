@@ -2,16 +2,16 @@
   "ver": "1.0.27",
   "importer": "image",
   "imported": true,
-  "uuid": "ad6744f2-a996-40bb-aeff-2964d090df6e",
+  "uuid": "ea482ff5-d6c8-465e-acf6-374e41b809f4",
   "files": [
-    ".json",
-    ".png"
+    ".jpg",
+    ".json"
   ],
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "ad6744f2-a996-40bb-aeff-2964d090df6e@6c48a",
-      "displayName": "总教官2",
+      "uuid": "ea482ff5-d6c8-465e-acf6-374e41b809f4@6c48a",
+      "displayName": "陈近南",
       "id": "6c48a",
       "name": "texture",
       "userData": {
@@ -22,7 +22,7 @@
         "mipfilter": "none",
         "anisotropy": 0,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "ad6744f2-a996-40bb-aeff-2964d090df6e",
+        "imageUuidOrDatabaseUri": "ea482ff5-d6c8-465e-acf6-374e41b809f4",
         "visible": false
       },
       "ver": "1.0.22",
@@ -34,8 +34,8 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "ad6744f2-a996-40bb-aeff-2964d090df6e@f9941",
-      "displayName": "总教官2",
+      "uuid": "ea482ff5-d6c8-465e-acf6-374e41b809f4@f9941",
+      "displayName": "陈近南",
       "id": "f9941",
       "name": "spriteFrame",
       "userData": {
@@ -46,10 +46,10 @@
         "offsetY": 0,
         "trimX": 0,
         "trimY": 0,
-        "width": 51,
-        "height": 62,
-        "rawWidth": 51,
-        "rawHeight": 62,
+        "width": 64,
+        "height": 64,
+        "rawWidth": 64,
+        "rawHeight": 64,
         "borderTop": 0,
         "borderBottom": 0,
         "borderLeft": 0,
@@ -61,17 +61,17 @@
         "meshType": 0,
         "vertices": {
           "rawPosition": [
-            -25.5,
-            -31,
+            -32,
+            -32,
             0,
-            25.5,
-            -31,
+            32,
+            -32,
             0,
-            -25.5,
-            31,
+            -32,
+            32,
             0,
-            25.5,
-            31,
+            32,
+            32,
             0
           ],
           "indexes": [
@@ -84,12 +84,12 @@
           ],
           "uv": [
             0,
-            62,
-            51,
-            62,
+            64,
+            64,
+            64,
             0,
             0,
-            51,
+            64,
             0
           ],
           "nuv": [
@@ -103,18 +103,18 @@
             1
           ],
           "minPos": [
-            -25.5,
-            -31,
+            -32,
+            -32,
             0
           ],
           "maxPos": [
-            25.5,
-            31,
+            32,
+            32,
             0
           ]
         },
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "ad6744f2-a996-40bb-aeff-2964d090df6e@6c48a",
+        "imageUuidOrDatabaseUri": "ea482ff5-d6c8-465e-acf6-374e41b809f4@6c48a",
         "atlasUuid": ""
       },
       "ver": "1.0.12",
@@ -126,9 +126,9 @@
     }
   },
   "userData": {
-    "hasAlpha": true,
+    "hasAlpha": false,
     "type": "sprite-frame",
     "fixAlphaTransparencyArtifacts": false,
-    "redirect": "ad6744f2-a996-40bb-aeff-2964d090df6e@6c48a"
+    "redirect": "ea482ff5-d6c8-465e-acf6-374e41b809f4@6c48a"
   }
 }
