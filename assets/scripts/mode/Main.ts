@@ -201,10 +201,17 @@ enum MsgId
 
 enum 副本ID
 {
+	单人ID_非法_MIN,
 	训练战,
 	防守战,
-	多人联机地图,
+	攻坚战,
+	单人ID_非法_MAX,
+
+	多人ID_非法_MIN = 100,
 	四方对战,
+	多人ID_非法_MAX,
+
+	多人联机地图,
 };
 
 enum 单位类型
@@ -389,6 +396,9 @@ export class Main extends Component {
     }
     onClickToggle进防守战() {
         this.进Scene战斗单人剧情副本('scene防守战', 副本ID.防守战)
+    }
+    onClick进攻坚战(){
+        this.进Scene战斗单人剧情副本('scene攻坚战', 副本ID.攻坚战)
     }
     onClick创建四方对战() {
         this.进Scene战斗('scene四方对战', msgpack.encode([[MsgId.创建多人战局, 0, 0], 副本ID.四方对战]))
