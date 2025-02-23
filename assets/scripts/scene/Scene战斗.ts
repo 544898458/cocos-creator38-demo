@@ -485,7 +485,7 @@ export class Scene战斗 extends Component {
         }
         else if (
                item.collider.node.name == "工程车"
-            || item.collider.node.name == "axe-yellow"
+            || item.collider.node.name == "近战兵"
             || item.collider.node.name == "地堡"
             || item.collider.node.name == "民房"
             || item.collider.node.name == "兵厂"

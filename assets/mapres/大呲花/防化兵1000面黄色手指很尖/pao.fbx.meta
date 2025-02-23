@@ -1,0 +1,192 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "3f89776b-093b-4936-b2ec-798d14277c82",
+  "files": [
+    "__original-animation-0.cconb"
+  ],
+  "subMetas": {
+    "a278b": {
+      "importer": "gltf-mesh",
+      "uuid": "3f89776b-093b-4936-b2ec-798d14277c82@a278b",
+      "displayName": "",
+      "id": "a278b",
+      "name": "mesh_uv.obj.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 1000
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "73b7f": {
+      "importer": "gltf-animation",
+      "uuid": "3f89776b-093b-4936-b2ec-798d14277c82@73b7f",
+      "displayName": "",
+      "id": "73b7f",
+      "name": "Take 001.animation",
+      "userData": {
+        "gltfIndex": 0,
+        "wrapMode": 2,
+        "sample": 30,
+        "span": {
+          "from": 0,
+          "to": 0.8333333134651184
+        },
+        "events": [],
+        "embeddedPlayers": [],
+        "editorExtras": {
+          "embeddedPlayerGroups": []
+        },
+        "speed": 1,
+        "auxiliaryCurves": {}
+      },
+      "ver": "1.0.17",
+      "imported": true,
+      "files": [
+        ".cconb"
+      ],
+      "subMetas": {}
+    },
+    "438fe": {
+      "importer": "gltf-skeleton",
+      "uuid": "3f89776b-093b-4936-b2ec-798d14277c82@438fe",
+      "displayName": "",
+      "id": "438fe",
+      "name": "UnnamedSkeleton.skeleton",
+      "userData": {
+        "gltfIndex": 0,
+        "jointsLength": 34
+      },
+      "ver": "1.0.1",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "7d6ab": {
+      "importer": "texture",
+      "uuid": "3f89776b-093b-4936-b2ec-798d14277c82@7d6ab",
+      "displayName": "",
+      "id": "7d6ab",
+      "name": "base_color_texture.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/mapres/大呲花/防化兵1000面黄色手指很尖/防化兵1000面黄色手指很尖.fbm/Image_0.003.png"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "41dd3": {
+      "importer": "gltf-material",
+      "uuid": "3f89776b-093b-4936-b2ec-798d14277c82@41dd3",
+      "displayName": "",
+      "id": "41dd3",
+      "name": "Material_0.003.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "7044e": {
+      "importer": "gltf-scene",
+      "uuid": "3f89776b-093b-4936-b2ec-798d14277c82@7044e",
+      "displayName": "",
+      "id": "7044e",
+      "name": "pao.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "base_color_texture",
+        "uri": "db://assets/mapres/大呲花/防化兵1000面黄色手指很尖/防化兵1000面黄色手指很尖.fbm/Image_0.003.png"
+      }
+    ],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "animationImportSettings": [
+      {
+        "name": "Take 001",
+        "duration": 0.8333333134651184,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "Take 001",
+            "from": 0,
+            "to": 0.8333333134651184,
+            "wrapMode": 2,
+            "previousId": "73b7f"
+          }
+        ]
+      }
+    ],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "3f89776b-093b-4936-b2ec-798d14277c82@a278b"
+      ],
+      "skeletons": [
+        "3f89776b-093b-4936-b2ec-798d14277c82@438fe"
+      ],
+      "textures": [
+        "3f89776b-093b-4936-b2ec-798d14277c82@7d6ab"
+      ],
+      "materials": [
+        "3f89776b-093b-4936-b2ec-798d14277c82@41dd3"
+      ],
+      "scenes": [
+        "3f89776b-093b-4936-b2ec-798d14277c82@7044e"
+      ]
+    }
+  }
+}
