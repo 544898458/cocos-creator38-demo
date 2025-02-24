@@ -252,6 +252,7 @@ enum 单位类型
 enum SayChannel {
     系统,
     聊天,
+    任务提示,
 };
 
 @ccclass('Main')
@@ -812,6 +813,10 @@ export class Main extends Component {
                         case SayChannel.聊天:
                             if(content.length>0)
                                 thisLocal.scene战斗.battleUI.lable聊天消息.string = content
+                            break
+                        case SayChannel.任务提示:
+                            if(content.length>0)
+                                thisLocal.scene战斗.battleUI.lable任务提示.string = content
                             break
                     }
 

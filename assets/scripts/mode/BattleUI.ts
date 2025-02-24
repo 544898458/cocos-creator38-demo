@@ -34,6 +34,8 @@ export class BattleUI extends Component {
     lable聊天消息: Label
     @property({ type: Label, displayName: "系统消息" })
     lable系统消息: Label
+    @property({ type: Label})
+    lable任务提示: Label
     @property({ type: UITransform, displayName: "所有单位头顶名字" })
     uiTransform所有单位头顶名字: UITransform
     @property({ type: UITransform, displayName: "剧情对话根" })
