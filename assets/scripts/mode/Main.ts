@@ -669,7 +669,7 @@ export class Main extends Component {
                                 // old.initClipName = '平常状态'
                                 console.log('兵厂骨骼动画', old.skeletalAnimation)
                             }else if(newNode.name == '近战兵'){
-                                old.skeletalAnimation = newNode.getChildByName('Unarmed Idle 01').getComponent(SkeletalAnimation)
+                                old.skeletalAnimation = newNode.getChildByName('Idle').getComponent(SkeletalAnimation)
                                 // old.initClipName = '平常状态'
                                 console.log('近战兵骨骼动画', old.skeletalAnimation)
                             }
@@ -847,7 +847,7 @@ export class Main extends Component {
                     console.log('删除:', id)
                     if(!thisLocal.scene战斗)
                         return
-                    
+
                     let entity = thisLocal.scene战斗.entities.get(id);
                     // entity.hpbar?.destroy();
                     if (entity == undefined){
@@ -1161,18 +1161,23 @@ export class Main extends Component {
                 state.wrapMode = AnimationClip.WrapMode.Loop
                 old.skeletalAnimation.play()
             }else if(strClipName == 'died'){
-                let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[2])
+                let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[3])
                 state.wrapMode =  AnimationClip.WrapMode.Normal
                 old.skeletalAnimation.play()
             }else if(strClipName == 'attack'){
-                let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[1])
+                let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[2])
                 state.wrapMode =  AnimationClip.WrapMode.Normal
+                // state.playbackRange = {min:0.4, max:2} // 动画总长度
+                state.speed = 4
+                state.time = 0.5
                 old.skeletalAnimation.play()
             }else if(strClipName == 'run'){
-                // let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[4])
-                // state.wrapMode =  AnimationClip.WrapMode.Loop
+                let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[1])
+                state.wrapMode =  AnimationClip.WrapMode.Loop
+                state.speed = 0.8
+                old.skeletalAnimation.play()
                 // state.time = 0
-                old.skeletalAnimation.play('Take 001')
+                // old.skeletalAnimation.play('Take 001')
                 // console.log(old.view.name, 'state', state, 'old.skeletalAnimation', old.skeletalAnimation)
             }
         }

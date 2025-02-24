@@ -1,0 +1,146 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "b5e2f449-0cc7-4937-9167-dcfe6a07f43d",
+  "files": [],
+  "subMetas": {
+    "a278b": {
+      "importer": "gltf-mesh",
+      "uuid": "b5e2f449-0cc7-4937-9167-dcfe6a07f43d@a278b",
+      "displayName": "",
+      "id": "a278b",
+      "name": "mesh_uv.obj.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 1000
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "48b02": {
+      "importer": "gltf-embeded-image",
+      "uuid": "b5e2f449-0cc7-4937-9167-dcfe6a07f43d@48b02",
+      "displayName": "",
+      "id": "48b02",
+      "name": "base_color_texture.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": true,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
+    "7d6ab": {
+      "importer": "texture",
+      "uuid": "b5e2f449-0cc7-4937-9167-dcfe6a07f43d@7d6ab",
+      "displayName": "",
+      "id": "7d6ab",
+      "name": "base_color_texture.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "b5e2f449-0cc7-4937-9167-dcfe6a07f43d@48b02"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "f8f78": {
+      "importer": "gltf-material",
+      "uuid": "b5e2f449-0cc7-4937-9167-dcfe6a07f43d@f8f78",
+      "displayName": "",
+      "id": "f8f78",
+      "name": "Material_0.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "2ef0f": {
+      "importer": "gltf-scene",
+      "uuid": "b5e2f449-0cc7-4937-9167-dcfe6a07f43d@2ef0f",
+      "displayName": "",
+      "id": "2ef0f",
+      "name": "近战兵合并顶点.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "base_color_texture",
+        "uri": "b5e2f449-0cc7-4937-9167-dcfe6a07f43d@48b02"
+      }
+    ],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "b5e2f449-0cc7-4937-9167-dcfe6a07f43d@a278b"
+      ],
+      "skeletons": [],
+      "textures": [
+        "b5e2f449-0cc7-4937-9167-dcfe6a07f43d@7d6ab"
+      ],
+      "materials": [
+        "b5e2f449-0cc7-4937-9167-dcfe6a07f43d@f8f78"
+      ],
+      "scenes": [
+        "b5e2f449-0cc7-4937-9167-dcfe6a07f43d@2ef0f"
+      ]
+    }
+  }
+}
