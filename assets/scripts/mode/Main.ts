@@ -7,6 +7,7 @@ import { AudioMgr } from '../manager/AudioMgr'
 import { ProgressBar } from 'cc'
 import { ParticleSystem } from 'cc'
 import { tween } from 'cc'
+import { copyFileSync } from 'original-fs'
 
 const { ccclass, property } = _decorator
 
@@ -564,7 +565,12 @@ export class Main extends Component {
         case MsgId.在线人数:
             {
                 let 人数 = arr[idxArr++] as number
-                this.str在线人数 = 人数 + '人在线'
+                let arr昵称 = arr[idxArr++] as string[]
+                this.str在线人数 = 人数 + '人在线:'
+                console.log('arr', arr)
+                arr昵称.forEach((str昵称:String)=>{
+                    this.str在线人数 += str昵称 + '、'
+                })
                 this.显示在线人数()
             }
             break
@@ -592,8 +598,10 @@ export class Main extends Component {
         let sn = msgHead[1] as number
         console.log("收到,msgId：", msgId, ',sn:', sn)
         ++thisLocal.recvMsgSnGameSvr
-        if(thisLocal.recvMsgSnGameSvr != sn)
+        if(thisLocal.recvMsgSnGameSvr != sn){
             console.error('recvMsgSn ', thisLocal.recvMsgSnGameSvr , 'sn', sn)
+            thisLocal.recvMsgSnGameSvr = sn;
+        }
         // console.log("sn", sn)
         switch (msgId) {
             case MsgId.AddRoleRet:
@@ -605,6 +613,10 @@ export class Main extends Component {
                     let prefabName: string = arr[idxArr++]
                     let hpMax: number = arr[idxArr++]
                     console.log(id, nickName, prefabName, '进来了,hpMax', hpMax)
+                    if(!thisLocal.scene战斗){
+                        // console.log(
+                        return   
+                    }
                     let old = thisLocal.scene战斗.entities.get(id)
                     if (old == undefined) {
                         old = new ClientEntityComponent()
@@ -780,6 +792,10 @@ export class Main extends Component {
                     let loop: boolean = arr[idxArr++]
                     let clipName: string = arr[idxArr++]
                     console.log(id, '动作改为', clipName)
+                    if(!thisLocal.scene战斗){
+                        // console.log(
+                        return   
+                    }
                     let old = thisLocal.scene战斗.entities.get(id)
                     if (old == undefined) {
                         // console.log(id,"还没加载好,没有播放动作",clipName)
@@ -800,8 +816,11 @@ export class Main extends Component {
                 {
                     let content = arr[idxArr++]
                     let channel = arr[idxArr++] as SayChannel
-                    console.log(channel, '说:', content)
+                    console.log(channel, '说:', content, thisLocal)
                     AudioMgr.inst.playOneShot('音效/Transmission')
+                    if(thisLocal.scene登录 && thisLocal.scene登录.lableMessage)
+                        thisLocal.scene登录.lableMessage.string = content
+
                     if(!thisLocal.scene战斗 || !thisLocal.scene战斗.battleUI)
                         return
 
@@ -826,6 +845,9 @@ export class Main extends Component {
                 {
                     let id = arr[idxArr++]
                     console.log('删除:', id)
+                    if(!thisLocal.scene战斗)
+                        return
+                    
                     let entity = thisLocal.scene战斗.entities.get(id);
                     // entity.hpbar?.destroy();
                     if (entity == undefined){
