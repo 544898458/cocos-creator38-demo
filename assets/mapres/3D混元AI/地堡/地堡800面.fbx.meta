@@ -2,20 +2,34 @@
   "ver": "2.3.13",
   "importer": "fbx",
   "imported": true,
-  "uuid": "c44bce6a-66bd-44f3-b7f3-a261fcde821a",
-  "files": [
-    "__original-animation-0.cconb"
-  ],
+  "uuid": "2ce77ef9-b384-47c8-991c-9981937ebebb",
+  "files": [],
   "subMetas": {
-    "a278b": {
-      "importer": "gltf-mesh",
-      "uuid": "c44bce6a-66bd-44f3-b7f3-a261fcde821a@a278b",
+    "99380": {
+      "importer": "gltf-material",
+      "uuid": "2ce77ef9-b384-47c8-991c-9981937ebebb@99380",
       "displayName": "",
-      "id": "a278b",
-      "name": "mesh_uv.obj.mesh",
+      "id": "99380",
+      "name": "Material.001.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "2aa0e": {
+      "importer": "gltf-mesh",
+      "uuid": "2ce77ef9-b384-47c8-991c-9981937ebebb@2aa0e",
+      "displayName": "",
+      "id": "2aa0e",
+      "name": "texture_v100.001.mesh",
       "userData": {
         "gltfIndex": 0,
-        "triangleCount": 1000
+        "triangleCount": 800
       },
       "ver": "1.1.1",
       "imported": true,
@@ -25,56 +39,16 @@
       ],
       "subMetas": {}
     },
-    "18d6f": {
-      "importer": "gltf-animation",
-      "uuid": "c44bce6a-66bd-44f3-b7f3-a261fcde821a@18d6f",
-      "displayName": "",
-      "id": "18d6f",
-      "name": "mixamo.com.animation",
-      "userData": {
-        "gltfIndex": 0,
-        "wrapMode": 2,
-        "sample": 30,
-        "span": {
-          "from": 0,
-          "to": 1.9666666984558105
-        },
-        "events": []
-      },
-      "ver": "1.0.17",
-      "imported": true,
-      "files": [
-        ".cconb"
-      ],
-      "subMetas": {}
-    },
-    "438fe": {
-      "importer": "gltf-skeleton",
-      "uuid": "c44bce6a-66bd-44f3-b7f3-a261fcde821a@438fe",
-      "displayName": "",
-      "id": "438fe",
-      "name": "UnnamedSkeleton.skeleton",
-      "userData": {
-        "gltfIndex": 0,
-        "jointsLength": 34
-      },
-      "ver": "1.0.1",
-      "imported": true,
-      "files": [
-        ".json"
-      ],
-      "subMetas": {}
-    },
     "48b02": {
       "importer": "gltf-embeded-image",
-      "uuid": "c44bce6a-66bd-44f3-b7f3-a261fcde821a@48b02",
+      "uuid": "2ce77ef9-b384-47c8-991c-9981937ebebb@48b02",
       "displayName": "",
       "id": "48b02",
       "name": "base_color_texture.image",
       "userData": {
         "gltfIndex": 0,
         "fixAlphaTransparencyArtifacts": true,
-        "hasAlpha": true,
+        "hasAlpha": false,
         "type": "texture"
       },
       "ver": "1.0.3",
@@ -87,7 +61,7 @@
     },
     "7d6ab": {
       "importer": "texture",
-      "uuid": "c44bce6a-66bd-44f3-b7f3-a261fcde821a@7d6ab",
+      "uuid": "2ce77ef9-b384-47c8-991c-9981937ebebb@7d6ab",
       "displayName": "",
       "id": "7d6ab",
       "name": "base_color_texture.texture",
@@ -99,7 +73,7 @@
         "mipfilter": "none",
         "anisotropy": 0,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "c44bce6a-66bd-44f3-b7f3-a261fcde821a@48b02"
+        "imageUuidOrDatabaseUri": "2ce77ef9-b384-47c8-991c-9981937ebebb@48b02"
       },
       "ver": "1.0.22",
       "imported": true,
@@ -108,28 +82,12 @@
       ],
       "subMetas": {}
     },
-    "f8f78": {
-      "importer": "gltf-material",
-      "uuid": "c44bce6a-66bd-44f3-b7f3-a261fcde821a@f8f78",
-      "displayName": "",
-      "id": "f8f78",
-      "name": "Material_0.material",
-      "userData": {
-        "gltfIndex": 0
-      },
-      "ver": "1.0.14",
-      "imported": true,
-      "files": [
-        ".json"
-      ],
-      "subMetas": {}
-    },
-    "503de": {
+    "9e5d0": {
       "importer": "gltf-scene",
-      "uuid": "c44bce6a-66bd-44f3-b7f3-a261fcde821a@503de",
+      "uuid": "2ce77ef9-b384-47c8-991c-9981937ebebb@9e5d0",
       "displayName": "",
-      "id": "503de",
-      "name": "Idle.prefab",
+      "id": "9e5d0",
+      "name": "地堡800面.prefab",
       "userData": {
         "gltfIndex": 0
       },
@@ -145,28 +103,12 @@
     "imageMetas": [
       {
         "name": "base_color_texture",
-        "uri": "c44bce6a-66bd-44f3-b7f3-a261fcde821a@48b02"
+        "uri": "2ce77ef9-b384-47c8-991c-9981937ebebb@48b02"
       }
     ],
     "fbx": {
       "smartMaterialEnabled": true
     },
-    "animationImportSettings": [
-      {
-        "name": "mixamo.com",
-        "duration": 1.9666666984558105,
-        "fps": 30,
-        "splits": [
-          {
-            "name": "mixamo.com",
-            "from": 0,
-            "to": 1.9666666984558105,
-            "wrapMode": 2,
-            "previousId": "18d6f"
-          }
-        ]
-      }
-    ],
     "lods": {
       "enable": false,
       "hasBuiltinLOD": false,
@@ -187,23 +129,21 @@
     },
     "assetFinder": {
       "meshes": [
-        "c44bce6a-66bd-44f3-b7f3-a261fcde821a@a278b"
+        "2ce77ef9-b384-47c8-991c-9981937ebebb@2aa0e"
       ],
-      "skeletons": [
-        "c44bce6a-66bd-44f3-b7f3-a261fcde821a@438fe"
-      ],
+      "skeletons": [],
       "textures": [
-        "c44bce6a-66bd-44f3-b7f3-a261fcde821a@7d6ab"
+        "2ce77ef9-b384-47c8-991c-9981937ebebb@7d6ab"
       ],
       "materials": [
-        "c44bce6a-66bd-44f3-b7f3-a261fcde821a@f8f78"
+        "2ce77ef9-b384-47c8-991c-9981937ebebb@99380"
       ],
       "scenes": [
-        "c44bce6a-66bd-44f3-b7f3-a261fcde821a@503de"
+        "2ce77ef9-b384-47c8-991c-9981937ebebb@9e5d0"
       ]
     },
     "materials": {
-      "c44bce6a-66bd-44f3-b7f3-a261fcde821a@f8f78": {
+      "2ce77ef9-b384-47c8-991c-9981937ebebb@99380": {
         "__type__": "cc.Material",
         "_name": "",
         "_objFlags": 0,
@@ -216,7 +156,7 @@
         "_techIdx": 0,
         "_defines": [
           {
-            "DCC_APP_NAME": 3,
+            "DCC_APP_NAME": 1,
             "USE_ALBEDO_MAP": true
           },
           {},
@@ -264,14 +204,14 @@
         "_props": [
           {
             "mainTexture": {
-              "__uuid__": "c44bce6a-66bd-44f3-b7f3-a261fcde821a@7d6ab",
+              "__uuid__": "2ce77ef9-b384-47c8-991c-9981937ebebb@7d6ab",
               "__expectedType__": "cc.Texture2D"
             },
             "mainColor": {
               "__type__": "cc.Color",
-              "r": 224,
-              "g": 224,
-              "b": 224,
+              "r": 231,
+              "g": 231,
+              "b": 231,
               "a": 255
             },
             "shininessExponent": 10,
@@ -282,7 +222,8 @@
               "b": 124,
               "a": 255
             },
-            "metallic": 1
+            "specularFactor": 0.5,
+            "metallic": 0.5
           },
           {},
           {},

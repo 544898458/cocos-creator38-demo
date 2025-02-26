@@ -1,0 +1,154 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "f9c79798-f364-4a22-9877-106d1f8f565a",
+  "files": [],
+  "subMetas": {
+    "551db": {
+      "importer": "gltf-mesh",
+      "uuid": "f9c79798-f364-4a22-9877-106d1f8f565a@551db",
+      "displayName": "",
+      "id": "551db",
+      "name": "Mesh_0.001.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 872
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "7d6ab": {
+      "importer": "texture",
+      "uuid": "f9c79798-f364-4a22-9877-106d1f8f565a@7d6ab",
+      "displayName": "",
+      "id": "7d6ab",
+      "name": "base_color_texture.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/mapres/3D混元AI/地堡/地堡872面.fbm"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "400be": {
+      "importer": "texture",
+      "uuid": "f9c79798-f364-4a22-9877-106d1f8f565a@400be",
+      "displayName": "",
+      "id": "400be",
+      "name": "normalmap_texture.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/mapres/3D混元AI/地堡/地堡872面.fbm"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "93a87": {
+      "importer": "gltf-material",
+      "uuid": "f9c79798-f364-4a22-9877-106d1f8f565a@93a87",
+      "displayName": "",
+      "id": "93a87",
+      "name": "tripo_material_ab29d84d-323c-4624-8a13-31f80fe06a63.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "2e99c": {
+      "importer": "gltf-scene",
+      "uuid": "f9c79798-f364-4a22-9877-106d1f8f565a@2e99c",
+      "displayName": "",
+      "id": "2e99c",
+      "name": "地堡872面.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "base_color_texture",
+        "uri": "db://assets/mapres/3D混元AI/地堡/地堡872面.fbm"
+      },
+      {
+        "name": "normalmap_texture",
+        "uri": "db://assets/mapres/3D混元AI/地堡/地堡872面.fbm"
+      }
+    ],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "f9c79798-f364-4a22-9877-106d1f8f565a@551db"
+      ],
+      "skeletons": [],
+      "textures": [
+        "f9c79798-f364-4a22-9877-106d1f8f565a@7d6ab",
+        "f9c79798-f364-4a22-9877-106d1f8f565a@400be"
+      ],
+      "materials": [
+        "f9c79798-f364-4a22-9877-106d1f8f565a@93a87"
+      ],
+      "scenes": [
+        "f9c79798-f364-4a22-9877-106d1f8f565a@2e99c"
+      ]
+    }
+  }
+}
