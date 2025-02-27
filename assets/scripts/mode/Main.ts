@@ -258,6 +258,15 @@ enum SayChannel {
     任务提示,
 };
 
+enum LoginResult
+{
+    OK,
+    Busy,
+    PwdErr,
+    NameErr,
+    版本不一致,
+}
+
 @ccclass('Main')
 export class Main extends Component {
     websocket: WebSocket
@@ -476,6 +485,7 @@ export class Main extends Component {
                 [MsgId.Login, ++this.sendMsgSn, 0, 0],
                 editBox.string,
                 'Hello, world!pwd',
+                1,//版本号
             ]
 
             const encoded = msgpack.encode(object)
@@ -514,7 +524,21 @@ export class Main extends Component {
                     console.log('收到WorldSvr消息',arrWorldMsg)
                     thisLocal.onRecvWorldSvr(arrWorldMsg)
                 break
-    
+            case MsgId.Login:
+                {
+                    let result: LoginResult = arr[idxArr++]
+                    switch(result){
+                        case LoginResult.版本不一致:
+                            thisLocal.websocket = null
+                            thisLocal.清零网络数据包序号()
+                            thisLocal.scene登录.lableMessage.string = '版本不一致，请清理缓存再开游戏'
+                            thisLocal.scene登录.显示登录界面()
+                            break
+                        default:
+                            break
+                    }
+                }
+                break
             }
             // console.log("sn", sn)
             
@@ -524,8 +548,14 @@ export class Main extends Component {
         this.websocket.onclose = function (e) {
             console.log('websocket 断开: ' + e.code + ' ' + e.reason + ' ' + e.wasClean)
             console.log(e)
+            
+            if(null == thisLocal.websocket)
+                return//后台主动通知关闭
+
             thisLocal.清零网络数据包序号()
             thisLocal.websocket = null
+
+
             thisLocal.str在线人数 = '连接已断开，已回到登录场景'
             if(thisLocal.scene登录){
                 thisLocal.scene登录.显示登录界面()
