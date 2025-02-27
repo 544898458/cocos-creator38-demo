@@ -7,6 +7,7 @@ import { EditBox } from 'cc';
 import { UITransform } from 'cc';
 import { Sprite } from 'cc';
 import { AudioMgr } from '../manager/AudioMgr';
+import { Button } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('BattleUI')
@@ -36,6 +37,12 @@ export class BattleUI extends Component {
     lable系统消息: Label
     @property({ type: Label})
     lable任务提示: Label
+
+    //根据选中单位类型显示不同的按钮
+    @property({ type: Button})button离开地堡: Button
+    @property({ type: Button})button强行走: Button
+    @property({ type: Button})button集结点: Button
+
     @property({ type: UITransform, displayName: "所有单位头顶名字" })
     uiTransform所有单位头顶名字: UITransform
     @property({ type: UITransform, displayName: "剧情对话根" })
@@ -67,9 +74,21 @@ export class BattleUI extends Component {
     update(deltaTime: number) {
 
     }
-    //设置
+    
     on出地堡(event: Event, customEventData: string) {
         this.main.onClick出地堡()
+    }
+    on集结点(event: Event, customEventData: string) {
+        if(0 == this.main.arr选中.length)
+        {
+            this.scene战斗.battleUI.lable系统消息.string = '请先选中建筑单位'
+            AudioMgr.inst.playOneShot('BUZZ')
+            return    
+        }
+
+        this.scene战斗.main.fun创建消息 = this.scene战斗.main.createMsg集结点
+        this.scene战斗.battleUI.lable系统消息.string = '请点击地面设置此建筑产出活动单位的集结点'
+        this.scene战斗.battleUI.下部列表.active = false
     }
     on强行走(event: Event, customEventData: string) {
         if(0 == this.main.arr选中.length)

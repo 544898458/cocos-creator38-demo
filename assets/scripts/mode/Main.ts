@@ -198,6 +198,7 @@ enum MsgId
 	在线人数,
     GateSvr转发GameSvr消息给游戏前端,
     GateSvr转发WorldSvr消息给游戏前端,
+    建筑产出活动单位的集结点,
 };
 
 enum 副本ID
@@ -215,6 +216,7 @@ enum 副本ID
 	多人联机地图,
 };
 
+export
 enum 单位类型
 {
 	单位类型_Invalid_0,
@@ -279,7 +281,10 @@ export class Main extends Component {
     createMsgMove强行走(hitPoint: Vec3) {
         return this.createMsgMove(hitPoint, false)
     }
-
+    createMsg集结点(hitPoint: Vec3) {
+        console.log('createMsg造建筑', hitPoint)
+        return [[MsgId.建筑产出活动单位的集结点, ++this.sendMsgSn, 0], [hitPoint.x, hitPoint.z]]
+    }
     清零网络数据包序号(){
         this.recvMsgSnGameSvr = 0
         this.recvMsgSnWorldSvr = 0
@@ -612,6 +617,7 @@ export class Main extends Component {
                     let entityName: string = arr[idxArr++]
                     let prefabName: string = arr[idxArr++]
                     let hpMax: number = arr[idxArr++]
+                    let 类型: number = arr[idxArr++] as 单位类型
                     console.log(id, nickName, prefabName, '进来了,hpMax', hpMax)
                     if(!thisLocal.scene战斗){
                         // console.log(
@@ -622,6 +628,7 @@ export class Main extends Component {
                         old = new ClientEntityComponent()
                         old.hpMax = hpMax
                         old.prefabName = prefabName
+                        old.类型 = 类型 
                         thisLocal.scene战斗.entities.set(id, old)
                         if (thisLocal.scene战斗.battleUI.lableCount != undefined)
                             thisLocal.scene战斗.battleUI.lableCount.string = '共' + thisLocal.scene战斗.entities.size + '单位'

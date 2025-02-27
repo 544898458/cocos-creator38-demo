@@ -1,7 +1,7 @@
 import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip, director, Animation, Color} from 'cc'
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { FollowTarget } from '../mode/FollowTarget'
-import { Main, MsgId } from '../mode/Main'
+import { Main, MsgId, 单位类型 } from '../mode/Main'
 import { Vec2 } from 'cc'
 import { EventTouch } from 'cc'
 import { Graphics } from 'cc'
@@ -33,6 +33,7 @@ export class ClientEntityComponent {
     hp: number = 0
     hpMax: number = 0
     prefabName: string
+    类型: 单位类型 = 单位类型.单位类型_Invalid_0
     tween移动: Tween<Node>
     removeFromParent() {
         this.view?.removeFromParent()
@@ -562,6 +563,7 @@ export class Scene战斗 extends Component {
     }
 
     clear选中() {
+        this.隐藏选中单位专用按钮()
         for (let id of this.main.arr选中) {
             let entity = this.entities.get(id)
             if (entity) {
@@ -571,6 +573,13 @@ export class Scene战斗 extends Component {
             }
         }
     }
+
+    隐藏选中单位专用按钮(){
+        this.battleUI.button强行走.node.active = false
+        this.battleUI.button集结点.node.active = false
+        this.battleUI.button离开地堡.node.active = false
+    }
+    
     选中(arr: number[]) {
         this.clear选中()
         this.main.arr选中 = arr
@@ -591,6 +600,29 @@ export class Scene战斗 extends Component {
                 let ani = newNode.getChildByName('lightQ').getComponent(Animation)
                 const [clip] = ani.clips;
                 ani.getState(clip.name).repeatCount = Infinity
+
+                if(1 == this.main.arr选中.length){
+
+                    this.隐藏选中单位专用按钮()
+                    switch(old.类型){
+                        case 单位类型.地堡:
+                            this.battleUI.button离开地堡.node.active = true
+                            break;
+                        case 单位类型.基地:
+                        case 单位类型.兵厂:
+                            this.battleUI.button集结点.node.active = true
+                            break;
+                        case 单位类型.兵:
+                        case 单位类型.近战兵:
+                        case 单位类型.工程车:
+                        case 单位类型.三色坦克:
+                            this.battleUI.button强行走.node.active = true
+                            break
+                        default:
+                            console.log('此单位没有专用菜单' + old.类型)
+                            break
+                    }
+                }
             })
         }
         if(arr.length>0)
