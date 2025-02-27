@@ -579,7 +579,7 @@ export class Scene战斗 extends Component {
         this.battleUI.button集结点.node.active = false
         this.battleUI.button离开地堡.node.active = false
     }
-    
+
     选中(arr: number[]) {
         this.clear选中()
         this.main.arr选中 = arr
@@ -601,28 +601,27 @@ export class Scene战斗 extends Component {
                 const [clip] = ani.clips;
                 ani.getState(clip.name).repeatCount = Infinity
 
-                if(1 == this.main.arr选中.length){
-
-                    this.隐藏选中单位专用按钮()
-                    switch(old.类型){
-                        case 单位类型.地堡:
-                            this.battleUI.button离开地堡.node.active = true
-                            break;
-                        case 单位类型.基地:
-                        case 单位类型.兵厂:
-                            this.battleUI.button集结点.node.active = true
-                            break;
-                        case 单位类型.兵:
-                        case 单位类型.近战兵:
-                        case 单位类型.工程车:
-                        case 单位类型.三色坦克:
-                            this.battleUI.button强行走.node.active = true
-                            break
-                        default:
-                            console.log('此单位没有专用菜单' + old.类型)
-                            break
-                    }
+                this.隐藏选中单位专用按钮()
+                switch(old.类型){
+                    case 单位类型.地堡:
+                        this.battleUI.button离开地堡.node.active = true
+                        break;
+                    case 单位类型.基地:
+                    case 单位类型.兵厂:
+                        this.battleUI.button集结点.node.active = true
+                        break;
+                    case 单位类型.兵:
+                    case 单位类型.近战兵:
+                    case 单位类型.工程车:
+                    case 单位类型.三色坦克:
+                    case 单位类型.工程车:
+                        this.battleUI.button强行走.node.active = true
+                        break
+                    default:
+                        console.log('此单位没有专用菜单' + old.类型)
+                        break
                 }
+            
             })
         }
         if(arr.length>0)
