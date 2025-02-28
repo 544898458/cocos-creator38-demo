@@ -610,14 +610,11 @@ export class Scene战斗 extends Component {
                     case 单位类型.兵厂:
                         this.battleUI.button集结点.node.active = true
                         break;
-                    case 单位类型.兵:
-                    case 单位类型.近战兵:
-                    case 单位类型.工程车:
-                    case 单位类型.三色坦克:
-                    case 单位类型.工程车:
-                        this.battleUI.button强行走.node.active = true
-                        break
                     default:
+                        if(Main.Is活动单位(old.类型)){
+                            this.battleUI.button强行走.node.active = true
+                            break
+                        }
                         console.log('此单位没有专用菜单' + old.类型)
                         break
                 }

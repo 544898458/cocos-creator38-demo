@@ -236,6 +236,8 @@ enum 单位类型
 	三色坦克,
 	工蜂,
 
+    活动单位Max非法,
+
 	建筑Min非法 = 300,
 	基地,//指挥中心(Command Center),用来造工程车()
 	兵厂,//兵营(Barracks)，用来造兵
@@ -264,7 +266,9 @@ enum LoginResult
     Busy,
     PwdErr,
     NameErr,
-    版本不一致,
+    版本太高,
+	版本太低,
+
 }
 
 @ccclass('Main')
@@ -293,6 +297,9 @@ export class Main extends Component {
     createMsg集结点(hitPoint: Vec3) {
         console.log('createMsg造建筑', hitPoint)
         return [[MsgId.建筑产出活动单位的集结点, ++this.sendMsgSn, 0], [hitPoint.x, hitPoint.z]]
+    }
+    static Is活动单位(类型:单位类型): boolean{
+        return 单位类型.活动单位Min非法 < 类型 && 类型 < 单位类型.活动单位Max非法;
     }
     清零网络数据包序号(){
         this.recvMsgSnGameSvr = 0
@@ -527,16 +534,23 @@ export class Main extends Component {
             case MsgId.Login:
                 {
                     let result: LoginResult = arr[idxArr++]
+                    if(result == LoginResult.OK)
+                        return
                     switch(result){
-                        case LoginResult.版本不一致:
-                            thisLocal.websocket = null
-                            thisLocal.清零网络数据包序号()
-                            thisLocal.scene登录.lableMessage.string = '版本不一致，请清理缓存再开游戏'
-                            thisLocal.scene登录.显示登录界面()
+                        case LoginResult.版本太高:
+                            thisLocal.scene登录.lableMessage.string = '版本太高，请等服务器更新到最新版'
+                            break
+                        case LoginResult.版本太低:
+                            thisLocal.scene登录.lableMessage.string = '版本太低，请清理缓存再开游戏'
                             break
                         default:
+                            thisLocal.scene登录.lableMessage.string = result.toString()
                             break
                     }
+
+                    thisLocal.websocket = null
+                    thisLocal.清零网络数据包序号()
+                    thisLocal.scene登录.显示登录界面()        
                 }
                 break
             }
