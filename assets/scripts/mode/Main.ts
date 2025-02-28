@@ -725,6 +725,10 @@ export class Main extends Component {
                                 old.skeletalAnimation = newNode.getChildByName('Idle').getComponent(SkeletalAnimation)
                                 // old.initClipName = '平常状态'
                                 console.log('近战兵骨骼动画', old.skeletalAnimation)
+                            }else if(newNode.name == '地堡'){
+                                old.skeletalAnimation = newNode.getChildByName('地堡872面').getComponent(Animation)
+                                // old.initClipName = '平常状态'
+                                // console.log('近战兵骨骼动画', old.skeletalAnimation)
                             }
                             else
                                 old.skeletalAnimation = newNode.getComponent(SkeletalAnimation)
