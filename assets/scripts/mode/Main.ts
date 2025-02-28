@@ -266,9 +266,8 @@ enum LoginResult
     Busy,
     PwdErr,
     NameErr,
-    版本太高,
-	版本太低,
-
+	客户端版本太低,
+    客户端版本太高,
 }
 
 @ccclass('Main')
@@ -462,7 +461,9 @@ export class Main extends Component {
         // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
         // this.websocket = new WebSocket("ws://192.168.0.96:12348/")
         // this.websocket = new WebSocket("ws://47.119.184.177:12348/")
-        this.websocket = new WebSocket("wss://rtsgame.online/")
+        // this.websocket = new WebSocket("wss://rtsgame.online/")
+        // this.websocket = new WebSocket("wss://test.rtsgame.online/")
+        this.websocket = new WebSocket("wss:" + customEventData)
         // We should pass the cacert to libwebsockets used in native platform, otherwise the wss connection would be closed.
         // let url = this.wssCacert.nativeUrl;
         // if (assetManager.cacheManager) {
