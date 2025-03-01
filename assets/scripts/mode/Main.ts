@@ -312,8 +312,12 @@ export class Main extends Component {
             console.error('this.websocket is undefined')
             return
         }
-            
-        this.websocket.send(buf)
+
+        let send_buffer = buf.buffer
+        if (buf.length != buf.buffer.byteLength) {
+            send_buffer = send_buffer.slice(0, buf.length)
+        }
+        this.websocket.send(send_buffer)
     }
     sendArray(arr:(string|number[])[])
     {
@@ -463,7 +467,8 @@ export class Main extends Component {
         // this.websocket = new WebSocket("ws://47.119.184.177:12348/")
         // this.websocket = new WebSocket("wss://rtsgame.online/")
         // this.websocket = new WebSocket("wss://test.rtsgame.online/")
-        this.websocket = new WebSocket("wss://" + customEventData)
+        // this.websocket = new WebSocket("wss://" + customEventData)
+        this.websocket = new WebSocket("ws://127.0.0.1:443")
         // We should pass the cacert to libwebsockets used in native platform, otherwise the wss connection would be closed.
         // let url = this.wssCacert.nativeUrl;
         // if (assetManager.cacheManager) {
