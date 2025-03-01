@@ -313,7 +313,7 @@ export class Main extends Component {
             return
         }
             
-        this.websocket.send(buf.buffer)
+        this.websocket.send(buf)
     }
     sendArray(arr:(string|number[])[])
     {
