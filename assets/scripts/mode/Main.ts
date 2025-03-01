@@ -8,6 +8,7 @@ import { ProgressBar } from 'cc'
 import { ParticleSystem } from 'cc'
 import { tween } from 'cc'
 import { copyFileSync } from 'original-fs'
+import { Quat } from 'cc'
 
 const { ccclass, property } = _decorator
 
@@ -235,6 +236,7 @@ enum 单位类型
 	近战兵,//火蝠，喷火兵Firebat
 	三色坦克,
 	工蜂,
+    飞机,
 
     活动单位Max非法,
 
@@ -318,6 +320,13 @@ export class Main extends Component {
             send_buffer = send_buffer.slice(0, buf.length)
         }
         this.websocket.send(send_buffer)
+
+        //this.websocket.send(buf)  这样好像微信小游戏真机发不出任何消息（微信开发者工具发送成功，网页也成功），原因不明
+        // this.websocket.send(buf.buffer)//这样可以发
+        //问题看这里：
+        //https://forum.cocos.org/t/websocket-send/76282
+        // https://forum.cocos.org/t/websocket/74614/4
+        // https://developers.weixin.qq.com/community/minihome/doc/0006eef117cd28f4f181ad7e96b000
     }
     sendArray(arr:(string|number[])[])
     {
@@ -349,25 +358,25 @@ export class Main extends Component {
     update(deltaTime: number) {
 
     }
-    onClick造坦克(event: Event, customEventData: string): void {
-        const encoded = msgpack.encode([[MsgId.AddRole, 0, 0], 单位类型.三色坦克])
+    造活动单位(类型:单位类型){
+        const encoded = msgpack.encode([[MsgId.AddRole, 0, 0], 类型])
         // console.log(encoded)
         this.send(encoded)
+    }
+    onClick造坦克(event: Event, customEventData: string): void {
+        this.造活动单位(单位类型.三色坦克)
     }
     onClickAdd兵(event: Event, customEventData: string): void {
-        const encoded = msgpack.encode([[MsgId.AddRole, 0, 0], 单位类型.兵])
-        // console.log(encoded)
-        this.send(encoded)
+        this.造活动单位(单位类型.兵)
     }
     onClickAdd近战兵(event: Event, customEventData: string): void {
-        const encoded = msgpack.encode([[MsgId.AddRole, 0, 0], 单位类型.近战兵])
-        // console.log(encoded)
-        this.send(encoded)
+        this.造活动单位(单位类型.近战兵)
     }
     onClickAdd工程车(event: Event, customEventData: string): void {
-        const encoded = msgpack.encode([[MsgId.AddRole, 0, 0], 单位类型.工程车])
-        // console.log(encoded)
-        this.send(encoded)
+        this.造活动单位(单位类型.工程车)
+    }
+    onClickAdd飞机(event: Event, customEventData: string): void {
+        this.造活动单位(单位类型.飞机)
     }
     createMsg造建筑(hitPoint: Vec3, 类型: 单位类型) {
         console.log('createMsg造建筑', hitPoint)
@@ -398,7 +407,6 @@ export class Main extends Component {
     onClickAdd孵化场(event: Event, customEventData: string): void {
         this.on点击按钮_造建筑(单位类型.孵化场)
     }
-    
     进Scene战斗(sceneName: string, encoded: Buffer) {
         this.scene登录.nodeSelectSpace.active = false
         director.preloadScene(sceneName, (completedCount: number, totalCount: number, item: AssetManager.RequestItem) => {
@@ -467,8 +475,8 @@ export class Main extends Component {
         // this.websocket = new WebSocket("ws://47.119.184.177:12348/")
         // this.websocket = new WebSocket("wss://rtsgame.online/")
         // this.websocket = new WebSocket("wss://test.rtsgame.online/")
-        // this.websocket = new WebSocket("wss://" + customEventData)
-        this.websocket = new WebSocket("ws://127.0.0.1:443")
+        this.websocket = new WebSocket("wss://" + customEventData)
+        // this.websocket = new WebSocket("ws://127.0.0.1:443")
         // We should pass the cacert to libwebsockets used in native platform, otherwise the wss connection would be closed.
         // let url = this.wssCacert.nativeUrl;
         // if (assetManager.cacheManager) {
@@ -498,7 +506,7 @@ export class Main extends Component {
                 [MsgId.Login, ++this.sendMsgSn, 0, 0],
                 editBox.string,
                 'Hello, world!pwd',
-                1,//版本号
+                2,//版本号
             ]
 
             const encoded = msgpack.encode(object)
@@ -543,10 +551,10 @@ export class Main extends Component {
                     if(result == LoginResult.OK)
                         return
                     switch(result){
-                        case LoginResult.版本太高:
+                        case LoginResult.客户端版本太高:
                             thisLocal.scene登录.lableMessage.string = '版本太高，请等服务器更新到最新版'
                             break
-                        case LoginResult.版本太低:
+                        case LoginResult.客户端版本太低:
                             thisLocal.scene登录.lableMessage.string = '版本太低，请清理缓存再开游戏'
                             break
                         default:
@@ -733,6 +741,11 @@ export class Main extends Component {
                             }else if(newNode.name == '地堡'){
                                 old.skeletalAnimation = newNode.getChildByName('地堡872面').getComponent(Animation)
                                 // old.initClipName = '平常状态'
+                                // console.log('近战兵骨骼动画', old.skeletalAnimation)
+                            }
+                            else if(newNode.name == '飞机'){
+                                old.skeletalAnimation = newNode.getChildByName('p_plane_01').getComponent(SkeletalAnimation)
+                                old.initClipName = 'flight_04'
                                 // console.log('近战兵骨骼动画', old.skeletalAnimation)
                             }
                             else
@@ -1242,6 +1255,35 @@ export class Main extends Component {
                 // old.skeletalAnimation.play('Take 001')
                 // console.log(old.view.name, 'state', state, 'old.skeletalAnimation', old.skeletalAnimation)
             }
+        }  
+        else if(old.view.name == '飞机')
+        {
+            if(strClipName == 'idle' || strClipName == 'run'){
+                old.skeletalAnimation.play('flight_04')
+                let state = old.skeletalAnimation.getState('flight_04')
+                state.wrapMode = AnimationClip.WrapMode.Loop
+                state.playbackRange = {min:0, max:2}
+                state.time = 0
+            }else if(strClipName == 'attack'){
+                old.skeletalAnimation.play('slide')
+                let state = old.skeletalAnimation.getState('slide')
+                state.wrapMode = AnimationClip.WrapMode.Normal
+                state.playbackRange = {min:0, max:1}
+                state.time = 0
+            }else if(strClipName == 'died'){
+                old.skeletalAnimation.play('slide')
+                let state = old.skeletalAnimation.getState('slide')
+                state.wrapMode = AnimationClip.WrapMode.Normal
+                state.playbackRange = {min:1, max:2}
+                state.time = 0
+                
+                let pos地下 = old.view.position.clone()
+                pos地下.y = -10
+                let  quat : Quat = new Quat();
+                Quat.fromEuler(quat, 0, 180, 0);
+                tween(old.view).to(1, {rotation:quat,position:pos地下}).start()
+            }
+            // old.skeletalAnimation.play()
         }
         else
         {

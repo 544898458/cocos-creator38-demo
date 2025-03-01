@@ -161,6 +161,9 @@ export class BattleUI extends Component {
     onClickAdd孵化场(event: Event, customEventData: string): void {
         this.main.onClickAdd孵化场(event, customEventData)
     }
+    onClickAdd飞机(event: Event, customEventData: string): void {
+        this.main.onClickAdd飞机(event, customEventData)
+    }
     onClick空闲工程车(event: Event, customEventData: string): void {
         this.main.onClick空闲工程车()
     }
