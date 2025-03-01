@@ -112,7 +112,7 @@ export class Scene战斗 extends Component {
 
 
         this.node.on(NodeEventType.TOUCH_MOVE, (event: EventTouch) => {
-            console.log('TOUCH_MOVE', event)
+            // console.log('TOUCH_MOVE', event)
             let arrTouch = event.getAllTouches()
             if(arrTouch.length >= 2)//双指缩放
             {
@@ -197,10 +197,10 @@ export class Scene战斗 extends Component {
     onMouseUp(pos:Vec2, b鼠标右键:boolean) {
         if(this.posWorld按下准备拖动地面){
             this.posWorld按下准备拖动地面 = null
-            console.log('fun创建消息:', this.main.fun创建消息)
-            console.log('createMsgMove遇敌自动攻击', this.main.createMsgMove遇敌自动攻击)
-            console.log('createMsg造建筑', this.main.createMsg造建筑)
-            console.log('createMsgMove强行走', this.main.createMsgMove强行走)
+            // console.log('fun创建消息:', this.main.fun创建消息)
+            // console.log('createMsgMove遇敌自动攻击', this.main.createMsgMove遇敌自动攻击)
+            // console.log('createMsg造建筑', this.main.createMsg造建筑)
+            // console.log('createMsgMove强行走', this.main.createMsgMove强行走)
             
             if(    this.main.funCreateMsg造建筑 !== this.main.fun创建消息 
                 && this.main.createMsgMove强行走 !== this.main.fun创建消息
@@ -323,7 +323,7 @@ export class Scene战斗 extends Component {
     }
     //视角移动
     onMove(vec2Delta: Vec2, vec屏幕坐标) {
-        console.log('鼠标移动了', vec屏幕坐标);
+        // console.log('鼠标移动了', vec屏幕坐标);
         // if(event.getButton() != EventMouse.BUTTON_MIDDLE)
         //     return
         var ray = new geometry.Ray()
@@ -337,7 +337,7 @@ export class Scene战斗 extends Component {
         let vec点中地面WorldPos
         PhysicsSystem.instance.raycastResults.forEach(
             (result:PhysicsRayResult)=>{
-                console.log('鼠标移动触碰对象', result.collider.node)
+                // console.log('鼠标移动触碰对象', result.collider.node)
                 if (result.collider.node.name == nodeName地板) 
                     vec点中地面WorldPos = result.hitPoint.clone()
             })
@@ -353,8 +353,8 @@ export class Scene战斗 extends Component {
             return
         }
 
-        console.log('posWorld按下准备拖动地面', this.posWorld按下准备拖动地面)
-        console.log('posWorld按下准备拖动地面时Camera', this.posWorld按下准备拖动地面时Camera)
+        // console.log('posWorld按下准备拖动地面', this.posWorld按下准备拖动地面)
+        // console.log('posWorld按下准备拖动地面时Camera', this.posWorld按下准备拖动地面时Camera)
         
         if (this.posWorld按下准备拖动地面) {
             if(this.是正交投影())
@@ -554,9 +554,9 @@ export class Scene战斗 extends Component {
                 return
 
             vec3Grapics = this.Wolrd3D转Graphics绘图坐标小地图(item.hitPoint)
-            console.log('item.hitPoint',item.hitPoint, 
-                        'vec3Grapics', vec3Grapics,
-                        'camera小地图', this.camera小地图)
+            // console.log('item.hitPoint',item.hitPoint, 
+            //             'vec3Grapics', vec3Grapics,
+            //             'camera小地图', this.camera小地图)
 
         })
         return vec3Grapics
@@ -651,8 +651,8 @@ export class Scene战斗 extends Component {
     {
         let size = view.getVisibleSize()
         let sizeInPixel = view.getVisibleSizeInPixel()
-        console.log('size', size)
-        console.log('sizeInPixel', sizeInPixel)
+        // console.log('size', size)
+        // console.log('sizeInPixel', sizeInPixel)
         pos屏幕坐标.multiply3f(size.x/sizeInPixel.x, size.y/sizeInPixel.y, 1)
         let transform = this.graphics.node.getComponent(UITransform)
         let posGraphics绘图坐标 = transform.convertToNodeSpaceAR(pos屏幕坐标)
@@ -760,7 +760,7 @@ export class Scene战斗 extends Component {
         this.battleUI.lable剧情对话名字右.string = str名字右
         if(str头像左.length > 0){
             resources.load(str头像左, ImageAsset, (err, imageAsset) => {
-                console.log(err, imageAsset)
+                // console.log(err, imageAsset)
                 this.battleUI.sprite剧情对话头像左.spriteFrame = SpriteFrame.createWithImage(imageAsset)
             })
         }else{
@@ -769,7 +769,7 @@ export class Scene战斗 extends Component {
 
         if(str头像右.length > 0){
             resources.load(str头像右, ImageAsset, (err, imageAsset) => {
-                console.log(err, imageAsset)
+                // console.log(err, imageAsset)
                 this.battleUI.sprite剧情对话头像右.spriteFrame = SpriteFrame.createWithImage(imageAsset)
             })
         }else{

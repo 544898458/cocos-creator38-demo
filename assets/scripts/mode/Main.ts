@@ -514,7 +514,7 @@ export class Main extends Component {
             let msgHead = arr[idxArr++]
             let msgId = msgHead[0] as MsgId
             let sn收到 = msgHead[1] as number
-            console.log("收到GateSvr消息,msgId：", msgId, ',sn收到:', sn收到)
+            // console.log("收到GateSvr消息,msgId：", msgId, ',sn收到:', sn收到)
             ++thisLocal.recvMsgSn
             if(thisLocal.recvMsgSn != sn收到)
                 console.error('收到GateSvr消息sn不同', thisLocal.recvMsgSn , 'sn收到:', sn收到)
@@ -523,13 +523,13 @@ export class Main extends Component {
             case MsgId.GateSvr转发GameSvr消息给游戏前端:
                 {
                     let arrGameMsg = arr[idxArr++]
-                    console.log('收到GameSvr消息',arrGameMsg)
+                    // console.log('收到GameSvr消息',arrGameMsg)
                     thisLocal.onRecvGameSvr(arrGameMsg)
                 }
                 break
             case MsgId.GateSvr转发WorldSvr消息给游戏前端:
                 let arrWorldMsg = arr[idxArr++]
-                    console.log('收到WorldSvr消息',arrWorldMsg)
+                    // console.log('收到WorldSvr消息',arrWorldMsg)
                     thisLocal.onRecvWorldSvr(arrWorldMsg)
                 break
             case MsgId.Login:
@@ -606,7 +606,7 @@ export class Main extends Component {
         let msgHead = arr[idxArr++]
         let msgId = msgHead[0] as MsgId
         let snFromWorldSvr = msgHead[1] as number
-        console.log("收到,msgId：", msgId, ',recvMsgSnWorldSvr:', snFromWorldSvr)
+        // console.log("收到,msgId：", msgId, ',recvMsgSnWorldSvr:', snFromWorldSvr)
         ++thisLocal.recvMsgSnWorldSvr
         // if(thisLocal.recvMsgSnWorldSvr != snFromWorldSvr)
             // console.error('recvMsgSn ', thisLocal.recvMsgSnWorldSvr , 'snFromWorldSvr', snFromWorldSvr)
@@ -646,7 +646,7 @@ export class Main extends Component {
         let msgHead = arr[idxArr++]
         let msgId = msgHead[0] as MsgId
         let sn = msgHead[1] as number
-        console.log("收到,msgId：", msgId, ',sn:', sn)
+        // console.log("收到,msgId：", msgId, ',sn:', sn)
         ++thisLocal.recvMsgSnGameSvr
         if(thisLocal.recvMsgSnGameSvr != sn){
             console.error('recvMsgSn ', thisLocal.recvMsgSnGameSvr , 'sn', sn)
@@ -716,15 +716,15 @@ export class Main extends Component {
                             }else if(newNode.name == '兵厂'){
                                 old.skeletalAnimation = newNode.getChildByName('barracks').getComponent(Animation)
                                 // old.initClipName = '平常状态'
-                                console.log('兵厂骨骼动画', old.skeletalAnimation)
+                                // console.log('兵厂骨骼动画', old.skeletalAnimation)
                             }else if(newNode.name == '孵化场'){
                                 old.skeletalAnimation = newNode.getChildByName('hatchery_skin').getComponent(SkeletalAnimation)
                                 // old.initClipName = '平常状态'
-                                console.log('兵厂骨骼动画', old.skeletalAnimation)
+                                // console.log('孵化场骨骼动画', old.skeletalAnimation)
                             }else if(newNode.name == '近战兵'){
                                 old.skeletalAnimation = newNode.getChildByName('Idle').getComponent(SkeletalAnimation)
                                 // old.initClipName = '平常状态'
-                                console.log('近战兵骨骼动画', old.skeletalAnimation)
+                                // console.log('近战兵骨骼动画', old.skeletalAnimation)
                             }else if(newNode.name == '地堡'){
                                 old.skeletalAnimation = newNode.getChildByName('地堡872面').getComponent(Animation)
                                 // old.initClipName = '平常状态'
@@ -770,7 +770,7 @@ export class Main extends Component {
                             {
                                 let headScal = old.node描述.getComponent(HeadScale)
                                 headScal.target = utils.find("描述", newNode)
-                                console.log(headScal.target)
+                                // console.log(headScal.target)
                             }
 
 
@@ -848,7 +848,7 @@ export class Main extends Component {
                     let id = arr[idxArr++]
                     let loop: boolean = arr[idxArr++]
                     let clipName: string = arr[idxArr++]
-                    console.log(id, '动作改为', clipName)
+                    // console.log(id, '动作改为', clipName)
                     if(!thisLocal.scene战斗){
                         // console.log(
                         return   
@@ -1121,7 +1121,7 @@ export class Main extends Component {
     }
     
     static 播放动作(old:ClientEntityComponent, strClipName:string, loop:boolean){
-        console.log('strClipName', strClipName, 'old.view.name', old.view.name, 'loop', loop)
+        // console.log('strClipName', strClipName, 'old.view.name', old.view.name, 'loop', loop)
         const str星2动作:string = 'Take 001'
         if(old.view.name == '跳虫')
         {
