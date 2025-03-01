@@ -1277,11 +1277,11 @@ export class Main extends Component {
                 state.playbackRange = {min:1, max:2}
                 state.time = 0
                 
-                let pos地下 = old.view.position.clone()
+                let pos地下 = old.skeletalAnimation.node.position.clone()
                 pos地下.y = -10
                 let  quat : Quat = new Quat();
                 Quat.fromEuler(quat, 0, 180, 0);
-                tween(old.view).to(1, {rotation:quat,position:pos地下}).start()
+                tween(old.skeletalAnimation.node).to(1, {rotation:quat,position:pos地下}).start()
             }
             // old.skeletalAnimation.play()
         }
