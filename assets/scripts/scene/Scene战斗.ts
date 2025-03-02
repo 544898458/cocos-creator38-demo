@@ -17,6 +17,7 @@ import { Sprite } from 'cc'
 import { SpriteFrame } from 'cc'
 import { ImageAsset } from 'cc'
 import { Tween } from 'cc'
+import { AudioSource } from 'cc'
 
 const { ccclass, property } = _decorator
 export class ClientEntityComponent {
@@ -61,6 +62,9 @@ export class Scene战斗 extends Component {
     camera小地图: Camera
     @property({ type: Node, displayName: "英雄" })
     roles: Node
+    @property({ type: AudioSource})
+    audioSource: AudioSource
+    
     main: Main
     //摄像
     mainCameraFollowTarget: FollowTarget

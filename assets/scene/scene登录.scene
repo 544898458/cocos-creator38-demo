@@ -896,7 +896,7 @@
     "_priority": 1073741824,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 426,
+    "_orthoHeight": 426.00000000000006,
     "_near": 1,
     "_far": 2000,
     "_color": {
@@ -1989,7 +1989,7 @@
     "component": "",
     "_componentId": "98cbd4d3zNLzrS8gPNAzQyB",
     "handler": "onClickLogin",
-    "customEventData": "rtsgame.online"
+    "customEventData": "rtsgame.online:12348"
   },
   {
     "__type__": "cc.Node",
@@ -2303,7 +2303,7 @@
     "component": "",
     "_componentId": "98cbd4d3zNLzrS8gPNAzQyB",
     "handler": "onClickLogin",
-    "customEventData": "test.rtsgame.online"
+    "customEventData": "test.rtsgame.online:12348"
   },
   {
     "__type__": "cc.UITransform",
@@ -6307,6 +6307,9 @@
     "node个人战局按钮模板": {
       "__id__": 121
     },
+    "audioSource": {
+      "__id__": 164
+    },
     "loadNode": {
       "__id__": 142
     },
@@ -6322,12 +6325,9 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "_clip": {
-      "__uuid__": "5d49f6b4-43d0-4bcd-be02-498c40e68c00",
-      "__expectedType__": "cc.AudioClip"
-    },
+    "_clip": null,
     "_loop": true,
-    "_playOnAwake": true,
+    "_playOnAwake": false,
     "_volume": 1,
     "_id": "20ZLlh62ZAm7p9vqnZO0kH"
   },

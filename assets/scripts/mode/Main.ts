@@ -9,6 +9,7 @@ import { ParticleSystem } from 'cc'
 import { tween } from 'cc'
 import { copyFileSync } from 'original-fs'
 import { Quat } from 'cc'
+import { AudioClip } from 'cc'
 
 const { ccclass, property } = _decorator
 
@@ -200,6 +201,7 @@ enum MsgId
     GateSvr转发GameSvr消息给游戏前端,
     GateSvr转发WorldSvr消息给游戏前端,
     建筑产出活动单位的集结点,
+    播放音乐,
 };
 
 enum 副本ID
@@ -1054,6 +1056,17 @@ export class Main extends Component {
             case MsgId.剧情对话已看完:
                 {
                     thisLocal.scene战斗.battleUI.uiTransform剧情对话根.node.active = false
+                }
+                break
+            case MsgId.播放音乐:
+                {
+                    let strHttps = arr[idxArr++] as string
+                    assetManager.loadRemote(strHttps, (err, clip:AudioClip) => {
+                        console.log('resources.load callback:', err, clip)
+                        let audioSource = this.scene登录 ? this.scene登录.audioSource : this.scene战斗.audioSource
+                        audioSource.clip = clip
+                        audioSource.play()
+                    })
                 }
                 break
             default:

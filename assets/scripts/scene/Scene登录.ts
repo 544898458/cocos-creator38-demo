@@ -5,6 +5,9 @@ import { Scene战斗, ClientEntityComponent } from './Scene战斗'
 import { Main, MsgId } from '../mode/Main'
 import { ProgressBar } from 'cc'
 import { EventHandler } from 'cc'
+import { AudioClip } from 'cc'
+import { AudioSource } from 'cc'
+import { assetManager } from 'cc'
 
 const { ccclass, property } = _decorator
 
@@ -18,6 +21,8 @@ export class Scene登录 extends Component {
     node个人战局按钮模板: Node
     nodeLoginPanel: Node
     nodeSelectSpace: Node
+    @property({ type: AudioSource})
+    audioSource: AudioSource
     main: Main
     lableMessage: Label
     //加载
@@ -47,7 +52,12 @@ export class Scene登录 extends Component {
         }
     }
     start() {
-        console.log('start')
+        console.log('Scene登录.start')
+        assetManager.loadRemote("https://www.rtsgame.online/music/suno世界又恢复了和平低音质.mp3", (err, clip:AudioClip) => {
+            console.log('resources.load callback:', err, clip)
+            this.audioSource.clip = clip
+            this.audioSource.play()
+        })
     }
 
     update(deltaTime: number) {

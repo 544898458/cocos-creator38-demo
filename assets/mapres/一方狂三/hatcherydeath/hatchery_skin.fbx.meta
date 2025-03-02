@@ -487,7 +487,85 @@
               "a": 255
             },
             "mainTexture": {
-              "__uuid__": "f50ab4a3-41a6-4f5b-86a8-a26f8d97ce76@6da64",
+              "__uuid__": "9eb79e5a-5d34-4ce5-a9dc-136754b55dc7@6c48a",
+              "__expectedType__": "cc.Texture2D"
+            },
+            "roughness": 0.5678071975708008,
+            "metallic": 0
+          },
+          {},
+          {},
+          {}
+        ]
+      },
+      "f50ab4a3-41a6-4f5b-86a8-a26f8d97ce76@27b73": {
+        "__type__": "cc.Material",
+        "_name": "",
+        "_objFlags": 0,
+        "__editorExtras__": {},
+        "_native": "",
+        "_effectAsset": {
+          "__uuid__": "2ec11458-f855-4978-b14d-f3ed5cf697fa",
+          "__expectedType__": "cc.EffectAsset"
+        },
+        "_techIdx": 0,
+        "_defines": [
+          {
+            "USE_ALBEDO_MAP": true
+          },
+          {},
+          {},
+          {}
+        ],
+        "_states": [
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          }
+        ],
+        "_props": [
+          {
+            "mainColor": {
+              "__type__": "cc.Color",
+              "r": 231,
+              "g": 231,
+              "b": 231,
+              "a": 255
+            },
+            "mainTexture": {
+              "__uuid__": "9eb79e5a-5d34-4ce5-a9dc-136754b55dc7@6c48a",
               "__expectedType__": "cc.Texture2D"
             },
             "roughness": 0.5678071975708008,
