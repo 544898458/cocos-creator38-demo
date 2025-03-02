@@ -598,9 +598,10 @@ export class Scene战斗 extends Component {
                 newNode.name = prefabName选中特效
                 
                 old.view.addChild(newNode)
-                let ani = newNode.getChildByName('lightQ').getComponent(Animation)
-                const [clip] = ani.clips;
-                ani.getState(clip.name).repeatCount = Infinity
+                if(!Main.Is活动单位(old.类型))
+                    newNode.scale = newNode.scale.clone().multiply3f(2, 1, 2)
+                // const [clip] = ani.clips;
+                // ani.getState(clip.name).repeatCount = Infinity
 
                 this.隐藏选中单位专用按钮()
                 switch(old.类型){

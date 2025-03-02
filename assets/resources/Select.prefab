@@ -25,7 +25,7 @@
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 9
+      "__id__": 7
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -58,7 +58,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "lightQ",
+    "_name": "Plane",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
@@ -69,39 +69,36 @@
     "_components": [
       {
         "__id__": 3
-      },
-      {
-        "__id__": 6
       }
     ],
     "_prefab": {
-      "__id__": 8
+      "__id__": 6
     },
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 0.05,
+      "y": 0.02,
       "z": 0
     },
     "_lrot": {
       "__type__": "cc.Quat",
       "x": 0,
-      "y": 0,
+      "y": 0.9238795325112867,
       "z": 0,
-      "w": 1
+      "w": 0.38268343236508984
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 0.09,
-      "y": 0.09,
-      "z": 0.09
+      "x": 0.05,
+      "y": 0.05,
+      "z": 0.05
     },
     "_mobility": 0,
     "_layer": 1073741824,
     "_euler": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 0,
+      "y": 135,
       "z": 0
     },
     "_id": ""
@@ -120,7 +117,7 @@
     },
     "_materials": [
       {
-        "__uuid__": "2783f408-937b-49f7-bbf9-7097f1d5da3a",
+        "__uuid__": "16fd10a7-74e8-433e-9029-21f96d26745c",
         "__expectedType__": "cc.Material"
       }
     ],
@@ -145,7 +142,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "15G8JSoE5Bd4qLuQAiSuQy"
+    "fileId": "88NdIcxNRP46djJAyR4net"
   },
   {
     "__type__": "cc.ModelBakeSettings",
@@ -168,35 +165,6 @@
     "_bakeToReflectionProbe": true
   },
   {
-    "__type__": "cc.Animation",
-    "_name": "",
-    "_objFlags": 0,
-    "__editorExtras__": {},
-    "node": {
-      "__id__": 2
-    },
-    "_enabled": true,
-    "__prefab": {
-      "__id__": 7
-    },
-    "playOnLoad": true,
-    "_clips": [
-      {
-        "__uuid__": "0a73f357-98e9-40cb-8123-57b54bea0c33",
-        "__expectedType__": "cc.AnimationClip"
-      }
-    ],
-    "_defaultClip": {
-      "__uuid__": "0a73f357-98e9-40cb-8123-57b54bea0c33",
-      "__expectedType__": "cc.AnimationClip"
-    },
-    "_id": ""
-  },
-  {
-    "__type__": "cc.CompPrefabInfo",
-    "fileId": "95k+NdhFVF16UBhXqwx4Q0"
-  },
-  {
     "__type__": "cc.PrefabInfo",
     "root": {
       "__id__": 1
@@ -204,7 +172,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "36aqDp6DJNFJkdgi+6mMxr",
+    "fileId": "d1OQQX4HRGpodtnqhtaP+R",
     "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
