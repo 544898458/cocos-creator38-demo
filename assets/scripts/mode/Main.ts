@@ -516,7 +516,7 @@ export class Main extends Component {
                 [MsgId.Login, ++this.sendMsgSn, 0, 0],
                 editBox.string,
                 'Hello, world!pwd',
-                3,//版本号
+                5,//版本号
             ]
 
             const encoded = msgpack.encode(object)
