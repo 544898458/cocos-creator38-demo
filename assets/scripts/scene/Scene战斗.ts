@@ -495,6 +495,8 @@ export class Scene战斗 extends Component {
             || item.collider.node.name == "三色坦克"
             || item.collider.node.name == "工蜂"
             || item.collider.node.name == "飞机"
+            || item.collider.node.name == "重工厂"
+            || item.collider.node.name == "机场"
         ) {
             this.mainCameraFollowTarget.target = item.collider.node
             let id = this.entityId[item.collider.node.uuid]
@@ -610,6 +612,8 @@ export class Scene战斗 extends Component {
                         break;
                     case 单位类型.基地:
                     case 单位类型.兵厂:
+                    case 单位类型.机场:
+                    case 单位类型.重工厂:
                         this.battleUI.button集结点.node.active = true
                         break;
                     default:

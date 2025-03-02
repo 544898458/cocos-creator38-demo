@@ -247,6 +247,9 @@ enum 单位类型
 	地堡,//掩体; 地堡(Bunker),可以进兵
 	光子炮,//Photon Cannon
     孵化场,//hatchery
+    机场,
+    重工厂,
+
 	建筑Max非法,
 };
 
@@ -407,6 +410,13 @@ export class Main extends Component {
     onClickAdd孵化场(event: Event, customEventData: string): void {
         this.on点击按钮_造建筑(单位类型.孵化场)
     }
+    onClickAdd机场(event: Event, customEventData: string): void {
+        this.on点击按钮_造建筑(单位类型.机场)
+    }
+    onClickAdd重工厂(event: Event, customEventData: string): void {
+        this.on点击按钮_造建筑(单位类型.重工厂)
+    }
+    
     进Scene战斗(sceneName: string, encoded: Buffer) {
         this.scene登录.nodeSelectSpace.active = false
         director.preloadScene(sceneName, (completedCount: number, totalCount: number, item: AssetManager.RequestItem) => {

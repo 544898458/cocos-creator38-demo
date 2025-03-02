@@ -68,9 +68,16 @@ Error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} Error: Error: M
 6.  双击打开RecastDemo.exe，选择“Temp Obastacles”，“Agent Radius”改为1.0
 
 #### 参与贡献
-CC协议署名：
-    美术：流盏、坦格利安
-    语音：潭、凌枭
+音乐：SunoAI  
+3D模型：TripoAI、混元AI  
+首页底图：不问清阴(QQ 3969340418)
+关卡：阳光下的一个虾(QQ 1179331661)  
+模型带动作：荒野乱斗(QQ 2930801690)  
+绑定/动作：大呲花(QQ 3029823814)  
+绑定/动作：恒(QQ 2682677034)、一方狂三(QQ 1256604813)  
+绑定/动作：天涳の翼(QQ 349070005)、适中(QQ 1136976220)  
+语音：潭(QQ 1514475926)、凌枭(QQ 2862703087)  
+程序：樱木花道(QQ 251949672)、江沉晚吟时(QQ 3380125833)  
 
 
 
