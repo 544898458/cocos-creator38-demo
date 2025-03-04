@@ -79,6 +79,7 @@ export class Scene战斗 extends Component {
     graphics: Graphics
     b电脑鼠标操作: boolean = false
     f双指缩放初始值: number = 0
+    vec摄像机在Update更新位置: Vec3 = null
     protected onLoad(): void {
         console.log('Scene战斗.onLoad')
         this.Clear然后显示小地图视口框()
@@ -379,11 +380,10 @@ export class Scene战斗 extends Component {
             else//透视投影
             {
                 let vec新 = vec点中地面WorldPos.clone()
-                let vec老 = this.posWorld按下准备拖动地面.clone()
+                this.vec摄像机在Update更新位置 = this.posWorld按下准备拖动地面.clone()
                 let vec老Camera = this.posWorld按下准备拖动地面时Camera.clone()
-                vec老.subtract(vec新)
-                vec老.add(vec老Camera)
-                this.mainCamera.node.position = vec老
+                this.vec摄像机在Update更新位置.subtract(vec新)
+                this.vec摄像机在Update更新位置.add(vec老Camera)
             }
 
             this.Clear然后显示小地图视口框()
@@ -514,6 +514,10 @@ export class Scene战斗 extends Component {
         }
     }
     update(deltaTime: number) {
+        if(this.vec摄像机在Update更新位置){
+            this.mainCamera.node.position = this.vec摄像机在Update更新位置
+            this.vec摄像机在Update更新位置 = null
+        }
     }
 
     Clear然后显示小地图视口框()
