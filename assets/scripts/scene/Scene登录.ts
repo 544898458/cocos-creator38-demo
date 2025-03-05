@@ -137,6 +137,7 @@ export class Scene登录 extends Component {
     显示登录界面():void
     {
         this.nodeSelectSpace.active = false
+        this.node个人战局列表.active = false
         this.nodeLoginPanel.active = true
         if(this.main.websocket)
             this.lableMessage.string = '连接已断开，已回到登录界面'
