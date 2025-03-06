@@ -239,6 +239,9 @@ enum 单位类型
 	三色坦克,
 	工蜂,
     飞机,
+	跳虫,
+	刺蛇,
+	幼虫,//Larva
 
     活动单位Max非法,
 
@@ -518,7 +521,7 @@ export class Main extends Component {
                 [MsgId.Login, ++this.sendMsgSn, 0, 0],
                 editBox.string,
                 'Hello, world!pwd',
-                6,//版本号
+                7,//版本号
             ]
 
             const encoded = msgpack.encode(object)
@@ -860,8 +863,8 @@ export class Main extends Component {
                             old.view.position = old.position
                         else
                             {
-                                old.tween移动?.stop()
-                                old.tween移动 = tween(old.view).to(0.1, {position:old.position})
+                                // old.tween移动?.stop()
+                                old.tween移动 = tween(old.view).to(0.15, {position:old.position})
                                 old.tween移动.start()
                             }
 
