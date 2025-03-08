@@ -10,6 +10,7 @@ import { tween } from 'cc'
 import { copyFileSync } from 'original-fs'
 import { Quat } from 'cc'
 import { AudioClip } from 'cc'
+import { sys } from 'cc'
 
 const { ccclass, property } = _decorator
 
@@ -468,8 +469,30 @@ export class Main extends Component {
         console.log(event,customEventData)
         this.进Scene战斗(this.map玩家场景.get(customEventData), msgpack.encode([[MsgId.进其他玩家多人战局, ++this.sendMsgSn, 0, 0],customEventData]))
     }
-    
+    微信小游戏获得OpenID():void
+    {
+        console.log('window.CC_WECHAT', window.CC_WECHAT)
+        if (window.CC_WECHAT)
+        {
+            wx.login({
+                success: function(res){
+                    console.log('wx.login', res)
+                    wx.request({
+                        url :   "https://www.rtsgame.online/wechat/token?code=" + res.code,
+                        method  :   "POST",
+                        success :   function (data) {
+                            if (data.statusCode == 200) {
+                                console.log("request" , data);
+                            }
+                        }
+                    });
+                }
+            });
+        }
+    }
+
     onClickLogin(event: Event, customEventData: string) {
+        // this.微信小游戏获得OpenID()
         const editNode = utils.find("Name", this.scene登录.nodeLoginPanel) as Node
         console.log(editNode)
 
@@ -479,6 +502,7 @@ export class Main extends Component {
             this.scene登录.lableMessage.string = '请输入账号名字（随便什么都可以）'
             return
         }
+        
 
         this.scene登录.nodeLoginPanel.active = false//隐藏
         this.scene登录.lableMessage.string = '正在连接'
