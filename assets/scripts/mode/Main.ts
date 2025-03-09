@@ -298,6 +298,7 @@ export class Main extends Component {
     arr选中: number[] = []
     str在线人数: string = null
     map玩家场景 = new Map<string, string>//NickName=>SceneName
+    b登录成功: boolean = false
     fun创建消息: (Vec3) => object = null//this.createMsgMove强行走//点击地面操作 = 点击地面操作类型.移动单位
     funCreateMsg造建筑: (Vec3) => object
     // funCreateMsgMove遇敌自动攻击 = this.createMsgMove遇敌自动攻击
@@ -492,6 +493,7 @@ export class Main extends Component {
     }
 
     onClickLogin(event: Event, customEventData: string) {
+        this.b登录成功 = false
         // this.微信小游戏获得OpenID()
         const editNode = utils.find("Name", this.scene登录.nodeLoginPanel) as Node
         console.log(editNode)
@@ -539,7 +541,7 @@ export class Main extends Component {
 
         //连接成功建立的回调方法
         this.websocket.onopen = (event: Event) => {
-            this.scene登录.lableMessage.string = "连接成功"
+            this.scene登录.lableMessage.string = "连接成功，请等待登录结果……"
             console.log(this.scene登录.lableMessage.string)
             const object = [
                 [MsgId.Login, ++this.sendMsgSn, 0, 0],
@@ -552,7 +554,7 @@ export class Main extends Component {
             console.log(encoded)
             this.send(encoded)
 
-            this.scene登录.nodeSelectSpace.active = true
+            // this.scene登录.nodeSelectSpace.active = true
         }
 
         // let lableMessage = this.lableMessage
@@ -587,17 +589,19 @@ export class Main extends Component {
             case MsgId.Login:
                 {
                     let result: LoginResult = arr[idxArr++]
+                    let strMsg = arr[idxArr++] as string
+                    console.log(result, strMsg)
                     if(result == LoginResult.OK)
                         return
+
+                    thisLocal.scene登录.lableMessage.string = strMsg
+                            
                     switch(result){
                         case LoginResult.客户端版本太高:
-                            thisLocal.scene登录.lableMessage.string = '版本太高，请等服务器更新到最新版'
                             break
                         case LoginResult.客户端版本太低:
-                            thisLocal.scene登录.lableMessage.string = '版本太低，请清理缓存再开游戏'
                             break
                         default:
-                            thisLocal.scene登录.lableMessage.string = result.toString()
                             break
                     }
 
@@ -670,6 +674,11 @@ export class Main extends Component {
                 let arr昵称 = arr[idxArr++] as string[]
                 this.str在线人数 = 人数 + '人在线:'
                 console.log('arr', arr)
+
+                if(!this.b登录成功){
+                    this.b登录成功 = true;
+                    this.scene登录.nodeSelectSpace.active = true
+                }
                 arr昵称.forEach((str昵称:String)=>{
                     this.str在线人数 += str昵称 + '、'
                 })

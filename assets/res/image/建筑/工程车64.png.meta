@@ -2,7 +2,7 @@
   "ver": "1.0.27",
   "importer": "image",
   "imported": true,
-  "uuid": "2ff058f2-8d97-47a3-9201-9cb316b90678",
+  "uuid": "b46b4497-93d0-4e4a-bff8-c442ba1a0017",
   "files": [
     ".json",
     ".png"
@@ -10,8 +10,8 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "2ff058f2-8d97-47a3-9201-9cb316b90678@6c48a",
-      "displayName": "青壮年欧洲男人",
+      "uuid": "b46b4497-93d0-4e4a-bff8-c442ba1a0017@6c48a",
+      "displayName": "工程车64",
       "id": "6c48a",
       "name": "texture",
       "userData": {
@@ -22,7 +22,7 @@
         "mipfilter": "none",
         "anisotropy": 0,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "2ff058f2-8d97-47a3-9201-9cb316b90678",
+        "imageUuidOrDatabaseUri": "b46b4497-93d0-4e4a-bff8-c442ba1a0017",
         "visible": false
       },
       "ver": "1.0.22",
@@ -34,22 +34,22 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "2ff058f2-8d97-47a3-9201-9cb316b90678@f9941",
-      "displayName": "青壮年欧洲男人",
+      "uuid": "b46b4497-93d0-4e4a-bff8-c442ba1a0017@f9941",
+      "displayName": "工程车64",
       "id": "f9941",
       "name": "spriteFrame",
       "userData": {
         "trimType": "auto",
         "trimThreshold": 1,
         "rotated": false,
-        "offsetX": 0,
-        "offsetY": 0,
-        "trimX": 0,
+        "offsetX": 0.5,
+        "offsetY": 0.5,
+        "trimX": 1,
         "trimY": 0,
-        "width": 58,
-        "height": 58,
-        "rawWidth": 58,
-        "rawHeight": 58,
+        "width": 63,
+        "height": 46,
+        "rawWidth": 64,
+        "rawHeight": 47,
         "borderTop": 0,
         "borderBottom": 0,
         "borderLeft": 0,
@@ -61,17 +61,17 @@
         "meshType": 0,
         "vertices": {
           "rawPosition": [
-            -29,
-            -29,
+            -31.5,
+            -23,
             0,
-            29,
-            -29,
+            31.5,
+            -23,
             0,
-            -29,
-            29,
+            -31.5,
+            23,
             0,
-            29,
-            29,
+            31.5,
+            23,
             0
           ],
           "indexes": [
@@ -83,38 +83,38 @@
             3
           ],
           "uv": [
-            0,
-            58,
-            58,
-            58,
-            0,
-            0,
-            58,
-            0
+            1,
+            47,
+            64,
+            47,
+            1,
+            1,
+            64,
+            1
           ],
           "nuv": [
-            0,
-            0,
+            0.015625,
+            0.02127659574468085,
             1,
-            0,
-            0,
+            0.02127659574468085,
+            0.015625,
             1,
             1,
             1
           ],
           "minPos": [
-            -29,
-            -29,
+            -31.5,
+            -23,
             0
           ],
           "maxPos": [
-            29,
-            29,
+            31.5,
+            23,
             0
           ]
         },
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "2ff058f2-8d97-47a3-9201-9cb316b90678@6c48a",
+        "imageUuidOrDatabaseUri": "b46b4497-93d0-4e4a-bff8-c442ba1a0017@6c48a",
         "atlasUuid": ""
       },
       "ver": "1.0.12",
@@ -129,6 +129,6 @@
     "hasAlpha": true,
     "type": "sprite-frame",
     "fixAlphaTransparencyArtifacts": false,
-    "redirect": "2ff058f2-8d97-47a3-9201-9cb316b90678@6c48a"
+    "redirect": "b46b4497-93d0-4e4a-bff8-c442ba1a0017@6c48a"
   }
 }

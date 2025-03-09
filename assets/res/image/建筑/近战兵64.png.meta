@@ -2,16 +2,16 @@
   "ver": "1.0.27",
   "importer": "image",
   "imported": true,
-  "uuid": "ea482ff5-d6c8-465e-acf6-374e41b809f4",
+  "uuid": "75332a4f-53d2-4be8-8854-4dba873e32b6",
   "files": [
-    ".jpg",
-    ".json"
+    ".json",
+    ".png"
   ],
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "ea482ff5-d6c8-465e-acf6-374e41b809f4@6c48a",
-      "displayName": "陈近南",
+      "uuid": "75332a4f-53d2-4be8-8854-4dba873e32b6@6c48a",
+      "displayName": "近战兵64",
       "id": "6c48a",
       "name": "texture",
       "userData": {
@@ -22,7 +22,7 @@
         "mipfilter": "none",
         "anisotropy": 0,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "ea482ff5-d6c8-465e-acf6-374e41b809f4",
+        "imageUuidOrDatabaseUri": "75332a4f-53d2-4be8-8854-4dba873e32b6",
         "visible": false
       },
       "ver": "1.0.22",
@@ -34,21 +34,21 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "ea482ff5-d6c8-465e-acf6-374e41b809f4@f9941",
-      "displayName": "陈近南",
+      "uuid": "75332a4f-53d2-4be8-8854-4dba873e32b6@f9941",
+      "displayName": "近战兵64",
       "id": "f9941",
       "name": "spriteFrame",
       "userData": {
         "trimType": "auto",
         "trimThreshold": 1,
         "rotated": false,
-        "offsetX": 0,
-        "offsetY": 0,
-        "trimX": 0,
+        "offsetX": 0.5,
+        "offsetY": 0.5,
+        "trimX": 1,
         "trimY": 0,
-        "width": 64,
-        "height": 64,
-        "rawWidth": 64,
+        "width": 37,
+        "height": 63,
+        "rawWidth": 38,
         "rawHeight": 64,
         "borderTop": 0,
         "borderBottom": 0,
@@ -61,17 +61,17 @@
         "meshType": 0,
         "vertices": {
           "rawPosition": [
-            -32,
-            -32,
+            -18.5,
+            -31.5,
             0,
-            32,
-            -32,
+            18.5,
+            -31.5,
             0,
-            -32,
-            32,
+            -18.5,
+            31.5,
             0,
-            32,
-            32,
+            18.5,
+            31.5,
             0
           ],
           "indexes": [
@@ -83,38 +83,38 @@
             3
           ],
           "uv": [
-            0,
+            1,
             64,
+            38,
             64,
-            64,
-            0,
-            0,
-            64,
-            0
+            1,
+            1,
+            38,
+            1
           ],
           "nuv": [
-            0,
-            0,
+            0.02631578947368421,
+            0.015625,
             1,
-            0,
-            0,
+            0.015625,
+            0.02631578947368421,
             1,
             1,
             1
           ],
           "minPos": [
-            -32,
-            -32,
+            -18.5,
+            -31.5,
             0
           ],
           "maxPos": [
-            32,
-            32,
+            18.5,
+            31.5,
             0
           ]
         },
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "ea482ff5-d6c8-465e-acf6-374e41b809f4@6c48a",
+        "imageUuidOrDatabaseUri": "75332a4f-53d2-4be8-8854-4dba873e32b6@6c48a",
         "atlasUuid": ""
       },
       "ver": "1.0.12",
@@ -126,9 +126,9 @@
     }
   },
   "userData": {
-    "hasAlpha": false,
+    "hasAlpha": true,
     "type": "sprite-frame",
     "fixAlphaTransparencyArtifacts": false,
-    "redirect": "ea482ff5-d6c8-465e-acf6-374e41b809f4@6c48a"
+    "redirect": "75332a4f-53d2-4be8-8854-4dba873e32b6@6c48a"
   }
 }
