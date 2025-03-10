@@ -299,6 +299,8 @@ export class Main extends Component {
     str在线人数: string = null
     map玩家场景 = new Map<string, string>//NickName=>SceneName
     b登录成功: boolean = false
+    strHttps登录场景音乐Mp3: string = "https://www.rtsgame.online/music/suno世界又恢复了和平低音质.mp3"
+
     fun创建消息: (Vec3) => object = null//this.createMsgMove强行走//点击地面操作 = 点击地面操作类型.移动单位
     funCreateMsg造建筑: (Vec3) => object
     // funCreateMsgMove遇敌自动攻击 = this.createMsgMove遇敌自动攻击
@@ -547,7 +549,7 @@ export class Main extends Component {
                 [MsgId.Login, ++this.sendMsgSn, 0, 0],
                 editBox.string,
                 'Hello, world!pwd',
-                7,//版本号
+                8,//版本号
             ]
 
             const encoded = msgpack.encode(object)
@@ -1097,9 +1099,13 @@ export class Main extends Component {
             case MsgId.播放音乐:
                 {
                     let strHttps = arr[idxArr++] as string
+                    if(this.scene登录)
+                        this.strHttps登录场景音乐Mp3 = strHttps
+
                     assetManager.loadRemote(strHttps, (err, clip:AudioClip) => {
                         console.log('resources.load callback:', err, clip)
                         let audioSource = this.scene登录 ? this.scene登录.audioSource : this.scene战斗.audioSource
+                        audioSource.stop()
                         audioSource.clip = clip
                         audioSource.play()
                     })

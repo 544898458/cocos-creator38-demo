@@ -53,11 +53,15 @@ export class Scene登录 extends Component {
     }
     start() {
         console.log('Scene登录.start')
-        assetManager.loadRemote("https://www.rtsgame.online/music/suno世界又恢复了和平低音质.mp3", (err, clip:AudioClip) => {
-            console.log('resources.load callback:', err, clip)
-            this.audioSource.clip = clip
-            this.audioSource.play()
-        })
+
+        if(this.main.strHttps登录场景音乐Mp3){
+            assetManager.loadRemote(this.main.strHttps登录场景音乐Mp3, (err, clip:AudioClip) => {
+                console.log('resources.load callback:', err, clip)
+                this.audioSource.stop()
+                this.audioSource.clip = clip
+                this.audioSource.play()
+            })
+        }
     }
 
     update(deltaTime: number) {
