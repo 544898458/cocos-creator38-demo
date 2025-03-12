@@ -2,17 +2,22 @@ import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, B
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { FollowTarget } from '../mode/FollowTarget'
 import { Scene战斗, ClientEntityComponent } from './Scene战斗'
-import { Main, MsgId } from '../mode/Main'
+import { KEY_登录名, Main, MsgId } from '../mode/Main'
 import { ProgressBar } from 'cc'
 import { EventHandler } from 'cc'
 import { AudioClip } from 'cc'
 import { AudioSource } from 'cc'
 import { assetManager } from 'cc'
+import { sys } from 'cc'
 
 const { ccclass, property } = _decorator
 
 @ccclass('Scene登录')
 export class Scene登录 extends Component {
+    
+    @property({type: EditBox})
+    editBox登录名:EditBox
+
     @property({ type: Node, displayName: "个人战局列表面板" })
     node个人战局列表面板: Node
     @property({ type: Node, displayName: "个人战局列表" })
@@ -50,6 +55,8 @@ export class Scene登录 extends Component {
             this.nodeSelectSpace.active = true
             this.nodeLoginPanel.active = false
         }
+
+        this.editBox登录名.string = sys.localStorage.getItem(KEY_登录名)
     }
     start() {
         console.log('Scene登录.start')

@@ -281,6 +281,8 @@ enum LoginResult
     客户端版本太高,
 }
 
+export const KEY_登录名:string = '登录名'
+
 @ccclass('Main')
 export class Main extends Component {
     websocket: WebSocket
@@ -288,6 +290,7 @@ export class Main extends Component {
     // lableMessage语音提示: Label
     @property({type: Asset})
     public wssCacert: Asset = null!;
+
 
     recvMsgSnGameSvr: number = 0
     recvMsgSnWorldSvr: number = 0
@@ -498,16 +501,14 @@ export class Main extends Component {
     onClickLogin(event: Event, customEventData: string) {
         this.b登录成功 = false
         // this.微信小游戏获得OpenID()
-        const editNode = utils.find("Name", this.scene登录.nodeLoginPanel) as Node
-        console.log(editNode)
+        let str登录名 = this.scene登录.editBox登录名.string
+        sys.localStorage.setItem(KEY_登录名, str登录名)
 
-        const editBox = editNode.getComponent(EditBox)
-        console.log(editBox.string)
-        if (editBox.string.length == 0) {
+        console.log(str登录名)
+        if (str登录名.length == 0) {
             this.scene登录.lableMessage.string = '请输入账号名字（随便什么都可以）'
             return
         }
-        
 
         this.scene登录.nodeLoginPanel.active = false//隐藏
         this.scene登录.lableMessage.string = '正在连接'
@@ -548,7 +549,7 @@ export class Main extends Component {
             console.log(this.scene登录.lableMessage.string)
             const object = [
                 [MsgId.Login, ++this.sendMsgSn, 0, 0],
-                editBox.string,
+                str登录名,
                 'Hello, world!pwd',
                 8,//版本号
             ]
