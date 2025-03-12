@@ -8,6 +8,7 @@ import { UITransform } from 'cc';
 import { Sprite } from 'cc';
 import { AudioMgr } from '../manager/AudioMgr';
 import { Button } from 'cc';
+import { Toggle } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('BattleUI')
@@ -37,6 +38,8 @@ export class BattleUI extends Component {
     lable系统消息: Label
     @property({ type: Label})
     lable任务提示: Label
+    @property({ type: Toggle})
+    toggle点击活动单位都是追加选中: Toggle
 
     //根据选中单位类型显示不同的按钮
     @property({ type: Button})button离开地堡: Button
@@ -189,6 +192,11 @@ export class BattleUI extends Component {
     }
     onClick游戏设置(): void {
         this.游戏设置.active = !this.游戏设置.active;
+        this.toggle点击活动单位都是追加选中.isChecked = this.main.b点击活动单位都是追加选中
+    }
+    onCheck点击活动单位都是追加选中(toggle:Toggle, customEventData: string){
+        this.main.b点击活动单位都是追加选中 = toggle.isChecked
+        console.log('toggle.isChecked', toggle.isChecked)
     }
     onClickTitle(event: Event, customEventData: string): void {
         console.log('选中', customEventData )

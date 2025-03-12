@@ -300,6 +300,7 @@ export class Main extends Component {
     map玩家场景 = new Map<string, string>//NickName=>SceneName
     b登录成功: boolean = false
     strHttps登录场景音乐Mp3: string = "https://www.rtsgame.online/music/suno世界又恢复了和平低音质.mp3"
+    b点击活动单位都是追加选中: boolean = false
 
     fun创建消息: (Vec3) => object = null//this.createMsgMove强行走//点击地面操作 = 点击地面操作类型.移动单位
     funCreateMsg造建筑: (Vec3) => object
@@ -1171,7 +1172,8 @@ export class Main extends Component {
         const object =
             [
                 [MsgId.SelectRoles, ++this.sendMsgSn, 0],
-                arr选中//虽然是整数，但是也强制转成FLOAT64发出去了
+                arr选中,//虽然是整数，但是也强制转成FLOAT64发出去了
+                this.b点击活动单位都是追加选中
             ]
 
         const encoded = msgpack.encode(object)
