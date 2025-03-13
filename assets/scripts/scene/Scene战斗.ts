@@ -598,6 +598,10 @@ export class Scene战斗 extends Component {
         for (let id of this.main.arr选中) {
             resources.load(prefabName选中特效, Prefab, (err, prefab) => {
                 console.log('resources.load callback:', err, prefab)
+                if(0>this.main.arr选中.indexOf(id)){
+                    console.log('已取消选中:', id)
+                    return
+                }
                 let old = this.entities.get(id)
                 if(!old)
                 {
@@ -611,8 +615,6 @@ export class Scene战斗 extends Component {
                 old.view.addChild(newNode)
                 if(!Main.Is活动单位(old.类型))
                     newNode.scale = newNode.scale.clone().multiply3f(2, 1, 2)
-                // const [clip] = ani.clips;
-                // ani.getState(clip.name).repeatCount = Infinity
 
                 this.隐藏选中单位专用按钮()
                 switch(old.类型){
@@ -634,6 +636,26 @@ export class Scene战斗 extends Component {
                         break
                 }
             
+            })
+
+            resources.load('特效/范围', Prefab, (err, prefab) => {
+                console.log('resources.load callback:', err, prefab)
+                if(0>this.main.arr选中.indexOf(id)){
+                    console.log('已取消选中:', id)
+                    return
+                }
+                let old = this.entities.get(id)
+                if(!old)
+                {
+                    console.log('找不到:', id)
+                    return
+                }
+                
+                const newNode = instantiate(prefab)
+                // newNode.name = prefabName选中特效
+                
+                old.view.addChild(newNode)
+                //newNode.scale = newNode.scale.clone().multiply3f(2, 1, 2)
             })
         }
         if(arr.length>0)
