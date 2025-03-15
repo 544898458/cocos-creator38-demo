@@ -1,7 +1,7 @@
 import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip, director, Animation, Color} from 'cc'
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { FollowTarget } from '../mode/FollowTarget'
-import { Main, MsgId, 单位类型 } from '../mode/Main'
+import { Main } from '../mode/Main'
 import { Vec2 } from 'cc'
 import { EventTouch } from 'cc'
 import { Graphics } from 'cc'
@@ -18,6 +18,7 @@ import { SpriteFrame } from 'cc'
 import { ImageAsset } from 'cc'
 import { Tween } from 'cc'
 import { AudioSource } from 'cc'
+import { MsgId, 单位类型 } from '../配置/配置'
 
 const { ccclass, property } = _decorator
 export class ClientEntityComponent {
@@ -45,6 +46,9 @@ export class ClientEntityComponent {
 }
 
 const prefabName选中特效:string = 'Select'//这里不能用中文，原因不明
+const prefabName范围特效:string = '特效/范围'
+const nodeName攻击范围:string = '攻击范围'
+const nodeName警戒范围:string = '警戒范围'
 const nodeName地板:string = 'Plane' //地板对象名字
 
 @ccclass('Scene战斗')
@@ -579,9 +583,9 @@ export class Scene战斗 extends Component {
         for (let id of this.main.arr选中) {
             let entity = this.entities.get(id)
             if (entity) {
-                let node选中特效 = entity.view.getChildByName(prefabName选中特效)
-                if (node选中特效)
-                    node选中特效.removeFromParent()
+                entity.view.getChildByName(prefabName选中特效)?.removeFromParent()
+                entity.view.getChildByName(nodeName攻击范围)?.removeFromParent()
+                entity.view.getChildByName(nodeName警戒范围)?.removeFromParent()
             }
         }
     }
@@ -638,7 +642,7 @@ export class Scene战斗 extends Component {
             
             })
 
-            resources.load('特效/范围', Prefab, (err, prefab) => {
+            resources.load(prefabName范围特效, Prefab, (err, prefab) => {
                 console.log('resources.load callback:', err, prefab)
                 if(0>this.main.arr选中.indexOf(id)){
                     console.log('已取消选中:', id)
@@ -651,11 +655,22 @@ export class Scene战斗 extends Component {
                     return
                 }
                 
-                const newNode = instantiate(prefab)
-                // newNode.name = prefabName选中特效
-                
-                old.view.addChild(newNode)
-                //newNode.scale = newNode.scale.clone().multiply3f(2, 1, 2)
+                let 战斗 = this.main.配置.find战斗(old.类型)
+
+                {               
+                    const newNode = instantiate(prefab)
+                    newNode.name = nodeName攻击范围
+                    old.view.addChild(newNode)
+                    let scale = 战斗.f攻击距离
+                    newNode.scale = newNode.scale.clone().multiply3f(scale, 1, scale)
+                }
+                {
+                    const newNode = instantiate(prefab)
+                    newNode.name = nodeName警戒范围
+                    old.view.addChild(newNode)
+                    let scale = 战斗.f警戒距离
+                    newNode.scale = newNode.scale.clone().multiply3f(scale, 1, scale)
+                }
             })
         }
         if(arr.length>0)

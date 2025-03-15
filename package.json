@@ -5,9 +5,12 @@
     "version": "3.8.4"
   },
   "dependencies": {
-    "msgpack-lite": "^0.1.26"
+    "js-yaml": "^4.1.0",
+    "msgpack-lite": "^0.1.26",
+    "yaml": "^2.7.0"
   },
   "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
     "@types/msgpack-lite": "^0.1.11"
   }
 }

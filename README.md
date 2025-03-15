@@ -13,6 +13,8 @@
 ```PowerShell
     npm install msgpack-lite
     npm i --save-dev @types/msgpack-lite
+    npm install js-yaml
+    npm install @types/js-yaml --save-dev
 
     如果报“因为在此系统上禁止运行脚本”，就先执行下面的
     set-ExecutionPolicy RemoteSigned

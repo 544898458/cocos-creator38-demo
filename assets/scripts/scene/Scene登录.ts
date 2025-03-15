@@ -1,14 +1,17 @@
 import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip, director } from 'cc'
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
+// import yaml from 'js-yaml/dist/js-yaml.min.js'
 import { FollowTarget } from '../mode/FollowTarget'
 import { Scene战斗, ClientEntityComponent } from './Scene战斗'
-import { KEY_登录名, Main, MsgId } from '../mode/Main'
+import { KEY_登录名, Main } from '../mode/Main'
 import { ProgressBar } from 'cc'
 import { EventHandler } from 'cc'
 import { AudioClip } from 'cc'
 import { AudioSource } from 'cc'
 import { assetManager } from 'cc'
 import { sys } from 'cc'
+import { TextAsset } from 'cc'
+import { MsgId } from '../配置/配置'
 
 const { ccclass, property } = _decorator
 
