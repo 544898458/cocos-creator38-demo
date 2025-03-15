@@ -47,6 +47,7 @@ export class BattleUI extends Component {
     //根据选中单位类型显示不同的按钮
     @property({ type: Button }) button离开地堡: Button
     @property({ type: Button }) button强行走: Button
+    @property({ type: Button }) button原地坚守: Button
     @property({ type: Button }) button集结点: Button
 
     @property({ type: UITransform, displayName: "所有单位头顶名字" })
@@ -108,6 +109,14 @@ export class BattleUI extends Component {
         this.scene战斗.main.fun创建消息 = this.scene战斗.main.createMsgMove强行走
         this.scene战斗.battleUI.lable系统消息.string = '行走过程不会攻击敌人，请点击地面确定目的地'
         this.scene战斗.battleUI.下部列表.active = false
+    }
+    on原地坚守(event: Event, customEventData: string) {
+        if (0 == this.main.arr选中.length) {
+            this.scene战斗.battleUI.lable系统消息.string = '请先选中活动单位'
+            AudioMgr.inst.playOneShot('BUZZ')
+            return
+        }
+        this.scene战斗.main.send原地坚守()
     }
     on框选(event: Event, customEventData: string) {
         this.scene战斗.posWorld框选起始点 = null

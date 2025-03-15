@@ -594,6 +594,7 @@ export class Scene战斗 extends Component {
         this.battleUI.button强行走.node.active = false
         this.battleUI.button集结点.node.active = false
         this.battleUI.button离开地堡.node.active = false
+        this.battleUI.button原地坚守.node.active = false
     }
 
     选中(arr: number[]) {
@@ -637,6 +638,7 @@ export class Scene战斗 extends Component {
                     default:
                         if(Main.Is活动单位(old.类型)){
                             this.battleUI.button强行走.node.active = true
+                            this.battleUI.button原地坚守.node.active = true
                             break
                         }
                         console.log('此单位没有专用菜单' + old.类型)

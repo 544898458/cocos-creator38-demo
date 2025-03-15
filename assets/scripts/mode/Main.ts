@@ -1149,4 +1149,10 @@ export class Main extends Component {
         console.log('send', encoded)
         this.send(encoded)
     }
+    send原地坚守() {
+        const encoded = msgpack.encode([[MsgId.原地坚守, ++this.sendMsgSn, 0]])
+        console.log('send', encoded)
+        this.send(encoded)
+    }
+    
 }

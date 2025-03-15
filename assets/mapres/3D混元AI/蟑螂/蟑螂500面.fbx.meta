@@ -2,18 +2,18 @@
   "ver": "2.3.13",
   "importer": "fbx",
   "imported": true,
-  "uuid": "80b36da8-b640-4c26-9351-d8fd4c0528f3",
+  "uuid": "7d83c08a-6f96-4994-8b43-6076151b8fb7",
   "files": [],
   "subMetas": {
-    "edcee": {
+    "6f17c": {
       "importer": "gltf-mesh",
-      "uuid": "80b36da8-b640-4c26-9351-d8fd4c0528f3@edcee",
+      "uuid": "7d83c08a-6f96-4994-8b43-6076151b8fb7@6f17c",
       "displayName": "",
-      "id": "edcee",
-      "name": "tripo_mesh_bd79915e-96a8-4672-99e0-7d131ccd8065.002.mesh",
+      "id": "6f17c",
+      "name": "material.obj.002.mesh",
       "userData": {
         "gltfIndex": 0,
-        "triangleCount": 503
+        "triangleCount": 500
       },
       "ver": "1.1.1",
       "imported": true,
@@ -23,9 +23,29 @@
       ],
       "subMetas": {}
     },
+    "48b02": {
+      "importer": "gltf-embeded-image",
+      "uuid": "7d83c08a-6f96-4994-8b43-6076151b8fb7@48b02",
+      "displayName": "",
+      "id": "48b02",
+      "name": "base_color_texture.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": true,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
     "7d6ab": {
       "importer": "texture",
-      "uuid": "80b36da8-b640-4c26-9351-d8fd4c0528f3@7d6ab",
+      "uuid": "7d83c08a-6f96-4994-8b43-6076151b8fb7@7d6ab",
       "displayName": "",
       "id": "7d6ab",
       "name": "base_color_texture.texture",
@@ -36,8 +56,8 @@
         "magfilter": "linear",
         "mipfilter": "none",
         "anisotropy": 0,
-        "isUuid": false,
-        "imageUuidOrDatabaseUri": "db://assets/mapres/3D混元AI/地堡/地堡503面.fbm"
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "7d83c08a-6f96-4994-8b43-6076151b8fb7@48b02"
       },
       "ver": "1.0.22",
       "imported": true,
@@ -46,35 +66,12 @@
       ],
       "subMetas": {}
     },
-    "400be": {
-      "importer": "texture",
-      "uuid": "80b36da8-b640-4c26-9351-d8fd4c0528f3@400be",
-      "displayName": "",
-      "id": "400be",
-      "name": "normalmap_texture.texture",
-      "userData": {
-        "wrapModeS": "repeat",
-        "wrapModeT": "repeat",
-        "minfilter": "linear",
-        "magfilter": "linear",
-        "mipfilter": "none",
-        "anisotropy": 0,
-        "isUuid": false,
-        "imageUuidOrDatabaseUri": "db://assets/mapres/3D混元AI/地堡/地堡503面.fbm"
-      },
-      "ver": "1.0.22",
-      "imported": true,
-      "files": [
-        ".json"
-      ],
-      "subMetas": {}
-    },
-    "f2ae3": {
+    "11eca": {
       "importer": "gltf-material",
-      "uuid": "80b36da8-b640-4c26-9351-d8fd4c0528f3@f2ae3",
+      "uuid": "7d83c08a-6f96-4994-8b43-6076151b8fb7@11eca",
       "displayName": "",
-      "id": "f2ae3",
-      "name": "tripo_mat_bd79915e-96a8-4672-99e0-7d131ccd8065.001.material",
+      "id": "11eca",
+      "name": "Material_0.002.material",
       "userData": {
         "gltfIndex": 0
       },
@@ -85,12 +82,12 @@
       ],
       "subMetas": {}
     },
-    "16eff": {
+    "c4a9e": {
       "importer": "gltf-scene",
-      "uuid": "80b36da8-b640-4c26-9351-d8fd4c0528f3@16eff",
+      "uuid": "7d83c08a-6f96-4994-8b43-6076151b8fb7@c4a9e",
       "displayName": "",
-      "id": "16eff",
-      "name": "地堡503面.prefab",
+      "id": "c4a9e",
+      "name": "蟑螂500面.prefab",
       "userData": {
         "gltfIndex": 0
       },
@@ -106,11 +103,7 @@
     "imageMetas": [
       {
         "name": "base_color_texture",
-        "uri": "db://assets/mapres/3D混元AI/地堡/地堡503面.fbm"
-      },
-      {
-        "name": "normalmap_texture",
-        "uri": "db://assets/mapres/3D混元AI/地堡/地堡503面.fbm"
+        "uri": "7d83c08a-6f96-4994-8b43-6076151b8fb7@48b02"
       }
     ],
     "fbx": {
@@ -136,18 +129,17 @@
     },
     "assetFinder": {
       "meshes": [
-        "80b36da8-b640-4c26-9351-d8fd4c0528f3@edcee"
+        "7d83c08a-6f96-4994-8b43-6076151b8fb7@6f17c"
       ],
       "skeletons": [],
       "textures": [
-        "80b36da8-b640-4c26-9351-d8fd4c0528f3@7d6ab",
-        "80b36da8-b640-4c26-9351-d8fd4c0528f3@400be"
+        "7d83c08a-6f96-4994-8b43-6076151b8fb7@7d6ab"
       ],
       "materials": [
-        "80b36da8-b640-4c26-9351-d8fd4c0528f3@f2ae3"
+        "7d83c08a-6f96-4994-8b43-6076151b8fb7@11eca"
       ],
       "scenes": [
-        "80b36da8-b640-4c26-9351-d8fd4c0528f3@16eff"
+        "7d83c08a-6f96-4994-8b43-6076151b8fb7@c4a9e"
       ]
     }
   }

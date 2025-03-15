@@ -192,6 +192,7 @@ enum MsgId
     GateSvr转发WorldSvr消息给游戏前端,
     建筑产出活动单位的集结点,
     播放音乐,
+	原地坚守,
 };
 
 export
