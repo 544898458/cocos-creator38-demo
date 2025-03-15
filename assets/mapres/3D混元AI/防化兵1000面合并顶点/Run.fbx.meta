@@ -7,6 +7,26 @@
     "__original-animation-0.cconb"
   ],
   "subMetas": {
+    "48b02": {
+      "importer": "gltf-embeded-image",
+      "uuid": "a62bae3b-1388-49cf-acca-c9cd7fcda12a@48b02",
+      "displayName": "",
+      "id": "48b02",
+      "name": "base_color_texture.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": true,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
     "a278b": {
       "importer": "gltf-mesh",
       "uuid": "a62bae3b-1388-49cf-acca-c9cd7fcda12a@a278b",
@@ -65,26 +85,6 @@
       ],
       "subMetas": {}
     },
-    "48b02": {
-      "importer": "gltf-embeded-image",
-      "uuid": "a62bae3b-1388-49cf-acca-c9cd7fcda12a@48b02",
-      "displayName": "",
-      "id": "48b02",
-      "name": "base_color_texture.image",
-      "userData": {
-        "gltfIndex": 0,
-        "fixAlphaTransparencyArtifacts": true,
-        "hasAlpha": true,
-        "type": "texture"
-      },
-      "ver": "1.0.3",
-      "imported": true,
-      "files": [
-        ".json",
-        ".png"
-      ],
-      "subMetas": {}
-    },
     "7d6ab": {
       "importer": "texture",
       "uuid": "a62bae3b-1388-49cf-acca-c9cd7fcda12a@7d6ab",
@@ -98,8 +98,8 @@
         "magfilter": "linear",
         "mipfilter": "none",
         "anisotropy": 0,
-        "isUuid": true,
-        "imageUuidOrDatabaseUri": "a62bae3b-1388-49cf-acca-c9cd7fcda12a@48b02"
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/mapres/3D混元AI/防化兵1000面合并顶点/Image_0.png"
       },
       "ver": "1.0.22",
       "imported": true,
@@ -145,7 +145,7 @@
     "imageMetas": [
       {
         "name": "base_color_texture",
-        "uri": "a62bae3b-1388-49cf-acca-c9cd7fcda12a@48b02"
+        "uri": "db://assets/mapres/3D混元AI/防化兵1000面合并顶点/Image_0.png"
       }
     ],
     "fbx": {

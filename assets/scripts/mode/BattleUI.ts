@@ -9,6 +9,9 @@ import { Sprite } from 'cc';
 import { AudioMgr } from '../manager/AudioMgr';
 import { Button } from 'cc';
 import { Toggle } from 'cc';
+import { Layers } from 'cc';
+import { Vec3 } from 'cc';
+import { Color } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('BattleUI')
@@ -36,15 +39,15 @@ export class BattleUI extends Component {
     lable聊天消息: Label
     @property({ type: Label, displayName: "系统消息" })
     lable系统消息: Label
-    @property({ type: Label})
+    @property({ type: Label })
     lable任务提示: Label
-    @property({ type: Toggle})
+    @property({ type: Toggle })
     toggle点击活动单位都是追加选中: Toggle
 
     //根据选中单位类型显示不同的按钮
-    @property({ type: Button})button离开地堡: Button
-    @property({ type: Button})button强行走: Button
-    @property({ type: Button})button集结点: Button
+    @property({ type: Button }) button离开地堡: Button
+    @property({ type: Button }) button强行走: Button
+    @property({ type: Button }) button集结点: Button
 
     @property({ type: UITransform, displayName: "所有单位头顶名字" })
     uiTransform所有单位头顶名字: UITransform
@@ -65,6 +68,9 @@ export class BattleUI extends Component {
     @property({ type: Label, displayName: "在线人数" })
     lable在线人数: Label
 
+    @property({ type: Node, displayName: "选中单位列表" })
+    node_selectedList: Node
+
     lastTitle: Node
     b菱形框选: boolean = false //切换菱形框选和矩形框选两种模式
 
@@ -77,16 +83,15 @@ export class BattleUI extends Component {
     update(deltaTime: number) {
 
     }
-    
+
     on出地堡(event: Event, customEventData: string) {
         this.main.onClick出地堡()
     }
     on集结点(event: Event, customEventData: string) {
-        if(0 == this.main.arr选中.length)
-        {
+        if (0 == this.main.arr选中.length) {
             this.scene战斗.battleUI.lable系统消息.string = '请先选中建筑单位'
             AudioMgr.inst.playOneShot('BUZZ')
-            return    
+            return
         }
 
         this.scene战斗.main.fun创建消息 = this.scene战斗.main.createMsg集结点
@@ -94,11 +99,10 @@ export class BattleUI extends Component {
         this.scene战斗.battleUI.下部列表.active = false
     }
     on强行走(event: Event, customEventData: string) {
-        if(0 == this.main.arr选中.length)
-        {
+        if (0 == this.main.arr选中.length) {
             this.scene战斗.battleUI.lable系统消息.string = '请先选中活动单位'
             AudioMgr.inst.playOneShot('BUZZ')
-            return    
+            return
         }
         // this.scene战斗.b强行走 = true
         this.scene战斗.main.fun创建消息 = this.scene战斗.main.createMsgMove强行走
@@ -194,20 +198,50 @@ export class BattleUI extends Component {
         this.游戏设置.active = !this.游戏设置.active;
         this.toggle点击活动单位都是追加选中.isChecked = this.main.b点击活动单位都是追加选中
     }
-    onCheck点击活动单位都是追加选中(toggle:Toggle, customEventData: string){
+    onCheck点击活动单位都是追加选中(toggle: Toggle, customEventData: string) {
         this.main.b点击活动单位都是追加选中 = toggle.isChecked
         console.log('toggle.isChecked', toggle.isChecked)
     }
     onClickTitle(event: Event, customEventData: string): void {
-        console.log('选中', customEventData )
+        console.log('选中', customEventData)
         this.lastTitle.active = false;
 
         this.lastTitle = this.nodeFightPanel.getChildByName(customEventData);
         this.lastTitle.active = true;
     }
-    onClick框选模式(): void{
+    onClick框选模式(): void {
         this.b菱形框选 = !this.b菱形框选
         this.lable系统消息.string = '已切换到 ' + (this.b菱形框选 ? '菱形框选' : '方形框选') + '模式'
+    }
+
+    onSelectUnits(selectUids: number[]): void {
+        this.node_selectedList.removeAllChildren();
+
+        const map = new Map<string, number>();
+        for (let i = 0; i < selectUids.length; i++) {
+            const nickName = this.scene战斗.entities.get(selectUids[i]).nickName;
+            if (map.has(nickName)) {
+                map.set(nickName, map.get(nickName) + 1);
+            } else {
+                map.set(nickName, 1);
+            }
+        }
+
+        let i = 0;
+        map.forEach((value, key) => {
+            let node = new Node();
+            node.layer = Layers.Enum.UI_2D;
+            node.position = new Vec3(0, 0 + i * 20, 0);
+            let label = node.addComponent(Label);
+            label.fontSize = 20;
+            label.lineHeight = 20;
+            label.color = new Color("#FFE86D");
+            label.horizontalAlign = Label.HorizontalAlign.LEFT;
+            label.string = `${key} x${value}`;
+            this.node_selectedList.addChild(node);
+
+            i++;
+        });
     }
 }
 

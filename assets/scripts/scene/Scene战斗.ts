@@ -598,7 +598,10 @@ export class Scene战斗 extends Component {
 
     选中(arr: number[]) {
         this.clear选中()
-        this.main.arr选中 = arr
+        this.main.arr选中 = arr;
+
+        this.battleUI.onSelectUnits(arr);
+
         for (let id of this.main.arr选中) {
             resources.load(prefabName选中特效, Prefab, (err, prefab) => {
                 console.log('resources.load callback:', err, prefab)
