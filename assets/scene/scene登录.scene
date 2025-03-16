@@ -408,7 +408,7 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 393,
+      "width": 392.9999999999999,
       "height": 852
     },
     "_anchorPoint": {
@@ -1134,7 +1134,7 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 334.125,
+      "width": 333.234375,
       "height": 198.9
     },
     "_anchorPoint": {
@@ -1145,7 +1145,7 @@
     "_id": "aeWnwn++dDV5W8njAf27NT"
   },
   {
-    "__type__": "cc.Label",
+    "__type__": "cc.RichText",
     "_name": "",
     "_objFlags": 0,
     "__editorExtras__": {},
@@ -1154,57 +1154,27 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "_customMaterial": null,
-    "_srcBlendFactor": 2,
-    "_dstBlendFactor": 4,
-    "_color": {
+    "_lineHeight": 15,
+    "_string": "关卡：阳光下的一个虾(QQ 1179331661)\n首页底图：不问清阴(QQ 3969340418)\n3D模型：TripoAI、混元AI\n头像图片：文小言AI\n音乐：SunoAI\n绑定/动作：mixamo\n绑定/动作：大呲花(QQ 3029823814)、恒(QQ 2682677034)\n绑定/动作：天涳の翼(QQ 349070005)、适中(QQ 1136976220)\n绑定/动作：<color=#a0ff50>一方狂三(QQ 1256604813)</color>\n模型带动作：<color=#a0ff50>荒野乱斗(QQ 2930801690)</color>\n语音：潭(QQ 1514475926)、<color=#a0ff50>凌枭(QQ 2862703087)</color>\n程序：<color=#a0ff50>江沉晚吟时(QQ 3380125833)</color>\n程序：kunnka(QQ 954436840)、樱木花道(QQ 251949672)",
+    "_horizontalAlign": 1,
+    "_verticalAlign": 0,
+    "_fontSize": 12,
+    "_fontColor": {
       "__type__": "cc.Color",
       "r": 255,
       "g": 255,
       "b": 255,
       "a": 255
     },
-    "_string": "音乐：SunoAI\n头像图片：文小言AI\n绑定/动作：mixamo\n3D模型：TripoAI、混元AI\n首页底图：不问清阴(QQ 3969340418)\n关卡：阳光下的一个虾(QQ 1179331661)\n模型带动作：荒野乱斗(QQ 2930801690)\n绑定/动作：大呲花(QQ 3029823814)\n绑定/动作：恒(QQ 2682677034)、一方狂三(QQ 1256604813)\n绑定/动作：天涳の翼(QQ 349070005)、适中(QQ 1136976220)\n语音：潭(QQ 1514475926)、凌枭(QQ 2862703087)\n程序：kunnka(QQ 954436840)\n程序:樱木花道(QQ 251949672)、江沉晚吟时(QQ 3380125833)",
-    "_horizontalAlign": 1,
-    "_verticalAlign": 1,
-    "_actualFontSize": 12,
-    "_fontSize": 12,
+    "_maxWidth": 0,
     "_fontFamily": "Arial",
-    "_lineHeight": 15,
-    "_overflow": 0,
-    "_enableWrapText": true,
     "_font": null,
     "_isSystemFontUsed": true,
-    "_spacingX": 0,
-    "_isItalic": false,
-    "_isBold": false,
-    "_isUnderline": false,
-    "_underlineHeight": 2,
+    "_userDefinedFont": null,
     "_cacheMode": 0,
-    "_enableOutline": false,
-    "_outlineColor": {
-      "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
-      "a": 255
-    },
-    "_outlineWidth": 2,
-    "_enableShadow": false,
-    "_shadowColor": {
-      "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
-      "a": 255
-    },
-    "_shadowOffset": {
-      "__type__": "cc.Vec2",
-      "x": 2,
-      "y": 2
-    },
-    "_shadowBlur": 2,
-    "_id": "07jk6sed9MYbxET5cTZ3P1"
+    "_imageAtlas": null,
+    "_handleTouchEvent": true,
+    "_id": "21jkftdLZOGLLJZVC5S884"
   },
   {
     "__type__": "cc.Node",
@@ -1277,7 +1247,7 @@
     "_id": "b9QLNqpuBAyY7e6+D9t9MH"
   },
   {
-    "__type__": "cc.Label",
+    "__type__": "cc.RichText",
     "_name": "",
     "_objFlags": 0,
     "__editorExtras__": {},
@@ -1286,57 +1256,27 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "_customMaterial": null,
-    "_srcBlendFactor": 2,
-    "_dstBlendFactor": 4,
-    "_color": {
+    "_lineHeight": 15,
+    "_string": "游戏版本：2025年3月20日\n玩家QQ群：1015518075\t开发QQ群：285842297\n微信小游戏：即时战略指挥\t微信公众号：即时战略指挥\n#腾讯频道：即时战略指挥\t#腾讯频道：pd72667234\n百度贴吧：即时战略指挥\n<color=#ffff00>健康游戏忠告\n抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。\n适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活。</color>",
+    "_horizontalAlign": 1,
+    "_verticalAlign": 0,
+    "_fontSize": 13,
+    "_fontColor": {
       "__type__": "cc.Color",
-      "r": 231,
-      "g": 226,
-      "b": 91,
+      "r": 200,
+      "g": 200,
+      "b": 200,
       "a": 255
     },
-    "_string": "游戏版本：2025年3月20日\n玩家QQ群：1015518075\t开发QQ群：285842297\n微信小游戏：即时战略指挥\t微信公众号：即时战略指挥\n#腾讯频道：即时战略指挥\t#腾讯频道：pd72667234\n百度贴吧：即时战略指挥\n健康游戏忠告\n抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。\n适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活。",
-    "_horizontalAlign": 1,
-    "_verticalAlign": 1,
-    "_actualFontSize": 13,
-    "_fontSize": 13,
+    "_maxWidth": 0,
     "_fontFamily": "Arial",
-    "_lineHeight": 15,
-    "_overflow": 0,
-    "_enableWrapText": true,
     "_font": null,
     "_isSystemFontUsed": true,
-    "_spacingX": 0,
-    "_isItalic": false,
-    "_isBold": false,
-    "_isUnderline": false,
-    "_underlineHeight": 2,
+    "_userDefinedFont": null,
     "_cacheMode": 0,
-    "_enableOutline": false,
-    "_outlineColor": {
-      "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
-      "a": 255
-    },
-    "_outlineWidth": 2,
-    "_enableShadow": false,
-    "_shadowColor": {
-      "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
-      "a": 255
-    },
-    "_shadowOffset": {
-      "__type__": "cc.Vec2",
-      "x": 2,
-      "y": 2
-    },
-    "_shadowBlur": 2,
-    "_id": "62uy3eDmtI57e2sN7xDkuO"
+    "_imageAtlas": null,
+    "_handleTouchEvent": true,
+    "_id": "f1S5DVwHlHTqgZDKALBEH+"
   },
   {
     "__type__": "cc.Node",
@@ -2023,7 +1963,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 150,
-      "height": 40.344
+      "height": 55
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2285,10 +2225,10 @@
     "_string": "登录测试服",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 15,
-    "_fontSize": 15,
+    "_actualFontSize": 12,
+    "_fontSize": 12,
     "_fontFamily": "Arial",
-    "_lineHeight": 40,
+    "_lineHeight": 20,
     "_overflow": 1,
     "_enableWrapText": false,
     "_font": null,
@@ -2336,8 +2276,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 150,
-      "height": 40.344
+      "width": 100,
+      "height": 40
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -6378,7 +6318,7 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 393,
+      "width": 392.9999999999999,
       "height": 852
     },
     "_anchorPoint": {
@@ -6458,6 +6398,9 @@
     },
     "audioSource": {
       "__id__": 168
+    },
+    "lableMessage": {
+      "__id__": 29
     },
     "loadNode": {
       "__id__": 146

@@ -45,7 +45,8 @@ export class BattleUI extends Component {
     lable单位详情: Label
     @property({ type: Toggle })
     toggle点击活动单位都是追加选中: Toggle
-
+    @property({ type: Toggle })
+    toggle显示单位类型: Toggle
     //根据选中单位类型显示不同的按钮
     @property({ type: Button }) button离开地堡: Button
     @property({ type: Button }) button强行走: Button
@@ -208,10 +209,16 @@ export class BattleUI extends Component {
     onClick游戏设置(): void {
         this.游戏设置.active = !this.游戏设置.active;
         this.toggle点击活动单位都是追加选中.isChecked = this.main.b点击活动单位都是追加选中
+        this.toggle显示单位类型.isChecked = this.main.b显示单位类型
     }
     onCheck点击活动单位都是追加选中(toggle: Toggle, customEventData: string) {
         this.main.b点击活动单位都是追加选中 = toggle.isChecked
         console.log('toggle.isChecked', toggle.isChecked)
+    }
+    onCheck显示单位类型(toggle: Toggle, customEventData: string) {
+        this.main.b显示单位类型 = toggle.isChecked
+        this.scene战斗?.刷新单位名字()
+        console.log('b显示单位类型,toggle.isChecked', toggle.isChecked)
     }
     onClickTitle(event: Event, customEventData: string): void {
         console.log('选中', customEventData)

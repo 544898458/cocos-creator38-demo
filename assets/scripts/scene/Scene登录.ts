@@ -12,6 +12,7 @@ import { assetManager } from 'cc'
 import { sys } from 'cc'
 import { TextAsset } from 'cc'
 import { MsgId } from '../配置/配置'
+import { RichText } from 'cc'
 
 const { ccclass, property } = _decorator
 
@@ -32,7 +33,8 @@ export class Scene登录 extends Component {
     @property({ type: AudioSource})
     audioSource: AudioSource
     main: Main
-    lableMessage: Label
+    @property({ type: RichText})
+    lableMessage: RichText
     //加载
     @property(Node)
     loadNode:Node;
@@ -45,7 +47,6 @@ export class Scene登录 extends Component {
         console.log('onLoad')
         this.nodeSelectSpace = utils.find("Canvas/选择玩法", this.node.parent);
         this.nodeLoginPanel = utils.find("Canvas/LoginPanel", this.node.parent);
-        this.lableMessage = utils.find("Canvas/Message", this.node.parent).getComponent(Label)
         //获取常驻节点
         this.main = director.getScene().getChildByName('常驻').getComponent(Main);
         this.main.scene登录 = this

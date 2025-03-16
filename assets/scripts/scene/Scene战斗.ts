@@ -30,6 +30,7 @@ export class ClientEntityComponent {
     skeletalAnimation: Animation
     initClipName: string = 'idle'
     nickName: string
+    entityName: string
     position: Vec3//刚进地图Load没结束无法设置node坐标，暂存
     hpbar: Node;
     hp: number = 0
@@ -42,6 +43,16 @@ export class ClientEntityComponent {
         this.nodeName?.removeFromParent()
         this.node描述?.removeFromParent()
         this.hpbar?.removeFromParent()
+    }
+    显示头顶名字(b显示单位类型:boolean): void {
+        if(!this.labelName)
+            return
+
+        if(b显示单位类型)
+            this.labelName.string = this.nickName + ' ' + this.entityName
+        else
+            this.labelName.string = this.nickName
+
     }
 }
 
@@ -820,6 +831,13 @@ export class Scene战斗 extends Component {
 
         this.battleUI.uiTransform剧情对话退出面板.node.active = b显示退出面板
     }
+
+    刷新单位名字() {
+        this.entities.forEach((entity:ClientEntityComponent)=>{
+            entity.显示头顶名字(this.main.b显示单位类型)
+        })
+    }
+    
 }
 
 
