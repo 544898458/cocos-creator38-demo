@@ -265,6 +265,18 @@ export class Main extends Component {
             });
         }
     }
+    微信小游戏允许分享(): void {
+        //"shareAppMessage"表示“发送给朋友”按钮，"shareTimeline"表示“分享到朋友圈”按钮
+        // 显示“分享到朋友圈”按钮时必须同时显示“发送给朋友”按钮，显示“发送给朋友”按钮时则允许不显示“分享到朋友圈”按钮
+        // https://developers.weixin.qq.com/miniprogram/dev/api/share/wx.showShareMenu.html
+        console.log('window.CC_WECHAT', window.CC_WECHAT)
+        if (window.CC_WECHAT) {
+            wx.showShareMenu({
+                withShareTicket: true,
+                menus: ['shareAppMessage', 'shareTimeline']
+              })
+        }
+    }
 
     onClickLogin(event: Event, customEventData: string) {
         this.b登录成功 = false

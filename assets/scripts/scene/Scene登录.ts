@@ -61,6 +61,7 @@ export class Scene登录 extends Component {
         }
 
         this.editBox登录名.string = sys.localStorage.getItem(KEY_登录名)
+        this.main.微信小游戏允许分享()
     }
     start() {
         console.log('Scene登录.start')
