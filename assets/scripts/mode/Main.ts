@@ -661,23 +661,32 @@ export class Main extends Component {
 
                     if (old.view) {
 
-                        if (!old.view.position || old.view.position.clone().subtract(old.position).lengthSqr() > 5)
+                        if (!old.view.position || old.view.position.clone().subtract(old.position).lengthSqr() > 5) {
                             old.view.position = old.position
-                        else {
-                            // old.tween移动?.stop()
-                            old.tween移动 = tween(old.view).to(0.15, { position: old.position })
-                            old.tween移动.start()
+                            old.view.eulerAngles = new Vec3(0, eulerAnglesY, 0)
                         }
-
-
-                        // old.view.eulerAngles = new Vec3(0, eulerAnglesY, 0)
-                        if (eulerAnglesY != old.view.eulerAngles.y) {
-                            let quat: Quat = new Quat();
-                            Quat.fromEuler(quat, 0, eulerAnglesY - old.view.eulerAngles.y, 0);
-                            tween(old.view).to(1, { rotation: quat })
-                            // old.labelName.string = old.nickName + '(' + id + ')hp=' + hp
-                            // old.labelName.string = old.nickName// + 'hp=' + hp
-                            // old.hpbar&&(old.hpbar.getComponent(ProgressBar).progress = old.hp / old.hpMax);//todo等后端传最大血量 20测试用
+                        else {
+                            old.tween移动?.stop()
+                            // let quat: Quat
+                            if (eulerAnglesY != old.view.eulerAngles.y) {
+                                // quat = new Quat();
+                                old.view.eulerAngles.set(0, old.view.eulerAngles.y % 360, 0)
+                                eulerAnglesY = (eulerAnglesY + 360) % 360
+                                if(eulerAnglesY-old.view.eulerAngles.y > 180)
+                                    eulerAnglesY -=360
+                                else if(eulerAnglesY-old.view.eulerAngles.y < -180)
+                                    eulerAnglesY +=360
+                                // Quat.fromEuler(quat, 0, eulerAnglesY, 0);
+                                // tween(old.view).to(0.2, { rotation: quat }).start()
+                                // old.labelName.string = old.nickName + '(' + id + ')hp=' + hp
+                                // old.labelName.string = old.nickName// + 'hp=' + hp
+                                // old.hpbar&&(old.hpbar.getComponent(ProgressBar).progress = old.hp / old.hpMax);//todo等后端传最大血量 20测试用
+                            }
+                            // if (quat)
+                            old.tween移动 = tween(old.view).to(0.15, { position: old.position, eulerAngles: new Vec3(0, eulerAnglesY, 0) })
+                            // else
+                            // old.tween移动 = tween(old.view).to(0.15, { position: old.position })
+                            old.tween移动.start()
                         }
                     }
                 }
