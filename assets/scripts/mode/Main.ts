@@ -682,8 +682,8 @@ export class Main extends Component {
                             // let quat: Quat
                             if (eulerAnglesY != old.view.eulerAngles.y) {
                                 // quat = new Quat();
-                                old.view.eulerAngles = new Vec3(0, (old.view.eulerAngles.y + 360) % 360, 0)
-                                eulerAnglesY = (eulerAnglesY + 360) % 360
+                                // old.view.eulerAngles = new Vec3(0, (old.view.eulerAngles.y + 360) % 360, 0)
+                                // eulerAnglesY = (eulerAnglesY + 360) % 360
                                 if (eulerAnglesY - old.view.eulerAngles.y > 180)
                                     eulerAnglesY -= 360
                                 else if (eulerAnglesY - old.view.eulerAngles.y < -180)
@@ -723,10 +723,10 @@ export class Main extends Component {
                         old.initClipName = clipName
                     } else {
                         Main.播放动作(old, clipName, loop)
-                        if (单位类型.光子炮 != old.类型) {
-                            old.tween移动?.stop()
-                            old.tween移动 = null
-                        }
+                        // if (单位类型.光子炮 != old.类型) {
+                        //     old.tween移动?.stop()
+                        //     old.tween移动 = null
+                        // }
                         // old.view.position = old.position
                         // tween(old.view).to(0.1, {position:old.position}).start()
                     }
