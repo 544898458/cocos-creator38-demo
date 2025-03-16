@@ -274,7 +274,7 @@ export class Main extends Component {
             wx.showShareMenu({
                 withShareTicket: true,
                 menus: ['shareAppMessage', 'shareTimeline']
-              })
+            })
         }
     }
 
@@ -678,16 +678,16 @@ export class Main extends Component {
                             old.view.eulerAngles = new Vec3(0, eulerAnglesY, 0)
                         }
                         else {
-                            old.tween移动?.stop()
+                            // old.tween移动?.stop()
                             // let quat: Quat
                             if (eulerAnglesY != old.view.eulerAngles.y) {
                                 // quat = new Quat();
-                                old.view.eulerAngles.set(0, old.view.eulerAngles.y % 360, 0)
+                                old.view.eulerAngles = new Vec3(0, (old.view.eulerAngles.y + 360) % 360, 0)
                                 eulerAnglesY = (eulerAnglesY + 360) % 360
-                                if(eulerAnglesY-old.view.eulerAngles.y > 180)
-                                    eulerAnglesY -=360
-                                else if(eulerAnglesY-old.view.eulerAngles.y < -180)
-                                    eulerAnglesY +=360
+                                if (eulerAnglesY - old.view.eulerAngles.y > 180)
+                                    eulerAnglesY -= 360
+                                else if (eulerAnglesY - old.view.eulerAngles.y < -180)
+                                    eulerAnglesY += 360
                                 // Quat.fromEuler(quat, 0, eulerAnglesY, 0);
                                 // tween(old.view).to(0.2, { rotation: quat }).start()
                                 // old.labelName.string = old.nickName + '(' + id + ')hp=' + hp
@@ -697,6 +697,7 @@ export class Main extends Component {
                             // if (quat)
                             old.tween移动 = tween(old.view).to(0.15, { position: old.position, eulerAngles: new Vec3(0, eulerAnglesY, 0) })
                             // else
+                            // old.view.eulerAngles = new Vec3(0, eulerAnglesY, 0)
                             // old.tween移动 = tween(old.view).to(0.15, { position: old.position })
                             old.tween移动.start()
                         }
@@ -722,8 +723,10 @@ export class Main extends Component {
                         old.initClipName = clipName
                     } else {
                         Main.播放动作(old, clipName, loop)
-                        old.tween移动?.stop()
-                        old.tween移动 = null
+                        if (单位类型.光子炮 != old.类型) {
+                            old.tween移动?.stop()
+                            old.tween移动 = null
+                        }
                         // old.view.position = old.position
                         // tween(old.view).to(0.1, {position:old.position}).start()
                     }
