@@ -18,9 +18,9 @@ const { ccclass, property } = _decorator
 
 @ccclass('Scene登录')
 export class Scene登录 extends Component {
-    
-    @property({type: EditBox})
-    editBox登录名:EditBox
+
+    @property({ type: EditBox })
+    editBox登录名: EditBox
 
     @property({ type: Node, displayName: "个人战局列表面板" })
     node个人战局列表面板: Node
@@ -30,20 +30,19 @@ export class Scene登录 extends Component {
     node个人战局按钮模板: Node
     nodeLoginPanel: Node
     nodeSelectSpace: Node
-    @property({ type: AudioSource})
+    @property({ type: AudioSource })
     audioSource: AudioSource
     main: Main
-    @property({ type: RichText})
+    @property({ type: RichText })
     lableMessage: RichText
     //加载
     @property(Node)
-    loadNode:Node;
+    loadNode: Node;
     //加载时间
-    loadtime:number=0;
+    loadtime: number = 0;
     //加载时间总长 1s
-    loadlen:number=1;
-    onLoad() 
-    {
+    loadlen: number = 1;
+    onLoad() {
         console.log('onLoad')
         this.nodeSelectSpace = utils.find("Canvas/选择玩法", this.node.parent);
         this.nodeLoginPanel = utils.find("Canvas/LoginPanel", this.node.parent);
@@ -51,11 +50,10 @@ export class Scene登录 extends Component {
         this.main = director.getScene().getChildByName('常驻').getComponent(Main);
         this.main.scene登录 = this
         // this.loadNode.active = true;
-        if(this.main.str在线人数)
+        if (this.main.str在线人数)
             this.lableMessage.string = this.main.str在线人数
 
-        if(this.main.websocket)
-        {
+        if (this.main.websocket) {
             this.nodeSelectSpace.active = true
             this.nodeLoginPanel.active = false
         }
@@ -66,8 +64,8 @@ export class Scene登录 extends Component {
     start() {
         console.log('Scene登录.start')
 
-        if(this.main.strHttps登录场景音乐Mp3){
-            assetManager.loadRemote(this.main.strHttps登录场景音乐Mp3, (err, clip:AudioClip) => {
+        if (this.main.strHttps登录场景音乐Mp3) {
+            assetManager.loadRemote(this.main.strHttps登录场景音乐Mp3, (err, clip: AudioClip) => {
                 console.log('resources.load callback:', err, clip)
                 this.audioSource.stop()
                 this.audioSource.clip = clip
@@ -78,17 +76,17 @@ export class Scene登录 extends Component {
 
     update(deltaTime: number) {
         //加载进度条
-        if(this.loadtime<this.loadlen)
-        this.onloading(deltaTime)
-       
+        if (this.loadtime < this.loadlen)
+            this.onloading(deltaTime)
+
     }
-    onloading(det:number){
-        this.loadtime+=det;
-        if(this.loadtime>this.loadlen){
-            this.loadNode.active=false;
+    onloading(det: number) {
+        this.loadtime += det;
+        if (this.loadtime > this.loadlen) {
+            this.loadNode.active = false;
             return;
-        }else{
-            this.loadNode.getComponentInChildren(ProgressBar).progress=this.loadtime/this.loadlen
+        } else {
+            this.loadNode.getComponentInChildren(ProgressBar).progress = this.loadtime / this.loadlen
         }
     }
     onClickToggle进Space1(event: Event, customEventData: string) {
@@ -104,19 +102,49 @@ export class Scene登录 extends Component {
         this.main.onClick进攻坚战()
     }
     onClickLogin(event: Event, customEventData: string) {
-       this.main.onClickLogin(event,customEventData)
+        this.main.onClickLogin(event, customEventData)
+    }
+    onClick微信公众号(event: Event, customEventData: string) {
+        console.log('window.CC_WECHAT', window.CC_WECHAT)
+        if (window.CC_WECHAT) {
+            // 调用微信小游戏的跳转方法
+            wx.navigateToMiniProgram({
+                appId: 'wx2e932efa8e0740f0', // 替换为实际的公众号 AppID
+                path: '', // 公众号的路径，如果需要指定特定页面，可以在这里设置
+                extraData: {
+                    // 可以传递额外的数据，如果需要
+                },
+                success(res) {
+                    // 跳转成功后的回调
+                    console.log('跳转成功', res);
+                },
+                fail(res) {
+                    // 跳转失败后的回调
+                    console.log('跳转失败', res);
+                }
+            });
+
+        } else {
+            this.lableMessage.string = '请搜索公众号：<color=#ffff00>即时战略指挥</color>'
+        }
+    }
+    onClick玩家QQ群(event: Event, customEventData: string) {
+        window.open('https://qm.qq.com/cgi-bin/qm/qr?k=1015518075');
+    }
+    onClick百度贴吧(event: Event, customEventData: string) {
+        window.open('https://tieba.baidu.com/f?kw=%E5%8D%B3%E6%97%B6%E6%88%98%E7%95%A5%E6%8C%87%E6%8C%A5');
     }
     onClick别人的个人战局列表(event: Event, customEventData: string) {
-        this.main.onClick获取别人的个人战局列表(event,customEventData)
+        this.main.onClick获取别人的个人战局列表(event, customEventData)
     }
     onClick别人的多人战局列表(event: Event, customEventData: string) {
-        this.main.onClick获取别人的多人战局列表(event,customEventData)
+        this.main.onClick获取别人的多人战局列表(event, customEventData)
     }
     onClick进入别人的个人战局(event: Event, customEventData: string) {
-        this.main.onClick进入别人的个人战局(event,customEventData)
+        this.main.onClick进入别人的个人战局(event, customEventData)
     }
     onClick进入别人的多人战局(event: Event, customEventData: string) {
-        this.main.onClick进入别人的多人战局(event,customEventData)
+        this.main.onClick进入别人的多人战局(event, customEventData)
     }
     onClick创建四方对战(event: Event, customEventData: string) {
         this.main.onClick创建四方对战()
@@ -125,13 +153,12 @@ export class Scene登录 extends Component {
         this.nodeSelectSpace.active = true
         this.node个人战局列表面板.active = false
     }
-    显示战局列表(arrPlayer: string[][], handler:string) {
+    显示战局列表(arrPlayer: string[][], handler: string) {
         this.nodeSelectSpace.active = false
         this.node个人战局列表面板.active = true
         this.node个人战局列表.removeAllChildren()
 
-        for( let arrNikcScene of arrPlayer)
-        {
+        for (let arrNikcScene of arrPlayer) {
             let nickName = arrNikcScene[0]
             let sceneName = arrNikcScene[1]
             let node按钮 = instantiate(this.node个人战局按钮模板)
@@ -150,12 +177,11 @@ export class Scene登录 extends Component {
         }
     }
 
-    显示登录界面():void
-    {
+    显示登录界面(): void {
         this.nodeSelectSpace.active = false
         this.node个人战局列表.active = false
         this.nodeLoginPanel.active = true
-        if(this.main.websocket)
+        if (this.main.websocket)
             this.lableMessage.string = '连接已断开，已回到登录界面'
     }
 }
