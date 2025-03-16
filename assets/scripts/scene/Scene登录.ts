@@ -21,7 +21,8 @@ export class Scene登录 extends Component {
 
     @property({ type: EditBox })
     editBox登录名: EditBox
-
+    @property({ type: Node})
+    node跳转社区: Node
     @property({ type: Node, displayName: "个人战局列表面板" })
     node个人战局列表面板: Node
     @property({ type: Node, displayName: "个人战局列表" })
@@ -60,6 +61,9 @@ export class Scene登录 extends Component {
 
         this.editBox登录名.string = sys.localStorage.getItem(KEY_登录名)
         this.main.微信小游戏允许分享()
+        if (sys.isBrowser) {
+            this.node跳转社区.active = true
+        }
     }
     start() {
         console.log('Scene登录.start')
@@ -129,10 +133,12 @@ export class Scene登录 extends Component {
         }
     }
     onClick玩家QQ群(event: Event, customEventData: string) {
-        window.open('https://qm.qq.com/cgi-bin/qm/qr?k=1015518075');
+        // window.open('https://qm.qq.com/cgi-bin/qm/qr?k=1015518075');
+        window.location.href = "https://qm.qq.com/cgi-bin/qm/qr?k=1015518075";
     }
     onClick百度贴吧(event: Event, customEventData: string) {
-        window.open('https://tieba.baidu.com/f?kw=%E5%8D%B3%E6%97%B6%E6%88%98%E7%95%A5%E6%8C%87%E6%8C%A5');
+        // window.open('https://tieba.baidu.com/f?kw=%E5%8D%B3%E6%97%B6%E6%88%98%E7%95%A5%E6%8C%87%E6%8C%A5');
+        window.location.href = "https://tieba.baidu.com/f?kw=%E5%8D%B3%E6%97%B6%E6%88%98%E7%95%A5%E6%8C%87%E6%8C%A5";
     }
     onClick别人的个人战局列表(event: Event, customEventData: string) {
         this.main.onClick获取别人的个人战局列表(event, customEventData)

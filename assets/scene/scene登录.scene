@@ -2399,7 +2399,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Node",
+    "_name": "跳转社区",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
@@ -2416,7 +2416,7 @@
         "__id__": 78
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 86
@@ -2468,7 +2468,7 @@
         "__id__": 63
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 66
@@ -2797,7 +2797,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0,
+      "x": -60,
       "y": 0,
       "z": 0
     },
@@ -3111,7 +3111,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 120,
+      "x": 60,
       "y": 0,
       "z": 0
     },
@@ -3409,7 +3409,7 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 360,
+      "width": 240,
       "height": 50
     },
     "_anchorPoint": {
@@ -7478,6 +7478,9 @@
     "__prefab": null,
     "editBox登录名": {
       "__id__": 43
+    },
+    "node跳转社区": {
+      "__id__": 61
     },
     "node个人战局列表面板": {
       "__id__": 152
