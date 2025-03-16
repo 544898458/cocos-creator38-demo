@@ -239,7 +239,7 @@ export class BattleUI extends Component {
 
         const map = new Map<string, number>();
         for (let i = 0; i < selectUids.length; i++) {
-            const nickName = this.scene战斗.entities.get(selectUids[i]).nickName;
+            const nickName = this.scene战斗.entities.get(selectUids[i]).entityName;
             if (map.has(nickName)) {
                 map.set(nickName, map.get(nickName) + 1);
             } else {
