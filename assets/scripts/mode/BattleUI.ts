@@ -41,6 +41,8 @@ export class BattleUI extends Component {
     lable系统消息: Label
     @property({ type: Label })
     lable任务提示: Label
+    @property({ type: Label })
+    lable单位详情: Label
     @property({ type: Toggle })
     toggle点击活动单位都是追加选中: Toggle
 
@@ -224,6 +226,8 @@ export class BattleUI extends Component {
     }
 
     onSelectUnits(selectUids: number[]): void {
+        this.显示选中单位详情(selectUids)
+
         this.node_selectedList.removeAllChildren();
 
         const map = new Map<string, number>();
@@ -240,10 +244,11 @@ export class BattleUI extends Component {
         map.forEach((value, key) => {
             let node = new Node();
             node.layer = Layers.Enum.UI_2D;
-            node.position = new Vec3(0, 0 + i * 20, 0);
+            // node.position = new Vec3(0, 0 + i * 20, 0);
+            node.addComponent(UITransform).anchorX = 0
             let label = node.addComponent(Label);
-            label.fontSize = 20;
-            label.lineHeight = 20;
+            label.fontSize = 15;
+            label.lineHeight = 18;
             label.color = new Color("#FFE86D");
             label.horizontalAlign = Label.HorizontalAlign.LEFT;
             label.string = `${key} x${value}`;
@@ -251,6 +256,40 @@ export class BattleUI extends Component {
 
             i++;
         });
+    }
+    显示选中单位详情(selectUids: number[]): void {
+        if (0 == selectUids.length){
+            this.lable单位详情.string = ''
+            return
+        }
+        let id = selectUids[0]
+        let entity = this.scene战斗.entities.get(id)
+        const 类型 = entity.类型
+        const 单位 = this.main.配置.find单位(类型)
+        const 制造 = this.main.配置.find制造(类型)
+        const 战斗 = this.main.配置.find战斗(类型)
+        let str详情 = 单位.名字 + '\n'
+        if (制造) {
+            str详情 +=
+                '晶体矿:' + 制造.消耗晶体矿 + '\n' +
+                '燃气矿:' + 制造.消耗燃气矿 + '\n' +
+                'HP:' + entity.hp + '/' + 制造.初始HP + '\n'
+        }
+        if (战斗) {
+            str详情 +=
+                '伤害:' + 战斗.i32伤害 + '\n' +
+                '警戒距离:' + 战斗.f警戒距离 + '米\n' +
+                '攻击距离:' + 战斗.f攻击距离 + '米\n' +
+                '移动速度:' + 战斗.f每帧移动距离 * 10 + '米/秒\n'
+
+            let 前摇毫秒 = 战斗.dura开始播放攻击动作 + 战斗.dura开始伤害
+            if (0 < 前摇毫秒)
+                str详情 += '攻击前摇:' + 前摇毫秒 + '毫秒\n'
+
+            if (0 < 战斗.dura后摇)
+                str详情 += '攻击后摇:' + 战斗.dura后摇 + '毫秒\n'
+        }
+        this.lable单位详情.string = str详情
     }
 }
 

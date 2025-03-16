@@ -1,15 +1,14 @@
 import { TextAsset } from 'cc';
 import { assetManager } from 'cc';
-import {parse} from 'yaml'
+import { parse } from 'yaml'
 
 
-export 
-/// <summary>
-/// 网页强制要求协议:外层是二进制WS(WebSocket)，二进制用 MsgPack 序列化
-/// 微信小程序强制要求协议：外层是WSS，也就是三层，最外层TLS1.3，中间是二进制WS(WebSocket)，最里面是 MsgPack 序列化
-/// </summary>
-enum MsgId
-{
+export
+	/// <summary>
+	/// 网页强制要求协议:外层是二进制WS(WebSocket)，二进制用 MsgPack 序列化
+	/// 微信小程序强制要求协议：外层是WSS，也就是三层，最外层TLS1.3，中间是二进制WS(WebSocket)，最里面是 MsgPack 序列化
+	/// </summary>
+	enum MsgId {
 	/// <summary>
 	/// 无效
 	/// </summary>
@@ -188,16 +187,15 @@ enum MsgId
 	/// </summary>
 	剧情对话已看完,
 	在线人数,
-    GateSvr转发GameSvr消息给游戏前端,
-    GateSvr转发WorldSvr消息给游戏前端,
-    建筑产出活动单位的集结点,
-    播放音乐,
+	GateSvr转发GameSvr消息给游戏前端,
+	GateSvr转发WorldSvr消息给游戏前端,
+	建筑产出活动单位的集结点,
+	播放音乐,
 	原地坚守,
 };
 
 export
-enum 单位类型
-{
+	enum 单位类型 {
 	单位类型_Invalid_0,
 
 	特效,
@@ -214,12 +212,12 @@ enum 单位类型
 	近战兵,//火蝠，喷火兵Firebat
 	三色坦克,
 	工蜂,
-    飞机,
+	飞机,
 	跳虫,
 	刺蛇,
 	幼虫,//Larva
 
-    活动单位Max非法,
+	活动单位Max非法,
 
 	建筑Min非法 = 300,
 	基地,//指挥中心(Command Center),用来造工程车()
@@ -227,42 +225,59 @@ enum 单位类型
 	民房,//供给站(Supply Depot)
 	地堡,//掩体; 地堡(Bunker),可以进兵
 	光子炮,//Photon Cannon
-    孵化场,//hatchery
-    机场,
-    重工厂,
+	孵化场,//hatchery
+	机场,
+	重工厂,
 
 	建筑Max非法,
 };
 
-export class 单位配置
-{
-    类型:单位类型
+export class 单位配置 {
+	类型: 单位类型
+	名字: string
 }
-export class 战斗配置
-{
-    类型:单位类型
-    f攻击距离:number
-    f警戒距离:number
+export class 战斗配置 {
+	类型: 单位类型
+	f警戒距离: number
+	f攻击距离: number
+	i32伤害: number
+	f每帧移动距离: number
+	dura开始播放攻击动作: number//毫秒，（前摇第1部分）
+	dura开始伤害: number//毫秒，（前摇第2部分）
+	dura后摇: number//毫秒
 }
-export class 配置{
-    arr单位: Array<单位配置>
-    arr战斗: Array<战斗配置>
-    读取配置文件()
-    {
-        this.读取1个配置文件<单位配置>('单位', (arr)=>this.arr单位=arr)
-        this.读取1个配置文件<战斗配置>('战斗', (arr)=>this.arr战斗=arr)
-    }
-    读取1个配置文件<T>(strName:string, fun : (arr:Array<T>)=>void)
-    {
-        assetManager.loadRemote('https://www.rtsgame.online/配置/' + strName + '.yaml',{ ext: '.txt' },
-            (err, textAsset:TextAsset)=>{
-                console.log(err, textAsset)
-                let arr = parse(textAsset.text) as Array<T>;
-                arr.forEach((配置:T)=>{console.log(配置)})
-                fun(arr)
-            }) 
-    }
-    find战斗(类型:单位类型):战斗配置{
-        return this.arr战斗.find((v)=>v.类型==类型)
-    }
+export class 制造配置 {
+	类型: 单位类型
+	消耗晶体矿: number
+	消耗燃气矿: number
+	初始HP: number
+
+}
+export class 配置 {
+	arr单位: Array<单位配置>
+	arr战斗: Array<战斗配置>
+	arr制造: Array<制造配置>
+	读取配置文件() {
+		this.读取1个配置文件<单位配置>('单位', (arr) => this.arr单位 = arr)
+		this.读取1个配置文件<战斗配置>('战斗', (arr) => this.arr战斗 = arr)
+		this.读取1个配置文件<制造配置>('制造', (arr) => this.arr制造 = arr)
+	}
+	读取1个配置文件<T>(strName: string, fun: (arr: Array<T>) => void) {
+		assetManager.loadRemote('https://www.rtsgame.online/配置/' + strName + '.yaml', { ext: '.txt' },
+			(err, textAsset: TextAsset) => {
+				console.log(err, textAsset)
+				let arr = parse(textAsset.text) as Array<T>;
+				arr.forEach((配置: T) => { console.log(配置) })
+				fun(arr)
+			})
+	}
+	find战斗(类型: 单位类型): 战斗配置 {
+		return this.arr战斗.find((v) => v.类型 == 类型)
+	}
+	find单位(类型: 单位类型): 单位配置 {
+		return this.arr单位.find((v) => v.类型 == 类型)
+	}
+	find制造(类型: 单位类型): 制造配置 {
+		return this.arr制造.find((v) => v.类型 == 类型)
+	}
 }

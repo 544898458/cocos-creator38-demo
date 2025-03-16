@@ -1,4 +1,4 @@
-import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip, director, Animation, Color} from 'cc'
+import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip, director, Animation, Color } from 'cc'
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { FollowTarget } from '../mode/FollowTarget'
 import { Main } from '../mode/Main'
@@ -45,11 +45,11 @@ export class ClientEntityComponent {
     }
 }
 
-const prefabName选中特效:string = 'Select'//这里不能用中文，原因不明
-const prefabName范围特效:string = '特效/范围'
-const nodeName攻击范围:string = '攻击范围'
-const nodeName警戒范围:string = '警戒范围'
-const nodeName地板:string = 'Plane' //地板对象名字
+const prefabName选中特效: string = 'Select'//这里不能用中文，原因不明
+const prefabName范围特效: string = '特效/范围'
+const nodeName攻击范围: string = '攻击范围'
+const nodeName警戒范围: string = '警戒范围'
+const nodeName地板: string = 'Plane' //地板对象名字
 
 @ccclass('Scene战斗')
 export class Scene战斗 extends Component {
@@ -66,9 +66,9 @@ export class Scene战斗 extends Component {
     camera小地图: Camera
     @property({ type: Node, displayName: "英雄" })
     roles: Node
-    @property({ type: AudioSource})
+    @property({ type: AudioSource })
     audioSource: AudioSource
-    
+
     main: Main
     //摄像
     mainCameraFollowTarget: FollowTarget
@@ -104,14 +104,14 @@ export class Scene战斗 extends Component {
         this.node.on(NodeEventType.MOUSE_WHEEL, (event: EventMouse) => {
             this.镜头缩放(event.getScrollY())
         })
-        
-        this.node.on(NodeEventType.MOUSE_UP,  (event: EventMouse) =>{
+
+        this.node.on(NodeEventType.MOUSE_UP, (event: EventMouse) => {
             let button = event.getButton()
             this.b电脑鼠标操作 = true
             this.onMouseUp(event.getLocation(), button == EventMouse.BUTTON_RIGHT)
         })
         this.node.on(NodeEventType.TOUCH_END, (event: EventTouch) => {
-            if(this.b电脑鼠标操作)
+            if (this.b电脑鼠标操作)
                 return
 
             console.log('TOUCH_END', event)
@@ -123,32 +123,31 @@ export class Scene战斗 extends Component {
         this.node.on(NodeEventType.TOUCH_MOVE, (event: EventTouch) => {
             // console.log('TOUCH_MOVE', event)
             let arrTouch = event.getAllTouches()
-            if(arrTouch.length >= 2)//双指缩放
+            if (arrTouch.length >= 2)//双指缩放
             {
-                if( null != this.f双指缩放初始值 )
-                {
+                if (null != this.f双指缩放初始值) {
                     let f新值 = arrTouch[0].getLocation().clone().subtract(arrTouch[1].getLocation()).length();
-                    
-                    if( 0 == this.f双指缩放初始值 ){
+
+                    if (0 == this.f双指缩放初始值) {
                         this.f双指缩放初始值 = f新值
                         return
-                    }else if(this.f双指缩放初始值 == f新值){
+                    } else if (this.f双指缩放初始值 == f新值) {
                         return
                     }
                     console.log('f新值', f新值, 'f双指缩放初始值', this.f双指缩放初始值)
-                    this.镜头缩放((f新值 - this.f双指缩放初始值)*5)
+                    this.镜头缩放((f新值 - this.f双指缩放初始值) * 5)
                     this.f双指缩放初始值 = f新值
                 }
 
                 return
             }
-            
+
             this.f双指缩放初始值 = null
             this.onMove(event.getDelta(), event.getLocation())
         })
         //
         this.node.on(NodeEventType.MOUSE_DOWN, (event: EventMouse) => {
-            if(this.f双指缩放初始值 > 0)
+            if (this.f双指缩放初始值 > 0)
                 return
 
             let button = event.getButton()
@@ -158,26 +157,25 @@ export class Scene战斗 extends Component {
         })
         this.node.on(NodeEventType.TOUCH_START, (event: EventTouch) => {
             console.log('TOUCH_START', event)
-            if(this.b电脑鼠标操作)
+            if (this.b电脑鼠标操作)
                 return
-                
+
             this.f双指缩放初始值 = 0
             this.onMouseDown(event.getLocation(), false)
         })
 
         this.scheduleOnce(this.Clear然后显示小地图视口框, 1)
     }
-    
-    static 缩放步长:number = 500
+
+    static 缩放步长: number = 500
     镜头缩小() {
         this.镜头缩放(-Scene战斗.缩放步长)
     }
     镜头放大() {
         this.镜头缩放(Scene战斗.缩放步长)
     }
-    镜头缩放(鼠标滚轮变化: number){
-        if(this.是正交投影())
-        {
+    镜头缩放(鼠标滚轮变化: number) {
+        if (this.是正交投影()) {
             var y = 鼠标滚轮变化
             y /= 100
             // vec2Delta = vec2Delta.divide2f(10,10)
@@ -197,29 +195,28 @@ export class Scene战斗 extends Component {
         }
         this.Clear然后显示小地图视口框()
     }
-    点击地面特效(vec3:Vec3)
-    {
+    点击地面特效(vec3: Vec3) {
         this.targetFlag.position = vec3
         let ani = this.targetFlag.getChildByName('lightQ').getComponent(Animation)
         ani.play('lightQ')
     }
-    onMouseUp(pos:Vec2, b鼠标右键:boolean) {
-        if(this.posWorld按下准备拖动地面){
+    onMouseUp(pos: Vec2, b鼠标右键: boolean) {
+        if (this.posWorld按下准备拖动地面) {
             this.posWorld按下准备拖动地面 = null
             // console.log('fun创建消息:', this.main.fun创建消息)
             // console.log('createMsgMove遇敌自动攻击', this.main.createMsgMove遇敌自动攻击)
             // console.log('createMsg造建筑', this.main.createMsg造建筑)
             // console.log('createMsgMove强行走', this.main.createMsgMove强行走)
-            
-            if(    this.main.funCreateMsg造建筑 !== this.main.fun创建消息 
+
+            if (this.main.funCreateMsg造建筑 !== this.main.fun创建消息
                 && this.main.createMsgMove强行走 !== this.main.fun创建消息
-                ){ //正在强行走、正在摆放建筑物
+            ) { //正在强行走、正在摆放建筑物
                 this.恢复战斗界面()
             }
         }
         console.log('onMouseUp', this.pos上次按下, pos)
-        
-        if(this.pos上次按下 && this.pos上次按下.clone().subtract(pos).length() < 5){//单击
+
+        if (this.pos上次按下 && this.pos上次按下.clone().subtract(pos).length() < 5) {//单击
             this.pos上次按下 = null
 
             var ray = new geometry.Ray()
@@ -229,32 +226,32 @@ export class Scene战斗 extends Component {
                 console.log('raycast does not hit the target node !')
                 return false
             }
-            let b已处理:boolean = false
+            let b已处理: boolean = false
             let fun点击地面处理: () => void = null
             console.log('length', PhysicsSystem.instance.raycastResults.length)
-            PhysicsSystem.instance.raycastResults.forEach((item:PhysicsRayResult)=>{
+            PhysicsSystem.instance.raycastResults.forEach((item: PhysicsRayResult) => {
                 if (item.collider.node.name != nodeName地板) {//单击单位
                     this.点击单位(item, b鼠标右键)
                     b已处理 = true
                     return true
                 }
-                if(b已处理)
+                if (b已处理)
                     return true
-                    
-                fun点击地面处理 = ()=>{
-                    if(!this.main.fun创建消息)
+
+                fun点击地面处理 = () => {
+                    if (!this.main.fun创建消息)
                         return
 
                     let object = b鼠标右键 ? this.main.createMsgMove强行走(item.hitPoint) : this.main.fun创建消息(item.hitPoint)
-                    if(object){
+                    if (object) {
                         // this.b强行走 = false
                         // this.uiLogin.fun创建消息 = this.uiLogin.funCreateMsgMove遇敌自动攻击
 
                         const encoded = msgpack.encode(object)
-                        
+
                         console.log('send', encoded)
                         this.main.send(encoded)
-                        
+
                         this.点击地面特效(item.hitPoint)
                     }
                     this.main.fun创建消息 = 0 < this.main.arr选中.length ? this.main.createMsgMove遇敌自动攻击 : null
@@ -262,13 +259,13 @@ export class Scene战斗 extends Component {
                 }
             })
 
-            if(!b已处理 && fun点击地面处理)
+            if (!b已处理 && fun点击地面处理)
                 fun点击地面处理()
 
             return
         }
-        
-        if(this.posWorld框选起始点 != null){
+
+        if (this.posWorld框选起始点 != null) {
             var ray = new geometry.Ray()
             // const camera = cc.find("Camera",this.node).getComponent(Camera)
             this.mainCamera.screenPointToRay(pos.x, pos.y, ray)
@@ -276,42 +273,42 @@ export class Scene战斗 extends Component {
                 console.log('raycast does not hit the target node !')
                 return false
             }
-    
-            PhysicsSystem.instance.raycastResults.forEach((item:PhysicsRayResult)=>{
+
+            PhysicsSystem.instance.raycastResults.forEach((item: PhysicsRayResult) => {
                 console.log('射线碰撞', item.collider.node.name, item.hitPoint)
-                if (item.collider.node.name != nodeName地板) 
+                if (item.collider.node.name != nodeName地板)
                     return
 
-                if(this.battleUI.b菱形框选){
-                    const object = 
-                    [
-                        [MsgId.框选, ++this.main.sendMsgSn, 0],
-                        [this.posWorld框选起始点.x, this.posWorld框选起始点.z],
-                        [item.hitPoint.x, item.hitPoint.z]
-                    ]
+                if (this.battleUI.b菱形框选) {
+                    const object =
+                        [
+                            [MsgId.框选, ++this.main.sendMsgSn, 0],
+                            [this.posWorld框选起始点.x, this.posWorld框选起始点.z],
+                            [item.hitPoint.x, item.hitPoint.z]
+                        ]
                     console.log('send', this.posWorld框选起始点, item.hitPoint)
                     const encoded = msgpack.encode(object)
                     console.log('send', encoded)
                     this.main.send(encoded)
-                }else{//矩形框选
+                } else {//矩形框选
                     let arr选中: Number[] = []
-                    this.entities.forEach((entity, id, _)=>{
+                    this.entities.forEach((entity, id, _) => {
                         let pos屏幕坐标 = this.mainCamera.worldToScreen(entity.position)//纯整数，无小数，左下角为0
-                        let 上 = Math.max(this.pos屏幕框选起始点.y,pos.y)
-                        let 下 = Math.min(this.pos屏幕框选起始点.y,pos.y)
-                        let 左 = Math.min(this.pos屏幕框选起始点.x,pos.x)
-                        let 右 = Math.max(this.pos屏幕框选起始点.x,pos.x)
-                        console.log(上,下,左,右,pos屏幕坐标)
-                        if(左 < pos屏幕坐标.x && pos屏幕坐标.x < 右 && 
-                            下 < pos屏幕坐标.y && pos屏幕坐标.y < 上){
+                        let 上 = Math.max(this.pos屏幕框选起始点.y, pos.y)
+                        let 下 = Math.min(this.pos屏幕框选起始点.y, pos.y)
+                        let 左 = Math.min(this.pos屏幕框选起始点.x, pos.x)
+                        let 右 = Math.max(this.pos屏幕框选起始点.x, pos.x)
+                        console.log(上, 下, 左, 右, pos屏幕坐标)
+                        if (左 < pos屏幕坐标.x && pos屏幕坐标.x < 右 &&
+                            下 < pos屏幕坐标.y && pos屏幕坐标.y < 上) {
                             arr选中.push(id)
                         }
                     })
                     const object =
-                    [
-                        [MsgId.SelectRoles, ++this.main.sendMsgSn, 0],
-                        arr选中//虽然是整数，但是也强制转成FLOAT64发出去了
-                    ]
+                        [
+                            [MsgId.SelectRoles, ++this.main.sendMsgSn, 0],
+                            arr选中//虽然是整数，但是也强制转成FLOAT64发出去了
+                        ]
                     const encoded = msgpack.encode(object)
                     console.log('send', arr选中, encoded)
                     this.main.send(encoded)
@@ -321,11 +318,11 @@ export class Scene战斗 extends Component {
             })
         }
     }
-    恢复战斗界面(){
+    恢复战斗界面() {
         console.log('恢复战斗界面');
-        if(this.posWorld框选起始点){
+        if (this.posWorld框选起始点) {
             this.posWorld框选起始点 = null
-            this.battleUI.lable系统消息.string ='已退出框选状态'
+            this.battleUI.lable系统消息.string = '已退出框选状态'
         }
         this.battleUI.下部列表.active = true
         this.Clear然后显示小地图视口框()// this.graphics.clear()//清掉框选框
@@ -345,17 +342,16 @@ export class Scene战斗 extends Component {
 
         let vec点中地面WorldPos
         PhysicsSystem.instance.raycastResults.forEach(
-            (result:PhysicsRayResult)=>{
+            (result: PhysicsRayResult) => {
                 // console.log('鼠标移动触碰对象', result.collider.node)
-                if (result.collider.node.name == nodeName地板) 
+                if (result.collider.node.name == nodeName地板)
                     vec点中地面WorldPos = result.hitPoint.clone()
             })
-        if(!vec点中地面WorldPos)
+        if (!vec点中地面WorldPos)
             return false
 
-        if( this.posWorld框选起始点 != null)
-        {
-            if(this.battleUI.b菱形框选)
+        if (this.posWorld框选起始点 != null) {
+            if (this.battleUI.b菱形框选)
                 this.画斜的选中框(this.posWorld框选起始点, vec点中地面WorldPos)
             else
                 this.画正矩形选中框(this.pos屏幕框选起始点, vec屏幕坐标)
@@ -364,12 +360,11 @@ export class Scene战斗 extends Component {
 
         // console.log('posWorld按下准备拖动地面', this.posWorld按下准备拖动地面)
         // console.log('posWorld按下准备拖动地面时Camera', this.posWorld按下准备拖动地面时Camera)
-        
+
         if (this.posWorld按下准备拖动地面) {
-            if(this.是正交投影())
-            {
-                let vec3零 =  new Vec3(0, 0, 0)//.multiplyScalar(div)
-                let vec3 =  new Vec3(-vec2Delta.x, -vec2Delta.y, 0)//.multiplyScalar(div)
+            if (this.是正交投影()) {
+                let vec3零 = new Vec3(0, 0, 0)//.multiplyScalar(div)
+                let vec3 = new Vec3(-vec2Delta.x, -vec2Delta.y, 0)//.multiplyScalar(div)
                 let vec3World零 = new Vec3()
                 let vec3WorldCamera = new Vec3()
                 this.mainCamera.screenToWorld(vec3零, vec3World零)
@@ -409,29 +404,29 @@ export class Scene战斗 extends Component {
         //     return false
         // }
         this.posWorld按下准备拖动地面 = null
-        PhysicsSystem.instance.raycastResults.forEach((item:PhysicsRayResult)=>{
-            if(item.collider.node.name != nodeName地板)
+        PhysicsSystem.instance.raycastResults.forEach((item: PhysicsRayResult) => {
+            if (item.collider.node.name != nodeName地板)
                 return
 
-            console.log('射线碰撞', item.collider.node.name, item.hitPoint)    
-            
-            if(this.b框选等待按下起始点){//
+            console.log('射线碰撞', item.collider.node.name, item.hitPoint)
+
+            if (this.b框选等待按下起始点) {//
                 this.b框选等待按下起始点 = false
                 this.posWorld框选起始点 = item.hitPoint.clone()
-                this.pos屏幕框选起始点 = posMouseDown.clone() 
-                this.battleUI.lable系统消息.string ='已开始框选，请拖动后放开'
+                this.pos屏幕框选起始点 = posMouseDown.clone()
+                this.battleUI.lable系统消息.string = '已开始框选，请拖动后放开'
                 this.battleUI.下部列表.active = false
                 return
-            }else if(this.posWorld框选起始点){
+            } else if (this.posWorld框选起始点) {
                 this.恢复战斗界面()
                 return
-            }else{
+            } else {
                 this.pos上次按下 = posMouseDown.clone()
                 this.posWorld按下准备拖动地面 = item.hitPoint.clone()
                 this.posWorld按下准备拖动地面时Camera = this.mainCamera.node.position
             }
         })
-        
+
         // const item = PhysicsSystem.instance.raycastClosestResult
         // if (item.collider.node.name == nodeName地板) {
         //     if(this.b框选等待按下起始点){//
@@ -447,8 +442,7 @@ export class Scene战斗 extends Component {
         //     this.posWorld按下准备拖动地面时Camera = this.mainCamera.node.position
         // }
     }
-    点击单位(item:PhysicsRayResult, b鼠标右键:boolean)
-    {
+    点击单位(item: PhysicsRayResult, b鼠标右键: boolean) {
         if (item.collider.node.name == "晶体矿" || item.collider.node.name == "燃气矿")//点击晶体矿或者燃气矿
         {
             this.mainCameraFollowTarget.target = item.collider.node
@@ -463,9 +457,9 @@ export class Scene战斗 extends Component {
             const encoded = msgpack.encode(object)
             console.log('send', encoded)
             this.main.send(encoded)
-            
+
         }
-        else if (item.collider.node.name == "地堡" && b鼠标右键 )//点击地堡
+        else if (item.collider.node.name == "地堡" && b鼠标右键)//点击地堡
         {
             this.mainCameraFollowTarget.target = item.collider.node
             let id = this.entityId[item.collider.node.uuid]
@@ -493,9 +487,10 @@ export class Scene战斗 extends Component {
             this.main.send(encoded)
         }
         else if (
-               item.collider.node.name == "工程车"
+            item.collider.node.name == "工程车"
             || item.collider.node.name == "近战兵"
             || item.collider.node.name == "地堡"
+            || item.collider.node.name == "光子炮"
             || item.collider.node.name == "民房"
             || item.collider.node.name == "兵厂"
             || item.collider.node.name == "基地"//这个名字不带目录
@@ -519,27 +514,26 @@ export class Scene战斗 extends Component {
         }
     }
     update(deltaTime: number) {
-        if(this.vec摄像机在Update更新位置){
+        if (this.vec摄像机在Update更新位置) {
             this.mainCamera.node.position = this.vec摄像机在Update更新位置
             this.vec摄像机在Update更新位置 = null
         }
     }
 
-    Clear然后显示小地图视口框()
-    {
-        if(!this.graphics)
+    Clear然后显示小地图视口框() {
+        if (!this.graphics)
             return
 
         this.graphics.clear()
         this.显示小地图视口框()
     }
-    显示小地图视口框(){
+    显示小地图视口框() {
         let size = view.getVisibleSizeInPixel()
         let vec左下 = this.大屏幕坐标转小地图绘图坐标(0, 0)
         let vec右下 = this.大屏幕坐标转小地图绘图坐标(size.x, 0)
         let vec左上 = this.大屏幕坐标转小地图绘图坐标(0, size.y)
         let vec右上 = this.大屏幕坐标转小地图绘图坐标(size.x, size.y)
-        if(!vec左下 || !vec右下 || !vec左上 || !vec右上)
+        if (!vec左下 || !vec右下 || !vec左上 || !vec右上)
             return
 
         // this.graphics.clear()
@@ -555,8 +549,7 @@ export class Scene战斗 extends Component {
         this.graphics.lineTo(vec左上.x, vec左上.y);
         this.graphics.stroke();
     }
-    大屏幕坐标转小地图绘图坐标(x:number,y:number):Vec3
-    {
+    大屏幕坐标转小地图绘图坐标(x: number, y: number): Vec3 {
         var ray = new geometry.Ray()
         this.mainCamera.screenPointToRay(x, y, ray)
         if (!PhysicsSystem.instance.raycast(ray)) {
@@ -564,9 +557,9 @@ export class Scene战斗 extends Component {
             return null
         }
 
-        let vec3Grapics:Vec3
-        PhysicsSystem.instance.raycastResults.forEach((item:PhysicsRayResult)=>{
-            if(item.collider.node.name != nodeName地板)
+        let vec3Grapics: Vec3
+        PhysicsSystem.instance.raycastResults.forEach((item: PhysicsRayResult) => {
+            if (item.collider.node.name != nodeName地板)
                 return
 
             vec3Grapics = this.Wolrd3D转Graphics绘图坐标小地图(item.hitPoint)
@@ -590,7 +583,7 @@ export class Scene战斗 extends Component {
         }
     }
 
-    隐藏选中单位专用按钮(){
+    隐藏选中单位专用按钮() {
         this.battleUI.button强行走.node.active = false
         this.battleUI.button集结点.node.active = false
         this.battleUI.button离开地堡.node.active = false
@@ -606,26 +599,25 @@ export class Scene战斗 extends Component {
         for (let id of this.main.arr选中) {
             resources.load(prefabName选中特效, Prefab, (err, prefab) => {
                 console.log('resources.load callback:', err, prefab)
-                if(0>this.main.arr选中.indexOf(id)){
+                if (0 > this.main.arr选中.indexOf(id)) {
                     console.log('已取消选中:', id)
                     return
                 }
                 let old = this.entities.get(id)
-                if(!old)
-                {
+                if (!old) {
                     console.log('找不到:', id)
                     return
                 }
-                
+
                 const newNode = instantiate(prefab)
                 newNode.name = prefabName选中特效
-                
+
                 old.view.addChild(newNode)
-                if(!Main.Is活动单位(old.类型))
+                if (!Main.Is活动单位(old.类型))
                     newNode.scale = newNode.scale.clone().multiply3f(2, 1, 2)
 
                 this.隐藏选中单位专用按钮()
-                switch(old.类型){
+                switch (old.类型) {
                     case 单位类型.地堡:
                         this.battleUI.button离开地堡.node.active = true
                         break;
@@ -636,7 +628,7 @@ export class Scene战斗 extends Component {
                         this.battleUI.button集结点.node.active = true
                         break;
                     default:
-                        if(Main.Is活动单位(old.类型)){
+                        if (Main.Is活动单位(old.类型)) {
                             this.battleUI.button强行走.node.active = true
                             this.battleUI.button原地坚守.node.active = true
                             break
@@ -644,87 +636,83 @@ export class Scene战斗 extends Component {
                         console.log('此单位没有专用菜单' + old.类型)
                         break
                 }
-            
+
             })
 
             resources.load(prefabName范围特效, Prefab, (err, prefab) => {
                 console.log('resources.load callback:', err, prefab)
-                if(0>this.main.arr选中.indexOf(id)){
+                if (0 > this.main.arr选中.indexOf(id)) {
                     console.log('已取消选中:', id)
                     return
                 }
                 let old = this.entities.get(id)
-                if(!old)
-                {
+                if (!old) {
                     console.log('找不到:', id)
                     return
                 }
-                
-                let 战斗 = this.main.配置.find战斗(old.类型)
 
-                {               
-                    const newNode = instantiate(prefab)
-                    newNode.name = nodeName攻击范围
-                    old.view.addChild(newNode)
-                    let scale = 战斗.f攻击距离
-                    newNode.scale = newNode.scale.clone().multiply3f(scale, 1, scale)
-                }
-                {
-                    const newNode = instantiate(prefab)
-                    newNode.name = nodeName警戒范围
-                    old.view.addChild(newNode)
-                    let scale = 战斗.f警戒距离
-                    newNode.scale = newNode.scale.clone().multiply3f(scale, 1, scale)
+                let 战斗 = this.main.配置.find战斗(old.类型)
+                if (战斗) {
+                    {
+                        const newNode = instantiate(prefab)
+                        newNode.name = nodeName攻击范围
+                        old.view.addChild(newNode)
+                        let scale = 战斗.f攻击距离
+                        newNode.scale = newNode.scale.clone().multiply3f(scale, 1, scale)
+                    }
+                    {
+                        const newNode = instantiate(prefab)
+                        newNode.name = nodeName警戒范围
+                        old.view.addChild(newNode)
+                        let scale = 战斗.f警戒距离
+                        newNode.scale = newNode.scale.clone().multiply3f(scale, 1, scale)
+                    }
                 }
             })
         }
-        if(arr.length>0)
+        if (arr.length > 0)
             this.main.fun创建消息 = this.main.createMsgMove遇敌自动攻击
     }
-    worldToGraphics(graphicsNode:Node, worldPoint:Vec3) {
+    worldToGraphics(graphicsNode: Node, worldPoint: Vec3) {
         // 获取graphics节点在世界坐标系中的位置
-        let graphicsWorldPos = graphicsNode.getComponent(UITransform).convertToWorldSpaceAR(new Vec3(0,0, 0));
+        let graphicsWorldPos = graphicsNode.getComponent(UITransform).convertToWorldSpaceAR(new Vec3(0, 0, 0));
         // 转换为局部坐标
         let localPoint = graphicsNode.getComponent(UITransform).convertToNodeSpaceAR(worldPoint);
         // 转换为graphics的局部坐标
         let graphicsLocalPos = localPoint//.subtract(graphicsWorldPos);
         return graphicsLocalPos;
     }
-    Wolrd3D转Graphics绘图坐标(posWorld3D:Vec3):Vec3
-    {
+    Wolrd3D转Graphics绘图坐标(posWorld3D: Vec3): Vec3 {
         return this.Wolrd3D转Graphics绘图坐标3D摄像机(this.mainCamera, posWorld3D)
     }
-    Wolrd3D转Graphics绘图坐标小地图(posWorld3D:Vec3):Vec3
-    {
+    Wolrd3D转Graphics绘图坐标小地图(posWorld3D: Vec3): Vec3 {
         return this.Wolrd3D转Graphics绘图坐标3D摄像机(this.camera小地图, posWorld3D)
     }
-    Wolrd3D转Graphics绘图坐标3D摄像机(camera:Camera, posWorld3D:Vec3):Vec3
-    {
+    Wolrd3D转Graphics绘图坐标3D摄像机(camera: Camera, posWorld3D: Vec3): Vec3 {
         let pos屏幕坐标 = camera.worldToScreen(posWorld3D)//纯整数，无小数，左下角为0
         return this.屏幕坐标转Graphics绘图坐标(pos屏幕坐标)
-    
+
     }
-    屏幕坐标转Graphics绘图坐标(pos屏幕坐标:Vec3):Vec3
-    {
+    屏幕坐标转Graphics绘图坐标(pos屏幕坐标: Vec3): Vec3 {
         let size = view.getVisibleSize()
         let sizeInPixel = view.getVisibleSizeInPixel()
         // console.log('size', size)
         // console.log('sizeInPixel', sizeInPixel)
-        pos屏幕坐标.multiply3f(size.x/sizeInPixel.x, size.y/sizeInPixel.y, 1)
+        pos屏幕坐标.multiply3f(size.x / sizeInPixel.x, size.y / sizeInPixel.y, 1)
         let transform = this.graphics.node.getComponent(UITransform)
         let posGraphics绘图坐标 = transform.convertToNodeSpaceAR(pos屏幕坐标)
         return posGraphics绘图坐标
     }
-    画斜的选中框(posWorld起始点:Vec3, posWorld结束点:Vec3){
+    画斜的选中框(posWorld起始点: Vec3, posWorld结束点: Vec3) {
         let 上 = Math.min(posWorld起始点.z, posWorld结束点.z)
         let 下 = Math.max(posWorld起始点.z, posWorld结束点.z)
         let 左 = Math.min(posWorld起始点.x, posWorld结束点.x)
         let 右 = Math.max(posWorld起始点.x, posWorld结束点.x)
         // console.log('左',左, '上',上,'右', 右, '下', 下)
-        let posWorld3D左上 = new Vec3(左,0,上)
-        let posWorld3D左下 = new Vec3(左,0,下)
-        let posWorld3D右上 = new Vec3(右,0,上)
-        let posWorld3D右下 = new Vec3(右,0,下)
+        let posWorld3D左上 = new Vec3(左, 0, 上)
+        let posWorld3D左下 = new Vec3(左, 0, 下)
+        let posWorld3D右上 = new Vec3(右, 0, 上)
+        let posWorld3D右下 = new Vec3(右, 0, 下)
         let posNode左上 = this.Wolrd3D转Graphics绘图坐标(posWorld3D左上)
         let posNode左下 = this.Wolrd3D转Graphics绘图坐标(posWorld3D左下)
         let posNode右上 = this.Wolrd3D转Graphics绘图坐标(posWorld3D右上)
@@ -744,16 +732,16 @@ export class Scene战斗 extends Component {
         this.graphics.stroke()
         this.显示小地图视口框()
     }
-    画正矩形选中框(pos屏幕起始点:Vec2, pos屏幕结束点:Vec2){
+    画正矩形选中框(pos屏幕起始点: Vec2, pos屏幕结束点: Vec2) {
         let 上 = Math.min(pos屏幕起始点.y, pos屏幕结束点.y)
         let 下 = Math.max(pos屏幕起始点.y, pos屏幕结束点.y)
         let 左 = Math.min(pos屏幕起始点.x, pos屏幕结束点.x)
         let 右 = Math.max(pos屏幕起始点.x, pos屏幕结束点.x)
         // console.log('左',左, '上',上,'右', 右, '下', 下)
-        let posWorld3D左上 = new Vec3(左,上,0)
-        let posWorld3D左下 = new Vec3(左,下,0)
-        let posWorld3D右上 = new Vec3(右,上,0)
-        let posWorld3D右下 = new Vec3(右,下,0)
+        let posWorld3D左上 = new Vec3(左, 上, 0)
+        let posWorld3D左下 = new Vec3(左, 下, 0)
+        let posWorld3D右上 = new Vec3(右, 上, 0)
+        let posWorld3D右下 = new Vec3(右, 下, 0)
         let posNode左上 = this.屏幕坐标转Graphics绘图坐标(posWorld3D左上)
         let posNode左下 = this.屏幕坐标转Graphics绘图坐标(posWorld3D左下)
         let posNode右上 = this.屏幕坐标转Graphics绘图坐标(posWorld3D右上)
@@ -771,65 +759,62 @@ export class Scene战斗 extends Component {
         // this.graphics.circle(0,0,10)
         // this.graphics.circle(pos.x,pos.y,0)
         this.graphics.stroke()
-        this.显示小地图视口框()  
+        this.显示小地图视口框()
     }
-    视口对准此处(vec:Vec3)
-    {
+    视口对准此处(vec: Vec3) {
         this.mainCameraFollowTarget.对准此处(vec)
-        this.scheduleOnce(this.Clear然后显示小地图视口框,1)
+        this.scheduleOnce(this.Clear然后显示小地图视口框, 1)
     }
-    是正交投影():boolean
-    {
+    是正交投影(): boolean {
         return this.mainCamera.projection == renderer.scene.CameraProjection.ORTHO
     }
     切换镜头投影() {
         this.mainCamera.projection = this.是正交投影() ?
-            renderer.scene.CameraProjection.PERSPECTIVE:
+            renderer.scene.CameraProjection.PERSPECTIVE :
             renderer.scene.CameraProjection.ORTHO
-        
-        this.scheduleOnce(this.Clear然后显示小地图视口框,0.1)
+
+        this.scheduleOnce(this.Clear然后显示小地图视口框, 0.1)
     }
-        
-    弹丸特效(idEntity:number, idEntityTarget:number, str特效:string):void{
+
+    弹丸特效(idEntity: number, idEntityTarget: number, str特效: string): void {
         resources.load(str特效, Prefab, (err, prefab) => {
-                console.log('resources.load callback:', err, prefab)
-                let entity起始 = this.entities.get(idEntity)
-                let entity目标 = this.entities.get(idEntityTarget)
-                if(!entity起始 || !entity目标)
-                {
-                    console.log('找不到:', idEntity)
-                    return
-                }
-                
-                const newNode = instantiate(prefab)
-                newNode.name = prefabName选中特效
-                newNode.position = entity起始.position.clone()
-                let 特效根 = this.roles.getChildByName('特效根')
-                特效根.addChild(newNode)
-                tween(newNode).to(0.5, {position:entity目标.position}).start()
-                this.scheduleOnce(()=>{特效根.removeChild(newNode)}, 2)
-            })
+            console.log('resources.load callback:', err, prefab)
+            let entity起始 = this.entities.get(idEntity)
+            let entity目标 = this.entities.get(idEntityTarget)
+            if (!entity起始 || !entity目标) {
+                console.log('找不到:', idEntity)
+                return
+            }
+
+            const newNode = instantiate(prefab)
+            newNode.name = prefabName选中特效
+            newNode.position = entity起始.position.clone()
+            let 特效根 = this.roles.getChildByName('特效根')
+            特效根.addChild(newNode)
+            tween(newNode).to(0.5, { position: entity目标.position }).start()
+            this.scheduleOnce(() => { 特效根.removeChild(newNode) }, 2)
+        })
     }
-    剧情对话(str头像左:string, str名字左:string, str头像右:string, str名字右:string, str对话内容:string, b显示退出面板:boolean):void{
+    剧情对话(str头像左: string, str名字左: string, str头像右: string, str名字右: string, str对话内容: string, b显示退出面板: boolean): void {
         this.battleUI.uiTransform剧情对话根.node.active = true
         this.battleUI.lable剧情对话内容.string = str对话内容
         this.battleUI.lable剧情对话名字左.string = str名字左
         this.battleUI.lable剧情对话名字右.string = str名字右
-        if(str头像左.length > 0){
+        if (str头像左.length > 0) {
             resources.load(str头像左, ImageAsset, (err, imageAsset) => {
                 // console.log(err, imageAsset)
                 this.battleUI.sprite剧情对话头像左.spriteFrame = SpriteFrame.createWithImage(imageAsset)
             })
-        }else{
+        } else {
             this.battleUI.sprite剧情对话头像左.spriteFrame = null
         }
 
-        if(str头像右.length > 0){
+        if (str头像右.length > 0) {
             resources.load(str头像右, ImageAsset, (err, imageAsset) => {
                 // console.log(err, imageAsset)
                 this.battleUI.sprite剧情对话头像右.spriteFrame = SpriteFrame.createWithImage(imageAsset)
             })
-        }else{
+        } else {
             this.battleUI.sprite剧情对话头像右.spriteFrame = null
         }
 
