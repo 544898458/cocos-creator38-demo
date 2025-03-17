@@ -576,6 +576,16 @@ export class Main extends Component {
                                 old.initClipName = 'flight_04'
                                 // console.log('近战兵骨骼动画', old.skeletalAnimation)
                             }
+                            else if (newNode.name == '枪虫') {
+                                old.skeletalAnimation = newNode.getChildByName('甲壳虫500面带动作').getComponent(SkeletalAnimation)
+                                old.initClipName = 'Root|待机.001'
+                                // console.log('近战兵骨骼动画', old.skeletalAnimation)
+                            }
+                            else if (newNode.name == '近战虫') {
+                                old.skeletalAnimation = newNode.getChildByName('蟑螂500面带动作').getComponent(SkeletalAnimation)
+                                old.initClipName = 'Root.001|待机'
+                                // console.log('近战兵骨骼动画', old.skeletalAnimation)
+                            }
                             else
                                 old.skeletalAnimation = newNode.getComponent(SkeletalAnimation)
 
@@ -1000,7 +1010,7 @@ export class Main extends Component {
     }
 
     static 播放动作(old: ClientEntityComponent, strClipName: string, loop: boolean) {
-        // console.log('strClipName', strClipName, 'old.view.name', old.view.name, 'loop', loop)
+        console.log('strClipName', strClipName, 'old.view.name', old.view.name, 'loop', loop)
         const str星2动作: string = 'Take 001'
         if (old.view.name == '跳虫') {
             old.skeletalAnimation.play(str星2动作)
@@ -1140,6 +1150,9 @@ export class Main extends Component {
             // old.skeletalAnimation.play()
         }
         else {
+            if(strClipName == 'Root|走路.001' )
+                strClipName='Root|走路.001 '
+
             old.skeletalAnimation.play(strClipName)
             let state = old.skeletalAnimation.getState(strClipName)
             if (null == state) {
