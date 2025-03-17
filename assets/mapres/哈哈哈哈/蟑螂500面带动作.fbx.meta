@@ -1,0 +1,460 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5",
+  "files": [
+    "__original-animation-0.cconb",
+    "__original-animation-1.cconb",
+    "__original-animation-2.cconb",
+    "__original-animation-3.cconb"
+  ],
+  "subMetas": {
+    "92386": {
+      "importer": "gltf-animation",
+      "uuid": "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@92386",
+      "displayName": "",
+      "id": "92386",
+      "name": "Root.001|待机.animation",
+      "userData": {
+        "gltfIndex": 0,
+        "wrapMode": 2,
+        "sample": 30,
+        "span": {
+          "from": 0,
+          "to": 2.2916667461395264
+        },
+        "events": []
+      },
+      "ver": "1.0.17",
+      "imported": true,
+      "files": [
+        ".cconb"
+      ],
+      "subMetas": {}
+    },
+    "6f17c": {
+      "importer": "gltf-mesh",
+      "uuid": "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@6f17c",
+      "displayName": "",
+      "id": "6f17c",
+      "name": "material.obj.002.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 488
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "6d959": {
+      "importer": "gltf-animation",
+      "uuid": "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@6d959",
+      "displayName": "",
+      "id": "6d959",
+      "name": "Root.001|攻击.animation",
+      "userData": {
+        "gltfIndex": 1,
+        "wrapMode": 2,
+        "sample": 30,
+        "span": {
+          "from": 0,
+          "to": 1.2083333730697632
+        },
+        "events": []
+      },
+      "ver": "1.0.17",
+      "imported": true,
+      "files": [
+        ".cconb"
+      ],
+      "subMetas": {}
+    },
+    "9da33": {
+      "importer": "gltf-animation",
+      "uuid": "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@9da33",
+      "displayName": "",
+      "id": "9da33",
+      "name": "Root.001|死亡.animation",
+      "userData": {
+        "gltfIndex": 2,
+        "wrapMode": 2,
+        "sample": 30,
+        "span": {
+          "from": 0,
+          "to": 1.1666666269302368
+        },
+        "events": []
+      },
+      "ver": "1.0.17",
+      "imported": true,
+      "files": [
+        ".cconb"
+      ],
+      "subMetas": {}
+    },
+    "f9408": {
+      "importer": "gltf-animation",
+      "uuid": "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@f9408",
+      "displayName": "",
+      "id": "f9408",
+      "name": "Root.001|走路.animation",
+      "userData": {
+        "gltfIndex": 3,
+        "wrapMode": 2,
+        "sample": 30,
+        "span": {
+          "from": 0,
+          "to": 1.2083333730697632
+        },
+        "events": []
+      },
+      "ver": "1.0.17",
+      "imported": true,
+      "files": [
+        ".cconb"
+      ],
+      "subMetas": {}
+    },
+    "438fe": {
+      "importer": "gltf-skeleton",
+      "uuid": "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@438fe",
+      "displayName": "",
+      "id": "438fe",
+      "name": "UnnamedSkeleton.skeleton",
+      "userData": {
+        "gltfIndex": 0,
+        "jointsLength": 33
+      },
+      "ver": "1.0.1",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "48b02": {
+      "importer": "gltf-embeded-image",
+      "uuid": "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@48b02",
+      "displayName": "",
+      "id": "48b02",
+      "name": "base_color_texture.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": true,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
+    "7c09f": {
+      "importer": "gltf-embeded-image",
+      "uuid": "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@7c09f",
+      "displayName": "",
+      "id": "7c09f",
+      "name": "alpha_texture.image",
+      "userData": {
+        "gltfIndex": 1,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": true,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
+    "7d6ab": {
+      "importer": "texture",
+      "uuid": "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@7d6ab",
+      "displayName": "",
+      "id": "7d6ab",
+      "name": "base_color_texture.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@48b02"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "43a9c": {
+      "importer": "texture",
+      "uuid": "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@43a9c",
+      "displayName": "",
+      "id": "43a9c",
+      "name": "alpha_texture.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@7c09f"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "11eca": {
+      "importer": "gltf-material",
+      "uuid": "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@11eca",
+      "displayName": "",
+      "id": "11eca",
+      "name": "Material_0.002.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "f18d0": {
+      "importer": "gltf-scene",
+      "uuid": "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@f18d0",
+      "displayName": "",
+      "id": "f18d0",
+      "name": "蟑螂500面带动作.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "base_color_texture",
+        "uri": "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@48b02"
+      },
+      {
+        "name": "alpha_texture",
+        "uri": "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@7c09f"
+      }
+    ],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "animationImportSettings": [
+      {
+        "name": "Root.001|待机",
+        "duration": 2.2916667461395264,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "Root.001|待机",
+            "from": 0,
+            "to": 2.2916667461395264,
+            "wrapMode": 2,
+            "previousId": "92386"
+          }
+        ]
+      },
+      {
+        "name": "Root.001|攻击",
+        "duration": 1.2083333730697632,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "Root.001|攻击",
+            "from": 0,
+            "to": 1.2083333730697632,
+            "wrapMode": 2,
+            "previousId": "6d959"
+          }
+        ]
+      },
+      {
+        "name": "Root.001|死亡",
+        "duration": 1.1666666269302368,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "Root.001|死亡",
+            "from": 0,
+            "to": 1.1666666269302368,
+            "wrapMode": 2,
+            "previousId": "9da33"
+          }
+        ]
+      },
+      {
+        "name": "Root.001|走路",
+        "duration": 1.2083333730697632,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "Root.001|走路",
+            "from": 0,
+            "to": 1.2083333730697632,
+            "wrapMode": 2,
+            "previousId": "f9408"
+          }
+        ]
+      }
+    ],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@6f17c"
+      ],
+      "skeletons": [
+        "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@438fe"
+      ],
+      "textures": [
+        "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@7d6ab",
+        "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@43a9c"
+      ],
+      "materials": [
+        "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@11eca"
+      ],
+      "scenes": [
+        "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@f18d0"
+      ]
+    },
+    "materials": {
+      "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@11eca": {
+        "__type__": "cc.Material",
+        "_name": "",
+        "_objFlags": 0,
+        "__editorExtras__": {},
+        "_native": "",
+        "_effectAsset": {
+          "__uuid__": "f648964e-8d32-41fc-9ac9-7a1e714dd17b",
+          "__expectedType__": "cc.EffectAsset"
+        },
+        "_techIdx": 0,
+        "_defines": [
+          {
+            "DCC_APP_NAME": 2,
+            "USE_ALBEDO_MAP": true,
+            "HAS_EXPORTED_METALLIC": true
+          },
+          {},
+          {},
+          {}
+        ],
+        "_states": [
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          }
+        ],
+        "_props": [
+          {
+            "mainTexture": {
+              "__uuid__": "7d83c08a-6f96-4994-8b43-6076151b8fb7@7d6ab",
+              "__expectedType__": "cc.Texture2D"
+            },
+            "mainColor": {
+              "__type__": "cc.Color",
+              "r": 231,
+              "g": 231,
+              "b": 231,
+              "a": 255
+            },
+            "emissive": {
+              "__type__": "cc.Color",
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 255
+            },
+            "emissiveScale": 0,
+            "shininessExponent": 0.9292573622943223,
+            "specularFactor": 0.25,
+            "transparencyFactor": 0,
+            "metallic": 1
+          },
+          {},
+          {},
+          {}
+        ]
+      }
+    }
+  }
+}
