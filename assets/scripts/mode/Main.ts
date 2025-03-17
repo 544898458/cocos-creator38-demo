@@ -519,6 +519,15 @@ export class Main extends Component {
                         if (thisLocal.scene战斗.battleUI.lableCount != undefined)
                             thisLocal.scene战斗.battleUI.lableCount.string = '共' + thisLocal.scene战斗.entities.size + '单位'
 
+                        switch (old.类型) {
+                            case 单位类型.枪怪:
+                                old.initClipName = 'Root|待机.001'
+                                break
+                            case 单位类型.近战怪:
+                                old.initClipName = 'Root.001|待机'
+                                break
+                            default: break
+                        }
                         resources.load(prefabName, Prefab, (err, prefab) => {
                             // console.log('resources.load callback:', err, prefab)
                             if (!thisLocal.scene战斗.roles) {
@@ -578,12 +587,10 @@ export class Main extends Component {
                             }
                             else if (newNode.name == '枪虫') {
                                 old.skeletalAnimation = newNode.getChildByName('甲壳虫500面带动作').getComponent(SkeletalAnimation)
-                                old.initClipName = 'Root|待机.001'
                                 // console.log('近战兵骨骼动画', old.skeletalAnimation)
                             }
                             else if (newNode.name == '近战虫') {
                                 old.skeletalAnimation = newNode.getChildByName('蟑螂500面带动作').getComponent(SkeletalAnimation)
-                                old.initClipName = 'Root.001|待机'
                                 // console.log('近战兵骨骼动画', old.skeletalAnimation)
                             }
                             else
@@ -1150,8 +1157,8 @@ export class Main extends Component {
             // old.skeletalAnimation.play()
         }
         else {
-            if(strClipName == 'Root|走路.001' )
-                strClipName='Root|走路.001 '
+            if (strClipName == 'Root|走路.001')
+                strClipName = 'Root|走路.001 '
 
             old.skeletalAnimation.play(strClipName)
             let state = old.skeletalAnimation.getState(strClipName)
