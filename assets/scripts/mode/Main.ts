@@ -540,6 +540,7 @@ export class Main extends Component {
                             //newNode.position = new Vec3(posX, 0, 0)
                             // console.log('resources.load newNode', newNode)
                             old.view = newNode
+                            let 活动单位 = this.配置.find活动单位(old.类型)
                             if (newNode.name == '基地')
                                 old.skeletalAnimation = newNode.getChildByName('p_Base_02').getComponent(SkeletalAnimation)
                             else if (newNode.name == '步兵')
@@ -592,6 +593,10 @@ export class Main extends Component {
                             else if (newNode.name == '近战虫') {
                                 old.skeletalAnimation = newNode.getChildByName('蟑螂500面带动作').getComponent(SkeletalAnimation)
                                 // console.log('近战兵骨骼动画', old.skeletalAnimation)
+                            }
+                            else if (newNode.name == '工虫') {
+                                old.skeletalAnimation = newNode.getChildByName(活动单位.动画节点路径).getComponent(SkeletalAnimation)
+                                console.log('工虫骨骼动画', 活动单位.动画节点路径, old.skeletalAnimation)
                             }
                             else
                                 old.skeletalAnimation = newNode.getComponent(SkeletalAnimation)
@@ -1126,6 +1131,36 @@ export class Main extends Component {
                 // state.time = 0
                 // old.skeletalAnimation.play('Take 001')
                 // console.log(old.view.name, 'state', state, 'old.skeletalAnimation', old.skeletalAnimation)
+            }
+        }
+        else if (old.view.name == '工虫') {
+            old.skeletalAnimation.play()
+            if (strClipName == 'idle') {
+                let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[0])
+                state.wrapMode = AnimationClip.WrapMode.Loop
+                old.skeletalAnimation.play()
+            } else if (strClipName == 'died') {
+                let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[3])
+                state.wrapMode = AnimationClip.WrapMode.Normal
+                old.skeletalAnimation.play()
+            } else if (strClipName == 'attack') {
+                let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[2])
+                state.wrapMode = AnimationClip.WrapMode.Normal
+                // state.playbackRange = {min:0.4, max:2} // 动画总长度
+                state.speed = 0.5
+                // state.time = 0.5
+                old.skeletalAnimation.play()
+            } else if (strClipName == 'run') {
+                let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[1])
+                state.wrapMode = AnimationClip.WrapMode.Loop
+                state.speed = 0.8
+                old.skeletalAnimation.play()
+            }
+            else if (strClipName == '采集') {
+                let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[4])
+                state.wrapMode = AnimationClip.WrapMode.Loop
+                state.speed = 0.8
+                old.skeletalAnimation.play()
             }
         }
         else if (old.view.name == '飞机') {

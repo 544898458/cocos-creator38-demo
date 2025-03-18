@@ -44,11 +44,11 @@ export class ClientEntityComponent {
         this.node描述?.removeFromParent()
         this.hpbar?.removeFromParent()
     }
-    显示头顶名字(b显示单位类型:boolean): void {
-        if(!this.labelName)
+    显示头顶名字(b显示单位类型: boolean): void {
+        if (!this.labelName)
             return
 
-        if(b显示单位类型)
+        if (b显示单位类型)
             this.labelName.string = this.nickName + ' ' + this.entityName
         else
             this.labelName.string = this.nickName
@@ -454,6 +454,8 @@ export class Scene战斗 extends Component {
         // }
     }
     点击单位(item: PhysicsRayResult, b鼠标右键: boolean) {
+        let id = this.entityId[item.collider.node.uuid]
+        let entity = this.entities.get(id)
         if (item.collider.node.name == "晶体矿" || item.collider.node.name == "燃气矿")//点击晶体矿或者燃气矿
         {
             this.mainCameraFollowTarget.target = item.collider.node
@@ -498,20 +500,9 @@ export class Scene战斗 extends Component {
             this.main.send(encoded)
         }
         else if (
-            item.collider.node.name == "工程车"
-            || item.collider.node.name == "近战兵"
-            || item.collider.node.name == "地堡"
-            || item.collider.node.name == "光子炮"
-            || item.collider.node.name == "民房"
-            || item.collider.node.name == "兵厂"
-            || item.collider.node.name == "基地"//这个名字不带目录
-            || item.collider.node.name == "步兵"
-            || item.collider.node.name == "三色坦克"
-            || item.collider.node.name == "工蜂"
-            || item.collider.node.name == "飞机"
-            || item.collider.node.name == "重工厂"
-            || item.collider.node.name == "机场"
-            || item.collider.node.name == "幼虫"
+            item.collider.node.name != "晶体矿"
+            && item.collider.node.name != "燃气矿"
+            && item.collider.node.name != "视口"
         ) {
             this.mainCameraFollowTarget.target = item.collider.node
             let id = this.entityId[item.collider.node.uuid]
@@ -833,11 +824,11 @@ export class Scene战斗 extends Component {
     }
 
     刷新单位名字() {
-        this.entities.forEach((entity:ClientEntityComponent)=>{
+        this.entities.forEach((entity: ClientEntityComponent) => {
             entity.显示头顶名字(this.main.b显示单位类型)
         })
     }
-    
+
 }
 
 

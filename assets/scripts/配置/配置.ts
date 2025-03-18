@@ -257,16 +257,21 @@ export class 制造配置 {
 	消耗晶体矿: number
 	消耗燃气矿: number
 	初始HP: number
-
+}
+export class 活动单位配置 {
+	类型: 单位类型
+	动画节点路径: string
 }
 export class 配置 {
 	arr单位: Array<单位配置>
 	arr战斗: Array<战斗配置>
 	arr制造: Array<制造配置>
+	arr活动单位: Array<活动单位配置>
 	读取配置文件() {
 		this.读取1个配置文件<单位配置>('单位', (arr) => this.arr单位 = arr)
 		this.读取1个配置文件<战斗配置>('战斗', (arr) => this.arr战斗 = arr)
 		this.读取1个配置文件<制造配置>('制造', (arr) => this.arr制造 = arr)
+		this.读取1个配置文件<活动单位配置>('活动单位', (arr) => this.arr活动单位 = arr)
 	}
 	读取1个配置文件<T>(strName: string, fun: (arr: Array<T>) => void) {
 		assetManager.loadRemote('https://www.rtsgame.online/配置/' + strName + '.yaml', { ext: '.txt' },
@@ -285,5 +290,8 @@ export class 配置 {
 	}
 	find制造(类型: 单位类型): 制造配置 {
 		return this.arr制造.find((v) => v.类型 == 类型)
+	}
+	find活动单位(类型: 单位类型): 活动单位配置 {
+		return this.arr活动单位.find((v) => v.类型 == 类型)
 	}
 }
