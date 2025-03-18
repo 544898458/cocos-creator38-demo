@@ -164,6 +164,9 @@ export class Main extends Component {
     onClickAdd飞机(event: Event, customEventData: string): void {
         this.造活动单位(单位类型.飞机)
     }
+    onClickAdd工虫(event: Event, customEventData: string): void {
+        this.造活动单位(单位类型.工虫)
+    }
     createMsg造建筑(hitPoint: Vec3, 类型: 单位类型) {
         console.log('createMsg造建筑', hitPoint)
         return [[MsgId.AddBuilding, ++this.sendMsgSn, 0], 类型, [hitPoint.x, hitPoint.z]]
@@ -1138,6 +1141,7 @@ export class Main extends Component {
             if (strClipName == 'idle') {
                 let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[0])
                 state.wrapMode = AnimationClip.WrapMode.Loop
+                state.speed = 0.6
                 old.skeletalAnimation.play()
             } else if (strClipName == 'died') {
                 let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[3])
