@@ -1142,12 +1142,13 @@ export class Main extends Component {
             } else if (strClipName == 'died') {
                 let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[3])
                 state.wrapMode = AnimationClip.WrapMode.Normal
+                state.speed = 0.3
                 old.skeletalAnimation.play()
             } else if (strClipName == 'attack') {
                 let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[2])
                 state.wrapMode = AnimationClip.WrapMode.Normal
                 // state.playbackRange = {min:0.4, max:2} // 动画总长度
-                state.speed = 0.5
+                state.speed = 0.6
                 // state.time = 0.5
                 old.skeletalAnimation.play()
             } else if (strClipName == 'run') {
