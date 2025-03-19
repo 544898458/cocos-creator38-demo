@@ -391,6 +391,8 @@ export class Main extends Component {
                                 break
                         }
 
+                        thisLocal.websocket.onclose = null
+                        thisLocal.websocket.close()
                         thisLocal.websocket = null
                         thisLocal.清零网络数据包序号()
                         thisLocal.scene登录.显示登录界面()
