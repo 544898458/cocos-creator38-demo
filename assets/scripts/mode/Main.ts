@@ -599,11 +599,10 @@ export class Main extends Component {
                                 old.skeletalAnimation = newNode.getChildByName('蟑螂500面带动作').getComponent(SkeletalAnimation)
                                 // console.log('近战兵骨骼动画', old.skeletalAnimation)
                             }
-                            else if (newNode.name == '工虫') {
+                            else if (活动单位 && 活动单位.动画节点路径) {
                                 old.skeletalAnimation = newNode.getChildByName(活动单位.动画节点路径).getComponent(SkeletalAnimation)
-                                console.log('工虫骨骼动画', 活动单位.动画节点路径, old.skeletalAnimation)
-                            }
-                            else
+                                console.log('骨骼动画', 活动单位.动画节点路径, old.skeletalAnimation)
+                            } else
                                 old.skeletalAnimation = newNode.getComponent(SkeletalAnimation)
 
                             if (old.skeletalAnimation != undefined) {
