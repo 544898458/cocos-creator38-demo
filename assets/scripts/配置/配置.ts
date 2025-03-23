@@ -213,10 +213,11 @@ export
 	三色坦克,
 	工虫,
 	飞机,
-	跳虫,
-	刺蛇,
+	枪虫,//Hydralisk
+	近战虫,//Zergling
 	幼虫,//Larva
-
+	绿色坦克,//虫群单位，实际上是生物体
+	光刺,//由绿色坦克发射，直线前进，遇敌爆炸
 	活动单位Max非法,
 
 	建筑Min非法 = 300,
@@ -241,6 +242,7 @@ export
 export class 单位配置 {
 	类型: 单位类型
 	名字: string
+	空闲动作: string
 }
 export class 战斗配置 {
 	类型: 单位类型

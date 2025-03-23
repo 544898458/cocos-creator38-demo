@@ -167,6 +167,15 @@ export class Main extends Component {
     onClickAdd工虫(event: Event, customEventData: string): void {
         this.造活动单位(单位类型.工虫)
     }
+    onClickAdd近战虫() {
+        this.造活动单位(单位类型.近战虫)
+    }
+    onClickAdd枪虫() {
+        this.造活动单位(单位类型.枪虫)
+    }
+    onClickAdd绿色坦克() {
+        this.造活动单位(单位类型.绿色坦克)
+    }
     createMsg造建筑(hitPoint: Vec3, 类型: 单位类型) {
         console.log('createMsg造建筑', hitPoint)
         return [[MsgId.AddBuilding, ++this.sendMsgSn, 0], 类型, [hitPoint.x, hitPoint.z]]
@@ -524,15 +533,10 @@ export class Main extends Component {
                         if (thisLocal.scene战斗.battleUI.lableCount != undefined)
                             thisLocal.scene战斗.battleUI.lableCount.string = '共' + thisLocal.scene战斗.entities.size + '单位'
 
-                        switch (old.类型) {
-                            case 单位类型.枪怪:
-                                old.initClipName = 'Root|待机.001'
-                                break
-                            case 单位类型.近战怪:
-                                old.initClipName = 'Root.001|待机'
-                                break
-                            default: break
-                        }
+                        let 单位配置 = this.配置.find单位(old.类型)
+                        if (单位配置 && 0 < 单位配置.空闲动作.length)
+                            old.initClipName = 单位配置.空闲动作
+
                         resources.load(prefabName, Prefab, (err, prefab) => {
                             // console.log('resources.load callback:', err, prefab)
                             if (!thisLocal.scene战斗.roles) {
@@ -545,7 +549,7 @@ export class Main extends Component {
                             //newNode.position = new Vec3(posX, 0, 0)
                             // console.log('resources.load newNode', newNode)
                             old.view = newNode
-                            let 活动单位 = this.配置.find活动单位(old.类型)
+                            let 活动单位配置 = this.配置.find活动单位(old.类型)
                             if (newNode.name == '基地')
                                 old.skeletalAnimation = newNode.getChildByName('p_Base_02').getComponent(SkeletalAnimation)
                             else if (newNode.name == '步兵')
@@ -591,17 +595,9 @@ export class Main extends Component {
                                 old.initClipName = 'flight_04'
                                 // console.log('近战兵骨骼动画', old.skeletalAnimation)
                             }
-                            else if (newNode.name == '枪虫') {
-                                old.skeletalAnimation = newNode.getChildByName('甲壳虫500面带动作').getComponent(SkeletalAnimation)
-                                // console.log('近战兵骨骼动画', old.skeletalAnimation)
-                            }
-                            else if (newNode.name == '近战虫') {
-                                old.skeletalAnimation = newNode.getChildByName('蟑螂500面带动作').getComponent(SkeletalAnimation)
-                                // console.log('近战兵骨骼动画', old.skeletalAnimation)
-                            }
-                            else if (活动单位 && 活动单位.动画节点路径) {
-                                old.skeletalAnimation = newNode.getChildByName(活动单位.动画节点路径).getComponent(SkeletalAnimation)
-                                console.log('骨骼动画', 活动单位.动画节点路径, old.skeletalAnimation)
+                            else if (活动单位配置 && 活动单位配置.动画节点路径) {
+                                old.skeletalAnimation = newNode.getChildByName(活动单位配置.动画节点路径).getComponent(SkeletalAnimation)
+                                console.log('骨骼动画', 活动单位配置.动画节点路径, old.skeletalAnimation)
                             } else
                                 old.skeletalAnimation = newNode.getComponent(SkeletalAnimation)
 
