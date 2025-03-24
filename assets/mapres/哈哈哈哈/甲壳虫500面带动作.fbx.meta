@@ -449,18 +449,25 @@
               "b": 231,
               "a": 255
             },
+            "albedoScale": 3,
             "emissive": {
               "__type__": "cc.Color",
               "r": 255,
-              "g": 255,
-              "b": 255,
+              "g": 0,
+              "b": 0,
               "a": 255
             },
             "emissiveScale": 0,
-            "shininessExponent": 0.9292573622943223,
-            "specularFactor": 0.25,
+            "shininessExponent": 5,
+            "specularColor": {
+              "__type__": "cc.Color",
+              "r": 116,
+              "g": 50,
+              "b": 50,
+              "a": 0
+            },
             "transparencyFactor": 0,
-            "metallic": 1
+            "metallic": 0.8
           },
           {},
           {},
