@@ -554,10 +554,7 @@ export class Main extends Component {
                                 old.skeletalAnimation = newNode.getChildByName('p_Base_02').getComponent(SkeletalAnimation)
                             else if (newNode.name == '步兵')
                                 old.skeletalAnimation = newNode.getChildByName('p_A_rifle_01').getComponent(SkeletalAnimation)
-                            else if (newNode.name == '工程车') {
-                                // old.skeletalAnimation = newNode.getChildByPath('scv/Geoset_0').getComponent(Animation)
-                                old.skeletalAnimation = newNode.getChildByPath('world/mesh_uv.obj').getComponent(Animation)
-                            } else if (newNode.name == '三色坦克')
+                            else if (newNode.name == '三色坦克')
                                 old.skeletalAnimation = newNode.getChildByName('p_B_tank_03').getComponent(SkeletalAnimation)
                             else if (newNode.name == '跳虫') {
                                 old.skeletalAnimation = newNode.getChildByName('Zergling').getComponent(SkeletalAnimation)
