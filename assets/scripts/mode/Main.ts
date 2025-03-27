@@ -176,6 +176,12 @@ export class Main extends Component {
     onClickAdd绿色坦克() {
         this.造活动单位(单位类型.绿色坦克)
     }
+    onClickAdd飞虫() {
+        this.造活动单位(单位类型.飞虫)
+    }
+    onClickAdd房虫() {
+        this.造活动单位(单位类型.房虫)
+    }
     createMsg造建筑(hitPoint: Vec3, 类型: 单位类型) {
         console.log('createMsg造建筑', hitPoint)
         return [[MsgId.AddBuilding, ++this.sendMsgSn, 0], 类型, [hitPoint.x, hitPoint.z]]
