@@ -13,6 +13,7 @@ import { AudioClip } from 'cc'
 import { sys } from 'cc'
 import { MsgId, 单位类型, 配置 } from '../配置/配置'
 import { Tween } from 'cc'
+import { AnimationState } from 'cc'
 
 const { ccclass, property } = _decorator
 
@@ -540,7 +541,7 @@ export class Main extends Component {
                             thisLocal.scene战斗.battleUI.lableCount.string = '共' + thisLocal.scene战斗.entities.size + '单位'
 
                         let 单位配置 = this.配置.find单位(old.类型)
-                        if (单位配置 && 0 < 单位配置.空闲动作.length)
+                        if (单位配置)
                             old.initClipName = 单位配置.空闲动作
 
                         resources.load(prefabName, Prefab, (err, prefab) => {
@@ -1200,13 +1201,30 @@ export class Main extends Component {
             if (strClipName == 'Root|走路.001')
                 strClipName = 'Root|走路.001 '
 
-            old.skeletalAnimation.play(strClipName)
-            let state = old.skeletalAnimation.getState(strClipName)
+            let indexClip = Number(strClipName)
+            let state: AnimationState
+            if (Number.isInteger(indexClip) && indexClip < 10) {
+                //必须在编辑器里随便设置一个默认剪辑，否则无法播放
+                console.log('indexClip', indexClip, old)
+                old.skeletalAnimation.play()
+                state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[indexClip])
+                // state.wrapMode = AnimationClip.WrapMode.Loop
+                state.wrapMode = loop ? AnimationClip.WrapMode.Loop : AnimationClip.WrapMode.Normal
+                state.speed = 1
+                state.time = 0
+                old.skeletalAnimation.play()
+                console.log('indexClip', indexClip, old)
+            } else {
+                old.skeletalAnimation.play(strClipName)
+                state = old.skeletalAnimation.getState(strClipName)
+                state.wrapMode = loop ? AnimationClip.WrapMode.Loop : AnimationClip.WrapMode.Normal
+            }
+
             if (null == state) {
                 console.error(old.view.name, '缺动作:', strClipName)
             }
 
-            state.wrapMode = loop ? AnimationClip.WrapMode.Loop : AnimationClip.WrapMode.Normal
+
             if (old.view.name == '步兵') {
                 if (strClipName == 'run')
                     state.playbackRange = { min: 0, max: 0.8 }
