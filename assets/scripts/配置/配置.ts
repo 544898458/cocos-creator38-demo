@@ -227,10 +227,11 @@ export
 	兵厂,//兵营(Barracks)，用来造兵
 	民房,//供给站(Supply Depot)
 	地堡,//掩体; 地堡(Bunker),可以进兵
-	光子炮,//Photon Cannon
-	孵化场,//hatchery
-	机场,
-	重工厂,
+	炮台,//Photon Cannon
+	虫巢,//hatchery
+	机场,//Spaceport
+	重工厂,//Factory 
+	虫营,//对应兵营
 
 	建筑Max非法,
 

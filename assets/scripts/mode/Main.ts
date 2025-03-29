@@ -218,7 +218,9 @@ export class Main extends Component {
     onClickAdd重工厂(event: Event, customEventData: string): void {
         this.on点击按钮_造建筑(单位类型.重工厂)
     }
-
+    onClickAdd虫营(event: Event, customEventData: string): void {
+        this.on点击按钮_造建筑(单位类型.虫营)
+    }
     进Scene战斗(sceneName: string, encoded: Buffer) {
         this.scene登录.nodeSelectSpace.active = false
         director.preloadScene(sceneName, (completedCount: number, totalCount: number, item: AssetManager.RequestItem) => {
