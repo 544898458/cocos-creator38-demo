@@ -207,10 +207,10 @@ export class Main extends Component {
         this.on点击按钮_造建筑(单位类型.民房)
     }
     onClickAdd光子炮(event: Event, customEventData: string): void {
-        this.on点击按钮_造建筑(单位类型.光子炮)
+        this.on点击按钮_造建筑(单位类型.炮台)
     }
     onClickAdd孵化场(event: Event, customEventData: string): void {
-        this.on点击按钮_造建筑(单位类型.孵化场)
+        this.on点击按钮_造建筑(单位类型.虫巢)
     }
     onClickAdd机场(event: Event, customEventData: string): void {
         this.on点击按钮_造建筑(单位类型.机场)
@@ -558,7 +558,7 @@ export class Main extends Component {
                             //newNode.position = new Vec3(posX, 0, 0)
                             // console.log('resources.load newNode', newNode)
                             old.view = newNode
-                            let 活动单位配置 = this.配置.find活动单位(old.类型)
+                            let 单位配置 = this.配置.find单位(old.类型)
                             if (newNode.name == '基地')
                                 old.skeletalAnimation = newNode.getChildByName('p_Base_02').getComponent(SkeletalAnimation)
                             else if (newNode.name == '步兵')
@@ -601,9 +601,9 @@ export class Main extends Component {
                                 old.initClipName = 'flight_04'
                                 // console.log('近战兵骨骼动画', old.skeletalAnimation)
                             }
-                            else if (活动单位配置 && 活动单位配置.动画节点路径) {
-                                old.skeletalAnimation = newNode.getChildByName(活动单位配置.动画节点路径).getComponent(SkeletalAnimation)
-                                console.log('骨骼动画', 活动单位配置.动画节点路径, old.skeletalAnimation)
+                            else if (单位配置 && 单位配置.动画节点路径) {
+                                old.skeletalAnimation = newNode.getChildByName(单位配置.动画节点路径).getComponent(SkeletalAnimation)
+                                console.log('骨骼动画', 单位配置.动画节点路径, old.skeletalAnimation)
                             } else
                                 old.skeletalAnimation = newNode.getComponent(SkeletalAnimation)
 

@@ -232,7 +232,8 @@ export
 	机场,//Spaceport
 	重工厂,//Factory 
 	虫营,//对应兵营
-
+	飞塔,//Spore Conlony
+	
 	建筑Max非法,
 
 	怪Min非法 = 400,
@@ -246,6 +247,7 @@ export class 单位配置 {
 	类型: 单位类型
 	名字: string
 	空闲动作: string
+	动画节点路径: string
 }
 export class 战斗配置 {
 	类型: 单位类型
@@ -265,7 +267,6 @@ export class 制造配置 {
 }
 export class 活动单位配置 {
 	类型: 单位类型
-	动画节点路径: string
 }
 export class 配置 {
 	arr单位: Array<单位配置>
