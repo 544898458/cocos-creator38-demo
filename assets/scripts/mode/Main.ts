@@ -1105,18 +1105,7 @@ export class Main extends Component {
                 state.playbackRange = { min: 0.4, max: 2 } // 动画总长度
                 state.time = 0.4
             }
-        }
-        else if (old.view.name == '孵化场') {
-            if (strClipName == 'idle') {
-                let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[0])
-                state.wrapMode = AnimationClip.WrapMode.Loop
-            } else if (strClipName == '孵化场死亡') {
-                let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[1])
-                state.wrapMode = AnimationClip.WrapMode.Normal
-            }
-            old.skeletalAnimation.play()
-        }
-        else if (old.view.name == '近战兵') {
+        }else if (old.view.name == '近战兵') {
             old.skeletalAnimation.play()
             if (strClipName == 'idle') {
                 let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[0])
