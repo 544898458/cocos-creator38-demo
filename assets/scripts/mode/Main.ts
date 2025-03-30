@@ -22,6 +22,7 @@ enum 副本ID {
     训练战,
     防守战,
     攻坚战,
+    训练战_虫,
     单人ID_非法_MAX,
 
     多人ID_非法_MIN = 100,
@@ -241,6 +242,9 @@ export class Main extends Component {
     }
     onClickToggle进训练战() {
         this.进Scene战斗单人剧情副本('scene战斗', 副本ID.训练战)
+    }
+    onClickToggle进训练战_虫() {
+        this.进Scene战斗单人剧情副本('scene战斗', 副本ID.训练战_虫)
     }
     onClickToggle进防守战() {
         this.进Scene战斗单人剧情副本('scene防守战', 副本ID.防守战)
