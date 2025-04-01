@@ -71,6 +71,9 @@ export class Scene登录 extends Component {
         if (this.main.strHttps登录场景音乐Mp3) {
             assetManager.loadRemote(this.main.strHttps登录场景音乐Mp3, (err, clip: AudioClip) => {
                 console.log('resources.load callback:', err, clip)
+                if(!this.audioSource)
+                    return
+                
                 this.audioSource.stop()
                 this.audioSource.clip = clip
                 this.audioSource.play()
