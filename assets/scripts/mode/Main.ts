@@ -359,7 +359,7 @@ export class Main extends Component {
                 [MsgId.Login, ++this.sendMsgSn, 0, 0],
                 str登录名,
                 'Hello, world!pwd',
-                9,//版本号
+                10,//版本号
             ]
 
             const encoded = msgpack.encode(object)
