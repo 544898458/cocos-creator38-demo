@@ -137,46 +137,6 @@
       ],
       "subMetas": {}
     },
-    "48b02": {
-      "importer": "gltf-embeded-image",
-      "uuid": "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@48b02",
-      "displayName": "",
-      "id": "48b02",
-      "name": "base_color_texture.image",
-      "userData": {
-        "gltfIndex": 0,
-        "fixAlphaTransparencyArtifacts": true,
-        "hasAlpha": true,
-        "type": "texture"
-      },
-      "ver": "1.0.3",
-      "imported": true,
-      "files": [
-        ".json",
-        ".png"
-      ],
-      "subMetas": {}
-    },
-    "7c09f": {
-      "importer": "gltf-embeded-image",
-      "uuid": "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@7c09f",
-      "displayName": "",
-      "id": "7c09f",
-      "name": "alpha_texture.image",
-      "userData": {
-        "gltfIndex": 1,
-        "fixAlphaTransparencyArtifacts": true,
-        "hasAlpha": true,
-        "type": "texture"
-      },
-      "ver": "1.0.3",
-      "imported": true,
-      "files": [
-        ".json",
-        ".png"
-      ],
-      "subMetas": {}
-    },
     "7d6ab": {
       "importer": "texture",
       "uuid": "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@7d6ab",
@@ -190,8 +150,8 @@
         "magfilter": "linear",
         "mipfilter": "none",
         "anisotropy": 0,
-        "isUuid": true,
-        "imageUuidOrDatabaseUri": "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@48b02"
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/mapres/哈哈哈哈/Image_0.002.png"
       },
       "ver": "1.0.22",
       "imported": true,
@@ -213,8 +173,8 @@
         "magfilter": "linear",
         "mipfilter": "none",
         "anisotropy": 0,
-        "isUuid": true,
-        "imageUuidOrDatabaseUri": "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@7c09f"
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/mapres/哈哈哈哈/Image_0.002.png"
       },
       "ver": "1.0.22",
       "imported": true,
@@ -260,11 +220,11 @@
     "imageMetas": [
       {
         "name": "base_color_texture",
-        "uri": "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@48b02"
+        "uri": "db://assets/mapres/哈哈哈哈/Image_0.002.png"
       },
       {
         "name": "alpha_texture",
-        "uri": "1c9c9066-23ac-4a8a-8d2f-fb4935e64bb5@7c09f"
+        "uri": "db://assets/mapres/哈哈哈哈/Image_0.002.png"
       }
     ],
     "fbx": {
