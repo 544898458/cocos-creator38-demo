@@ -627,6 +627,7 @@ export class Scene战斗 extends Component {
                     case 单位类型.兵厂:
                     case 单位类型.机场:
                     case 单位类型.重工厂:
+                    case 单位类型.虫巢:
                         this.battleUI.button集结点.node.active = true
                         break;
                     default:
