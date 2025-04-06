@@ -630,6 +630,7 @@ export class Main extends Component {
 
                             old.nodeName = instantiate(nodeRoleName)
                             node所有单位头顶名字.addChild(old.nodeName)
+                            let calculateHPLength= 1;
                             if (newNode.name != "smoke") {
                                 let nodeRoleHp = utils.find("RoleHp", node所有单位头顶名字)
                                 old.hpbar = instantiate(nodeRoleHp)
@@ -639,10 +640,14 @@ export class Main extends Component {
                                 if (hpMax <= 0)
                                     old.hpbar.active = false
                                 else
+                                {
                                     old.hpbar.getComponent(ProgressBar).progress = old.hp / old.hpMax;//todo等后端传最大血量 20测试用
+                                    calculateHPLength = Math.pow(old.hpMax,0.5)/3.0;
+                                }
 
                                 let headScal = old.hpbar.getComponent(HeadScale)
                                 headScal.target = utils.find("血条", newNode)
+                                headScal._hpValueScale = calculateHPLength;
                             }
                             old.labelName = old.nodeName.getComponent(Label)
                             {

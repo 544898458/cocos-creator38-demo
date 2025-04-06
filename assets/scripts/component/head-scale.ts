@@ -15,7 +15,8 @@ export class HeadScale extends Component {
     camera小地图: Camera = null!;
     private _lastWPos: Vec3 = new Vec3();
     private _pos: Vec3 = new Vec3();
-
+    @property
+    _hpValueScale=1;
     update(){
         let wpos = this.target.worldPosition;
         // @ts-ignore
@@ -55,7 +56,7 @@ export class HeadScale extends Component {
         const ratio = camera.projection == renderer.scene.CameraProjection.ORTHO ?
              this.distance /camera.orthoHeight : this.distance*100/camera.fov / Math.abs(this._pos.z)
         const value = Math.floor(ratio * 100) / 100;
-        this.node.setScale(value, value, 1);
+        this.node.setScale(this._hpValueScale*value, value, 1);
         // if(!this.target)
         //     this.node?.destroy();
     }
