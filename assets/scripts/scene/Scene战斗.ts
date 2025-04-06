@@ -52,7 +52,26 @@ export class ClientEntityComponent {
             this.labelName.string = this.nickName + ' ' + this.entityName
         else
             this.labelName.string = this.nickName
+    }
 
+    头顶名字着色():void
+    {
+        if(this.类型 == 单位类型.晶体矿 || this.类型 == 单位类型.燃气矿 )
+        {
+            this.labelName.color=new Color(170,255,255);
+        }
+        else if(this.类型 == 单位类型.光刺 || this.类型 == 单位类型.特效 )
+        {                
+            this.labelName.color=new Color(80,80,80);                
+        }
+        else if (this.类型 == 单位类型.视口)
+        {
+            this.labelName.color = new Color(50,50,50);
+        }
+        else if(this.hp<=0)
+        {
+            this.labelName.color=new Color(200, 40, 40);
+        }
     }
 }
 
