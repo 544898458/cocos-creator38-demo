@@ -22,6 +22,7 @@ import { MsgId, 单位类型 } from '../配置/配置'
 
 const { ccclass, property } = _decorator
 export class ClientEntityComponent {
+    static myNickName:string;
     view: Node
     nodeName: Node
     node描述: Node
@@ -52,6 +53,7 @@ export class ClientEntityComponent {
             this.labelName.string = this.nickName + ' ' + this.entityName
         else
             this.labelName.string = this.nickName
+        this.头顶名字着色()
     }
 
     头顶名字着色():void
@@ -62,16 +64,51 @@ export class ClientEntityComponent {
         }
         else if(this.类型 == 单位类型.光刺 || this.类型 == 单位类型.特效 )
         {                
-            this.labelName.color=new Color(80,80,80);                
+            this.labelName.color=new Color(80,80,80);
+            this.判断是否同玩家名着色子弹();
+           
         }
         else if (this.类型 == 单位类型.视口)
         {
+            ClientEntityComponent.myNickName = this.nickName
             this.labelName.color = new Color(50,50,50);
         }
         else if(this.hp<=0)
         {
-            this.labelName.color=new Color(200, 40, 40);
+            this.labelName.color=new Color(130, 130, 130);
         }
+        else
+        {
+           this.判断是否同玩家名着色单位();
+        }
+    }
+    判断是否同玩家名着色子弹()
+    {
+        if(ClientEntityComponent.myNickName!=null)
+            {
+                if(this.nickName!=ClientEntityComponent.myNickName)
+                {
+                    this.labelName.color=new Color(80,30,30);
+                }
+                else
+                {
+                    this.labelName.color=new Color(30,80,30);
+                }
+            }
+    }
+    判断是否同玩家名着色单位()
+    {
+        if(ClientEntityComponent.myNickName!=null)
+            {
+                if(this.nickName!=ClientEntityComponent.myNickName)
+                {
+                    this.labelName.color=new Color(255,100,100);
+                }
+                else
+                {
+                    this.labelName.color=new Color(100,255,100);
+                }
+            }
     }
 }
 
