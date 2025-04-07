@@ -113,6 +113,9 @@ export class Scene登录 extends Component {
     }
     onClickToggle进单人攻坚战(event: Event, customEventData: string) {
         this.main.onClick进攻坚战()
+    }    
+    onClickToggle进单人攻坚战_虫(event: Event, customEventData: string) {
+        this.main.onClick进攻坚战_虫()
     }
     onClickLogin(event: Event, customEventData: string) {
         this.main.onClickLogin(event, customEventData)

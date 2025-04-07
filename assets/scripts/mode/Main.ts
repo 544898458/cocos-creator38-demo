@@ -24,6 +24,7 @@ enum 副本ID {
     攻坚战,
     训练战_虫,
     防守战_虫,
+    攻坚战_虫,
     单人ID_非法_MAX,
 
     多人ID_非法_MIN = 100,
@@ -259,6 +260,9 @@ export class Main extends Component {
     
     onClick进攻坚战() {
         this.进Scene战斗单人剧情副本('scene攻坚战', 副本ID.攻坚战)
+    }
+    onClick进攻坚战_虫() {
+        this.进Scene战斗单人剧情副本('scene攻坚战', 副本ID.攻坚战_虫)
     }
     onClick创建四方对战() {
         this.进Scene战斗('scene四方对战', msgpack.encode([[MsgId.创建多人战局, 0, 0], 副本ID.四方对战]))
