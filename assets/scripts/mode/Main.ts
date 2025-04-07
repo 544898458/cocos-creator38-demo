@@ -319,6 +319,7 @@ export class Main extends Component {
         this.b登录成功 = false
         // this.微信小游戏获得OpenID()
         let str登录名 = this.scene登录.editBox登录名.string
+        ClientEntityComponent.myNickName = str登录名
         sys.localStorage.setItem(KEY_登录名, str登录名)
 
         console.log(str登录名)

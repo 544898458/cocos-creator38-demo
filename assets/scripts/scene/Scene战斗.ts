@@ -22,7 +22,7 @@ import { MsgId, 单位类型 } from '../配置/配置'
 
 const { ccclass, property } = _decorator
 export class ClientEntityComponent {
-    static myNickName:string;
+    static myNickName: string;
     view: Node
     nodeName: Node
     node描述: Node
@@ -56,59 +56,45 @@ export class ClientEntityComponent {
         this.头顶名字着色()
     }
 
-    头顶名字着色():void
-    {
-        if(this.类型 == 单位类型.晶体矿 || this.类型 == 单位类型.燃气矿 )
-        {
-            this.labelName.color=new Color(170,255,255);
+    头顶名字着色(): void {
+        if (this.类型 == 单位类型.晶体矿 || this.类型 == 单位类型.燃气矿) {
+            this.labelName.color = new Color(170, 255, 255);
         }
-        else if(this.类型 == 单位类型.光刺 || this.类型 == 单位类型.特效 )
-        {                
-            this.labelName.color=new Color(80,80,80);
+        else if (this.类型 == 单位类型.光刺 || this.类型 == 单位类型.特效) {
+            this.labelName.color = new Color(80, 80, 80);
             this.判断是否同玩家名着色子弹();
-           
+
         }
-        else if (this.类型 == 单位类型.视口)
-        {
-            ClientEntityComponent.myNickName = this.nickName
-            this.labelName.color = new Color(50,50,50);
+        else if (this.类型 == 单位类型.视口) {
+            // ClientEntityComponent.myNickName = this.nickName
+            this.labelName.color = new Color(50, 50, 50);
         }
-        else if(this.hp<=0)
-        {
-            this.labelName.color=new Color(130, 130, 130);
+        else if (this.hp <= 0) {
+            this.labelName.color = new Color(130, 130, 130);
         }
-        else
-        {
-           this.判断是否同玩家名着色单位();
+        else {
+            this.判断是否同玩家名着色单位();
         }
     }
-    判断是否同玩家名着色子弹()
-    {
-        if(ClientEntityComponent.myNickName!=null)
-            {
-                if(this.nickName!=ClientEntityComponent.myNickName)
-                {
-                    this.labelName.color=new Color(80,30,30);
-                }
-                else
-                {
-                    this.labelName.color=new Color(30,80,30);
-                }
+    判断是否同玩家名着色子弹() {
+        if (ClientEntityComponent.myNickName != null) {
+            if (this.nickName != ClientEntityComponent.myNickName) {
+                this.labelName.color = new Color(80, 30, 30);
             }
+            else {
+                this.labelName.color = new Color(30, 80, 30);
+            }
+        }
     }
-    判断是否同玩家名着色单位()
-    {
-        if(ClientEntityComponent.myNickName!=null)
-            {
-                if(this.nickName!=ClientEntityComponent.myNickName)
-                {
-                    this.labelName.color=new Color(255,100,100);
-                }
-                else
-                {
-                    this.labelName.color=new Color(100,255,100);
-                }
+    判断是否同玩家名着色单位() {
+        if (ClientEntityComponent.myNickName != null) {
+            if (this.nickName != ClientEntityComponent.myNickName) {
+                this.labelName.color = new Color(255, 100, 100);
             }
+            else {
+                this.labelName.color = new Color(100, 255, 100);
+            }
+        }
     }
 }
 
@@ -297,13 +283,15 @@ export class Scene战斗 extends Component {
             let fun点击地面处理: () => void = null
             console.log('length', PhysicsSystem.instance.raycastResults.length)
             PhysicsSystem.instance.raycastResults.forEach((item: PhysicsRayResult) => {
+                if (b已处理)
+                    return true
+
                 if (item.collider.node.name != nodeName地板) {//单击单位
                     this.点击单位(item, b鼠标右键)
                     b已处理 = true
                     return true
                 }
-                if (b已处理)
-                    return true
+
 
                 fun点击地面处理 = () => {
                     if (!this.main.fun创建消息)
@@ -341,8 +329,12 @@ export class Scene战斗 extends Component {
                 return false
             }
 
+            let b已处理: boolean = false
             PhysicsSystem.instance.raycastResults.forEach((item: PhysicsRayResult) => {
                 console.log('射线碰撞', item.collider.node.name, item.hitPoint)
+                if (b已处理)
+                    return
+
                 if (item.collider.node.name != nodeName地板)
                     return
 
@@ -381,6 +373,7 @@ export class Scene战斗 extends Component {
                     this.main.send(encoded)
                 }
                 this.恢复战斗界面()
+                b已处理 = true
                 return
             })
         }
