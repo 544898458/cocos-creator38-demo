@@ -1,7 +1,7 @@
 import { _decorator, Component, Node } from 'cc';
 import { Main } from './Main';
 import { director } from 'cc';
-import { Scene战斗 } from '../scene/Scene战斗';
+import { ClientEntityComponent, Scene战斗 } from '../scene/Scene战斗';
 import { Label } from 'cc';
 import { EditBox } from 'cc';
 import { UITransform } from 'cc';
@@ -12,6 +12,8 @@ import { Toggle } from 'cc';
 import { Layers } from 'cc';
 import { Vec3 } from 'cc';
 import { Color } from 'cc';
+import { 制造配置, 单位类型, 战斗配置 } from '../配置/配置';
+import { RichText } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('BattleUI')
@@ -74,6 +76,11 @@ export class BattleUI extends Component {
 
     @property({ type: Node, displayName: "选中单位列表" })
     node_selectedList: Node
+
+    @property(Node)
+    node按钮详情: Node
+    @property(RichText)
+    richEdit按钮详情: RichText
 
     lastTitle: Node
     b菱形框选: boolean = false //切换菱形框选和矩形框选两种模式
@@ -188,7 +195,7 @@ export class BattleUI extends Component {
     }
     onClickAdd虫营(event: Event, customEventData: string): void {
         this.main.onClickAdd虫营(event, customEventData)
-    }    
+    }
     onClickAdd飞塔(event: Event, customEventData: string): void {
         this.main.onClickAdd飞塔(event, customEventData)
     }
@@ -197,7 +204,7 @@ export class BattleUI extends Component {
     }
     onClickAdd工虫(event: Event, customEventData: string): void {
         this.main.onClickAdd工虫(event, customEventData)
-    } 
+    }
     onClickAdd近战虫(event: Event, customEventData: string): void {
         this.main.onClickAdd近战虫()
     }
@@ -289,22 +296,26 @@ export class BattleUI extends Component {
         });
     }
     显示选中单位详情(selectUids: number[]): void {
-        if (0 == selectUids.length){
+        if (0 == selectUids.length) {
             this.lable单位详情.string = ''
             return
         }
         let id = selectUids[0]
         let entity = this.scene战斗.entities.get(id)
-        const 类型 = entity.类型
+        let str详情 = this.单位详情(entity, entity.类型)
+        this.lable单位详情.string = str详情
+    }
+     单位详情(entity: ClientEntityComponent, 类型:单位类型): string {
         const 单位 = this.main.配置.find单位(类型)
         const 制造 = this.main.配置.find制造(类型)
         const 战斗 = this.main.配置.find战斗(类型)
-        let str详情 = 单位.名字 + '\n'
+        let str详情 = 单位.名字 + '，'+ 单位.描述 + '\n'
         if (制造) {
             str详情 +=
                 '晶体矿:' + 制造.消耗晶体矿 + '\n' +
-                '燃气矿:' + 制造.消耗燃气矿 + '\n' +
-                'HP:' + entity.hp + '/' + 制造.初始HP + '\n'
+                '燃气矿:' + 制造.消耗燃气矿 + '\n'
+            if (entity)
+                str详情 += 'HP:' + entity.hp + '/' + 制造.初始HP + '\n'
         }
         if (战斗) {
             str详情 +=
@@ -320,7 +331,7 @@ export class BattleUI extends Component {
             if (0 < 战斗.dura后摇)
                 str详情 += '攻击后摇:' + 战斗.dura后摇 + '毫秒\n'
         }
-        this.lable单位详情.string = str详情
+        return str详情
     }
 }
 
