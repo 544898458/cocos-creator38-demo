@@ -309,13 +309,15 @@ export class BattleUI extends Component {
         const 单位 = this.main.配置.find单位(类型)
         const 制造 = this.main.配置.find制造(类型)
         const 战斗 = this.main.配置.find战斗(类型)
-        let str详情 = 单位.名字 + '，'+ 单位.描述 + '\n'
+        let str详情 = 单位.名字 + '\n'+ 单位.描述 + '\n'
         if (制造) {
             str详情 +=
                 '晶体矿:' + 制造.消耗晶体矿 + '\n' +
                 '燃气矿:' + 制造.消耗燃气矿 + '\n'
             if (entity)
                 str详情 += 'HP:' + entity.hp + '/' + 制造.初始HP + '\n'
+            else
+                str详情 += '初始HP:' + 制造.初始HP + '\n'
         }
         if (战斗) {
             str详情 +=
