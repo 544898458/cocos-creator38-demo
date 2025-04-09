@@ -231,6 +231,12 @@ export class BattleUI extends Component {
     onClick空闲工程车(event: Event, customEventData: string): void {
         this.main.onClick空闲工程车()
     }
+    onClick解锁近战兵(event: Event, customEventData: string): void {
+        this.main.onClick解锁近战兵()
+    }
+    onClick解锁枪虫(event: Event, customEventData: string): void {
+        this.main.onClick解锁枪虫()
+    }
     onClick剧情对话全屏点击(): void {
         this.main.onClick剧情对话全屏点击()
         // this.uiTransform剧情对话根.node.active = false

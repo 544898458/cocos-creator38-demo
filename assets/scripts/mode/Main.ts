@@ -257,7 +257,7 @@ export class Main extends Component {
     onClickToggle进防守战_虫() {
         this.进Scene战斗单人剧情副本('scene防守战', 副本ID.防守战_虫)
     }
-    
+
     onClick进攻坚战() {
         this.进Scene战斗单人剧情副本('scene攻坚战', 副本ID.攻坚战)
     }
@@ -635,7 +635,7 @@ export class Main extends Component {
 
                             old.nodeName = instantiate(nodeRoleName)
                             node所有单位头顶名字.addChild(old.nodeName)
-                            let calculateHPLength= 1;
+                            let calculateHPLength = 1;
                             if (newNode.name != "smoke") {
                                 let nodeRoleHp = utils.find("RoleHp", node所有单位头顶名字)
                                 old.hpbar = instantiate(nodeRoleHp)
@@ -644,10 +644,9 @@ export class Main extends Component {
 
                                 if (hpMax <= 0)
                                     old.hpbar.active = false
-                                else
-                                {
+                                else {
                                     old.hpbar.getComponent(ProgressBar).progress = old.hp / old.hpMax;//todo等后端传最大血量 20测试用
-                                    calculateHPLength = Math.pow(old.hpMax,0.5)/3.0;
+                                    calculateHPLength = Math.pow(old.hpMax, 0.5) / 3.0;
                                 }
 
                                 let headScal = old.hpbar.getComponent(HeadScale)
@@ -1048,7 +1047,17 @@ export class Main extends Component {
         console.log('send', encoded)
         this.send(encoded)
     }
-
+    onClick解锁近战兵() {
+        this.解锁单位(单位类型.近战兵)
+    }
+    onClick解锁枪虫() {
+        this.解锁单位(单位类型.枪虫)
+    }
+    解锁单位(单位: 单位类型) {
+        const encoded = msgpack.encode([[MsgId.解锁单位, ++this.sendMsgSn, 0], 单位])
+        console.log('send', encoded)
+        this.send(encoded)
+    }
     static 播放动作(old: ClientEntityComponent, strClipName: string, loop: boolean) {
         console.log('strClipName', strClipName, 'old.view.name', old.view.name, 'loop', loop)
         const str星2动作: string = 'Take 001'
@@ -1123,7 +1132,7 @@ export class Main extends Component {
                 state.playbackRange = { min: 0.4, max: 2 } // 动画总长度
                 state.time = 0.4
             }
-        }else if (old.view.name == '近战兵') {
+        } else if (old.view.name == '近战兵') {
             old.skeletalAnimation.play()
             if (strClipName == 'idle') {
                 let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[0])
