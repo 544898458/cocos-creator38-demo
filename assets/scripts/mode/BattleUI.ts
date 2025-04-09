@@ -28,7 +28,11 @@ export class BattleUI extends Component {
     @property(Node)
     下部列表: Node;
     @property(Node)
-    nodeFightPanel: Node;
+    node取消点击地面: Node
+    @property(Node)
+    node取消选中: Node
+    @property(Node)
+    nodeFightPanel: Node
     @property({ type: Label, displayName: "数量单位" })
     lableCount: Label
     @property({ type: Label, displayName: "晶体矿" })
@@ -107,7 +111,11 @@ export class BattleUI extends Component {
 
         this.scene战斗.main.fun创建消息 = this.scene战斗.main.createMsg集结点
         this.scene战斗.battleUI.lable系统消息.string = '请点击地面设置此建筑产出活动单位的集结点'
-        this.scene战斗.battleUI.下部列表.active = false
+        this.进入点击地面状态()
+    }
+    进入点击地面状态() {
+        this.下部列表.active = false
+        this.node取消点击地面.active = true
     }
     on强行走(event: Event, customEventData: string) {
         if (0 == this.main.arr选中.length) {
@@ -118,7 +126,7 @@ export class BattleUI extends Component {
         // this.scene战斗.b强行走 = true
         this.scene战斗.main.fun创建消息 = this.scene战斗.main.createMsgMove强行走
         this.scene战斗.battleUI.lable系统消息.string = '行走过程不会攻击敌人，请点击地面确定目的地'
-        this.scene战斗.battleUI.下部列表.active = false
+        this.进入点击地面状态()
     }
     on原地坚守(event: Event, customEventData: string) {
         if (0 == this.main.arr选中.length) {
@@ -132,7 +140,7 @@ export class BattleUI extends Component {
         this.scene战斗.posWorld框选起始点 = null
         this.scene战斗.b框选等待按下起始点 = true
         this.scene战斗.battleUI.lable系统消息.string = '请在屏幕上下拖动框选活动单位'
-        this.scene战斗.battleUI.下部列表.active = false
+        this.进入点击地面状态()
     }
     on聊天框输入结束(editbox: EditBox, customEventData: String) {
         console.log(editbox, customEventData)
@@ -334,6 +342,11 @@ export class BattleUI extends Component {
                 str详情 += '攻击后摇:' + 战斗.dura后摇 + '毫秒\n'
         }
         return str详情
+    }
+    on取消点击地面(){
+        this.main.fun创建消息 = null
+        this.node取消点击地面.active = false
+        this.下部列表.active = true
     }
 }
 

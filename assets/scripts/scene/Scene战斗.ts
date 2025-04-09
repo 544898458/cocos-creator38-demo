@@ -475,7 +475,7 @@ export class Scene战斗 extends Component {
                 this.posWorld框选起始点 = item.hitPoint.clone()
                 this.pos屏幕框选起始点 = posMouseDown.clone()
                 this.battleUI.lable系统消息.string = '已开始框选，请拖动后放开'
-                this.battleUI.下部列表.active = false
+                this.battleUI.进入点击地面状态()
                 return
             } else if (this.posWorld框选起始点) {
                 this.恢复战斗界面()
@@ -623,6 +623,7 @@ export class Scene战斗 extends Component {
     }
 
     clear选中() {
+        this.battleUI.node取消选中.active = false
         this.隐藏选中单位专用按钮()
         for (let id of this.main.arr选中) {
             let entity = this.entities.get(id)
@@ -643,7 +644,10 @@ export class Scene战斗 extends Component {
 
     选中(arr: number[]) {
         this.clear选中()
-        this.main.arr选中 = arr;
+        this.main.arr选中 = arr
+
+        if (0 < arr.length)
+            this.battleUI.node取消选中.active = true
 
         this.battleUI.onSelectUnits(arr);
 
