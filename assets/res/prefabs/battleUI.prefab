@@ -4992,6 +4992,12 @@
     "button集结点": {
       "__id__": 748
     },
+    "button解锁近战兵": {
+      "__id__": 763
+    },
+    "button解锁枪虫": {
+      "__id__": 778
+    },
     "uiTransform所有单位头顶名字": {
       "__id__": 27
     },
@@ -18124,7 +18130,7 @@
         "__id__": 753
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 759
@@ -18498,7 +18504,7 @@
         "__id__": 768
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 774
@@ -18515,7 +18521,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -90,
+      "x": -40,
       "y": 0,
       "z": 0
     },
@@ -18874,7 +18880,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 158.217,
-      "height": 70
+      "height": 0
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",

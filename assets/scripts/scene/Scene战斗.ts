@@ -385,6 +385,7 @@ export class Scene战斗 extends Component {
             this.battleUI.lable系统消息.string = '已退出框选状态'
         }
         this.battleUI.下部列表.active = true
+        this.battleUI.node取消点击地面.active = false
         this.Clear然后显示小地图视口框()// this.graphics.clear()//清掉框选框
     }
     //视角移动
@@ -640,6 +641,8 @@ export class Scene战斗 extends Component {
         this.battleUI.button集结点.node.active = false
         this.battleUI.button离开地堡.node.active = false
         this.battleUI.button原地坚守.node.active = false
+        this.battleUI.button解锁枪虫.node.active = false
+        this.battleUI.button解锁近战兵.node.active = false
     }
 
     选中(arr: number[]) {
@@ -676,8 +679,14 @@ export class Scene战斗 extends Component {
                     case 单位类型.地堡:
                         this.battleUI.button离开地堡.node.active = true
                         break;
-                    case 单位类型.基地:
                     case 单位类型.兵厂:
+                        this.battleUI.button集结点.node.active = true
+                        this.battleUI.button解锁近战兵.node.active = true
+                        break;
+                    case 单位类型.虫营:
+                        this.battleUI.button解锁枪虫.node.active = true
+                        break;
+                    case 单位类型.基地:
                     case 单位类型.机场:
                     case 单位类型.重工厂:
                     case 单位类型.虫巢:

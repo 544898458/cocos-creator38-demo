@@ -45,19 +45,18 @@ export class BattleUI extends Component {
     lable聊天消息: Label
     @property({ type: Label, displayName: "系统消息" })
     lable系统消息: Label
-    @property({ type: Label })
-    lable任务提示: Label
-    @property({ type: Label })
-    lable单位详情: Label
-    @property({ type: Toggle })
-    toggle点击活动单位都是追加选中: Toggle
-    @property({ type: Toggle })
-    toggle显示单位类型: Toggle
+    @property({ type: Label })lable任务提示: Label
+    @property({ type: Label })lable单位详情: Label
+    @property({ type: Toggle })toggle点击活动单位都是追加选中: Toggle
+    @property({ type: Toggle })toggle显示单位类型: Toggle
+    
     //根据选中单位类型显示不同的按钮
     @property({ type: Button }) button离开地堡: Button
     @property({ type: Button }) button强行走: Button
     @property({ type: Button }) button原地坚守: Button
     @property({ type: Button }) button集结点: Button
+    @property({ type: Button }) button解锁近战兵: Button
+    @property({ type: Button }) button解锁枪虫: Button
 
     @property({ type: UITransform, displayName: "所有单位头顶名字" })
     uiTransform所有单位头顶名字: UITransform
