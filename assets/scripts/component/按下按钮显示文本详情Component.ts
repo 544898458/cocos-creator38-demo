@@ -1,10 +1,13 @@
+import { RichText } from 'cc';
 import { _decorator, Component, Node } from 'cc';
+import { 单位类型, 配置, 单位配置 } from '../配置/配置';
 import { BattleUI } from '../mode/BattleUI';
-import { Vec2 } from 'cc';
+import { Enum } from 'cc';
 import { EventTouch } from 'cc';
+import { Vec2 } from 'cc';
+import { string } from 'yaml/dist/schema/common/string';
 const { ccclass, property } = _decorator;
 
-@ccclass('Component')
 export class 按下按钮显示详情Component extends Component {
     @property(BattleUI)
     battleUI: BattleUI
@@ -20,7 +23,7 @@ export class 按下按钮显示详情Component extends Component {
             if (this.battleUI.node按钮详情.active)
                 return
 
-            console.log("按钮TOUCH_START", this.vec2按下)
+            console.log("按钮TOUCH_START", this.enum类型)
             this.battleUI.richEdit按钮详情.string = this.详情()
             this.vec2按下 = event.getLocation()
         }, this);
@@ -37,3 +40,14 @@ export class 按下按钮显示详情Component extends Component {
     }
 }
 
+
+
+@ccclass('按下按钮显示文本详情')
+export class 按下按钮显示文本详情Component extends 按下按钮显示详情Component {
+    @property(String)
+    str详情: string
+
+    详情(): string {
+        return this.str详情
+    }
+}
