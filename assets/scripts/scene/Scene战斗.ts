@@ -250,8 +250,12 @@ export class Scene战斗 extends Component {
     }
     点击地面特效(vec3: Vec3) {
         this.targetFlag.position = vec3
+        this.targetFlag.active = true
         let ani = this.targetFlag.getChildByName('lightQ').getComponent(Animation)
         ani.play('lightQ')
+        tween(this.targetFlag).delay(3).call(() => {
+            this.targetFlag.active = false
+        }).start()
     }
     onMouseUp(pos: Vec2, b鼠标右键: boolean) {
         if (this.posWorld按下准备拖动地面) {

@@ -5,16 +5,18 @@ import { BattleUI } from '../mode/BattleUI';
 import { Enum } from 'cc';
 import { EventTouch } from 'cc';
 import { Vec2 } from 'cc';
+import { string } from 'yaml/dist/schema/common/string';
 const { ccclass, property } = _decorator;
 
-@ccclass('按下按钮显示详情')
-export class 按下按钮显示详情Component extends Component {
-    // b显示详情:boolean = false;
-    @property({ type: Enum(单位类型), displayName: "单位" })
-    enum类型: 单位类型 = 单位类型.单位类型_Invalid_0
+class 按下按钮显示详情Component extends Component {
     @property(BattleUI)
     battleUI: BattleUI
     vec2按下: Vec2
+    隐藏单位详情(): void {
+        if (this.battleUI.node按钮详情.active) {
+            this.battleUI.node按钮详情.active = false
+        }
+    }
     start() {
         // 监听按钮的按下事件
         this.node.on(Node.EventType.TOUCH_START, function (event: EventTouch) {
@@ -22,15 +24,13 @@ export class 按下按钮显示详情Component extends Component {
                 return
 
             console.log("按钮TOUCH_START", this.enum类型)
-            this.battleUI.node按钮详情.active = true
-            let str详情 = this.battleUI.单位详情(null, this.enum类型)
-            this.battleUI.richEdit按钮详情.string = str详情
+            this.battleUI.richEdit按钮详情.string = this.详情()
             this.vec2按下 = event.getLocation()
         }, this);
         this.node.on(Node.EventType.TOUCH_MOVE, function (event: EventTouch) {
             console.log("按钮TOUCH_END");
             let 距离起始点 = event.getLocation().subtract(this.vec2按下).lengthSqr()
-            if (距离起始点 > 5) 
+            if (距离起始点 > 5)
                 this.隐藏单位详情()
         }, this);
         this.node.on(Node.EventType.TOUCH_END, function (event) {
@@ -38,15 +38,25 @@ export class 按下按钮显示详情Component extends Component {
             this.隐藏单位详情()
         }, this);
     }
-    隐藏单位详情(): void {
-        if (this.battleUI.node按钮详情.active) {
-            this.battleUI.node按钮详情.active = false
-        }
-    }
+}
 
-    update(deltaTime: number) {
+@ccclass('按下按钮显示单位详情')
+export class 按下按钮显示单位详情Component extends 按下按钮显示详情Component {
+    @property({ type: Enum(单位类型), displayName: "单位" })
+    enum类型: 单位类型 = 单位类型.单位类型_Invalid_0
 
+    详情(): string {
+        this.battleUI.node按钮详情.active = true
+        return this.battleUI.单位详情(null, this.enum类型)
     }
 }
 
+@ccclass('按下按钮显示文本详情')
+export class 按下按钮显示文本详情Component extends 按下按钮显示详情Component {
+    @property(String)
+    str详情: string
 
+    详情(): string {
+        return this.str详情
+    }
+}
