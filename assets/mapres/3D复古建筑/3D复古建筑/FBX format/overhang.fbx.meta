@@ -1,0 +1,127 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "05e4e847-b364-4fbd-84c4-4d15617fcf5f",
+  "files": [],
+  "subMetas": {
+    "1735d": {
+      "importer": "gltf-mesh",
+      "uuid": "05e4e847-b364-4fbd-84c4-4d15617fcf5f@1735d",
+      "displayName": "",
+      "id": "1735d",
+      "name": "overhang.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 86
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "40d02": {
+      "importer": "texture",
+      "uuid": "05e4e847-b364-4fbd-84c4-4d15617fcf5f@40d02",
+      "displayName": "",
+      "id": "40d02",
+      "name": "planks.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/mapres/3D复古建筑/3D复古建筑/FBX format/Textures/planks.png"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "ff906": {
+      "importer": "gltf-material",
+      "uuid": "05e4e847-b364-4fbd-84c4-4d15617fcf5f@ff906",
+      "displayName": "",
+      "id": "ff906",
+      "name": "planks.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "574ed": {
+      "importer": "gltf-scene",
+      "uuid": "05e4e847-b364-4fbd-84c4-4d15617fcf5f@574ed",
+      "displayName": "",
+      "id": "574ed",
+      "name": "overhang.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "planks",
+        "uri": "db://assets/mapres/3D复古建筑/3D复古建筑/FBX format/Textures/planks.png"
+      }
+    ],
+    "fbx": {
+      "smartMaterialEnabled": true,
+      "matchMeshNames": false
+    },
+    "assetFinder": {
+      "meshes": [
+        "05e4e847-b364-4fbd-84c4-4d15617fcf5f@1735d"
+      ],
+      "skeletons": [],
+      "textures": [
+        "05e4e847-b364-4fbd-84c4-4d15617fcf5f@40d02"
+      ],
+      "materials": [
+        "05e4e847-b364-4fbd-84c4-4d15617fcf5f@ff906"
+      ],
+      "scenes": [
+        "05e4e847-b364-4fbd-84c4-4d15617fcf5f@574ed"
+      ]
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    }
+  }
+}

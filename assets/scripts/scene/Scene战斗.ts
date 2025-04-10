@@ -253,8 +253,10 @@ export class Scene战斗 extends Component {
         this.targetFlag.active = true
         let ani = this.targetFlag.getChildByName('lightQ').getComponent(Animation)
         ani.play('lightQ')
+        let vecLocal = vec3.clone()
         tween(this.targetFlag).delay(3).call(() => {
-            this.targetFlag.active = false
+            if (vecLocal.equals(this.targetFlag.position))
+                this.targetFlag.active = false
         }).start()
     }
     onMouseUp(pos: Vec2, b鼠标右键: boolean) {

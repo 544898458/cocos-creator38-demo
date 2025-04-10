@@ -1,0 +1,127 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "48b96dce-e0fc-40a4-be8a-b0b8af05f27e",
+  "files": [],
+  "subMetas": {
+    "da4d0": {
+      "importer": "gltf-mesh",
+      "uuid": "48b96dce-e0fc-40a4-be8a-b0b8af05f27e@da4d0",
+      "displayName": "",
+      "id": "da4d0",
+      "name": "wall_flatGate.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 22
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "0b01f": {
+      "importer": "texture",
+      "uuid": "48b96dce-e0fc-40a4-be8a-b0b8af05f27e@0b01f",
+      "displayName": "",
+      "id": "0b01f",
+      "name": "stones.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/mapres/3D复古建筑/3D复古建筑/FBX format/Textures/stones.png"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "a22da": {
+      "importer": "gltf-material",
+      "uuid": "48b96dce-e0fc-40a4-be8a-b0b8af05f27e@a22da",
+      "displayName": "",
+      "id": "a22da",
+      "name": "stones.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "bdf6f": {
+      "importer": "gltf-scene",
+      "uuid": "48b96dce-e0fc-40a4-be8a-b0b8af05f27e@bdf6f",
+      "displayName": "",
+      "id": "bdf6f",
+      "name": "wall_flatGate.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "stones",
+        "uri": "db://assets/mapres/3D复古建筑/3D复古建筑/FBX format/Textures/stones.png"
+      }
+    ],
+    "fbx": {
+      "smartMaterialEnabled": true,
+      "matchMeshNames": false
+    },
+    "assetFinder": {
+      "meshes": [
+        "48b96dce-e0fc-40a4-be8a-b0b8af05f27e@da4d0"
+      ],
+      "skeletons": [],
+      "textures": [
+        "48b96dce-e0fc-40a4-be8a-b0b8af05f27e@0b01f"
+      ],
+      "materials": [
+        "48b96dce-e0fc-40a4-be8a-b0b8af05f27e@a22da"
+      ],
+      "scenes": [
+        "48b96dce-e0fc-40a4-be8a-b0b8af05f27e@bdf6f"
+      ]
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    }
+  }
+}
