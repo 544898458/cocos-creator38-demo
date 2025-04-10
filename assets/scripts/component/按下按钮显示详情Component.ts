@@ -9,7 +9,7 @@ export class 按下按钮显示详情Component extends Component {
     @property(BattleUI)
     battleUI: BattleUI
     vec2按下: Vec2
-    date上次显示: Date = new Date()
+    static date上次显示: Date = new Date()
     隐藏单位详情(): void {
         if (this.battleUI.node按钮详情.active) {
             this.battleUI.node按钮详情.active = false
@@ -23,9 +23,9 @@ export class 按下按钮显示详情Component extends Component {
 
             let date现在:Date = new Date()
             //0.2秒内不要重复显示 node按钮详情
-            if ((date现在.getTime() - this.date上次显示.getTime()) < 200) {
+            if ((date现在.getTime() - 按下按钮显示详情Component.date上次显示.getTime()) < 300) {
                 console.log("间隔太短不显示", this.vec2按下)    
-                this.date上次显示 = date现在
+                按下按钮显示详情Component.date上次显示 = date现在
                 return
             }
 
@@ -35,7 +35,7 @@ export class 按下按钮显示详情Component extends Component {
             this.battleUI.node按钮详情.active = true
 
             //记录当前时刻
-            this.date上次显示 = date现在
+            按下按钮显示详情Component.date上次显示 = date现在
 
         }, this);
 

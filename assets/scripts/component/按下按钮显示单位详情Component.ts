@@ -15,7 +15,6 @@ export class 按下按钮显示单位详情Component extends 按下按钮显示�
     enum类型: 单位类型 = 单位类型.单位类型_Invalid_0
 
     详情(): string {
-        this.battleUI.node按钮详情.active = true
         return this.battleUI.单位详情(null, this.enum类型)
     }
 }
