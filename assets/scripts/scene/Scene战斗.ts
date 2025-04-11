@@ -137,6 +137,7 @@ export class Scene战斗 extends Component {
     b电脑鼠标操作: boolean = false
     f双指缩放初始值: number = 0
     vec摄像机在Update更新位置: Vec3 = null
+    obj已解锁单位: object
     protected onLoad(): void {
         console.log('Scene战斗.onLoad')
         this.Clear然后显示小地图视口框()
@@ -687,10 +688,15 @@ export class Scene战斗 extends Component {
                         break;
                     case 单位类型.兵厂:
                         this.battleUI.button集结点.node.active = true
-                        this.battleUI.button解锁近战兵.node.active = true
+                        if (!this.obj已解锁单位[单位类型.近战兵])
+                            this.battleUI.button解锁近战兵.node.active = true
+
                         break;
                     case 单位类型.虫营:
-                        this.battleUI.button解锁枪虫.node.active = true
+                        console.log(typeof (this.obj已解锁单位))
+                        if (!this.obj已解锁单位[单位类型.枪虫])
+                            this.battleUI.button解锁枪虫.node.active = true
+
                         break;
                     case 单位类型.基地:
                     case 单位类型.机场:

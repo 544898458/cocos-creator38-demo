@@ -955,6 +955,13 @@ export class Main extends Component {
                     })
                 }
                 break
+            case MsgId.已解锁单位:
+                {
+                    let dict已解锁单位 = arr[idxArr++] as object
+                    console.log("已解锁单位", dict已解锁单位)
+                    this.scene战斗.obj已解锁单位 = dict已解锁单位
+                }
+                break;
             default:
                 console.error('msgId=', msgId)
                 break
