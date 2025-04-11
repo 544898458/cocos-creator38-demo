@@ -209,7 +209,7 @@ export class Main extends Component {
     onClickAdd民房(event: Event, customEventData: string): void {
         this.on点击按钮_造建筑(单位类型.民房)
     }
-    onClickAdd光子炮(event: Event, customEventData: string): void {
+    onClickAdd炮台(event: Event, customEventData: string): void {
         this.on点击按钮_造建筑(单位类型.炮台)
     }
     onClickAdd孵化场(event: Event, customEventData: string): void {
