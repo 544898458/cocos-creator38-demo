@@ -166,7 +166,7 @@ export class BattleUI extends Component {
         this.scene战斗.镜头缩小()
     }
     onClickAdd兵(event: Event, customEventData: string): void {
-        this.main.onClickAdd兵(event, customEventData)
+        this.main.onClick造活动单位(event, customEventData)
     }
     onClick造坦克(event: Event, customEventData: string): void {
         this.main.onClick造坦克(event, customEventData)
@@ -330,6 +330,13 @@ export class BattleUI extends Component {
         const 单位 = this.main.配置.find单位(类型)
         const 制造 = this.main.配置.find制造(类型)
         const 战斗 = this.main.配置.find战斗(类型)
+        let 单位属性 = this.scene战斗.obj属性等级[类型]
+        let 单位攻击等级 = 单位属性 ? 单位属性[单位属性类型.攻击] : null
+        let 单位属性等级加数值: number
+
+        if (单位攻击等级)
+            单位属性等级加数值 = this.main.配置.find单位属性等级加数值(类型, 单位属性类型.攻击, 单位攻击等级)
+
         let str详情 = 单位.名字 + '\n' + 单位.描述 + '\n'
         if (制造) {
             str详情 +=
@@ -341,9 +348,14 @@ export class BattleUI extends Component {
                 str详情 += '初始HP:' + 制造.初始HP + '\n'
         }
         if (战斗) {
-            str详情 +=
-                '攻击:' + 战斗.i32攻击 + '\n' +
-                '警戒距离:' + 战斗.f警戒距离 + '米\n' +
+            str详情 += '攻击:' + 战斗.i32攻击
+
+            if (单位属性等级加数值)
+                str详情 += '+' + 单位属性等级加数值
+
+            str详情 += '\n'
+
+            str详情 += '警戒距离:' + 战斗.f警戒距离 + '米\n' +
                 '攻击距离:' + 战斗.f攻击距离 + '米\n' +
                 '移动速度:' + 战斗.f每帧移动距离 * 10 + '米/秒\n'
 

@@ -14,6 +14,7 @@ import { sys } from 'cc'
 import { MsgId, 单位属性类型, 单位类型, 配置 } from '../配置/配置'
 import { Tween } from 'cc'
 import { AnimationState } from 'cc'
+import { 按下按钮显示单位详情Component } from '../component/按下按钮显示单位详情Component'
 
 const { ccclass, property } = _decorator
 
@@ -156,8 +157,10 @@ export class Main extends Component {
     onClick造坦克(event: Event, customEventData: string): void {
         this.造活动单位(单位类型.三色坦克)
     }
-    onClickAdd兵(event: Event, customEventData: string): void {
-        this.造活动单位(单位类型.兵)
+    onClick造活动单位(event: Event, customEventData: string): void {
+        const node: Node = event.target as Node
+        let 单位 = node.getComponent(按下按钮显示单位详情Component).enum类型
+        this.造活动单位(单位)
     }
     onClickAdd近战兵(event: Event, customEventData: string): void {
         this.造活动单位(单位类型.近战兵)
