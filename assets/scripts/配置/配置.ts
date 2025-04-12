@@ -258,7 +258,7 @@ export class 战斗配置 {
 	类型: 单位类型
 	f警戒距离: number
 	f攻击距离: number
-	i32伤害: number
+	i32攻击: number
 	f每帧移动距离: number
 	dura开始播放攻击动作: number//毫秒，（前摇第1部分）
 	dura开始伤害: number//毫秒，（前摇第2部分）
