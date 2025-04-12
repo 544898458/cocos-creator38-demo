@@ -967,6 +967,12 @@ export class Main extends Component {
                     this.scene战斗.obj已解锁单位 = dict已解锁单位
                 }
                 break;
+            case MsgId.单位属性等级:
+                {
+                    let dict属性等级 = arr[idxArr++] as object
+                    console.log("单位属性等级", dict属性等级)
+                }
+                break
             default:
                 console.error('msgId=', msgId)
                 break

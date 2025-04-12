@@ -57,6 +57,7 @@ export class BattleUI extends Component {
     @property({ type: Button }) button集结点: Button
     @property({ type: Button }) button解锁近战兵: Button
     @property({ type: Button }) button解锁枪虫: Button
+    @property(Node) node升级枪兵攻击: Node
 
     @property({ type: UITransform, displayName: "所有单位头顶名字" })
     uiTransform所有单位头顶名字: UITransform

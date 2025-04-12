@@ -2061,6 +2061,9 @@
     "button解锁枪虫": {
       "__id__": 1248
     },
+    "node升级枪兵攻击": {
+      "__id__": 1254
+    },
     "uiTransform所有单位头顶名字": {
       "__id__": 27
     },
@@ -28991,7 +28994,7 @@
         "__id__": 1255
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 1261
@@ -29062,7 +29065,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 1.4210854715202004e-14,
-      "y": -15.396000000000015,
+      "y": 0,
       "z": 0
     },
     "_lrot": {
@@ -29102,8 +29105,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 80,
-      "height": 47.459999999999994
+      "width": 44,
+      "height": 81.5
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -29133,18 +29136,18 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 179,
-      "b": 82,
+      "r": 191,
+      "g": 255,
+      "b": 111,
       "a": 255
     },
-    "_string": "升级\n枪兵攻击",
+    "_string": "升级\n枪兵\n攻击",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20,
-    "_fontSize": 20,
+    "_actualFontSize": 22,
+    "_fontSize": 22,
     "_fontFamily": "Arial",
-    "_lineHeight": 21,
+    "_lineHeight": 25,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": null,
@@ -29392,7 +29395,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 158.217,
-      "height": 80
+      "height": 0
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -35221,8 +35224,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 90,
-      "height": 68.46
+      "width": 80,
+      "height": 65.19999999999999
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -35260,10 +35263,10 @@
     "_string": "空闲工程车\n或\n空闲工虫",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 18,
-    "_fontSize": 18,
+    "_actualFontSize": 16,
+    "_fontSize": 16,
     "_fontFamily": "Arial",
-    "_lineHeight": 21,
+    "_lineHeight": 20,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": null,

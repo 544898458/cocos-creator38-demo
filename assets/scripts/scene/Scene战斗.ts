@@ -138,6 +138,7 @@ export class Scene战斗 extends Component {
     f双指缩放初始值: number = 0
     vec摄像机在Update更新位置: Vec3 = null
     obj已解锁单位: object
+    obj属性等级: object
     protected onLoad(): void {
         console.log('Scene战斗.onLoad')
         this.Clear然后显示小地图视口框()
@@ -650,6 +651,7 @@ export class Scene战斗 extends Component {
         this.battleUI.button原地坚守.node.active = false
         this.battleUI.button解锁枪虫.node.active = false
         this.battleUI.button解锁近战兵.node.active = false
+        this.battleUI.node升级枪兵攻击.active = false
     }
 
     选中(arr: number[]) {
@@ -691,6 +693,7 @@ export class Scene战斗 extends Component {
                         if (!this.obj已解锁单位[单位类型.近战兵])
                             this.battleUI.button解锁近战兵.node.active = true
 
+                        this.battleUI.node升级枪兵攻击.active = true
                         break;
                     case 单位类型.虫营:
                         console.log(typeof (this.obj已解锁单位))
