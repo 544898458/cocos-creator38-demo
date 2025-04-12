@@ -4,6 +4,7 @@ import { Vec2 } from 'cc';
 import { EventTouch } from 'cc';
 import { Vec3 } from 'cc';
 import { UITransform } from 'cc';
+import { view } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('Component')
@@ -14,7 +15,7 @@ export class 按下按钮显示详情Component extends Component {
     static date上次显示: Date = new Date()
     timeoutId: NodeJS.Timeout = null; // 用于存储 setTimeout 的返回值
     隐藏单位详情(): void {
-        if (this.timeoutId){
+        if (this.timeoutId) {
             clearTimeout(this.timeoutId)
             this.timeoutId = null
         }
@@ -41,13 +42,32 @@ export class 按下按钮显示详情Component extends Component {
             this.vec2按下 = event.getLocation()
 
             // 将屏幕坐标转换为节点坐标
-            let node坐标: Vec3 = this.battleUI.node按钮详情.parent.getComponent(UITransform).convertToNodeSpaceAR(new Vec3(this.vec2按下.x, this.vec2按下.y, 0));
-            console.log("node坐标", node坐标)
+            // let node坐标: Vec3 = this.battleUI.node按钮详情.parent.getComponent(UITransform).convertToNodeSpaceAR(new Vec3(this.vec2按下.x, this.vec2按下.y, 0));
+            // let size = view.getVisibleSize()
+            // let sizeInPixel = view.getVisibleSizeInPixel()
+            // node坐标.multiply3f(size.x / sizeInPixel.x, size.y / sizeInPixel.y, 1)
+            // console.log("node坐标", node坐标)
             // 设置 node按钮详情 的位置
+
+            // 获取 this.node 的上缘坐标
+            const nodeTransform = this.node.getComponent(UITransform)
+            const nodePosition = this.node.position
+            const nodeHeight = nodeTransform.height
+            const nodeTopEdge = nodePosition.y + nodeHeight / 2
+            console.log("this.node 上缘坐标", nodeTopEdge)
+
+            // 获取 this.node 的世界坐标
+            const worldPosition = this.node.parent.getComponent(UITransform).convertToWorldSpaceAR(new Vec3(0, nodeTopEdge, 0))
+
+            // 将世界坐标转换为 targetNode 的本地坐标
+            const localPosition: Vec3 = this.battleUI.node按钮详情.parent.getComponent(UITransform).convertToNodeSpaceAR(worldPosition)
+            console.log("this.node 相对于 targetNode 的本地坐标", localPosition);
+
+
             let pos = this.battleUI.node按钮详情.position.clone();
-            pos.y = node坐标.y + this.node.getComponent(UITransform).height
+            pos.y = localPosition.y + 20 //node坐标.y + this.node.getComponent(UITransform).height
             this.battleUI.node按钮详情.position = pos
-            
+
             if (this.timeoutId)
                 clearTimeout(this.timeoutId);
             this.timeoutId = setTimeout(() => {
