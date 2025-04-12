@@ -53,7 +53,7 @@ export class 按下按钮显示详情Component extends Component {
             this.timeoutId = setTimeout(() => {
                 this.battleUI.node按钮详情.active = true;
                 this.timeoutId = null; // 清除定时器 ID
-            }, 200);
+            }, 100);
 
             //记录当前时刻
             按下按钮显示详情Component.date上次显示 = date现在
