@@ -11,7 +11,7 @@ import { copyFileSync } from 'original-fs'
 import { Quat } from 'cc'
 import { AudioClip } from 'cc'
 import { sys } from 'cc'
-import { MsgId, 单位类型, 配置 } from '../配置/配置'
+import { MsgId, 单位属性类型, 单位类型, 配置 } from '../配置/配置'
 import { Tween } from 'cc'
 import { AnimationState } from 'cc'
 
@@ -195,6 +195,11 @@ export class Main extends Component {
         this.funCreateMsg造建筑 = this.fun创建消息
         this.scene战斗.battleUI.lable系统消息.string = '请点击地面放置建筑'
         this.scene战斗.battleUI.进入点击地面状态()
+    }
+    on升级单位属性(单位: 单位类型, 属性: 单位属性类型) {
+        const encoded = msgpack.encode([[MsgId.升级单位属性, ++this.sendMsgSn, 0], 单位, 属性])
+        console.log(encoded)
+        this.send(encoded)
     }
     onClickAdd基地(event: Event, customEventData: string): void {
         this.on点击按钮_造建筑(单位类型.基地)

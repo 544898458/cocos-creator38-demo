@@ -12,7 +12,7 @@ import { Toggle } from 'cc';
 import { Layers } from 'cc';
 import { Vec3 } from 'cc';
 import { Color } from 'cc';
-import { 制造配置, 单位类型, 战斗配置 } from '../配置/配置';
+import { 制造配置, 单位属性类型, 单位类型, 战斗配置 } from '../配置/配置';
 import { RichText } from 'cc';
 const { ccclass, property } = _decorator;
 
@@ -45,11 +45,11 @@ export class BattleUI extends Component {
     lable聊天消息: Label
     @property({ type: Label, displayName: "系统消息" })
     lable系统消息: Label
-    @property({ type: RichText })richText任务提示: Label
-    @property({ type: Label })lable单位详情: Label
-    @property({ type: Toggle })toggle点击活动单位都是追加选中: Toggle
-    @property({ type: Toggle })toggle显示单位类型: Toggle
-    
+    @property({ type: RichText }) richText任务提示: Label
+    @property({ type: Label }) lable单位详情: Label
+    @property({ type: Toggle }) toggle点击活动单位都是追加选中: Toggle
+    @property({ type: Toggle }) toggle显示单位类型: Toggle
+
     //根据选中单位类型显示不同的按钮
     @property({ type: Button }) button离开地堡: Button
     @property({ type: Button }) button强行走: Button
@@ -197,6 +197,10 @@ export class BattleUI extends Component {
     onClickAdd建筑(event: Event, customEventData: string): void {
         this.main.on点击按钮_造建筑(单位类型[customEventData as keyof typeof 单位类型])
     }
+    onClick升级单位属性(event: Event, customEventData: string): void {
+        let arr = customEventData.split('|')
+        this.main.on升级单位属性(单位类型[arr[0] as keyof typeof 单位类型], 单位属性类型[arr[1] as keyof typeof 单位类型])
+    }
     onClickAdd机场(event: Event, customEventData: string): void {
         this.main.onClickAdd机场(event, customEventData)
     }
@@ -321,11 +325,11 @@ export class BattleUI extends Component {
         let str详情 = this.单位详情(entity, entity.类型)
         this.lable单位详情.string = str详情
     }
-     单位详情(entity: ClientEntityComponent, 类型:单位类型): string {
+    单位详情(entity: ClientEntityComponent, 类型: 单位类型): string {
         const 单位 = this.main.配置.find单位(类型)
         const 制造 = this.main.配置.find制造(类型)
         const 战斗 = this.main.配置.find战斗(类型)
-        let str详情 = 单位.名字 + '\n'+ 单位.描述 + '\n'
+        let str详情 = 单位.名字 + '\n' + 单位.描述 + '\n'
         if (制造) {
             str详情 +=
                 '晶体矿:' + 制造.消耗晶体矿 + '\n' +
@@ -351,7 +355,7 @@ export class BattleUI extends Component {
         }
         return str详情
     }
-    on取消点击地面(){
+    on取消点击地面() {
         this.main.fun创建消息 = null
         this.node取消点击地面.active = false
         this.下部列表.active = true
