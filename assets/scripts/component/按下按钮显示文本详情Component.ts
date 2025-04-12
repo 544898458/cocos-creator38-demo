@@ -5,13 +5,12 @@ import { BattleUI } from '../mode/BattleUI';
 import { Enum } from 'cc';
 import { EventTouch } from 'cc';
 import { Vec2 } from 'cc';
-import { string } from 'yaml/dist/schema/common/string';
 import { 按下按钮显示详情Component } from './按下按钮显示详情Component';
 const { ccclass, property } = _decorator;
 
 @ccclass('按下按钮显示文本详情')
 export class 按下按钮显示文本详情Component extends 按下按钮显示详情Component {
-    @property(String)
+    @property({ type: String })
     str详情: string
 
     详情(): string {

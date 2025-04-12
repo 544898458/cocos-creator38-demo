@@ -276,7 +276,7 @@ export class BattleUI extends Component {
     }
     onClick框选模式(): void {
         this.b菱形框选 = !this.b菱形框选
-        this.lable系统消息.string = '已切换到 ' + (this.b菱形框选 ? '菱形框选' : '方形框选') + '模式'
+        this.lable系统消息.string = '已切换到 ' + (this.b菱形框选 ? '菱形框选' : '正矩形框选') + '模式'
     }
 
     onSelectUnits(selectUids: number[]): void {
