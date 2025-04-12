@@ -45,7 +45,7 @@ export class BattleUI extends Component {
     lable聊天消息: Label
     @property({ type: Label, displayName: "系统消息" })
     lable系统消息: Label
-    @property({ type: Label })lable任务提示: Label
+    @property({ type: RichText })richText任务提示: Label
     @property({ type: Label })lable单位详情: Label
     @property({ type: Toggle })toggle点击活动单位都是追加选中: Toggle
     @property({ type: Toggle })toggle显示单位类型: Toggle
@@ -62,8 +62,8 @@ export class BattleUI extends Component {
     uiTransform所有单位头顶名字: UITransform
     @property({ type: UITransform, displayName: "剧情对话根" })
     uiTransform剧情对话根: UITransform
-    @property({ type: Label, displayName: "剧情对话内容" })
-    lable剧情对话内容: Label
+    @property({ type: RichText, displayName: "剧情对话内容" })
+    richText剧情对话内容: RichText
     @property({ type: Sprite, displayName: "剧情对话头像左" })
     sprite剧情对话头像左: Sprite
     @property({ type: Label, displayName: "剧情对话名字左" })

@@ -804,7 +804,7 @@ export class Main extends Component {
                             break
                         case SayChannel.任务提示:
                             if (content.length > 0)
-                                thisLocal.scene战斗.battleUI.lable任务提示.string = content
+                                thisLocal.scene战斗.battleUI.richText任务提示.string = content
                             break
                     }
 

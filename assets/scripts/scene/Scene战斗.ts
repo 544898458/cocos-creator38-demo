@@ -874,7 +874,7 @@ export class Scene战斗 extends Component {
     }
     剧情对话(str头像左: string, str名字左: string, str头像右: string, str名字右: string, str对话内容: string, b显示退出面板: boolean): void {
         this.battleUI.uiTransform剧情对话根.node.active = true
-        this.battleUI.lable剧情对话内容.string = str对话内容
+        this.battleUI.richText剧情对话内容.string = str对话内容
         this.battleUI.lable剧情对话名字左.string = str名字左
         this.battleUI.lable剧情对话名字右.string = str名字右
         if (str头像左.length > 0) {
