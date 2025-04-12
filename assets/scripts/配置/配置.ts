@@ -235,6 +235,7 @@ export
 	重工厂,//Factory 
 	虫营,//对应兵营
 	飞塔,//Spore Conlony
+	拟态源,//拟态源，原创，绿色坦克前置建筑
 	
 	建筑Max非法,
 
