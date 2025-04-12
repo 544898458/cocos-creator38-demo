@@ -252,12 +252,13 @@ export
 
 export enum 单位属性类型
 {
+	单位属性类型_最小_无效,
 	攻击,
-    防御,
-    HP,
-    移动速度,
-    攻击速度,
-    攻击范围,
+	防御,
+	HP,
+	移动速度,
+	攻击速度,
+	攻击范围,
 };
 
 export class 单位配置 {
@@ -286,16 +287,24 @@ export class 制造配置 {
 export class 活动单位配置 {
 	类型: 单位类型
 }
+export class 单位属性等级配置 {
+	类型: 单位类型
+	属性: 单位属性类型
+	等级: number
+	加数值: number
+}
 export class 配置 {
 	arr单位: Array<单位配置>
 	arr战斗: Array<战斗配置>
 	arr制造: Array<制造配置>
 	arr活动单位: Array<活动单位配置>
+	arr单位属性等级: Array<单位属性等级配置>
 	读取配置文件() {
 		this.读取1个配置文件<单位配置>('单位', (arr) => this.arr单位 = arr)
 		this.读取1个配置文件<战斗配置>('战斗', (arr) => this.arr战斗 = arr)
 		this.读取1个配置文件<制造配置>('制造', (arr) => this.arr制造 = arr)
 		this.读取1个配置文件<活动单位配置>('活动单位', (arr) => this.arr活动单位 = arr)
+		this.读取1个配置文件<单位属性等级配置>('单位属性等级', (arr) => this.arr单位属性等级 = arr)
 	}
 	读取1个配置文件<T>(strName: string, fun: (arr: Array<T>) => void) {
 		assetManager.loadRemote('https://www.rtsgame.online/配置/' + strName + '.yaml', { ext: '.txt' },

@@ -971,6 +971,7 @@ export class Main extends Component {
                 {
                     let dict属性等级 = arr[idxArr++] as object
                     console.log("单位属性等级", dict属性等级)
+                    this.scene战斗.obj属性等级 = dict属性等级
                 }
                 break
             default:
