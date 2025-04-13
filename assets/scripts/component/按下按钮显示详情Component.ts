@@ -7,7 +7,6 @@ import { UITransform } from 'cc';
 import { view } from 'cc';
 const { ccclass, property } = _decorator;
 
-@ccclass('Component')
 export class 按下按钮显示详情Component extends Component {
     @property(BattleUI)
     battleUI: BattleUI

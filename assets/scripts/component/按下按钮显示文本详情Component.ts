@@ -10,7 +10,7 @@ const { ccclass, property } = _decorator;
 
 @ccclass('按下按钮显示文本详情')
 export class 按下按钮显示文本详情Component extends 按下按钮显示详情Component {
-    @property({ type: String })
+    @property
     str详情: string
 
     详情(): string {

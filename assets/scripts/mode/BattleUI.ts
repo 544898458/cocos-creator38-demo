@@ -58,6 +58,9 @@ export class BattleUI extends Component {
     @property({ type: Button }) button解锁近战兵: Button
     @property({ type: Button }) button解锁枪虫: Button
     @property(Node) node升级枪兵攻击: Node
+    @property(Node) node升级近战虫攻击: Node
+    @property(Node) node升级枪虫防御: Node
+    @property(Node) node升级近战兵防御: Node
 
     @property({ type: UITransform, displayName: "所有单位头顶名字" })
     uiTransform所有单位头顶名字: UITransform
@@ -330,12 +333,8 @@ export class BattleUI extends Component {
         const 单位 = this.main.配置.find单位(类型)
         const 制造 = this.main.配置.find制造(类型)
         const 战斗 = this.main.配置.find战斗(类型)
-        let 单位属性 = this.scene战斗.obj属性等级[类型]
-        let 单位攻击等级 = 单位属性 ? 单位属性[单位属性类型.攻击] : null
-        let 单位属性等级加数值: number
-
-        if (单位攻击等级)
-            单位属性等级加数值 = this.main.配置.find单位属性等级加数值(类型, 单位属性类型.攻击, 单位攻击等级)
+        let 攻击等级加数值: number = this.属性等级加数值(类型, 单位属性类型.攻击)
+        let 防御等级加数值: number = this.属性等级加数值(类型, 单位属性类型.防御)
 
         let str详情 = 单位.名字 + '\n' + 单位.描述 + '\n'
         if (制造) {
@@ -350,8 +349,11 @@ export class BattleUI extends Component {
         if (战斗) {
             str详情 += '攻击:' + 战斗.i32攻击
 
-            if (单位属性等级加数值)
-                str详情 += '+' + 单位属性等级加数值
+            if (攻击等级加数值)
+                str详情 += '+' + 攻击等级加数值 + '\n'
+
+            if (防御等级加数值)
+                str详情 += '防御:+' + 防御等级加数值
 
             str详情 += '\n'
 
@@ -367,6 +369,11 @@ export class BattleUI extends Component {
                 str详情 += '攻击后摇:' + 战斗.dura后摇 + '毫秒\n'
         }
         return str详情
+    }
+    属性等级加数值(类型: 单位类型, 属性: 单位属性类型) {
+        let 单位属性 = this.scene战斗.obj属性等级[类型]
+        let 属性等级 = 单位属性 ? 单位属性[属性] : null
+        return 属性等级 ? this.main.配置.find单位属性等级加数值(类型, 属性, 属性等级) : null
     }
     on取消点击地面() {
         this.main.fun创建消息 = null

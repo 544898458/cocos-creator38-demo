@@ -18,7 +18,7 @@ import { SpriteFrame } from 'cc'
 import { ImageAsset } from 'cc'
 import { Tween } from 'cc'
 import { AudioSource } from 'cc'
-import { MsgId, 单位类型 } from '../配置/配置'
+import { MsgId, 单位属性类型, 单位类型 } from '../配置/配置'
 
 const { ccclass, property } = _decorator
 export class ClientEntityComponent {
@@ -652,6 +652,9 @@ export class Scene战斗 extends Component {
         this.battleUI.button解锁枪虫.node.active = false
         this.battleUI.button解锁近战兵.node.active = false
         this.battleUI.node升级枪兵攻击.active = false
+        this.battleUI.node升级近战虫攻击.active = false
+        this.battleUI.node升级枪虫防御.active = false
+        this.battleUI.node升级近战兵防御.active = false
     }
 
     选中(arr: number[]) {
@@ -693,13 +696,16 @@ export class Scene战斗 extends Component {
                         if (!this.obj已解锁单位[单位类型.近战兵])
                             this.battleUI.button解锁近战兵.node.active = true
 
-                        this.battleUI.node升级枪兵攻击.active = true
+                        this.如果没满级就显示(单位类型.枪兵, 单位属性类型.攻击, this.battleUI.node升级枪兵攻击)
+                        this.如果没满级就显示(单位类型.近战兵, 单位属性类型.防御, this.battleUI.node升级近战兵防御)
                         break;
                     case 单位类型.虫营:
                         console.log(typeof (this.obj已解锁单位))
                         if (!this.obj已解锁单位[单位类型.枪虫])
                             this.battleUI.button解锁枪虫.node.active = true
 
+                        this.如果没满级就显示(单位类型.枪虫, 单位属性类型.防御, this.battleUI.node升级枪虫防御)
+                        this.如果没满级就显示(单位类型.近战虫, 单位属性类型.攻击, this.battleUI.node升级近战虫攻击)
                         break;
                     case 单位类型.基地:
                     case 单位类型.机场:
@@ -907,6 +913,13 @@ export class Scene战斗 extends Component {
         })
     }
 
+    如果没满级就显示(单位: 单位类型, 属性: 单位属性类型, node升级按钮: Node) {
+        let 单位属性 = this.obj属性等级[单位]
+        let 单位攻击等级 = 单位属性 ? 单位属性[属性] : 0
+        let 单位属性等级加数值: number = this.main.配置.find单位属性等级加数值(单位, 属性, 单位攻击等级 + 1)
+        if (null != 单位属性等级加数值)
+            node升级按钮.active = true
+    }
 }
 
 
