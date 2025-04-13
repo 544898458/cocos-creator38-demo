@@ -291,7 +291,7 @@ export class 单位属性等级配置 {
 	类型: 单位类型
 	属性: 单位属性类型
 	等级: number
-	加数值: number
+	数值: number
 }
 export class 配置 {
 	arr单位: Array<单位配置>
@@ -328,6 +328,6 @@ export class 配置 {
 		return this.arr活动单位.find((v) => v.类型 == 类型)
 	}
 	find单位属性等级加数值(单位: 单位类型, 属性: 单位属性类型, 等级: number){
-		return this.arr单位属性等级.find((v) => v.类型 == 单位 && v.属性 == 属性 && v.等级 == 等级)?.加数值
+		return this.arr单位属性等级.find((v) => v.类型 == 单位 && v.属性 == 属性 && v.等级 == 等级)?.数值
 	}
 }
