@@ -26977,7 +26977,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 67.96499999999997,
+      "x": 79.24000000000001,
       "y": 132.68900000000002,
       "z": 0
     },
@@ -27835,8 +27835,8 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -35,
-      "y": -2.5,
+      "x": -30,
+      "y": 0,
       "z": 0
     },
     "_lrot": {
@@ -27885,8 +27885,8 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 1.4210854715202004e-14,
-      "y": -15.396000000000015,
+      "x": 0,
+      "y": -19.408000000000015,
       "z": 0
     },
     "_lrot": {
@@ -27926,7 +27926,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 60,
+      "width": 54,
       "height": 26.46
     },
     "_anchorPoint": {
@@ -27957,16 +27957,16 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 123,
-      "g": 255,
-      "b": 82,
+      "r": 201,
+      "g": 192,
+      "b": 181,
       "a": 255
     },
     "_string": "集结点",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20,
-    "_fontSize": 20,
+    "_actualFontSize": 18,
+    "_fontSize": 18,
     "_fontFamily": "Arial",
     "_lineHeight": 21,
     "_overflow": 0,
@@ -28035,8 +28035,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 70,
-      "height": 70
+      "width": 60,
+      "height": 60
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -28234,7 +28234,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -25,
+      "x": -85,
       "y": 0,
       "z": 0
     },
@@ -28356,9 +28356,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 82,
-      "g": 255,
-      "b": 103,
+      "r": 170,
+      "g": 226,
+      "b": 99,
       "a": 255
     },
     "_string": "解锁\n近战兵",
@@ -29032,7 +29032,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -30,
+      "x": -75,
       "y": 0,
       "z": 0
     },
@@ -29123,7 +29123,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 44,
+      "width": 40,
       "height": 81.5
     },
     "_anchorPoint": {
@@ -29154,16 +29154,16 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 191,
-      "g": 255,
-      "b": 111,
+      "r": 195,
+      "g": 216,
+      "b": 86,
       "a": 255
     },
     "_string": "升级\n枪兵\n攻击",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 22,
-    "_fontSize": 22,
+    "_actualFontSize": 20,
+    "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 25,
     "_overflow": 0,
@@ -29232,8 +29232,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 60,
-      "height": 80
+      "width": 50,
+      "height": 70
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -29364,7 +29364,7 @@
     "customEventData": "枪兵|攻击"
   },
   {
-    "__type__": "7654eSoFXhOZYjnvRZFaCVS",
+    "__type__": "5ad35EOLxZJuqlrJP3Eg6Gh",
     "_name": "",
     "_objFlags": 0,
     "__editorExtras__": {},
@@ -29378,12 +29378,13 @@
     "battleUI": {
       "__id__": 84
     },
-    "str详情": "解锁后允许幼虫蜕变为<color=#a0ff50>枪虫</color>",
+    "enum单位": 202,
+    "enum属性": 1,
     "_id": ""
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "c9nAv95plBBp+xzt3Q+9wd"
+    "fileId": "82zIBpf2ZMqYdFgbGR3QXB"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -29763,7 +29764,7 @@
     "customEventData": "近战虫|攻击"
   },
   {
-    "__type__": "7654eSoFXhOZYjnvRZFaCVS",
+    "__type__": "5ad35EOLxZJuqlrJP3Eg6Gh",
     "_name": "",
     "_objFlags": 0,
     "__editorExtras__": {},
@@ -29777,12 +29778,13 @@
     "battleUI": {
       "__id__": 84
     },
-    "str详情": "解锁后允许幼虫蜕变为<color=#a0ff50>枪虫</color>",
+    "enum单位": 208,
+    "enum属性": 1,
     "_id": ""
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "3fKeSuDXFCFYHKhVl9WQE/"
+    "fileId": "b4HT5Ex1BLCakmp7fyWk01"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -29830,7 +29832,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -30,
+      "x": -125,
       "y": 0,
       "z": 0
     },
@@ -29921,7 +29923,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 66,
+      "width": 60,
       "height": 81.5
     },
     "_anchorPoint": {
@@ -29952,16 +29954,16 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 191,
-      "g": 255,
-      "b": 111,
+      "r": 170,
+      "g": 226,
+      "b": 99,
       "a": 255
     },
     "_string": "升级\n近战兵\n防御",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 22,
-    "_fontSize": 22,
+    "_actualFontSize": 20,
+    "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 25,
     "_overflow": 0,
@@ -30030,8 +30032,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 60,
-      "height": 80
+      "width": 50,
+      "height": 70
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -30162,7 +30164,7 @@
     "customEventData": "近战兵|防御"
   },
   {
-    "__type__": "7654eSoFXhOZYjnvRZFaCVS",
+    "__type__": "5ad35EOLxZJuqlrJP3Eg6Gh",
     "_name": "",
     "_objFlags": 0,
     "__editorExtras__": {},
@@ -30176,12 +30178,13 @@
     "battleUI": {
       "__id__": 84
     },
-    "str详情": "解锁后允许幼虫蜕变为<color=#a0ff50>枪虫</color>",
+    "enum单位": 203,
+    "enum属性": 2,
     "_id": ""
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "18YyJf7slCAorRm59OD/rQ"
+    "fileId": "d7lbYetexEyI3+MpqQQ0Is"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -33276,7 +33279,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -130,
+      "x": 0,
       "y": 280.571,
       "z": 0
     },
@@ -33317,12 +33320,12 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 250,
+      "width": 260,
       "height": 27.72
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0,
+      "x": 0.5,
       "y": 1
     },
     "_id": ""
@@ -33355,7 +33358,7 @@
       "b": 255,
       "a": 255
     },
-    "_maxWidth": 250,
+    "_maxWidth": 260,
     "_fontFamily": "Arial",
     "_font": null,
     "_isSystemFontUsed": true,
@@ -33517,7 +33520,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 128.95299999999997,
+      "x": 135.89100000000002,
       "y": 91,
       "z": 0
     },
@@ -34028,7 +34031,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -183.077,
+      "x": -180.475,
       "y": 67.063,
       "z": 0
     },
@@ -36351,7 +36354,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 20.87300000000001,
+      "x": 7.821000000000012,
       "y": -4.081000000000017,
       "z": 0
     },
@@ -36401,7 +36404,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -1.7349999999999994,
+      "x": 0,
       "y": 0,
       "z": 0
     },
@@ -36442,8 +36445,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 75,
-      "height": 65.19999999999999
+      "width": 30,
+      "height": 51.12
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -36473,18 +36476,18 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 163,
-      "g": 255,
+      "r": 255,
+      "g": 235,
       "b": 0,
       "a": 255
     },
-    "_string": "空闲工程车\n或\n空闲工虫",
+    "_string": "空闲\n工程车\n或\n工虫",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 15,
-    "_fontSize": 15,
+    "_actualFontSize": 10,
+    "_fontSize": 10,
     "_fontFamily": "Arial",
-    "_lineHeight": 20,
+    "_lineHeight": 12,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": null,
@@ -36551,8 +36554,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 60,
-      "height": 60
+      "width": 50,
+      "height": 50
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
