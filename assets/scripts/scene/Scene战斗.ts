@@ -655,6 +655,10 @@ export class Scene战斗 extends Component {
         this.battleUI.node升级近战虫攻击.active = false
         this.battleUI.node升级枪虫防御.active = false
         this.battleUI.node升级近战兵防御.active = false
+        this.battleUI.node升级三色坦克移速.active = false
+        this.battleUI.node升级飞机攻速.active = false
+        this.battleUI.node升级绿色坦克攻速.active = false
+        this.battleUI.node升级飞虫移速.active = false        
     }
 
     选中(arr: number[]) {
@@ -706,10 +710,24 @@ export class Scene战斗 extends Component {
 
                         this.如果没满级就显示(单位类型.枪虫, 单位属性类型.防御, this.battleUI.node升级枪虫防御)
                         this.如果没满级就显示(单位类型.近战虫, 单位属性类型.攻击, this.battleUI.node升级近战虫攻击)
-                        break;
-                    case 单位类型.基地:
+                        break
+                    case 单位类型.重车厂:
+                        this.battleUI.button集结点.node.active = true
+                        this.如果没满级就显示(单位类型.三色坦克, 单位属性类型.移动速度, this.battleUI.node升级三色坦克移速)
+                        break
                     case 单位类型.机场:
-                    case 单位类型.重工厂:
+                        this.battleUI.button集结点.node.active = true
+                        this.如果没满级就显示(单位类型.飞机, 单位属性类型.攻击速度, this.battleUI.node升级飞机攻速)
+                        break
+                    case 单位类型.拟态源:
+                        this.battleUI.button集结点.node.active = true
+                        this.如果没满级就显示(单位类型.绿色坦克, 单位属性类型.攻击速度, this.battleUI.node升级绿色坦克攻速)
+                        break
+                    case 单位类型.飞塔:
+                        this.battleUI.button集结点.node.active = true
+                        this.如果没满级就显示(单位类型.飞虫, 单位属性类型.移动速度, this.battleUI.node升级飞虫移速)
+                        break
+                    case 单位类型.基地:
                     case 单位类型.虫巢:
                         this.battleUI.button集结点.node.active = true
                         break;

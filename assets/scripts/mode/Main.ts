@@ -227,7 +227,7 @@ export class Main extends Component {
         this.on点击按钮_造建筑(单位类型.机场)
     }
     onClickAdd重工厂(event: Event, customEventData: string): void {
-        this.on点击按钮_造建筑(单位类型.重工厂)
+        this.on点击按钮_造建筑(单位类型.重车厂)
     }
     onClickAdd虫营(event: Event, customEventData: string): void {
         this.on点击按钮_造建筑(单位类型.虫营)
@@ -377,7 +377,7 @@ export class Main extends Component {
                 [MsgId.Login, ++this.sendMsgSn, 0, 0],
                 str登录名,
                 'Hello, world!pwd',
-                11,//版本号
+                12,//版本号
             ]
 
             const encoded = msgpack.encode(object)

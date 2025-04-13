@@ -61,6 +61,12 @@ export class BattleUI extends Component {
     @property(Node) node升级近战虫攻击: Node
     @property(Node) node升级枪虫防御: Node
     @property(Node) node升级近战兵防御: Node
+    @property(Node) node升级三色坦克移速: Node
+    @property(Node) node升级飞机攻速: Node
+    @property(Node) node升级绿色坦克攻速: Node
+    @property(Node) node升级飞虫移速: Node
+
+
 
     @property({ type: UITransform, displayName: "所有单位头顶名字" })
     uiTransform所有单位头顶名字: UITransform
