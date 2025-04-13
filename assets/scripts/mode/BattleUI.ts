@@ -309,8 +309,8 @@ export class BattleUI extends Component {
             // node.position = new Vec3(0, 0 + i * 20, 0);
             node.addComponent(UITransform).anchorX = 0
             let label = node.addComponent(Label);
-            label.fontSize = 15;
-            label.lineHeight = 18;
+            label.fontSize = 12;
+            label.lineHeight = 13;
             label.color = new Color("#FFE86D");
             label.horizontalAlign = Label.HorizontalAlign.LEFT;
             label.string = `${key} x${value}`;
