@@ -30229,8 +30229,8 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -95,
-      "y": -5,
+      "x": -35,
+      "y": 0,
       "z": 0
     },
     "_lrot": {
@@ -30561,7 +30561,7 @@
     "customEventData": "枪虫|防御"
   },
   {
-    "__type__": "7654eSoFXhOZYjnvRZFaCVS",
+    "__type__": "5ad35EOLxZJuqlrJP3Eg6Gh",
     "_name": "",
     "_objFlags": 0,
     "__editorExtras__": {},
@@ -30575,12 +30575,13 @@
     "battleUI": {
       "__id__": 84
     },
-    "str详情": "解锁后允许幼虫蜕变为<color=#a0ff50>枪虫</color>",
+    "enum单位": 207,
+    "enum属性": 2,
     "_id": ""
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "e7GAxaDchOdrRUqC+77JFA"
+    "fileId": "355lWbZNVKJrSKIZKoyJUd"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -35791,8 +35792,8 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -3.769999999999996,
-      "y": 0,
+      "x": -0.3009999999999877,
+      "y": 64.44399999999999,
       "z": 0
     },
     "_lrot": {
@@ -35997,7 +35998,9 @@
     "_disabledSprite": null,
     "_duration": 0.1,
     "_zoomScale": 1.2,
-    "_target": null,
+    "_target": {
+      "__id__": 1544
+    },
     "_id": ""
   },
   {
@@ -36348,8 +36351,8 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 50.873000000000005,
-      "y": 0,
+      "x": 20.87300000000001,
+      "y": -4.081000000000017,
       "z": 0
     },
     "_lrot": {
@@ -36398,7 +36401,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -2.842170943040401e-14,
+      "x": -1.7349999999999994,
       "y": 0,
       "z": 0
     },
@@ -36439,7 +36442,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 80,
+      "width": 75,
       "height": 65.19999999999999
     },
     "_anchorPoint": {
@@ -36478,8 +36481,8 @@
     "_string": "空闲工程车\n或\n空闲工虫",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 16,
-    "_fontSize": 16,
+    "_actualFontSize": 15,
+    "_fontSize": 15,
     "_fontFamily": "Arial",
     "_lineHeight": 20,
     "_overflow": 0,
@@ -36548,8 +36551,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 70,
-      "height": 70
+      "width": 60,
+      "height": 60
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
