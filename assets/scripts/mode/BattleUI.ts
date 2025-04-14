@@ -335,12 +335,25 @@ export class BattleUI extends Component {
         let str详情 = this.单位详情(entity, entity.类型)
         this.lable单位详情.string = str详情
     }
+    属性加等级(属性名: string, 属性基础值: number, 单位: 单位类型, 属性: 单位属性类型, 数值单位: string = '', 数值显示倍数: number = 1): string {
+        let [属性等级加数值, 属性等级] = this.属性等级加数值(单位, 属性)
+        let str详情 = 属性名 + ':' + 属性基础值 * 数值显示倍数
+
+        if (属性等级加数值)
+            str详情 += (0 < 属性等级加数值 ? '+' : ' ') + 属性等级加数值 * 数值显示倍数
+
+        str详情 += 数值单位
+
+        if (属性等级)
+            str详情 += '(' + 属性等级 + '级)'
+
+        str详情 += '\n'
+        return str详情
+    }
     单位详情(entity: ClientEntityComponent, 类型: 单位类型): string {
         const 单位 = this.main.配置.find单位(类型)
         const 制造 = this.main.配置.find制造(类型)
         const 战斗 = this.main.配置.find战斗(类型)
-        let 攻击等级加数值: number = this.属性等级加数值(类型, 单位属性类型.攻击)
-        let 防御等级加数值: number = this.属性等级加数值(类型, 单位属性类型.防御)
 
         let str详情 = 单位.名字 + '\n' + 单位.描述 + '\n'
         if (制造) {
@@ -353,34 +366,34 @@ export class BattleUI extends Component {
                 str详情 += '初始HP:' + 制造.初始HP + '\n'
         }
         if (战斗) {
-            str详情 += '攻击:' + 战斗.i32攻击
-
-            if (攻击等级加数值)
-                str详情 += '+' + 攻击等级加数值
-
-            str详情 += '\n'
-
-            if (防御等级加数值)
-                str详情 += '防御:+' + 防御等级加数值 + '\n'
-
+            str详情 += this.属性加等级('攻击', 战斗.攻击, 类型, 单位属性类型.攻击)
+            str详情 += this.属性加等级('防御', 战斗.防御, 类型, 单位属性类型.防御)
+            str详情 += this.属性加等级('移动速度', 战斗.f每帧移动距离, 类型, 单位属性类型.移动速度, '米/秒', 10)
 
             str详情 += '警戒距离:' + 战斗.f警戒距离 + '米\n' +
-                '攻击距离:' + 战斗.f攻击距离 + '米\n' +
-                '移动速度:' + 战斗.f每帧移动距离 * 10 + '米/秒\n'
+                '攻击距离:' + 战斗.f攻击距离 + '米\n'
 
-            let 前摇毫秒 = 战斗.dura开始播放攻击动作 + 战斗.dura开始伤害
-            if (0 < 前摇毫秒)
-                str详情 += '攻击前摇:' + 前摇毫秒 + '毫秒\n'
+            // let 前摇毫秒 = 战斗.dura开始播放攻击动作 + 战斗.dura开始伤害
+            // if (0 < 前摇毫秒)
+            //     str详情 += '攻击前摇:' + 前摇毫秒 + '毫秒\n'
+            str详情 += this.属性加等级('攻击前摇', 战斗.dura开始播放攻击动作 + 战斗.dura开始伤害, 类型, 单位属性类型.攻击前摇_伤害耗时, '毫秒')
 
             if (0 < 战斗.dura后摇)
                 str详情 += '攻击后摇:' + 战斗.dura后摇 + '毫秒\n'
         }
         return str详情
     }
-    属性等级加数值(类型: 单位类型, 属性: 单位属性类型) {
+    属性等级加数值(类型: 单位类型, 属性: 单位属性类型): [number, number] {
         let 单位属性 = this.scene战斗.obj属性等级[类型]
         let 属性等级 = 单位属性 ? 单位属性[属性] : null
-        return 属性等级 ? this.main.配置.find单位属性等级加数值(类型, 属性, 属性等级) : null
+        if (null == 属性等级)
+            return [null, null]
+
+        let 等级数值 = this.main.配置.find单位属性等级加数值(类型, 属性, 属性等级)
+        if (null == 等级数值)
+            return [null, null]
+
+        return [等级数值, 属性等级]
     }
     on取消点击地面() {
         this.main.fun创建消息 = null

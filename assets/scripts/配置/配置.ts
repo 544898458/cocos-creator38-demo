@@ -257,7 +257,7 @@ export enum 单位属性类型
 	防御,
 	HP,
 	移动速度,
-	攻击速度,
+	攻击前摇_伤害耗时,
 	攻击范围,
 };
 
@@ -272,7 +272,8 @@ export class 战斗配置 {
 	类型: 单位类型
 	f警戒距离: number
 	f攻击距离: number
-	i32攻击: number
+	攻击: number
+	防御: number
 	f每帧移动距离: number
 	dura开始播放攻击动作: number//毫秒，（前摇第1部分）
 	dura开始伤害: number//毫秒，（前摇第2部分）
