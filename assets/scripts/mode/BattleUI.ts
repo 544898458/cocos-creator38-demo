@@ -174,7 +174,7 @@ export class BattleUI extends Component {
     onClick镜头缩小(event: Event, customEventData: string) {
         this.scene战斗.镜头缩小()
     }
-    onClickAdd兵(event: Event, customEventData: string): void {
+    onClickAdd活动单位(event: Event, customEventData: string): void {
         this.main.onClick造活动单位(event, customEventData)
     }
     onClick造坦克(event: Event, customEventData: string): void {
