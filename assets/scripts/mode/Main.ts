@@ -1181,7 +1181,7 @@ export class Main extends Component {
                 // console.log(old.view.name, 'state', state, 'old.skeletalAnimation', old.skeletalAnimation)
             }
         }
-        else if (old.view.name == '工虫' || old.view.name == '幼虫') {
+        else if (old.view.name == '工虫') {
             old.skeletalAnimation.play()
             if (strClipName == 'idle') {
                 let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[0])

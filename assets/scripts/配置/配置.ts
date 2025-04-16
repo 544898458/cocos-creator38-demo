@@ -310,7 +310,10 @@ export class 配置 {
 		this.读取1个配置文件<单位属性等级配置>('单位属性等级', (arr) => this.arr单位属性等级 = arr)
 	}
 	读取1个配置文件<T>(strName: string, fun: (arr: Array<T>) => void) {
-		assetManager.loadRemote('https://www.rtsgame.online/配置/' + strName + '.yaml', { ext: '.txt' },
+
+		// let url = 'https://www.rtsgame.online/配置/'
+		let url = 'https://www.rtsgame.online/配置2/'
+		assetManager.loadRemote(url + strName + '.yaml', { ext: '.txt' },
 			(err, textAsset: TextAsset) => {
 				console.log(err, textAsset)
 				let arr = parse(textAsset.text) as Array<T>;
