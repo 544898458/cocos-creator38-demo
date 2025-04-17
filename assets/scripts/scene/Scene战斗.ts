@@ -941,7 +941,7 @@ export class Scene战斗 extends Component {
     }
     Set苔蔓半径(idEntity: number, 半径: number) {
         let entity = this.entities.get(idEntity)
-        entity.view?.getComponent(苔蔓Component).Set半径(半径)
+        entity.view?.getChildByName('苔蔓').getComponent(苔蔓Component).Set半径(半径)
     }
 
 }
