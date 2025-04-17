@@ -15,6 +15,7 @@ import { MsgId, 单位属性类型, 单位类型, 配置 } from '../配置/配�
 import { Tween } from 'cc'
 import { AnimationState } from 'cc'
 import { 按下按钮显示单位详情Component } from '../component/按下按钮显示单位详情Component'
+import { 苔蔓Component } from '../component/苔蔓Component'
 
 const { ccclass, property } = _decorator
 
@@ -582,6 +583,7 @@ export class Main extends Component {
                             thisLocal.scene战斗.entityId[newNode.uuid] = id
                             //newNode.position = new Vec3(posX, 0, 0)
                             // console.log('resources.load newNode', newNode)
+                            
                             old.view = newNode
                             let 单位配置 = this.配置.find单位(old.类型)
                             if (newNode.name == '基地')
@@ -629,6 +631,9 @@ export class Main extends Component {
                             else if (单位配置 && 单位配置.动画节点路径) {
                                 old.skeletalAnimation = newNode.getChildByName(单位配置.动画节点路径).getComponent(SkeletalAnimation)
                                 console.log('骨骼动画', 单位配置.动画节点路径, old.skeletalAnimation)
+                            }else if(单位类型.苔蔓 == old.类型){
+                                old.view.getChildByName('苔蔓').getComponent(苔蔓Component).Set半径(old.苔蔓半径)
+                            
                             } else
                                 old.skeletalAnimation = newNode.getComponent(SkeletalAnimation)
 

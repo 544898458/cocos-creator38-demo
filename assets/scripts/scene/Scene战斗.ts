@@ -40,6 +40,7 @@ export class ClientEntityComponent {
     prefabName: string
     类型: 单位类型 = 单位类型.单位类型_Invalid_0
     tween移动: Tween<Node>
+    苔蔓半径: number
     removeFromParent() {
         this.view?.removeFromParent()
         this.nodeName?.removeFromParent()
@@ -941,6 +942,7 @@ export class Scene战斗 extends Component {
     }
     Set苔蔓半径(idEntity: number, 半径: number) {
         let entity = this.entities.get(idEntity)
+        entity.苔蔓半径 = 半径
         entity.view?.getChildByName('苔蔓').getComponent(苔蔓Component).Set半径(半径)
     }
 
