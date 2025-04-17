@@ -977,6 +977,13 @@ export class Main extends Component {
                     this.scene战斗.obj属性等级 = dict属性等级
                 }
                 break
+            case MsgId.苔蔓半径:
+                {
+                    let idEntity = arr[idxArr++] as number
+                    let 半径 = arr[idxArr++] as number
+                    thisLocal.scene战斗.Set苔蔓半径(idEntity, 半径)
+                }
+                break
             default:
                 console.error('msgId=', msgId)
                 break

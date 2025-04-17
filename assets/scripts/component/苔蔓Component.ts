@@ -6,8 +6,8 @@ import { MeshCreator } from './MeshCreator';
 import { vec2Pool, vec3Pool } from './MathUtils';
 const { ccclass, property } = _decorator;
 
-@ccclass('菌毯Component')
-export class 菌毯Component extends Component {
+@ccclass('苔蔓Component')
+export class 苔蔓Component extends Component {
     @property({ type: Material })
     material: Material = null;
 
@@ -107,4 +107,10 @@ export class 菌毯Component extends Component {
             meshRenderer.material = this.material;
         }
     }
+
+    Set半径(半径: number) {
+        this.radius = 半径
+        this.createCircleMesh()
+    }
+    
 }

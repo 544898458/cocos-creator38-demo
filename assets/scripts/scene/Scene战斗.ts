@@ -19,6 +19,7 @@ import { ImageAsset } from 'cc'
 import { Tween } from 'cc'
 import { AudioSource } from 'cc'
 import { MsgId, 单位属性类型, 单位类型 } from '../配置/配置'
+import { 苔蔓Component } from '../component/苔蔓Component'
 
 const { ccclass, property } = _decorator
 export class ClientEntityComponent {
@@ -938,6 +939,11 @@ export class Scene战斗 extends Component {
         if (null != 单位属性等级加数值)
             node升级按钮.active = true
     }
+    Set苔蔓半径(idEntity: number, 半径: number) {
+        let entity = this.entities.get(idEntity)
+        entity.view?.getComponent(苔蔓Component).Set半径(半径)
+    }
+
 }
 
 
