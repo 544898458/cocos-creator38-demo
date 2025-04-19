@@ -47,7 +47,7 @@ export class 苔蔓Component extends Component {
             const posWorld顶点 = new Vec3(x, 0, z).add(posWorld节点);
             
             // vertices.push(.add3f(posWorld.x, 0, posWorld.z));
-            let 地板半边长 = 50
+            let 地板半边长 = 100
             let uv = new Vec2(0.5 + posWorld顶点.x / (2 * 地板半边长), 0.5 + posWorld顶点.z / (2 * 地板半边长))
             uvs.push(uv);
             vertices2.push(x, 0, z);
