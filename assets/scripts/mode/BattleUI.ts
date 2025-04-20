@@ -65,7 +65,7 @@ export class BattleUI extends Component {
     @property(Node) node升级飞机攻速: Node
     @property(Node) node升级绿色坦克攻速: Node
     @property(Node) node升级飞虫移速: Node
-
+    @property(Node) node太岁分裂: Node;
 
 
     @property({ type: UITransform, displayName: "所有单位头顶名字" })
@@ -97,6 +97,7 @@ export class BattleUI extends Component {
 
     lastTitle: Node
     b菱形框选: boolean = false //切换菱形框选和矩形框选两种模式
+    
 
     start() {
         this.main = director.getScene().getChildByName('常驻').getComponent(Main);
@@ -132,9 +133,18 @@ export class BattleUI extends Component {
             AudioMgr.inst.playOneShot('BUZZ')
             return
         }
-        // this.scene战斗.b强行走 = true
         this.scene战斗.main.fun创建消息 = this.scene战斗.main.createMsgMove强行走
         this.scene战斗.battleUI.lable系统消息.string = '行走过程不会攻击敌人，请点击地面确定目的地'
+        this.进入点击地面状态()
+    }
+    on太岁分裂(event: Event, customEventData: string) {
+        if (0 == this.main.arr选中.length) {
+            this.scene战斗.battleUI.lable系统消息.string = '请先选中太岁'
+            AudioMgr.inst.playOneShot('BUZZ')
+            return
+        }
+        this.scene战斗.main.fun创建消息 = this.scene战斗.main.createMsg太岁分裂
+        this.scene战斗.battleUI.lable系统消息.string = '请在选中太岁的苔蔓(wàn)上放置分裂的太岁'
         this.进入点击地面状态()
     }
     on原地坚守(event: Event, customEventData: string) {

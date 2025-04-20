@@ -660,7 +660,8 @@ export class Scene战斗 extends Component {
         this.battleUI.node升级三色坦克移速.active = false
         this.battleUI.node升级飞机攻速.active = false
         this.battleUI.node升级绿色坦克攻速.active = false
-        this.battleUI.node升级飞虫移速.active = false        
+        this.battleUI.node升级飞虫移速.active = false     
+        this.battleUI.node太岁分裂.active = false   
     }
 
     选中(arr: number[]) {
@@ -729,6 +730,9 @@ export class Scene战斗 extends Component {
                         this.battleUI.button集结点.node.active = true
                         this.如果没满级就显示(单位类型.飞虫, 单位属性类型.移动速度, this.battleUI.node升级飞虫移速)
                         break
+                    case 单位类型.太岁:
+                        this.battleUI.node太岁分裂.active = true
+                        break;
                     case 单位类型.基地:
                     case 单位类型.虫巢:
                         this.battleUI.button集结点.node.active = true

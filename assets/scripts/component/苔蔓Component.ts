@@ -51,7 +51,7 @@ export class 苔蔓Component extends Component {
             let uv = new Vec2(0.5 + posWorld顶点.x / (2 * 地板半边长), 0.5 + posWorld顶点.z / (2 * 地板半边长))
             uvs.push(uv);
             vertices2.push(x, 0, z);
-            console.log('点', x, z);
+            // console.log('点', x, z);
             let p = vec3Pool.alloc().set(x, 0, z);
             this._meshCreator.verticles.push(p);
             this._meshCreator.uvs.push(uv);

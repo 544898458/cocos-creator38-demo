@@ -92,6 +92,10 @@ export class Main extends Component {
         console.log('createMsg造建筑', hitPoint)
         return [[MsgId.建筑产出活动单位的集结点, ++this.sendMsgSn, 0], [hitPoint.x, hitPoint.z]]
     }
+    createMsg太岁分裂(hitPoint: Vec3) {
+        console.log('createMsg太岁分裂', hitPoint)
+        return [[MsgId.太岁分裂, ++this.sendMsgSn, 0], [hitPoint.x, hitPoint.z]]
+    }
     static Is活动单位(类型: 单位类型): boolean {
         return 单位类型.活动单位Min非法 < 类型 && 类型 < 单位类型.活动单位Max非法;
     }
@@ -583,7 +587,7 @@ export class Main extends Component {
                             thisLocal.scene战斗.entityId[newNode.uuid] = id
                             //newNode.position = new Vec3(posX, 0, 0)
                             // console.log('resources.load newNode', newNode)
-                            
+
                             old.view = newNode
                             let 单位配置 = this.配置.find单位(old.类型)
                             if (newNode.name == '基地')
@@ -630,10 +634,10 @@ export class Main extends Component {
                             }
                             else if (单位配置 && 单位配置.动画节点路径) {
                                 old.skeletalAnimation = newNode.getChildByName(单位配置.动画节点路径).getComponent(SkeletalAnimation)
-                                console.log('骨骼动画', 单位配置.动画节点路径, old.skeletalAnimation)
-                            }else if(单位类型.苔蔓 == old.类型){
+                                // console.log('骨骼动画', 单位配置.动画节点路径, old.skeletalAnimation)
+                            } else if (单位类型.苔蔓 == old.类型) {
                                 old.view.getChildByName('苔蔓').getComponent(苔蔓Component).Set半径(old.苔蔓半径)
-                            
+
                             } else
                                 old.skeletalAnimation = newNode.getComponent(SkeletalAnimation)
 
@@ -735,7 +739,7 @@ export class Main extends Component {
 
                     if (old.view) {
 
-                        if (!old.view.position || old.view.position.clone().subtract(old.position).lengthSqr() > 5) {
+                        if (!old.view.position || old.view.position.clone().subtract(old.position).lengthSqr() > 20) {
                             old.view.position = old.position
                             old.view.eulerAngles = new Vec3(0, eulerAnglesY, 0)
                         }
@@ -757,7 +761,8 @@ export class Main extends Component {
                                 // old.hpbar&&(old.hpbar.getComponent(ProgressBar).progress = old.hp / old.hpMax);//todo等后端传最大血量 20测试用
                             }
                             // if (quat)
-                            old.tween移动 = tween(old.view).to(0.15, { position: old.position, eulerAngles: new Vec3(0, eulerAnglesY, 0) })
+                            let 延时 = 0.15 // this.配置.find战斗(old.类型).f每帧移动距离
+                            old.tween移动 = tween(old.view).to(延时, { position: old.position, eulerAngles: new Vec3(0, eulerAnglesY, 0) })
                             // else
                             // old.view.eulerAngles = new Vec3(0, eulerAnglesY, 0)
                             // old.tween移动 = tween(old.view).to(0.15, { position: old.position })
@@ -1093,7 +1098,7 @@ export class Main extends Component {
         this.send(encoded)
     }
     static 播放动作(old: ClientEntityComponent, strClipName: string, loop: boolean) {
-        console.log('strClipName', strClipName, 'old.view.name', old.view.name, 'loop', loop)
+        // console.log('strClipName', strClipName, 'old.view.name', old.view.name, 'loop', loop)
         const str星2动作: string = 'Take 001'
         if (old.view.name == '跳虫') {
             old.skeletalAnimation.play(str星2动作)
@@ -1261,7 +1266,7 @@ export class Main extends Component {
             let state: AnimationState
             if (Number.isInteger(indexClip) && indexClip < 10) {
                 //必须在编辑器里随便设置一个默认剪辑，否则无法播放
-                console.log('indexClip', indexClip, old)
+                // console.log('indexClip', indexClip, old)
                 old.skeletalAnimation.play()
                 state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[indexClip])
                 // state.wrapMode = AnimationClip.WrapMode.Loop
@@ -1269,7 +1274,7 @@ export class Main extends Component {
                 state.speed = 1
                 state.time = 0
                 old.skeletalAnimation.play()
-                console.log('indexClip', indexClip, old)
+                // console.log('indexClip', indexClip, old)
             } else {
                 old.skeletalAnimation.play(strClipName)
                 state = old.skeletalAnimation.getState(strClipName)
