@@ -205,6 +205,7 @@ export
 
 	特效,
 	视口,
+	苔蔓,	//Creep
 
 	资源Min非法 = 100,
 	晶体矿,//Minerals
@@ -242,7 +243,6 @@ export
 	飞塔,//Spore Conlony
 	拟态源,//拟态源，原创，绿色坦克前置建筑
 	太岁,	//Creep Colony
-	苔蔓,	//Creep
 
 	建筑Max非法,
 
