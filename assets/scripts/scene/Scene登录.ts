@@ -153,8 +153,10 @@ export class Scene登录 extends Component {
     onClick微信小游戏内打开游戏圈(event: Event, customEventData: string) {
         const pageManager = wx.createPageManager();
 
+        //在这里获取链接
+        // https://mp.weixin.qq.com/wxamp/frame/pluginRedirect/pluginRedirect?title=&action=plugin_redirect&lang=zh_CN&plugin_uin=1029&simple=1&nosidebar=1&custom=jump_page%3Dcontent-manage&token=1691532200
         pageManager.load({
-            openlink: '-SSEykJvFV3pORt5kTNpS0deg0PdxuJJSkUnhq8VuwmiCOlSerKbw3_eQMoQsKtG7u7ovcU2tf3Ri8TFTIT7JiRqpt6_p8D30pvzUtRVzPZyRcmFaNgsm5t0jZPvnltbvWo4Wtm_nR4hzmLJVodYYBBYes4VRydM4PXFgtlepB_Lx0tu-_mGT_4EDgkfWYblacfaemzG5t5p5C3a-YGQln7uvJrtBmo9oZ3YFOxrCUroBMr0KyI26YHX3p3ikM4COFCXY3--BYqKqlPpYvp7nNBA9EVIHzNyWHWiUdYyZizvU08S6KxH1XMyUozv-qWvW0NwhaBys1Md-_AcwIhLqw', // https://mp.weixin.qq.com/wxamp/frame/pluginRedirect/pluginRedirect?title=&action=plugin_redirect&lang=zh_CN&plugin_uin=1029&simple=1&nosidebar=1&custom=jump_page%3Dcontent-manage&token=1691532200
+            openlink: '-SSEykJvFV3pORt5kTNpS0deg0PdxuJJSkUnhq8VuwmiCOlSerKbw3_eQMoQsKtG7u7ovcU2tf3Ri8TFTIT7JiRqpt6_p8D30pvzUtRVzPZyRcmFaNgsm5t0jZPvnltbvWo4Wtm_nR4hzmLJVodYYBBYes4VRydM4PXFgtlepB_Lx0tu-_mGT_4EDgkfWYblacfaemzG5t5p5C3a-YGQln7uvJrtBmo9oZ3YFOxrCUroBMr0KyI26YHX3p3ikM4COFCXY3--BYqKqlPpYvp7nNBA9EVIHzNyWHWiUdYyZizvU08S6KxH1XMyUozv-qWvW0NwhaBys1Md-_AcwIhLqw',
         }).then((res: any) => {
             // 加载成功，res 可能携带不同活动、功能返回的特殊回包信息（具体请参阅渠道说明）
             console.log(res);
@@ -168,11 +170,11 @@ export class Scene登录 extends Component {
         })
     }
     onClick玩家QQ群(event: Event, customEventData: string) {
-        // window.open('https://qm.qq.com/cgi-bin/qm/qr?k=1015518075');
-        window.open("https://qm.qq.com/cgi-bin/qm/qr?k=1015518075")
+        //在这里获取链接
+        //https://qun.qq.com/#/handy-tool/join-group
+        window.open("https://qm.qq.com/cgi-bin/qm/qr?k=uKSxRp6smVkEPkKdFTfPJ9LpS_fy1-IH&jump_from=webapi&authKey=94/gex13gRVyrye9ScLqliCQQ3m7kWWRHyYgo82kp1eEuHOdkZOaLHufZDubw6WQ")
     }
     onClick百度贴吧(event: Event, customEventData: string) {
-        // window.open('https://tieba.baidu.com/f?kw=%E5%8D%B3%E6%97%B6%E6%88%98%E7%95%A5%E6%8C%87%E6%8C%A5');
         window.open("https://tieba.baidu.com/f?kw=%E5%8D%B3%E6%97%B6%E6%88%98%E7%95%A5%E6%8C%87%E6%8C%A5")
     }
     onClick别人的个人战局列表(event: Event, customEventData: string) {
