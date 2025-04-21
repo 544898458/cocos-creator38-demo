@@ -30,7 +30,7 @@ export class 按下按钮显示属性详情Component extends 按下按钮显示�
         let 升级后等级 = 当前属性等级 + 1
         let 升级后加数值 = this.battleUI.main.配置.find单位属性等级加数值(this.enum单位, this.enum属性, 升级后等级)
         if (升级后加数值) 
-            str += '\n\n升级后:\n' + 属性名称 + ': +' + 升级后加数值 + '(' + 升级后加数值 + '级)'
+            str += '\n\n升级后:\n' + 属性名称 + ': +' + 升级后加数值 + '(' + 升级后等级 + '级)'
         else
             str +='\n\n已满级'
 
