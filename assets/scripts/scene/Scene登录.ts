@@ -21,8 +21,10 @@ export class Scene登录 extends Component {
 
     @property({ type: EditBox })
     editBox登录名: EditBox
-    @property({ type: Node})
-    node跳转社区: Node
+    @property({ type: Node })
+    node跳转社区浏览器H5: Node
+    @property({ type: Node })
+    node跳转社区微信小游戏: Node
     @property({ type: Node, displayName: "个人战局列表面板" })
     node个人战局列表面板: Node
     @property({ type: Node, displayName: "个人战局列表" })
@@ -61,9 +63,10 @@ export class Scene登录 extends Component {
 
         this.editBox登录名.string = sys.localStorage.getItem(KEY_登录名)
         this.main.微信小游戏允许分享()
-        if (sys.isBrowser) {
-            this.node跳转社区.active = true
-        }
+        if (sys.isBrowser)
+            this.node跳转社区浏览器H5.active = true
+        else
+            this.node跳转社区微信小游戏.active = true
     }
     start() {
         console.log('Scene登录.start')
@@ -71,9 +74,9 @@ export class Scene登录 extends Component {
         if (this.main.strHttps登录场景音乐Mp3) {
             assetManager.loadRemote(this.main.strHttps登录场景音乐Mp3, (err, clip: AudioClip) => {
                 console.log('resources.load callback:', err, clip)
-                if(!this.audioSource)
+                if (!this.audioSource)
                     return
-                
+
                 this.audioSource.stop()
                 this.audioSource.clip = clip
                 this.audioSource.play()
@@ -113,7 +116,7 @@ export class Scene登录 extends Component {
     }
     onClickToggle进单人攻坚战(event: Event, customEventData: string) {
         this.main.onClick进攻坚战()
-    }    
+    }
     onClickToggle进单人攻坚战_虫(event: Event, customEventData: string) {
         this.main.onClick进攻坚战_虫()
     }
@@ -130,11 +133,11 @@ export class Scene登录 extends Component {
                 extraData: {
                     // 可以传递额外的数据，如果需要
                 },
-                success(res) {
+                success(res: any) {
                     // 跳转成功后的回调
                     console.log('跳转成功', res);
                 },
-                fail(res) {
+                fail(res: any) {
                     // 跳转失败后的回调
                     console.log('跳转失败', res);
                 }
@@ -144,13 +147,33 @@ export class Scene登录 extends Component {
             this.lableMessage.string = '请搜索公众号：<color=#ffff00>即时战略指挥</color>'
         }
     }
+    onClick浏览器H5打开游戏圈(event: Event, customEventData: string) {
+        window.open('https://game.weixin.qq.com/cgi-bin/comm/openlink?auth_appid=wx62d9035fd4fd2059&url=https%3A%2F%2Fgame.weixin.qq.com%2Fcgi-bin%2Fh5%2Flite%2Fcirclecenter%2Findex.html%3Fwechat_pkgid%3Dlite_circlecenter%26liteapp%3Dliteapp%253A%252F%252Fwxalited17d79803d8c228a7eac78129f40484c%253Fpath%253Dpages%25252Findex%25252Findex%26appid%3Dwx57e5c006d2ac186e%26ssid%3D30%23wechat_redirect')
+    }
+    onClick微信小游戏内打开游戏圈(event: Event, customEventData: string) {
+        const pageManager = wx.createPageManager();
+
+        pageManager.load({
+            openlink: '-SSEykJvFV3pORt5kTNpS0deg0PdxuJJSkUnhq8VuwmiCOlSerKbw3_eQMoQsKtG7u7ovcU2tf3Ri8TFTIT7JiRqpt6_p8D30pvzUtRVzPZyRcmFaNgsm5t0jZPvnltbvWo4Wtm_nR4hzmLJVodYYBBYes4VRydM4PXFgtlepB_Lx0tu-_mGT_4EDgkfWYblacfaemzG5t5p5C3a-YGQln7uvJrtBmo9oZ3YFOxrCUroBMr0KyI26YHX3p3ikM4COFCXY3--BYqKqlPpYvp7nNBA9EVIHzNyWHWiUdYyZizvU08S6KxH1XMyUozv-qWvW0NwhaBys1Md-_AcwIhLqw', // https://mp.weixin.qq.com/wxamp/frame/pluginRedirect/pluginRedirect?title=&action=plugin_redirect&lang=zh_CN&plugin_uin=1029&simple=1&nosidebar=1&custom=jump_page%3Dcontent-manage&token=1691532200
+        }).then((res: any) => {
+            // 加载成功，res 可能携带不同活动、功能返回的特殊回包信息（具体请参阅渠道说明）
+            console.log(res);
+
+            // 加载成功后按需显示
+            pageManager.show();
+
+        }).catch((err: any) => {
+            // 加载失败，请查阅 err 给出的错误信息
+            console.error(err);
+        })
+    }
     onClick玩家QQ群(event: Event, customEventData: string) {
         // window.open('https://qm.qq.com/cgi-bin/qm/qr?k=1015518075');
-        window.location.href = "https://qm.qq.com/cgi-bin/qm/qr?k=1015518075";
+        window.open("https://qm.qq.com/cgi-bin/qm/qr?k=1015518075")
     }
     onClick百度贴吧(event: Event, customEventData: string) {
         // window.open('https://tieba.baidu.com/f?kw=%E5%8D%B3%E6%97%B6%E6%88%98%E7%95%A5%E6%8C%87%E6%8C%A5');
-        window.location.href = "https://tieba.baidu.com/f?kw=%E5%8D%B3%E6%97%B6%E6%88%98%E7%95%A5%E6%8C%87%E6%8C%A5";
+        window.open("https://tieba.baidu.com/f?kw=%E5%8D%B3%E6%97%B6%E6%88%98%E7%95%A5%E6%8C%87%E6%8C%A5")
     }
     onClick别人的个人战局列表(event: Event, customEventData: string) {
         this.main.onClick获取别人的个人战局列表(event, customEventData)
