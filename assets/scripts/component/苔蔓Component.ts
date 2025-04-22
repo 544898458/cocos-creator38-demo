@@ -4,6 +4,10 @@ import { utils } from 'cc';
 import { _decorator, Component, Node, Mesh, Vec3, Vec2, Material, geometry, MeshRenderer } from 'cc';
 import { MeshCreator } from './MeshCreator';
 import { vec2Pool, vec3Pool } from './MathUtils';
+import { Texture } from '../../../extensions/extensions_mesh/@types/packages/engine-extends/@types/glTF';
+import { assetManager } from 'cc';
+import { Texture2D } from 'cc';
+import { ImageAsset } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('苔蔓Component')
@@ -45,7 +49,7 @@ export class 苔蔓Component extends Component {
             const z = Math.sin(angle) * this.radius;
             const posWorld节点 = this.node.getWorldPosition(this.node.position);
             const posWorld顶点 = new Vec3(x, 0, z).add(posWorld节点);
-            
+
             // vertices.push(.add3f(posWorld.x, 0, posWorld.z));
             let 地板半边长 = 100
             let uv = new Vec2(0.5 + posWorld顶点.x / (2 * 地板半边长), 0.5 + posWorld顶点.z / (2 * 地板半边长))
@@ -106,11 +110,21 @@ export class 苔蔓Component extends Component {
             meshRenderer.mesh = mesh;
             meshRenderer.material = this.material;
         }
+        assetManager.loadRemote('https://www.rtsgame.online/图片/苔蔓1024.png', (err, imageAsset: ImageAsset) => {
+            console.log('苔蔓贴图resources.load callback:', err, imageAsset)
+            // console.log(this.material.getProperty('albedoMap'))
+            // console.log(this.material.getProperty('mainTexture'))
+            let texture:Texture2D = this.material.getProperty('mainTexture') as Texture2D
+            texture.image = imageAsset;
+            console.log(texture)
+            this.material.setProperty('mainTexture', texture);
+
+        })
     }
 
     Set半径(半径: number) {
         this.radius = 半径
         this.createCircleMesh()
     }
-    
+
 }

@@ -577,7 +577,7 @@ export class Main extends Component {
                             old.initClipName = 单位配置.空闲动作
 
                         resources.load(prefabName, Prefab, (err, prefab) => {
-                            // console.log('resources.load callback:', err, prefab)
+                            console.log('resources.load callback:', err, prefab)
                             if (!thisLocal.scene战斗.roles) {
                                 console.warn('已离开战斗场景')
                                 return
@@ -614,10 +614,6 @@ export class Main extends Component {
                                 old.skeletalAnimation = newNode.getChildByName('barracks').getComponent(Animation)
                                 // old.initClipName = '平常状态'
                                 // console.log('兵厂骨骼动画', old.skeletalAnimation)
-                            } else if (newNode.name == '孵化场') {
-                                old.skeletalAnimation = newNode.getChildByName('hatchery_skin').getComponent(SkeletalAnimation)
-                                // old.initClipName = '平常状态'
-                                // console.log('孵化场骨骼动画', old.skeletalAnimation)
                             } else if (newNode.name == '近战兵') {
                                 old.skeletalAnimation = newNode.getChildByName('Idle').getComponent(SkeletalAnimation)
                                 // old.initClipName = '平常状态'
