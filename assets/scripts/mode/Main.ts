@@ -650,23 +650,37 @@ export class Main extends Component {
 
                             old.nodeName = instantiate(nodeRoleName)
                             node所有单位头顶名字.addChild(old.nodeName)
-                            let calculateHPLength = 1;
+                            
                             if (newNode.name != "smoke") {
-                                let nodeRoleHp = utils.find("RoleHp", node所有单位头顶名字)
-                                old.hpbar = instantiate(nodeRoleHp)
-                                old.hpbar.active = true;
-                                node所有单位头顶名字.addChild(old.hpbar)
+                                let nodeRoleHp = utils.find("血条", node所有单位头顶名字)
+                                old.node血条 = instantiate(nodeRoleHp)
+                                old.node血条.active = true;
+                                node所有单位头顶名字.addChild(old.node血条)
 
                                 if (hpMax <= 0)
-                                    old.hpbar.active = false
+                                    old.node血条.active = false
                                 else {
-                                    old.hpbar.getComponent(ProgressBar).progress = old.hp / old.hpMax;//todo等后端传最大血量 20测试用
-                                    calculateHPLength = Math.pow(old.hpMax, 0.5) / 3.0;
+                                    old.node血条.getComponent(ProgressBar).progress = old.hp / old.hpMax
+                                    let calculateHPLength = Math.pow(old.hpMax, 0.5) / 3.0
+
+                                    let headScal = old.node血条.getComponent(HeadScale)
+                                    headScal.target = utils.find("血条", newNode)
+                                    headScal._hpValueScale = calculateHPLength;
                                 }
 
-                                let headScal = old.hpbar.getComponent(HeadScale)
-                                headScal.target = utils.find("血条", newNode)
-                                headScal._hpValueScale = calculateHPLength;
+
+                                if (0 < old.能量Max) {
+                                    let node能量条 = utils.find("能量条", node所有单位头顶名字)
+                                    old.node能量条 = instantiate(node能量条)
+                                    old.node能量条.active = true;
+                                    node所有单位头顶名字.addChild(old.node能量条)
+                                    old.node能量条.getComponent(ProgressBar).progress = old.能量 / old.能量Max
+                                    let 能量条长 = Math.pow(old.能量Max, 0.5) / 3.0
+                                    let headScal = old.node能量条.getComponent(HeadScale)
+                                    headScal.target = utils.find("能量条", newNode)
+                                    headScal._hpValueScale = 能量条长;
+                                }
+
                             }
                             old.labelName = old.nodeName.getComponent(Label)
                             {
@@ -713,7 +727,8 @@ export class Main extends Component {
                     let posX = arr[idxArr++]
                     let posZ = arr[idxArr++]
                     let eulerAnglesY = arr[idxArr++]
-                    let hp = arr[5]
+                    let hp = arr[idxArr++]
+                    let 能量 = arr[idxArr++]
                     // console.log(arr)
 
                     let old = thisLocal.scene战斗?.entities.get(id)
@@ -726,12 +741,18 @@ export class Main extends Component {
                     let posNew = new Vec3(posX, 0, posZ)
                     old.position = posNew
                     old.hp = hp
-                    if (old.hpbar) {
-                        let progressBar = old.hpbar.getComponent(ProgressBar)
+                    old.能量 = 能量
+
+                    if (old.node血条) {
+                        let progressBar = old.node血条.getComponent(ProgressBar)
                         if (old.hpMax > 0)
-                            progressBar.progress = hp / old.hpMax//todo等后端传最大血量 20测试用
+                            progressBar.progress = hp / old.hpMax
                         else
-                            old.hpbar.active = false //资源没有血量
+                            old.node血条.active = false //资源没有血量
+                    }
+                    if (old.node能量条) {
+                        let progressBar = old.node能量条.getComponent(ProgressBar)
+                        progressBar.progress = old.能量 / old.能量Max
                     }
                     //console.log('hp', hp, old.hpMax)
 

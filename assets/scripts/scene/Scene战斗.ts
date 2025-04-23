@@ -34,9 +34,11 @@ export class ClientEntityComponent {
     nickName: string
     entityName: string
     position: Vec3//刚进地图Load没结束无法设置node坐标，暂存
-    hpbar: Node;
+    node血条: Node
     hp: number = 0
     hpMax: number = 0
+    node能量条: Node
+    能量: number = 0
     能量Max: number = 0
     prefabName: string
     类型: 单位类型 = 单位类型.单位类型_Invalid_0
@@ -46,7 +48,8 @@ export class ClientEntityComponent {
         this.view?.removeFromParent()
         this.nodeName?.removeFromParent()
         this.node描述?.removeFromParent()
-        this.hpbar?.removeFromParent()
+        this.node血条?.removeFromParent()
+        this.node能量条?.removeFromParent()
     }
     显示头顶名字(b显示单位类型: boolean): void {
         if (!this.labelName)
