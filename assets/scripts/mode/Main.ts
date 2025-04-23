@@ -555,8 +555,9 @@ export class Main extends Component {
                     let nickName: string = arr[idxArr++]
                     let entityName: string = arr[idxArr++]
                     let prefabName: string = arr[idxArr++]
-                    let hpMax: number = arr[idxArr++]
                     let 类型: number = arr[idxArr++] as 单位类型
+                    let hpMax: number = arr[idxArr++]
+                    let 能量Max: number = arr[idxArr++]
                     console.log(id, nickName, prefabName, '进来了,hpMax', hpMax)
                     if (!thisLocal.scene战斗) {
                         // console.log(
@@ -566,6 +567,7 @@ export class Main extends Component {
                     if (old == undefined) {
                         old = new ClientEntityComponent()
                         old.hpMax = hpMax
+                        old.能量Max = 能量Max
                         old.prefabName = prefabName
                         old.类型 = 类型
                         thisLocal.scene战斗.entities.set(id, old)
@@ -1094,7 +1096,7 @@ export class Main extends Component {
         this.send(encoded)
     }
     static 播放动作(old: ClientEntityComponent, strClipName: string, loop: boolean) {
-        // console.log('strClipName', strClipName, 'old.view.name', old.view.name, 'loop', loop)
+        console.log('strClipName', strClipName, 'old.view.name', old.view.name, 'loop', loop)
         const str星2动作: string = 'Take 001'
         if (old.view.name == '跳虫') {
             old.skeletalAnimation.play(str星2动作)

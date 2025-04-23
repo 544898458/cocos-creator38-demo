@@ -37,6 +37,7 @@ export class ClientEntityComponent {
     hpbar: Node;
     hp: number = 0
     hpMax: number = 0
+    能量Max: number = 0
     prefabName: string
     类型: 单位类型 = 单位类型.单位类型_Invalid_0
     tween移动: Tween<Node>
