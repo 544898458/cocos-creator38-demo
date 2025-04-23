@@ -14,6 +14,7 @@ import { Vec3 } from 'cc';
 import { Color } from 'cc';
 import { 制造配置, 单位属性类型, 单位类型, 战斗配置 } from '../配置/配置';
 import { RichText } from 'cc';
+import { 按下按钮显示单位详情Component } from '../component/按下按钮显示单位详情Component';
 const { ccclass, property } = _decorator;
 
 @ccclass('BattleUI')
@@ -215,7 +216,9 @@ export class BattleUI extends Component {
         this.main.onClickAdd孵化场(event, customEventData)
     }
     onClickAdd建筑(event: Event, customEventData: string): void {
-        this.main.on点击按钮_造建筑(单位类型[customEventData as keyof typeof 单位类型])
+        const node: Node = event.target as Node
+        let 单位 = node.getComponent(按下按钮显示单位详情Component).enum类型
+        this.main.on点击按钮_造建筑(单位)
     }
     onClick升级单位属性(event: Event, customEventData: string): void {
         let arr = customEventData.split('|')

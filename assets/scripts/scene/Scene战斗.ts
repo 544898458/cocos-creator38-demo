@@ -690,8 +690,11 @@ export class Scene战斗 extends Component {
                 newNode.name = prefabName选中特效
 
                 old.view.addChild(newNode)
-                if (!Main.Is活动单位(old.类型))
-                    newNode.scale = newNode.scale.clone().multiply3f(2, 1, 2)
+                let 配置 = this.main.配置.find建筑单位(old.类型)
+                if(配置){
+                    let 放大 = 配置.f半边长/2
+                    newNode.scale = newNode.scale.clone().multiply3f(放大, 1, 放大)
+                }
 
                 this.隐藏选中单位专用按钮()
                 switch (old.类型) {
@@ -895,7 +898,7 @@ export class Scene战斗 extends Component {
             }
 
             const newNode = instantiate(prefab)
-            newNode.name = prefabName选中特效
+            newNode.name = str特效
             newNode.position = entity起始.position.clone()
             let 特效根 = this.roles.getChildByName('特效根')
             特效根.addChild(newNode)
