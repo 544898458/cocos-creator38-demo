@@ -698,6 +698,8 @@ export class Scene战斗 extends Component {
                 if(配置){
                     let 放大 = 配置.f半边长/2
                     newNode.scale = newNode.scale.clone().multiply3f(放大, 1, 放大)
+                    console.log('放大', 放大, newNode.scale)
+                    
                 }
 
                 this.隐藏选中单位专用按钮()
