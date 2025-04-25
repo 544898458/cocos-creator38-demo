@@ -558,7 +558,7 @@ export class Main extends Component {
                     let 类型: number = arr[idxArr++] as 单位类型
                     let hpMax: number = arr[idxArr++]
                     let 能量Max: number = arr[idxArr++]
-                    console.log(id, nickName, prefabName, '进来了,hpMax', hpMax)
+                    // console.log(id, nickName, prefabName, '进来了,hpMax', hpMax)
                     if (!thisLocal.scene战斗) {
                         // console.log(
                         return
@@ -579,7 +579,7 @@ export class Main extends Component {
                             old.initClipName = 单位配置.空闲动作
 
                         resources.load(prefabName, Prefab, (err, prefab) => {
-                            console.log('resources.load callback:', err, prefab)
+                            // console.log('resources.load callback:', err, prefab)
                             if (!thisLocal.scene战斗.roles) {
                                 console.warn('已离开战斗场景')
                                 return
@@ -850,7 +850,7 @@ export class Main extends Component {
             case MsgId.DelRoleRet:
                 {
                     let id = arr[idxArr++]
-                    console.log('删除:', id)
+                    // console.log('删除:', id)
                     if (!thisLocal.scene战斗)
                         return
 
@@ -1117,7 +1117,7 @@ export class Main extends Component {
         this.send(encoded)
     }
     static 播放动作(old: ClientEntityComponent, strClipName: string, loop: boolean) {
-        console.log('strClipName', strClipName, 'old.view.name', old.view.name, 'loop', loop)
+        // console.log('strClipName', strClipName, 'old.view.name', old.view.name, 'loop', loop)
         const str星2动作: string = 'Take 001'
         if (old.view.name == '跳虫') {
             old.skeletalAnimation.play(str星2动作)
