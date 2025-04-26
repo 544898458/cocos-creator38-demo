@@ -654,7 +654,7 @@ export class Main extends Component {
                                 if (hpMax <= 0)
                                     old.node血条.active = false
                                 else {
-                                    old.node血条.getComponent(ProgressBar).progress = old.hp / old.hpMax
+                                    old.node血条.getComponent(ProgressBar).progress = old.hp() / old.hpMax
                                     let calculateHPLength = Math.pow(old.hpMax, 0.5) / 3.0
 
                                     let headScal = old.node血条.getComponent(HeadScale)
@@ -1000,13 +1000,13 @@ export class Main extends Component {
                         return
                     }
                     let obj属性数值 = arr[idxArr++] as object
-                    this.scene战斗.obj属性数值 = obj属性数值
+                    // this.scene战斗.obj属性数值 = obj属性数值
                     //把obj属性数值所有属性赋值给this.scene战斗.obj属性数值
                     for (let key in obj属性数值) {
                         let 属性 = parseInt(key) as 属性类型
                         let 数值 = obj属性数值[key]
-                        old.obj属性数值[key] = 数值
-
+                        old.obj属性数值[属性] = 数值
+                        // console.log('属性', 属性, 数值)
                         switch (属性) {
                             case 属性类型.生命:
                                 {
@@ -1025,7 +1025,7 @@ export class Main extends Component {
                                         let progressBar = old.node能量条.getComponent(ProgressBar)
                                         progressBar.progress = 数值 / old.能量Max
                                     }
-                                    console.log('数值', 数值, old.能量Max)
+                                    // console.log('数值', 数值, old.能量Max)
                                     break
                                 }
                         }
