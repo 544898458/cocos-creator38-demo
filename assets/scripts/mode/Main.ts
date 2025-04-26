@@ -145,6 +145,14 @@ export class Main extends Component {
         console.log('onLoad')
         //添加dataNode为常驻节点
         director.addPersistRootNode(this.node);
+        if (window.CC_WECHAT) {
+            // 创建插屏广告实例，提前初始化
+            if (wx.createInterstitialAd) {
+                this.interstitialAd = wx.createInterstitialAd({
+                    adUnitId: 'adunit-904480d5c9a873be'
+                })
+            }
+        }
     }
     start() {
         console.log('start')
@@ -239,10 +247,25 @@ export class Main extends Component {
     }
     进Scene战斗(sceneName: string, encoded: Buffer) {
         this.scene登录.nodeSelectSpace.active = false
+        if (window.CC_WECHAT) {
+            // 在适合的场景显示插屏广告
+            if (interstitialAd) {
+                interstitialAd.show().catch((err) => {
+                    console.error('插屏广告显示失败', err)
+                })
+            }
+        }
         director.preloadScene(sceneName, (completedCount: number, totalCount: number, item: AssetManager.RequestItem) => {
             console.log(completedCount, totalCount, item)
             this.scene登录.lableMessage.string = completedCount + '/' + totalCount + '\n' + item.url
         }, () => {
+            if (window.CC_WECHAT) {
+                // 关闭插屏广告
+                if (this.scene登录.interstitialAd) {
+                    this.scene登录.interstitialAd.destroy()
+                    this.scene登录.interstitialAd = null
+                }
+            }
             this.scene登录.main = null
             this.scene登录 = null
             director.loadScene(sceneName, (err, scene) => {

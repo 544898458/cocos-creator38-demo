@@ -45,6 +45,8 @@ export class Scene登录 extends Component {
     loadtime: number = 0;
     //加载时间总长 1s
     loadlen: number = 1;
+    interstitialAd = null// 定义插屏广告    微信流量主
+
     onLoad() {
         console.log('onLoad')
         this.nodeSelectSpace = utils.find("Canvas/选择玩法", this.node.parent);
