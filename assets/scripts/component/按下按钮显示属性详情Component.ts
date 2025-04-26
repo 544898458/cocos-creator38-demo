@@ -1,6 +1,6 @@
 import { _decorator, Component, Node } from 'cc';
 import { 按下按钮显示详情Component } from './按下按钮显示详情Component';
-import { 单位属性类型, 单位类型 } from '../配置/配置';
+import { 属性类型, 单位类型 } from '../配置/配置';
 import { Enum } from 'cc';
 const { ccclass, property } = _decorator;
 
@@ -9,13 +9,13 @@ export class 按下按钮显示属性详情Component extends 按下按钮显示�
     @property({ type: Enum(单位类型) })
     enum单位: 单位类型
 
-    @property({ type: Enum(单位属性类型) })
-    enum属性: 单位属性类型
+    @property({ type: Enum(属性类型) })
+    enum属性: 属性类型
 
     详情(): string {
         // 获取枚举键名
-        const enumKeys = Object.keys(单位属性类型);
-        const enumValues = Object.values(单位属性类型);
+        const enumKeys = Object.keys(属性类型);
+        const enumValues = Object.values(属性类型);
         const 属性名称 = enumKeys[enumValues.indexOf(this.enum属性)];
 
 

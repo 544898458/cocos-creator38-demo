@@ -11,7 +11,7 @@ import { copyFileSync } from 'original-fs'
 import { Quat } from 'cc'
 import { AudioClip } from 'cc'
 import { sys } from 'cc'
-import { MsgId, 单位属性类型, 单位类型, 配置 } from '../配置/配置'
+import { MsgId, 属性类型, 单位类型, 配置 } from '../配置/配置'
 import { Tween } from 'cc'
 import { AnimationState } from 'cc'
 import { 按下按钮显示单位详情Component } from '../component/按下按钮显示单位详情Component'
@@ -124,7 +124,7 @@ export class Main extends Component {
         // https://forum.cocos.org/t/websocket/74614/4
         // https://developers.weixin.qq.com/community/minihome/doc/0006eef117cd28f4f181ad7e96b000
     }
-    sendArray(arr: (string | number[])[]) {
+    sendArray(arr: any[]) {
         const encoded = msgpack.encode(arr)
         console.log(encoded)
         this.send(encoded)
@@ -155,9 +155,8 @@ export class Main extends Component {
 
     }
     造活动单位(类型: 单位类型) {
-        const encoded = msgpack.encode([[MsgId.AddRole, 0, 0], 类型])
         // console.log(encoded)
-        this.send(encoded)
+        this.sendArray([[MsgId.AddRole, 0, 0], 类型])
     }
     onClick造坦克(event: Event, customEventData: string): void {
         this.造活动单位(单位类型.三色坦克)
@@ -204,10 +203,8 @@ export class Main extends Component {
         this.scene战斗.battleUI.lable系统消息.string = '请点击地面放置建筑'
         this.scene战斗.battleUI.进入点击地面状态()
     }
-    on升级单位属性(单位: 单位类型, 属性: 单位属性类型) {
-        const encoded = msgpack.encode([[MsgId.升级单位属性, ++this.sendMsgSn, 0], 单位, 属性])
-        console.log(encoded)
-        this.send(encoded)
+    on升级单位属性(单位: 单位类型, 属性: 属性类型) {
+        this.sendArray([[MsgId.升级单位属性, ++this.sendMsgSn, 0], 单位, 属性])
     }
     onClickAdd基地(event: Event, customEventData: string): void {
         this.on点击按钮_造建筑(单位类型.基地)
@@ -378,16 +375,13 @@ export class Main extends Component {
         this.websocket.onopen = (event: Event) => {
             this.scene登录.lableMessage.string = "连接成功，请等待登录结果……"
             console.log(this.scene登录.lableMessage.string)
-            const object = [
-                [MsgId.Login, ++this.sendMsgSn, 0, 0],
+            this.sendArray([
+                [MsgId.Login, ++this.sendMsgSn],
+                0,
                 str登录名,
                 'Hello, world!pwd',
                 15,//版本号
-            ]
-
-            const encoded = msgpack.encode(object)
-            console.log(encoded)
-            this.send(encoded)
+            ])
 
             // this.scene登录.nodeSelectSpace.active = true
         }
@@ -404,7 +398,7 @@ export class Main extends Component {
             let msgId = msgHead[0] as MsgId
             let sn收到 = msgHead[1] as number
             // console.log("收到GateSvr消息,msgId：", msgId, ',sn收到:', sn收到)
-            ++thisLocal.recvMsgSn
+            thisLocal.recvMsgSn = Main.uint8自增(thisLocal.recvMsgSn)// ++thisLocal.recvMsgSn
             if (thisLocal.recvMsgSn != sn收到)
                 console.error('收到GateSvr消息sn不同', thisLocal.recvMsgSn, 'sn收到:', sn收到)
             switch (msgId) {
@@ -498,7 +492,7 @@ export class Main extends Component {
         let msgId = msgHead[0] as MsgId
         let snFromWorldSvr = msgHead[1] as number
         // console.log("收到,msgId：", msgId, ',recvMsgSnWorldSvr:', snFromWorldSvr)
-        ++thisLocal.recvMsgSnWorldSvr
+        thisLocal.recvMsgSnWorldSvr = Main.uint8自增(thisLocal.recvMsgSnWorldSvr)
         // if(thisLocal.recvMsgSnWorldSvr != snFromWorldSvr)
         // console.error('recvMsgSn ', thisLocal.recvMsgSnWorldSvr , 'snFromWorldSvr', snFromWorldSvr)
         // console.log("sn", sn)
@@ -541,9 +535,9 @@ export class Main extends Component {
         let msgId = msgHead[0] as MsgId
         let sn = msgHead[1] as number
         // console.log("收到,msgId：", msgId, ',sn:', sn)
-        ++thisLocal.recvMsgSnGameSvr
+        thisLocal.recvMsgSnGameSvr = Main.uint8自增(thisLocal.recvMsgSnGameSvr)
         if (thisLocal.recvMsgSnGameSvr != sn) {
-            console.error('recvMsgSn ', thisLocal.recvMsgSnGameSvr, 'sn', sn)
+            console.error('recvMsgSnGameSvr ', thisLocal.recvMsgSnGameSvr, 'sn', sn)
             thisLocal.recvMsgSnGameSvr = sn;
         }
         // console.log("sn", sn)
@@ -650,7 +644,7 @@ export class Main extends Component {
 
                             old.nodeName = instantiate(nodeRoleName)
                             node所有单位头顶名字.addChild(old.nodeName)
-                            
+
                             if (newNode.name != "smoke") {
                                 let nodeRoleHp = utils.find("血条", node所有单位头顶名字)
                                 old.node血条 = instantiate(nodeRoleHp)
@@ -674,7 +668,7 @@ export class Main extends Component {
                                     old.node能量条 = instantiate(node能量条)
                                     old.node能量条.active = true;
                                     node所有单位头顶名字.addChild(old.node能量条)
-                                    old.node能量条.getComponent(ProgressBar).progress = old.能量 / old.能量Max
+                                    old.node能量条.getComponent(ProgressBar).progress = old.能量() / old.能量Max
                                     let 能量条长 = Math.pow(old.能量Max, 0.5) / 3.0
                                     let headScal = old.node能量条.getComponent(HeadScale)
                                     headScal.target = utils.find("能量条", newNode)
@@ -727,8 +721,8 @@ export class Main extends Component {
                     let posX = arr[idxArr++]
                     let posZ = arr[idxArr++]
                     let eulerAnglesY = arr[idxArr++]
-                    let hp = arr[idxArr++]
-                    let 能量 = arr[idxArr++]
+                    // let hp = arr[idxArr++]
+                    // let 能量 = arr[idxArr++]
                     // console.log(arr)
 
                     let old = thisLocal.scene战斗?.entities.get(id)
@@ -740,22 +734,6 @@ export class Main extends Component {
                     // old.skeletalAnimation.play('run')
                     let posNew = new Vec3(posX, 0, posZ)
                     old.position = posNew
-                    old.hp = hp
-                    old.能量 = 能量
-
-                    if (old.node血条) {
-                        let progressBar = old.node血条.getComponent(ProgressBar)
-                        if (old.hpMax > 0)
-                            progressBar.progress = hp / old.hpMax
-                        else
-                            old.node血条.active = false //资源没有血量
-                    }
-                    if (old.node能量条) {
-                        let progressBar = old.node能量条.getComponent(ProgressBar)
-                        progressBar.progress = old.能量 / old.能量Max
-                    }
-                    //console.log('hp', hp, old.hpMax)
-
                     if (old.view) {
 
                         if (!old.view.position || old.view.position.clone().subtract(old.position).lengthSqr() > 20) {
@@ -1013,6 +991,48 @@ export class Main extends Component {
                     thisLocal.scene战斗.Set苔蔓半径(idEntity, 半径)
                 }
                 break
+            case MsgId.Notify属性:
+                {
+                    let id = arr[idxArr++]
+                    let old = thisLocal.scene战斗?.entities.get(id)
+                    if (!old) {
+                        console.log('已离开战斗场景', id)
+                        return
+                    }
+                    let obj属性数值 = arr[idxArr++] as object
+                    this.scene战斗.obj属性数值 = obj属性数值
+                    //把obj属性数值所有属性赋值给this.scene战斗.obj属性数值
+                    for (let key in obj属性数值) {
+                        let 属性 = parseInt(key) as 属性类型
+                        let 数值 = obj属性数值[key]
+                        old.obj属性数值[key] = 数值
+
+                        switch (属性) {
+                            case 属性类型.生命:
+                                {
+                                    if (old.node血条) {
+                                        let progressBar = old.node血条.getComponent(ProgressBar)
+                                        if (old.hpMax > 0)
+                                            progressBar.progress = 数值 / old.hpMax
+                                        else
+                                            old.node血条.active = false //资源没有血量
+                                    }
+                                    break
+                                }
+                            case 属性类型.能量:
+                                {
+                                    if (old.node能量条) {
+                                        let progressBar = old.node能量条.getComponent(ProgressBar)
+                                        progressBar.progress = 数值 / old.能量Max
+                                    }
+                                    console.log('数值', 数值, old.能量Max)
+                                    break
+                                }
+                        }
+
+                    }
+                }
+                break
             default:
                 console.error('msgId=', msgId)
                 break
@@ -1022,17 +1042,11 @@ export class Main extends Component {
         if (str.length == 0)
             return
 
-        const object = //item.hitPoint
-            [
+        if (this.websocket != undefined) {
+            this.sendArray([
                 [MsgId.Say, 0, 0],
                 str
-            ]
-
-        console.log('send', object)
-        const encoded = msgpack.encode(object)
-        if (this.websocket != undefined) {
-            console.log('send', encoded)
-            this.send(encoded)
+            ])
         }
     }
     回到登录场景(): void {
@@ -1058,29 +1072,19 @@ export class Main extends Component {
 
     }
     send离开Space() {
-        const object = //item.hitPoint
-            [
-                [MsgId.离开Space, 0, 0],
-            ]
-
-        const encoded = msgpack.encode(object)
         if (this.websocket != undefined) {
-            console.log('send', encoded)
-            this.send(encoded)
+            this.sendArray([
+                [MsgId.离开Space, 0, 0],
+            ])
         }
     }
     send选中(arr选中: number[]) {
-        const object =
-            [
+        if (this.websocket != undefined) {
+            this.sendArray([
                 [MsgId.SelectRoles, ++this.sendMsgSn, 0],
                 arr选中,//虽然是整数，但是也强制转成FLOAT64发出去了
                 this.b点击活动单位都是追加选中
-            ]
-
-        const encoded = msgpack.encode(object)
-        if (this.websocket != undefined) {
-            console.log('send', encoded)
-            this.send(encoded)
+            ])
         }
 
         this.arr选中 = arr选中
@@ -1090,20 +1094,13 @@ export class Main extends Component {
             console.log('没选中任何单位')
             return
         }
-        const object =
-            [
-                [MsgId.出地堡, ++this.sendMsgSn, 0],
-                this.arr选中[0]
-            ]
-
-        const encoded = msgpack.encode(object)
-        console.log('send', encoded)
-        this.send(encoded)
+        this.sendArray([
+            [MsgId.出地堡, ++this.sendMsgSn, 0],
+            this.arr选中[0]
+        ])
     }
     onClick空闲工程车() {
-        const encoded = msgpack.encode([[MsgId.切换空闲工程车, ++this.sendMsgSn, 0]])
-        console.log('send', encoded)
-        this.send(encoded)
+        this.sendArray([[MsgId.切换空闲工程车, ++this.sendMsgSn, 0]])
     }
     onClick解锁近战兵() {
         this.解锁单位(单位类型.近战兵)
@@ -1112,9 +1109,7 @@ export class Main extends Component {
         this.解锁单位(单位类型.枪虫)
     }
     解锁单位(单位: 单位类型) {
-        const encoded = msgpack.encode([[MsgId.解锁单位, ++this.sendMsgSn, 0], 单位])
-        console.log('send', encoded)
-        this.send(encoded)
+        this.sendArray([[MsgId.解锁单位, ++this.sendMsgSn, 0], 单位])
     }
     static 播放动作(old: ClientEntityComponent, strClipName: string, loop: boolean) {
         // console.log('strClipName', strClipName, 'old.view.name', old.view.name, 'loop', loop)
@@ -1297,6 +1292,10 @@ export class Main extends Component {
             } else {
                 old.skeletalAnimation.play(strClipName)
                 state = old.skeletalAnimation.getState(strClipName)
+                if (!state) {
+                    console.error(old.view.name, old.skeletalAnimation, '缺动作:', strClipName)
+                    return
+                }
                 state.wrapMode = loop ? AnimationClip.WrapMode.Loop : AnimationClip.WrapMode.Normal
             }
 
@@ -1315,14 +1314,14 @@ export class Main extends Component {
     }
 
     onClick剧情对话全屏点击() {
-        const encoded = msgpack.encode([[MsgId.剧情对话已看完, ++this.sendMsgSn, 0]])
-        console.log('send', encoded)
-        this.send(encoded)
+        this.sendArray([[MsgId.剧情对话已看完, ++this.sendMsgSn, 0]])
     }
     send原地坚守() {
-        const encoded = msgpack.encode([[MsgId.原地坚守, ++this.sendMsgSn, 0]])
-        console.log('send', encoded)
-        this.send(encoded)
+        this.sendArray([[MsgId.原地坚守, ++this.sendMsgSn, 0]])
     }
 
+    // Ensure the value stays within the range of uint8_t
+    static uint8自增(sn: number): number {
+        return (sn + 1) % 256
+    }
 }

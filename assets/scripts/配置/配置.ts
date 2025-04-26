@@ -197,7 +197,8 @@ export
 	单位属性等级,
 	升级单位属性,
 	苔蔓半径,
-	太岁分裂
+	太岁分裂,
+	Notify属性,
 };
 
 export
@@ -257,15 +258,32 @@ export
 	怪Max非法,
 };
 
-export enum 单位属性类型
+export enum 属性类型
 {
-	单位属性类型_最小_无效,
+	属性类型_最小_无效,
 	攻击,
 	防御,
-	HP,
+	/// <summary>
+	/// HP、血量
+	/// </summary>
+	生命,
 	移动速度,
+	/// <summary>
+	/// 毫秒
+	/// </summary>
 	攻击前摇_伤害耗时,
+	/// <summary>
+	/// 米
+	/// </summary>
 	攻击距离,
+	最大生命,
+	/// <summary>
+	/// 医疗兵、蝎子
+	/// </summary>
+	能量,
+	最大能量,
+
+	属性类型_最大_无效,
 };
 
 export class 单位配置 {
@@ -345,7 +363,7 @@ export class 配置 {
 	find建筑单位(类型: 单位类型): 建筑单位配置 {
 		return this.arr建筑单位.find((v) => v.类型 == 类型)
 	}
-	find单位属性等级加数值(单位: 单位类型, 属性: 单位属性类型, 等级: number){
+	find单位属性等级加数值(单位: 单位类型, 属性: 属性类型, 等级: number){
 		return this.arr单位属性等级.find((v) => v.类型 == 单位 && v.属性 == 属性 && v.等级 == 等级)?.数值
 	}
 }

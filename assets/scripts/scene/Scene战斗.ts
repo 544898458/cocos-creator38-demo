@@ -18,7 +18,7 @@ import { SpriteFrame } from 'cc'
 import { ImageAsset } from 'cc'
 import { Tween } from 'cc'
 import { AudioSource } from 'cc'
-import { MsgId, 单位属性类型, 单位类型 } from '../配置/配置'
+import { MsgId, 属性类型, 单位类型 } from '../配置/配置'
 import { 苔蔓Component } from '../component/苔蔓Component'
 
 const { ccclass, property } = _decorator
@@ -35,15 +35,22 @@ export class ClientEntityComponent {
     entityName: string
     position: Vec3//刚进地图Load没结束无法设置node坐标，暂存
     node血条: Node
-    hp: number = 0
     hpMax: number = 0
     node能量条: Node
-    能量: number = 0
+    // 能量: number = 0
     能量Max: number = 0
     prefabName: string
     类型: 单位类型 = 单位类型.单位类型_Invalid_0
     tween移动: Tween<Node>
     苔蔓半径: number
+    obj属性数值: object = new Object()
+    
+    hp(): number {
+        return this.obj属性数值[属性类型.生命] as number
+    }
+    能量(): number {
+        return this.obj属性数值[属性类型.能量] as number
+    }
     removeFromParent() {
         this.view?.removeFromParent()
         this.nodeName?.removeFromParent()
@@ -75,7 +82,7 @@ export class ClientEntityComponent {
             // ClientEntityComponent.myNickName = this.nickName
             this.labelName.color = new Color(50, 50, 50);
         }
-        else if (this.hp <= 0) {
+        else if (this.hp() <= 0) {
             this.labelName.color = new Color(130, 130, 130);
         }
         else {
@@ -353,16 +360,11 @@ export class Scene战斗 extends Component {
                     return
 
                 if (this.battleUI.b菱形框选) {
-                    const object =
-                        [
-                            [MsgId.框选, ++this.main.sendMsgSn, 0],
-                            [this.posWorld框选起始点.x, this.posWorld框选起始点.z],
-                            [item.hitPoint.x, item.hitPoint.z]
-                        ]
-                    console.log('send', this.posWorld框选起始点, item.hitPoint)
-                    const encoded = msgpack.encode(object)
-                    console.log('send', encoded)
-                    this.main.send(encoded)
+                    this.main.sendArray([
+                        [MsgId.框选, ++this.main.sendMsgSn, 0],
+                        [this.posWorld框选起始点.x, this.posWorld框选起始点.z],
+                        [item.hitPoint.x, item.hitPoint.z]
+                    ])
                 } else {//矩形框选
                     let arr选中: Number[] = []
                     this.entities.forEach((entity, id, _) => {
@@ -377,14 +379,10 @@ export class Scene战斗 extends Component {
                             arr选中.push(id)
                         }
                     })
-                    const object =
-                        [
-                            [MsgId.SelectRoles, ++this.main.sendMsgSn, 0],
-                            arr选中//虽然是整数，但是也强制转成FLOAT64发出去了
-                        ]
-                    const encoded = msgpack.encode(object)
-                    console.log('send', arr选中, encoded)
-                    this.main.send(encoded)
+                    this.main.sendArray([
+                        [MsgId.SelectRoles, ++this.main.sendMsgSn, 0],
+                        arr选中//虽然是整数，但是也强制转成FLOAT64发出去了
+                    ])
                 }
                 this.恢复战斗界面()
                 b已处理 = true
@@ -525,15 +523,10 @@ export class Scene战斗 extends Component {
             this.mainCameraFollowTarget.target = item.collider.node
             let id = this.entityId[item.collider.node.uuid]
 
-            const object =
-                [
-                    [MsgId.采集, ++this.main.sendMsgSn, 0],
-                    id
-                ]
-
-            const encoded = msgpack.encode(object)
-            console.log('send', encoded)
-            this.main.send(encoded)
+            this.main.sendArray([
+                [MsgId.采集, ++this.main.sendMsgSn, 0],
+                id
+            ])
 
         }
         else if (item.collider.node.name == "地堡" && b鼠标右键)//点击地堡
@@ -541,27 +534,20 @@ export class Scene战斗 extends Component {
             this.mainCameraFollowTarget.target = item.collider.node
             let id = this.entityId[item.collider.node.uuid]
 
-            const encoded = msgpack.encode([
+            this.main.sendArray([
                 [MsgId.出地堡, ++this.main.sendMsgSn, 0],
                 id
             ])
-
-            console.log('send', encoded)
-            this.main.send(encoded)
         }
         else if (item.collider.node.name == "地堡" && !b鼠标右键 && this.main.arr选中.length > 0)//左键点击地堡
         {
             this.mainCameraFollowTarget.target = item.collider.node
             let id = this.entityId[item.collider.node.uuid]
-
-            const encoded = msgpack.encode([
+            this.main.sendArray([
                 [MsgId.进地堡, ++this.main.sendMsgSn, 0],
                 id,
                 [0.0]
             ])
-
-            console.log('send', encoded)
-            this.main.send(encoded)
         }
         else if (
             item.collider.node.name != "晶体矿"
@@ -664,8 +650,8 @@ export class Scene战斗 extends Component {
         this.battleUI.node升级三色坦克移速.active = false
         this.battleUI.node升级飞机攻速.active = false
         this.battleUI.node升级绿色坦克攻速.active = false
-        this.battleUI.node升级飞虫移速.active = false     
-        this.battleUI.node太岁分裂.active = false   
+        this.battleUI.node升级飞虫移速.active = false
+        this.battleUI.node太岁分裂.active = false
     }
 
     选中(arr: number[]) {
@@ -695,11 +681,11 @@ export class Scene战斗 extends Component {
 
                 old.view.addChild(newNode)
                 let 配置 = this.main.配置.find建筑单位(old.类型)
-                if(配置){
-                    let 放大 = 配置.f半边长/2
+                if (配置) {
+                    let 放大 = 配置.f半边长 / 2
                     newNode.scale = newNode.scale.clone().multiply3f(放大, 1, 放大)
                     console.log('放大', 放大, newNode.scale)
-                    
+
                 }
 
                 this.隐藏选中单位专用按钮()
@@ -712,30 +698,30 @@ export class Scene战斗 extends Component {
                         if (!this.obj已解锁单位[单位类型.近战兵])
                             this.battleUI.button解锁近战兵.node.active = true
 
-                        this.如果没满级就显示(单位类型.枪兵, 单位属性类型.攻击, this.battleUI.node升级枪兵攻击)
-                        this.如果没满级就显示(单位类型.近战兵, 单位属性类型.防御, this.battleUI.node升级近战兵防御)
+                        this.如果没满级就显示(单位类型.枪兵, 属性类型.攻击, this.battleUI.node升级枪兵攻击)
+                        this.如果没满级就显示(单位类型.近战兵, 属性类型.防御, this.battleUI.node升级近战兵防御)
                         break;
                     case 单位类型.虫营:
                         console.log(typeof (this.obj已解锁单位))
                         if (!this.obj已解锁单位[单位类型.枪虫])
                             this.battleUI.button解锁枪虫.node.active = true
 
-                        this.如果没满级就显示(单位类型.枪虫, 单位属性类型.防御, this.battleUI.node升级枪虫防御)
-                        this.如果没满级就显示(单位类型.近战虫, 单位属性类型.攻击, this.battleUI.node升级近战虫攻击)
+                        this.如果没满级就显示(单位类型.枪虫, 属性类型.防御, this.battleUI.node升级枪虫防御)
+                        this.如果没满级就显示(单位类型.近战虫, 属性类型.攻击, this.battleUI.node升级近战虫攻击)
                         break
                     case 单位类型.重车厂:
                         this.battleUI.button集结点.node.active = true
-                        this.如果没满级就显示(单位类型.三色坦克, 单位属性类型.移动速度, this.battleUI.node升级三色坦克移速)
+                        this.如果没满级就显示(单位类型.三色坦克, 属性类型.移动速度, this.battleUI.node升级三色坦克移速)
                         break
                     case 单位类型.机场:
                         this.battleUI.button集结点.node.active = true
-                        this.如果没满级就显示(单位类型.飞机, 单位属性类型.攻击前摇_伤害耗时, this.battleUI.node升级飞机攻速)
+                        this.如果没满级就显示(单位类型.飞机, 属性类型.攻击前摇_伤害耗时, this.battleUI.node升级飞机攻速)
                         break
                     case 单位类型.拟态源:
-                        this.如果没满级就显示(单位类型.绿色坦克, 单位属性类型.攻击前摇_伤害耗时, this.battleUI.node升级绿色坦克攻速)
+                        this.如果没满级就显示(单位类型.绿色坦克, 属性类型.攻击前摇_伤害耗时, this.battleUI.node升级绿色坦克攻速)
                         break
                     case 单位类型.飞塔:
-                        this.如果没满级就显示(单位类型.飞虫, 单位属性类型.移动速度, this.battleUI.node升级飞虫移速)
+                        this.如果没满级就显示(单位类型.飞虫, 属性类型.移动速度, this.battleUI.node升级飞虫移速)
                         break
                     case 单位类型.太岁:
                         this.battleUI.node太岁分裂.active = true
@@ -904,7 +890,7 @@ export class Scene战斗 extends Component {
             }
 
             const newNode = instantiate(prefab)
-            newNode.name = str特效.replace('/','')
+            newNode.name = str特效.replace('/', '')
             newNode.position = entity起始.position.clone()
             let 特效根 = this.roles.getChildByName('特效根')
             特效根.addChild(newNode)
@@ -944,7 +930,7 @@ export class Scene战斗 extends Component {
         })
     }
 
-    如果没满级就显示(单位: 单位类型, 属性: 单位属性类型, node升级按钮: Node) {
+    如果没满级就显示(单位: 单位类型, 属性: 属性类型, node升级按钮: Node) {
         let 单位属性 = this.obj属性等级[单位]
         let 单位攻击等级 = 单位属性 ? 单位属性[属性] : 0
         let 单位属性等级加数值: number = this.main.配置.find单位属性等级加数值(单位, 属性, 单位攻击等级 + 1)
@@ -956,7 +942,6 @@ export class Scene战斗 extends Component {
         entity.苔蔓半径 = 半径
         entity.view?.getChildByName('苔蔓').getComponent(苔蔓Component).Set半径(半径)
     }
-
 }
 
 

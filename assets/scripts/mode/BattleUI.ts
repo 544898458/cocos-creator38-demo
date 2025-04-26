@@ -12,7 +12,7 @@ import { Toggle } from 'cc';
 import { Layers } from 'cc';
 import { Vec3 } from 'cc';
 import { Color } from 'cc';
-import { 制造配置, 单位属性类型, 单位类型, 战斗配置 } from '../配置/配置';
+import { 制造配置, 属性类型, 单位类型, 战斗配置 } from '../配置/配置';
 import { RichText } from 'cc';
 import { 按下按钮显示单位详情Component } from '../component/按下按钮显示单位详情Component';
 const { ccclass, property } = _decorator;
@@ -222,7 +222,7 @@ export class BattleUI extends Component {
     }
     onClick升级单位属性(event: Event, customEventData: string): void {
         let arr = customEventData.split('|')
-        this.main.on升级单位属性(单位类型[arr[0] as keyof typeof 单位类型], 单位属性类型[arr[1] as keyof typeof 单位类型])
+        this.main.on升级单位属性(单位类型[arr[0] as keyof typeof 单位类型], 属性类型[arr[1] as keyof typeof 单位类型])
     }
     onClickAdd机场(event: Event, customEventData: string): void {
         this.main.onClickAdd机场(event, customEventData)
@@ -348,7 +348,7 @@ export class BattleUI extends Component {
         let str详情 = this.单位详情(entity, entity.类型)
         this.lable单位详情.string = str详情
     }
-    属性加等级(属性名: string, 属性基础值: number, 单位: 单位类型, 属性: 单位属性类型, 数值单位: string = '', 数值显示倍数: number = 1): string {
+    属性加等级(属性名: string, 属性基础值: number, 单位: 单位类型, 属性: 属性类型, 数值单位: string = '', 数值显示倍数: number = 1): string {
         let [属性等级加数值, 属性等级] = this.属性等级加数值(单位, 属性)
         let str详情 = 属性名 + ':' + 属性基础值 * 数值显示倍数
 
@@ -379,9 +379,9 @@ export class BattleUI extends Component {
                 str详情 += '初始HP:' + 制造.初始HP + '\n'
         }
         if (战斗) {
-            str详情 += this.属性加等级('攻击', 战斗.攻击, 类型, 单位属性类型.攻击)
-            str详情 += this.属性加等级('防御', 战斗.防御, 类型, 单位属性类型.防御)
-            str详情 += this.属性加等级('移动速度', 战斗.f每帧移动距离, 类型, 单位属性类型.移动速度, '米/秒', 10)
+            str详情 += this.属性加等级('攻击', 战斗.攻击, 类型, 属性类型.攻击)
+            str详情 += this.属性加等级('防御', 战斗.防御, 类型, 属性类型.防御)
+            str详情 += this.属性加等级('移动速度', 战斗.f每帧移动距离, 类型, 属性类型.移动速度, '米/秒', 10)
 
             str详情 += '警戒距离:' + 战斗.f警戒距离 + '米\n' +
                 '攻击距离:' + 战斗.f攻击距离 + '米\n'
@@ -389,14 +389,14 @@ export class BattleUI extends Component {
             // let 前摇毫秒 = 战斗.dura开始播放攻击动作 + 战斗.dura开始伤害
             // if (0 < 前摇毫秒)
             //     str详情 += '攻击前摇:' + 前摇毫秒 + '毫秒\n'
-            str详情 += this.属性加等级('攻击前摇', 战斗.dura开始播放攻击动作 + 战斗.dura开始伤害, 类型, 单位属性类型.攻击前摇_伤害耗时, '毫秒')
+            str详情 += this.属性加等级('攻击前摇', 战斗.dura开始播放攻击动作 + 战斗.dura开始伤害, 类型, 属性类型.攻击前摇_伤害耗时, '毫秒')
 
             if (0 < 战斗.dura后摇)
                 str详情 += '攻击后摇:' + 战斗.dura后摇 + '毫秒\n'
         }
         return str详情
     }
-    属性等级加数值(类型: 单位类型, 属性: 单位属性类型): [number, number] {
+    属性等级加数值(类型: 单位类型, 属性: 属性类型): [number, number] {
         let 单位属性 = this.scene战斗.obj属性等级[类型]
         let 属性等级 = 单位属性 ? 单位属性[属性] : null
         if (null == 属性等级)
