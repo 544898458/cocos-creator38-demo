@@ -45,7 +45,6 @@ export class Scene登录 extends Component {
     loadtime: number = 0;
     //加载时间总长 1s
     loadlen: number = 1;
-    interstitialAd = null// 定义插屏广告    微信流量主
 
     onLoad() {
         console.log('onLoad')
@@ -69,6 +68,15 @@ export class Scene登录 extends Component {
             this.node跳转社区浏览器H5.active = true
         else
             this.node跳转社区微信小游戏.active = true
+
+        if (window.CC_WECHAT) {
+            // 创建插屏广告实例，提前初始化
+            if (wx.createInterstitialAd) {
+                this.main.interstitialAd = wx.createInterstitialAd({
+                    adUnitId: 'adunit-904480d5c9a873be'
+                })
+            }
+        }
     }
     start() {
         console.log('Scene登录.start')

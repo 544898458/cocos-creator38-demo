@@ -84,6 +84,8 @@ export class Main extends Component {
     配置: 配置 = new 配置()
     fun创建消息: (Vec3) => object = null//this.createMsgMove强行走//点击地面操作 = 点击地面操作类型.移动单位
     funCreateMsg造建筑: (Vec3) => object
+    interstitialAd = null// 定义插屏广告    微信流量主
+
     // funCreateMsgMove遇敌自动攻击 = this.createMsgMove遇敌自动攻击
     createMsgMove强行走(hitPoint: Vec3) {
         return this.createMsgMove(hitPoint, false)
@@ -145,14 +147,6 @@ export class Main extends Component {
         console.log('onLoad')
         //添加dataNode为常驻节点
         director.addPersistRootNode(this.node);
-        if (window.CC_WECHAT) {
-            // 创建插屏广告实例，提前初始化
-            if (wx.createInterstitialAd) {
-                this.interstitialAd = wx.createInterstitialAd({
-                    adUnitId: 'adunit-904480d5c9a873be'
-                })
-            }
-        }
     }
     start() {
         console.log('start')
@@ -249,23 +243,20 @@ export class Main extends Component {
         this.scene登录.nodeSelectSpace.active = false
         if (window.CC_WECHAT) {
             // 在适合的场景显示插屏广告
-            if (interstitialAd) {
-                interstitialAd.show().catch((err) => {
+            if (this.interstitialAd) {
+                this.interstitialAd.show().catch((err) => {
                     console.error('插屏广告显示失败', err)
                 })
+                //延时关闭
+                // setTimeout(() => {
+                //     this.关闭插屏广告()
+                // }, 10000)
             }
         }
         director.preloadScene(sceneName, (completedCount: number, totalCount: number, item: AssetManager.RequestItem) => {
             console.log(completedCount, totalCount, item)
             this.scene登录.lableMessage.string = completedCount + '/' + totalCount + '\n' + item.url
         }, () => {
-            if (window.CC_WECHAT) {
-                // 关闭插屏广告
-                if (this.scene登录.interstitialAd) {
-                    this.scene登录.interstitialAd.destroy()
-                    this.scene登录.interstitialAd = null
-                }
-            }
             this.scene登录.main = null
             this.scene登录 = null
             director.loadScene(sceneName, (err, scene) => {
@@ -991,6 +982,8 @@ export class Main extends Component {
                         audioSource.clip = clip
                         audioSource.play()
                     })
+
+                    // this.关闭插屏广告()
                 }
                 break
             case MsgId.已解锁单位:
@@ -1061,6 +1054,16 @@ export class Main extends Component {
                 break
         }
     }
+    private 关闭插屏广告() {
+        if (window.CC_WECHAT) {
+            // 关闭插屏广告
+            if (this.interstitialAd) {
+                this.interstitialAd.destroy()
+                this.interstitialAd = null
+            }
+        }
+    }
+
     onClickSay(str: string) {
         if (str.length == 0)
             return

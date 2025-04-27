@@ -374,7 +374,7 @@ export class BattleUI extends Component {
                 '晶体矿:' + 制造.消耗晶体矿 + '\n' +
                 '燃气矿:' + 制造.消耗燃气矿 + '\n'
             if (entity)
-                str详情 += 'HP:' + entity.hp + '/' + 制造.初始HP + '\n'
+                str详情 += 'HP:' + entity.hp() + '/' + 制造.初始HP + '\n'
             else
                 str详情 += '初始HP:' + 制造.初始HP + '\n'
         }
