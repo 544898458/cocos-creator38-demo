@@ -98,7 +98,7 @@ export class BattleUI extends Component {
 
     lastTitle: Node
     b菱形框选: boolean = false //切换菱形框选和矩形框选两种模式
-    
+
 
     start() {
         this.main = director.getScene().getChildByName('常驻').getComponent(Main);
@@ -373,7 +373,7 @@ export class BattleUI extends Component {
             str详情 +=
                 '晶体矿:' + 制造.消耗晶体矿 + '\n' +
                 '燃气矿:' + 制造.消耗燃气矿 + '\n'
-            if (entity)
+            if (entity && entity.hp())
                 str详情 += 'HP:' + entity.hp() + '/' + 制造.初始HP + '\n'
             else
                 str详情 += '初始HP:' + 制造.初始HP + '\n'
