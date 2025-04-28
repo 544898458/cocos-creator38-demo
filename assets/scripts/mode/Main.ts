@@ -85,7 +85,30 @@ export class Main extends Component {
     fun创建消息: (Vec3) => object = null//this.createMsgMove强行走//点击地面操作 = 点击地面操作类型.移动单位
     funCreateMsg造建筑: (Vec3) => object
     interstitialAd = null// 定义插屏广告    微信流量主
+    b已显示插屏广告: boolean = false
+    fun关闭插屏广告发消息: () => void
+    onSecen登录Load(): void {
+        if (window.CC_WECHAT) {
+            // 创建插屏广告实例，提前初始化
+            if (wx.createInterstitialAd) {
+                this.interstitialAd = wx.createInterstitialAd({
+                    adUnitId: 'adunit-904480d5c9a873be'
+                })
+                this.interstitialAd.onLoad(() => { console.log('插屏 广告加载成功') })
+                let thisLocal = this
+                this.interstitialAd.onClose(() => { thisLocal.on关闭插屏广告() })
+            }
+        }
+    }
 
+    on关闭插屏广告() {
+        console.log('on关闭插屏广告', this.fun关闭插屏广告发消息, this)
+        this.b已显示插屏广告 = false
+        if (this.fun关闭插屏广告发消息) {
+            this.fun关闭插屏广告发消息()
+            this.fun关闭插屏广告发消息 = null
+        }
+    }
     // funCreateMsgMove遇敌自动攻击 = this.createMsgMove遇敌自动攻击
     createMsgMove强行走(hitPoint: Vec3) {
         return this.createMsgMove(hitPoint, false)
@@ -244,7 +267,9 @@ export class Main extends Component {
         if (window.CC_WECHAT) {
             // 在适合的场景显示插屏广告
             if (this.interstitialAd) {
+                this.b已显示插屏广告 = true
                 this.interstitialAd.show().catch((err) => {
+                    this.b已显示插屏广告 = false
                     console.error('插屏广告显示失败', err)
                 })
                 //延时关闭
@@ -259,10 +284,19 @@ export class Main extends Component {
         }, () => {
             this.scene登录.main = null
             this.scene登录 = null
+            let thisLocal = this
             director.loadScene(sceneName, (err, scene) => {
                 // this.nodeSelectSpace.active = false
-
-                this.send(encoded)
+                if (thisLocal.b已显示插屏广告) {
+                    thisLocal.fun关闭插屏广告发消息 = (): void => thisLocal.send(encoded)
+                    console.log('已显示插屏广告，等待插屏广告关闭', thisLocal.fun关闭插屏广告发消息, thisLocal)
+                    //5秒内发送登录消息
+                    setTimeout(() => {
+                        thisLocal.on关闭插屏广告()
+                    }, 5000)
+                } else {
+                    thisLocal.send(encoded)
+                }
             })
         })
     }

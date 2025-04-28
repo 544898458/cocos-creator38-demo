@@ -38,6 +38,9 @@ export class Scene登录 extends Component {
     main: Main
     @property({ type: RichText })
     lableMessage: RichText
+    @property(RichText)
+    richText公告: RichText
+
     //加载
     @property(Node)
     loadNode: Node;
@@ -69,14 +72,7 @@ export class Scene登录 extends Component {
         else
             this.node跳转社区微信小游戏.active = true
 
-        if (window.CC_WECHAT) {
-            // 创建插屏广告实例，提前初始化
-            if (wx.createInterstitialAd) {
-                this.main.interstitialAd = wx.createInterstitialAd({
-                    adUnitId: 'adunit-904480d5c9a873be'
-                })
-            }
-        }
+        this.main.onSecen登录Load()
     }
     start() {
         console.log('Scene登录.start')
@@ -92,6 +88,11 @@ export class Scene登录 extends Component {
                 this.audioSource.play()
             })
         }
+
+        assetManager.loadRemote('https://www.rtsgame.online/公告/公告.txt', (err, textAsset: TextAsset) => {
+            console.log('resources.load callback:', err, textAsset)
+            this.richText公告.string = textAsset.text
+        })
     }
 
     update(deltaTime: number) {
