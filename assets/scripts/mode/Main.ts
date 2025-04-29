@@ -53,8 +53,7 @@ enum LoginResult {
     Busy,
     PwdErr,
     NameErr,
-    客户端版本太低,
-    客户端版本太高,
+    客户端版本不匹配,
 }
 
 export const KEY_登录名: string = '登录名'
@@ -428,7 +427,7 @@ export class Main extends Component {
                 0,
                 str登录名,
                 'Hello, world!pwd',
-                15,//版本号
+                16,//版本号
             ])
 
             // this.scene登录.nodeSelectSpace.active = true
@@ -445,6 +444,7 @@ export class Main extends Component {
             let msgHead = arr[idxArr++]
             let msgId = msgHead[0] as MsgId
             let sn收到 = msgHead[1] as number
+            let arr消息 = arr.slice(idxArr)
             // console.log("收到GateSvr消息,msgId：", msgId, ',sn收到:', sn收到)
             thisLocal.recvMsgSn = Main.uint8自增(thisLocal.recvMsgSn)// ++thisLocal.recvMsgSn
             if (thisLocal.recvMsgSn != sn收到)
@@ -464,8 +464,8 @@ export class Main extends Component {
                     break
                 case MsgId.Login:
                     {
-                        let result: LoginResult = arr[idxArr++]
-                        let strMsg = arr[idxArr++] as string
+                        let [rpcSnId, result, strMsg] = arr消息 as [number, LoginResult, string]
+                        idxArr += 3
                         console.log(result, strMsg)
                         if (result == LoginResult.OK)
                             return
@@ -473,9 +473,7 @@ export class Main extends Component {
                         thisLocal.scene登录.lableMessage.string = strMsg
 
                         switch (result) {
-                            case LoginResult.客户端版本太高:
-                                break
-                            case LoginResult.客户端版本太低:
+                            case LoginResult.客户端版本不匹配:
                                 break
                             default:
                                 break
