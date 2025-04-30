@@ -97,6 +97,24 @@ export class Main extends Component {
                 let thisLocal = this
                 this.interstitialAd.onClose(() => { thisLocal.on关闭插屏广告() })
             }
+
+            // 创建 原生模板 广告实例，提前初始化
+            let CustomAd = wx.createCustomAd({
+                adUnitId: 'adunit-cce53ccb600523d1',
+                style: {
+                    left: 0,
+                    top: 0,
+                    width: 350
+                }
+            })
+
+            // 在适合的场景显示 原生模板 广告
+            CustomAd.show()
+
+            // 监听 原生模板 广告错误事件
+            CustomAd.onError(err => {
+                console.error(err.errMsg)
+            });
         }
     }
 

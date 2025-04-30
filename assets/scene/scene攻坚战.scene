@@ -38,7 +38,7 @@
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 160
+      "__id__": 164
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -69,7 +69,7 @@
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 181
+      "__id__": 185
     },
     "_id": "230a1890-4323-4440-93ac-fe2ce7e367f0"
   },
@@ -654,19 +654,19 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 156
+        "__id__": 160
       },
       {
-        "__id__": 157
+        "__id__": 161
       },
       {
-        "__id__": 158
+        "__id__": 162
       },
       {
         "__id__": 30
       },
       {
-        "__id__": 159
+        "__id__": 163
       }
     ],
     "_prefab": null,
@@ -859,6 +859,15 @@
       },
       {
         "__id__": 155
+      },
+      {
+        "__id__": 156
+      },
+      {
+        "__id__": 158
+      },
+      {
+        "__id__": 159
       }
     ],
     "removedComponents": []
@@ -2597,6 +2606,48 @@
     }
   },
   {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 157
+    },
+    "propertyPath": [
+      "camera"
+    ],
+    "value": {
+      "__id__": 6
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "e9B/mn4whKXaU4ycibYnqy"
+    ]
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 157
+    },
+    "propertyPath": [
+      "camera小地图"
+    ],
+    "value": {
+      "__id__": 16
+    }
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 157
+    },
+    "propertyPath": [
+      "target"
+    ],
+    "value": {
+      "__id__": 8
+    }
+  },
+  {
     "__type__": "cc.UITransform",
     "_name": "",
     "_objFlags": 0,
@@ -2712,25 +2763,25 @@
     "instance": null,
     "targetOverrides": [
       {
-        "__id__": 161
+        "__id__": 165
       },
       {
-        "__id__": 163
+        "__id__": 167
       },
       {
-        "__id__": 166
+        "__id__": 170
       },
       {
-        "__id__": 169
+        "__id__": 173
       },
       {
-        "__id__": 172
+        "__id__": 176
       },
       {
-        "__id__": 175
+        "__id__": 179
       },
       {
-        "__id__": 178
+        "__id__": 182
       }
     ],
     "nestedPrefabInstanceRoots": [
@@ -2776,7 +2827,7 @@
       "__id__": 20
     },
     "targetInfo": {
-      "__id__": 162
+      "__id__": 166
     }
   },
   {
@@ -2791,7 +2842,7 @@
       "__id__": 20
     },
     "sourceInfo": {
-      "__id__": 164
+      "__id__": 168
     },
     "propertyPath": [
       "lableCount"
@@ -2800,7 +2851,7 @@
       "__id__": 20
     },
     "targetInfo": {
-      "__id__": 165
+      "__id__": 169
     }
   },
   {
@@ -2821,7 +2872,7 @@
       "__id__": 20
     },
     "sourceInfo": {
-      "__id__": 167
+      "__id__": 171
     },
     "propertyPath": [
       "lableCrystal"
@@ -2830,7 +2881,7 @@
       "__id__": 20
     },
     "targetInfo": {
-      "__id__": 168
+      "__id__": 172
     }
   },
   {
@@ -2851,7 +2902,7 @@
       "__id__": 20
     },
     "sourceInfo": {
-      "__id__": 170
+      "__id__": 174
     },
     "propertyPath": [
       "lableGas"
@@ -2860,7 +2911,7 @@
       "__id__": 20
     },
     "targetInfo": {
-      "__id__": 171
+      "__id__": 175
     }
   },
   {
@@ -2881,7 +2932,7 @@
       "__id__": 20
     },
     "sourceInfo": {
-      "__id__": 173
+      "__id__": 177
     },
     "propertyPath": [
       "lableUnit"
@@ -2890,7 +2941,7 @@
       "__id__": 20
     },
     "targetInfo": {
-      "__id__": 174
+      "__id__": 178
     }
   },
   {
@@ -2911,7 +2962,7 @@
       "__id__": 20
     },
     "sourceInfo": {
-      "__id__": 176
+      "__id__": 180
     },
     "propertyPath": [
       "lable消息提示"
@@ -2920,7 +2971,7 @@
       "__id__": 20
     },
     "targetInfo": {
-      "__id__": 177
+      "__id__": 181
     }
   },
   {
@@ -2941,7 +2992,7 @@
       "__id__": 20
     },
     "sourceInfo": {
-      "__id__": 179
+      "__id__": 183
     },
     "propertyPath": [
       "lable语音消息提示"
@@ -2950,7 +3001,7 @@
       "__id__": 20
     },
     "targetInfo": {
-      "__id__": 180
+      "__id__": 184
     }
   },
   {
@@ -2968,28 +3019,28 @@
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 182
-    },
-    "shadows": {
-      "__id__": 183
-    },
-    "_skybox": {
-      "__id__": 184
-    },
-    "fog": {
-      "__id__": 185
-    },
-    "octree": {
       "__id__": 186
     },
-    "skin": {
+    "shadows": {
       "__id__": 187
     },
-    "lightProbeInfo": {
+    "_skybox": {
       "__id__": 188
     },
-    "postSettings": {
+    "fog": {
       "__id__": 189
+    },
+    "octree": {
+      "__id__": 190
+    },
+    "skin": {
+      "__id__": 191
+    },
+    "lightProbeInfo": {
+      "__id__": 192
+    },
+    "postSettings": {
+      "__id__": 193
     },
     "bakedWithStationaryMainLight": false,
     "bakedWithHighpLightmap": false

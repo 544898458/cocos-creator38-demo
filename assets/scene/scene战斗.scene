@@ -38,7 +38,7 @@
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 86
+      "__id__": 59
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -69,7 +69,7 @@
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 104
+      "__id__": 191
     },
     "_id": "a2a6dcbf-5442-46e3-be3b-a623e01230cf"
   },
@@ -654,19 +654,19 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 82
+        "__id__": 55
       },
       {
-        "__id__": 83
+        "__id__": 56
       },
       {
-        "__id__": 84
+        "__id__": 57
       },
       {
         "__id__": 30
       },
       {
-        "__id__": 85
+        "__id__": 58
       }
     ],
     "_prefab": null,
@@ -758,7 +758,7 @@
     "_priority": 1073741824,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 426.00000000000006,
+    "_orthoHeight": 426,
     "_near": 1,
     "_far": 2000,
     "_color": {
@@ -814,7 +814,7 @@
     "instance": {
       "__id__": 22
     },
-    "targetOverrides": null,
+    "targetOverrides": [],
     "nestedPrefabInstanceRoots": null
   },
   {
@@ -849,10 +849,13 @@
         "__id__": 45
       },
       {
-        "__id__": 47
+        "__id__": 46
       },
       {
         "__id__": 48
+      },
+      {
+        "__id__": 49
       },
       {
         "__id__": 50
@@ -861,64 +864,10 @@
         "__id__": 51
       },
       {
-        "__id__": 52
+        "__id__": 53
       },
       {
         "__id__": 54
-      },
-      {
-        "__id__": 56
-      },
-      {
-        "__id__": 57
-      },
-      {
-        "__id__": 58
-      },
-      {
-        "__id__": 60
-      },
-      {
-        "__id__": 62
-      },
-      {
-        "__id__": 63
-      },
-      {
-        "__id__": 65
-      },
-      {
-        "__id__": 67
-      },
-      {
-        "__id__": 69
-      },
-      {
-        "__id__": 70
-      },
-      {
-        "__id__": 71
-      },
-      {
-        "__id__": 73
-      },
-      {
-        "__id__": 74
-      },
-      {
-        "__id__": 76
-      },
-      {
-        "__id__": 77
-      },
-      {
-        "__id__": 78
-      },
-      {
-        "__id__": 80
-      },
-      {
-        "__id__": 81
       }
     ],
     "removedComponents": []
@@ -1409,77 +1358,19 @@
   {
     "__type__": "cc.TargetInfo",
     "localID": [
-      "c44IbLvzhH/6hf4Pon9sM4"
-    ]
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 43
-    },
-    "propertyPath": [
-      "camera"
-    ],
-    "value": {
-      "__id__": 6
-    }
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 46
-    },
-    "propertyPath": [
-      "camera"
-    ],
-    "value": {
-      "__id__": 6
-    }
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
       "8f7f5lRGZEdZyz+1h6JS3D"
     ]
   },
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 46
+      "__id__": 43
     },
     "propertyPath": [
-      "target"
+      "camera"
     ],
     "value": {
-      "__id__": 8
-    }
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 49
-    },
-    "propertyPath": [
-      "_layer"
-    ],
-    "value": 33554432
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "c5395sArBNorxAH+aBdDsl"
-    ]
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 46
-    },
-    "propertyPath": [
-      "camera小地图"
-    ],
-    "value": {
-      "__id__": 16
+      "__id__": 6
     }
   },
   {
@@ -1497,27 +1388,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 53
-    },
-    "propertyPath": [
-      "_contentSize"
-    ],
-    "value": {
-      "__type__": "cc.Size",
-      "width": 393,
-      "height": 852
-    }
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "11wSPA9MNGYa6mT7AjOgOs"
-    ]
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 55
+      "__id__": 47
     },
     "propertyPath": [
       "target"
@@ -1535,7 +1406,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 55
+      "__id__": 47
     },
     "propertyPath": [
       "camera"
@@ -1547,7 +1418,17 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 55
+      "__id__": 47
+    },
+    "propertyPath": [
+      "distance"
+    ],
+    "value": 10
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 47
     },
     "propertyPath": [
       "camera小地图"
@@ -1559,242 +1440,44 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 59
+      "__id__": 52
     },
     "propertyPath": [
-      "_type"
-    ],
-    "value": 2
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "deYYymn8tONL0vY5160o97"
-    ]
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 61
-    },
-    "propertyPath": [
-      "_active"
-    ],
-    "value": false
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "4288rS4QdCf6jF4xd+iV4v"
-    ]
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 59
-    },
-    "propertyPath": [
-      "_useGrayscale"
-    ],
-    "value": false
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 64
-    },
-    "propertyPath": [
-      "_contentSize"
+      "target"
     ],
     "value": {
-      "__type__": "cc.Size",
-      "width": 89.6,
-      "height": 31
+      "__id__": 8
     }
   },
   {
     "__type__": "cc.TargetInfo",
     "localID": [
-      "33Q3ckFzJNZIqP772JsyL3"
+      "c44IbLvzhH/6hf4Pon9sM4"
     ]
   },
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 66
+      "__id__": 52
     },
     "propertyPath": [
-      "_lscale"
+      "camera"
     ],
     "value": {
-      "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
-      "z": 1
-    }
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "22CXEyhZ5CnKZFGpfrUeBk"
-    ]
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 68
-    },
-    "propertyPath": [
-      "_progress"
-    ],
-    "value": 0.7
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "35v251zupM3YH77y+r68vw"
-    ]
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 59
-    },
-    "propertyPath": [
-      "_fillRange"
-    ],
-    "value": 1
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 68
-    },
-    "propertyPath": [
-      "_totalLength"
-    ],
-    "value": 128
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 72
-    },
-    "propertyPath": [
-      "_contentSize"
-    ],
-    "value": {
-      "__type__": "cc.Size",
-      "width": 128,
-      "height": 30
-    }
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "d0Akeu2wNNspZ5Ej6ICWo7"
-    ]
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 66
-    },
-    "propertyPath": [
-      "_lpos"
-    ],
-    "value": {
-      "__type__": "cc.Vec3",
-      "x": -64,
-      "y": 0,
-      "z": 0
+      "__id__": 6
     }
   },
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 75
+      "__id__": 52
     },
     "propertyPath": [
-      "_active"
-    ],
-    "value": false
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "99ljnL0K1ED5E1Pl1yHrSw"
-    ]
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 61
-    },
-    "propertyPath": [
-      "_lscale"
+      "camera小地图"
     ],
     "value": {
-      "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
-      "z": 1
+      "__id__": 16
     }
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 55
-    },
-    "propertyPath": [
-      "distance"
-    ],
-    "value": 10
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 79
-    },
-    "propertyPath": [
-      "_color"
-    ],
-    "value": {
-      "__type__": "cc.Color",
-      "r": 150,
-      "g": 142,
-      "b": 142,
-      "a": 255
-    }
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "e9QUpy1LBHi4auTaE1XEFT"
-    ]
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 79
-    },
-    "propertyPath": [
-      "_spriteFrame"
-    ],
-    "value": {
-      "__uuid__": "4e6d1ea0-20fe-4fbf-ad75-394a02c56313@f9941",
-      "__expectedType__": "cc.SpriteFrame"
-    }
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 79
-    },
-    "propertyPath": [
-      "_type"
-    ],
-    "value": 0
   },
   {
     "__type__": "cc.UITransform",
@@ -1809,7 +1492,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 393,
-      "height": 852.0000000000001
+      "height": 852
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1912,7 +1595,34 @@
     "instance": null,
     "targetOverrides": [
       {
-        "__id__": 87
+        "__id__": 60
+      },
+      {
+        "__id__": 62
+      },
+      {
+        "__id__": 65
+      },
+      {
+        "__id__": 68
+      },
+      {
+        "__id__": 71
+      },
+      {
+        "__id__": 74
+      },
+      {
+        "__id__": 77
+      },
+      {
+        "__id__": 80
+      },
+      {
+        "__id__": 83
+      },
+      {
+        "__id__": 86
       },
       {
         "__id__": 89
@@ -1928,6 +1638,93 @@
       },
       {
         "__id__": 101
+      },
+      {
+        "__id__": 104
+      },
+      {
+        "__id__": 107
+      },
+      {
+        "__id__": 110
+      },
+      {
+        "__id__": 113
+      },
+      {
+        "__id__": 116
+      },
+      {
+        "__id__": 119
+      },
+      {
+        "__id__": 122
+      },
+      {
+        "__id__": 125
+      },
+      {
+        "__id__": 128
+      },
+      {
+        "__id__": 131
+      },
+      {
+        "__id__": 134
+      },
+      {
+        "__id__": 137
+      },
+      {
+        "__id__": 140
+      },
+      {
+        "__id__": 143
+      },
+      {
+        "__id__": 146
+      },
+      {
+        "__id__": 149
+      },
+      {
+        "__id__": 152
+      },
+      {
+        "__id__": 155
+      },
+      {
+        "__id__": 158
+      },
+      {
+        "__id__": 161
+      },
+      {
+        "__id__": 164
+      },
+      {
+        "__id__": 167
+      },
+      {
+        "__id__": 170
+      },
+      {
+        "__id__": 173
+      },
+      {
+        "__id__": 176
+      },
+      {
+        "__id__": 179
+      },
+      {
+        "__id__": 182
+      },
+      {
+        "__id__": 185
+      },
+      {
+        "__id__": 188
       }
     ],
     "nestedPrefabInstanceRoots": [
@@ -1949,7 +1746,7 @@
       "__id__": 20
     },
     "targetInfo": {
-      "__id__": 88
+      "__id__": 61
     }
   },
   {
@@ -1964,7 +1761,187 @@
       "__id__": 20
     },
     "sourceInfo": {
-      "__id__": 90
+      "__id__": 63
+    },
+    "propertyPath": [
+      "游戏攻略"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 64
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "604uL4P8pKT5bzeAX7V/Vr"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 66
+    },
+    "propertyPath": [
+      "游戏设置"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 67
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "a0mcHhX/xMboY6DCYpkiGR"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 69
+    },
+    "propertyPath": [
+      "下部列表"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 70
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "b6ECwCQ0JML7xNwE3dfSYM"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 72
+    },
+    "propertyPath": [
+      "node取消点击地面"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 73
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "3fe/HJsidP0IUrauWEZU9n"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 75
+    },
+    "propertyPath": [
+      "node取消选中"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 76
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "72xMbNPD5HWKPjyVp5dfHe"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 78
+    },
+    "propertyPath": [
+      "nodeFightPanel"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 79
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "52t03bbaNPPrV+J/3cptqB"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 81
     },
     "propertyPath": [
       "lableCount"
@@ -1973,7 +1950,7 @@
       "__id__": 20
     },
     "targetInfo": {
-      "__id__": 91
+      "__id__": 82
     }
   },
   {
@@ -1994,7 +1971,7 @@
       "__id__": 20
     },
     "sourceInfo": {
-      "__id__": 93
+      "__id__": 84
     },
     "propertyPath": [
       "lableCrystal"
@@ -2003,7 +1980,7 @@
       "__id__": 20
     },
     "targetInfo": {
-      "__id__": 94
+      "__id__": 85
     }
   },
   {
@@ -2024,7 +2001,7 @@
       "__id__": 20
     },
     "sourceInfo": {
-      "__id__": 96
+      "__id__": 87
     },
     "propertyPath": [
       "lableGas"
@@ -2033,7 +2010,7 @@
       "__id__": 20
     },
     "targetInfo": {
-      "__id__": 97
+      "__id__": 88
     }
   },
   {
@@ -2054,7 +2031,7 @@
       "__id__": 20
     },
     "sourceInfo": {
-      "__id__": 99
+      "__id__": 90
     },
     "propertyPath": [
       "lableUnit"
@@ -2063,7 +2040,7 @@
       "__id__": 20
     },
     "targetInfo": {
-      "__id__": 100
+      "__id__": 91
     }
   },
   {
@@ -2084,10 +2061,100 @@
       "__id__": 20
     },
     "sourceInfo": {
+      "__id__": 93
+    },
+    "propertyPath": [
+      "lable聊天消息"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 94
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "c8wD7j/7BOwrUPiWaUKngJ"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 96
+    },
+    "propertyPath": [
+      "lable系统消息"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 97
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "b9bXhk77hAALGj3+MdwXvv"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 99
+    },
+    "propertyPath": [
+      "richText任务提示"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 100
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "ebcN5iu+VO9bZhGzL2BFz9"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
       "__id__": 102
     },
     "propertyPath": [
-      "_barSprite"
+      "lable单位详情"
     ],
     "target": {
       "__id__": 20
@@ -2099,40 +2166,910 @@
   {
     "__type__": "cc.TargetInfo",
     "localID": [
-      "35v251zupM3YH77y+r68vw"
+      "26J1nS+EpB3alpLFdfMGVo"
     ]
   },
   {
     "__type__": "cc.TargetInfo",
     "localID": [
-      "deYYymn8tONL0vY5160o97"
+      "120iFxx7NL+7ohp11vg4GI"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 105
+    },
+    "propertyPath": [
+      "toggle点击活动单位都是追加选中"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 106
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "c5egEyDBxLfaSwC2BGL9SW"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 108
+    },
+    "propertyPath": [
+      "toggle显示单位类型"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 109
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "2f2XXX4MFBJJFAoqcABHnE"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 111
+    },
+    "propertyPath": [
+      "button离开地堡"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 112
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "459inta2lKFa+G3fvJaPbc"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 114
+    },
+    "propertyPath": [
+      "button强行走"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 115
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "0ccek/wJhPNIzIr48y40Sd"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 117
+    },
+    "propertyPath": [
+      "button原地坚守"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 118
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "2a90Uzpj9DL7sLwQh3PwVh"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 120
+    },
+    "propertyPath": [
+      "button集结点"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 121
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "eaK8EPiVpF84Dc80+ik5hb"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 123
+    },
+    "propertyPath": [
+      "button解锁近战兵"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 124
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "97JkYAH3BILY69UE+JzHAT"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 126
+    },
+    "propertyPath": [
+      "button解锁枪虫"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 127
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "d0+hHJezJIRo0AzzXZaI2C"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 129
+    },
+    "propertyPath": [
+      "node升级枪兵攻击"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 130
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "8bvgrO8MRIY6KzTt9upwBe"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 132
+    },
+    "propertyPath": [
+      "node升级近战虫攻击"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 133
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "50ekY3vadFkpTAkVqmpXxi"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 135
+    },
+    "propertyPath": [
+      "node升级枪虫防御"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 136
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "a0glTba2xEhqjJJ7tF65gQ"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 138
+    },
+    "propertyPath": [
+      "node升级近战兵防御"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 139
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "9cyUKeasZDbpb4natrBuzv"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 141
+    },
+    "propertyPath": [
+      "node升级三色坦克移速"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 142
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "3eNicfsEhCNZKS8xm7iItP"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 144
+    },
+    "propertyPath": [
+      "node升级飞机攻速"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 145
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "b6gFBohj5Fi5dZV80fQ580"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 147
+    },
+    "propertyPath": [
+      "node升级绿色坦克攻速"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 148
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "05ikfTRaZJ7IezCB6xITDj"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 150
+    },
+    "propertyPath": [
+      "node升级飞虫移速"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 151
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "1dcxKmdAREVIvqYPCGObBV"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 153
+    },
+    "propertyPath": [
+      "node太岁分裂"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 154
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "98ZxK4e/FOeKjExrp46V1q"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 156
+    },
+    "propertyPath": [
+      "uiTransform所有单位头顶名字"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 157
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "ceGzosg3RH+Y0wYsJJqjFC"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 159
+    },
+    "propertyPath": [
+      "uiTransform剧情对话根"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 160
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "78Atln40lChKtJQaEmbL4U"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 162
+    },
+    "propertyPath": [
+      "richText剧情对话内容"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 163
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "76/aYSF0hM3ZZEvA77fEMp"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 165
+    },
+    "propertyPath": [
+      "sprite剧情对话头像左"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 166
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "3cIeH+0NRNKrSZOmx/z81w"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 168
+    },
+    "propertyPath": [
+      "lable剧情对话名字左"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 169
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "aa8AYdr4RBA7ujMzNMePuQ"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 171
+    },
+    "propertyPath": [
+      "sprite剧情对话头像右"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 172
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "12VHRe8yRIpaL5UmEqextP"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 174
+    },
+    "propertyPath": [
+      "lable剧情对话名字右"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 175
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "1bNJnHufhFg6LlqeDUc8B7"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 177
+    },
+    "propertyPath": [
+      "uiTransform剧情对话退出面板"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 178
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "49J57zID9NjIyE5pJYv4iK"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 180
+    },
+    "propertyPath": [
+      "lable在线人数"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 181
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "3682B5sfVGtrgU1ZWPJJKx"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 183
+    },
+    "propertyPath": [
+      "node_selectedList"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 184
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "3eIqD25UJJyaFNWGACCiub"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 186
+    },
+    "propertyPath": [
+      "node按钮详情"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 187
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "1584edUJdDMLggJVBph9q5"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 20
+    },
+    "sourceInfo": {
+      "__id__": 189
+    },
+    "propertyPath": [
+      "richEdit按钮详情"
+    ],
+    "target": {
+      "__id__": 20
+    },
+    "targetInfo": {
+      "__id__": 190
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "26J1nS+EpB3alpLFdfMGVo"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "8eBhokuHNG75Ugpwa3DSxA"
     ]
   },
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 105
+      "__id__": 192
     },
     "shadows": {
-      "__id__": 106
+      "__id__": 193
     },
     "_skybox": {
-      "__id__": 107
+      "__id__": 194
     },
     "fog": {
-      "__id__": 108
+      "__id__": 195
     },
     "octree": {
-      "__id__": 109
+      "__id__": 196
     },
     "skin": {
-      "__id__": 110
+      "__id__": 197
     },
     "lightProbeInfo": {
-      "__id__": 111
+      "__id__": 198
     },
     "postSettings": {
-      "__id__": 112
+      "__id__": 199
     },
     "bakedWithStationaryMainLight": false,
     "bakedWithHighpLightmap": false

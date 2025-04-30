@@ -566,7 +566,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -15,
+      "x": -64,
       "y": 0,
       "z": 0
     },
@@ -607,8 +607,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 15,
-      "height": 7
+      "width": 89.6,
+      "height": 31
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -647,7 +647,7 @@
       "__uuid__": "4e6d1ea0-20fe-4fbf-ad75-394a02c56313@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
-    "_type": 1,
+    "_type": 2,
     "_fillType": 0,
     "_sizeMode": 0,
     "_fillCenter": {
@@ -656,7 +656,7 @@
       "y": 0
     },
     "_fillStart": 0,
-    "_fillRange": 0,
+    "_fillRange": 1,
     "_isTrimmedMode": true,
     "_useGrayscale": false,
     "_atlas": null,
@@ -693,8 +693,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 30,
-      "height": 5
+      "width": 128,
+      "height": 30
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -724,16 +724,16 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 150,
+      "g": 142,
+      "b": 142,
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "fda73d99-e0d4-4f72-b2aa-ab29708e70da@f9941",
+      "__uuid__": "4e6d1ea0-20fe-4fbf-ad75-394a02c56313@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
-    "_type": 1,
+    "_type": 0,
     "_fillType": 0,
     "_sizeMode": 0,
     "_fillCenter": {
@@ -768,8 +768,8 @@
       "__id__": 23
     },
     "_mode": 0,
-    "_totalLength": 30,
-    "_progress": 0.5,
+    "_totalLength": 128,
+    "_progress": 0.7,
     "_reverse": false,
     "_id": ""
   },
@@ -791,7 +791,7 @@
     },
     "target": null,
     "camera": null,
-    "distance": 100,
+    "distance": 10,
     "camera小地图": null,
     "_hpValueScale": 1,
     "_id": ""
@@ -40962,7 +40962,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 393,
-      "height": 852.0000000000001
+      "height": 852
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -41020,7 +41020,6 @@
       "__id__": 0
     },
     "fileId": "7dGq1TwhpD0oWH64AIRR8J",
-    "instance": null,
-    "targetOverrides": null
+    "targetOverrides": []
   }
 ]
