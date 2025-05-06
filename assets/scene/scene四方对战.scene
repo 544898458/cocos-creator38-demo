@@ -38,7 +38,7 @@
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 60
+      "__id__": 66
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -69,7 +69,7 @@
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 81
+      "__id__": 87
     },
     "_id": "43fbab0d-cd30-41bd-8ce6-c6ace63ac043"
   },
@@ -654,19 +654,19 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 56
+        "__id__": 62
       },
       {
-        "__id__": 57
+        "__id__": 63
       },
       {
-        "__id__": 58
+        "__id__": 64
       },
       {
         "__id__": 30
       },
       {
-        "__id__": 59
+        "__id__": 65
       }
     ],
     "_prefab": null,
@@ -814,7 +814,7 @@
     "instance": {
       "__id__": 22
     },
-    "targetOverrides": null,
+    "targetOverrides": [],
     "nestedPrefabInstanceRoots": null
   },
   {
@@ -856,6 +856,18 @@
       },
       {
         "__id__": 55
+      },
+      {
+        "__id__": 56
+      },
+      {
+        "__id__": 58
+      },
+      {
+        "__id__": 59
+      },
+      {
+        "__id__": 60
       }
     ],
     "removedComponents": []
@@ -1614,6 +1626,68 @@
     }
   },
   {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 57
+    },
+    "propertyPath": [
+      "target"
+    ],
+    "value": {
+      "__id__": 8
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "e9B/mn4whKXaU4ycibYnqy"
+    ]
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 57
+    },
+    "propertyPath": [
+      "camera"
+    ],
+    "value": {
+      "__id__": 6
+    }
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 57
+    },
+    "propertyPath": [
+      "camera小地图"
+    ],
+    "value": {
+      "__id__": 16
+    }
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 61
+    },
+    "propertyPath": [
+      "_contentSize"
+    ],
+    "value": {
+      "__type__": "cc.Size",
+      "width": 393,
+      "height": 852
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "11wSPA9MNGYa6mT7AjOgOs"
+    ]
+  },
+  {
     "__type__": "cc.UITransform",
     "_name": "",
     "_objFlags": 0,
@@ -1729,13 +1803,7 @@
     "instance": null,
     "targetOverrides": [
       {
-        "__id__": 61
-      },
-      {
-        "__id__": 63
-      },
-      {
-        "__id__": 66
+        "__id__": 67
       },
       {
         "__id__": 69
@@ -1748,6 +1816,12 @@
       },
       {
         "__id__": 78
+      },
+      {
+        "__id__": 81
+      },
+      {
+        "__id__": 84
       }
     ],
     "nestedPrefabInstanceRoots": [
@@ -1769,7 +1843,7 @@
       "__id__": 20
     },
     "targetInfo": {
-      "__id__": 62
+      "__id__": 68
     }
   },
   {
@@ -1784,7 +1858,7 @@
       "__id__": 20
     },
     "sourceInfo": {
-      "__id__": 64
+      "__id__": 70
     },
     "propertyPath": [
       "lableCount"
@@ -1793,7 +1867,7 @@
       "__id__": 20
     },
     "targetInfo": {
-      "__id__": 65
+      "__id__": 71
     }
   },
   {
@@ -1814,7 +1888,7 @@
       "__id__": 20
     },
     "sourceInfo": {
-      "__id__": 67
+      "__id__": 73
     },
     "propertyPath": [
       "lableCrystal"
@@ -1823,7 +1897,7 @@
       "__id__": 20
     },
     "targetInfo": {
-      "__id__": 68
+      "__id__": 74
     }
   },
   {
@@ -1844,7 +1918,7 @@
       "__id__": 20
     },
     "sourceInfo": {
-      "__id__": 70
+      "__id__": 76
     },
     "propertyPath": [
       "lableGas"
@@ -1853,7 +1927,7 @@
       "__id__": 20
     },
     "targetInfo": {
-      "__id__": 71
+      "__id__": 77
     }
   },
   {
@@ -1874,7 +1948,7 @@
       "__id__": 20
     },
     "sourceInfo": {
-      "__id__": 73
+      "__id__": 79
     },
     "propertyPath": [
       "lableUnit"
@@ -1883,7 +1957,7 @@
       "__id__": 20
     },
     "targetInfo": {
-      "__id__": 74
+      "__id__": 80
     }
   },
   {
@@ -1904,7 +1978,7 @@
       "__id__": 20
     },
     "sourceInfo": {
-      "__id__": 76
+      "__id__": 82
     },
     "propertyPath": [
       "lable消息提示"
@@ -1913,7 +1987,7 @@
       "__id__": 20
     },
     "targetInfo": {
-      "__id__": 77
+      "__id__": 83
     }
   },
   {
@@ -1934,7 +2008,7 @@
       "__id__": 20
     },
     "sourceInfo": {
-      "__id__": 79
+      "__id__": 85
     },
     "propertyPath": [
       "lable语音消息提示"
@@ -1943,7 +2017,7 @@
       "__id__": 20
     },
     "targetInfo": {
-      "__id__": 80
+      "__id__": 86
     }
   },
   {
@@ -1961,28 +2035,28 @@
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 82
-    },
-    "shadows": {
-      "__id__": 83
-    },
-    "_skybox": {
-      "__id__": 84
-    },
-    "fog": {
-      "__id__": 85
-    },
-    "octree": {
-      "__id__": 86
-    },
-    "skin": {
-      "__id__": 87
-    },
-    "lightProbeInfo": {
       "__id__": 88
     },
-    "postSettings": {
+    "shadows": {
       "__id__": 89
+    },
+    "_skybox": {
+      "__id__": 90
+    },
+    "fog": {
+      "__id__": 91
+    },
+    "octree": {
+      "__id__": 92
+    },
+    "skin": {
+      "__id__": 93
+    },
+    "lightProbeInfo": {
+      "__id__": 94
+    },
+    "postSettings": {
+      "__id__": 95
     },
     "bakedWithStationaryMainLight": false,
     "bakedWithHighpLightmap": false
