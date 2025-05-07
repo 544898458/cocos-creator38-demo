@@ -3,7 +3,7 @@ import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { HeadScale } from '../component/head-scale'
 import { Scene战斗, ClientEntityComponent } from '../scene/Scene战斗'
 import { Scene登录 } from '../scene/Scene登录'
-import { AudioMgr } from '../manager/AudioMgr'
+import { AudioMgr } from '../manager/audio/AudioMgr'
 import { ProgressBar } from 'cc'
 import { ParticleSystem } from 'cc'
 import { tween } from 'cc'

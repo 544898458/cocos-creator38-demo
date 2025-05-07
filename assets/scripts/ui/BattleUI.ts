@@ -1,12 +1,12 @@
 import { _decorator, Component, Node } from 'cc';
-import { Main } from './Main';
+import { Main } from '../mode/Main';
 import { director } from 'cc';
 import { ClientEntityComponent, Scene战斗 } from '../scene/Scene战斗';
 import { Label } from 'cc';
 import { EditBox } from 'cc';
 import { UITransform } from 'cc';
 import { Sprite } from 'cc';
-import { AudioMgr } from '../manager/AudioMgr';
+import { AudioMgr } from '../manager/audio/AudioMgr';
 import { Button } from 'cc';
 import { Toggle } from 'cc';
 import { Layers } from 'cc';
@@ -15,6 +15,7 @@ import { Color } from 'cc';
 import { 制造配置, 属性类型, 单位类型, 战斗配置 } from '../配置/配置';
 import { RichText } from 'cc';
 import { 按下按钮显示单位详情Component } from '../component/按下按钮显示单位详情Component';
+import { EventMouse } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('BattleUI')
@@ -215,7 +216,7 @@ export class BattleUI extends Component {
     onClickAdd孵化场(event: Event, customEventData: string): void {
         this.main.onClickAdd孵化场(event, customEventData)
     }
-    onClickAdd建筑(event: Event, customEventData: string): void {
+    onClickAdd建筑(event: EventMouse, customEventData: string): void {
         const node: Node = event.target as Node
         let 单位 = node.getComponent(按下按钮显示单位详情Component).enum类型
         this.main.on点击按钮_造建筑(单位)

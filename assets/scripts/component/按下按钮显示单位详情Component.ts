@@ -1,7 +1,7 @@
 import { RichText } from 'cc';
 import { _decorator, Component, Node } from 'cc';
 import { 单位类型, 配置, 单位配置 } from '../配置/配置';
-import { BattleUI } from '../mode/BattleUI';
+import { BattleUI } from '../ui/BattleUI';
 import { Enum } from 'cc';
 import { EventTouch } from 'cc';
 import { Vec2 } from 'cc';

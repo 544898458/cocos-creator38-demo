@@ -1,5 +1,5 @@
 import { _decorator, Component, Node } from 'cc';
-import { BattleUI } from '../mode/BattleUI';
+import { BattleUI } from '../ui/BattleUI';
 import { Vec2 } from 'cc';
 import { EventTouch } from 'cc';
 import { Vec3 } from 'cc';
