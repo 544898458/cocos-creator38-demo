@@ -16,11 +16,13 @@ import { 制造配置, 属性类型, 单位类型, 战斗配置 } from '../配�
 import { RichText } from 'cc';
 import { 按下按钮显示单位详情Component } from '../component/按下按钮显示单位详情Component';
 import { EventMouse } from 'cc';
+import { MainTest } from '../MainTest';
+import { Dialog } from '../component/Dialog';
 const { ccclass, property } = _decorator;
 
 @ccclass('BattleUI')
-export class BattleUI extends Component {
-    main: Main;
+export class BattleUI extends Dialog {
+    main: MainTest;
     @property(Scene战斗)
     scene战斗: Scene战斗
     @property(Node)
@@ -102,8 +104,8 @@ export class BattleUI extends Component {
 
 
     start() {
-        this.main = director.getScene().getChildByName('常驻').getComponent(Main);
-        this.main.scene战斗 = this.scene战斗;
+        this.main = director.getScene().getChildByName('常驻').getComponent(MainTest);
+        this.scene战斗 = this.main.scene战斗
         this.lastTitle = this.nodeFightPanel.getChildByName("建筑单位");
     }
 
@@ -121,7 +123,7 @@ export class BattleUI extends Component {
             return
         }
 
-        this.scene战斗.main.fun创建消息 = this.scene战斗.main.createMsg集结点
+        MainTest.instance.fun创建消息 = MainTest.instance.createMsg集结点
         this.scene战斗.battleUI.lable系统消息.string = '请点击地面设置此建筑产出活动单位的集结点'
         this.进入点击地面状态()
     }
@@ -135,7 +137,7 @@ export class BattleUI extends Component {
             AudioMgr.inst.playOneShot('BUZZ')
             return
         }
-        this.scene战斗.main.fun创建消息 = this.scene战斗.main.createMsgMove强行走
+        MainTest.instance.fun创建消息 = MainTest.instance.createMsgMove强行走
         this.scene战斗.battleUI.lable系统消息.string = '行走过程不会攻击敌人，请点击地面确定目的地'
         this.进入点击地面状态()
     }
@@ -145,7 +147,7 @@ export class BattleUI extends Component {
             AudioMgr.inst.playOneShot('BUZZ')
             return
         }
-        this.scene战斗.main.fun创建消息 = this.scene战斗.main.createMsg太岁分裂
+        MainTest.instance.fun创建消息 = MainTest.instance.createMsg太岁分裂
         this.scene战斗.battleUI.lable系统消息.string = '请在选中太岁的苔蔓(wàn)上放置分裂的太岁'
         this.进入点击地面状态()
     }
@@ -155,7 +157,7 @@ export class BattleUI extends Component {
             AudioMgr.inst.playOneShot('BUZZ')
             return
         }
-        this.scene战斗.main.send原地坚守()
+        MainTest.instance.send原地坚守()
     }
     on框选(event: Event, customEventData: string) {
         this.scene战斗.posWorld框选起始点 = null
@@ -186,7 +188,7 @@ export class BattleUI extends Component {
     onClick镜头缩小(event: Event, customEventData: string) {
         this.scene战斗.镜头缩小()
     }
-    onClickAdd活动单位(event: Event, customEventData: string): void {
+    onClickAdd活动单位(event: EventMouse, customEventData: string): void {
         this.main.onClick造活动单位(event, customEventData)
     }
     onClick造坦克(event: Event, customEventData: string): void {

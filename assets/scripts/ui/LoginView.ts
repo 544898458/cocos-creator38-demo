@@ -10,6 +10,11 @@ import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { MainTest } from '../MainTest';
 import { globalShortcut } from 'electron/main';
 import { toast } from '../manager/ToastMgr';
+import { Label } from 'cc';
+import { assetManager } from 'cc';
+import { AudioClip } from 'cc';
+import { AudioSource } from 'cc';
+import { TextAsset } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('LoginView')
@@ -20,20 +25,53 @@ export class LoginView extends Dialog {
     LoginPanel: Node;
     @property({ type: RichText, displayName: "加载提示" })
     lableMessage: RichText;
-    @property({ type: Node, displayName: "选择模式" })
+    @property({ type: Node })
     nodeSelectMode: Node;
-    @property({ type: Node, displayName: "选择玩法" })
+    @property({ type: Node })
     nodeSelectPlay: Node;
-    @property({ type: Node, displayName: "选择种族" })
+    @property({ type: Node })
     nodeSelectRace: Node;
-    @property({ type: Node, displayName: "房间" })
+    @property({ type: Node })
     node个人战局列表: Node;
 
+    @property(RichText)
+    richText公告: RichText;
+    @property(Label)
+    在线人数: Label;
+
     b登录成功: boolean = false;
+    个人战模式: number = -1;
     onOpened(param: any): void {
         console.log("LoginView.onOpened", param)
         //显示上次登录昵称
         this.editBox登录名.string = sys.localStorage.getItem(Glob.KEY_登录名)
+        this.显示登录界面();
+
+        //目前不知道有什么意义，先注释掉
+        // if (sys.isBrowser)
+        //     this.LoginPanel.getChildByName().active = true
+        // else
+        //     this.node跳转社区微信小游戏.active = true
+        MainTest.instance.微信小游戏允许分享();
+        MainTest.instance.onSecen登录Load();
+        //todo
+        // if (Glob.strHttps登录场景音乐Mp3) {
+        //     assetManager.loadRemote(Glob.strHttps登录场景音乐Mp3, (err, clip: AudioClip) => {
+        //         console.log('resources.load callback:', err, clip)
+        //         let audioSource = MainTest.instance.audioManager.getComponent(AudioSource)
+        //         if (!audioSource)
+        //             return
+
+        //         audioSource.stop()
+        //         audioSource.clip = clip
+        //         audioSource.play()
+        //     })
+        // }
+        //TODO
+        // assetManager.loadRemote('https://www.rtsgame.online/公告/公告.txt', (err, textAsset: TextAsset) => {
+        //     console.log('resources.load callback:', err, textAsset)
+        //     this.richText公告.string = textAsset.text
+        // })
     }
 
     //点击登录
@@ -47,7 +85,7 @@ export class LoginView extends Dialog {
         console.log(str登录名 + "登录游戏")
         if (str登录名.length == 0) {
             //飘字
-            toast.showToast('请输入昵称（随便什么都可以）')
+            toast.showToast('请输入昵称（随便什么都可以）', 100)
             return
         }
 
@@ -96,7 +134,7 @@ export class LoginView extends Dialog {
                 16,//版本号
             ])
 
-            // this.scene登录.nodeSelectSpace.active = true
+            this.选择模式();
         }
 
         // let lableMessage = this.lableMessage
@@ -204,20 +242,158 @@ export class LoginView extends Dialog {
         Glob.recvMsgSn = 0
         Glob.sendMsgSn = 0
     }
+    //连接成功，打开选择战役模式
+    选择模式() {
+        this.LoginPanel.active = false;
+        this.nodeSelectMode.active = true
+    }
+    选择战役(event: Event, customEventData: string) {
+        this.nodeSelectMode.active = false
+        this.nodeSelectPlay.active = true
+        let des = this.nodeSelectPlay.getChildByName('操作说明').getComponent(Label)
+        if (customEventData == '1')//单人战役
+        {
+            des.string = "单人战役：有训练战，防守战，攻坚战\n请选择你的玩法类型\n\n\n\n"
+            this.nodeSelectPlay.getChildByName("单人战役").active = true;
+            this.nodeSelectPlay.getChildByName("多人战役").active = false;
+
+        }
+        else if (customEventData == '2')//多人战役
+        {
+
+            des.string = "多人战役：\n多人全图混战：无限玩家同台地图竞技\n四方对战：四人玩家同台竞技，地图采用东西南北区域限制\n请选择你的玩法类型\n\n\n\n"
+            this.nodeSelectPlay.getChildByName("单人战役").active = false;
+            this.nodeSelectPlay.getChildByName("多人战役").active = true;
+        }
+    }
+
+    个人战类型(event: Event, customEventData: string) {
+        // if (customEventData == '0') {//训练战
+
+        // } else if (customEventData == '1') {//防守战
+
+        // } else if (customEventData == '2') {//攻坚战
+
+        // }
+        this.个人战模式 = parseInt(customEventData);
+        this.nodeSelectPlay.active = false;
+        this.nodeSelectRace.active = true;
+    }
+    选择种族(event: Event, customEventData: string) {
+
+        if (this.个人战模式 > 0) {
+            switch (this.个人战模式) {
+                case 1:
+                    customEventData == '1' ? this.onClickToggle进单人剧情副本(null, null) : this.onClickToggle进训练战_虫(null, null)
+                    break;
+                case 2:
+                    customEventData == '1' ? this.onClickToggle进单人防守战(null, null) : this.onClickToggle进单人防守战_虫(null, null)
+                    break;
+                case 3:
+                    customEventData == '1' ? this.onClickToggle进单人攻坚战(null, null) : this.onClickToggle进单人攻坚战_虫(null, null)
+                    break;
+            }
+        }
+    }
+    打开房间(event: Event, customEventData: string): void {
+        this.nodeSelectPlay.active = false
+        this.node个人战局列表.active = true
+    }
     显示登录界面(): void {
         this.nodeSelectRace.active = false
         this.nodeSelectMode.active = false
         this.nodeSelectPlay.active = false
         this.node个人战局列表.active = false
+        this.nodeSelectPlay.getChildByName("单人战役").active = false;
+        this.nodeSelectPlay.getChildByName("多人战役").active = false;
         this.LoginPanel.active = true
         if (Glob.websocket)
             this.lableMessage.string = '连接已断开，已回到登录界面'
     }
+
     回到登录场景(): void {
         console.log("回到登录场景")
     }
-    update(deltaTime: number) {
+    //游戏讨论关于
+    onClick浏览器H5打开游戏圈(event: Event, customEventData: string) {
+        window.open('https://game.weixin.qq.com/cgi-bin/comm/openlink?auth_appid=wx62d9035fd4fd2059&url=https%3A%2F%2Fgame.weixin.qq.com%2Fcgi-bin%2Fh5%2Flite%2Fcirclecenter%2Findex.html%3Fwechat_pkgid%3Dlite_circlecenter%26liteapp%3Dliteapp%253A%252F%252Fwxalited17d79803d8c228a7eac78129f40484c%253Fpath%253Dpages%25252Findex%25252Findex%26appid%3Dwx57e5c006d2ac186e%26ssid%3D30%23wechat_redirect')
+    }
+    onClick微信小游戏内打开游戏圈(event: Event, customEventData: string) {
+        const pageManager = (window as any).wx.createPageManager();
 
+        //在这里获取链接
+        // https://mp.weixin.qq.com/wxamp/frame/pluginRedirect/pluginRedirect?title=&action=plugin_redirect&lang=zh_CN&plugin_uin=1029&simple=1&nosidebar=1&custom=jump_page%3Dcontent-manage&token=1691532200
+        pageManager.load({
+            openlink: '-SSEykJvFV3pORt5kTNpS0deg0PdxuJJSkUnhq8VuwmiCOlSerKbw3_eQMoQsKtG7u7ovcU2tf3Ri8TFTIT7JiRqpt6_p8D30pvzUtRVzPZyRcmFaNgsm5t0jZPvnltbvWo4Wtm_nR4hzmLJVodYYBBYes4VRydM4PXFgtlepB_Lx0tu-_mGT_4EDgkfWYblacfaemzG5t5p5C3a-YGQln7uvJrtBmo9oZ3YFOxrCUroBMr0KyI26YHX3p3ikM4COFCXY3--BYqKqlPpYvp7nNBA9EVIHzNyWHWiUdYyZizvU08S6KxH1XMyUozv-qWvW0NwhaBys1Md-_AcwIhLqw',
+        }).then((res: any) => {
+            // 加载成功，res 可能携带不同活动、功能返回的特殊回包信息（具体请参阅渠道说明）
+            console.log(res);
+
+            // 加载成功后按需显示
+            pageManager.show();
+
+        }).catch((err: any) => {
+            // 加载失败，请查阅 err 给出的错误信息
+            console.error(err);
+        })
+    }
+    onClick微信公众号(event: Event, customEventData: string) {
+        console.log('window.CC_WECHAT', (window as any).CC_WECHAT)
+        if ((window as any).CC_WECHAT) {
+            // 调用微信小游戏的跳转方法
+            (window as any).wx.navigateToMiniProgram({
+                appId: 'wx2e932efa8e0740f0', // 替换为实际的公众号 AppID
+                path: '', // 公众号的路径，如果需要指定特定页面，可以在这里设置
+                extraData: {
+                    // 可以传递额外的数据，如果需要
+                },
+                success(res: any) {
+                    // 跳转成功后的回调
+                    console.log('跳转成功', res);
+                },
+                fail(res: any) {
+                    // 跳转失败后的回调
+                    console.log('跳转失败', res);
+                }
+            });
+
+        } else {
+            this.lableMessage.string = '请搜索公众号：<color=#ffff00>即时战略指挥</color>'
+        }
+    }
+    onClick玩家QQ群(event: Event, customEventData: string) {
+        //在这里获取链接
+        //https://qun.qq.com/#/handy-tool/join-group
+        window.open("https://qm.qq.com/cgi-bin/qm/qr?k=uKSxRp6smVkEPkKdFTfPJ9LpS_fy1-IH&jump_from=webapi&authKey=94/gex13gRVyrye9ScLqliCQQ3m7kWWRHyYgo82kp1eEuHOdkZOaLHufZDubw6WQ")
+    }
+    onClick百度贴吧(event: Event, customEventData: string) {
+        window.open("https://tieba.baidu.com/f?kw=%E5%8D%B3%E6%97%B6%E6%88%98%E7%95%A5%E6%8C%87%E6%8C%A5")
+    }
+
+    //进入游戏
+    onClickToggle进Space1(event: Event, customEventData: string) {//混战
+        MainTest.instance.进Scene战斗('scene战斗', msgpack.encode([[MsgId.进Space, 0, 0], 1]))
+    }
+    onClick创建四方对战(event: Event, customEventData: string) {
+        MainTest.instance.onClick创建四方对战()
+    }
+    onClickToggle进单人剧情副本(event: Event, customEventData: string) {
+        MainTest.instance.onClickToggle进训练战()
+    }
+    onClickToggle进训练战_虫(event: Event, customEventData: string) {
+        MainTest.instance.onClickToggle进训练战_虫()
+    }
+    onClickToggle进单人防守战(event: Event, customEventData: string) {
+        MainTest.instance.onClickToggle进防守战()
+    }
+    onClickToggle进单人防守战_虫(event: Event, customEventData: string) {
+        MainTest.instance.onClickToggle进防守战_虫()
+    }
+    onClickToggle进单人攻坚战(event: Event, customEventData: string) {
+        MainTest.instance.onClick进攻坚战()
+    }
+    onClickToggle进单人攻坚战_虫(event: Event, customEventData: string) {
+        MainTest.instance.onClick进攻坚战_虫()
     }
 }
 

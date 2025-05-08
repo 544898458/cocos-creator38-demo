@@ -1,7 +1,7 @@
 import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip, director, Animation, Color } from 'cc'
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { FollowTarget } from '../mode/FollowTarget'
-import { Main } from '../mode/Main'
+
 import { Vec2 } from 'cc'
 import { EventTouch } from 'cc'
 import { Graphics } from 'cc'
@@ -10,7 +10,7 @@ import { UITransform } from 'cc'
 import { PhysicsRayResult } from 'cc'
 import { Canvas } from 'cc'
 import { view } from 'cc'
-import { BattleUI } from '../mode/BattleUI'
+import { BattleUI } from '../ui/BattleUI'
 import { renderer } from 'cc'
 import { tween } from 'cc'
 import { Sprite } from 'cc'
@@ -20,6 +20,10 @@ import { Tween } from 'cc'
 import { AudioSource } from 'cc'
 import { MsgId, 属性类型, 单位类型 } from '../配置/配置'
 import { 苔蔓Component } from '../component/苔蔓Component'
+import { Glob } from '../utils/Glob'
+import { dispatcher } from '../manager/event/EventDispatcher'
+import { Enum } from 'cc'
+import { MainTest } from '../MainTest'
 
 const { ccclass, property } = _decorator
 export class ClientEntityComponent {
@@ -44,7 +48,7 @@ export class ClientEntityComponent {
     tween移动: Tween<Node>
     苔蔓半径: number
     obj属性数值: object = new Object()
-    
+
     hp(): number {
         return this.obj属性数值[属性类型.生命] as number
     }
@@ -124,8 +128,7 @@ export class Scene战斗 extends Component {
 
     @property({ type: Node, displayName: "走向的目标点" })
     targetFlag: Node
-    @property({ type: Component, displayName: "战斗面板" })
-    public battleUI: BattleUI
+
     @property({ type: Camera, displayName: "3D摄像" })
     mainCamera: Camera
     @property({ type: Camera, displayName: "小地图摄像及" })
@@ -135,7 +138,6 @@ export class Scene战斗 extends Component {
     @property({ type: AudioSource })
     audioSource: AudioSource
 
-    main: Main
     //摄像
     mainCameraFollowTarget: FollowTarget
     //鼠标点击世界坐标
@@ -152,6 +154,7 @@ export class Scene战斗 extends Component {
     vec摄像机在Update更新位置: Vec3 = null
     obj已解锁单位: object
     obj属性等级: object
+    battleUI: BattleUI
     protected onLoad(): void {
         console.log('Scene战斗.onLoad')
         this.Clear然后显示小地图视口框()
@@ -161,12 +164,11 @@ export class Scene战斗 extends Component {
         console.log('Scene战斗.start')
         //初始化
         //获取常驻节点
-        this.main = director.getScene().getChildByName('常驻').getComponent(Main);
+
         this.graphics = director.getScene().getChildByName('Canvas').getComponent(Graphics);
-        this.main.scene战斗 = this.node.getComponent(Scene战斗);
-        console.log(this.main.scene战斗)
+
         this.mainCameraFollowTarget = this.mainCamera.getComponent(FollowTarget);
-        this.battleUI.lable在线人数.string = this.main.str在线人数
+        this.battleUI.lable在线人数.string = Glob.str在线人数.toString();
 
         //3D摄像机鼠标滑轮（放大缩小）
         this.node.on(NodeEventType.MOUSE_WHEEL, (event: EventMouse) => {
@@ -282,8 +284,8 @@ export class Scene战斗 extends Component {
             // console.log('createMsg造建筑', this.main.createMsg造建筑)
             // console.log('createMsgMove强行走', this.main.createMsgMove强行走)
 
-            if (this.main.funCreateMsg造建筑 !== this.main.fun创建消息
-                && this.main.createMsgMove强行走 !== this.main.fun创建消息
+            if (MainTest.instance.funCreateMsg造建筑 !== MainTest.instance.fun创建消息
+                && MainTest.instance.createMsgMove强行走 !== MainTest.instance.fun创建消息
             ) { //正在强行走、正在摆放建筑物
                 this.恢复战斗界面()
             }
@@ -315,10 +317,10 @@ export class Scene战斗 extends Component {
 
 
                 fun点击地面处理 = () => {
-                    if (!this.main.fun创建消息)
+                    if (!MainTest.instance.fun创建消息)
                         return
 
-                    let object = b鼠标右键 ? this.main.createMsgMove强行走(item.hitPoint) : this.main.fun创建消息(item.hitPoint)
+                    let object = b鼠标右键 ? MainTest.instance.createMsgMove强行走(item.hitPoint) : MainTest.instance.fun创建消息(item.hitPoint)
                     if (object) {
                         // this.b强行走 = false
                         // this.uiLogin.fun创建消息 = this.uiLogin.funCreateMsgMove遇敌自动攻击
@@ -326,11 +328,11 @@ export class Scene战斗 extends Component {
                         const encoded = msgpack.encode(object)
 
                         console.log('send', encoded)
-                        this.main.send(encoded)
+                        dispatcher.send(encoded)
 
                         this.点击地面特效(item.hitPoint)
                     }
-                    this.main.fun创建消息 = 0 < this.main.arr选中.length ? this.main.createMsgMove遇敌自动攻击 : null
+                    MainTest.instance.fun创建消息 = 0 < MainTest.instance.arr选中.length ? MainTest.instance.createMsgMove遇敌自动攻击 : null
                     this.恢复战斗界面()
                 }
             })
@@ -360,8 +362,8 @@ export class Scene战斗 extends Component {
                     return
 
                 if (this.battleUI.b菱形框选) {
-                    this.main.sendArray([
-                        [MsgId.框选, ++this.main.sendMsgSn, 0],
+                    dispatcher.sendArray([
+                        [MsgId.框选, ++Glob.sendMsgSn, 0],
                         [this.posWorld框选起始点.x, this.posWorld框选起始点.z],
                         [item.hitPoint.x, item.hitPoint.z]
                     ])
@@ -379,8 +381,8 @@ export class Scene战斗 extends Component {
                             arr选中.push(id)
                         }
                     })
-                    this.main.sendArray([
-                        [MsgId.SelectRoles, ++this.main.sendMsgSn, 0],
+                    dispatcher.sendArray([
+                        [MsgId.SelectRoles, ++Glob.sendMsgSn, 0],
                         arr选中//虽然是整数，但是也强制转成FLOAT64发出去了
                     ])
                 }
@@ -523,8 +525,8 @@ export class Scene战斗 extends Component {
             this.mainCameraFollowTarget.target = item.collider.node
             let id = this.entityId[item.collider.node.uuid]
 
-            this.main.sendArray([
-                [MsgId.采集, ++this.main.sendMsgSn, 0],
+            dispatcher.sendArray([
+                [MsgId.采集, ++Glob.sendMsgSn, 0],
                 id
             ])
 
@@ -534,17 +536,17 @@ export class Scene战斗 extends Component {
             this.mainCameraFollowTarget.target = item.collider.node
             let id = this.entityId[item.collider.node.uuid]
 
-            this.main.sendArray([
-                [MsgId.出地堡, ++this.main.sendMsgSn, 0],
+            dispatcher.sendArray([
+                [MsgId.出地堡, ++Glob.sendMsgSn, 0],
                 id
             ])
         }
-        else if (item.collider.node.name == "地堡" && !b鼠标右键 && this.main.arr选中.length > 0)//左键点击地堡
+        else if (item.collider.node.name == "地堡" && !b鼠标右键 && MainTest.instance.arr选中.length > 0)//左键点击地堡
         {
             this.mainCameraFollowTarget.target = item.collider.node
             let id = this.entityId[item.collider.node.uuid]
-            this.main.sendArray([
-                [MsgId.进地堡, ++this.main.sendMsgSn, 0],
+            dispatcher.sendArray([
+                [MsgId.进地堡, ++Glob.sendMsgSn, 0],
                 id,
                 [0.0]
             ])
@@ -562,7 +564,7 @@ export class Scene战斗 extends Component {
             }
 
             this.clear选中()
-            this.main.send选中([id])
+            MainTest.instance.send选中([id])
         }
     }
     update(deltaTime: number) {
@@ -626,7 +628,7 @@ export class Scene战斗 extends Component {
     clear选中() {
         this.battleUI.node取消选中.active = false
         this.隐藏选中单位专用按钮()
-        for (let id of this.main.arr选中) {
+        for (let id of MainTest.instance.arr选中) {
             let entity = this.entities.get(id)
             if (entity) {
                 entity.view.getChildByName(prefabName选中特效)?.removeFromParent()
@@ -656,17 +658,17 @@ export class Scene战斗 extends Component {
 
     选中(arr: number[]) {
         this.clear选中()
-        this.main.arr选中 = arr
+        MainTest.instance.arr选中 = arr
 
         if (0 < arr.length)
             this.battleUI.node取消选中.active = true
 
         this.battleUI.onSelectUnits(arr);
 
-        for (let id of this.main.arr选中) {
+        for (let id of MainTest.instance.arr选中) {
             resources.load(prefabName选中特效, Prefab, (err, prefab) => {
                 console.log('resources.load callback:', err, prefab)
-                if (0 > this.main.arr选中.indexOf(id)) {
+                if (0 > MainTest.instance.arr选中.indexOf(id)) {
                     console.log('已取消选中:', id)
                     return
                 }
@@ -680,7 +682,7 @@ export class Scene战斗 extends Component {
                 newNode.name = prefabName选中特效
 
                 old.view.addChild(newNode)
-                let 配置 = this.main.配置.find建筑单位(old.类型)
+                let 配置 = MainTest.instance.配置.find建筑单位(old.类型)
                 if (配置) {
                     let 放大 = 配置.f半边长 / 2
                     newNode.scale = newNode.scale.clone().multiply3f(放大, 1, 放大)
@@ -731,7 +733,7 @@ export class Scene战斗 extends Component {
                         this.battleUI.button集结点.node.active = true
                         break;
                     default:
-                        if (Main.Is活动单位(old.类型)) {
+                        if (MainTest.Is活动单位(old.类型)) {
                             this.battleUI.button强行走.node.active = true
                             this.battleUI.button原地坚守.node.active = true
                             break
@@ -744,7 +746,7 @@ export class Scene战斗 extends Component {
 
             resources.load(prefabName范围特效, Prefab, (err, prefab) => {
                 // console.log('resources.load callback:', err, prefab)
-                if (0 > this.main.arr选中.indexOf(id)) {
+                if (0 > MainTest.instance.arr选中.indexOf(id)) {
                     console.log('已取消选中:', id)
                     return
                 }
@@ -754,7 +756,7 @@ export class Scene战斗 extends Component {
                     return
                 }
 
-                let 战斗 = this.main.配置.find战斗(old.类型)
+                let 战斗 = MainTest.instance.配置.find战斗(old.类型)
                 if (战斗) {
                     {
                         const newNode = instantiate(prefab)
@@ -774,7 +776,7 @@ export class Scene战斗 extends Component {
             })
         }
         if (arr.length > 0)
-            this.main.fun创建消息 = this.main.createMsgMove遇敌自动攻击
+            MainTest.instance.fun创建消息 = MainTest.instance.createMsgMove遇敌自动攻击
     }
     worldToGraphics(graphicsNode: Node, worldPoint: Vec3) {
         // 获取graphics节点在世界坐标系中的位置
@@ -926,14 +928,14 @@ export class Scene战斗 extends Component {
 
     刷新单位名字() {
         this.entities.forEach((entity: ClientEntityComponent) => {
-            entity.显示头顶名字(this.main.b显示单位类型)
+            entity.显示头顶名字(MainTest.instance.b显示单位类型)
         })
     }
 
     如果没满级就显示(单位: 单位类型, 属性: 属性类型, node升级按钮: Node) {
         let 单位属性 = this.obj属性等级[单位]
         let 单位攻击等级 = 单位属性 ? 单位属性[属性] : 0
-        let 单位属性等级加数值: number = this.main.配置.find单位属性等级加数值(单位, 属性, 单位攻击等级 + 1)
+        let 单位属性等级加数值: number = MainTest.instance.配置.find单位属性等级加数值(单位, 属性, 单位攻击等级 + 1)
         if (null != 单位属性等级加数值)
             node升级按钮.active = true
     }
