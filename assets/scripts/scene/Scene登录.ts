@@ -25,6 +25,8 @@ export class Scene登录 extends Component {
     node跳转社区浏览器H5: Node
     @property({ type: Node })
     node跳转社区微信小游戏: Node
+    @property({ type: Node })
+    node跳转社区抖音小游戏: Node
     @property({ type: Node, displayName: "个人战局列表面板" })
     node个人战局列表面板: Node
     @property({ type: Node, displayName: "个人战局列表" })
@@ -69,6 +71,8 @@ export class Scene登录 extends Component {
         this.main.微信小游戏允许分享()
         if (sys.isBrowser)
             this.node跳转社区浏览器H5.active = true
+        else if(tt)
+            this.node跳转社区抖音小游戏.active = true
         else
             this.node跳转社区微信小游戏.active = true
 
@@ -93,6 +97,24 @@ export class Scene登录 extends Component {
             console.log('resources.load callback:', err, textAsset)
             this.richText公告.string = textAsset.text
         })
+
+        if(tt){
+            // --侧边栏按钮判断--//
+            tt.onShow((res) => {
+                //判断用户是否是从侧边栏进来的
+                let isFromSidebar = (res.launch_from == 'homepage' && res.location == 'sidebar_card')
+
+                if (isFromSidebar) {
+                    //如果是从侧边栏进来的，隐藏“去侧边栏”
+                    // this.btnSidebar.active = false
+                    this.lableMessage.string = '您从侧边栏进入了游戏，可免除一次插屏广告'
+                }
+                else {
+                    //否则 显示“去侧边栏”按钮
+                    // this.btnSidebar.active = true
+                }
+            });
+        }
     }
 
     update(deltaTime: number) {
@@ -187,6 +209,20 @@ export class Scene登录 extends Component {
     }
     onClick百度贴吧(event: Event, customEventData: string) {
         window.open("https://tieba.baidu.com/f?kw=%E5%8D%B3%E6%97%B6%E6%88%98%E7%95%A5%E6%8C%87%E6%8C%A5")
+    }
+    onClick抖音小游戏内打开侧边栏(event: Event, customEventData: string) {
+         // 抖音小游戏侧边栏跳转逻辑
+         tt.navigateToScene({
+            scene: "sidebar",
+            success: (res) => {
+                console.log("navigate to scene success");
+                // 跳转成功回调逻辑
+            },
+            fail: (res) => {
+                console.log("navigate to scene fail: ", res);
+                // 跳转失败回调逻辑
+            },
+        });
     }
     onClick别人的个人战局列表(event: Event, customEventData: string) {
         this.main.onClick获取别人的个人战局列表(event, customEventData)

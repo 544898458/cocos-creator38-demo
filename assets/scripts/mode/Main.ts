@@ -115,6 +115,8 @@ export class Main extends Component {
             CustomAd.onError(err => {
                 console.error(err.errMsg)
             });
+        }else if(tt){
+            
         }
     }
 
