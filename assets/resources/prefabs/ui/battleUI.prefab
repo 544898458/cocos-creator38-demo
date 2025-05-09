@@ -2297,6 +2297,7 @@
     "__type__": "7654eSoFXhOZYjnvRZFaCVS",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 78
     },
@@ -2318,6 +2319,7 @@
     "__type__": "ba985/FGklKdYpL9XgoQFoE",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1
     },
@@ -3256,11 +3258,8 @@
     "_lineHeight": 26,
     "_overflow": 0,
     "_enableWrapText": true,
-    "_font": {
-      "__uuid__": "53b4dea9-0c71-4817-b777-c10c0270bad3",
-      "__expectedType__": "cc.TTFFont"
-    },
-    "_isSystemFontUsed": false,
+    "_font": null,
+    "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_isItalic": false,
     "_isBold": false,
@@ -6033,8 +6032,8 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "$des",
-    "_objFlags": 512,
+    "_name": "des",
+    "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
       "__id__": 250
@@ -6096,7 +6095,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 320,
-      "height": 1127.28
+      "height": 1610.3999999999999
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -6107,7 +6106,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "90fNwkTElJJIZbKivdBEP6"
+    "fileId": "95BU9a/w1PDYYQw6AwpN3c"
   },
   {
     "__type__": "cc.RichText",
@@ -6121,7 +6120,7 @@
     "__prefab": {
       "__id__": 255
     },
-    "_lineHeight": 28,
+    "_lineHeight": 40,
     "_string": "战斗界面：\n  造建筑单位：点击“基地/民房/地堡/兵厂/炮台”按钮=>点击地面，最近的空闲工程车会走向目标位置建造。如果选中工程车再建造，则会强制指定这辆工程车前去建造。\n  造活动单位：点击“工程车/兵/近战兵/坦克”按钮。最空闲的基地或兵厂会开始产出活动单位。如果选中基地或兵厂，则会在指定的建筑中产出单位。\n  采集资源：点击选中工程车=>点击晶体矿或燃气矿。可以点击“空闲工程车”快速定位到空闲的工程车。\n  造民房可以增加活动单位上限。\n  地堡里面可以进入10个活动单位，地堡血量很高。\n  如果开局不利，点右上角退出此场景按钮，再次进入可以反复开局。\n\n战斗单位克制关系（类似石头剪刀布）：\n  坦克 克制 地堡和炮台\n  炮台和地堡 克制 小兵\n  小兵 克制 坦克\n\n主界面：\n 训练战：引导熟悉一些基础操作。\n 防守战：怪物会一波一波地进攻玩家。\n 多人联机地图：所有玩家相互作为敌人进一个公共地图。\n 其他人的个人战局列表：您可以旁观其他玩家的单人战局（训练战、防守战）\n 创建多人战局：其他玩家可加入您创建的战局（四方对战）\n 其他人的多人战局列表：您可以加入其他玩家的多人战局（四方对战）\n",
     "_horizontalAlign": 0,
     "_verticalAlign": 0,
@@ -6129,18 +6128,15 @@
     "_fontColor": {
       "__type__": "cc.Color",
       "r": 255,
-      "g": 217,
-      "b": 175,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_maxWidth": 320,
     "_fontFamily": "Arial",
     "_font": null,
     "_isSystemFontUsed": true,
-    "_userDefinedFont": {
-      "__uuid__": "53b4dea9-0c71-4817-b777-c10c0270bad3",
-      "__expectedType__": "cc.TTFFont"
-    },
+    "_userDefinedFont": null,
     "_cacheMode": 0,
     "_imageAtlas": null,
     "_handleTouchEvent": true,
@@ -6148,7 +6144,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "1cMH/sbBdDN73d3cqFNhhr"
+    "fileId": "b02jJpyOhOWqs8fcFRnLi3"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -6158,7 +6154,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "e4QVLvGcpPgr9U1c5aM7ll",
+    "fileId": "80Srm43OlNy6DBY11uCfVW",
     "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
@@ -6178,7 +6174,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 320,
-      "height": 1127.28
+      "height": 1610.3999999999999
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -10997,6 +10993,7 @@
     "__type__": "7654eSoFXhOZYjnvRZFaCVS",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 450
     },
@@ -11899,6 +11896,7 @@
     "__type__": "ba6b2YRWOBGAbl/pzQz3MS9",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 485
     },
@@ -12457,6 +12455,7 @@
     "__type__": "ba6b2YRWOBGAbl/pzQz3MS9",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 510
     },
@@ -13015,6 +13014,7 @@
     "__type__": "ba6b2YRWOBGAbl/pzQz3MS9",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 535
     },
@@ -13573,6 +13573,7 @@
     "__type__": "ba6b2YRWOBGAbl/pzQz3MS9",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 560
     },
@@ -14131,6 +14132,7 @@
     "__type__": "ba6b2YRWOBGAbl/pzQz3MS9",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 585
     },
@@ -14687,6 +14689,7 @@
     "__type__": "ba6b2YRWOBGAbl/pzQz3MS9",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 610
     },
@@ -15243,6 +15246,7 @@
     "__type__": "ba6b2YRWOBGAbl/pzQz3MS9",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 635
     },
@@ -15799,6 +15803,7 @@
     "__type__": "ba6b2YRWOBGAbl/pzQz3MS9",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 660
     },
@@ -16355,6 +16360,7 @@
     "__type__": "ba6b2YRWOBGAbl/pzQz3MS9",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 685
     },
@@ -16911,6 +16917,7 @@
     "__type__": "ba6b2YRWOBGAbl/pzQz3MS9",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 710
     },
@@ -17467,6 +17474,7 @@
     "__type__": "ba6b2YRWOBGAbl/pzQz3MS9",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 735
     },
@@ -18023,6 +18031,7 @@
     "__type__": "ba6b2YRWOBGAbl/pzQz3MS9",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 760
     },
@@ -18748,6 +18757,7 @@
     "__type__": "ba6b2YRWOBGAbl/pzQz3MS9",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 791
     },
@@ -19306,6 +19316,7 @@
     "__type__": "ba6b2YRWOBGAbl/pzQz3MS9",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 816
     },
@@ -19862,6 +19873,7 @@
     "__type__": "ba6b2YRWOBGAbl/pzQz3MS9",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 841
     },
@@ -20418,6 +20430,7 @@
     "__type__": "ba6b2YRWOBGAbl/pzQz3MS9",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 866
     },
@@ -20974,6 +20987,7 @@
     "__type__": "ba6b2YRWOBGAbl/pzQz3MS9",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 891
     },
@@ -21530,6 +21544,7 @@
     "__type__": "ba6b2YRWOBGAbl/pzQz3MS9",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 916
     },
@@ -22086,6 +22101,7 @@
     "__type__": "ba6b2YRWOBGAbl/pzQz3MS9",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 941
     },
@@ -22642,6 +22658,7 @@
     "__type__": "ba6b2YRWOBGAbl/pzQz3MS9",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 966
     },
@@ -23198,6 +23215,7 @@
     "__type__": "ba6b2YRWOBGAbl/pzQz3MS9",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 991
     },
@@ -23754,6 +23772,7 @@
     "__type__": "ba6b2YRWOBGAbl/pzQz3MS9",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1016
     },
@@ -24310,6 +24329,7 @@
     "__type__": "ba6b2YRWOBGAbl/pzQz3MS9",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1041
     },
@@ -24866,6 +24886,7 @@
     "__type__": "ba6b2YRWOBGAbl/pzQz3MS9",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1066
     },
@@ -25422,6 +25443,7 @@
     "__type__": "ba6b2YRWOBGAbl/pzQz3MS9",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1091
     },
@@ -29391,6 +29413,7 @@
     "__type__": "7654eSoFXhOZYjnvRZFaCVS",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1260
     },
@@ -29789,6 +29812,7 @@
     "__type__": "7654eSoFXhOZYjnvRZFaCVS",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1277
     },
@@ -30187,6 +30211,7 @@
     "__type__": "7654eSoFXhOZYjnvRZFaCVS",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1294
     },
@@ -30585,6 +30610,7 @@
     "__type__": "7654eSoFXhOZYjnvRZFaCVS",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1311
     },
@@ -30983,6 +31009,7 @@
     "__type__": "7654eSoFXhOZYjnvRZFaCVS",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1328
     },
@@ -31381,6 +31408,7 @@
     "__type__": "5ad35EOLxZJuqlrJP3Eg6Gh",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1345
     },
@@ -31780,6 +31808,7 @@
     "__type__": "5ad35EOLxZJuqlrJP3Eg6Gh",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1362
     },
@@ -32179,6 +32208,7 @@
     "__type__": "5ad35EOLxZJuqlrJP3Eg6Gh",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1379
     },
@@ -32578,6 +32608,7 @@
     "__type__": "5ad35EOLxZJuqlrJP3Eg6Gh",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1396
     },
@@ -32977,6 +33008,7 @@
     "__type__": "5ad35EOLxZJuqlrJP3Eg6Gh",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1413
     },
@@ -33376,6 +33408,7 @@
     "__type__": "5ad35EOLxZJuqlrJP3Eg6Gh",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1430
     },
@@ -33775,6 +33808,7 @@
     "__type__": "5ad35EOLxZJuqlrJP3Eg6Gh",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1447
     },
@@ -34174,6 +34208,7 @@
     "__type__": "5ad35EOLxZJuqlrJP3Eg6Gh",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1464
     },
@@ -34573,6 +34608,7 @@
     "__type__": "7654eSoFXhOZYjnvRZFaCVS",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1481
     },
@@ -34918,6 +34954,7 @@
     "__type__": "7654eSoFXhOZYjnvRZFaCVS",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1258
     },
@@ -35320,10 +35357,7 @@
       "b": 255,
       "a": 255
     },
-    "_spriteFrame": {
-      "__uuid__": "ea482ff5-d6c8-465e-acf6-374e41b809f4@f9941",
-      "__expectedType__": "cc.SpriteFrame"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_fillType": 0,
     "_sizeMode": 0,
@@ -35615,10 +35649,7 @@
       "b": 255,
       "a": 255
     },
-    "_spriteFrame": {
-      "__uuid__": "956088e9-917b-4274-b1ca-d25affdb2241@f9941",
-      "__expectedType__": "cc.SpriteFrame"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_fillType": 0,
     "_sizeMode": 0,
@@ -37967,6 +37998,7 @@
     "__type__": "7654eSoFXhOZYjnvRZFaCVS",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1624
     },
@@ -40691,6 +40723,7 @@
     "__type__": "7654eSoFXhOZYjnvRZFaCVS",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1743
     },

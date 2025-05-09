@@ -154,7 +154,7 @@ export class Scene战斗 extends Component {
     vec摄像机在Update更新位置: Vec3 = null
     obj已解锁单位: object
     obj属性等级: object
-    battleUI: BattleUI
+    battleUI: BattleUI = null;
     protected onLoad(): void {
         console.log('Scene战斗.onLoad')
         this.Clear然后显示小地图视口框()
@@ -900,31 +900,7 @@ export class Scene战斗 extends Component {
             this.scheduleOnce(() => { 特效根.removeChild(newNode) }, 2)
         })
     }
-    剧情对话(str头像左: string, str名字左: string, str头像右: string, str名字右: string, str对话内容: string, b显示退出面板: boolean): void {
-        this.battleUI.uiTransform剧情对话根.node.active = true
-        this.battleUI.richText剧情对话内容.string = str对话内容
-        this.battleUI.lable剧情对话名字左.string = str名字左
-        this.battleUI.lable剧情对话名字右.string = str名字右
-        if (str头像左.length > 0) {
-            resources.load(str头像左, ImageAsset, (err, imageAsset) => {
-                // console.log(err, imageAsset)
-                this.battleUI.sprite剧情对话头像左.spriteFrame = SpriteFrame.createWithImage(imageAsset)
-            })
-        } else {
-            this.battleUI.sprite剧情对话头像左.spriteFrame = null
-        }
 
-        if (str头像右.length > 0) {
-            resources.load(str头像右, ImageAsset, (err, imageAsset) => {
-                // console.log(err, imageAsset)
-                this.battleUI.sprite剧情对话头像右.spriteFrame = SpriteFrame.createWithImage(imageAsset)
-            })
-        } else {
-            this.battleUI.sprite剧情对话头像右.spriteFrame = null
-        }
-
-        this.battleUI.uiTransform剧情对话退出面板.node.active = b显示退出面板
-    }
 
     刷新单位名字() {
         this.entities.forEach((entity: ClientEntityComponent) => {

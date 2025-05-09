@@ -32,6 +32,9 @@ import { AudioMgr } from './manager/audio/AudioMgr';
 import { AnimationClip } from 'cc';
 import { AnimationState } from 'cc';
 import { Quat } from 'cc';
+import { BattleUI } from './ui/BattleUI';
+import { ResourceUtil } from './utils/ResourceUtil';
+import { EC } from './utils/EC';
 
 const { ccclass, property } = _decorator;
 
@@ -85,6 +88,9 @@ export class MainTest extends Component {
         //添加dataNode为常驻节点
         director.addPersistRootNode(this.node);
 
+        //预载战斗页面
+        ResourceUtil.preload(UI2Prefab.BattleUI_url);
+
     }
     send选中(arr选中: number[]) {
         if (Glob.websocket != undefined) {
@@ -117,8 +123,8 @@ export class MainTest extends Component {
         console.log('start')
         //打开加载页面
         this.dialogMgr.openDialog(UI2Prefab.LoadingView_url)
-        //TODO:读取配置文件
-        //this.配置.读取配置文件()
+        //读取配置文件
+        this.配置.读取配置文件()
     }
 
     update(deltaTime: number) {
@@ -247,8 +253,10 @@ export class MainTest extends Component {
                         old.prefabName = prefabName
                         old.类型 = 类型
                         thisLocal.scene战斗.entities.set(id, old)
-                        if (thisLocal.scene战斗.battleUI.lableCount != undefined)
-                            thisLocal.scene战斗.battleUI.lableCount.string = '共' + thisLocal.scene战斗.entities.size + '单位'
+                        console.log('添加单位', id, nickName, entityName, prefabName, 类型, hpMax, 能量Max)
+                        //TODO页面没打开就给数据了
+                        // if (thisLocal.scene战斗.battleUI.lableCount != undefined)
+                        //     thisLocal.scene战斗.battleUI.lableCount.string = '共' + thisLocal.scene战斗.entities.size + '单位'
 
                         let 单位配置 = this.配置.find单位(old.类型)
                         if (单位配置)
@@ -319,6 +327,8 @@ export class MainTest extends Component {
                                 // old.skeletalAnimation.play(old.initClipName)
                                 MainTest.播放动作(old, old.initClipName, true)
                             }
+                            if (!thisLocal.scene战斗.battleUI)
+                                thisLocal.scene战斗.battleUI = thisLocal.dialogMgr.getDialog(UI2Prefab.BattleUI_url).getComponent(BattleUI);
                             let node所有单位头顶名字 = thisLocal.scene战斗.battleUI.uiTransform所有单位头顶名字.node
                             let nodeRoleName = utils.find("RoleName", node所有单位头顶名字)
                             // console.log('RoleName',this.nodeRoleName)
@@ -547,7 +557,7 @@ export class MainTest extends Component {
                 break
             case MsgId.进Space:
                 {
-                    // thisLocal.scene战斗.battleUI.node.active = true
+                    //this.dialogMgr.openDialog(UI2Prefab.BattleUI_url)
                     // director.loadScene('scene战斗')
                 }
                 break
@@ -632,7 +642,9 @@ export class MainTest extends Component {
                     let str名字右 = arr[idxArr++] as string
                     let str对话内容 = arr[idxArr++] as string
                     let b显示退出面板 = arr[idxArr++] as boolean
-                    thisLocal.scene战斗?.剧情对话(str头像左, str名字左, str头像右, str名字右, str对话内容, b显示退出面板)
+                    //剧情事件
+                    dispatcher.emit(EC.DIALOGUE, [str头像左, str名字左, str头像右, str名字右, str对话内容, b显示退出面板]);
+
                 }
                 break
             case MsgId.剧情对话已看完:

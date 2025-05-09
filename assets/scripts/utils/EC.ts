@@ -13,4 +13,6 @@ export class EC {
 
     /** 加载完毕 */
     static LOAD_FINISH = "LOAD_FINISH";
+    /** 剧情对话 */
+    static DIALOGUE = "DIALOGUE";
 }

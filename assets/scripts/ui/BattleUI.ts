@@ -18,13 +18,18 @@ import { 按下按钮显示单位详情Component } from '../component/按下按�
 import { EventMouse } from 'cc';
 import { MainTest } from '../MainTest';
 import { Dialog } from '../component/Dialog';
+import { resources } from 'cc';
+import { ImageAsset } from 'cc';
+import { SpriteFrame } from 'cc';
+import { dispatcher } from '../manager/event/EventDispatcher';
+import { EC } from '../utils/EC';
 const { ccclass, property } = _decorator;
 
 @ccclass('BattleUI')
 export class BattleUI extends Dialog {
     main: MainTest;
     @property(Scene战斗)
-    scene战斗: Scene战斗
+    scene战斗: Scene战斗 = null;
     @property(Node)
     游戏攻略: Node;
     @property(Node)
@@ -101,9 +106,9 @@ export class BattleUI extends Dialog {
 
     lastTitle: Node
     b菱形框选: boolean = false //切换菱形框选和矩形框选两种模式
-
-
-    start() {
+    onOpened(param: any): void {
+        dispatcher.on(EC.DIALOGUE, this.剧情对话, this);
+        this.main.scene战斗.battleUI = this.node.getComponent(BattleUI);
         this.main = director.getScene().getChildByName('常驻').getComponent(MainTest);
         this.scene战斗 = this.main.scene战斗
         this.lastTitle = this.nodeFightPanel.getChildByName("建筑单位");
@@ -415,6 +420,31 @@ export class BattleUI extends Dialog {
         this.main.fun创建消息 = null
         this.node取消点击地面.active = false
         this.下部列表.active = true
+    }
+    剧情对话(str头像左: string, str名字左: string, str头像右: string, str名字右: string, str对话内容: string, b显示退出面板: boolean): void {
+        this.uiTransform剧情对话根.node.active = true
+        this.richText剧情对话内容.string = str对话内容
+        this.lable剧情对话名字左.string = str名字左
+        this.lable剧情对话名字右.string = str名字右
+        if (str头像左.length > 0) {
+            resources.load(str头像左, ImageAsset, (err, imageAsset) => {
+                // console.log(err, imageAsset)
+                this.sprite剧情对话头像左.spriteFrame = SpriteFrame.createWithImage(imageAsset)
+            })
+        } else {
+            this.sprite剧情对话头像左.spriteFrame = null
+        }
+
+        if (str头像右.length > 0) {
+            resources.load(str头像右, ImageAsset, (err, imageAsset) => {
+                // console.log(err, imageAsset)
+                this.sprite剧情对话头像右.spriteFrame = SpriteFrame.createWithImage(imageAsset)
+            })
+        } else {
+            this.sprite剧情对话头像右.spriteFrame = null
+        }
+
+        this.uiTransform剧情对话退出面板.node.active = b显示退出面板
     }
 }
 
