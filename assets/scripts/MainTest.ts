@@ -335,6 +335,7 @@ export class MainTest extends Component {
                             // this.nodeRoleName.getComponent(HeadScale).target = this.nodeRoleName
 
                             old.nodeName = instantiate(nodeRoleName)
+                            old.nodeName.active = true
                             node所有单位头顶名字.addChild(old.nodeName)
 
                             if (newNode.name != "smoke") {
