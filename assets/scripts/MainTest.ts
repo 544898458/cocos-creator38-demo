@@ -351,6 +351,8 @@ export class MainTest extends Component {
 
                                     let headScal = old.node血条.getComponent(HeadScale)
                                     headScal.target = utils.find("血条", newNode)
+                                    headScal.camera = thisLocal.scene战斗.mainCamera
+                                    headScal.camera小地图 = thisLocal.scene战斗.camera小地图
                                     headScal._hpValueScale = calculateHPLength;
                                 }
 
@@ -364,6 +366,8 @@ export class MainTest extends Component {
                                     let 能量条长 = Math.pow(old.能量Max, 0.5) / 3.0
                                     let headScal = old.node能量条.getComponent(HeadScale)
                                     headScal.target = utils.find("能量条", newNode)
+                                    headScal.camera = thisLocal.scene战斗.mainCamera
+                                    headScal.camera小地图 = thisLocal.scene战斗.camera小地图
                                     headScal._hpValueScale = 能量条长;
                                 }
 
@@ -372,6 +376,8 @@ export class MainTest extends Component {
                             {
                                 let headScal = old.nodeName.getComponent(HeadScale)
                                 headScal.target = utils.find("NamePos", newNode)
+                                headScal.camera = thisLocal.scene战斗.mainCamera
+                                headScal.camera小地图 = thisLocal.scene战斗.camera小地图    
                             }
 
                             old.node描述 = instantiate(nodeRoleName)
@@ -380,6 +386,9 @@ export class MainTest extends Component {
                             {
                                 let headScal = old.node描述.getComponent(HeadScale)
                                 headScal.target = utils.find("描述", newNode)
+                                headScal.camera = thisLocal.scene战斗.mainCamera
+                                headScal.camera小地图 = thisLocal.scene战斗.camera小地图    
+
                                 // console.log(headScal.target)
                             }
 
