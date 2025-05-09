@@ -108,8 +108,9 @@ export class BattleUI extends Dialog {
     b菱形框选: boolean = false //切换菱形框选和矩形框选两种模式
     onOpened(param: any): void {
         dispatcher.on(EC.DIALOGUE, this.剧情对话, this);
-        this.main.scene战斗.battleUI = this.node.getComponent(BattleUI);
-        this.main = director.getScene().getChildByName('常驻').getComponent(MainTest);
+        this.main = MainTest.instance
+        this.main.scene战斗.battleUI = this//.node.getComponent(BattleUI);
+        // this.main = director.getScene().getChildByName('常驻').getComponent(MainTest);
         this.scene战斗 = this.main.scene战斗
         this.lastTitle = this.nodeFightPanel.getChildByName("建筑单位");
     }
