@@ -518,7 +518,8 @@ export class Scene战斗 extends Component {
     点击单位(item: PhysicsRayResult, b鼠标右键: boolean) {
         let id = this.entityId[item.collider.node.uuid]
         let entity = this.entities.get(id)
-        if (item.collider.node.name == "晶体矿" || item.collider.node.name == "燃气矿")//点击晶体矿或者燃气矿
+        let nodeName = item.collider.node.name 
+        if (nodeName == "晶体矿" || nodeName == "燃气矿")//点击晶体矿或者燃气矿
         {
             this.mainCameraFollowTarget.target = item.collider.node
             let id = this.entityId[item.collider.node.uuid]
@@ -529,7 +530,7 @@ export class Scene战斗 extends Component {
             ])
 
         }
-        else if ((entity.类型 == 单位类型.地堡 || entity.类型 == 单位类型.房虫) && b鼠标右键)//点击地堡
+        else if ((nodeName == '地堡' || nodeName == '房虫') && b鼠标右键)//点击地堡
         {
             this.mainCameraFollowTarget.target = item.collider.node
             let id = this.entityId[item.collider.node.uuid]
@@ -540,7 +541,7 @@ export class Scene战斗 extends Component {
                 id
             ])
         }
-        else if ((entity.类型 == 单位类型.地堡 || entity.类型 == 单位类型.房虫) && !b鼠标右键 && this.main.arr选中.length > 0)//左键点击地堡
+        else if ((nodeName == '地堡' || nodeName == '房虫') && !b鼠标右键 && this.main.arr选中.length > 0)//左键点击地堡
         {
             this.mainCameraFollowTarget.target = item.collider.node
             let id = this.entityId[item.collider.node.uuid]
@@ -552,9 +553,9 @@ export class Scene战斗 extends Component {
             ])
         }
         else if (
-            item.collider.node.name != "晶体矿"
-            && item.collider.node.name != "燃气矿"
-            && item.collider.node.name != "视口"
+            nodeName != "晶体矿"
+            && nodeName != "燃气矿"
+            && nodeName != "视口"
         ) {
             this.mainCameraFollowTarget.target = item.collider.node
             let id = this.entityId[item.collider.node.uuid]
