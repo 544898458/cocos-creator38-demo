@@ -44,7 +44,7 @@ export class ClientEntityComponent {
     tween移动: Tween<Node>
     苔蔓半径: number
     obj属性数值: object = new Object()
-    
+
     hp(): number {
         return this.obj属性数值[属性类型.生命] as number
     }
@@ -529,22 +529,24 @@ export class Scene战斗 extends Component {
             ])
 
         }
-        else if (item.collider.node.name == "地堡" && b鼠标右键)//点击地堡
+        else if ((entity.类型 == 单位类型.地堡 || entity.类型 == 单位类型.房虫) && b鼠标右键)//点击地堡
         {
             this.mainCameraFollowTarget.target = item.collider.node
             let id = this.entityId[item.collider.node.uuid]
 
+            let idMsg = entity.类型 == 单位类型.地堡 ? MsgId.出地堡 : MsgId.出房虫
             this.main.sendArray([
-                [MsgId.出地堡, ++this.main.sendMsgSn, 0],
+                [idMsg, ++this.main.sendMsgSn, 0],
                 id
             ])
         }
-        else if (item.collider.node.name == "地堡" && !b鼠标右键 && this.main.arr选中.length > 0)//左键点击地堡
+        else if ((entity.类型 == 单位类型.地堡 || entity.类型 == 单位类型.房虫) && !b鼠标右键 && this.main.arr选中.length > 0)//左键点击地堡
         {
             this.mainCameraFollowTarget.target = item.collider.node
             let id = this.entityId[item.collider.node.uuid]
+            let idMsg = entity.类型 == 单位类型.地堡 ? MsgId.进地堡 : MsgId.进房虫
             this.main.sendArray([
-                [MsgId.进地堡, ++this.main.sendMsgSn, 0],
+                [idMsg, ++this.main.sendMsgSn, 0],
                 id,
                 [0.0]
             ])
@@ -652,6 +654,7 @@ export class Scene战斗 extends Component {
         this.battleUI.node升级绿色坦克攻速.active = false
         this.battleUI.node升级飞虫移速.active = false
         this.battleUI.node太岁分裂.active = false
+        this.battleUI.node离开房虫.active = false
     }
 
     选中(arr: number[]) {
@@ -725,11 +728,15 @@ export class Scene战斗 extends Component {
                         break
                     case 单位类型.太岁:
                         this.battleUI.node太岁分裂.active = true
-                        break;
+                        break
                     case 单位类型.基地:
                     case 单位类型.虫巢:
                         this.battleUI.button集结点.node.active = true
-                        break;
+                        break
+                    case 单位类型.房虫:
+                        this.battleUI.button强行走.node.active = true
+                        this.battleUI.node离开房虫.active = true
+                    break
                     default:
                         if (Main.Is活动单位(old.类型)) {
                             this.battleUI.button强行走.node.active = true

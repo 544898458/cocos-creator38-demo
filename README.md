@@ -58,8 +58,9 @@ Error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} Error: Error: M
 ```
 
 3. 用Cocos Creator 3.8.4打开本项目
-4. 修改电脑本地hosts文件把域名 rtsgame.online 定位到 127.0.0.1
-5. 服务器代码在 https://gitee.com/griffon2/iocp20coroutine
+4. 修改Cocos Creator本地测试浏览器端口为7456或者7457
+5. 如果要连接本地服务器的话，就修改电脑本地hosts文件把域名 rtsgame.online 定位到 127.0.0.1
+6. 服务器代码在 https://gitee.com/griffon2/iocp20coroutine
 
 #### 导出后端寻路文件的方法
 
