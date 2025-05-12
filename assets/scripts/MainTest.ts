@@ -47,7 +47,7 @@ export class MainTest extends Component {
     }
 
     dialogMgr: DialogManager;
-    @property(Scene战斗)
+    // @property(Scene战斗)
     scene战斗: Scene战斗 = null;
     //摄像机
     @property(Node)
@@ -91,6 +91,7 @@ export class MainTest extends Component {
         //预载战斗页面
         ResourceUtil.preload(UI2Prefab.BattleUI_url);
 
+        this.scene战斗 = this.getComponent(Scene战斗)
     }
     send选中(arr选中: number[]) {
         if (Glob.websocket != undefined) {
@@ -382,6 +383,7 @@ export class MainTest extends Component {
                             }
 
                             old.node描述 = instantiate(nodeRoleName)
+                            old.node描述.active = true
                             node所有单位头顶名字.addChild(old.node描述)
                             old.label描述 = old.node描述.getComponent(Label)
                             {
@@ -665,16 +667,16 @@ export class MainTest extends Component {
             case MsgId.播放音乐:
                 {
                     let strHttps = arr[idxArr++] as string
-                    // if (this.audioManager) {
-                    //     Glob.strHttps登录场景音乐Mp3 = strHttps
-                    //     assetManager.loadRemote(strHttps, (err, clip: AudioClip) => {
-                    //         console.log('resources.load callback:', err, clip)
-                    //         let audioSource = this.audioManager;
-                    //         audioSource.stop()
-                    //         audioSource.clip = clip
-                    //         audioSource.play()
-                    //     })
-                    // }
+                    if (this.audioManager) {
+                        Glob.strHttps登录场景音乐Mp3 = strHttps
+                        assetManager.loadRemote(strHttps, (err, clip: AudioClip) => {
+                            console.log('resources.load callback:', err, clip)
+                            let audioSource = this.audioManager;
+                            audioSource.stop()
+                            audioSource.clip = clip
+                            audioSource.play()
+                        })
+                    }
 
 
                     // this.关闭插屏广告()

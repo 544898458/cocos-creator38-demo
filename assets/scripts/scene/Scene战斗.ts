@@ -169,6 +169,7 @@ export class Scene战斗 extends Component {
         this.graphics = director.getScene().getChildByName('Canvas').getComponent(Graphics);
 
         this.mainCameraFollowTarget = this.mainCamera.getComponent(FollowTarget);
+        console.log('this.mainCameraFollowTarget', this.mainCameraFollowTarget)
         //this.battleUI.lable在线人数.string = Glob.str在线人数.toString();
 
         //3D摄像机鼠标滑轮（放大缩小）
