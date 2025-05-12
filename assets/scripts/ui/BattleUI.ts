@@ -74,8 +74,8 @@ export class BattleUI extends Dialog {
     @property(Node) node升级飞机攻速: Node
     @property(Node) node升级绿色坦克攻速: Node
     @property(Node) node升级飞虫移速: Node
-    @property(Node) node太岁分裂: Node;
-
+    @property(Node) node太岁分裂: Node
+    @property(Node) node离开房虫: Node
 
     @property({ type: UITransform, displayName: "所有单位头顶名字" })
     uiTransform所有单位头顶名字: UITransform

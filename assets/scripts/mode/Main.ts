@@ -19,7 +19,7 @@ import { 苔蔓Component } from '../component/苔蔓Component'
 
 const { ccclass, property } = _decorator
 
-enum 副本ID {
+export enum 副本ID {
     单人ID_非法_MIN,
     训练战,
     防守战,
@@ -27,6 +27,8 @@ enum 副本ID {
     训练战_虫,
     防守战_虫,
     攻坚战_虫,
+    反空降战_人,
+    空降战_虫,
     单人ID_非法_MAX,
 
     多人ID_非法_MIN = 100,
@@ -115,8 +117,8 @@ export class Main extends Component {
             CustomAd.onError(err => {
                 console.error(err.errMsg)
             });
-        }else if(tt){
-            
+        } else if (tt) {
+
         }
     }
 
@@ -341,6 +343,9 @@ export class Main extends Component {
     onClick进攻坚战_虫() {
         this.进Scene战斗单人剧情副本('scene攻坚战', 副本ID.攻坚战_虫)
     }
+    onClick进单人战局(id: 副本ID) {
+        this.进Scene战斗单人剧情副本('scene攻坚战', id)
+    }
     onClick创建四方对战() {
         this.进Scene战斗('scene四方对战', msgpack.encode([[MsgId.创建多人战局, 0, 0], 副本ID.四方对战]))
     }
@@ -447,7 +452,7 @@ export class Main extends Component {
                 0,
                 str登录名,
                 'Hello, world!pwd',
-                16,//版本号
+                17,//版本号
             ])
 
             // this.scene登录.nodeSelectSpace.active = true

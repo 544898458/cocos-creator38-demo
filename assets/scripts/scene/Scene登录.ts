@@ -3,7 +3,7 @@ import msgpack from "msgpack-lite/dist/msgpack.min.js"
 // import yaml from 'js-yaml/dist/js-yaml.min.js'
 import { FollowTarget } from '../mode/FollowTarget'
 import { Scene战斗, ClientEntityComponent } from './Scene战斗'
-import { KEY_登录名, Main } from '../mode/Main'
+import { KEY_登录名, Main, 副本ID } from '../mode/Main'
 import { ProgressBar } from 'cc'
 import { EventHandler } from 'cc'
 import { AudioClip } from 'cc'
@@ -152,6 +152,10 @@ export class Scene登录 extends Component {
     }
     onClickToggle进单人攻坚战_虫(event: Event, customEventData: string) {
         this.main.onClick进攻坚战_虫()
+    }
+    onClickToggle进单人战局(event: Event, customEventData: string) {
+        const id = 副本ID[customEventData as keyof typeof 副本ID]
+        this.main.onClick进单人战局(id)
     }
     onClickLogin(event: Event, customEventData: string) {
         this.main.onClickLogin(event, customEventData)
