@@ -361,7 +361,9 @@ export class Scene战斗 extends Component {
 
                 if (item.collider.node.name.substring(0, 3) != nodeName地图)
                     return
-
+                if (!this.battleUI) {
+                    this.battleUI = MainTest.instance.dialogMgr.getDialog(UI2Prefab.BattleUI_url).getComponent(BattleUI);
+                }
                 if (this.battleUI.b菱形框选) {
                     dispatcher.sendArray([
                         [MsgId.框选, ++Glob.sendMsgSn, 0],
@@ -395,6 +397,9 @@ export class Scene战斗 extends Component {
     }
     恢复战斗界面() {
         console.log('恢复战斗界面');
+        if (!this.battleUI) {
+            this.battleUI = MainTest.instance.dialogMgr.getDialog(UI2Prefab.BattleUI_url).getComponent(BattleUI);
+        }
         if (this.posWorld框选起始点) {
             this.posWorld框选起始点 = null
             this.battleUI.lable系统消息.string = '已退出框选状态'
@@ -522,6 +527,7 @@ export class Scene战斗 extends Component {
         // }
     }
     点击单位(item: PhysicsRayResult, b鼠标右键: boolean) {
+        this.entityId = MainTest.instance.scene战斗.entityId;
         let id = this.entityId[item.collider.node.uuid]
         let entity = this.entities.get(id)
         let nodeName = item.collider.node.name
@@ -646,6 +652,9 @@ export class Scene战斗 extends Component {
     }
 
     隐藏选中单位专用按钮() {
+        if (!this.battleUI) {
+            this.battleUI = MainTest.instance.dialogMgr.getDialog(UI2Prefab.BattleUI_url)?.getComponent(BattleUI);
+        }
         this.battleUI.button强行走.node.active = false
         this.battleUI.button集结点.node.active = false
         this.battleUI.button离开地堡.node.active = false
