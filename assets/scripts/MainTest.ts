@@ -35,6 +35,8 @@ import { Quat } from 'cc';
 import { BattleUI } from './ui/BattleUI';
 import { ResourceUtil } from './utils/ResourceUtil';
 import { EC } from './utils/EC';
+import { Scene登录 } from './scene/Scene登录';
+import { LoginView } from './ui/LoginView';
 
 const { ccclass, property } = _decorator;
 
@@ -49,19 +51,22 @@ export class MainTest extends Component {
     dialogMgr: DialogManager;
     // @property(Scene战斗)
     scene战斗: Scene战斗 = null;
+    scene登录: LoginView = null
     //摄像机
     @property(Node)
     cavas: Node = null;
     @property(AudioSource)
     audioManager: AudioSource;
     arr选中: number[] = []
+    map玩家场景 = new Map<string, string>//NickName=>SceneName
+    b登录成功: boolean = false;
+
     b显示单位类型: boolean = true
     b点击活动单位都是追加选中: boolean = false
 
     interstitialAd = null// 定义插屏广告    微信流量主
     fun关闭插屏广告发消息: () => void
     b已显示插屏广告: boolean = false
-    map玩家场景 = new Map<string, string>//NickName=>SceneName
     配置: 配置 = new 配置()
 
     funCreateMsg造建筑: (Vec3) => object
@@ -123,7 +128,8 @@ export class MainTest extends Component {
     start() {
         console.log('start')
         //打开加载页面
-        this.dialogMgr.openDialog(UI2Prefab.LoadingView_url)
+        // this.dialogMgr.openDialog(UI2Prefab.LoadingView_url)
+        dispatcher.emit(EC.LOAD_FINISH);
         //读取配置文件
         this.配置.读取配置文件()
     }
@@ -379,7 +385,7 @@ export class MainTest extends Component {
                                 let headScal = old.nodeName.getComponent(HeadScale)
                                 headScal.target = utils.find("NamePos", newNode)
                                 headScal.camera = thisLocal.scene战斗.mainCamera
-                                headScal.camera小地图 = thisLocal.scene战斗.camera小地图    
+                                headScal.camera小地图 = thisLocal.scene战斗.camera小地图
                             }
 
                             old.node描述 = instantiate(nodeRoleName)
@@ -390,7 +396,7 @@ export class MainTest extends Component {
                                 let headScal = old.node描述.getComponent(HeadScale)
                                 headScal.target = utils.find("描述", newNode)
                                 headScal.camera = thisLocal.scene战斗.mainCamera
-                                headScal.camera小地图 = thisLocal.scene战斗.camera小地图    
+                                headScal.camera小地图 = thisLocal.scene战斗.camera小地图
 
                                 // console.log(headScal.target)
                             }
@@ -668,7 +674,8 @@ export class MainTest extends Component {
                 {
                     let strHttps = arr[idxArr++] as string
                     if (this.audioManager) {
-                        Glob.strHttps登录场景音乐Mp3 = strHttps
+                        if (this.scene登录)
+                            Glob.strHttps登录场景音乐Mp3 = strHttps
                         assetManager.loadRemote(strHttps, (err, clip: AudioClip) => {
                             console.log('resources.load callback:', err, clip)
                             let audioSource = this.audioManager;
@@ -767,19 +774,19 @@ export class MainTest extends Component {
         switch (msgId) {
             case MsgId.在线人数:
                 {
-                    // let 人数 = arr[idxArr++] as number
-                    // let arr昵称 = arr[idxArr++] as string[]
-                    // this.str在线人数 = 人数 + '人在线:'
-                    // console.log('arr', arr)
+                    let 人数 = arr[idxArr++] as number
+                    let arr昵称 = arr[idxArr++] as string[]
+                    Glob.str在线人数 = 人数 + '人在线:'
+                    console.log('arr', arr)
 
-                    // if (!this.b登录成功) {
-                    //     this.b登录成功 = true;
-                    //     this.scene登录.nodeSelectSpace.active = true
-                    // }
-                    // arr昵称.forEach((str昵称: String) => {
-                    //     this.str在线人数 += str昵称 + '、'
-                    // })
-                    // this.显示在线人数()
+                    if (!this.b登录成功) {
+                        this.b登录成功 = true;
+                        this.scene登录.node选择模式.active = true
+                    }
+                    arr昵称.forEach((str昵称: String) => {
+                        Glob.str在线人数 += str昵称 + '、'
+                    })
+                    this.显示在线人数()
                 }
                 break
 
@@ -840,6 +847,7 @@ export class MainTest extends Component {
         }
     }
     进Scene战斗(sceneName: string, encoded: Buffer) {
+        this.scene登录.node选择模式.active = false
         this.dialogMgr.closeDialog(UI2Prefab.LoginView_url);
         if ((window as any).CC_WECHAT) {
             // 在适合的场景显示插屏广告
@@ -884,19 +892,21 @@ export class MainTest extends Component {
             }
             let MapNode = instantiate(scene)
             director.getScene().getChildByName('MapNode').addChild(MapNode)
+
+            //发送消息
+            this.scene登录 = null
+            let thisLocal = this;
+            if (thisLocal.b已显示插屏广告) {
+                thisLocal.fun关闭插屏广告发消息 = (): void => dispatcher.send(encoded)
+                console.log('已显示插屏广告，等待插屏广告关闭', thisLocal.fun关闭插屏广告发消息, thisLocal)
+                //5秒内发送登录消息
+                setTimeout(() => {
+                    thisLocal.on关闭插屏广告()
+                }, 5000)
+            } else {
+                dispatcher.send(encoded)
+            }
         })
-        //发送消息
-        let thisLocal = this;
-        if (thisLocal.b已显示插屏广告) {
-            thisLocal.fun关闭插屏广告发消息 = (): void => dispatcher.send(encoded)
-            console.log('已显示插屏广告，等待插屏广告关闭', thisLocal.fun关闭插屏广告发消息, thisLocal)
-            //5秒内发送登录消息
-            setTimeout(() => {
-                thisLocal.on关闭插屏广告()
-            }, 5000)
-        } else {
-            dispatcher.send(encoded)
-        }
     }
     进Scene战斗单人剧情副本(sceneName: string, id: 副本ID) {
         this.进Scene战斗(sceneName, msgpack.encode([[MsgId.进单人剧情副本, 0, 0], id]))
@@ -1218,6 +1228,14 @@ export class MainTest extends Component {
     }
     static Is活动单位(类型: 单位类型): boolean {
         return 单位类型.活动单位Min非法 < 类型 && 类型 < 单位类型.活动单位Max非法;
+    }
+    显示在线人数(): void {
+        console.log(Glob.str在线人数)
+        if (this.scene战斗 && this.scene战斗.battleUI)
+            this.scene战斗.battleUI.lable在线人数.string = Glob.str在线人数
+
+        if (this.scene登录)
+            this.scene登录.lableMessage.string = Glob.str在线人数
     }
 }
 

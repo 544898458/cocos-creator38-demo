@@ -32,51 +32,87 @@ export class LoginView extends Dialog {
     @property({ type: Node })
     nodeSelectRace: Node;
     @property({ type: Node })
-    node个人战局列表: Node;
+    node个人战局列表: Node
 
+    @property({ type: Node })
+    node跳转社区浏览器H5: Node
+    @property({ type: Node })
+    node跳转社区微信小游戏: Node
+    @property({ type: Node })
+    node跳转社区抖音小游戏: Node
+    
     @property(RichText)
     richText公告: RichText;
-    @property(Label)
-    在线人数: Label;
 
-    b登录成功: boolean = false;
+    @property(Node) node登录面板: Node
+    @property(Node) node选择模式: Node
+
     个人战模式: number = -1;
     onOpened(param: any): void {
         console.log("LoginView.onOpened", param)
+        MainTest.instance.scene登录 = this
+        // this.loadNode.active = true;
+        if (Glob.str在线人数)
+            this.lableMessage.string = Glob.str在线人数
+
+        if (Glob.websocket) {
+            this.node选择模式.active = true
+            this.node登录面板.active = false
+        }
         //显示上次登录昵称
         this.editBox登录名.string = sys.localStorage.getItem(Glob.KEY_登录名)
-        this.显示登录界面();
+        // this.显示登录界面();
 
-        //目前不知道有什么意义，先注释掉
-        // if (sys.isBrowser)
-        //     this.LoginPanel.getChildByName().active = true
-        // else
-        //     this.node跳转社区微信小游戏.active = true
-        MainTest.instance.微信小游戏允许分享();
-        MainTest.instance.onSecen登录Load();
-        //todo
-        // if (Glob.strHttps登录场景音乐Mp3) {
-        //     assetManager.loadRemote(Glob.strHttps登录场景音乐Mp3, (err, clip: AudioClip) => {
-        //         console.log('resources.load callback:', err, clip)
-        //         let audioSource = MainTest.instance.audioManager.getComponent(AudioSource)
-        //         if (!audioSource)
-        //             return
+        MainTest.instance.微信小游戏允许分享()
+        if (sys.isBrowser)
+            this.node跳转社区浏览器H5.active = true
+        else if(tt)
+            this.node跳转社区抖音小游戏.active = true
+        else
+            this.node跳转社区微信小游戏.active = true
 
-        //         audioSource.stop()
-        //         audioSource.clip = clip
-        //         audioSource.play()
-        //     })
-        // }
-        //TODO
-        // assetManager.loadRemote('https://www.rtsgame.online/公告/公告.txt', (err, textAsset: TextAsset) => {
-        //     console.log('resources.load callback:', err, textAsset)
-        //     this.richText公告.string = textAsset.text
-        // })
+            MainTest.instance.onSecen登录Load()
+        
+        if (Glob.strHttps登录场景音乐Mp3) {
+            assetManager.loadRemote(Glob.strHttps登录场景音乐Mp3, (err, clip: AudioClip) => {
+                console.log('resources.load callback:', err, clip)
+                let audioSource = MainTest.instance.audioManager.getComponent(AudioSource)
+                if (!audioSource)
+                    return
+
+                audioSource.stop()
+                audioSource.clip = clip
+                audioSource.play()
+            })
+        }
+        
+        assetManager.loadRemote('https://www.rtsgame.online/公告/公告.txt', (err, textAsset: TextAsset) => {
+            console.log('resources.load callback:', err, textAsset)
+            this.richText公告.string = textAsset.text
+        })
+
+        if(tt){
+            // --侧边栏按钮判断--//
+            tt.onShow((res) => {
+                //判断用户是否是从侧边栏进来的
+                let isFromSidebar = (res.launch_from == 'homepage' && res.location == 'sidebar_card')
+
+                if (isFromSidebar) {
+                    //如果是从侧边栏进来的，隐藏“去侧边栏”
+                    // this.btnSidebar.active = false
+                    this.lableMessage.string = '您从侧边栏进入了游戏，可免除一次插屏广告'
+                }
+                else {
+                    //否则 显示“去侧边栏”按钮
+                    // this.btnSidebar.active = true
+                }
+            });
+        }
     }
 
     //点击登录
     onClickLogin(event: Event, customEventData: string) {
-        this.b登录成功 = false
+        MainTest.instance.b登录成功 = false
         // this.微信小游戏获得OpenID()
         let str登录名 = this.editBox登录名.string
         Glob.myNickName = str登录名

@@ -76,7 +76,7 @@ export class Main extends Component {
     scene战斗: Scene战斗 = null
     scene登录: Scene登录 = null
     arr选中: number[] = []
-    str在线人数: string = null
+    str在线人数: string
     map玩家场景 = new Map<string, string>//NickName=>SceneName
     b登录成功: boolean = false
     strHttps登录场景音乐Mp3: string = "https://www.rtsgame.online/music/suno世界又恢复了和平低音质.mp3"

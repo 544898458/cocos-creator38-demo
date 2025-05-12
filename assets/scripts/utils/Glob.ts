@@ -10,7 +10,7 @@ export class Glob {
     public static recvMsgSn: number = 0;
     public static recvMsgSnGameSvr: number = 0
     public static recvMsgSnWorldSvr: number = 0;
-    public static str在线人数: number;
+    public static str在线人数: string;
     //全局常量  
     public static KEY_登录名: string = '登录名'
     public static strHttps登录场景音乐Mp3: string = "https://www.rtsgame.online/music/suno世界又恢复了和平低音质.mp3"

@@ -32,7 +32,7 @@ class LoginMgr {
         // Net.dispatcher.on("108", this.onOnlineTime, this);
     }
     openLogin() {
-        dialogMgr.closeDialog(UI2Prefab.LoadingView_url);
+        // dialogMgr.closeDialog(UI2Prefab.LoadingView_url);
         dialogMgr.openDialog(UI2Prefab.LoginView_url);
     }
 
