@@ -5,7 +5,8 @@ const { ccclass, property } = _decorator;
 export class Start extends Component {
     start() {
         assetManager.loadBundle("scene",(err,bundle:AssetManager.Bundle)=>{
-            director.loadScene("scene登录");
+            // director.loadScene("scene登录");
+            director.loadScene("main");
         });
     }
 
