@@ -24,6 +24,7 @@ import { Glob } from '../utils/Glob'
 import { dispatcher } from '../manager/event/EventDispatcher'
 import { Enum } from 'cc'
 import { MainTest } from '../MainTest'
+import { UI2Prefab } from '../autobind/UI2Prefab'
 
 const { ccclass, property } = _decorator
 export class ClientEntityComponent {
@@ -119,7 +120,7 @@ const prefabName选中特效: string = 'Select'//这里不能用中文，原因�
 const prefabName范围特效: string = '特效/范围'
 const nodeName攻击范围: string = '攻击范围'
 const nodeName警戒范围: string = '警戒范围'
-const nodeName地板: string = 'Plane' //地板对象名字
+const nodeName地图: string = 'map' //地图前称
 
 @ccclass('Scene战斗')
 export class Scene战斗 extends Component {
@@ -168,7 +169,7 @@ export class Scene战斗 extends Component {
         this.graphics = director.getScene().getChildByName('Canvas').getComponent(Graphics);
 
         this.mainCameraFollowTarget = this.mainCamera.getComponent(FollowTarget);
-        this.battleUI.lable在线人数.string = Glob.str在线人数.toString();
+        //this.battleUI.lable在线人数.string = Glob.str在线人数.toString();
 
         //3D摄像机鼠标滑轮（放大缩小）
         this.node.on(NodeEventType.MOUSE_WHEEL, (event: EventMouse) => {
@@ -309,7 +310,7 @@ export class Scene战斗 extends Component {
                 if (b已处理)
                     return true
 
-                if (item.collider.node.name != nodeName地板) {//单击单位
+                if (item.collider.node.name.substring(0, 3) != nodeName地图) {//单击单位
                     this.点击单位(item, b鼠标右键)
                     b已处理 = true
                     return true
@@ -358,7 +359,7 @@ export class Scene战斗 extends Component {
                 if (b已处理)
                     return
 
-                if (item.collider.node.name != nodeName地板)
+                if (item.collider.node.name.substring(0, 3) != nodeName地图)
                     return
 
                 if (this.battleUI.b菱形框选) {
@@ -419,7 +420,7 @@ export class Scene战斗 extends Component {
         PhysicsSystem.instance.raycastResults.forEach(
             (result: PhysicsRayResult) => {
                 // console.log('鼠标移动触碰对象', result.collider.node)
-                if (result.collider.node.name == nodeName地板)
+                if (result.collider.node.name.substring(0, 3) == nodeName地图)
                     vec点中地面WorldPos = result.hitPoint.clone()
             })
         if (!vec点中地面WorldPos)
@@ -461,6 +462,9 @@ export class Scene战斗 extends Component {
             }
 
             this.Clear然后显示小地图视口框()
+            if (!this.battleUI) {
+                this.battleUI = MainTest.instance.dialogMgr.getDialog(UI2Prefab.BattleUI_url).getComponent(BattleUI);
+            }
             this.battleUI.下部列表.active = false
         }
     }
@@ -480,7 +484,7 @@ export class Scene战斗 extends Component {
         // }
         this.posWorld按下准备拖动地面 = null
         PhysicsSystem.instance.raycastResults.forEach((item: PhysicsRayResult) => {
-            if (item.collider.node.name != nodeName地板)
+            if (item.collider.node.name.substring(0, 3) != nodeName地图)
                 return
 
             console.log('射线碰撞', item.collider.node.name, item.hitPoint)
@@ -616,7 +620,7 @@ export class Scene战斗 extends Component {
 
         let vec3Grapics: Vec3
         PhysicsSystem.instance.raycastResults.forEach((item: PhysicsRayResult) => {
-            if (item.collider.node.name != nodeName地板)
+            if (item.collider.node.name.substring(0, 3) != nodeName地图)
                 return
 
             vec3Grapics = this.Wolrd3D转Graphics绘图坐标小地图(item.hitPoint)
