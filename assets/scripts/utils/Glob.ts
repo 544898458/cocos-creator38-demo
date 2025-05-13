@@ -21,16 +21,16 @@ export class Glob {
 
     static init(): void {
         // 全屏时，非纯色的背景图适配
-        let size = view.getVisibleSize();
-        let scaleX = size.width / Glob.WIDTH;
-        let scaleY = size.height / Glob.HEIGHT;
-        if (scaleX < scaleY) {
-            view.setResolutionPolicy(ResolutionPolicy.SHOW_ALL);
-            this.rect3D.height = scaleX;
-            this.rect3D.y = (1 - scaleX) / 2 + 0.001;
-            Glob.scale = scaleY
-        } else {
-            Glob.scale = scaleX
-        }
+        // let size = view.getVisibleSize();
+        // let scaleX = size.width / Glob.WIDTH;
+        // let scaleY = size.height / Glob.HEIGHT;
+        // if (scaleX < scaleY) {
+        //     view.setResolutionPolicy(ResolutionPolicy.SHOW_ALL);
+        //     this.rect3D.height = scaleX;
+        //     this.rect3D.y = (1 - scaleX) / 2 + 0.001;
+        //     Glob.scale = scaleY
+        // } else {
+        //     Glob.scale = scaleX
+        // }
     }
 }
