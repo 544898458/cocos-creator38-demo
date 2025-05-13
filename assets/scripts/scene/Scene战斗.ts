@@ -518,7 +518,7 @@ export class Scene战斗 extends Component {
     点击单位(item: PhysicsRayResult, b鼠标右键: boolean) {
         let id = this.entityId[item.collider.node.uuid]
         let entity = this.entities.get(id)
-        let nodeName = item.collider.node.name 
+        let nodeName = item.collider.node.name
         if (nodeName == "晶体矿" || nodeName == "燃气矿")//点击晶体矿或者燃气矿
         {
             this.mainCameraFollowTarget.target = item.collider.node
@@ -541,32 +541,39 @@ export class Scene战斗 extends Component {
                 id
             ])
         }
-        else if ((nodeName == '地堡' || nodeName == '房虫') && !b鼠标右键 && this.main.arr选中.length > 0)//左键点击地堡
+        else if ((nodeName == '地堡' || nodeName == '房虫') && !b鼠标右键 && this.main.arr选中.length > 0)//左键点击地堡或房虫
         {
             this.mainCameraFollowTarget.target = item.collider.node
             let id = this.entityId[item.collider.node.uuid]
             let idMsg = entity.类型 == 单位类型.地堡 ? MsgId.进地堡 : MsgId.进房虫
-            this.main.sendArray([
-                [idMsg, ++this.main.sendMsgSn, 0],
-                id,
-                [0.0]
-            ])
+            let entity选中的第一个 = this.entities.get(this.main.arr选中[0])
+            if (entity.类型 == 单位类型.房虫 && 1==this.main.arr选中.length && entity选中的第一个 && entity选中的第一个.类型 == 单位类型.房虫){
+                this.请求选中此单位(item.collider.node)
+            }else
+                this.main.sendArray([
+                    [idMsg, ++this.main.sendMsgSn, 0],
+                    id,
+                    [0.0]
+                ])
         }
         else if (
             nodeName != "晶体矿"
             && nodeName != "燃气矿"
             && nodeName != "视口"
         ) {
-            this.mainCameraFollowTarget.target = item.collider.node
-            let id = this.entityId[item.collider.node.uuid]
-            if (id == undefined) {
-                console.log('还没加载')
-                return
-            }
-
-            this.clear选中()
-            this.main.send选中([id])
+            this.请求选中此单位(item.collider.node)
         }
+    }
+    请求选中此单位(node: Node) {
+        this.mainCameraFollowTarget.target = node
+        let id = this.entityId[node.uuid]
+        if (id == undefined) {
+            console.log('还没加载')
+            return
+        }
+
+        this.clear选中()
+        this.main.send选中([id])
     }
     update(deltaTime: number) {
         if (this.vec摄像机在Update更新位置) {
@@ -737,7 +744,7 @@ export class Scene战斗 extends Component {
                     case 单位类型.房虫:
                         this.battleUI.button强行走.node.active = true
                         this.battleUI.node离开房虫.active = true
-                    break
+                        break
                     default:
                         if (Main.Is活动单位(old.类型)) {
                             this.battleUI.button强行走.node.active = true
