@@ -412,28 +412,7 @@ export class Main extends Component {
 
         this.scene登录.nodeLoginPanel.active = false//隐藏
         this.scene登录.lableMessage.string = '正在连接'
-        // this.websocket = new WebSocket("ws://192.168.31.194:12348/")
-        // this.websocket = new WebSocket("ws://192.168.31.170:12348/")
-        // this.websocket = new WebSocket("ws://192.168.43.186:12348/")
-        // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
-        // this.websocket = new WebSocket("ws://192.168.0.96:12348/")
-        // this.websocket = new WebSocket("ws://47.119.184.177:12348/")
-        // this.websocket = new WebSocket("wss://rtsgame.online/")
-        // this.websocket = new WebSocket("wss://test.rtsgame.online/")
         this.websocket = new WebSocket("wss://" + customEventData)
-        // this.websocket = new WebSocket("ws://127.0.0.1:443")
-        // We should pass the cacert to libwebsockets used in native platform, otherwise the wss connection would be closed.
-        // let url = this.wssCacert.nativeUrl;
-        // if (assetManager.cacheManager) {
-        //     url = assetManager.cacheManager.getCache(url) || assetManager.cacheManager.getTemp(url) || url;
-        // }
-        // We should pass the cacert to libwebsockets used in native platform, otherwise the wss connection would be closed.
-        // this._wsiSendBinary = new WebSocket('wss://echo.websocket.events', [], url);
-        // console.log(url)
-
-        // this.websocket = new WebSocket('wss://wss2.iotlabor.cn:12348/',[])//, url)
-        // this.websocket = new WebSocket('wss://wss.iotlabor.cn/',[], url)
-        // this.websocket = new WebSocket('wss://echo.websocket.events', [])//, url);
         this.websocket.binaryType = 'arraybuffer'
         console.log(this.websocket)
 
