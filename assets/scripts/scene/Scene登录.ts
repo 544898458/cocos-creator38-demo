@@ -69,9 +69,10 @@ export class Scene登录 extends Component {
 
         this.editBox登录名.string = sys.localStorage.getItem(KEY_登录名)
         this.main.微信小游戏允许分享()
+        console.log('sys.isBrowser', sys.isBrowser)
         if (sys.isBrowser)
             this.node跳转社区浏览器H5.active = true
-        else if(tt)
+        else if(Main.是抖音小游戏())
             this.node跳转社区抖音小游戏.active = true
         else
             this.node跳转社区微信小游戏.active = true
@@ -98,7 +99,7 @@ export class Scene登录 extends Component {
             this.richText公告.string = textAsset.text
         })
 
-        if(tt){
+        if(Main.是抖音小游戏()){
             // --侧边栏按钮判断--//
             tt.onShow((res) => {
                 //判断用户是否是从侧边栏进来的

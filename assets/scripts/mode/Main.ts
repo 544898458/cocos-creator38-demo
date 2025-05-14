@@ -16,6 +16,7 @@ import { Tween } from 'cc'
 import { AnimationState } from 'cc'
 import { 按下按钮显示单位详情Component } from '../component/按下按钮显示单位详情Component'
 import { 苔蔓Component } from '../component/苔蔓Component'
+import { view } from 'cc'
 
 const { ccclass, property } = _decorator
 
@@ -98,30 +99,47 @@ export class Main extends Component {
                 this.interstitialAd.onLoad(() => { console.log('插屏 广告加载成功') })
                 let thisLocal = this
                 this.interstitialAd.onClose(() => { thisLocal.on关闭插屏广告() })
+                console.log('this.interstitialAd', this.interstitialAd)
+            } else {
+                console.log('微信流量主插屏广告未初始化')
             }
 
             // 创建 原生模板 广告实例，提前初始化
-            let CustomAd = wx.createCustomAd({
+            // Get screen info first
+            // let size = view.getVisibleSize()
+            const size  = wx.getSystemInfoSync();
+
+            
+            const adWidth = 350;
+
+            // Calculate centered position
+            const left = (size.screenWidth - adWidth) / 2;
+            console.log('left', left,'size',size)
+            let customAd = wx.createCustomAd({
                 adUnitId: 'adunit-cce53ccb600523d1',
                 style: {
-                    left: 0,
+                    left: left,
                     top: 0,
-                    width: 350
+                    width: adWidth
                 }
             })
 
+            console.log('CustomAd', customAd)
+
             // 在适合的场景显示 原生模板 广告
-            CustomAd.show()
+            customAd.show()
 
             // 监听 原生模板 广告错误事件
-            CustomAd.onError(err => {
-                console.error(err.errMsg)
+            customAd.onError(err => {
+                console.error('CustomAd onError', err.errMsg)
             });
-        } else if (tt) {
+        } else if (Main.是抖音小游戏()) {
 
         }
     }
-
+    static 是抖音小游戏(): boolean {
+        return typeof tt !== 'undefined' && tt != null
+    }
     on关闭插屏广告() {
         console.log('on关闭插屏广告', this.fun关闭插屏广告发消息, this)
         this.b已显示插屏广告 = false
@@ -289,6 +307,7 @@ export class Main extends Component {
             // 在适合的场景显示插屏广告
             if (this.interstitialAd) {
                 this.b已显示插屏广告 = true
+                console.log('准备显示插屏广告')
                 this.interstitialAd.show().catch((err) => {
                     this.b已显示插屏广告 = false
                     console.error('插屏广告显示失败', err)
@@ -316,6 +335,7 @@ export class Main extends Component {
                         thisLocal.on关闭插屏广告()
                     }, 5000)
                 } else {
+                    console.log('未显示插屏广告，直接进战斗场景', thisLocal.fun关闭插屏广告发消息, thisLocal)
                     thisLocal.send(encoded)
                 }
             })
