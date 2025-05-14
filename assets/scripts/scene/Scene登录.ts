@@ -134,7 +134,7 @@ export class Scene登录 extends Component {
         }
     }
     onClickToggle进Space1(event: Event, customEventData: string) {
-        this.main.进Scene战斗('scene战斗', msgpack.encode([[MsgId.进Space, 0, 0], 1]))
+        this.main.进Scene战斗('scene战斗', MsgId.进Space, 副本ID.多人联机地图)
     }
     onClickToggle进单人剧情副本(event: Event, customEventData: string) {
         this.main.onClickToggle进训练战()

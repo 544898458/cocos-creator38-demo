@@ -86,53 +86,69 @@ export class Main extends Component {
     配置: 配置 = new 配置()
     fun创建消息: (Vec3) => object = null//this.createMsgMove强行走//点击地面操作 = 点击地面操作类型.移动单位
     funCreateMsg造建筑: (Vec3) => object
-    interstitialAd = null// 定义插屏广告    微信流量主
+    interstitialAd// 定义插屏广告    
+    rewardedVideoAd// 定义激励视频广告
     b已显示插屏广告: boolean = false
-    fun关闭插屏广告发消息: () => void
+    fun关闭广告发消息: (boolean) => void
     onSecen登录Load(): void {
         if (window.CC_WECHAT) {
-            // 创建插屏广告实例，提前初始化
+            let thisLocal = this
+            // 创建插屏广告实例，提前初始化             进入战斗场景时显示
             if (wx.createInterstitialAd) {
                 this.interstitialAd = wx.createInterstitialAd({
                     adUnitId: 'adunit-904480d5c9a873be'
                 })
                 this.interstitialAd.onLoad(() => { console.log('插屏 广告加载成功') })
-                let thisLocal = this
-                this.interstitialAd.onClose(() => { thisLocal.on关闭插屏广告() })
+
+                this.interstitialAd.onClose(() => { thisLocal.on关闭广告() })
                 console.log('this.interstitialAd', this.interstitialAd)
             } else {
                 console.log('微信流量主插屏广告未初始化')
             }
 
-            // 创建 原生模板 广告实例，提前初始化
-            // Get screen info first
-            // let size = view.getVisibleSize()
-            const size  = wx.getSystemInfoSync();
+            {
+                // 创建 原生模板 广告实例，提前初始化           首页顶部广告条
+                const size = wx.getSystemInfoSync();
+                const adWidth = 350;
+                // Calculate centered position
+                const left = (size.screenWidth - adWidth) / 2;
+                console.log('left', left, 'size', size)
+                let customAd = wx.createCustomAd({
+                    adUnitId: 'adunit-cce53ccb600523d1',
+                    style: {
+                        left: left,
+                        top: 0,
+                        width: adWidth
+                    }
+                })
 
-            
-            const adWidth = 350;
+                console.log('CustomAd', customAd)
 
-            // Calculate centered position
-            const left = (size.screenWidth - adWidth) / 2;
-            console.log('left', left,'size',size)
-            let customAd = wx.createCustomAd({
-                adUnitId: 'adunit-cce53ccb600523d1',
-                style: {
-                    left: left,
-                    top: 0,
-                    width: adWidth
-                }
-            })
+                // 在适合的场景显示 原生模板 广告
+                customAd.show()
 
-            console.log('CustomAd', customAd)
-
-            // 在适合的场景显示 原生模板 广告
-            customAd.show()
-
-            // 监听 原生模板 广告错误事件
-            customAd.onError(err => {
-                console.error('CustomAd onError', err.errMsg)
-            });
+                // 监听 原生模板 广告错误事件
+                customAd.onError(err => {
+                    console.error('CustomAd onError', err.errMsg)
+                });
+            }
+            {
+                // 创建激励视频广告实例，提前初始化
+                this.rewardedVideoAd = wx.createRewardedVideoAd({
+                    adUnitId: 'adunit-016e0f527a910f13'
+                })
+                this.rewardedVideoAd.onClose(res => {
+                    thisLocal.on关闭广告(res && res.isEnded || res === undefined)
+                    // 用户点击了【关闭广告】按钮
+                    // 小于 2.1.0 的基础库版本，res 是一个 undefined
+                    // if (res && res.isEnded || res === undefined) {
+                    //     // 正常播放结束，可以下发游戏奖励
+                    // }
+                    // else {
+                    //     // 播放中途退出，不下发游戏奖励
+                    // }
+                })
+            }
         } else if (Main.是抖音小游戏()) {
 
         }
@@ -140,12 +156,12 @@ export class Main extends Component {
     static 是抖音小游戏(): boolean {
         return typeof tt !== 'undefined' && tt != null
     }
-    on关闭插屏广告() {
-        console.log('on关闭插屏广告', this.fun关闭插屏广告发消息, this)
+    on关闭广告(b已看完激励视频广告 = false) {
+        console.log('on关闭广告', this.fun关闭广告发消息, this)
         this.b已显示插屏广告 = false
-        if (this.fun关闭插屏广告发消息) {
-            this.fun关闭插屏广告发消息()
-            this.fun关闭插屏广告发消息 = null
+        if (this.fun关闭广告发消息) {
+            this.fun关闭广告发消息(b已看完激励视频广告)
+            this.fun关闭广告发消息 = null
         }
     }
     // funCreateMsgMove遇敌自动攻击 = this.createMsgMove遇敌自动攻击
@@ -301,21 +317,38 @@ export class Main extends Component {
     onClickAdd飞塔(event: Event, customEventData: string): void {
         this.on点击按钮_造建筑(单位类型.飞塔)
     }
-    进Scene战斗(sceneName: string, encoded: Buffer) {
+    进Scene战斗(sceneName: string, idMsg: MsgId, id副本: 副本ID, str房主昵称:string='', b多人混战: boolean = false) {
         this.scene登录.nodeSelectSpace.active = false
         if (window.CC_WECHAT) {
-            // 在适合的场景显示插屏广告
-            if (this.interstitialAd) {
-                this.b已显示插屏广告 = true
-                console.log('准备显示插屏广告')
-                this.interstitialAd.show().catch((err) => {
-                    this.b已显示插屏广告 = false
-                    console.error('插屏广告显示失败', err)
-                })
-                //延时关闭
-                // setTimeout(() => {
-                //     this.关闭插屏广告()
-                // }, 10000)
+            if (b多人混战) {
+                if (this.rewardedVideoAd) {
+                    this.b已显示插屏广告 = true
+                    this.rewardedVideoAd.show().catch((err) => {
+                        this.b已显示插屏广告 = false
+                        console.error('激励视频 广告显示失败第1次', err)
+                        // 失败重试
+                        this.rewardedVideoAd.load().then(() => {
+                            this.b已显示插屏广告 = true
+                            this.rewardedVideoAd.show()
+                        }).catch(err => {
+                            this.b已显示插屏广告 = false
+                            console.error('激励视频 广告显示失败第2次', err)
+                        })
+                    })
+                }
+            } else {
+                if (this.interstitialAd) {
+                    this.b已显示插屏广告 = true
+                    console.log('准备显示插屏广告')
+                    this.interstitialAd.show().catch((err) => {
+                        this.b已显示插屏广告 = false
+                        console.error('插屏广告显示失败', err)
+                    })
+                    //延时关闭
+                    // setTimeout(() => {
+                    //     this.关闭插屏广告()
+                    // }, 10000)
+                }
             }
         }
         director.preloadScene(sceneName, (completedCount: number, totalCount: number, item: AssetManager.RequestItem) => {
@@ -328,21 +361,24 @@ export class Main extends Component {
             director.loadScene(sceneName, (err, scene) => {
                 // this.nodeSelectSpace.active = false
                 if (thisLocal.b已显示插屏广告) {
-                    thisLocal.fun关闭插屏广告发消息 = (): void => thisLocal.send(encoded)
-                    console.log('已显示插屏广告，等待插屏广告关闭', thisLocal.fun关闭插屏广告发消息, thisLocal)
+                    thisLocal.fun关闭广告发消息 = (b已看完激励视频广告): void => thisLocal.send进战斗场景(idMsg, id副本, str房主昵称, b已看完激励视频广告)
+                    console.log('已显示插屏广告，等待插屏广告关闭', thisLocal.fun关闭广告发消息, thisLocal)
                     //5秒内发送登录消息
                     setTimeout(() => {
-                        thisLocal.on关闭插屏广告()
-                    }, 5000)
+                        thisLocal.on关闭广告()
+                    }, b多人混战 ? 5 * 60000 : 5000)
                 } else {
-                    console.log('未显示插屏广告，直接进战斗场景', thisLocal.fun关闭插屏广告发消息, thisLocal)
-                    thisLocal.send(encoded)
+                    console.log('未显示插屏广告，直接进战斗场景', thisLocal.fun关闭广告发消息, thisLocal)
+                    thisLocal.send进战斗场景(idMsg, id副本, str房主昵称)
                 }
             })
         })
     }
+    send进战斗场景(idMsg: MsgId, id副本: 副本ID, str房主昵称, b已看完激励视频广告 = false) {
+        msgpack.encode([[idMsg, 0, 0], id副本, str房主昵称, b已看完激励视频广告])
+    }
     进Scene战斗单人剧情副本(sceneName: string, id: 副本ID) {
-        this.进Scene战斗(sceneName, msgpack.encode([[MsgId.进单人剧情副本, 0, 0], id]))
+        this.进Scene战斗(sceneName, MsgId.进单人剧情副本, id)
     }
     onClickToggle进训练战() {
         this.进Scene战斗单人剧情副本('scene战斗', 副本ID.训练战)
@@ -367,7 +403,7 @@ export class Main extends Component {
         this.进Scene战斗单人剧情副本('scene攻坚战', id)
     }
     onClick创建四方对战() {
-        this.进Scene战斗('scene四方对战', msgpack.encode([[MsgId.创建多人战局, 0, 0], 副本ID.四方对战]))
+        this.进Scene战斗('scene四方对战', MsgId.创建多人战局, 副本ID.四方对战)
     }
     onClick获取别人的个人战局列表(event: Event, customEventData: string) {
         console.log(event, customEventData)
@@ -379,11 +415,11 @@ export class Main extends Component {
     }
     onClick进入别人的个人战局(event: Event, customEventData: string) {
         console.log(event, customEventData)
-        this.进Scene战斗(this.map玩家场景.get(customEventData), msgpack.encode([[MsgId.进其他玩家个人战局, ++this.sendMsgSn, 0, 0], customEventData]))
+        this.进Scene战斗(this.map玩家场景.get(customEventData), MsgId.进其他玩家个人战局, 副本ID.单人ID_非法_MIN, customEventData )
     }
     onClick进入别人的多人战局(event: Event, customEventData: string) {
         console.log(event, customEventData)
-        this.进Scene战斗(this.map玩家场景.get(customEventData), msgpack.encode([[MsgId.进其他玩家多人战局, ++this.sendMsgSn, 0, 0], customEventData]))
+        this.进Scene战斗(this.map玩家场景.get(customEventData), MsgId.进其他玩家多人战局, 副本ID.四方对战, customEventData)
     }
     微信小游戏获得OpenID(): void {
         console.log('window.CC_WECHAT', window.CC_WECHAT)
