@@ -375,7 +375,7 @@ export class Main extends Component {
         })
     }
     send进战斗场景(idMsg: MsgId, id副本: 副本ID, str房主昵称, b已看完激励视频广告 = false) {
-        msgpack.encode([[idMsg, 0, 0], id副本, str房主昵称, b已看完激励视频广告])
+        this.sendArray([[idMsg, 0, 0], id副本, str房主昵称, b已看完激励视频广告])
     }
     进Scene战斗单人剧情副本(sceneName: string, id: 副本ID) {
         this.进Scene战斗(sceneName, MsgId.进单人剧情副本, id)
@@ -487,7 +487,7 @@ export class Main extends Component {
                 0,
                 str登录名,
                 'Hello, world!pwd',
-                17,//版本号
+                18,//版本号
             ])
 
             // this.scene登录.nodeSelectSpace.active = true
