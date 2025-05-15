@@ -118,6 +118,12 @@ export class Scene登录 extends Component {
         }
     }
 
+    //销毁时
+    onDestroy(): void {
+        console.log('Scene登录.onDestroy', this.main)
+        this.main?.onDestroy()
+    }
+
     update(deltaTime: number) {
         //加载进度条
         if (this.loadtime < this.loadlen)
@@ -134,7 +140,7 @@ export class Scene登录 extends Component {
         }
     }
     onClickToggle进Space1(event: Event, customEventData: string) {
-        this.main.进Scene战斗('scene战斗', MsgId.进Space, 副本ID.多人联机地图)
+        this.main.进Scene战斗('scene战斗', MsgId.进Space, 副本ID.多人混战, '', true)
     }
     onClickToggle进单人剧情副本(event: Event, customEventData: string) {
         this.main.onClickToggle进训练战()
