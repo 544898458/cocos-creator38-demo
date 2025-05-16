@@ -891,7 +891,7 @@ export class MainTest extends Component {
                 return
             }
             let MapNode = instantiate(scene)
-            director.getScene().getChildByName('MapNode').addChild(MapNode)
+            MainTest.GetMapNode().addChild(MapNode)
 
             //发送消息
             this.scene登录 = null
@@ -907,6 +907,9 @@ export class MainTest extends Component {
                 dispatcher.send(encoded)
             }
         })
+    }
+    static GetMapNode(): Node {
+        return director.getScene().getChildByName('MapNode')
     }
     进Scene战斗单人剧情副本(sceneName: string, id: 副本ID) {
         this.进Scene战斗(sceneName, msgpack.encode([[MsgId.进单人剧情副本, 0, 0], id]))
@@ -1159,6 +1162,7 @@ export class MainTest extends Component {
             this.scene战斗.entityId.clear()
         }
         this.dialogMgr.openDialog(UI2Prefab.LoginView_url)
+        MainTest.GetMapNode().removeAllChildren()
         // director.loadScene('scene登录', (err, scene) => {
         //     // console.log('回到登录场景,nodeSelectSpace.active=', this.scene登录.nodeSelectSpace.active)
         //     // director.runScene(scene);
