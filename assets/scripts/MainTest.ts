@@ -338,8 +338,8 @@ export class MainTest extends Component {
                                 // old.skeletalAnimation.play(old.initClipName)
                                 MainTest.播放动作(old, old.initClipName, true)
                             }
-                            if (!thisLocal.scene战斗.battleUI)
-                                thisLocal.scene战斗.battleUI = thisLocal.dialogMgr.getDialog(UI2Prefab.BattleUI_url).getComponent(BattleUI);
+                            // if (!thisLocal.scene战斗.battleUI)
+                            thisLocal.scene战斗.battleUI = thisLocal.dialogMgr.getDialog(UI2Prefab.BattleUI_url).getComponent(BattleUI);
                             let node所有单位头顶名字 = thisLocal.scene战斗.battleUI.uiTransform所有单位头顶名字.node
                             let nodeRoleName = utils.find("RoleName", node所有单位头顶名字)
                             // console.log('RoleName',this.nodeRoleName)
@@ -887,12 +887,13 @@ export class MainTest extends Component {
                 }
             }
         }
-        this.loadMap(sceneName, idMsg, id副本, str房主昵称, b多人混战);
+        
         //打开战斗UI
         this.dialogMgr.openDialog(UI2Prefab.BattleUI_url,null,null,(dlg:Dialog):void=> {
             if (!this.scene战斗.battleUI) {
                 this.scene战斗.battleUI = dlg.getComponent(BattleUI)
             }
+            this.loadMap(sceneName, idMsg, id副本, str房主昵称, b多人混战)
         })
         
     }
