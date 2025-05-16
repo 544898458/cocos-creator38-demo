@@ -69,9 +69,10 @@ export class Scene登录 extends Component {
 
         this.editBox登录名.string = sys.localStorage.getItem(KEY_登录名)
         this.main.微信小游戏允许分享()
+        console.log('sys.isBrowser', sys.isBrowser)
         if (sys.isBrowser)
             this.node跳转社区浏览器H5.active = true
-        else if(tt)
+        else if(Main.是抖音小游戏())
             this.node跳转社区抖音小游戏.active = true
         else
             this.node跳转社区微信小游戏.active = true
@@ -98,7 +99,7 @@ export class Scene登录 extends Component {
             this.richText公告.string = textAsset.text
         })
 
-        if(tt){
+        if(Main.是抖音小游戏()){
             // --侧边栏按钮判断--//
             tt.onShow((res) => {
                 //判断用户是否是从侧边栏进来的
@@ -117,6 +118,12 @@ export class Scene登录 extends Component {
         }
     }
 
+    //销毁时
+    onDestroy(): void {
+        console.log('Scene登录.onDestroy', this.main)
+        this.main?.onDestroy()
+    }
+
     update(deltaTime: number) {
         //加载进度条
         if (this.loadtime < this.loadlen)
@@ -133,7 +140,7 @@ export class Scene登录 extends Component {
         }
     }
     onClickToggle进Space1(event: Event, customEventData: string) {
-        this.main.进Scene战斗('scene战斗', msgpack.encode([[MsgId.进Space, 0, 0], 1]))
+        this.main.进Scene战斗('scene战斗', MsgId.进Space, 副本ID.多人混战, '', true)
     }
     onClickToggle进单人剧情副本(event: Event, customEventData: string) {
         this.main.onClickToggle进训练战()
