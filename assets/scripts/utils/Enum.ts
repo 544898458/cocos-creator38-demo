@@ -25,7 +25,9 @@ export enum 副本ID {
     四方对战,
     多人ID_非法_MAX,
 
-    多人联机地图,
+    多人混战ID_非法_MIN = 200,
+    多人混战,
+    多人混战ID_非法_MAX
 };
 export enum SayChannel {
     系统,

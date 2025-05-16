@@ -5,7 +5,7 @@ import { sys } from 'cc';
 import { Glob } from '../utils/Glob';
 import { RichText } from 'cc';
 import { dispatcher, EventDispatcher } from '../manager/event/EventDispatcher';
-import { MsgId, LoginResult } from '../utils/Enum';
+import { MsgId, LoginResult, 副本ID } from '../utils/Enum';
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { MainTest } from '../MainTest';
 import { globalShortcut } from 'electron/main';
@@ -66,7 +66,7 @@ export class LoginView extends Dialog {
         MainTest.instance.微信小游戏允许分享()
         if (sys.isBrowser)
             this.node跳转社区浏览器H5.active = true
-        else if(tt)
+        else if(LoginView.是抖音小游戏())
             this.node跳转社区抖音小游戏.active = true
         else
             this.node跳转社区微信小游戏.active = true
@@ -91,7 +91,7 @@ export class LoginView extends Dialog {
             this.richText公告.string = textAsset.text
         })
 
-        if(tt){
+        if(LoginView.是抖音小游戏()){
             // --侧边栏按钮判断--//
             tt.onShow((res) => {
                 //判断用户是否是从侧边栏进来的
@@ -109,7 +109,9 @@ export class LoginView extends Dialog {
             });
         }
     }
-
+    static 是抖音小游戏(): boolean {
+        return typeof tt !== 'undefined' && tt != null
+    }
     //点击登录
     onClickLogin(event: Event, customEventData: string) {
         MainTest.instance.b登录成功 = false
@@ -408,7 +410,7 @@ export class LoginView extends Dialog {
 
     //进入游戏
     onClickToggle进Space1(event: Event, customEventData: string) {//混战
-        MainTest.instance.进Scene战斗('scene战斗', msgpack.encode([[MsgId.进Space, 0, 0], 1]))
+        MainTest.instance.进Scene战斗('scene战斗', MsgId.进Space, 副本ID.多人混战, '', true)
     }
     onClick创建四方对战(event: Event, customEventData: string) {
         MainTest.instance.onClick创建四方对战()

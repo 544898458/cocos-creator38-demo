@@ -84,10 +84,13 @@ export class DialogManager {
      * @param {string} hideClazzUrl 需要隐藏的界面
      * @param {boolean} closeOtherView 是否关闭其他页面
      */
-    public openDialog(url: string, args: any = undefined, hideClazzUrl?: string, isCloseOther: boolean = true) {
+    public openDialog(url: string, args: any = undefined, hideClazzUrl?: string, onLoad: (dlg: Dialog) => void = null) {
         let t = this;
         if (t._dialogInLoad[url]) {
             t._dialogInLoad[url] = [url, args];
+            if (onLoad) {
+                onLoad(t._dialogInOpen[url]);
+            }
             return;
         } else {
             t._dialogInLoad[url] = [url, args];
@@ -98,6 +101,9 @@ export class DialogManager {
             dialog.node.active = true;
             dialog.initalData(t._dialogInLoad[url][1]);
             delete t._dialogInLoad[url];
+            if (onLoad) {
+                onLoad(t._dialogInOpen[url]);
+            }
             return;
         }
 
@@ -128,6 +134,10 @@ export class DialogManager {
 
                         if (!dialog.hasPage)
                             t.hideView(url);
+
+                        if (onLoad) {
+                            onLoad(dialog);
+                        }
                     }
                 }
             }

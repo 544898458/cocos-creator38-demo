@@ -95,8 +95,8 @@ export class ClientEntityComponent {
         }
     }
     判断是否同玩家名着色子弹() {
-        if (ClientEntityComponent.myNickName != null) {
-            if (this.nickName != ClientEntityComponent.myNickName) {
+        if (Glob.myNickName != null) {
+            if (this.nickName != Glob.myNickName) {
                 this.labelName.color = new Color(80, 30, 30);
             }
             else {
@@ -105,8 +105,8 @@ export class ClientEntityComponent {
         }
     }
     判断是否同玩家名着色单位() {
-        if (ClientEntityComponent.myNickName != null) {
-            if (this.nickName != ClientEntityComponent.myNickName) {
+        if (Glob.myNickName != null) {
+            if (this.nickName != Glob.myNickName) {
                 this.labelName.color = new Color(255, 100, 100);
             }
             else {
