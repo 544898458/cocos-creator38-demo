@@ -82,7 +82,7 @@ export class 按下按钮显示详情Component extends Component {
         this.node.on(Node.EventType.TOUCH_MOVE, function (event: EventTouch) {
             console.log("按钮TOUCH_END");
             let 距离起始点 = event.getLocation().subtract(this.vec2按下).lengthSqr()
-            if (距离起始点 > 15)//允许手抖
+            if (距离起始点 > 20)//允许手抖
                 this.隐藏单位详情()
         }, this);
 

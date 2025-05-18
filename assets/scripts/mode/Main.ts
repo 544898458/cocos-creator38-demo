@@ -11,37 +11,13 @@ import { copyFileSync } from 'original-fs'
 import { Quat } from 'cc'
 import { AudioClip } from 'cc'
 import { sys } from 'cc'
-import { MsgId, 属性类型, 单位类型, 配置 } from '../配置/配置'
+import { MsgId, 属性类型, 单位类型, 配置, 战局类型 } from '../配置/配置'
 import { Tween } from 'cc'
 import { AnimationState } from 'cc'
 import { 按下按钮显示单位详情Component } from '../component/按下按钮显示单位详情Component'
 import { 苔蔓Component } from '../component/苔蔓Component'
-import { view } from 'cc'
 
 const { ccclass, property } = _decorator
-
-export enum 副本ID {
-    单人ID_非法_MIN,
-    训练战,
-    防守战,
-    攻坚战,
-    训练战_虫,
-    防守战_虫,
-    攻坚战_虫,
-    反空降战_人,
-    空降战_虫,
-    战备运营训练_人,
-    战备运营训练_虫,
-    单人ID_非法_MAX,
-
-    多人ID_非法_MIN = 100,
-    四方对战,
-    多人ID_非法_MAX,
-
-    多人混战ID_非法_MIN = 200,
-    多人混战,
-    多人混战ID_非法_MAX
-};
 
 // enum 点击地面操作类型
 // {
@@ -64,6 +40,8 @@ enum LoginResult {
 }
 
 export const KEY_登录名: string = '登录名'
+declare const tt: any;  // Basic declaration, consider proper typing if available
+declare const wx: any;
 
 @ccclass('Main')
 export class Main extends Component {
@@ -88,13 +66,13 @@ export class Main extends Component {
     b点击活动单位都是追加选中: boolean = false
     b显示单位类型: boolean = true
     配置: 配置 = new 配置()
-    fun创建消息: (Vec3) => object = null//this.createMsgMove强行走//点击地面操作 = 点击地面操作类型.移动单位
-    funCreateMsg造建筑: (Vec3) => object
-    interstitialAd// 定义插屏广告    
-    rewardedVideoAd// 定义激励视频广告
-    customAd// 定义原生模板广告
+    fun创建消息: (position: Vec3) => object = null//this.createMsgMove强行走//点击地面操作 = 点击地面操作类型.移动单位
+    funCreateMsg造建筑: (position: Vec3) => object;
+    interstitialAd: any = null; // 定义插屏广告    
+    rewardedVideoAd: any = null; // 定义激励视频广告
+    customAd: any = null; // 定义原生模板广告
     b已显示进战斗场景前的广告: boolean = false
-    fun关闭广告发消息: (boolean) => void
+    fun关闭广告发消息: (b已看完激励视频广告: boolean) => void
     onSecen登录Load(): void {
         if (window.CC_WECHAT) {
             let thisLocal = this
@@ -104,7 +82,7 @@ export class Main extends Component {
                     adUnitId: 'adunit-904480d5c9a873be'
                 })
                 this.interstitialAd.onLoad(() => { console.log('插屏 广告加载成功') })
-                this.interstitialAd.onError(err => {
+                this.interstitialAd.onError((err: any) => {
                     console.error('interstitialAd onError', err.errMsg)
                 });
                 this.interstitialAd.onClose(() => { thisLocal.on关闭广告() })
@@ -142,8 +120,7 @@ export class Main extends Component {
                 this.customAd.show().then(() => console.log('原生模板广告再次显示成功')).catch(err => console.log('原生模板广告再次显示错误', err))
             }
 
-            if (!this.rewardedVideoAd)
-            {
+            if (!this.rewardedVideoAd) {
                 // 创建激励视频广告实例，提前初始化
                 this.rewardedVideoAd = wx.createRewardedVideoAd({
                     adUnitId: 'adunit-016e0f527a910f13'
@@ -189,7 +166,7 @@ export class Main extends Component {
     static 是抖音小游戏(): boolean {
         return typeof tt !== 'undefined' && tt != null
     }
-    on关闭广告(b已看完激励视频广告 = false) {
+    on关闭广告(b已看完激励视频广告: boolean = false) {
         console.log('on关闭广告', this.fun关闭广告发消息, this)
         this.b已显示进战斗场景前的广告 = false
         if (this.fun关闭广告发消息) {
@@ -350,7 +327,7 @@ export class Main extends Component {
     onClickAdd飞塔(event: Event, customEventData: string): void {
         this.on点击按钮_造建筑(单位类型.飞塔)
     }
-    进Scene战斗(sceneName: string, idMsg: MsgId, id副本: 副本ID, str房主昵称: string = '', b多人混战: boolean = false) {
+    进Scene战斗(sceneName: string, idMsg: MsgId, id副本: 战局类型, str房主昵称: string = '', b多人混战: boolean = false) {
         this.scene登录.nodeSelectSpace.active = false
         if (window.CC_WECHAT) {
             if (b多人混战) {
@@ -368,7 +345,7 @@ export class Main extends Component {
                             console.error('激励视频 广告显示失败第2次', err)
                         })
                     })
-                }else{
+                } else {
                     console.log('没有插屏广告')
                 }
             } else {
@@ -410,36 +387,18 @@ export class Main extends Component {
             })
         })
     }
-    send进战斗场景(idMsg: MsgId, id副本: 副本ID, str房主昵称, b已看完激励视频广告 = false) {
+    send进战斗场景(idMsg: MsgId, id副本: 战局类型, str房主昵称, b已看完激励视频广告 = false) {
         this.sendArray([[idMsg, 0, 0], id副本, str房主昵称, b已看完激励视频广告])
     }
-    进Scene战斗单人剧情副本(sceneName: string, id: 副本ID) {
+    private 进Scene战斗单人剧情副本(sceneName: string, id: 战局类型) {
         this.进Scene战斗(sceneName, MsgId.进单人剧情副本, id)
     }
-    onClickToggle进训练战() {
-        this.进Scene战斗单人剧情副本('scene战斗', 副本ID.训练战)
-    }
-    onClickToggle进训练战_虫() {
-        this.进Scene战斗单人剧情副本('scene战斗', 副本ID.训练战_虫)
-    }
-    onClickToggle进防守战() {
-        this.进Scene战斗单人剧情副本('scene防守战', 副本ID.防守战)
-    }
-    onClickToggle进防守战_虫() {
-        this.进Scene战斗单人剧情副本('scene防守战', 副本ID.防守战_虫)
-    }
-
-    onClick进攻坚战() {
-        this.进Scene战斗单人剧情副本('scene攻坚战', 副本ID.攻坚战)
-    }
-    onClick进攻坚战_虫() {
-        this.进Scene战斗单人剧情副本('scene攻坚战', 副本ID.攻坚战_虫)
-    }
-    onClick进单人战局(id: 副本ID) {
-        this.进Scene战斗单人剧情副本('scene攻坚战', id)
+    onClick进单人战局(id: 战局类型) {
+        let 配置 = this.配置.find战局(id)
+        this.进Scene战斗单人剧情副本(配置.strSceneName, id)
     }
     onClick创建四方对战() {
-        this.进Scene战斗('scene四方对战', MsgId.创建多人战局, 副本ID.四方对战)
+        this.进Scene战斗('scene四方对战', MsgId.创建多人战局, 战局类型.四方对战)
     }
     onClick获取别人的个人战局列表(event: Event, customEventData: string) {
         console.log(event, customEventData)
@@ -451,11 +410,11 @@ export class Main extends Component {
     }
     onClick进入别人的个人战局(event: Event, customEventData: string) {
         console.log(event, customEventData)
-        this.进Scene战斗(this.map玩家场景.get(customEventData), MsgId.进其他玩家个人战局, 副本ID.单人ID_非法_MIN, customEventData)
+        this.进Scene战斗(this.map玩家场景.get(customEventData), MsgId.进其他玩家个人战局, 战局类型.单人ID_非法_MIN, customEventData)
     }
     onClick进入别人的多人战局(event: Event, customEventData: string) {
         console.log(event, customEventData)
-        this.进Scene战斗(this.map玩家场景.get(customEventData), MsgId.进其他玩家多人战局, 副本ID.四方对战, customEventData)
+        this.进Scene战斗(this.map玩家场景.get(customEventData), MsgId.进其他玩家多人战局, 战局类型.四方对战, customEventData)
     }
     微信小游戏获得OpenID(): void {
         console.log('window.CC_WECHAT', window.CC_WECHAT)
@@ -523,7 +482,7 @@ export class Main extends Component {
                 0,
                 str登录名,
                 'Hello, world!pwd',
-                18,//版本号
+                19,//版本号
             ])
 
             // this.scene登录.nodeSelectSpace.active = true

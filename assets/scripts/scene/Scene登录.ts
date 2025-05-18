@@ -3,7 +3,7 @@ import msgpack from "msgpack-lite/dist/msgpack.min.js"
 // import yaml from 'js-yaml/dist/js-yaml.min.js'
 import { FollowTarget } from '../mode/FollowTarget'
 import { Scene战斗, ClientEntityComponent } from './Scene战斗'
-import { KEY_登录名, Main, 副本ID } from '../mode/Main'
+import { KEY_登录名, Main } from '../mode/Main'
 import { ProgressBar } from 'cc'
 import { EventHandler } from 'cc'
 import { AudioClip } from 'cc'
@@ -11,7 +11,7 @@ import { AudioSource } from 'cc'
 import { assetManager } from 'cc'
 import { sys } from 'cc'
 import { TextAsset } from 'cc'
-import { MsgId } from '../配置/配置'
+import { MsgId, 战局类型 } from '../配置/配置'
 import { RichText } from 'cc'
 
 const { ccclass, property } = _decorator
@@ -140,28 +140,10 @@ export class Scene登录 extends Component {
         }
     }
     onClickToggle进Space1(event: Event, customEventData: string) {
-        this.main.进Scene战斗('scene战斗', MsgId.进Space, 副本ID.多人混战, '', true)
+        this.main.进Scene战斗('scene战斗', MsgId.进Space, 战局类型.多玩家混战, '', true)
     }
-    onClickToggle进单人剧情副本(event: Event, customEventData: string) {
-        this.main.onClickToggle进训练战()
-    }
-    onClickToggle进训练战_虫(event: Event, customEventData: string) {
-        this.main.onClickToggle进训练战_虫()
-    }
-    onClickToggle进单人防守战(event: Event, customEventData: string) {
-        this.main.onClickToggle进防守战()
-    }
-    onClickToggle进单人防守战_虫(event: Event, customEventData: string) {
-        this.main.onClickToggle进防守战_虫()
-    }
-    onClickToggle进单人攻坚战(event: Event, customEventData: string) {
-        this.main.onClick进攻坚战()
-    }
-    onClickToggle进单人攻坚战_虫(event: Event, customEventData: string) {
-        this.main.onClick进攻坚战_虫()
-    }
-    onClickToggle进单人战局(event: Event, customEventData: string) {
-        const id = 副本ID[customEventData as keyof typeof 副本ID]
+    onClick进单人战局(event: Event, customEventData: string) {
+        const id = 战局类型[customEventData as keyof typeof 战局类型]
         this.main.onClick进单人战局(id)
     }
     onClickLogin(event: Event, customEventData: string) {
