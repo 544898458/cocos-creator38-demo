@@ -1,6 +1,5 @@
 import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip, director, Animation, Color } from 'cc'
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
-import { FollowTarget } from '../mode/FollowTarget'
 import { Main } from '../mode/Main'
 import { Vec2 } from 'cc'
 import { EventTouch } from 'cc'
@@ -136,8 +135,6 @@ export class Scene战斗 extends Component {
     audioSource: AudioSource
 
     main: Main
-    //摄像
-    mainCameraFollowTarget: FollowTarget
     //鼠标点击世界坐标
     posWorld按下准备拖动地面: Vec3
     posWorld按下准备拖动地面时Camera: Vec3
@@ -165,7 +162,6 @@ export class Scene战斗 extends Component {
         this.graphics = director.getScene().getChildByName('Canvas').getComponent(Graphics);
         this.main.scene战斗 = this.node.getComponent(Scene战斗);
         console.log(this.main.scene战斗)
-        this.mainCameraFollowTarget = this.mainCamera.getComponent(FollowTarget);
         this.battleUI.lable在线人数.string = this.main.str在线人数
 
         //3D摄像机鼠标滑轮（放大缩小）
@@ -521,7 +517,6 @@ export class Scene战斗 extends Component {
         let nodeName = item.collider.node.name
         if (nodeName == "晶体矿" || nodeName == "燃气矿")//点击晶体矿或者燃气矿
         {
-            this.mainCameraFollowTarget.target = item.collider.node
             let id = this.entityId[item.collider.node.uuid]
 
             this.main.sendArray([
@@ -532,7 +527,6 @@ export class Scene战斗 extends Component {
         }
         else if ((nodeName == '地堡' || nodeName == '房虫') && b鼠标右键)//点击地堡
         {
-            this.mainCameraFollowTarget.target = item.collider.node
             let id = this.entityId[item.collider.node.uuid]
 
             let idMsg = entity.类型 == 单位类型.地堡 ? MsgId.出地堡 : MsgId.出房虫
@@ -543,13 +537,12 @@ export class Scene战斗 extends Component {
         }
         else if ((nodeName == '地堡' || nodeName == '房虫') && !b鼠标右键 && this.main.arr选中.length > 0)//左键点击地堡或房虫
         {
-            this.mainCameraFollowTarget.target = item.collider.node
             let id = this.entityId[item.collider.node.uuid]
             let idMsg = entity.类型 == 单位类型.地堡 ? MsgId.进地堡 : MsgId.进房虫
             let entity选中的第一个 = this.entities.get(this.main.arr选中[0])
-            if (entity.类型 == 单位类型.房虫 && 1==this.main.arr选中.length && entity选中的第一个 && entity选中的第一个.类型 == 单位类型.房虫){
+            if (entity.类型 == 单位类型.房虫 && 1 == this.main.arr选中.length && entity选中的第一个 && entity选中的第一个.类型 == 单位类型.房虫) {
                 this.请求选中此单位(item.collider.node)
-            }else
+            } else
                 this.main.sendArray([
                     [idMsg, ++this.main.sendMsgSn, 0],
                     id,
@@ -565,7 +558,6 @@ export class Scene战斗 extends Component {
         }
     }
     请求选中此单位(node: Node) {
-        this.mainCameraFollowTarget.target = node
         let id = this.entityId[node.uuid]
         if (id == undefined) {
             console.log('还没加载')
@@ -880,7 +872,26 @@ export class Scene战斗 extends Component {
         this.显示小地图视口框()
     }
     视口对准此处(vec: Vec3) {
-        this.mainCameraFollowTarget.对准此处(vec)
+        //屏幕中心点世界坐标
+        let pos屏幕中心点 = new Vec3(view.getVisibleSizeInPixel().x / 2, view.getVisibleSizeInPixel().y / 2)
+        console.log('pos屏幕中心点', pos屏幕中心点)
+        let ray = new geometry.Ray()
+        // const camera = cc.find("Camera",this.node).getComponent(Camera)
+        this.mainCamera.screenPointToRay(pos屏幕中心点.x, pos屏幕中心点.y, ray)
+        if (!PhysicsSystem.instance.raycast(ray)) {
+            console.log('raycast does not hit the target node !')
+            return false
+        }
+        PhysicsSystem.instance.raycastResults.forEach((item: PhysicsRayResult) => {
+            if (item.collider.node.name != nodeName地板)
+                return
+
+            let vec摄像机偏移 = vec.subtract(item.hitPoint)
+            console.log('item.hitPoint', item.hitPoint, 'vec摄像机偏移', vec摄像机偏移)
+            console.log('this.mainCamera.node.position', this.mainCamera.node.position)
+            this.mainCamera.node.setPosition(this.mainCamera.node.position.clone().add(vec摄像机偏移))
+            return true
+        })
         this.scheduleOnce(this.Clear然后显示小地图视口框, 1)
     }
     是正交投影(): boolean {
