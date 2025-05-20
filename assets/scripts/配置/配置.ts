@@ -285,7 +285,31 @@ export enum 属性类型 {
 	最大能量,
 
 	属性类型_最大_无效,
-};
+}
+
+
+export enum 战局类型 {
+	单人ID_非法_MIN,
+	新手训练_单位介绍_人,
+	新手训练_单位介绍_虫,
+	新手训练_反空降战_人,
+	新手训练_空降战_虫,
+	新手训练_战斗_人,
+	新手训练_战斗_虫,
+	防守战_人,
+	防守战_虫,
+	攻坚战_人,
+	攻坚战_虫,
+	单人ID_非法_MAX,
+
+	多人ID_非法_MIN = 100,
+	四方对战,
+	多人ID_非法_MAX,
+
+	多人混战ID_非法_MIN = 200,
+	多玩家混战,
+	多人混战ID_非法_MAX
+}
 
 export class 单位配置 {
 	类型: 单位类型
@@ -316,10 +340,19 @@ export class 活动单位配置 {
 }
 export class 单位属性等级配置 {
 	类型: 单位类型
+	属性: 属性类型
+	等级: number
+	数值: number
 }
 export class 建筑单位配置 {
 	类型: 单位类型
 	f半边长: number
+}
+export class 战局配置 {
+	类型: 战局类型
+	strSceneName: string
+	str寻路文件名: string
+	strHttps音乐: string
 }
 
 export class 配置 {
@@ -329,6 +362,7 @@ export class 配置 {
 	arr活动单位: Array<活动单位配置>
 	arr建筑单位: Array<建筑单位配置>
 	arr单位属性等级: Array<单位属性等级配置>
+	arr战局: Array<战局配置>
 	读取配置文件() {
 		this.读取1个配置文件<单位配置>('单位', (arr) => this.arr单位 = arr)
 		this.读取1个配置文件<战斗配置>('战斗', (arr) => this.arr战斗 = arr)
@@ -336,11 +370,12 @@ export class 配置 {
 		this.读取1个配置文件<活动单位配置>('活动单位', (arr) => this.arr活动单位 = arr)
 		this.读取1个配置文件<建筑单位配置>('建筑单位', (arr) => this.arr建筑单位 = arr)
 		this.读取1个配置文件<单位属性等级配置>('单位属性等级', (arr) => this.arr单位属性等级 = arr)
+		this.读取1个配置文件<战局配置>('战局', (arr) => this.arr战局 = arr)
 	}
 	读取1个配置文件<T>(strName: string, fun: (arr: Array<T>) => void) {
 
-		let url = 'https://www.rtsgame.online/配置/'
-		// let url = 'https://www.rtsgame.online/配置2/'
+		// let url = 'https://www.rtsgame.online/配置/'
+		let url = 'https://www.rtsgame.online/配置2/'
 		assetManager.loadRemote(url + strName + '.yaml', { ext: '.txt' },
 			(err, textAsset: TextAsset) => {
 				console.log(err, textAsset)
@@ -366,5 +401,8 @@ export class 配置 {
 	}
 	find单位属性等级加数值(单位: 单位类型, 属性: 属性类型, 等级: number) {
 		return this.arr单位属性等级.find((v) => v.类型 == 单位 && v.属性 == 属性 && v.等级 == 等级)?.数值
+	}
+	find战局(类型: 战局类型): 战局配置 {
+		return this.arr战局.find((v) => v.类型 == 类型)
 	}
 }

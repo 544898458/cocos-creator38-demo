@@ -26,13 +26,13 @@
         "__id__": 7
       },
       {
-        "__id__": 279
+        "__id__": 295
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 281
+      "__id__": 297
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -63,7 +63,7 @@
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 282
+      "__id__": 298
     },
     "_id": "5a529a1a-acd9-483f-8e6d-aa2f3d1b0919"
   },
@@ -288,28 +288,28 @@
         "__id__": 120
       },
       {
-        "__id__": 234
+        "__id__": 250
       },
       {
-        "__id__": 256
+        "__id__": 272
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 274
+        "__id__": 290
       },
       {
-        "__id__": 275
+        "__id__": 291
       },
       {
-        "__id__": 276
+        "__id__": 292
       },
       {
-        "__id__": 277
+        "__id__": 293
       },
       {
-        "__id__": 278
+        "__id__": 294
       }
     ],
     "_prefab": null,
@@ -743,7 +743,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": -2.842170943040401e-14,
-      "y": 265,
+      "y": 264,
       "z": 0
     },
     "_lrot": {
@@ -872,7 +872,7 @@
     "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_isItalic": false,
-    "_isBold": true,
+    "_isBold": false,
     "_isUnderline": false,
     "_underlineHeight": 2,
     "_cacheMode": 0,
@@ -1145,7 +1145,7 @@
     "_enabled": true,
     "__prefab": null,
     "_lineHeight": 15,
-    "_string": "游戏版本：2025年5月16日\n玩家QQ群：1015518075\t开发QQ群：285842297\n微信小游戏：即时战略指挥\t微信公众号：即时战略指挥\n#腾讯频道：即时战略指挥\t#腾讯频道：pd72667234\n百度贴吧：即时战略指挥\n<color=#ffff00>健康游戏忠告\n抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。\n适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活。</color>",
+    "_string": "游戏版本：2025年5月20日\n玩家QQ群：1015518075\t开发QQ群：285842297\n微信小游戏：即时战略指挥\t微信公众号：即时战略指挥\n#腾讯频道：即时战略指挥\t#腾讯频道：pd72667234\n百度贴吧：即时战略指挥\n<color=#ffff00>健康游戏忠告\n抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。\n适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活。</color>",
     "_horizontalAlign": 1,
     "_verticalAlign": 0,
     "_fontSize": 13,
@@ -4674,44 +4674,44 @@
         "__id__": 121
       },
       {
-        "__id__": 124
+        "__id__": 140
       },
       {
-        "__id__": 143
+        "__id__": 159
       },
       {
-        "__id__": 162
+        "__id__": 178
       },
       {
-        "__id__": 181
-      },
-      {
-        "__id__": 200
-      },
-      {
-        "__id__": 208
+        "__id__": 197
       },
       {
         "__id__": 216
       },
       {
         "__id__": 224
+      },
+      {
+        "__id__": 232
+      },
+      {
+        "__id__": 240
       }
     ],
     "_active": false,
     "_components": [
       {
-        "__id__": 232
+        "__id__": 248
       },
       {
-        "__id__": 233
+        "__id__": 249
       }
     ],
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": -2.842170943040401e-14,
-      "y": 184.62400000000008,
+      "y": 182,
       "z": 0
     },
     "_lrot": {
@@ -4739,27 +4739,34 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "操作说明",
+    "_name": "战备运营",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
       "__id__": 120
     },
-    "_children": [],
-    "_active": true,
-    "_components": [
+    "_children": [
       {
         "__id__": 122
       },
       {
-        "__id__": 123
+        "__id__": 130
+      }
+    ],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 138
+      },
+      {
+        "__id__": 139
       }
     ],
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 2.8880000000000052,
-      "y": -11.560000000000002,
+      "x": 0,
+      "y": 20,
       "z": 0
     },
     "_lrot": {
@@ -4783,7 +4790,110 @@
       "y": 0,
       "z": 0
     },
-    "_id": "3fDBOXYtFMgZC1kwWHbSeI"
+    "_id": "5fvheWyUNHGo766p7CCZPc"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Button战备运营（人）",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "_parent": {
+      "__id__": 121
+    },
+    "_children": [
+      {
+        "__id__": 123
+      }
+    ],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 126
+      },
+      {
+        "__id__": 127
+      },
+      {
+        "__id__": 128
+      }
+    ],
+    "_prefab": null,
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": -60,
+      "y": 0,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_mobility": 0,
+    "_layer": 33554432,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": "39secF2LhDLJYkjYb+Xnsk"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Label",
+    "_objFlags": 512,
+    "__editorExtras__": {},
+    "_parent": {
+      "__id__": 122
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 124
+      },
+      {
+        "__id__": 125
+      }
+    ],
+    "_prefab": null,
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_mobility": 0,
+    "_layer": 33554432,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": "7fhOg+DBdFcItIYlBFSx8j"
   },
   {
     "__type__": "cc.UITransform",
@@ -4791,21 +4901,21 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 121
+      "__id__": 123
     },
     "_enabled": true,
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 300,
-      "height": 123.12
+      "width": 100,
+      "height": 40
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
       "x": 0.5,
       "y": 0.5
     },
-    "_id": "813ac8MUpGlpvDbyZlVGN1"
+    "_id": "49G+2RmtpP26CHQstpVINF"
   },
   {
     "__type__": "cc.Label",
@@ -4813,7 +4923,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 121
+      "__id__": 123
     },
     "_enabled": true,
     "__prefab": null,
@@ -4822,20 +4932,20 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 64,
-      "g": 0,
-      "b": 42,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
-    "_string": " 训练战：引导玩家熟悉一些基础操作\n 空降战：房虫可以运送战斗单位越过地面障碍物\n 反空降战：击落运送中的敌方房虫\n 防守战：敌方单位会一波一波地进攻玩家\n 攻坚战：玩家要以少量兵力进攻严密防守的敌方阵地\n 多人混战：所有玩家相互作为敌人进一个永不结束的战局。\n 其他人的个人战局列表：您可以旁观其他玩家的单人战局（训练战、空降战、防守战、攻坚战）\n 四方对战：作为房主创建一个可四个玩家混战的房间\n 加入其他人的四方对战：您可以加入其他玩家创建的四方对战房间",
-    "_horizontalAlign": 0,
+    "_string": "新手训练  \n单位介绍(人)",
+    "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 10,
-    "_fontSize": 10,
+    "_actualFontSize": 15,
+    "_fontSize": 15,
     "_fontFamily": "Arial",
-    "_lineHeight": 12,
-    "_overflow": 3,
-    "_enableWrapText": true,
+    "_lineHeight": 18,
+    "_overflow": 1,
+    "_enableWrapText": false,
     "_font": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
@@ -4852,7 +4962,7 @@
       "b": 0,
       "a": 255
     },
-    "_outlineWidth": 0.1,
+    "_outlineWidth": 2,
     "_enableShadow": false,
     "_shadowColor": {
       "__type__": "cc.Color",
@@ -4867,7 +4977,502 @@
       "y": 2
     },
     "_shadowBlur": 2,
-    "_id": "77qiiR3qNJmZDL/n3s9RHg"
+    "_id": "5f+EZuFNhLBqmo7LUxx5Ha"
+  },
+  {
+    "__type__": "cc.UITransform",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 122
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 120,
+      "height": 60
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_id": "edNNVx6m9J/oQbrpdVMGZv"
+  },
+  {
+    "__type__": "cc.Sprite",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 122
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_customMaterial": null,
+    "_srcBlendFactor": 2,
+    "_dstBlendFactor": 4,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_spriteFrame": {
+      "__uuid__": "03b13e1e-fe8f-4b2f-9b67-5f7d12456891@f9941",
+      "__expectedType__": "cc.SpriteFrame"
+    },
+    "_type": 1,
+    "_fillType": 0,
+    "_sizeMode": 0,
+    "_fillCenter": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_fillStart": 0,
+    "_fillRange": 0,
+    "_isTrimmedMode": true,
+    "_useGrayscale": false,
+    "_atlas": null,
+    "_id": "2caONrmW5Fk7ynReRbFeES"
+  },
+  {
+    "__type__": "cc.Button",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 122
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "clickEvents": [
+      {
+        "__id__": 129
+      }
+    ],
+    "_interactable": true,
+    "_transition": 3,
+    "_normalColor": {
+      "__type__": "cc.Color",
+      "r": 214,
+      "g": 214,
+      "b": 214,
+      "a": 255
+    },
+    "_hoverColor": {
+      "__type__": "cc.Color",
+      "r": 211,
+      "g": 211,
+      "b": 211,
+      "a": 255
+    },
+    "_pressedColor": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_disabledColor": {
+      "__type__": "cc.Color",
+      "r": 124,
+      "g": 124,
+      "b": 124,
+      "a": 255
+    },
+    "_normalSprite": null,
+    "_hoverSprite": null,
+    "_pressedSprite": null,
+    "_disabledSprite": null,
+    "_duration": 0.1,
+    "_zoomScale": 1.1,
+    "_target": {
+      "__id__": 122
+    },
+    "_id": "94FRN5o6tA6JP9ubrE6CQP"
+  },
+  {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 7
+    },
+    "component": "",
+    "_componentId": "98cbd4d3zNLzrS8gPNAzQyB",
+    "handler": "onClick进单人战局",
+    "customEventData": "新手训练_单位介绍_人"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Button训练战（虫）",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "_parent": {
+      "__id__": 121
+    },
+    "_children": [
+      {
+        "__id__": 131
+      }
+    ],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 134
+      },
+      {
+        "__id__": 135
+      },
+      {
+        "__id__": 136
+      }
+    ],
+    "_prefab": null,
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 60,
+      "y": 0,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_mobility": 0,
+    "_layer": 33554432,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": "e3vyeqUl1M6Zh+bHTNKo2t"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Label",
+    "_objFlags": 512,
+    "__editorExtras__": {},
+    "_parent": {
+      "__id__": 130
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 132
+      },
+      {
+        "__id__": 133
+      }
+    ],
+    "_prefab": null,
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_mobility": 0,
+    "_layer": 33554432,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": "d4HnGSNIhBdYI5D8XW1DSx"
+  },
+  {
+    "__type__": "cc.UITransform",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 131
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 150,
+      "height": 40
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_id": "22TJZaNKBIQZC9HVGrQQLo"
+  },
+  {
+    "__type__": "cc.Label",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 131
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_customMaterial": null,
+    "_srcBlendFactor": 2,
+    "_dstBlendFactor": 4,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_string": "新手训练   \n单位介绍(虫) ",
+    "_horizontalAlign": 1,
+    "_verticalAlign": 1,
+    "_actualFontSize": 15,
+    "_fontSize": 15,
+    "_fontFamily": "Arial",
+    "_lineHeight": 18,
+    "_overflow": 1,
+    "_enableWrapText": false,
+    "_font": null,
+    "_isSystemFontUsed": true,
+    "_spacingX": 0,
+    "_isItalic": false,
+    "_isBold": false,
+    "_isUnderline": false,
+    "_underlineHeight": 2,
+    "_cacheMode": 0,
+    "_enableOutline": false,
+    "_outlineColor": {
+      "__type__": "cc.Color",
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 255
+    },
+    "_outlineWidth": 2,
+    "_enableShadow": false,
+    "_shadowColor": {
+      "__type__": "cc.Color",
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 255
+    },
+    "_shadowOffset": {
+      "__type__": "cc.Vec2",
+      "x": 2,
+      "y": 2
+    },
+    "_shadowBlur": 2,
+    "_id": "9bWFtyPB5PH6BUYvNH1sHR"
+  },
+  {
+    "__type__": "cc.UITransform",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 130
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 120,
+      "height": 60
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_id": "5bo1mDED5Pjo3nUQrm6b/m"
+  },
+  {
+    "__type__": "cc.Sprite",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 130
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_customMaterial": null,
+    "_srcBlendFactor": 2,
+    "_dstBlendFactor": 4,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_spriteFrame": {
+      "__uuid__": "03b13e1e-fe8f-4b2f-9b67-5f7d12456891@f9941",
+      "__expectedType__": "cc.SpriteFrame"
+    },
+    "_type": 1,
+    "_fillType": 0,
+    "_sizeMode": 0,
+    "_fillCenter": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_fillStart": 0,
+    "_fillRange": 0,
+    "_isTrimmedMode": true,
+    "_useGrayscale": false,
+    "_atlas": null,
+    "_id": "0059WE7S1NMI+ITzLFr8ry"
+  },
+  {
+    "__type__": "cc.Button",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 130
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "clickEvents": [
+      {
+        "__id__": 137
+      }
+    ],
+    "_interactable": true,
+    "_transition": 3,
+    "_normalColor": {
+      "__type__": "cc.Color",
+      "r": 214,
+      "g": 214,
+      "b": 214,
+      "a": 255
+    },
+    "_hoverColor": {
+      "__type__": "cc.Color",
+      "r": 211,
+      "g": 211,
+      "b": 211,
+      "a": 255
+    },
+    "_pressedColor": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_disabledColor": {
+      "__type__": "cc.Color",
+      "r": 124,
+      "g": 124,
+      "b": 124,
+      "a": 255
+    },
+    "_normalSprite": null,
+    "_hoverSprite": null,
+    "_pressedSprite": null,
+    "_disabledSprite": null,
+    "_duration": 0.1,
+    "_zoomScale": 1.1,
+    "_target": {
+      "__id__": 130
+    },
+    "_id": "10oVGSBFlKka96CBiN1Uqf"
+  },
+  {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 7
+    },
+    "component": "",
+    "_componentId": "98cbd4d3zNLzrS8gPNAzQyB",
+    "handler": "onClick进单人战局",
+    "customEventData": "新手训练_单位介绍_虫"
+  },
+  {
+    "__type__": "cc.UITransform",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 121
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 240,
+      "height": 60
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_id": "9cwmw+1DFElYFTsztXtHiK"
+  },
+  {
+    "__type__": "cc.Layout",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 121
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_resizeMode": 1,
+    "_layoutType": 1,
+    "_cellSize": {
+      "__type__": "cc.Size",
+      "width": 40,
+      "height": 40
+    },
+    "_startAxis": 0,
+    "_paddingLeft": 0,
+    "_paddingRight": 0,
+    "_paddingTop": 0,
+    "_paddingBottom": 0,
+    "_spacingX": 0,
+    "_spacingY": 0,
+    "_verticalDirection": 1,
+    "_horizontalDirection": 0,
+    "_constraint": 0,
+    "_constraintNum": 2,
+    "_affectedByScale": false,
+    "_isAlign": false,
+    "_id": "5aUvpllZRKQbyHwSAJL21I"
   },
   {
     "__type__": "cc.Node",
@@ -4879,26 +5484,26 @@
     },
     "_children": [
       {
-        "__id__": 125
+        "__id__": 141
       },
       {
-        "__id__": 133
+        "__id__": 149
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 141
+        "__id__": 157
       },
       {
-        "__id__": 142
+        "__id__": 158
       }
     ],
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -93.12,
+      "y": -40,
       "z": 0
     },
     "_lrot": {
@@ -4930,23 +5535,23 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 124
+      "__id__": 140
     },
     "_children": [
       {
-        "__id__": 126
+        "__id__": 142
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 129
+        "__id__": 145
       },
       {
-        "__id__": 130
+        "__id__": 146
       },
       {
-        "__id__": 131
+        "__id__": 147
       }
     ],
     "_prefab": null,
@@ -4985,22 +5590,22 @@
     "_objFlags": 512,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 125
+      "__id__": 141
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 127
+        "__id__": 143
       },
       {
-        "__id__": 128
+        "__id__": 144
       }
     ],
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 7,
+      "x": 0,
       "y": 0,
       "z": 0
     },
@@ -5033,7 +5638,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 126
+      "__id__": 142
     },
     "_enabled": true,
     "__prefab": null,
@@ -5055,7 +5660,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 126
+      "__id__": 142
     },
     "_enabled": true,
     "__prefab": null,
@@ -5069,13 +5674,13 @@
       "b": 255,
       "a": 255
     },
-    "_string": "训练战（人）",
+    "_string": "新手训练\n战斗(人) ",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 15,
     "_fontSize": 15,
     "_fontFamily": "Arial",
-    "_lineHeight": 40,
+    "_lineHeight": 18,
     "_overflow": 1,
     "_enableWrapText": false,
     "_font": null,
@@ -5117,14 +5722,14 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 125
+      "__id__": 141
     },
     "_enabled": true,
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 120,
-      "height": 40
+      "height": 60
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -5139,7 +5744,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 125
+      "__id__": 141
     },
     "_enabled": true,
     "__prefab": null,
@@ -5178,13 +5783,13 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 125
+      "__id__": 141
     },
     "_enabled": true,
     "__prefab": null,
     "clickEvents": [
       {
-        "__id__": 132
+        "__id__": 148
       }
     ],
     "_interactable": true,
@@ -5224,7 +5829,7 @@
     "_duration": 0.1,
     "_zoomScale": 1.1,
     "_target": {
-      "__id__": 125
+      "__id__": 141
     },
     "_id": "7eZV6VRjNAQKsvCuIMyBwF"
   },
@@ -5235,8 +5840,8 @@
     },
     "component": "",
     "_componentId": "98cbd4d3zNLzrS8gPNAzQyB",
-    "handler": "onClickToggle进单人剧情副本",
-    "customEventData": ""
+    "handler": "onClick进单人战局",
+    "customEventData": "新手训练_战斗_人"
   },
   {
     "__type__": "cc.Node",
@@ -5244,23 +5849,23 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 124
+      "__id__": 140
     },
     "_children": [
       {
-        "__id__": 134
+        "__id__": 150
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 137
+        "__id__": 153
       },
       {
-        "__id__": 138
+        "__id__": 154
       },
       {
-        "__id__": 139
+        "__id__": 155
       }
     ],
     "_prefab": null,
@@ -5299,22 +5904,22 @@
     "_objFlags": 512,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 133
+      "__id__": 149
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 135
+        "__id__": 151
       },
       {
-        "__id__": 136
+        "__id__": 152
       }
     ],
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 6,
+      "x": 0,
       "y": 0,
       "z": 0
     },
@@ -5347,7 +5952,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 134
+      "__id__": 150
     },
     "_enabled": true,
     "__prefab": null,
@@ -5369,7 +5974,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 134
+      "__id__": 150
     },
     "_enabled": true,
     "__prefab": null,
@@ -5383,13 +5988,13 @@
       "b": 255,
       "a": 255
     },
-    "_string": "训练战（虫）",
+    "_string": "新手训练\n战斗(虫) ",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 15,
     "_fontSize": 15,
     "_fontFamily": "Arial",
-    "_lineHeight": 40,
+    "_lineHeight": 18,
     "_overflow": 1,
     "_enableWrapText": false,
     "_font": null,
@@ -5431,14 +6036,14 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 133
+      "__id__": 149
     },
     "_enabled": true,
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 120,
-      "height": 40
+      "height": 60
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -5453,7 +6058,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 133
+      "__id__": 149
     },
     "_enabled": true,
     "__prefab": null,
@@ -5492,13 +6097,13 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 133
+      "__id__": 149
     },
     "_enabled": true,
     "__prefab": null,
     "clickEvents": [
       {
-        "__id__": 140
+        "__id__": 156
       }
     ],
     "_interactable": true,
@@ -5538,7 +6143,7 @@
     "_duration": 0.1,
     "_zoomScale": 1.1,
     "_target": {
-      "__id__": 133
+      "__id__": 149
     },
     "_id": "7elvexF0pA1Z/EacAuNjQz"
   },
@@ -5549,8 +6154,8 @@
     },
     "component": "",
     "_componentId": "98cbd4d3zNLzrS8gPNAzQyB",
-    "handler": "onClickToggle进训练战_虫",
-    "customEventData": ""
+    "handler": "onClick进单人战局",
+    "customEventData": "新手训练_战斗_虫"
   },
   {
     "__type__": "cc.UITransform",
@@ -5558,14 +6163,14 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 124
+      "__id__": 140
     },
     "_enabled": true,
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 240,
-      "height": 40
+      "height": 60
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -5580,7 +6185,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 124
+      "__id__": 140
     },
     "_enabled": true,
     "__prefab": null,
@@ -5616,26 +6221,26 @@
     },
     "_children": [
       {
-        "__id__": 144
+        "__id__": 160
       },
       {
-        "__id__": 152
+        "__id__": 168
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 160
+        "__id__": 176
       },
       {
-        "__id__": 161
+        "__id__": 177
       }
     ],
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -133.12,
+      "y": -100,
       "z": 0
     },
     "_lrot": {
@@ -5667,23 +6272,23 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 143
+      "__id__": 159
     },
     "_children": [
       {
-        "__id__": 145
+        "__id__": 161
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 148
+        "__id__": 164
       },
       {
-        "__id__": 149
+        "__id__": 165
       },
       {
-        "__id__": 150
+        "__id__": 166
       }
     ],
     "_prefab": null,
@@ -5722,22 +6327,22 @@
     "_objFlags": 512,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 144
+      "__id__": 160
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 146
+        "__id__": 162
       },
       {
-        "__id__": 147
+        "__id__": 163
       }
     ],
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 7,
+      "x": 0,
       "y": 0,
       "z": 0
     },
@@ -5770,7 +6375,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 145
+      "__id__": 161
     },
     "_enabled": true,
     "__prefab": null,
@@ -5792,7 +6397,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 145
+      "__id__": 161
     },
     "_enabled": true,
     "__prefab": null,
@@ -5806,13 +6411,13 @@
       "b": 255,
       "a": 255
     },
-    "_string": "反空降（人）",
+    "_string": "新手训练\n 反空降(人)",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 15,
     "_fontSize": 15,
     "_fontFamily": "Arial",
-    "_lineHeight": 40,
+    "_lineHeight": 18,
     "_overflow": 1,
     "_enableWrapText": false,
     "_font": null,
@@ -5854,14 +6459,14 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 144
+      "__id__": 160
     },
     "_enabled": true,
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 120,
-      "height": 40
+      "height": 60
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -5876,7 +6481,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 144
+      "__id__": 160
     },
     "_enabled": true,
     "__prefab": null,
@@ -5915,13 +6520,13 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 144
+      "__id__": 160
     },
     "_enabled": true,
     "__prefab": null,
     "clickEvents": [
       {
-        "__id__": 151
+        "__id__": 167
       }
     ],
     "_interactable": true,
@@ -5961,7 +6566,7 @@
     "_duration": 0.1,
     "_zoomScale": 1.1,
     "_target": {
-      "__id__": 144
+      "__id__": 160
     },
     "_id": "12K7dwK6ZPB522a44/Lz+0"
   },
@@ -5972,8 +6577,8 @@
     },
     "component": "",
     "_componentId": "98cbd4d3zNLzrS8gPNAzQyB",
-    "handler": "onClickToggle进单人战局",
-    "customEventData": "反空降战_人"
+    "handler": "onClick进单人战局",
+    "customEventData": "新手训练_反空降战_人"
   },
   {
     "__type__": "cc.Node",
@@ -5981,23 +6586,23 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 143
+      "__id__": 159
     },
     "_children": [
       {
-        "__id__": 153
+        "__id__": 169
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 156
+        "__id__": 172
       },
       {
-        "__id__": 157
+        "__id__": 173
       },
       {
-        "__id__": 158
+        "__id__": 174
       }
     ],
     "_prefab": null,
@@ -6036,16 +6641,16 @@
     "_objFlags": 512,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 152
+      "__id__": 168
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 154
+        "__id__": 170
       },
       {
-        "__id__": 155
+        "__id__": 171
       }
     ],
     "_prefab": null,
@@ -6084,7 +6689,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 153
+      "__id__": 169
     },
     "_enabled": true,
     "__prefab": null,
@@ -6106,7 +6711,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 153
+      "__id__": 169
     },
     "_enabled": true,
     "__prefab": null,
@@ -6120,13 +6725,13 @@
       "b": 255,
       "a": 255
     },
-    "_string": "空降战（虫）",
+    "_string": "新手训练\n 空降战(虫)",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 15,
     "_fontSize": 15,
     "_fontFamily": "Arial",
-    "_lineHeight": 40,
+    "_lineHeight": 18,
     "_overflow": 1,
     "_enableWrapText": false,
     "_font": null,
@@ -6168,14 +6773,14 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 152
+      "__id__": 168
     },
     "_enabled": true,
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 120,
-      "height": 40
+      "height": 60
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -6190,7 +6795,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 152
+      "__id__": 168
     },
     "_enabled": true,
     "__prefab": null,
@@ -6229,13 +6834,13 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 152
+      "__id__": 168
     },
     "_enabled": true,
     "__prefab": null,
     "clickEvents": [
       {
-        "__id__": 159
+        "__id__": 175
       }
     ],
     "_interactable": true,
@@ -6275,7 +6880,7 @@
     "_duration": 0.1,
     "_zoomScale": 1.1,
     "_target": {
-      "__id__": 152
+      "__id__": 168
     },
     "_id": "afuNOE67hGnp6VTkeSJtPj"
   },
@@ -6286,8 +6891,8 @@
     },
     "component": "",
     "_componentId": "98cbd4d3zNLzrS8gPNAzQyB",
-    "handler": "onClickToggle进单人战局",
-    "customEventData": "空降战_虫"
+    "handler": "onClick进单人战局",
+    "customEventData": "新手训练_空降战_虫"
   },
   {
     "__type__": "cc.UITransform",
@@ -6295,14 +6900,14 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 143
+      "__id__": 159
     },
     "_enabled": true,
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 240,
-      "height": 40
+      "height": 60
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -6317,7 +6922,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 143
+      "__id__": 159
     },
     "_enabled": true,
     "__prefab": null,
@@ -6353,26 +6958,26 @@
     },
     "_children": [
       {
-        "__id__": 163
+        "__id__": 179
       },
       {
-        "__id__": 171
+        "__id__": 187
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 179
+        "__id__": 195
       },
       {
-        "__id__": 180
+        "__id__": 196
       }
     ],
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -173.12,
+      "y": -150,
       "z": 0
     },
     "_lrot": {
@@ -6404,23 +7009,23 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 162
+      "__id__": 178
     },
     "_children": [
       {
-        "__id__": 164
+        "__id__": 180
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 167
+        "__id__": 183
       },
       {
-        "__id__": 168
+        "__id__": 184
       },
       {
-        "__id__": 169
+        "__id__": 185
       }
     ],
     "_prefab": null,
@@ -6459,22 +7064,22 @@
     "_objFlags": 512,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 163
+      "__id__": 179
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 165
+        "__id__": 181
       },
       {
-        "__id__": 166
+        "__id__": 182
       }
     ],
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 7,
+      "x": 0,
       "y": 0,
       "z": 0
     },
@@ -6507,7 +7112,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 164
+      "__id__": 180
     },
     "_enabled": true,
     "__prefab": null,
@@ -6529,7 +7134,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 164
+      "__id__": 180
     },
     "_enabled": true,
     "__prefab": null,
@@ -6543,7 +7148,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "防守战（人）",
+    "_string": "防守战(人)",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 15,
@@ -6591,7 +7196,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 163
+      "__id__": 179
     },
     "_enabled": true,
     "__prefab": null,
@@ -6613,7 +7218,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 163
+      "__id__": 179
     },
     "_enabled": true,
     "__prefab": null,
@@ -6652,13 +7257,13 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 163
+      "__id__": 179
     },
     "_enabled": true,
     "__prefab": null,
     "clickEvents": [
       {
-        "__id__": 170
+        "__id__": 186
       }
     ],
     "_interactable": true,
@@ -6698,7 +7303,7 @@
     "_duration": 0.1,
     "_zoomScale": 1.1,
     "_target": {
-      "__id__": 163
+      "__id__": 179
     },
     "_id": "ceZeu9LuNDt6mn6qmAYOUJ"
   },
@@ -6709,8 +7314,8 @@
     },
     "component": "",
     "_componentId": "98cbd4d3zNLzrS8gPNAzQyB",
-    "handler": "onClickToggle进单人防守战",
-    "customEventData": ""
+    "handler": "onClick进单人战局",
+    "customEventData": "防守战_人"
   },
   {
     "__type__": "cc.Node",
@@ -6718,23 +7323,23 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 162
+      "__id__": 178
     },
     "_children": [
       {
-        "__id__": 172
+        "__id__": 188
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 175
+        "__id__": 191
       },
       {
-        "__id__": 176
+        "__id__": 192
       },
       {
-        "__id__": 177
+        "__id__": 193
       }
     ],
     "_prefab": null,
@@ -6773,22 +7378,22 @@
     "_objFlags": 512,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 171
+      "__id__": 187
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 173
+        "__id__": 189
       },
       {
-        "__id__": 174
+        "__id__": 190
       }
     ],
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 6,
+      "x": 0,
       "y": 0,
       "z": 0
     },
@@ -6821,7 +7426,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 172
+      "__id__": 188
     },
     "_enabled": true,
     "__prefab": null,
@@ -6843,7 +7448,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 172
+      "__id__": 188
     },
     "_enabled": true,
     "__prefab": null,
@@ -6857,7 +7462,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "防守战（虫）",
+    "_string": "防守战(虫)",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 15,
@@ -6905,7 +7510,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 171
+      "__id__": 187
     },
     "_enabled": true,
     "__prefab": null,
@@ -6927,7 +7532,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 171
+      "__id__": 187
     },
     "_enabled": true,
     "__prefab": null,
@@ -6966,13 +7571,13 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 171
+      "__id__": 187
     },
     "_enabled": true,
     "__prefab": null,
     "clickEvents": [
       {
-        "__id__": 178
+        "__id__": 194
       }
     ],
     "_interactable": true,
@@ -7012,7 +7617,7 @@
     "_duration": 0.1,
     "_zoomScale": 1.1,
     "_target": {
-      "__id__": 171
+      "__id__": 187
     },
     "_id": "6626RCTdVGNr0MCwUAdZi3"
   },
@@ -7023,8 +7628,8 @@
     },
     "component": "",
     "_componentId": "98cbd4d3zNLzrS8gPNAzQyB",
-    "handler": "onClickToggle进单人防守战_虫",
-    "customEventData": ""
+    "handler": "onClick进单人战局",
+    "customEventData": "防守战_虫"
   },
   {
     "__type__": "cc.UITransform",
@@ -7032,7 +7637,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 162
+      "__id__": 178
     },
     "_enabled": true,
     "__prefab": null,
@@ -7054,7 +7659,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 162
+      "__id__": 178
     },
     "_enabled": true,
     "__prefab": null,
@@ -7090,26 +7695,26 @@
     },
     "_children": [
       {
-        "__id__": 182
+        "__id__": 198
       },
       {
-        "__id__": 190
+        "__id__": 206
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 198
+        "__id__": 214
       },
       {
-        "__id__": 199
+        "__id__": 215
       }
     ],
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -213.12,
+      "y": -190,
       "z": 0
     },
     "_lrot": {
@@ -7141,23 +7746,23 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 181
+      "__id__": 197
     },
     "_children": [
       {
-        "__id__": 183
+        "__id__": 199
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 186
+        "__id__": 202
       },
       {
-        "__id__": 187
+        "__id__": 203
       },
       {
-        "__id__": 188
+        "__id__": 204
       }
     ],
     "_prefab": null,
@@ -7196,22 +7801,22 @@
     "_objFlags": 512,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 182
+      "__id__": 198
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 184
+        "__id__": 200
       },
       {
-        "__id__": 185
+        "__id__": 201
       }
     ],
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 7,
+      "x": 0,
       "y": 0,
       "z": 0
     },
@@ -7244,7 +7849,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 183
+      "__id__": 199
     },
     "_enabled": true,
     "__prefab": null,
@@ -7266,7 +7871,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 183
+      "__id__": 199
     },
     "_enabled": true,
     "__prefab": null,
@@ -7280,7 +7885,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "攻坚战（人）",
+    "_string": "攻坚战(人)",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 15,
@@ -7328,7 +7933,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 182
+      "__id__": 198
     },
     "_enabled": true,
     "__prefab": null,
@@ -7350,7 +7955,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 182
+      "__id__": 198
     },
     "_enabled": true,
     "__prefab": null,
@@ -7389,13 +7994,13 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 182
+      "__id__": 198
     },
     "_enabled": true,
     "__prefab": null,
     "clickEvents": [
       {
-        "__id__": 189
+        "__id__": 205
       }
     ],
     "_interactable": true,
@@ -7435,7 +8040,7 @@
     "_duration": 0.1,
     "_zoomScale": 1.1,
     "_target": {
-      "__id__": 182
+      "__id__": 198
     },
     "_id": "72Jc4hQthJv4v+yPp1qxiy"
   },
@@ -7446,8 +8051,8 @@
     },
     "component": "",
     "_componentId": "98cbd4d3zNLzrS8gPNAzQyB",
-    "handler": "onClickToggle进单人攻坚战",
-    "customEventData": ""
+    "handler": "onClick进单人战局",
+    "customEventData": "攻坚战_人"
   },
   {
     "__type__": "cc.Node",
@@ -7455,23 +8060,23 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 181
+      "__id__": 197
     },
     "_children": [
       {
-        "__id__": 191
+        "__id__": 207
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 194
+        "__id__": 210
       },
       {
-        "__id__": 195
+        "__id__": 211
       },
       {
-        "__id__": 196
+        "__id__": 212
       }
     ],
     "_prefab": null,
@@ -7510,22 +8115,22 @@
     "_objFlags": 512,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 190
+      "__id__": 206
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 192
+        "__id__": 208
       },
       {
-        "__id__": 193
+        "__id__": 209
       }
     ],
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 6,
+      "x": 0,
       "y": 0,
       "z": 0
     },
@@ -7558,7 +8163,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 191
+      "__id__": 207
     },
     "_enabled": true,
     "__prefab": null,
@@ -7580,7 +8185,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 191
+      "__id__": 207
     },
     "_enabled": true,
     "__prefab": null,
@@ -7594,7 +8199,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "攻坚战（虫）",
+    "_string": "攻坚战(虫)",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 15,
@@ -7642,7 +8247,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 190
+      "__id__": 206
     },
     "_enabled": true,
     "__prefab": null,
@@ -7664,7 +8269,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 190
+      "__id__": 206
     },
     "_enabled": true,
     "__prefab": null,
@@ -7703,13 +8308,13 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 190
+      "__id__": 206
     },
     "_enabled": true,
     "__prefab": null,
     "clickEvents": [
       {
-        "__id__": 197
+        "__id__": 213
       }
     ],
     "_interactable": true,
@@ -7749,7 +8354,7 @@
     "_duration": 0.1,
     "_zoomScale": 1.1,
     "_target": {
-      "__id__": 190
+      "__id__": 206
     },
     "_id": "8cQ7+ZTFFGupG1Ymae4vLN"
   },
@@ -7760,8 +8365,8 @@
     },
     "component": "",
     "_componentId": "98cbd4d3zNLzrS8gPNAzQyB",
-    "handler": "onClickToggle进单人攻坚战_虫",
-    "customEventData": ""
+    "handler": "onClick进单人战局",
+    "customEventData": "攻坚战_虫"
   },
   {
     "__type__": "cc.UITransform",
@@ -7769,7 +8374,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 181
+      "__id__": 197
     },
     "_enabled": true,
     "__prefab": null,
@@ -7791,7 +8396,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 181
+      "__id__": 197
     },
     "_enabled": true,
     "__prefab": null,
@@ -7827,26 +8432,26 @@
     },
     "_children": [
       {
-        "__id__": 201
+        "__id__": 217
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 204
+        "__id__": 220
       },
       {
-        "__id__": 205
+        "__id__": 221
       },
       {
-        "__id__": 206
+        "__id__": 222
       }
     ],
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -283.12,
+      "y": -260,
       "z": 0
     },
     "_lrot": {
@@ -7878,16 +8483,16 @@
     "_objFlags": 512,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 200
+      "__id__": 216
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 202
+        "__id__": 218
       },
       {
-        "__id__": 203
+        "__id__": 219
       }
     ],
     "_prefab": null,
@@ -7926,7 +8531,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 201
+      "__id__": 217
     },
     "_enabled": true,
     "__prefab": null,
@@ -7948,7 +8553,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 201
+      "__id__": 217
     },
     "_enabled": true,
     "__prefab": null,
@@ -7962,7 +8567,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "多 人 混 战\n看30秒广告送10单位和1000资源\n提前关闭广告送2单位和80资源",
+    "_string": "多 玩 家 混 战\n看30秒广告送10单位和1000资源\n提前关闭广告送2单位和80资源",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 15,
@@ -8010,7 +8615,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 200
+      "__id__": 216
     },
     "_enabled": true,
     "__prefab": null,
@@ -8032,7 +8637,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 200
+      "__id__": 216
     },
     "_enabled": true,
     "__prefab": null,
@@ -8071,13 +8676,13 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 200
+      "__id__": 216
     },
     "_enabled": true,
     "__prefab": null,
     "clickEvents": [
       {
-        "__id__": 207
+        "__id__": 223
       }
     ],
     "_interactable": true,
@@ -8117,7 +8722,7 @@
     "_duration": 0.1,
     "_zoomScale": 1.1,
     "_target": {
-      "__id__": 200
+      "__id__": 216
     },
     "_id": "5cPCjoMyxI5bHi9YrpVwwR"
   },
@@ -8141,26 +8746,26 @@
     },
     "_children": [
       {
-        "__id__": 209
+        "__id__": 225
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 212
+        "__id__": 228
       },
       {
-        "__id__": 213
+        "__id__": 229
       },
       {
-        "__id__": 214
+        "__id__": 230
       }
     ],
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -350.62,
+      "y": -327.5,
       "z": 0
     },
     "_lrot": {
@@ -8192,16 +8797,16 @@
     "_objFlags": 512,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 208
+      "__id__": 224
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 210
+        "__id__": 226
       },
       {
-        "__id__": 211
+        "__id__": 227
       }
     ],
     "_prefab": null,
@@ -8240,7 +8845,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 209
+      "__id__": 225
     },
     "_enabled": true,
     "__prefab": null,
@@ -8262,7 +8867,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 209
+      "__id__": 225
     },
     "_enabled": true,
     "__prefab": null,
@@ -8324,7 +8929,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 208
+      "__id__": 224
     },
     "_enabled": true,
     "__prefab": null,
@@ -8346,7 +8951,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 208
+      "__id__": 224
     },
     "_enabled": true,
     "__prefab": null,
@@ -8385,13 +8990,13 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 208
+      "__id__": 224
     },
     "_enabled": true,
     "__prefab": null,
     "clickEvents": [
       {
-        "__id__": 215
+        "__id__": 231
       }
     ],
     "_interactable": true,
@@ -8431,7 +9036,7 @@
     "_duration": 0.1,
     "_zoomScale": 1.1,
     "_target": {
-      "__id__": 208
+      "__id__": 224
     },
     "_id": "e5imqnGlFEs5+TIoMn/MJ0"
   },
@@ -8455,26 +9060,26 @@
     },
     "_children": [
       {
-        "__id__": 217
+        "__id__": 233
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 220
+        "__id__": 236
       },
       {
-        "__id__": 221
+        "__id__": 237
       },
       {
-        "__id__": 222
+        "__id__": 238
       }
     ],
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -388.12,
+      "y": -365,
       "z": 0
     },
     "_lrot": {
@@ -8506,16 +9111,16 @@
     "_objFlags": 512,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 216
+      "__id__": 232
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 218
+        "__id__": 234
       },
       {
-        "__id__": 219
+        "__id__": 235
       }
     ],
     "_prefab": null,
@@ -8554,7 +9159,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 217
+      "__id__": 233
     },
     "_enabled": true,
     "__prefab": null,
@@ -8576,7 +9181,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 217
+      "__id__": 233
     },
     "_enabled": true,
     "__prefab": null,
@@ -8638,7 +9243,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 216
+      "__id__": 232
     },
     "_enabled": true,
     "__prefab": null,
@@ -8660,7 +9265,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 216
+      "__id__": 232
     },
     "_enabled": true,
     "__prefab": null,
@@ -8699,13 +9304,13 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 216
+      "__id__": 232
     },
     "_enabled": true,
     "__prefab": null,
     "clickEvents": [
       {
-        "__id__": 223
+        "__id__": 239
       }
     ],
     "_interactable": true,
@@ -8745,7 +9350,7 @@
     "_duration": 0.1,
     "_zoomScale": 1.1,
     "_target": {
-      "__id__": 216
+      "__id__": 232
     },
     "_id": "08nsZPTmdMXanOlMSBQfsC"
   },
@@ -8769,26 +9374,26 @@
     },
     "_children": [
       {
-        "__id__": 225
+        "__id__": 241
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 228
+        "__id__": 244
       },
       {
-        "__id__": 229
+        "__id__": 245
       },
       {
-        "__id__": 230
+        "__id__": 246
       }
     ],
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -428.12,
+      "y": -405,
       "z": 0
     },
     "_lrot": {
@@ -8820,16 +9425,16 @@
     "_objFlags": 512,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 224
+      "__id__": 240
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 226
+        "__id__": 242
       },
       {
-        "__id__": 227
+        "__id__": 243
       }
     ],
     "_prefab": null,
@@ -8868,7 +9473,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 225
+      "__id__": 241
     },
     "_enabled": true,
     "__prefab": null,
@@ -8890,7 +9495,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 225
+      "__id__": 241
     },
     "_enabled": true,
     "__prefab": null,
@@ -8952,7 +9557,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 224
+      "__id__": 240
     },
     "_enabled": true,
     "__prefab": null,
@@ -8974,7 +9579,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 224
+      "__id__": 240
     },
     "_enabled": true,
     "__prefab": null,
@@ -9013,13 +9618,13 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 224
+      "__id__": 240
     },
     "_enabled": true,
     "__prefab": null,
     "clickEvents": [
       {
-        "__id__": 231
+        "__id__": 247
       }
     ],
     "_interactable": true,
@@ -9059,7 +9664,7 @@
     "_duration": 0.1,
     "_zoomScale": 1.1,
     "_target": {
-      "__id__": 224
+      "__id__": 240
     },
     "_id": "f26ENB++JP05vU+0ZTevqt"
   },
@@ -9137,25 +9742,25 @@
     },
     "_children": [
       {
-        "__id__": 235
+        "__id__": 251
       },
       {
-        "__id__": 243
+        "__id__": 259
       }
     ],
     "_active": false,
     "_components": [
       {
-        "__id__": 252
+        "__id__": 268
       },
       {
-        "__id__": 253
+        "__id__": 269
       },
       {
-        "__id__": 254
+        "__id__": 270
       },
       {
-        "__id__": 255
+        "__id__": 271
       }
     ],
     "_prefab": null,
@@ -9194,23 +9799,23 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 234
+      "__id__": 250
     },
     "_children": [
       {
-        "__id__": 236
+        "__id__": 252
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 239
+        "__id__": 255
       },
       {
-        "__id__": 240
+        "__id__": 256
       },
       {
-        "__id__": 241
+        "__id__": 257
       }
     ],
     "_prefab": null,
@@ -9249,16 +9854,16 @@
     "_objFlags": 512,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 235
+      "__id__": 251
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 237
+        "__id__": 253
       },
       {
-        "__id__": 238
+        "__id__": 254
       }
     ],
     "_prefab": null,
@@ -9297,7 +9902,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 236
+      "__id__": 252
     },
     "_enabled": true,
     "__prefab": null,
@@ -9319,7 +9924,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 236
+      "__id__": 252
     },
     "_enabled": true,
     "__prefab": null,
@@ -9381,7 +9986,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 235
+      "__id__": 251
     },
     "_enabled": true,
     "__prefab": null,
@@ -9403,7 +10008,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 235
+      "__id__": 251
     },
     "_enabled": true,
     "__prefab": null,
@@ -9442,13 +10047,13 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 235
+      "__id__": 251
     },
     "_enabled": true,
     "__prefab": null,
     "clickEvents": [
       {
-        "__id__": 242
+        "__id__": 258
       }
     ],
     "_interactable": true,
@@ -9488,7 +10093,7 @@
     "_duration": 0.1,
     "_zoomScale": 1.1,
     "_target": {
-      "__id__": 235
+      "__id__": 251
     },
     "_id": "01dpsugvBPYa+xLXyY7Ppz"
   },
@@ -9508,23 +10113,23 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 234
+      "__id__": 250
     },
     "_children": [
       {
-        "__id__": 244
+        "__id__": 260
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 249
+        "__id__": 265
       },
       {
-        "__id__": 250
+        "__id__": 266
       },
       {
-        "__id__": 251
+        "__id__": 267
       }
     ],
     "_prefab": null,
@@ -9563,22 +10168,22 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 243
+      "__id__": 259
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 245
+        "__id__": 261
       },
       {
-        "__id__": 246
+        "__id__": 262
       },
       {
-        "__id__": 247
+        "__id__": 263
       },
       {
-        "__id__": 248
+        "__id__": 264
       }
     ],
     "_prefab": null,
@@ -9617,7 +10222,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 244
+      "__id__": 260
     },
     "_enabled": true,
     "__prefab": null,
@@ -9639,7 +10244,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 244
+      "__id__": 260
     },
     "_enabled": true,
     "__prefab": null,
@@ -9671,7 +10276,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 244
+      "__id__": 260
     },
     "_enabled": false,
     "__prefab": null,
@@ -9687,7 +10292,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 244
+      "__id__": 260
     },
     "_enabled": false,
     "__prefab": null,
@@ -9727,7 +10332,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 243
+      "__id__": 259
     },
     "_enabled": true,
     "__prefab": null,
@@ -9749,7 +10354,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 243
+      "__id__": 259
     },
     "_enabled": true,
     "__prefab": null,
@@ -9765,7 +10370,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 243
+      "__id__": 259
     },
     "_enabled": true,
     "__prefab": null,
@@ -9805,7 +10410,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 234
+      "__id__": 250
     },
     "_enabled": true,
     "__prefab": null,
@@ -9827,7 +10432,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 234
+      "__id__": 250
     },
     "_enabled": true,
     "__prefab": null,
@@ -9840,7 +10445,7 @@
     "cancelInnerEvents": true,
     "scrollEvents": [],
     "_content": {
-      "__id__": 244
+      "__id__": 260
     },
     "_horizontalScrollBar": null,
     "_verticalScrollBar": null,
@@ -9852,7 +10457,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 234
+      "__id__": 250
     },
     "_enabled": false,
     "__prefab": null,
@@ -9868,7 +10473,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 234
+      "__id__": 250
     },
     "_enabled": false,
     "__prefab": null,
@@ -9912,22 +10517,22 @@
     },
     "_children": [
       {
-        "__id__": 257
+        "__id__": 273
       },
       {
-        "__id__": 261
+        "__id__": 277
       },
       {
-        "__id__": 269
+        "__id__": 285
       }
     ],
     "_active": false,
     "_components": [
       {
-        "__id__": 272
+        "__id__": 288
       },
       {
-        "__id__": 273
+        "__id__": 289
       }
     ],
     "_prefab": null,
@@ -9966,19 +10571,19 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 256
+      "__id__": 272
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 258
+        "__id__": 274
       },
       {
-        "__id__": 259
+        "__id__": 275
       },
       {
-        "__id__": 260
+        "__id__": 276
       }
     ],
     "_prefab": null,
@@ -10017,7 +10622,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 257
+      "__id__": 273
     },
     "_enabled": true,
     "__prefab": null,
@@ -10039,7 +10644,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 257
+      "__id__": 273
     },
     "_enabled": true,
     "__prefab": null,
@@ -10078,7 +10683,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 257
+      "__id__": 273
     },
     "_enabled": true,
     "__prefab": null,
@@ -10108,26 +10713,26 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 256
+      "__id__": 272
     },
     "_children": [
       {
-        "__id__": 262
+        "__id__": 278
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 265
+        "__id__": 281
       },
       {
-        "__id__": 266
+        "__id__": 282
       },
       {
-        "__id__": 267
+        "__id__": 283
       },
       {
-        "__id__": 268
+        "__id__": 284
       }
     ],
     "_prefab": null,
@@ -10166,16 +10771,16 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 261
+      "__id__": 277
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 263
+        "__id__": 279
       },
       {
-        "__id__": 264
+        "__id__": 280
       }
     ],
     "_prefab": null,
@@ -10214,7 +10819,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 262
+      "__id__": 278
     },
     "_enabled": true,
     "__prefab": null,
@@ -10236,7 +10841,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 262
+      "__id__": 278
     },
     "_enabled": true,
     "__prefab": null,
@@ -10275,7 +10880,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 261
+      "__id__": 277
     },
     "_enabled": true,
     "__prefab": null,
@@ -10297,7 +10902,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 261
+      "__id__": 277
     },
     "_enabled": true,
     "__prefab": null,
@@ -10336,12 +10941,12 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 261
+      "__id__": 277
     },
     "_enabled": true,
     "__prefab": null,
     "_barSprite": {
-      "__id__": 264
+      "__id__": 280
     },
     "_mode": 0,
     "_totalLength": 300,
@@ -10355,7 +10960,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 261
+      "__id__": 277
     },
     "_enabled": true,
     "__prefab": null,
@@ -10385,16 +10990,16 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 256
+      "__id__": 272
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 270
+        "__id__": 286
       },
       {
-        "__id__": 271
+        "__id__": 287
       }
     ],
     "_prefab": null,
@@ -10433,7 +11038,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 269
+      "__id__": 285
     },
     "_enabled": true,
     "__prefab": null,
@@ -10455,7 +11060,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 269
+      "__id__": 285
     },
     "_enabled": true,
     "__prefab": null,
@@ -10517,7 +11122,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 256
+      "__id__": 272
     },
     "_enabled": true,
     "__prefab": null,
@@ -10539,7 +11144,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 256
+      "__id__": 272
     },
     "_enabled": true,
     "__prefab": null,
@@ -10654,16 +11259,16 @@
       "__id__": 107
     },
     "node个人战局列表面板": {
-      "__id__": 234
+      "__id__": 250
     },
     "node个人战局列表": {
-      "__id__": 244
+      "__id__": 260
     },
     "node个人战局按钮模板": {
-      "__id__": 235
+      "__id__": 251
     },
     "audioSource": {
-      "__id__": 278
+      "__id__": 294
     },
     "lableMessage": {
       "__id__": 26
@@ -10672,7 +11277,7 @@
       "__id__": 40
     },
     "loadNode": {
-      "__id__": 256
+      "__id__": 272
     },
     "_id": "7dlsrcFgxDgJ3SbtsHLDnA"
   },
@@ -10704,7 +11309,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 280
+        "__id__": 296
       }
     ],
     "_prefab": null,
@@ -10743,7 +11348,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 279
+      "__id__": 295
     },
     "_enabled": true,
     "__prefab": null,
@@ -10761,28 +11366,28 @@
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 283
+      "__id__": 299
     },
     "shadows": {
-      "__id__": 284
+      "__id__": 300
     },
     "_skybox": {
-      "__id__": 285
+      "__id__": 301
     },
     "fog": {
-      "__id__": 286
+      "__id__": 302
     },
     "octree": {
-      "__id__": 287
+      "__id__": 303
     },
     "skin": {
-      "__id__": 288
+      "__id__": 304
     },
     "lightProbeInfo": {
-      "__id__": 289
+      "__id__": 305
     },
     "postSettings": {
-      "__id__": 290
+      "__id__": 306
     },
     "bakedWithStationaryMainLight": false,
     "bakedWithHighpLightmap": false
