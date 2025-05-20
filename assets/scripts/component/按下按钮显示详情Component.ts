@@ -36,7 +36,7 @@ export class 按下按钮显示详情Component extends Component {
             }
 
             console.log("按钮TOUCH_START", this.vec2按下)
-            this.battleUI.richEdit按钮详情.string = this.详情()
+            MainTest.instance.scene战斗.battleUI.richEdit按钮详情.string = this.详情()
             this.vec2按下 = event.getLocation()
 
             // 将屏幕坐标转换为节点坐标
@@ -58,7 +58,7 @@ export class 按下按钮显示详情Component extends Component {
             const worldPosition = this.node.parent.getComponent(UITransform).convertToWorldSpaceAR(new Vec3(0, nodeTopEdge, 0))
 
             // 将世界坐标转换为 targetNode 的本地坐标
-            const localPosition: Vec3 = this.battleUI.node按钮详情.parent.getComponent(UITransform).convertToNodeSpaceAR(worldPosition)
+            const localPosition: Vec3 = MainTest.instance.scene战斗.battleUI.node按钮详情.parent.getComponent(UITransform).convertToNodeSpaceAR(worldPosition)
             console.log("this.node 相对于 targetNode 的本地坐标", localPosition);
 
 

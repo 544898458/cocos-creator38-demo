@@ -24,7 +24,6 @@ const { ccclass, property } = _decorator;
 
 @ccclass('BattleUI')
 export class BattleUI extends Dialog {
-    main: MainTest;
     @property(Node)
     游戏攻略: Node;
     @property(Node)
@@ -103,7 +102,7 @@ export class BattleUI extends Dialog {
     b菱形框选: boolean = false //切换菱形框选和矩形框选两种模式
     onOpened(param: any): void {
         dispatcher.on(EC.DIALOGUE, this.剧情对话, this);
-        this.main.scene战斗.battleUI = this//.node.getComponent(BattleUI);
+        MainTest.instance.scene战斗.battleUI = this//.node.getComponent(BattleUI);
         this.lastTitle = this.nodeFightPanel.getChildByName("建筑单位");
     }
 
@@ -112,10 +111,10 @@ export class BattleUI extends Dialog {
     }
 
     on出地堡(event: Event, customEventData: string) {
-        this.main.onClick出地堡()
+        MainTest.instance.onClick出地堡()
     }
     on集结点(event: Event, customEventData: string) {
-        if (0 == this.main.arr选中.length) {
+        if (0 == MainTest.instance.arr选中.length) {
             this.lable系统消息.string = '请先选中建筑单位'
             AudioMgr.inst.playOneShot('BUZZ')
             return
@@ -130,7 +129,7 @@ export class BattleUI extends Dialog {
         this.node取消点击地面.active = true
     }
     on强行走(event: Event, customEventData: string) {
-        if (0 == this.main.arr选中.length) {
+        if (0 == MainTest.instance.arr选中.length) {
             this.lable系统消息.string = '请先选中活动单位'
             AudioMgr.inst.playOneShot('BUZZ')
             return
@@ -140,7 +139,7 @@ export class BattleUI extends Dialog {
         this.进入点击地面状态()
     }
     on太岁分裂(event: Event, customEventData: string) {
-        if (0 == this.main.arr选中.length) {
+        if (0 == MainTest.instance.arr选中.length) {
             this.lable系统消息.string = '请先选中太岁'
             AudioMgr.inst.playOneShot('BUZZ')
             return
@@ -150,7 +149,7 @@ export class BattleUI extends Dialog {
         this.进入点击地面状态()
     }
     on原地坚守(event: Event, customEventData: string) {
-        if (0 == this.main.arr选中.length) {
+        if (0 == MainTest.instance.arr选中.length) {
             this.lable系统消息.string = '请先选中活动单位'
             AudioMgr.inst.playOneShot('BUZZ')
             return
@@ -165,17 +164,17 @@ export class BattleUI extends Dialog {
     }
     on聊天框输入结束(editbox: EditBox, customEventData: String) {
         console.log(editbox, customEventData)
-        this.main.onClickSay(editbox.textLabel.string)
+        MainTest.instance.onClickSay(editbox.textLabel.string)
         editbox.textLabel.string = ''
     }
     onClick取消选中(event: Event, customEventData: string) {
         //this.uiLogin.回到登录场景()
         MainTest.instance.scene战斗.clear选中()
-        this.main.send选中([])
+        MainTest.instance.send选中([])
     }
     onClick退出此场景(event: Event, customEventData: string) {
         //this.uiLogin.回到登录场景()
-        this.main.send离开Space()
+        MainTest.instance.send离开Space()
     }
     onClick镜头投影(event: Event, customEventData: string) {
         MainTest.instance.scene战斗.切换镜头投影()
@@ -187,111 +186,111 @@ export class BattleUI extends Dialog {
         MainTest.instance.scene战斗.镜头缩小()
     }
     onClickAdd活动单位(event: EventMouse, customEventData: string): void {
-        this.main.onClick造活动单位(event, customEventData)
+        MainTest.instance.onClick造活动单位(event, customEventData)
     }
     onClick造坦克(event: Event, customEventData: string): void {
-        this.main.onClick造坦克(event, customEventData)
+        MainTest.instance.onClick造坦克(event, customEventData)
     }
     onClickAdd近战兵(event: Event, customEventData: string): void {
-        this.main.onClickAdd近战兵(event, customEventData)
+        MainTest.instance.onClickAdd近战兵(event, customEventData)
     }
     onClickAdd工程车(event: Event, customEventData: string): void {
-        this.main.onClickAdd工程车(event, customEventData)
+        MainTest.instance.onClickAdd工程车(event, customEventData)
     }
     onClickAdd基地(event: Event, customEventData: string): void {
-        this.main.onClickAdd基地(event, customEventData)
+        MainTest.instance.onClickAdd基地(event, customEventData)
     }
     onClickAdd地堡(event: Event, customEventData: string): void {
-        this.main.onClickAdd地堡(event, customEventData)
+        MainTest.instance.onClickAdd地堡(event, customEventData)
     }
     onClickAdd兵厂(event: Event, customEventData: string): void {
-        this.main.onClickAdd兵厂(event, customEventData)
+        MainTest.instance.onClickAdd兵厂(event, customEventData)
     }
     onClickAdd民房(event: Event, customEventData: string): void {
-        this.main.onClickAdd民房(event, customEventData)
+        MainTest.instance.onClickAdd民房(event, customEventData)
     }
     onClickAdd炮台(event: Event, customEventData: string): void {
-        this.main.onClickAdd炮台(event, customEventData)
+        MainTest.instance.onClickAdd炮台(event, customEventData)
     }
     onClickAdd孵化场(event: Event, customEventData: string): void {
-        this.main.onClickAdd孵化场(event, customEventData)
+        MainTest.instance.onClickAdd孵化场(event, customEventData)
     }
     onClickAdd建筑(event: EventMouse, customEventData: string): void {
         const node: Node = event.target as Node
         let 单位 = node.getComponent(按下按钮显示单位详情Component).enum类型
-        this.main.on点击按钮_造建筑(单位)
+        MainTest.instance.on点击按钮_造建筑(单位)
     }
     onClick升级单位属性(event: Event, customEventData: string): void {
         let arr = customEventData.split('|')
-        this.main.on升级单位属性(单位类型[arr[0] as keyof typeof 单位类型], 属性类型[arr[1] as keyof typeof 单位类型])
+        MainTest.instance.on升级单位属性(单位类型[arr[0] as keyof typeof 单位类型], 属性类型[arr[1] as keyof typeof 单位类型])
     }
     onClickAdd机场(event: Event, customEventData: string): void {
-        this.main.onClickAdd机场(event, customEventData)
+        MainTest.instance.onClickAdd机场(event, customEventData)
     }
     onClickAdd重工厂(event: Event, customEventData: string): void {
-        this.main.onClickAdd重工厂(event, customEventData)
+        MainTest.instance.onClickAdd重工厂(event, customEventData)
     }
     onClickAdd虫营(event: Event, customEventData: string): void {
-        this.main.onClickAdd虫营(event, customEventData)
+        MainTest.instance.onClickAdd虫营(event, customEventData)
     }
     onClickAdd飞塔(event: Event, customEventData: string): void {
-        this.main.onClickAdd飞塔(event, customEventData)
+        MainTest.instance.onClickAdd飞塔(event, customEventData)
     }
     onClickAdd飞机(event: Event, customEventData: string): void {
-        this.main.onClickAdd飞机(event, customEventData)
+        MainTest.instance.onClickAdd飞机(event, customEventData)
     }
     onClickAdd工虫(event: Event, customEventData: string): void {
-        this.main.onClickAdd工虫(event, customEventData)
+        MainTest.instance.onClickAdd工虫(event, customEventData)
     }
     onClickAdd近战虫(event: Event, customEventData: string): void {
-        this.main.onClickAdd近战虫()
+        MainTest.instance.onClickAdd近战虫()
     }
     onClickAdd枪虫(event: Event, customEventData: string): void {
-        this.main.onClickAdd枪虫()
+        MainTest.instance.onClickAdd枪虫()
     }
     onClickAdd绿色坦克(event: Event, customEventData: string): void {
-        this.main.onClickAdd绿色坦克()
+        MainTest.instance.onClickAdd绿色坦克()
     }
     onClickAdd飞虫(event: Event, customEventData: string): void {
-        this.main.onClickAdd飞虫()
+        MainTest.instance.onClickAdd飞虫()
     }
     onClickAdd房虫(event: Event, customEventData: string): void {
-        this.main.onClickAdd房虫()
+        MainTest.instance.onClickAdd房虫()
     }
     onClick空闲工程车(event: Event, customEventData: string): void {
-        this.main.onClick空闲工程车()
+        MainTest.instance.onClick空闲工程车()
     }
     onClick解锁近战兵(event: Event, customEventData: string): void {
-        this.main.onClick解锁近战兵()
+        MainTest.instance.onClick解锁近战兵()
     }
     onClick解锁枪虫(event: Event, customEventData: string): void {
-        this.main.onClick解锁枪虫()
+        MainTest.instance.onClick解锁枪虫()
     }
     onClick剧情对话全屏点击(): void {
-        this.main.onClick剧情对话全屏点击()
+        MainTest.instance.onClick剧情对话全屏点击()
         // this.uiTransform剧情对话根.node.active = false
     }
     onClick剧情对话再看看(): void {
-        this.main.onClick剧情对话全屏点击()
+        MainTest.instance.onClick剧情对话全屏点击()
         this.uiTransform剧情对话根.node.active = false
     }
     onClick剧情对话退出场景(): void {
-        this.main.send离开Space()
+        MainTest.instance.send离开Space()
     }
     onClick游戏攻略(): void {
         this.游戏攻略.active = !this.游戏攻略.active;
     }
     onClick游戏设置(): void {
         this.游戏设置.active = !this.游戏设置.active;
-        this.toggle点击活动单位都是追加选中.isChecked = this.main.b点击活动单位都是追加选中
-        this.toggle显示单位类型.isChecked = this.main.b显示单位类型
+        this.toggle点击活动单位都是追加选中.isChecked = MainTest.instance.b点击活动单位都是追加选中
+        this.toggle显示单位类型.isChecked = MainTest.instance.b显示单位类型
     }
     onCheck点击活动单位都是追加选中(toggle: Toggle, customEventData: string) {
-        this.main.b点击活动单位都是追加选中 = toggle.isChecked
+        MainTest.instance.b点击活动单位都是追加选中 = toggle.isChecked
         console.log('toggle.isChecked', toggle.isChecked)
     }
     onCheck显示单位类型(toggle: Toggle, customEventData: string) {
-        this.main.b显示单位类型 = toggle.isChecked
+        MainTest.instance.b显示单位类型 = toggle.isChecked
         MainTest.instance.scene战斗?.刷新单位名字()
         console.log('b显示单位类型,toggle.isChecked', toggle.isChecked)
     }
@@ -365,9 +364,9 @@ export class BattleUI extends Dialog {
         return str详情
     }
     单位详情(entity: ClientEntityComponent, 类型: 单位类型): string {
-        const 单位 = this.main.配置.find单位(类型)
-        const 制造 = this.main.配置.find制造(类型)
-        const 战斗 = this.main.配置.find战斗(类型)
+        const 单位 = MainTest.instance.配置.find单位(类型)
+        const 制造 = MainTest.instance.配置.find制造(类型)
+        const 战斗 = MainTest.instance.配置.find战斗(类型)
 
         let str详情 = 单位.名字 + '\n' + 单位.描述 + '\n'
         if (制造) {
@@ -403,14 +402,14 @@ export class BattleUI extends Dialog {
         if (null == 属性等级)
             return [null, null]
 
-        let 等级数值 = this.main.配置.find单位属性等级加数值(类型, 属性, 属性等级)
+        let 等级数值 = MainTest.instance.配置.find单位属性等级加数值(类型, 属性, 属性等级)
         if (null == 等级数值)
             return [null, null]
 
         return [等级数值, 属性等级]
     }
     on取消点击地面() {
-        this.main.fun创建消息 = null
+        MainTest.instance.fun创建消息 = null
         this.node取消点击地面.active = false
         this.下部列表.active = true
     }

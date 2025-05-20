@@ -4,7 +4,7 @@ import { DialogManager } from './manager/DialogManager';
 import { UI2Prefab } from './autobind/UI2Prefab';
 import { sceneMgr } from './manager/SceneManager';
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
-import { MsgId, 单位类型, 副本ID, 属性类型, SayChannel } from './utils/Enum';
+import { MsgId, 单位类型, 战局类型, 属性类型, SayChannel } from './utils/Enum';
 import { SkeletalAnimation } from 'cc';
 import { resources } from 'cc';
 import { Prefab } from 'cc';
@@ -848,7 +848,7 @@ export class MainTest extends Component {
             this.fun关闭广告发消息 = null
         }
     }
-    进Scene战斗(sceneName: string, idMsg: MsgId, id副本: 副本ID, str房主昵称: string = '', b多人混战: boolean = false) {
+    进Scene战斗(sceneName: string, idMsg: MsgId, id副本: 战局类型, str房主昵称: string = '', b多人混战: boolean = false) {
         this.scene登录.node选择模式.active = false
         this.dialogMgr.closeDialog(UI2Prefab.LoginView_url);
         if ((window as any).CC_WECHAT) {
@@ -895,7 +895,7 @@ export class MainTest extends Component {
         })
 
     }
-    loadMap(sceneName: string, idMsg: MsgId, id副本: 副本ID, str房主昵称: string = '', b多人混战: boolean): void {
+    loadMap(sceneName: string, idMsg: MsgId, id副本: 战局类型, str房主昵称: string = '', b多人混战: boolean): void {
         let sceneUrl;
         switch (sceneName) {
             case 'scene战斗':
@@ -937,33 +937,18 @@ export class MainTest extends Component {
     static GetMapNode(): Node {
         return director.getScene().getChildByName('MapNode')
     }
-    send进战斗场景(idMsg: MsgId, id副本: 副本ID, str房主昵称, b已看完激励视频广告 = false) {
+    send进战斗场景(idMsg: MsgId, id副本: 战局类型, str房主昵称, b已看完激励视频广告 = false) {
         dispatcher.sendArray([[idMsg, 0, 0], id副本, str房主昵称, b已看完激励视频广告])
     }
-    进Scene战斗单人剧情副本(sceneName: string, id: 副本ID) {
+    onClick进单人战局(id: 战局类型) {
+        let 配置 = this.配置.find战局(id)
+        this.进Scene战斗单人剧情副本(配置.strSceneName, id)
+    }
+    进Scene战斗单人剧情副本(sceneName: string, id: 战局类型) {
         this.进Scene战斗(sceneName, MsgId.进单人剧情副本, id)
     }
-    onClickToggle进训练战() {
-        this.进Scene战斗单人剧情副本('scene战斗', 副本ID.训练战)
-    }
-    onClickToggle进训练战_虫() {
-        this.进Scene战斗单人剧情副本('scene战斗', 副本ID.训练战_虫)
-    }
-    onClickToggle进防守战() {
-        this.进Scene战斗单人剧情副本('scene防守战', 副本ID.防守战)
-    }
-    onClickToggle进防守战_虫() {
-        this.进Scene战斗单人剧情副本('scene防守战', 副本ID.防守战_虫)
-    }
-
-    onClick进攻坚战() {
-        this.进Scene战斗单人剧情副本('scene攻坚战', 副本ID.攻坚战)
-    }
-    onClick进攻坚战_虫() {
-        this.进Scene战斗单人剧情副本('scene攻坚战', 副本ID.攻坚战_虫)
-    }
     onClick创建四方对战() {
-        this.进Scene战斗('scene四方对战', MsgId.创建多人战局, 副本ID.四方对战)
+        this.进Scene战斗('scene四方对战', MsgId.创建多人战局, 战局类型.四方对战)
     }
     onClick获取别人的个人战局列表(event: Event, customEventData: string) {
         console.log(event, customEventData)
@@ -975,11 +960,11 @@ export class MainTest extends Component {
     }
     onClick进入别人的个人战局(event: Event, customEventData: string) {
         console.log(event, customEventData)
-        this.进Scene战斗(this.map玩家场景.get(customEventData), MsgId.进其他玩家个人战局, 副本ID.单人ID_非法_MIN, customEventData)
+        this.进Scene战斗(this.map玩家场景.get(customEventData), MsgId.进其他玩家个人战局, 战局类型.单人ID_非法_MIN, customEventData)
     }
     onClick进入别人的多人战局(event: Event, customEventData: string) {
         console.log(event, customEventData)
-        this.进Scene战斗(this.map玩家场景.get(customEventData), MsgId.进其他玩家多人战局, 副本ID.四方对战, customEventData)
+        this.进Scene战斗(this.map玩家场景.get(customEventData), MsgId.进其他玩家多人战局, 战局类型.四方对战, customEventData)
     }
     static 播放动作(old: ClientEntityComponent, strClipName: string, loop: boolean) {
         // console.log('strClipName', strClipName, 'old.view.name', old.view.name, 'loop', loop)

@@ -5,7 +5,7 @@ import { sys } from 'cc';
 import { Glob } from '../utils/Glob';
 import { RichText } from 'cc';
 import { dispatcher, EventDispatcher } from '../manager/event/EventDispatcher';
-import { MsgId, LoginResult, 副本ID } from '../utils/Enum';
+import { MsgId, LoginResult, 战局类型 } from '../utils/Enum';
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { MainTest } from '../MainTest';
 import { globalShortcut } from 'electron/main';
@@ -40,7 +40,7 @@ export class LoginView extends Dialog {
     node跳转社区微信小游戏: Node
     @property({ type: Node })
     node跳转社区抖音小游戏: Node
-    
+
     @property(RichText)
     richText公告: RichText;
 
@@ -66,13 +66,13 @@ export class LoginView extends Dialog {
         MainTest.instance.微信小游戏允许分享()
         if (sys.isBrowser)
             this.node跳转社区浏览器H5.active = true
-        else if(LoginView.是抖音小游戏())
+        else if (LoginView.是抖音小游戏())
             this.node跳转社区抖音小游戏.active = true
         else
             this.node跳转社区微信小游戏.active = true
 
-            MainTest.instance.onSecen登录Load()
-        
+        MainTest.instance.onSecen登录Load()
+
         if (Glob.strHttps登录场景音乐Mp3) {
             assetManager.loadRemote(Glob.strHttps登录场景音乐Mp3, (err, clip: AudioClip) => {
                 console.log('resources.load callback:', err, clip)
@@ -85,13 +85,13 @@ export class LoginView extends Dialog {
                 audioSource.play()
             })
         }
-        
+
         assetManager.loadRemote('https://www.rtsgame.online/公告/公告.txt', (err, textAsset: TextAsset) => {
             console.log('resources.load callback:', err, textAsset)
             this.richText公告.string = textAsset.text
         })
 
-        if(LoginView.是抖音小游戏()){
+        if (LoginView.是抖音小游戏()) {
             // --侧边栏按钮判断--//
             tt.onShow((res) => {
                 //判断用户是否是从侧边栏进来的
@@ -169,7 +169,7 @@ export class LoginView extends Dialog {
                 0,
                 str登录名,
                 'Hello, world!pwd',
-                18,//版本号
+                19,//版本号
             ])
 
             this.选择模式();
@@ -322,13 +322,13 @@ export class LoginView extends Dialog {
         if (this.个人战模式 > 0) {
             switch (this.个人战模式) {
                 case 1:
-                    customEventData == '1' ? this.onClickToggle进单人剧情副本(null, null) : this.onClickToggle进训练战_虫(null, null)
+                    MainTest.instance.onClick进单人战局(customEventData == '1' ? 战局类型.新手训练_单位介绍_人 : 战局类型.新手训练_单位介绍_虫)
                     break;
                 case 2:
-                    customEventData == '1' ? this.onClickToggle进单人防守战(null, null) : this.onClickToggle进单人防守战_虫(null, null)
+                    MainTest.instance.onClick进单人战局(customEventData == '1' ? 战局类型.防守战_人 : 战局类型.防守战_虫)
                     break;
                 case 3:
-                    customEventData == '1' ? this.onClickToggle进单人攻坚战(null, null) : this.onClickToggle进单人攻坚战_虫(null, null)
+                    MainTest.instance.onClick进单人战局(customEventData == '1' ? 战局类型.攻坚战_人 : 战局类型.攻坚战_虫)
                     break;
             }
         }
@@ -410,28 +410,10 @@ export class LoginView extends Dialog {
 
     //进入游戏
     onClickToggle进Space1(event: Event, customEventData: string) {//混战
-        MainTest.instance.进Scene战斗('scene战斗', MsgId.进Space, 副本ID.多人混战, '', true)
+        MainTest.instance.进Scene战斗('scene战斗', MsgId.进Space, 战局类型.多玩家混战, '', true)
     }
     onClick创建四方对战(event: Event, customEventData: string) {
         MainTest.instance.onClick创建四方对战()
-    }
-    onClickToggle进单人剧情副本(event: Event, customEventData: string) {
-        MainTest.instance.onClickToggle进训练战()
-    }
-    onClickToggle进训练战_虫(event: Event, customEventData: string) {
-        MainTest.instance.onClickToggle进训练战_虫()
-    }
-    onClickToggle进单人防守战(event: Event, customEventData: string) {
-        MainTest.instance.onClickToggle进防守战()
-    }
-    onClickToggle进单人防守战_虫(event: Event, customEventData: string) {
-        MainTest.instance.onClickToggle进防守战_虫()
-    }
-    onClickToggle进单人攻坚战(event: Event, customEventData: string) {
-        MainTest.instance.onClick进攻坚战()
-    }
-    onClickToggle进单人攻坚战_虫(event: Event, customEventData: string) {
-        MainTest.instance.onClick进攻坚战_虫()
     }
 }
 
