@@ -3,7 +3,6 @@ import { Glob } from './utils/Glob';
 import { DialogManager } from './manager/DialogManager';
 import { UI2Prefab } from './autobind/UI2Prefab';
 import { sceneMgr } from './manager/SceneManager';
-import { game } from 'cc';
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { MsgId, 单位类型, 副本ID, 属性类型, SayChannel } from './utils/Enum';
 import { SkeletalAnimation } from 'cc';
@@ -35,7 +34,6 @@ import { Quat } from 'cc';
 import { BattleUI } from './ui/BattleUI';
 import { ResourceUtil } from './utils/ResourceUtil';
 import { EC } from './utils/EC';
-import { Scene登录 } from './scene/Scene登录';
 import { LoginView } from './ui/LoginView';
 import { Dialog } from './component/Dialog';
 
@@ -69,7 +67,7 @@ export class MainTest extends Component {
     rewardedVideoAd// 定义激励视频广告
     customAd// 定义原生模板广告
 
-    fun关闭广告发消息: (boolean:boolean) => void
+    fun关闭广告发消息: (boolean: boolean) => void
     b已显示进战斗场景前的广告: boolean = false
     配置: 配置 = new 配置()
 
@@ -853,7 +851,7 @@ export class MainTest extends Component {
     进Scene战斗(sceneName: string, idMsg: MsgId, id副本: 副本ID, str房主昵称: string = '', b多人混战: boolean = false) {
         this.scene登录.node选择模式.active = false
         this.dialogMgr.closeDialog(UI2Prefab.LoginView_url);
-        if (window.CC_WECHAT) {
+        if ((window as any).CC_WECHAT) {
             if (b多人混战) {
                 if (this.rewardedVideoAd) {
                     this.b已显示进战斗场景前的广告 = true
@@ -887,15 +885,15 @@ export class MainTest extends Component {
                 }
             }
         }
-        
+
         //打开战斗UI
-        this.dialogMgr.openDialog(UI2Prefab.BattleUI_url,null,null,(dlg:Dialog):void=> {
+        this.dialogMgr.openDialog(UI2Prefab.BattleUI_url, null, null, (dlg: Dialog): void => {
             if (!this.scene战斗.battleUI) {
                 this.scene战斗.battleUI = dlg.getComponent(BattleUI)
             }
             this.loadMap(sceneName, idMsg, id副本, str房主昵称, b多人混战)
         })
-        
+
     }
     loadMap(sceneName: string, idMsg: MsgId, id副本: 副本ID, str房主昵称: string = '', b多人混战: boolean): void {
         let sceneUrl;

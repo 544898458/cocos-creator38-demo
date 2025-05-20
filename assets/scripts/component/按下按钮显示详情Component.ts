@@ -5,11 +5,10 @@ import { EventTouch } from 'cc';
 import { Vec3 } from 'cc';
 import { UITransform } from 'cc';
 import { view } from 'cc';
+import { MainTest } from '../MainTest';
 const { ccclass, property } = _decorator;
 
 export class 按下按钮显示详情Component extends Component {
-    @property(BattleUI)
-    battleUI: BattleUI
     vec2按下: Vec2 = new Vec2()
     static date上次显示: Date = new Date()
     timeoutId: NodeJS.Timeout = null; // 用于存储 setTimeout 的返回值
@@ -18,14 +17,14 @@ export class 按下按钮显示详情Component extends Component {
             clearTimeout(this.timeoutId)
             this.timeoutId = null
         }
-        if (this.battleUI.node按钮详情.active) {
-            this.battleUI.node按钮详情.active = false
+        if (MainTest.instance.scene战斗.battleUI.node按钮详情.active) {
+            MainTest.instance.scene战斗.battleUI.node按钮详情.active = false
         }
     }
     start() {
         // 监听按钮的按下事件
         this.node.on(Node.EventType.TOUCH_START, function (event: EventTouch) {
-            if (this.battleUI.node按钮详情.active)
+            if (MainTest.instance.scene战斗.battleUI.node按钮详情.active)
                 return
 
             let date现在: Date = new Date()
@@ -63,14 +62,14 @@ export class 按下按钮显示详情Component extends Component {
             console.log("this.node 相对于 targetNode 的本地坐标", localPosition);
 
 
-            let pos = this.battleUI.node按钮详情.position.clone();
+            let pos = MainTest.instance.scene战斗.battleUI.node按钮详情.position.clone();
             pos.y = localPosition.y + 20 //node坐标.y + this.node.getComponent(UITransform).height
-            this.battleUI.node按钮详情.position = pos
+            MainTest.instance.scene战斗.battleUI.node按钮详情.position = pos
 
             if (this.timeoutId)
                 clearTimeout(this.timeoutId);
             this.timeoutId = setTimeout(() => {
-                this.battleUI.node按钮详情.active = true;
+                MainTest.instance.scene战斗.battleUI.node按钮详情.active = true;
                 this.timeoutId = null; // 清除定时器 ID
             }, 100);
 

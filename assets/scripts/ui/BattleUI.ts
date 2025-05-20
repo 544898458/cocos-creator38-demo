@@ -1,7 +1,5 @@
-import { _decorator, Component, Node } from 'cc';
-import { Main } from '../mode/Main';
-import { director } from 'cc';
-import { ClientEntityComponent, Scene战斗 } from '../scene/Scene战斗';
+import { _decorator, Node } from 'cc';
+import { ClientEntityComponent } from '../scene/Scene战斗';
 import { Label } from 'cc';
 import { EditBox } from 'cc';
 import { UITransform } from 'cc';
@@ -10,7 +8,6 @@ import { AudioMgr } from '../manager/audio/AudioMgr';
 import { Button } from 'cc';
 import { Toggle } from 'cc';
 import { Layers } from 'cc';
-import { Vec3 } from 'cc';
 import { Color } from 'cc';
 import { 制造配置, 属性类型, 单位类型, 战斗配置 } from '../配置/配置';
 import { RichText } from 'cc';
@@ -28,8 +25,6 @@ const { ccclass, property } = _decorator;
 @ccclass('BattleUI')
 export class BattleUI extends Dialog {
     main: MainTest;
-    @property(Scene战斗)
-    scene战斗: Scene战斗 = null;
     @property(Node)
     游戏攻略: Node;
     @property(Node)
@@ -108,10 +103,7 @@ export class BattleUI extends Dialog {
     b菱形框选: boolean = false //切换菱形框选和矩形框选两种模式
     onOpened(param: any): void {
         dispatcher.on(EC.DIALOGUE, this.剧情对话, this);
-        this.main = MainTest.instance
         this.main.scene战斗.battleUI = this//.node.getComponent(BattleUI);
-        // this.main = director.getScene().getChildByName('常驻').getComponent(MainTest);
-        this.scene战斗 = this.main.scene战斗
         this.lastTitle = this.nodeFightPanel.getChildByName("建筑单位");
     }
 
@@ -124,13 +116,13 @@ export class BattleUI extends Dialog {
     }
     on集结点(event: Event, customEventData: string) {
         if (0 == this.main.arr选中.length) {
-            this.scene战斗.battleUI.lable系统消息.string = '请先选中建筑单位'
+            this.lable系统消息.string = '请先选中建筑单位'
             AudioMgr.inst.playOneShot('BUZZ')
             return
         }
 
         MainTest.instance.fun创建消息 = MainTest.instance.createMsg集结点
-        this.scene战斗.battleUI.lable系统消息.string = '请点击地面设置此建筑产出活动单位的集结点'
+        this.lable系统消息.string = '请点击地面设置此建筑产出活动单位的集结点'
         this.进入点击地面状态()
     }
     进入点击地面状态() {
@@ -139,36 +131,36 @@ export class BattleUI extends Dialog {
     }
     on强行走(event: Event, customEventData: string) {
         if (0 == this.main.arr选中.length) {
-            this.scene战斗.battleUI.lable系统消息.string = '请先选中活动单位'
+            this.lable系统消息.string = '请先选中活动单位'
             AudioMgr.inst.playOneShot('BUZZ')
             return
         }
         MainTest.instance.fun创建消息 = MainTest.instance.createMsgMove强行走
-        this.scene战斗.battleUI.lable系统消息.string = '行走过程不会攻击敌人，请点击地面确定目的地'
+        this.lable系统消息.string = '行走过程不会攻击敌人，请点击地面确定目的地'
         this.进入点击地面状态()
     }
     on太岁分裂(event: Event, customEventData: string) {
         if (0 == this.main.arr选中.length) {
-            this.scene战斗.battleUI.lable系统消息.string = '请先选中太岁'
+            this.lable系统消息.string = '请先选中太岁'
             AudioMgr.inst.playOneShot('BUZZ')
             return
         }
         MainTest.instance.fun创建消息 = MainTest.instance.createMsg太岁分裂
-        this.scene战斗.battleUI.lable系统消息.string = '请在选中太岁的苔蔓(wàn)上放置分裂的太岁'
+        this.lable系统消息.string = '请在选中太岁的苔蔓(wàn)上放置分裂的太岁'
         this.进入点击地面状态()
     }
     on原地坚守(event: Event, customEventData: string) {
         if (0 == this.main.arr选中.length) {
-            this.scene战斗.battleUI.lable系统消息.string = '请先选中活动单位'
+            this.lable系统消息.string = '请先选中活动单位'
             AudioMgr.inst.playOneShot('BUZZ')
             return
         }
         MainTest.instance.send原地坚守()
     }
     on框选(event: Event, customEventData: string) {
-        this.scene战斗.posWorld框选起始点 = null
-        this.scene战斗.b框选等待按下起始点 = true
-        this.scene战斗.battleUI.lable系统消息.string = '请在屏幕上下拖动框选活动单位'
+        MainTest.instance.scene战斗.posWorld框选起始点 = null
+        MainTest.instance.scene战斗.b框选等待按下起始点 = true
+        this.lable系统消息.string = '请在屏幕上下拖动框选活动单位'
         this.进入点击地面状态()
     }
     on聊天框输入结束(editbox: EditBox, customEventData: String) {
@@ -178,7 +170,7 @@ export class BattleUI extends Dialog {
     }
     onClick取消选中(event: Event, customEventData: string) {
         //this.uiLogin.回到登录场景()
-        this.scene战斗.clear选中()
+        MainTest.instance.scene战斗.clear选中()
         this.main.send选中([])
     }
     onClick退出此场景(event: Event, customEventData: string) {
@@ -186,13 +178,13 @@ export class BattleUI extends Dialog {
         this.main.send离开Space()
     }
     onClick镜头投影(event: Event, customEventData: string) {
-        this.scene战斗.切换镜头投影()
+        MainTest.instance.scene战斗.切换镜头投影()
     }
     onClick镜头放大(event: Event, customEventData: string) {
-        this.scene战斗.镜头放大()
+        MainTest.instance.scene战斗.镜头放大()
     }
     onClick镜头缩小(event: Event, customEventData: string) {
-        this.scene战斗.镜头缩小()
+        MainTest.instance.scene战斗.镜头缩小()
     }
     onClickAdd活动单位(event: EventMouse, customEventData: string): void {
         this.main.onClick造活动单位(event, customEventData)
@@ -300,7 +292,7 @@ export class BattleUI extends Dialog {
     }
     onCheck显示单位类型(toggle: Toggle, customEventData: string) {
         this.main.b显示单位类型 = toggle.isChecked
-        this.scene战斗?.刷新单位名字()
+        MainTest.instance.scene战斗?.刷新单位名字()
         console.log('b显示单位类型,toggle.isChecked', toggle.isChecked)
     }
     onClickTitle(event: Event, customEventData: string): void {
@@ -322,7 +314,7 @@ export class BattleUI extends Dialog {
 
         const map = new Map<string, number>();
         for (let i = 0; i < selectUids.length; i++) {
-            const nickName = this.scene战斗.entities.get(selectUids[i]).entityName;
+            const nickName = MainTest.instance.scene战斗.entities.get(selectUids[i]).entityName;
             if (map.has(nickName)) {
                 map.set(nickName, map.get(nickName) + 1);
             } else {
@@ -353,7 +345,7 @@ export class BattleUI extends Dialog {
             return
         }
         let id = selectUids[0]
-        let entity = this.scene战斗.entities.get(id)
+        let entity = MainTest.instance.scene战斗.entities.get(id)
         let str详情 = this.单位详情(entity, entity.类型)
         this.lable单位详情.string = str详情
     }
@@ -406,7 +398,7 @@ export class BattleUI extends Dialog {
         return str详情
     }
     属性等级加数值(类型: 单位类型, 属性: 属性类型): [number, number] {
-        let 单位属性 = this.scene战斗.obj属性等级[类型]
+        let 单位属性 = MainTest.instance.scene战斗.obj属性等级[类型]
         let 属性等级 = 单位属性 ? 单位属性[属性] : null
         if (null == 属性等级)
             return [null, null]
