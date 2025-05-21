@@ -23,25 +23,25 @@
         "__id__": 5
       },
       {
-        "__id__": 8
+        "__id__": 7
+      },
+      {
+        "__id__": 9
       },
       {
         "__id__": 10
       },
       {
-        "__id__": 11
+        "__id__": 29
       },
       {
-        "__id__": 30
-      },
-      {
-        "__id__": 24
+        "__id__": 23
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 32
+      "__id__": 31
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -72,7 +72,7 @@
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 33
+      "__id__": 32
     },
     "_id": "57e1e41c-7dc2-46a2-8867-f147bf517345"
   },
@@ -185,9 +185,6 @@
     "_components": [
       {
         "__id__": 6
-      },
-      {
-        "__id__": 7
       }
     ],
     "_prefab": null,
@@ -267,25 +264,6 @@
     "_id": "7dWQTpwS5LrIHnc1zAPUtf"
   },
   {
-    "__type__": "32055HKvGNEypTRgHYzK6zX",
-    "_name": "",
-    "_objFlags": 0,
-    "__editorExtras__": {},
-    "node": {
-      "__id__": 5
-    },
-    "_enabled": true,
-    "__prefab": null,
-    "target": null,
-    "offset": {
-      "__type__": "cc.Vec3",
-      "x": -127.595,
-      "y": 153.651,
-      "z": 131.854
-    },
-    "_id": "f1Z9LG9oJH4rV5cXzFFkG0"
-  },
-  {
     "__type__": "cc.Node",
     "_name": "Camera小地图",
     "_objFlags": 0,
@@ -297,7 +275,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 9
+        "__id__": 8
       }
     ],
     "_prefab": null,
@@ -336,7 +314,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 8
+      "__id__": 7
     },
     "_enabled": true,
     "__prefab": null,
@@ -427,14 +405,17 @@
     },
     "_children": [
       {
-        "__id__": 12
+        "__id__": 11
       },
       {
-        "__id__": 14
+        "__id__": 13
       }
     ],
     "_active": true,
     "_components": [
+      {
+        "__id__": 16
+      },
       {
         "__id__": 17
       },
@@ -449,9 +430,6 @@
       },
       {
         "__id__": 21
-      },
-      {
-        "__id__": 22
       }
     ],
     "_prefab": null,
@@ -490,13 +468,13 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 11
+      "__id__": 10
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 13
+        "__id__": 12
       }
     ],
     "_prefab": null,
@@ -535,7 +513,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 12
+      "__id__": 11
     },
     "_enabled": true,
     "__prefab": null,
@@ -581,16 +559,16 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 11
+      "__id__": 10
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 15
+        "__id__": 14
       },
       {
-        "__id__": 16
+        "__id__": 15
       }
     ],
     "_prefab": null,
@@ -629,7 +607,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 14
+      "__id__": 13
     },
     "_enabled": true,
     "__prefab": null,
@@ -651,7 +629,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 14
+      "__id__": 13
     },
     "_enabled": true,
     "__prefab": null,
@@ -667,7 +645,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 11
+      "__id__": 10
     },
     "_enabled": true,
     "__prefab": null,
@@ -689,12 +667,12 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 11
+      "__id__": 10
     },
     "_enabled": true,
     "__prefab": null,
     "_cameraComponent": {
-      "__id__": 13
+      "__id__": 12
     },
     "_alignCanvasWithScreen": true,
     "_id": "8aBZnjdnZKY7ALsZ6ZUCpb"
@@ -705,7 +683,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 11
+      "__id__": 10
     },
     "_enabled": true,
     "__prefab": null,
@@ -735,7 +713,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 11
+      "__id__": 10
     },
     "_enabled": true,
     "__prefab": null,
@@ -775,15 +753,15 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 11
+      "__id__": 10
     },
     "_enabled": true,
     "__prefab": null,
     "cavas": {
-      "__id__": 11
+      "__id__": 10
     },
     "audioManager": {
-      "__id__": 16
+      "__id__": 15
     },
     "_id": "593JveUy5Jj4nrKegkwfQU"
   },
@@ -793,24 +771,24 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 11
+      "__id__": 10
     },
     "_enabled": true,
     "__prefab": null,
     "targetFlag": {
-      "__id__": 23
+      "__id__": 22
     },
     "mainCamera": {
       "__id__": 6
     },
     "camera小地图": {
-      "__id__": 9
+      "__id__": 8
     },
     "roles": {
-      "__id__": 24
+      "__id__": 23
     },
     "audioSource": {
-      "__id__": 16
+      "__id__": 15
     },
     "_id": "32C+Jz5G5KrZhjAG78r+4s"
   },
@@ -820,11 +798,11 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 24
+      "__id__": 23
     },
     "_children": [
       {
-        "__id__": 26
+        "__id__": 25
       }
     ],
     "_active": true,
@@ -869,10 +847,10 @@
     },
     "_children": [
       {
-        "__id__": 23
+        "__id__": 22
       },
       {
-        "__id__": 25
+        "__id__": 24
       }
     ],
     "_active": true,
@@ -913,7 +891,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 24
+      "__id__": 23
     },
     "_children": [],
     "_active": true,
@@ -954,16 +932,16 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 23
+      "__id__": 22
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 27
+        "__id__": 26
       },
       {
-        "__id__": 29
+        "__id__": 28
       }
     ],
     "_prefab": null,
@@ -1002,7 +980,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 26
+      "__id__": 25
     },
     "_enabled": true,
     "__prefab": null,
@@ -1014,7 +992,7 @@
     ],
     "_visFlags": 0,
     "bakeSettings": {
-      "__id__": 28
+      "__id__": 27
     },
     "_mesh": {
       "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@2e76e",
@@ -1057,7 +1035,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 26
+      "__id__": 25
     },
     "_enabled": true,
     "__prefab": null,
@@ -1086,7 +1064,7 @@
     "_active": false,
     "_components": [
       {
-        "__id__": 31
+        "__id__": 30
       }
     ],
     "_prefab": null,
@@ -1125,24 +1103,24 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 30
+      "__id__": 29
     },
     "_enabled": false,
     "__prefab": null,
     "targetFlag": {
-      "__id__": 23
+      "__id__": 22
     },
     "mainCamera": {
       "__id__": 6
     },
     "camera小地图": {
-      "__id__": 9
+      "__id__": 8
     },
     "roles": {
-      "__id__": 24
+      "__id__": 23
     },
     "audioSource": {
-      "__id__": 16
+      "__id__": 15
     },
     "_id": "0aG/O4P0ZC3IxUvtHJK6fb"
   },
@@ -1157,28 +1135,28 @@
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 34
+      "__id__": 33
     },
     "shadows": {
-      "__id__": 35
+      "__id__": 34
     },
     "_skybox": {
-      "__id__": 36
+      "__id__": 35
     },
     "fog": {
-      "__id__": 37
+      "__id__": 36
     },
     "octree": {
-      "__id__": 38
+      "__id__": 37
     },
     "skin": {
-      "__id__": 39
+      "__id__": 38
     },
     "lightProbeInfo": {
-      "__id__": 40
+      "__id__": 39
     },
     "postSettings": {
-      "__id__": 41
+      "__id__": 40
     },
     "bakedWithStationaryMainLight": false,
     "bakedWithHighpLightmap": false
