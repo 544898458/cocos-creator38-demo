@@ -1,22 +1,23 @@
-import { _decorator, Component, Node } from 'cc';
+import { _decorator, Node } from 'cc';
 import { Dialog } from '../component/Dialog';
 import { EditBox } from 'cc';
 import { sys } from 'cc';
 import { Glob } from '../utils/Glob';
 import { RichText } from 'cc';
-import { dispatcher, EventDispatcher } from '../manager/event/EventDispatcher';
-import { MsgId, LoginResult, 战局类型 } from '../utils/Enum';
+import { dispatcher } from '../manager/event/EventDispatcher';
+import { MsgId, 战局类型 } from '../utils/Enum';
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { MainTest } from '../MainTest';
-import { globalShortcut } from 'electron/main';
 import { toast } from '../manager/ToastMgr';
 import { Label } from 'cc';
 import { assetManager } from 'cc';
 import { AudioClip } from 'cc';
 import { AudioSource } from 'cc';
 import { TextAsset } from 'cc';
+import { NetMessage } from '../manager/NetMessage';
+import { EC } from '../utils/EC';
 const { ccclass, property } = _decorator;
-
+declare const tt: any;
 @ccclass('LoginView')
 export class LoginView extends Dialog {
     @property({ type: EditBox })
@@ -49,6 +50,14 @@ export class LoginView extends Dialog {
 
     个人战模式: number = -1;
     onOpened(param: any): void {
+        // // 登录失败监听
+        // dispatcher.on(EC, ({ result, message }) => {
+        //     this.lableMessage.string = message;
+        // },this);
+
+        // 显示登录界面
+        dispatcher.on(EC.SHOW_LOGIN_UI, this.显示登录界面, this);
+
         console.log("LoginView.onOpened", param)
         MainTest.instance.scene登录 = this
         // this.loadNode.active = true;
@@ -60,7 +69,7 @@ export class LoginView extends Dialog {
             this.node登录面板.active = false
         }
         //显示上次登录昵称
-        this.editBox登录名.string = sys.localStorage.getItem(Glob.KEY_登录名)
+        this.editBox登录名.string = sys.localStorage.getItem(Glob.KEY_登录名) || ""
         // this.显示登录界面();
 
         MainTest.instance.微信小游戏允许分享()
@@ -90,7 +99,6 @@ export class LoginView extends Dialog {
             console.log('resources.load callback:', err, textAsset)
             this.richText公告.string = textAsset.text
         })
-
         if (LoginView.是抖音小游戏()) {
             // --侧边栏按钮判断--//
             tt.onShow((res) => {
@@ -175,63 +183,11 @@ export class LoginView extends Dialog {
             this.选择模式();
         }
 
-        // let lableMessage = this.lableMessage
         let thisLocal = this
-        //接收到消息的回调方法
-        Glob.websocket.onmessage = function (event: MessageEvent) {
-            let data = event.data as ArrayBuffer
-            const arr = msgpack.decode(new Uint8Array(data))
-            // console.log("msgpack.decode结果：", data, data.byteLength)
-            let idxArr = 0
-            let msgHead = arr[idxArr++]
-            let msgId = msgHead[0] as MsgId
-            let sn收到 = msgHead[1] as number
-            let arr消息 = arr.slice(idxArr)
-            // console.log("收到GateSvr消息,msgId：", msgId, ',sn收到:', sn收到)
-            Glob.recvMsgSn = (Glob.recvMsgSn + 1) % 256;// ++thisLocal.recvMsgSn
-            if (Glob.recvMsgSn != sn收到)
-                console.error('收到GateSvr消息sn不同', Glob.recvMsgSn, 'sn收到:', sn收到)
-            switch (msgId) {
-                case MsgId.GateSvr转发GameSvr消息给游戏前端:
-                    {
-                        let arrGameMsg = arr[idxArr++]
-                        // console.log('收到GameSvr消息',arrGameMsg)
-                        MainTest.instance.onRecvGameSvr(arrGameMsg)
-                    }
-                    break
-                case MsgId.GateSvr转发WorldSvr消息给游戏前端:
-                    let arrWorldMsg = arr[idxArr++]
-                    // console.log('收到WorldSvr消息',arrWorldMsg)
-                    MainTest.instance.onRecvWorldSvr(arrWorldMsg)
-                    break
-                case MsgId.Login:
-                    {
-                        let [rpcSnId, result, strMsg] = arr消息 as [number, LoginResult, string]
-                        idxArr += 3
-                        console.log(result, strMsg)
-                        if (result == LoginResult.OK)
-                            return
-
-                        thisLocal.lableMessage.string = strMsg
-
-                        switch (result) {
-                            case LoginResult.客户端版本不匹配:
-                                break
-                            default:
-                                break
-                        }
-
-                        Glob.websocket.onclose = null
-                        Glob.websocket.close()
-                        Glob.websocket = null
-                        thisLocal.清零网络数据包序号()
-                        thisLocal.显示登录界面()
-                    }
-                    break
-            }
-            // console.log("sn", sn)
-
-        }
+        // 原来的 onmessage 改写如下：
+        Glob.websocket.onmessage = (event: MessageEvent) => {
+            NetMessage.instance.handle(event);
+        };
 
         //连接关闭的回调方法
         Glob.websocket.onclose = function (e) {
@@ -306,13 +262,6 @@ export class LoginView extends Dialog {
     }
 
     个人战类型(event: Event, customEventData: string) {
-        // if (customEventData == '0') {//训练战
-
-        // } else if (customEventData == '1') {//防守战
-
-        // } else if (customEventData == '2') {//攻坚战
-
-        // }
         this.个人战模式 = parseInt(customEventData);
         this.nodeSelectPlay.active = false;
         this.nodeSelectRace.active = true;

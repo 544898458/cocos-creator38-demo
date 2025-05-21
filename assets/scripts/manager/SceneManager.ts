@@ -1,27 +1,8 @@
-/**
- * @Author: xiaohui
- * @Date: 2024-05-28 11:28:05
- * @LastEditors: guojiejin
- * @LastEditTime: 2025-04-08 17:55:16
- * @Description: 登录模块
- */
-
-import { JsonAsset, resources } from "cc";
 import { UI2Prefab } from "../autobind/UI2Prefab";
 import { EC } from "../utils/EC";
 import { dialogMgr } from "./DialogManager";
 import { dispatcher } from "./event/EventDispatcher";
-import { ResourceUtil } from "../utils/ResourceUtil";
-import { MainTest } from "../MainTest";
-
 class LoginMgr {
-    /** 资源是否加载完毕 */
-    private dataInited: boolean = false;
-    private resInited: boolean = false;
-
-    private isEnterGame: boolean;
-    //重连次数
-    private recnTime: number = 0;
 
     initial(): void {
         dispatcher.on(EC.LOAD_FINISH, this.openLogin, this);

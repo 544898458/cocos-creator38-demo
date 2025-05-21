@@ -1,3 +1,5 @@
+import { SH } from "cc";
+
 /**
  * @Author: guojiejin02
  * @Date: 2024-05-31 16:58:57
@@ -15,4 +17,8 @@ export class EC {
     static LOAD_FINISH = "LOAD_FINISH";
     /** 剧情对话 */
     static DIALOGUE = "DIALOGUE";
+    /** 显示在线人数 */
+    static ONLINE_USERS_UPDATED = "ONLINE_USERS_UPDATED";
+    /** 显示登录主页 */
+    static SHOW_LOGIN_UI = "SHOW_LOGIN_UI";
 }

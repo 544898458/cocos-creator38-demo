@@ -1,5 +1,4 @@
-import { Rect, ResolutionPolicy, view } from "cc";
-
+import msgpack from "msgpack-lite/dist/msgpack.min.js"
 export class Glob {
     public static HEIGHT: number = 750;
     public static WIDTH: number = 1334;
@@ -32,5 +31,9 @@ export class Glob {
         // } else {
         //     Glob.scale = scaleX
         // }
+    }
+    // Glob.ts
+    public static decodeMessage(data: ArrayBuffer): any[] {
+        return msgpack.decode(new Uint8Array(data));
     }
 }
