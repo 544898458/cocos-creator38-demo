@@ -907,7 +907,10 @@ export class Scene战斗 extends Component {
 
     弹丸特效(idEntity: number, idEntityTarget: number, str特效: string): void {
         resources.load(str特效, Prefab, (err, prefab) => {
-            // console.log('resources.load callback:', err, prefab)
+            if (!prefab) {
+                console.log('resources.load callback:', err, prefab,str特效)
+                return
+            }
             let entity起始 = this.entities.get(idEntity)
             let entity目标 = this.entities.get(idEntityTarget)
             if (!entity起始 || !entity目标) {
@@ -917,11 +920,14 @@ export class Scene战斗 extends Component {
 
             const newNode = instantiate(prefab)
             newNode.name = str特效.replace('/', '')
-            newNode.position = entity起始.position.clone()
+            let 起始位置 = entity起始.position.clone()
+            let 方向向量 = entity目标.position.clone().subtract(entity起始.position).normalize()
+            起始位置.add(方向向量.multiplyScalar(2)) // 向目标方向移动1个单位
+            newNode.position = 起始位置
             let 特效根 = this.roles.getChildByName('特效根')
             特效根.addChild(newNode)
-            tween(newNode).to(0.5, { position: entity目标.position }).start()
-            this.scheduleOnce(() => { 特效根.removeChild(newNode) }, 2)
+            tween(newNode).to(0.1, { position: entity目标.position }).start()
+            this.scheduleOnce(() => { 特效根.removeChild(newNode) }, 0.08)
         })
     }
     剧情对话(str头像左: string, str名字左: string, str头像右: string, str名字右: string, str对话内容: string, b显示退出面板: boolean): void {
