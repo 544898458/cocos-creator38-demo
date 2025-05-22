@@ -16,6 +16,7 @@ import { AudioSource } from 'cc';
 import { TextAsset } from 'cc';
 import { NetMessage } from '../manager/NetMessage';
 import { EC } from '../utils/EC';
+import { JsonAsset } from 'cc';
 const { ccclass, property } = _decorator;
 declare const tt: any;
 @ccclass('LoginView')
@@ -99,6 +100,13 @@ export class LoginView extends Dialog {
             console.log('resources.load callback:', err, textAsset)
             this.richText公告.string = textAsset.text
         })
+
+        assetManager.loadRemote('https://www.rtsgame.online/排行榜/player_stats.json', (err, jsonAsset: JsonAsset) => {
+            console.log('resources.load callback:', err, jsonAsset)
+            let playerStats = jsonAsset.json
+            console.log(playerStats)
+        })
+        
         if (LoginView.是抖音小游戏()) {
             // --侧边栏按钮判断--//
             tt.onShow((res) => {
@@ -177,7 +185,7 @@ export class LoginView extends Dialog {
                 0,
                 str登录名,
                 'Hello, world!pwd',
-                19,//版本号
+                20,//版本号
             ])
 
             this.选择模式();
