@@ -482,7 +482,7 @@ export class Main extends Component {
                 0,
                 str登录名,
                 'Hello, world!pwd',
-                19,//版本号
+                20,//版本号
             ])
 
             // this.scene登录.nodeSelectSpace.active = true
