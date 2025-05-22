@@ -24,6 +24,7 @@ import { dispatcher } from '../manager/event/EventDispatcher'
 import { Enum } from 'cc'
 import { MainTest } from '../MainTest'
 import { UI2Prefab } from '../autobind/UI2Prefab'
+import { BattleMoude } from './BattleMoude'
 
 const { ccclass, property } = _decorator
 export class ClientEntityComponent {
@@ -329,7 +330,7 @@ export class Scene战斗 extends Component {
 
                         this.点击地面特效(item.hitPoint)
                     }
-                    MainTest.instance.fun创建消息 = 0 < MainTest.instance.arr选中.length ? MainTest.instance.createMsgMove遇敌自动攻击 : null
+                    MainTest.instance.fun创建消息 = 0 < BattleMoude._arr选中.length ? MainTest.instance.createMsgMove遇敌自动攻击 : null
                     this.恢复战斗界面()
                 }
             })
@@ -547,12 +548,12 @@ export class Scene战斗 extends Component {
                 id
             ])
         }
-        else if ((nodeName == '地堡' || nodeName == '房虫') && !b鼠标右键 && MainTest.instance.arr选中.length > 0)//左键点击地堡或房虫
+        else if ((nodeName == '地堡' || nodeName == '房虫') && !b鼠标右键 && BattleMoude._arr选中.length > 0)//左键点击地堡或房虫
         {
             let id = this.entityId[item.collider.node.uuid]
             let idMsg = entity.类型 == 单位类型.地堡 ? MsgId.进地堡 : MsgId.进房虫
-            let entity选中的第一个 = this.entities.get(MainTest.instance.arr选中[0])
-            if (entity.类型 == 单位类型.房虫 && 1 == MainTest.instance.arr选中.length && entity选中的第一个 && entity选中的第一个.类型 == 单位类型.房虫) {
+            let entity选中的第一个 = this.entities.get(BattleMoude._arr选中[0])
+            if (entity.类型 == 单位类型.房虫 && 1 == BattleMoude._arr选中.length && entity选中的第一个 && entity选中的第一个.类型 == 单位类型.房虫) {
                 this.请求选中此单位(item.collider.node)
             } else
                 dispatcher.sendArray([
@@ -577,7 +578,7 @@ export class Scene战斗 extends Component {
         }
 
         this.clear选中()
-        MainTest.instance.send选中([id])
+        BattleMoude.instance.send选中([id])
     }
     update(deltaTime: number) {
         if (this.vec摄像机在Update更新位置) {
@@ -640,7 +641,7 @@ export class Scene战斗 extends Component {
     clear选中() {
         this.battleUI.node取消选中.active = false
         this.隐藏选中单位专用按钮()
-        for (let id of MainTest.instance.arr选中) {
+        for (let id of BattleMoude._arr选中) {
             let entity = this.entities.get(id)
             if (entity) {
                 entity.view.getChildByName(prefabName选中特效)?.removeFromParent()
@@ -674,17 +675,17 @@ export class Scene战斗 extends Component {
 
     选中(arr: number[]) {
         this.clear选中()
-        MainTest.instance.arr选中 = arr
+        BattleMoude._arr选中 = arr
 
         if (0 < arr.length)
             this.battleUI.node取消选中.active = true
 
         this.battleUI.onSelectUnits(arr);
 
-        for (let id of MainTest.instance.arr选中) {
+        for (let id of BattleMoude._arr选中) {
             resources.load(prefabName选中特效, Prefab, (err, prefab) => {
                 console.log('resources.load callback:', err, prefab)
-                if (0 > MainTest.instance.arr选中.indexOf(id)) {
+                if (0 > BattleMoude._arr选中.indexOf(id)) {
                     console.log('已取消选中:', id)
                     return
                 }
@@ -766,7 +767,7 @@ export class Scene战斗 extends Component {
 
             resources.load(prefabName范围特效, Prefab, (err, prefab) => {
                 // console.log('resources.load callback:', err, prefab)
-                if (0 > MainTest.instance.arr选中.indexOf(id)) {
+                if (0 > BattleMoude._arr选中.indexOf(id)) {
                     console.log('已取消选中:', id)
                     return
                 }
@@ -923,7 +924,7 @@ export class Scene战斗 extends Component {
     弹丸特效(idEntity: number, idEntityTarget: number, str特效: string): void {
         resources.load(str特效, Prefab, (err, prefab) => {
             if (!prefab) {
-                console.log('resources.load callback:', err, prefab,str特效)
+                console.log('resources.load callback:', err, prefab, str特效)
                 return
             }
             let entity起始 = this.entities.get(idEntity)

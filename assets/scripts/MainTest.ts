@@ -1,33 +1,21 @@
-import { _decorator, Component, Node, Animation } from 'cc';
+import { _decorator, Component, Node } from 'cc';
 import { Glob } from './utils/Glob';
 import { DialogManager } from './manager/DialogManager';
 import { UI2Prefab } from './autobind/UI2Prefab';
 import { sceneMgr } from './manager/SceneManager';
-import msgpack from "msgpack-lite/dist/msgpack.min.js"
-import { MsgId, 单位类型, 战局类型, 属性类型, SayChannel } from './utils/Enum';
-import { SkeletalAnimation } from 'cc';
+import { MsgId, 单位类型, 战局类型, 属性类型 } from './utils/Enum';
 import { resources } from 'cc';
 import { Prefab } from 'cc';
-import { assetManager } from 'cc';
 import { AudioSource } from 'cc';
-import { AudioClip } from 'cc';
-import { Label } from 'cc';
 import { ClientEntityComponent, Scene战斗 } from './scene/Scene战斗';
 import { Vec3 } from 'cc';
 import { instantiate } from 'cc';
-import { ProgressBar } from 'cc';
 import { director } from 'cc';
 import { 配置 } from './配置/配置';
 import { dispatcher } from './manager/event/EventDispatcher';
 import { EventMouse } from 'cc';
 import { 按下按钮显示单位详情Component } from './component/按下按钮显示单位详情Component';
-import { 苔蔓Component } from './component/苔蔓Component';
-import { utils } from 'cc';
-import { HeadScale } from './component/head-scale';
-import { Camera } from 'cc';
-import { ParticleSystem } from 'cc';
 import { tween } from 'cc';
-import { AudioMgr } from './manager/audio/AudioMgr';
 import { AnimationClip } from 'cc';
 import { AnimationState } from 'cc';
 import { Quat } from 'cc';
@@ -37,6 +25,7 @@ import { EC } from './utils/EC';
 import { LoginView } from './ui/LoginView';
 import { Dialog } from './component/Dialog';
 import { NetMessage } from './manager/NetMessage';
+import { BattleMoude } from './scene/BattleMoude';
 
 const { ccclass, property } = _decorator;
 
@@ -57,7 +46,6 @@ export class MainTest extends Component {
     cavas: Node = null;
     @property(AudioSource)
     audioManager: AudioSource;
-    arr选中: number[] = []
     map玩家场景 = new Map<string, string>//NickName=>SceneName
     b登录成功: boolean = false;
 
@@ -88,6 +76,8 @@ export class MainTest extends Component {
         this.dialogMgr = new DialogManager();
         //初始化层级
         this.dialogMgr.inital(this.cavas);
+        // 初始化战斗模块
+        BattleMoude.init();
         //监听登录
         sceneMgr.initial();
 
@@ -103,17 +93,7 @@ export class MainTest extends Component {
         // 设置 NetMessage 的 mainTest 实例
         NetMessage.instance.setMainTest(this);
     }
-    send选中(arr选中: number[]) {
-        if (Glob.websocket != undefined) {
-            dispatcher.sendArray([
-                [MsgId.SelectRoles, ++Glob.sendMsgSn, 0],
-                arr选中,//虽然是整数，但是也强制转成FLOAT64发出去了
-                this.b点击活动单位都是追加选中
-            ])
-        }
 
-        this.arr选中 = arr选中
-    }
     createMsgMove遇敌自动攻击(hitPoint: Vec3) {
         return this.createMsgMove(hitPoint, true)
     }
@@ -122,7 +102,7 @@ export class MainTest extends Component {
         return this.createMsgMove(hitPoint, false)
     }
     createMsgMove(hitPoint: Vec3, b遇敌自动攻击: boolean) {
-        if (0 == this.arr选中.length)
+        if (0 == BattleMoude._arr选中.length)
             return null
 
         return [[MsgId.Move, 0],
@@ -624,13 +604,13 @@ export class MainTest extends Component {
 
     }
     onClick出地堡() {
-        if (0 == this.arr选中.length) {
+        if (0 == BattleMoude._arr选中.length) {
             console.log('没选中任何单位')
             return
         }
         dispatcher.sendArray([
             [MsgId.出地堡, ++Glob.sendMsgSn, 0],
-            this.arr选中[0]
+            BattleMoude._arr选中[0]
         ])
     }
     createMsg集结点(hitPoint: Vec3) {

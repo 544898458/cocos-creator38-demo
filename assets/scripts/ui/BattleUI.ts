@@ -20,6 +20,7 @@ import { ImageAsset } from 'cc';
 import { SpriteFrame } from 'cc';
 import { dispatcher } from '../manager/event/EventDispatcher';
 import { EC } from '../utils/EC';
+import { BattleMoude } from '../scene/BattleMoude';
 const { ccclass, property } = _decorator;
 
 @ccclass('BattleUI')
@@ -114,7 +115,7 @@ export class BattleUI extends Dialog {
         MainTest.instance.onClick出地堡()
     }
     on集结点(event: Event, customEventData: string) {
-        if (0 == MainTest.instance.arr选中.length) {
+        if (0 == BattleMoude._arr选中.length) {
             this.lable系统消息.string = '请先选中建筑单位'
             AudioMgr.inst.playOneShot('BUZZ')
             return
@@ -129,7 +130,7 @@ export class BattleUI extends Dialog {
         this.node取消点击地面.active = true
     }
     on强行走(event: Event, customEventData: string) {
-        if (0 == MainTest.instance.arr选中.length) {
+        if (0 == BattleMoude._arr选中.length) {
             this.lable系统消息.string = '请先选中活动单位'
             AudioMgr.inst.playOneShot('BUZZ')
             return
@@ -139,7 +140,7 @@ export class BattleUI extends Dialog {
         this.进入点击地面状态()
     }
     on太岁分裂(event: Event, customEventData: string) {
-        if (0 == MainTest.instance.arr选中.length) {
+        if (0 == BattleMoude._arr选中.length) {
             this.lable系统消息.string = '请先选中太岁'
             AudioMgr.inst.playOneShot('BUZZ')
             return
@@ -149,7 +150,7 @@ export class BattleUI extends Dialog {
         this.进入点击地面状态()
     }
     on原地坚守(event: Event, customEventData: string) {
-        if (0 == MainTest.instance.arr选中.length) {
+        if (0 == BattleMoude._arr选中.length) {
             this.lable系统消息.string = '请先选中活动单位'
             AudioMgr.inst.playOneShot('BUZZ')
             return
@@ -170,7 +171,7 @@ export class BattleUI extends Dialog {
     onClick取消选中(event: Event, customEventData: string) {
         //this.uiLogin.回到登录场景()
         MainTest.instance.scene战斗.clear选中()
-        MainTest.instance.send选中([])
+        BattleMoude.instance.send选中([])
     }
     onClick退出此场景(event: Event, customEventData: string) {
         //this.uiLogin.回到登录场景()
@@ -282,11 +283,11 @@ export class BattleUI extends Dialog {
     }
     onClick游戏设置(): void {
         this.游戏设置.active = !this.游戏设置.active;
-        this.toggle点击活动单位都是追加选中.isChecked = MainTest.instance.b点击活动单位都是追加选中
+        this.toggle点击活动单位都是追加选中.isChecked = BattleMoude._追加选中
         this.toggle显示单位类型.isChecked = MainTest.instance.b显示单位类型
     }
     onCheck点击活动单位都是追加选中(toggle: Toggle, customEventData: string) {
-        MainTest.instance.b点击活动单位都是追加选中 = toggle.isChecked
+        BattleMoude._追加选中 = toggle.isChecked
         console.log('toggle.isChecked', toggle.isChecked)
     }
     onCheck显示单位类型(toggle: Toggle, customEventData: string) {
