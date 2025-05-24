@@ -936,7 +936,7 @@ export class Scene战斗 extends Component {
 
             const newNode = instantiate(prefab)
             newNode.name = str特效.replace('/', '')
-            let 配置起始 = this.main.配置.find战斗(entity起始.类型)
+            let 配置起始 = MainTest.instance.配置.find战斗(entity起始.类型)
             let 起始位置 = entity起始.position.clone().add3f(0, 配置起始.f弹丸起始高度, 0)
             let 方向向量 = entity目标.position.clone().subtract(entity起始.position).normalize()
             起始位置.add(方向向量.multiplyScalar(3)) // 提前向目标方向移动
@@ -944,7 +944,7 @@ export class Scene战斗 extends Component {
             let 特效根 = this.roles.getChildByName('特效根')
             特效根.addChild(newNode)
             //获取单位战斗配置
-            let 配置目标 = this.main.配置.find战斗(entity目标.类型)
+            let 配置目标 = MainTest.instance.配置.find战斗(entity目标.类型)
             tween(newNode).to(0.1, { position: entity目标.position.clone().add3f(0, 配置目标.f弹丸起始高度, 0) }).start()
             this.scheduleOnce(() => { 特效根.removeChild(newNode) }, 0.09)
         })
