@@ -101,12 +101,20 @@ export class LoginView extends Dialog {
             this.richText公告.string = textAsset.text
         })
 
-        assetManager.loadRemote('https://www.rtsgame.online/排行榜/player_stats.json', (err, jsonAsset: JsonAsset) => {
-            console.log('resources.load callback:', err, jsonAsset)
-            let playerStats = jsonAsset.json
-            console.log(playerStats)
-        })
-        
+        //遍历 战局类型
+          for(let 战局 = 战局类型.单人ID_非法_MIN+1;战局<战局类型.单人ID_非法_MAX;战局++){
+            assetManager.loadRemote(`https://www.rtsgame.online/排行榜/战局_${战局}_赢.json`, (err, jsonAsset: JsonAsset) => {
+                console.log('resources.load callback:', err, jsonAsset)
+                let playerStats = jsonAsset.json
+                console.log(playerStats)
+            })
+                 
+            assetManager.loadRemote(`https://www.rtsgame.online/排行榜/战局_${战局}_输.json`, (err, jsonAsset: JsonAsset) => {
+                console.log('resources.load callback:', err, jsonAsset)
+                let playerStats = jsonAsset.json
+                console.log(playerStats)
+            })
+        }
         if (LoginView.是抖音小游戏()) {
             // --侧边栏按钮判断--//
             tt.onShow((res) => {
@@ -279,7 +287,8 @@ export class LoginView extends Dialog {
         if (this.个人战模式 > 0) {
             switch (this.个人战模式) {
                 case 1:
-                    MainTest.instance.onClick进单人战局(customEventData == '1' ? 战局类型.新手训练_单位介绍_人 : 战局类型.新手训练_单位介绍_虫)
+                    //MainTest.instance.onClick进单人战局(customEventData == '1' ? 战局类型.新手训练_单位介绍_人 : 战局类型.新手训练_单位介绍_虫)
+                    MainTest.instance.onClick进单人战局(customEventData == '1' ? 战局类型.新手训练_战斗_人 : 战局类型.新手训练_战斗_虫)
                     break;
                 case 2:
                     MainTest.instance.onClick进单人战局(customEventData == '1' ? 战局类型.防守战_人 : 战局类型.防守战_虫)
