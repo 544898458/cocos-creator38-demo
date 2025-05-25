@@ -5,7 +5,7 @@ import { sys } from 'cc';
 import { Glob } from '../utils/Glob';
 import { RichText } from 'cc';
 import { dispatcher } from '../manager/event/EventDispatcher';
-import { MsgId, 战局类型 } from '../utils/Enum';
+import { MsgId, 战局类型, 种族 } from '../utils/Enum';
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import { MainTest } from '../MainTest';
 import { toast } from '../manager/ToastMgr';
@@ -28,11 +28,11 @@ export class LoginView extends Dialog {
     @property({ type: RichText, displayName: "加载提示" })
     lableMessage: RichText;
     @property({ type: Node })
-    nodeSelectMode: Node;
+    node选择单人或多人: Node;
     @property({ type: Node })
-    nodeSelectPlay: Node;
+    node单人战局列表_人: Node;
     @property({ type: Node })
-    nodeSelectRace: Node;
+    node单人战局选择种族: Node;
     @property({ type: Node })
     node个人战局列表: Node
 
@@ -49,7 +49,6 @@ export class LoginView extends Dialog {
     @property(Node) node登录面板: Node
     @property(Node) node选择模式: Node
 
-    个人战模式: number = -1;
     onOpened(param: any): void {
         // // 登录失败监听
         // dispatcher.on(EC, ({ result, message }) => {
@@ -102,13 +101,13 @@ export class LoginView extends Dialog {
         })
 
         //遍历 战局类型
-          for(let 战局 = 战局类型.单人ID_非法_MIN+1;战局<战局类型.单人ID_非法_MAX;战局++){
+        for (let 战局 = 战局类型.单人ID_非法_MIN + 1; 战局 < 战局类型.单人ID_非法_MAX; 战局++) {
             assetManager.loadRemote(`https://www.rtsgame.online/排行榜/战局_${战局}_赢.json`, (err, jsonAsset: JsonAsset) => {
                 console.log('resources.load callback:', err, jsonAsset)
                 let playerStats = jsonAsset.json
                 console.log(playerStats)
             })
-                 
+
             assetManager.loadRemote(`https://www.rtsgame.online/排行榜/战局_${战局}_输.json`, (err, jsonAsset: JsonAsset) => {
                 console.log('resources.load callback:', err, jsonAsset)
                 let playerStats = jsonAsset.json
@@ -255,35 +254,48 @@ export class LoginView extends Dialog {
     //连接成功，打开选择战役模式
     选择模式() {
         this.LoginPanel.active = false;
-        this.nodeSelectMode.active = true
+        this.node选择单人或多人.active = true
     }
     选择战役(event: Event, customEventData: string) {
-        this.nodeSelectMode.active = false
-        this.nodeSelectPlay.active = true
-        let des = this.nodeSelectPlay.getChildByName('操作说明').getComponent(Label)
+        this.node选择单人或多人.active = false
+        this.node单人战局列表_人.active = true
+        let des = this.node单人战局列表_人.getChildByName('操作说明').getComponent(Label)
         if (customEventData == '1')//单人战役
         {
             des.string = "单人战役：有训练战，防守战，攻坚战\n请选择你的玩法类型\n\n\n\n"
-            this.nodeSelectPlay.getChildByName("单人战役").active = true;
-            this.nodeSelectPlay.getChildByName("多人战役").active = false;
+            this.node单人战局列表_人.getChildByName("单人战役").active = true;
+            this.node单人战局列表_人.getChildByName("多人战役").active = false;
 
         }
         else if (customEventData == '2')//多人战役
         {
 
             des.string = "多人战役：\n多人全图混战：无限玩家同台地图竞技\n四方对战：四人玩家同台竞技，地图采用东西南北区域限制\n请选择你的玩法类型\n\n\n\n"
-            this.nodeSelectPlay.getChildByName("单人战役").active = false;
-            this.nodeSelectPlay.getChildByName("多人战役").active = true;
+            this.node单人战局列表_人.getChildByName("单人战役").active = false;
+            this.node单人战局列表_人.getChildByName("多人战役").active = true;
         }
     }
 
-    个人战类型(event: Event, customEventData: string) {
-        this.个人战模式 = parseInt(customEventData);
-        this.nodeSelectPlay.active = false;
-        this.nodeSelectRace.active = true;
+    on单人或多人(event: Event, customEventData: string) {
+        let b个人战局 = customEventData === 'true'
+        this.node选择单人或多人.active = false
+        this.node单人战局选择种族.active = true
     }
-    选择种族(event: Event, customEventData: string) {
-
+    on单人战局选择种族(event: Event, customEventData: string) {
+        let 已选择种族 = 种族[customEventData as keyof typeof 种族]
+        switch (已选择种族) {
+            case 种族.人:
+                this.node单人战局列表_人.active = true
+                break
+            case 种族.虫:
+                MainTest.instance.onClick进单人战局(战局类型.新手训练_战斗_虫)
+                break
+            default:
+                toast.showToast('种族'+已选择种族+'未开放')
+                return
+        }
+        this.node单人战局选择种族.active = false
+        /*
         if (this.个人战模式 > 0) {
             switch (this.个人战模式) {
                 case 1:
@@ -298,18 +310,19 @@ export class LoginView extends Dialog {
                     break;
             }
         }
+    */
     }
     打开房间(event: Event, customEventData: string): void {
-        this.nodeSelectPlay.active = false
+        this.node单人战局列表_人.active = false
         this.node个人战局列表.active = true
     }
     显示登录界面(): void {
-        this.nodeSelectRace.active = false
-        this.nodeSelectMode.active = false
-        this.nodeSelectPlay.active = false
+        this.node单人战局选择种族.active = false
+        this.node选择单人或多人.active = false
+        this.node单人战局列表_人.active = false
         this.node个人战局列表.active = false
-        this.nodeSelectPlay.getChildByName("单人战役").active = false;
-        this.nodeSelectPlay.getChildByName("多人战役").active = false;
+        this.node单人战局列表_人.getChildByName("单人战役").active = false;
+        this.node单人战局列表_人.getChildByName("多人战役").active = false;
         this.LoginPanel.active = true
         if (Glob.websocket)
             this.lableMessage.string = '连接已断开，已回到登录界面'

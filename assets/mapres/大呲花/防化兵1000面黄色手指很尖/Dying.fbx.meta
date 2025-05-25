@@ -65,6 +65,26 @@
       ],
       "subMetas": {}
     },
+    "48b02": {
+      "importer": "gltf-embeded-image",
+      "uuid": "a31fb640-ddcf-442c-995d-c6dac6c3fdd3@48b02",
+      "displayName": "",
+      "id": "48b02",
+      "name": "base_color_texture.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": true,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
     "7d6ab": {
       "importer": "texture",
       "uuid": "a31fb640-ddcf-442c-995d-c6dac6c3fdd3@7d6ab",
@@ -78,8 +98,8 @@
         "magfilter": "linear",
         "mipfilter": "none",
         "anisotropy": 0,
-        "isUuid": false,
-        "imageUuidOrDatabaseUri": "db://assets/mapres/大呲花/防化兵1000面黄色手指很尖/防化兵1000面黄色手指很尖.fbm/Image_0.003.png"
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "a31fb640-ddcf-442c-995d-c6dac6c3fdd3@48b02"
       },
       "ver": "1.0.22",
       "imported": true,
@@ -125,7 +145,7 @@
     "imageMetas": [
       {
         "name": "base_color_texture",
-        "uri": "db://assets/mapres/大呲花/防化兵1000面黄色手指很尖/防化兵1000面黄色手指很尖.fbm/Image_0.003.png"
+        "uri": "a31fb640-ddcf-442c-995d-c6dac6c3fdd3@48b02"
       }
     ],
     "fbx": {
