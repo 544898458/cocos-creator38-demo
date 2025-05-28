@@ -121,7 +121,7 @@ export class BattleUI extends Dialog {
             return
         }
 
-        MainTest.instance.fun创建消息 = MainTest.instance.createMsg集结点
+        BattleMoude.instance.fun创建消息 = MainTest.instance.createMsg集结点
         this.lable系统消息.string = '请点击地面设置此建筑产出活动单位的集结点'
         this.进入点击地面状态()
     }
@@ -135,7 +135,7 @@ export class BattleUI extends Dialog {
             AudioMgr.inst.playOneShot('BUZZ')
             return
         }
-        MainTest.instance.fun创建消息 = MainTest.instance.createMsgMove强行走
+        BattleMoude.instance.fun创建消息 = BattleMoude.instance.createMsgMove强行走
         this.lable系统消息.string = '行走过程不会攻击敌人，请点击地面确定目的地'
         this.进入点击地面状态()
     }
@@ -145,7 +145,7 @@ export class BattleUI extends Dialog {
             AudioMgr.inst.playOneShot('BUZZ')
             return
         }
-        MainTest.instance.fun创建消息 = MainTest.instance.createMsg太岁分裂
+        BattleMoude.instance.fun创建消息 = MainTest.instance.createMsg太岁分裂
         this.lable系统消息.string = '请在选中太岁的苔蔓(wàn)上放置分裂的太岁'
         this.进入点击地面状态()
     }
@@ -410,7 +410,7 @@ export class BattleUI extends Dialog {
         return [等级数值, 属性等级]
     }
     on取消点击地面() {
-        MainTest.instance.fun创建消息 = null
+        BattleMoude.instance.fun创建消息 = null
         this.node取消点击地面.active = false
         this.下部列表.active = true
     }

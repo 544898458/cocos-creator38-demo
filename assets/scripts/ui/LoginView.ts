@@ -291,7 +291,7 @@ export class LoginView extends Dialog {
                 MainTest.instance.onClick进单人战局(战局类型.新手训练_战斗_虫)
                 break
             default:
-                toast.showToast('种族'+已选择种族+'未开放')
+                toast.showToast('种族' + 已选择种族 + '未开放')
                 return
         }
         this.node单人战局选择种族.active = false

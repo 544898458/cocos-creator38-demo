@@ -1,10 +1,9 @@
 // file: BattleMoude.ts
 import { Component, Node } from 'cc';
-import { MainTest } from '../MainTest';
 import { dispatcher } from '../manager/event/EventDispatcher';
 import { MsgId } from '../utils/Enum';
 import { Glob } from '../utils/Glob';
-import { director } from 'cc';
+import { Vec3 } from 'cc';
 
 
 export class BattleMoude extends Component {
@@ -16,6 +15,7 @@ export class BattleMoude extends Component {
     }
     public static _arr选中: number[] = [];
     public static _追加选中: boolean = false;
+    fun创建消息: (Vec3) => object = null//this.createMsgMove强行走//点击地面操作 = 点击地面操作类型.移动单位
     // 单例初始化方法
     public static init(): void {
         if (!BattleMoude._instance) {
@@ -33,12 +33,24 @@ export class BattleMoude extends Component {
             ]);
         }
     }
+    // 创建通用移动消息
+    createMsgMove(hitPoint: Vec3, b遇敌自动攻击: boolean): any[] | null {
+        if (BattleMoude._arr选中.length === 0) return null;
 
-    set追加选中(value: boolean): void {
-        BattleMoude._追加选中 = value;
+        return [
+            [MsgId.Move, 0],
+            [hitPoint.x, hitPoint.z],
+            b遇敌自动攻击
+        ];
     }
 
-    get选中(): number[] {
-        return BattleMoude._arr选中;
+    // 遇敌自动攻击模式下的移动消息
+    createMsgMove遇敌自动攻击(hitPoint: Vec3): any[] | null {
+        return this.createMsgMove(hitPoint, true);
+    }
+
+    // 强行走模式下的移动消息
+    createMsgMove强行走(hitPoint: Vec3): any[] | null {
+        return this.createMsgMove(hitPoint, false);
     }
 }

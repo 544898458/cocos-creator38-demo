@@ -61,7 +61,7 @@ export class MainTest extends Component {
     配置: 配置 = new 配置()
 
     funCreateMsg造建筑: (Vec3) => object
-    fun创建消息: (Vec3) => object = null//this.createMsgMove强行走//点击地面操作 = 点击地面操作类型.移动单位
+
     onLoad() {
         // 确保只有一个实例
         if (MainTest._instance) {
@@ -94,22 +94,6 @@ export class MainTest extends Component {
         NetMessage.instance.setMainTest(this);
     }
 
-    createMsgMove遇敌自动攻击(hitPoint: Vec3) {
-        return this.createMsgMove(hitPoint, true)
-    }
-    // funCreateMsgMove遇敌自动攻击 = this.createMsgMove遇敌自动攻击
-    createMsgMove强行走(hitPoint: Vec3) {
-        return this.createMsgMove(hitPoint, false)
-    }
-    createMsgMove(hitPoint: Vec3, b遇敌自动攻击: boolean) {
-        if (0 == BattleMoude._arr选中.length)
-            return null
-
-        return [[MsgId.Move, 0],
-        [hitPoint.x, hitPoint.z],
-            b遇敌自动攻击
-        ]
-    }
     start() {
         console.log('start')
         //打开加载页面
@@ -166,8 +150,8 @@ export class MainTest extends Component {
         return [[MsgId.AddBuilding, ++Glob.sendMsgSn, 0], 类型, [hitPoint.x, hitPoint.z]]
     }
     on点击按钮_造建筑(类型: 单位类型) {
-        this.fun创建消息 = (hitPoint: Vec3) => this.createMsg造建筑(hitPoint, 类型)
-        this.funCreateMsg造建筑 = this.fun创建消息
+        BattleMoude.instance.fun创建消息 = (hitPoint: Vec3) => this.createMsg造建筑(hitPoint, 类型)
+        this.funCreateMsg造建筑 = BattleMoude.instance.fun创建消息
         this.scene战斗.battleUI.lable系统消息.string = '请点击地面放置建筑'
         this.scene战斗.battleUI.进入点击地面状态()
     }

@@ -277,13 +277,13 @@ export class Scene战斗 extends Component {
     onMouseUp(pos: Vec2, b鼠标右键: boolean) {
         if (this.posWorld按下准备拖动地面) {
             this.posWorld按下准备拖动地面 = null
-            // console.log('fun创建消息:', this.main.fun创建消息)
+
             // console.log('createMsgMove遇敌自动攻击', this.main.createMsgMove遇敌自动攻击)
             // console.log('createMsg造建筑', this.main.createMsg造建筑)
             // console.log('createMsgMove强行走', this.main.createMsgMove强行走)
 
-            if (MainTest.instance.funCreateMsg造建筑 !== MainTest.instance.fun创建消息
-                && MainTest.instance.createMsgMove强行走 !== MainTest.instance.fun创建消息
+            if (MainTest.instance.funCreateMsg造建筑 !== BattleMoude.instance.fun创建消息
+                && BattleMoude.instance.createMsgMove强行走 !== BattleMoude.instance.fun创建消息
             ) { //正在强行走、正在摆放建筑物
                 this.恢复战斗界面()
             }
@@ -315,13 +315,11 @@ export class Scene战斗 extends Component {
 
 
                 fun点击地面处理 = () => {
-                    if (!MainTest.instance.fun创建消息)
+                    if (!BattleMoude.instance.fun创建消息)
                         return
 
-                    let object = b鼠标右键 ? MainTest.instance.createMsgMove强行走(item.hitPoint) : MainTest.instance.fun创建消息(item.hitPoint)
+                    let object = b鼠标右键 ? BattleMoude.instance.createMsgMove强行走(item.hitPoint) : BattleMoude.instance.fun创建消息(item.hitPoint)
                     if (object) {
-                        // this.b强行走 = false
-                        // this.uiLogin.fun创建消息 = this.uiLogin.funCreateMsgMove遇敌自动攻击
 
                         const encoded = msgpack.encode(object)
 
@@ -330,7 +328,7 @@ export class Scene战斗 extends Component {
 
                         this.点击地面特效(item.hitPoint)
                     }
-                    MainTest.instance.fun创建消息 = 0 < BattleMoude._arr选中.length ? MainTest.instance.createMsgMove遇敌自动攻击 : null
+                    BattleMoude.instance.fun创建消息 = 0 < BattleMoude._arr选中.length ? BattleMoude.instance.createMsgMove遇敌自动攻击 : null
                     this.恢复战斗界面()
                 }
             })
@@ -797,7 +795,7 @@ export class Scene战斗 extends Component {
             })
         }
         if (arr.length > 0)
-            MainTest.instance.fun创建消息 = MainTest.instance.createMsgMove遇敌自动攻击
+            BattleMoude.instance.fun创建消息 = BattleMoude.instance.createMsgMove遇敌自动攻击
     }
     worldToGraphics(graphicsNode: Node, worldPoint: Vec3) {
         // 获取graphics节点在世界坐标系中的位置
