@@ -405,6 +405,10 @@ export class LoginView extends Dialog {
         this.node单人战局列表_虫.active = false
         this.node单人战局选择种族.active = true
     }
+    onClick显示选择单人或多人() {
+        this.node选择单人或多人.active = true
+        this.node单人战局选择种族.active = false
+    }
 }
 
 
