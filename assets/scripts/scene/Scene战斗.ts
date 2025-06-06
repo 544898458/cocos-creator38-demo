@@ -681,6 +681,16 @@ export class Scene战斗 extends Component {
         this.battleUI.onSelectUnits(arr);
 
         for (let id of BattleMoude._arr选中) {
+        for (let id of this.main.arr选中) {
+            let old = this.entities.get(id)
+            if (!old) {
+                console.log('找不到:', id)
+                return
+            }
+
+            if (old.view.getChildByName(prefabName选中特效))
+                continue//已有特效
+
             resources.load(prefabName选中特效, Prefab, (err, prefab) => {
                 console.log('resources.load callback:', err, prefab)
                 if (0 > BattleMoude._arr选中.indexOf(id)) {
@@ -692,7 +702,7 @@ export class Scene战斗 extends Component {
                     console.log('找不到:', id)
                     return
                 }
-
+                old.view.getChildByName(prefabName选中特效)?.removeFromParent()
                 const newNode = instantiate(prefab)
                 newNode.name = prefabName选中特效
 
@@ -778,6 +788,7 @@ export class Scene战斗 extends Component {
                 let 战斗 = MainTest.instance.配置.find战斗(old.类型)
                 if (战斗) {
                     {
+                        old.view.getChildByName(nodeName攻击范围)?.removeFromParent()
                         const newNode = instantiate(prefab)
                         newNode.name = nodeName攻击范围
                         old.view.addChild(newNode)
@@ -785,6 +796,7 @@ export class Scene战斗 extends Component {
                         newNode.scale = newNode.scale.clone().multiply3f(scale, 1, scale)
                     }
                     {
+                        old.view.getChildByName(nodeName警戒范围)?.removeFromParent()
                         const newNode = instantiate(prefab)
                         newNode.name = nodeName警戒范围
                         old.view.addChild(newNode)
