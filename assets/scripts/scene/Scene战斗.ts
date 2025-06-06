@@ -681,7 +681,6 @@ export class Scene战斗 extends Component {
         this.battleUI.onSelectUnits(arr);
 
         for (let id of BattleMoude._arr选中) {
-        for (let id of this.main.arr选中) {
             let old = this.entities.get(id)
             if (!old) {
                 console.log('找不到:', id)

@@ -28,9 +28,11 @@ export class LoginView extends Dialog {
     @property({ type: RichText, displayName: "加载提示" })
     lableMessage: RichText;
     @property({ type: Node })
-    node选择单人或多人: Node;
+    node选择单人或多人: Node
     @property({ type: Node })
-    node单人战局列表_人: Node;
+    node单人战局列表_人: Node
+    @property({ type: Node })
+    node单人战局列表_虫: Node
     @property({ type: Node })
     node单人战局选择种族: Node;
     @property({ type: Node })
@@ -288,7 +290,7 @@ export class LoginView extends Dialog {
                 this.node单人战局列表_人.active = true
                 break
             case 种族.虫:
-                MainTest.instance.onClick进单人战局(战局类型.新手训练_战斗_虫)
+                this.node单人战局列表_虫.active = true
                 break
             default:
                 toast.showToast('种族' + 已选择种族 + '未开放')
@@ -393,6 +395,10 @@ export class LoginView extends Dialog {
     }
     onClick创建四方对战(event: Event, customEventData: string) {
         MainTest.instance.onClick创建四方对战()
+    }
+    onClick进单人战局(event: Event, customEventData: string) {
+        const id = 战局类型[customEventData as keyof typeof 战局类型]
+        MainTest.instance.onClick进单人战局(id)
     }
 }
 

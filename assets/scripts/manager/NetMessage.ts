@@ -145,6 +145,13 @@ export class NetMessage {
             old.类型 = type;
             scene战斗.entities.set(id, old);
 
+            if (scene战斗.battleUI.lableCount != undefined)
+                scene战斗.battleUI.lableCount.string = '共' + scene战斗.entities.size + '单位'
+
+            let 单位配置 = MainTest.instance.配置.find单位(old.类型)
+            if (单位配置)
+                old.initClipName = 单位配置.空闲动作
+
             resources.load(prefabName, Prefab, (err, prefab) => {
                 if (!scene战斗.roles) return console.warn('已离开战斗场景');
 
@@ -384,13 +391,14 @@ export class NetMessage {
         if (!mainTest) return;
 
         const id = arr[idxArr++];
-        const loop: boolean = arr[idxArr++];
-        const clipName: string = arr[idxArr++];
+        const loop: boolean = arr[idxArr++]
+        const clipName: string = arr[idxArr++]
+        console.log('ChangeSkeleAnim', id, loop, clipName)
 
-        const scene战斗 = mainTest.scene战斗;
-        const old = scene战斗?.entities.get(id);
+        const scene战斗 = mainTest.scene战斗
+        const old = scene战斗?.entities.get(id)
         if (!old) {
-            console.log('已离开战斗场景', id);
+            console.log('已离开战斗场景', id)
             return;
         }
 
