@@ -400,6 +400,11 @@ export class LoginView extends Dialog {
         const id = 战局类型[customEventData as keyof typeof 战局类型]
         MainTest.instance.onClick进单人战局(id)
     }
+    onClick显示选择种族() {
+        this.node单人战局列表_人.active = false
+        this.node单人战局列表_虫.active = false
+        this.node单人战局选择种族.active = true
+    }
 }
 
 
