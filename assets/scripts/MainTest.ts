@@ -287,6 +287,7 @@ export class MainTest extends Component {
         this.dialogMgr.openDialog(UI2Prefab.BattleUI_url, null, null, (dlg: Dialog): void => {
             if (!this.scene战斗.battleUI) {
                 this.scene战斗.battleUI = dlg.getComponent(BattleUI)
+                this.scene战斗.battleUI.lable在线人数.string = Glob.str在线人数
             }
             this.loadMap(sceneName, idMsg, id副本, str房主昵称, b多人混战)
         })
