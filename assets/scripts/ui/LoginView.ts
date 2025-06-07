@@ -17,6 +17,8 @@ import { TextAsset } from 'cc';
 import { NetMessage } from '../manager/NetMessage';
 import { EC } from '../utils/EC';
 import { JsonAsset } from 'cc';
+import { instantiate } from 'cc';
+import { Button } from 'cc';
 const { ccclass, property } = _decorator;
 declare const tt: any;
 @ccclass('LoginView')
@@ -37,6 +39,12 @@ export class LoginView extends Dialog {
     node单人战局选择种族: Node;
     @property({ type: Node })
     node个人战局列表: Node
+    @property({ type: Node })
+    node个人战局列表面板: Node
+    @property({ type: Node })
+    node个人战局按钮模板: Node
+    @property({ type: Node })
+    node多人战局类型: Node
 
     @property({ type: Node })
     node跳转社区浏览器H5: Node
@@ -280,8 +288,12 @@ export class LoginView extends Dialog {
 
     on单人或多人(event: Event, customEventData: string) {
         let b个人战局 = customEventData === 'true'
+        if (b个人战局) {
+            this.node单人战局选择种族.active = true
+        } else {
+            this.node多人战局类型.active = true
+        }
         this.node选择单人或多人.active = false
-        this.node单人战局选择种族.active = true
     }
     on单人战局选择种族(event: Event, customEventData: string) {
         let 已选择种族 = 种族[customEventData as keyof typeof 种族]
@@ -403,12 +415,43 @@ export class LoginView extends Dialog {
     onClick显示选择种族() {
         this.node单人战局列表_人.active = false
         this.node单人战局列表_虫.active = false
+        this.node个人战局列表面板.active = false
         this.node单人战局选择种族.active = true
     }
     onClick显示选择单人或多人() {
         this.node选择单人或多人.active = true
         this.node单人战局选择种族.active = false
+        this.node多人战局类型.active = false
+    }
+    onClick别人的个人战局列表(event: Event, customEventData: string) {
+        MainTest.instance.onClick获取别人的个人战局列表(event, customEventData)
+    }
+    显示战局列表(arrPlayer: string[][], handler: string) {
+        console.log('显示战局列表', arrPlayer, handler)
+        this.node单人战局选择种族.active = false
+        this.node个人战局列表面板.active = true
+        this.node个人战局列表.removeAllChildren()
+
+        for (let arrNikcScene of arrPlayer) {
+            let nickName = arrNikcScene[0]
+            let sceneName = arrNikcScene[1]
+            let node按钮 = instantiate(this.node个人战局按钮模板)
+            node按钮.active = true
+            node按钮.getChildByName('Label').getComponent(Label).string = nickName + ' 的战局'
+            let button = node按钮.getComponent(Button)
+            const clickEventHandler = new LoginView.EventHandler();
+            clickEventHandler.target = this.node; // 这个 node 节点是你的事件处理代码组件所属的节点
+            clickEventHandler.component = 'LoginView';// 这个是脚本类名
+            clickEventHandler.handler = handler;
+            clickEventHandler.customEventData = nickName;
+            button.clickEvents.push(clickEventHandler)
+            this.node个人战局列表.addChild(node按钮)
+
+            // 存储玩家场景信息
+            MainTest.instance.map玩家场景.set(nickName, sceneName)
+        }
+    }
+    onClick进入别人的个人战局(event: Event, customEventData: string) {
+        MainTest.instance.onClick进入别人的个人战局(event, customEventData)
     }
 }
-
-

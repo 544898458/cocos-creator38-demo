@@ -639,4 +639,13 @@ export class NetMessage {
 
         dispatcher.emit(EC.SHOW_LOGIN_UI);
     }
+    private handleGame_玩家个人战局列表(arr: any[], idxArr: number): void {
+        const mainTest = this.mainTest;
+        if (!mainTest || !mainTest.scene登录) return;
+
+        const arr玩家 = arr[idxArr++] as string[][];
+        console.log('handleGame_玩家个人战局列表', arr玩家)
+        mainTest.scene登录?.显示战局列表(arr玩家, 'onClick进入别人的个人战局')
+        console.log('收到玩家个人战局列表:', arr玩家);
+    }
 }
