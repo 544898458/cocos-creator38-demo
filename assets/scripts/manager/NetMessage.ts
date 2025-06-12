@@ -533,8 +533,8 @@ export class NetMessage {
         if (!mainTest || !mainTest.scene登录) return;
 
         const arr玩家 = arr[idxArr++] as string[][];
-        console.log('收到玩家多人战局列表:', arr玩家);
-        // 可触发 UI 更新
+        console.log('handleGame_玩家多人战局列表', arr玩家)
+        mainTest.scene登录?.显示战局列表(arr玩家, 'onClick进入别人的多人战局')
     }
 
     private handleGame_Notify属性(arr: any[], idxArr: number): void {

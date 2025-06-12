@@ -38,13 +38,13 @@ export class LoginView extends Dialog {
     @property({ type: Node })
     node单人战局选择种族: Node;
     @property({ type: Node })
-    node个人战局列表: Node
+    node玩家战局列表面板: Node
     @property({ type: Node })
-    node个人战局列表面板: Node
+    node玩家战局列表: Node
     @property({ type: Node })
     node个人战局按钮模板: Node
     @property({ type: Node })
-    node多人战局类型: Node
+    node多人战局面板: Node
 
     @property({ type: Node })
     node跳转社区浏览器H5: Node
@@ -58,6 +58,8 @@ export class LoginView extends Dialog {
 
     @property(Node) node登录面板: Node
     @property(Node) node选择模式: Node
+
+    fun玩家战局列表返回上一级: () => void
 
     onOpened(param: any): void {
         // // 登录失败监听
@@ -288,53 +290,46 @@ export class LoginView extends Dialog {
 
     on单人或多人(event: Event, customEventData: string) {
         let b个人战局 = customEventData === 'true'
+        this.单人或多人(b个人战局)
+    }
+    单人或多人(b个人战局: boolean) {
         if (b个人战局) {
             this.node单人战局选择种族.active = true
         } else {
-            this.node多人战局类型.active = true
+            this.node多人战局面板.active = true
+            this.fun玩家战局列表返回上一级 = ()=>this.单人或多人(false)
         }
         this.node选择单人或多人.active = false
     }
     on单人战局选择种族(event: Event, customEventData: string) {
         let 已选择种族 = 种族[customEventData as keyof typeof 种族]
+        this.单人战局选择种族(已选择种族)
+    }
+    单人战局选择种族(已选择种族: 种族) {
         switch (已选择种族) {
             case 种族.人:
                 this.node单人战局列表_人.active = true
+                this.fun玩家战局列表返回上一级 = ()=>this.单人战局选择种族(种族.人)
                 break
             case 种族.虫:
                 this.node单人战局列表_虫.active = true
+                this.fun玩家战局列表返回上一级 = ()=>this.单人战局选择种族(种族.虫)
                 break
             default:
                 toast.showToast('种族' + 已选择种族 + '未开放')
                 return
         }
         this.node单人战局选择种族.active = false
-        /*
-        if (this.个人战模式 > 0) {
-            switch (this.个人战模式) {
-                case 1:
-                    //MainTest.instance.onClick进单人战局(customEventData == '1' ? 战局类型.新手训练_单位介绍_人 : 战局类型.新手训练_单位介绍_虫)
-                    MainTest.instance.onClick进单人战局(customEventData == '1' ? 战局类型.新手训练_战斗_人 : 战局类型.新手训练_战斗_虫)
-                    break;
-                case 2:
-                    MainTest.instance.onClick进单人战局(customEventData == '1' ? 战局类型.防守战_人 : 战局类型.防守战_虫)
-                    break;
-                case 3:
-                    MainTest.instance.onClick进单人战局(customEventData == '1' ? 战局类型.攻坚战_人 : 战局类型.攻坚战_虫)
-                    break;
-            }
-        }
-    */
     }
+
     打开房间(event: Event, customEventData: string): void {
         this.node单人战局列表_人.active = false
-        this.node个人战局列表.active = true
+        this.node单人战局列表_人.active = true
     }
     显示登录界面(): void {
         this.node单人战局选择种族.active = false
         this.node选择单人或多人.active = false
         this.node单人战局列表_人.active = false
-        this.node个人战局列表.active = false
         this.node单人战局列表_人.getChildByName("单人战役").active = false;
         this.node单人战局列表_人.getChildByName("多人战役").active = false;
         this.LoginPanel.active = true
@@ -415,22 +410,30 @@ export class LoginView extends Dialog {
     onClick显示选择种族() {
         this.node单人战局列表_人.active = false
         this.node单人战局列表_虫.active = false
-        this.node个人战局列表面板.active = false
+        this.node玩家战局列表面板.active = false
         this.node单人战局选择种族.active = true
+    }
+    on玩家战局列表返回上一级(){
+        this.fun玩家战局列表返回上一级()
+        this.node玩家战局列表面板.active = false
     }
     onClick显示选择单人或多人() {
         this.node选择单人或多人.active = true
         this.node单人战局选择种族.active = false
-        this.node多人战局类型.active = false
+        this.node多人战局面板.active = false
     }
     onClick别人的个人战局列表(event: Event, customEventData: string) {
         MainTest.instance.onClick获取别人的个人战局列表(event, customEventData)
     }
+    onClick别人的多人战局列表(event: Event, customEventData: string) {
+        MainTest.instance.onClick获取别人的多人战局列表(event, customEventData)
+    }
     显示战局列表(arrPlayer: string[][], handler: string) {
         console.log('显示战局列表', arrPlayer, handler)
         this.node单人战局选择种族.active = false
-        this.node个人战局列表面板.active = true
-        this.node个人战局列表.removeAllChildren()
+        this.node多人战局面板.active = false
+        this.node玩家战局列表面板.active = true
+        this.node玩家战局列表.removeAllChildren()
 
         for (let arrNikcScene of arrPlayer) {
             let nickName = arrNikcScene[0]
@@ -445,13 +448,16 @@ export class LoginView extends Dialog {
             clickEventHandler.handler = handler;
             clickEventHandler.customEventData = nickName;
             button.clickEvents.push(clickEventHandler)
-            this.node个人战局列表.addChild(node按钮)
+            this.node玩家战局列表.addChild(node按钮)
 
             // 存储玩家场景信息
             MainTest.instance.map玩家场景.set(nickName, sceneName)
         }
     }
     onClick进入别人的个人战局(event: Event, customEventData: string) {
-        MainTest.instance.onClick进入别人的个人战局(event, customEventData)
+        MainTest.instance.onClick进入别人的多人战局(event, customEventData)
+    }
+    onClick进入别人的多人战局(event: Event, customEventData: string) {
+        MainTest.instance.onClick进入别人的多人战局(event, customEventData)
     }
 }
