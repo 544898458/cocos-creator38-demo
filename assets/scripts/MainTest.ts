@@ -533,7 +533,7 @@ export class MainTest extends Component {
             let state: AnimationState
             if (Number.isInteger(indexClip) && indexClip < 10) {
                 //必须在编辑器里随便设置一个默认剪辑，否则无法播放
-                // console.log('indexClip', indexClip, old)
+                console.log('indexClip', indexClip, old)
                 old.skeletalAnimation.play()
                 state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[indexClip])
                 // state.wrapMode = AnimationClip.WrapMode.Loop
