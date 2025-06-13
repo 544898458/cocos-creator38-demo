@@ -164,28 +164,7 @@ export class LoginView extends Dialog {
 
         this.LoginPanel.active = false//隐藏主页面
         this.lableMessage.string = '正在连接'
-        // this.websocket = new WebSocket("ws://192.168.31.194:12348/")
-        // this.websocket = new WebSocket("ws://192.168.31.170:12348/")
-        // this.websocket = new WebSocket("ws://192.168.43.186:12348/")
-        // this.websocket = new WebSocket("ws://10.0.35.76:12345/")
-        // this.websocket = new WebSocket("ws://192.168.0.96:12348/")
-        // this.websocket = new WebSocket("ws://47.119.184.177:12348/")
-        // this.websocket = new WebSocket("wss://rtsgame.online/")
-        // this.websocket = new WebSocket("wss://test.rtsgame.online/")
         Glob.websocket = new WebSocket("wss://" + customEventData)
-        // this.websocket = new WebSocket("ws://127.0.0.1:443")
-        // We should pass the cacert to libwebsockets used in native platform, otherwise the wss connection would be closed.
-        // let url = this.wssCacert.nativeUrl;
-        // if (assetManager.cacheManager) {
-        //     url = assetManager.cacheManager.getCache(url) || assetManager.cacheManager.getTemp(url) || url;
-        // }
-        // We should pass the cacert to libwebsockets used in native platform, otherwise the wss connection would be closed.
-        // this._wsiSendBinary = new WebSocket('wss://echo.websocket.events', [], url);
-        // console.log(url)
-
-        // this.websocket = new WebSocket('wss://wss2.iotlabor.cn:12348/',[])//, url)
-        // this.websocket = new WebSocket('wss://wss.iotlabor.cn/',[], url)
-        // this.websocket = new WebSocket('wss://echo.websocket.events', [])//, url);
         Glob.websocket.binaryType = 'arraybuffer'
         console.log(Glob.websocket)
 
@@ -207,7 +186,7 @@ export class LoginView extends Dialog {
                 20,//版本号
             ])
 
-            this.选择模式();
+            // this.选择模式();
         }
 
         let thisLocal = this
@@ -267,25 +246,8 @@ export class LoginView extends Dialog {
     选择模式() {
         this.LoginPanel.active = false;
         this.node选择单人或多人.active = true
-    }
-    选择战役(event: Event, customEventData: string) {
-        this.node选择单人或多人.active = false
-        this.node单人战局列表_人.active = true
-        let des = this.node单人战局列表_人.getChildByName('操作说明').getComponent(Label)
-        if (customEventData == '1')//单人战役
-        {
-            des.string = "单人战役：有训练战，防守战，攻坚战\n请选择你的玩法类型\n\n\n\n"
-            this.node单人战局列表_人.getChildByName("单人战役").active = true;
-            this.node单人战局列表_人.getChildByName("多人战役").active = false;
-
-        }
-        else if (customEventData == '2')//多人战役
-        {
-
-            des.string = "多人战役：\n多人全图混战：无限玩家同台地图竞技\n四方对战：四人玩家同台竞技，地图采用东西南北区域限制\n请选择你的玩法类型\n\n\n\n"
-            this.node单人战局列表_人.getChildByName("单人战役").active = false;
-            this.node单人战局列表_人.getChildByName("多人战役").active = true;
-        }
+        this.node单人战局选择种族.active = false
+        this.node多人战局面板.active = false
     }
 
     on单人或多人(event: Event, customEventData: string) {
@@ -295,6 +257,7 @@ export class LoginView extends Dialog {
     单人或多人(b个人战局: boolean) {
         if (b个人战局) {
             this.node单人战局选择种族.active = true
+            this.fun玩家战局列表返回上一级 = ()=>this.单人或多人(true)
         } else {
             this.node多人战局面板.active = true
             this.fun玩家战局列表返回上一级 = ()=>this.单人或多人(false)
@@ -309,11 +272,9 @@ export class LoginView extends Dialog {
         switch (已选择种族) {
             case 种族.人:
                 this.node单人战局列表_人.active = true
-                this.fun玩家战局列表返回上一级 = ()=>this.单人战局选择种族(种族.人)
                 break
             case 种族.虫:
                 this.node单人战局列表_虫.active = true
-                this.fun玩家战局列表返回上一级 = ()=>this.单人战局选择种族(种族.虫)
                 break
             default:
                 toast.showToast('种族' + 已选择种族 + '未开放')
@@ -418,9 +379,7 @@ export class LoginView extends Dialog {
         this.node玩家战局列表面板.active = false
     }
     onClick显示选择单人或多人() {
-        this.node选择单人或多人.active = true
-        this.node单人战局选择种族.active = false
-        this.node多人战局面板.active = false
+        this.选择模式()
     }
     onClick别人的个人战局列表(event: Event, customEventData: string) {
         MainTest.instance.onClick获取别人的个人战局列表(event, customEventData)

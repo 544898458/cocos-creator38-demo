@@ -382,7 +382,7 @@ export class NetMessage {
 
         if (!mainTest.b登录成功) {
             mainTest.b登录成功 = true;
-            mainTest.scene登录.node选择模式.active = true;
+            mainTest.scene登录.选择模式()
         }
         mainTest.显示在线人数();
     }
