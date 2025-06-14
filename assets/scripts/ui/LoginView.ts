@@ -282,7 +282,7 @@ export class LoginView extends Dialog {
         window.open('https://game.weixin.qq.com/cgi-bin/comm/openlink?auth_appid=wx62d9035fd4fd2059&url=https%3A%2F%2Fgame.weixin.qq.com%2Fcgi-bin%2Fh5%2Flite%2Fcirclecenter%2Findex.html%3Fwechat_pkgid%3Dlite_circlecenter%26liteapp%3Dliteapp%253A%252F%252Fwxalited17d79803d8c228a7eac78129f40484c%253Fpath%253Dpages%25252Findex%25252Findex%26appid%3Dwx57e5c006d2ac186e%26ssid%3D30%23wechat_redirect')
     }
     onClick微信小游戏内打开游戏圈(event: Event, customEventData: string) {
-        const pageManager = (window as any).wx.createPageManager();
+        const pageManager = wx.createPageManager();
 
         //在这里获取链接
         // https://mp.weixin.qq.com/wxamp/frame/pluginRedirect/pluginRedirect?title=&action=plugin_redirect&lang=zh_CN&plugin_uin=1029&simple=1&nosidebar=1&custom=jump_page%3Dcontent-manage&token=1691532200
@@ -304,7 +304,7 @@ export class LoginView extends Dialog {
         console.log('window.CC_WECHAT', (window as any).CC_WECHAT)
         if ((window as any).CC_WECHAT) {
             // 调用微信小游戏的跳转方法
-            (window as any).wx.navigateToMiniProgram({
+            wx.navigateToMiniProgram({
                 appId: 'wx2e932efa8e0740f0', // 替换为实际的公众号 AppID
                 path: '', // 公众号的路径，如果需要指定特定页面，可以在这里设置
                 extraData: {
