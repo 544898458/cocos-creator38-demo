@@ -106,6 +106,7 @@ export class BattleUI extends Dialog {
         MainTest.instance.scene战斗.battleUI = this//.node.getComponent(BattleUI);
         this.lastTitle = this.nodeFightPanel.getChildByName("建筑单位");
         this.uiTransform剧情对话根.node.active = false
+        this.node_selectedList.active = false
     }
 
     update(deltaTime: number) {
