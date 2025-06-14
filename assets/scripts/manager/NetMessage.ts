@@ -449,7 +449,7 @@ export class NetMessage {
         const mainTest = this.mainTest;
         if (!mainTest) return;
 
-        mainTest.离开战斗场景();
+        mainTest.离开战斗场景(false);
     }
 
     private handleGame_苔蔓半径(arr: any[], idxArr: number): void {

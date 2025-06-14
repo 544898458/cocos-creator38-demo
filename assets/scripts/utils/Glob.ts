@@ -36,4 +36,10 @@ export class Glob {
     public static decodeMessage(data: ArrayBuffer): any[] {
         return msgpack.decode(new Uint8Array(data));
     }
+    public static 清零网络数据包序号() {
+        Glob.recvMsgSnGameSvr = 0
+        Glob.recvMsgSnWorldSvr = 0
+        Glob.recvMsgSn = 0
+        Glob.sendMsgSn = 0
+    }
 }

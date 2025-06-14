@@ -612,7 +612,7 @@ export class MainTest extends Component {
             }
         }
     }
-    离开战斗场景(): void {
+    离开战斗场景(b显示登录界面, str: string = ''): void {
         if (this.scene战斗) {
             this.scene战斗.entities.forEach((clientEntityComponent, k, map) => {
                 clientEntityComponent.removeFromParent()
@@ -621,11 +621,18 @@ export class MainTest extends Component {
             this.scene战斗.entityId.clear()
         }
         this.dialogMgr.openDialog(UI2Prefab.LoginView_url, null, null, (dlg: Dialog): void => {
-            console.log('打开登录场景')
+            console.log('打开登录界面', b显示登录界面, str)
             let loginView = dlg.getComponent(LoginView)
-            loginView.node登录面板.active = false
-            // loginView.选择单人或多人(true)
-            this.fun离开战斗场景(loginView)
+            if (b显示登录界面) {
+                loginView.node单人战局列表_人.active = false
+                loginView.node单人战局列表_虫.active = false
+                loginView.node玩家战局列表.active = false
+                loginView.node多人战局面板.active = false
+                loginView.登录界面显示消息(str)
+            } else {
+                this.fun离开战斗场景(loginView)
+                loginView.node登录面板.active = false
+            }
         })
         MainTest.GetMapNode().removeAllChildren()
         // director.loadScene('scene登录', (err, scene) => {

@@ -20,6 +20,8 @@ import { JsonAsset } from 'cc';
 import { instantiate } from 'cc';
 import { Button } from 'cc';
 import { Toggle } from 'cc';
+import { dialogMgr } from '../manager/DialogManager';
+import { UI2Prefab } from '../autobind/UI2Prefab';
 const { ccclass, property } = _decorator;
 declare const tt: any;
 @ccclass('LoginView')
@@ -79,7 +81,7 @@ export class LoginView extends Dialog {
         console.log("LoginView.onOpened", param)
         MainTest.instance.scene登录 = this
         // this.loadNode.active = true;
-        if (Glob.str在线人数)
+        if (Glob.str在线人数 && Glob.websocket)
             this.lableMessage.string = Glob.str在线人数
 
         //显示上次登录昵称
@@ -140,6 +142,9 @@ export class LoginView extends Dialog {
     static 是抖音小游戏(): boolean {
         return typeof tt !== 'undefined' && tt != null
     }
+    登录界面显示消息(str: string) {
+        this.lableMessage.string = str
+    }
     //点击登录
     onClickLogin(event: Event, customEventData: string) {
         MainTest.instance.b登录成功 = false
@@ -196,12 +201,17 @@ export class LoginView extends Dialog {
             if (null == Glob.websocket)
                 return//后台主动通知关闭
 
-            thisLocal.清零网络数据包序号()
+            Glob.清零网络数据包序号()
             Glob.websocket = null
 
-
-            thisLocal.lableMessage.string = '连接已断开，已回到登录场景'
-            thisLocal.显示登录界面()
+            let loginView = dialogMgr.getDialog(UI2Prefab.LoginView_url)?.getComponent(LoginView)
+            const str = '连接已断开，已回到登录场景'
+            if (loginView) {
+                loginView.登录界面显示消息(str)
+                loginView.显示登录界面()
+            } else {
+                MainTest.instance.离开战斗场景(true, str)
+            }
         }
 
         //监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
@@ -212,12 +222,6 @@ export class LoginView extends Dialog {
 
     onSetting(): void {
         toast.showToast('暂未开放设置')
-    }
-    清零网络数据包序号() {
-        Glob.recvMsgSnGameSvr = 0
-        Glob.recvMsgSnWorldSvr = 0
-        Glob.recvMsgSn = 0
-        Glob.sendMsgSn = 0
     }
     //连接成功，打开选择战役模式
     显示选择单人或多人() {
