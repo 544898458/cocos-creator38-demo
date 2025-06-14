@@ -108,12 +108,15 @@ export class BattleUI extends Dialog {
         MainTest.instance.scene战斗.battleUI = this//.node.getComponent(BattleUI);
     }
     onShow(): void {
+        console.log('onShow')
         this.lastTitle = this.nodeFightPanel.getChildByName("建筑单位");
         this.toggle建筑单位.isChecked = true
         this.nodeFightPanel.getChildByName('活动单位').active = false
         this.onClickTitle(this.toggle建筑单位, '建筑单位')
 
         this.node_selectedList.removeAllChildren();
+        this.lable单位详情.string = ''
+        
         this.uiTransform剧情对话根.node.active = false
         this.richText任务提示.string = ''
     }
