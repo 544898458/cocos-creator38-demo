@@ -88,9 +88,11 @@ export class DialogManager {
         let t = this;
         if (t._dialogInLoad[url]) {
             t._dialogInLoad[url] = [url, args];
+            t._dialogInOpen[url].onShow()
             if (onLoad) {
                 onLoad(t._dialogInOpen[url]);
             }
+            
             return;
         } else {
             t._dialogInLoad[url] = [url, args];
@@ -101,6 +103,7 @@ export class DialogManager {
             dialog.node.active = true;
             dialog.initalData(t._dialogInLoad[url][1]);
             delete t._dialogInLoad[url];
+            t._dialogInOpen[url].onShow()
             if (onLoad) {
                 onLoad(t._dialogInOpen[url]);
             }
@@ -135,6 +138,7 @@ export class DialogManager {
                         if (!dialog.hasPage)
                             t.hideView(url);
 
+                        t._dialogInOpen[url].onShow()
                         if (onLoad) {
                             onLoad(dialog);
                         }

@@ -153,4 +153,5 @@ export class Dialog extends Panel {
      * 3. 其他业务逻辑处理
      */
     onClosed(): void { }
+    onShow(): void { }
 }

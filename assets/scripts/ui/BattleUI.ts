@@ -71,6 +71,8 @@ export class BattleUI extends Dialog {
     @property(Node) node升级飞虫移速: Node
     @property(Node) node太岁分裂: Node
     @property(Node) node离开房虫: Node
+    
+    @property(Toggle) toggle建筑单位: Toggle
 
     @property({ type: UITransform, displayName: "所有单位头顶名字" })
     uiTransform所有单位头顶名字: UITransform
@@ -104,11 +106,17 @@ export class BattleUI extends Dialog {
     onOpened(param: any): void {
         dispatcher.on(EC.DIALOGUE, this.剧情对话, this);
         MainTest.instance.scene战斗.battleUI = this//.node.getComponent(BattleUI);
-        this.lastTitle = this.nodeFightPanel.getChildByName("建筑单位");
-        this.uiTransform剧情对话根.node.active = false
-        this.node_selectedList.active = false
     }
+    onShow(): void {
+        this.lastTitle = this.nodeFightPanel.getChildByName("建筑单位");
+        this.toggle建筑单位.isChecked = true
+        this.nodeFightPanel.getChildByName('活动单位').active = false
+        this.onClickTitle(this.toggle建筑单位, '建筑单位')
 
+        this.node_selectedList.removeAllChildren();
+        this.uiTransform剧情对话根.node.active = false
+        this.richText任务提示.string = ''
+    }
     update(deltaTime: number) {
 
     }
@@ -298,8 +306,8 @@ export class BattleUI extends Dialog {
         MainTest.instance.scene战斗?.刷新单位名字()
         console.log('b显示单位类型,toggle.isChecked', toggle.isChecked)
     }
-    onClickTitle(event: Event, customEventData: string): void {
-        console.log('选中', customEventData)
+    onClickTitle(toggle: Toggle, customEventData: string): void {
+        console.log(toggle,'选中', customEventData)
         this.lastTitle.active = false;
 
         this.lastTitle = this.nodeFightPanel.getChildByName(customEventData);
