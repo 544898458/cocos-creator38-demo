@@ -382,7 +382,7 @@ export class NetMessage {
 
         if (!mainTest.b登录成功) {
             mainTest.b登录成功 = true;
-            mainTest.scene登录.选择模式()
+            mainTest.scene登录.显示选择单人或多人()
         }
         mainTest.显示在线人数();
     }
@@ -449,7 +449,7 @@ export class NetMessage {
         const mainTest = this.mainTest;
         if (!mainTest) return;
 
-        mainTest.回到登录场景();
+        mainTest.离开战斗场景();
     }
 
     private handleGame_苔蔓半径(arr: any[], idxArr: number): void {

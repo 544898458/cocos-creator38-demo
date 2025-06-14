@@ -2,6 +2,9 @@ import { UI2Prefab } from "../autobind/UI2Prefab";
 import { EC } from "../utils/EC";
 import { dialogMgr } from "./DialogManager";
 import { dispatcher } from "./event/EventDispatcher";
+import { LoginView } from "../ui/LoginView";
+import { Glob } from "../utils/Glob";
+import { Dialog } from '../component/Dialog';
 class LoginMgr {
 
     initial(): void {
@@ -14,7 +17,13 @@ class LoginMgr {
     }
     openLogin() {
         // dialogMgr.closeDialog(UI2Prefab.LoadingView_url);
-        dialogMgr.openDialog(UI2Prefab.LoginView_url);
+        dialogMgr.openDialog(UI2Prefab.LoginView_url, null, null, (dlg: Dialog): void => {
+            let loginView = dlg.getComponent(LoginView)
+            if (Glob.websocket) {
+                loginView.node选择单人多人.active = true
+                loginView.node登录面板.active = false
+            }
+        })
     }
 
 }

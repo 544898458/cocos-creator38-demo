@@ -61,7 +61,7 @@ export class MainTest extends Component {
     配置: 配置 = new 配置()
 
     funCreateMsg造建筑: (Vec3) => object
-
+    fun离开战斗场景: (loginView: LoginView) => void
     onLoad() {
         // 确保只有一个实例
         if (MainTest._instance) {
@@ -246,7 +246,7 @@ export class MainTest extends Component {
         }
     }
     进Scene战斗(sceneName: string, idMsg: MsgId, id副本: 战局类型, str房主昵称: string = '', b多人混战: boolean = false) {
-        this.scene登录.node选择模式.active = false
+        this.scene登录.node选择单人多人.active = false
         this.dialogMgr.closeDialog(UI2Prefab.LoginView_url);
         if ((window as any).CC_WECHAT) {
             if (b多人混战) {
@@ -565,7 +565,7 @@ export class MainTest extends Component {
             }
         }
     }
-    回到登录场景(): void {
+    离开战斗场景(): void {
         if (this.scene战斗) {
             this.scene战斗.entities.forEach((clientEntityComponent, k, map) => {
                 clientEntityComponent.removeFromParent()
@@ -573,7 +573,13 @@ export class MainTest extends Component {
             this.scene战斗.entities.clear()
             this.scene战斗.entityId.clear()
         }
-        this.dialogMgr.openDialog(UI2Prefab.LoginView_url)
+        this.dialogMgr.openDialog(UI2Prefab.LoginView_url, null, null, (dlg: Dialog): void => {
+            console.log('打开登录场景')
+            let loginView = dlg.getComponent(LoginView)
+            loginView.node登录面板.active = false
+            // loginView.选择单人或多人(true)
+            this.fun离开战斗场景(loginView)
+        })
         MainTest.GetMapNode().removeAllChildren()
         // director.loadScene('scene登录', (err, scene) => {
         //     // console.log('回到登录场景,nodeSelectSpace.active=', this.scene登录.nodeSelectSpace.active)

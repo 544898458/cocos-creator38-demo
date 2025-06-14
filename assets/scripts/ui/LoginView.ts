@@ -57,7 +57,7 @@ export class LoginView extends Dialog {
     richText公告: RichText;
 
     @property(Node) node登录面板: Node
-    @property(Node) node选择模式: Node
+    @property(Node) node选择单人多人: Node
 
     fun玩家战局列表返回上一级: () => void
 
@@ -68,7 +68,7 @@ export class LoginView extends Dialog {
         // },this);
 
         // 显示登录界面
-        dispatcher.on(EC.SHOW_LOGIN_UI, this.显示登录界面, this);
+        // dispatcher.on(EC.SHOW_LOGIN_UI, this.显示登录界面, this);
 
         console.log("LoginView.onOpened", param)
         MainTest.instance.scene登录 = this
@@ -76,10 +76,6 @@ export class LoginView extends Dialog {
         if (Glob.str在线人数)
             this.lableMessage.string = Glob.str在线人数
 
-        if (Glob.websocket) {
-            this.node选择模式.active = true
-            this.node登录面板.active = false
-        }
         //显示上次登录昵称
         this.editBox登录名.string = sys.localStorage.getItem(Glob.KEY_登录名) || ""
         // this.显示登录界面();
@@ -208,23 +204,7 @@ export class LoginView extends Dialog {
 
 
             thisLocal.lableMessage.string = '连接已断开，已回到登录场景'
-            if (thisLocal) {
-                thisLocal.显示登录界面()
-            } else {
-                // director.loadScene('scene登录')
-                // thisLocal.scene战斗.main = null
-                // thisLocal.scene战斗 = null
-                // console.log('开始loadScene')
-                // director.loadScene('scene登录', (err, scene) => {
-                //     console.log('断网回到登录场景', thisLocal.scene登录.nodeSelectSpace.active)
-                //     // director.runScene(scene);
-                //     // thisLocal.scene登录.显示登录界面()
-                // })
-                //let fun = ()=>thisLocal.回到登录场景(true)
-                // fun()
-                // thisLocal.scheduleOnce(fun,0.1)
-                thisLocal.回到登录场景();
-            }
+            thisLocal.显示登录界面()
         }
 
         //监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
@@ -243,24 +223,23 @@ export class LoginView extends Dialog {
         Glob.sendMsgSn = 0
     }
     //连接成功，打开选择战役模式
-    选择模式() {
-        this.LoginPanel.active = false;
+    显示选择单人或多人() {
         this.node选择单人或多人.active = true
+        this.LoginPanel.active = false;
         this.node单人战局选择种族.active = false
         this.node多人战局面板.active = false
     }
 
     on单人或多人(event: Event, customEventData: string) {
         let b个人战局 = customEventData === 'true'
-        this.单人或多人(b个人战局)
+        this.选择单人或多人(b个人战局)
     }
-    单人或多人(b个人战局: boolean) {
+    选择单人或多人(b个人战局: boolean) {
         if (b个人战局) {
             this.node单人战局选择种族.active = true
-            this.fun玩家战局列表返回上一级 = ()=>this.单人或多人(true)
         } else {
             this.node多人战局面板.active = true
-            this.fun玩家战局列表返回上一级 = ()=>this.单人或多人(false)
+            MainTest.instance.fun离开战斗场景 = (loginView:LoginView)=>loginView.选择单人或多人(false)
         }
         this.node选择单人或多人.active = false
     }
@@ -269,6 +248,7 @@ export class LoginView extends Dialog {
         this.单人战局选择种族(已选择种族)
     }
     单人战局选择种族(已选择种族: 种族) {
+        MainTest.instance.fun离开战斗场景 = (loginView:LoginView)=>loginView.单人战局选择种族(已选择种族)
         switch (已选择种族) {
             case 种族.人:
                 this.node单人战局列表_人.active = true
@@ -291,16 +271,11 @@ export class LoginView extends Dialog {
         this.node单人战局选择种族.active = false
         this.node选择单人或多人.active = false
         this.node单人战局列表_人.active = false
-        this.node单人战局列表_人.getChildByName("单人战役").active = false;
-        this.node单人战局列表_人.getChildByName("多人战役").active = false;
         this.LoginPanel.active = true
         if (Glob.websocket)
             this.lableMessage.string = '连接已断开，已回到登录界面'
     }
 
-    回到登录场景(): void {
-        console.log("回到登录场景")
-    }
     //游戏讨论关于
     onClick浏览器H5打开游戏圈(event: Event, customEventData: string) {
         window.open('https://game.weixin.qq.com/cgi-bin/comm/openlink?auth_appid=wx62d9035fd4fd2059&url=https%3A%2F%2Fgame.weixin.qq.com%2Fcgi-bin%2Fh5%2Flite%2Fcirclecenter%2Findex.html%3Fwechat_pkgid%3Dlite_circlecenter%26liteapp%3Dliteapp%253A%252F%252Fwxalited17d79803d8c228a7eac78129f40484c%253Fpath%253Dpages%25252Findex%25252Findex%26appid%3Dwx57e5c006d2ac186e%26ssid%3D30%23wechat_redirect')
@@ -379,12 +354,14 @@ export class LoginView extends Dialog {
         this.node玩家战局列表面板.active = false
     }
     onClick显示选择单人或多人() {
-        this.选择模式()
+        this.显示选择单人或多人()
     }
     onClick别人的个人战局列表(event: Event, customEventData: string) {
+        this.fun玩家战局列表返回上一级 = ()=>this.选择单人或多人(true)
         MainTest.instance.onClick获取别人的个人战局列表(event, customEventData)
     }
     onClick别人的多人战局列表(event: Event, customEventData: string) {
+        this.fun玩家战局列表返回上一级 = ()=>this.选择单人或多人(false)
         MainTest.instance.onClick获取别人的多人战局列表(event, customEventData)
     }
     显示战局列表(arrPlayer: string[][], handler: string) {
