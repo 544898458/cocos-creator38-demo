@@ -19,6 +19,7 @@ import { EC } from '../utils/EC';
 import { JsonAsset } from 'cc';
 import { instantiate } from 'cc';
 import { Button } from 'cc';
+import { Toggle } from 'cc';
 const { ccclass, property } = _decorator;
 declare const tt: any;
 @ccclass('LoginView')
@@ -54,7 +55,12 @@ export class LoginView extends Dialog {
     node跳转社区抖音小游戏: Node
 
     @property(RichText)
-    richText公告: RichText;
+    richText公告: RichText
+
+    @property(Node)
+    node排行榜面板: Node
+    @property(RichText)
+    richText排行榜内容: RichText
 
     @property(Node) node登录面板: Node
     @property(Node) node选择单人多人: Node
@@ -108,20 +114,6 @@ export class LoginView extends Dialog {
             this.richText公告.string = textAsset.text
         })
 
-        //遍历 战局类型
-        for (let 战局 = 战局类型.单人ID_非法_MIN + 1; 战局 < 战局类型.单人ID_非法_MAX; 战局++) {
-            assetManager.loadRemote(`https://www.rtsgame.online/排行榜/战局_${战局}_赢.json`, (err, jsonAsset: JsonAsset) => {
-                console.log('resources.load callback:', err, jsonAsset)
-                let playerStats = jsonAsset.json
-                console.log(playerStats)
-            })
-
-            assetManager.loadRemote(`https://www.rtsgame.online/排行榜/战局_${战局}_输.json`, (err, jsonAsset: JsonAsset) => {
-                console.log('resources.load callback:', err, jsonAsset)
-                let playerStats = jsonAsset.json
-                console.log(playerStats)
-            })
-        }
         if (LoginView.是抖音小游戏()) {
             // --侧边栏按钮判断--//
             tt.onShow((res) => {
@@ -244,7 +236,7 @@ export class LoginView extends Dialog {
             this.node单人战局选择种族.active = true
         } else {
             this.node多人战局面板.active = true
-            MainTest.instance.fun离开战斗场景 = (loginView:LoginView)=>loginView.选择单人或多人(false)
+            MainTest.instance.fun离开战斗场景 = (loginView: LoginView) => loginView.选择单人或多人(false)
         }
         this.node选择单人或多人.active = false
     }
@@ -253,7 +245,7 @@ export class LoginView extends Dialog {
         this.单人战局选择种族(已选择种族)
     }
     单人战局选择种族(已选择种族: 种族) {
-        MainTest.instance.fun离开战斗场景 = (loginView:LoginView)=>loginView.单人战局选择种族(已选择种族)
+        MainTest.instance.fun离开战斗场景 = (loginView: LoginView) => loginView.单人战局选择种族(已选择种族)
         switch (已选择种族) {
             case 种族.人:
                 this.node单人战局列表_人.active = true
@@ -352,9 +344,10 @@ export class LoginView extends Dialog {
         this.node单人战局列表_人.active = false
         this.node单人战局列表_虫.active = false
         this.node玩家战局列表面板.active = false
+        this.node排行榜面板.active = false
         this.node单人战局选择种族.active = true
     }
-    on玩家战局列表返回上一级(){
+    on玩家战局列表返回上一级() {
         this.fun玩家战局列表返回上一级()
         this.node玩家战局列表面板.active = false
     }
@@ -362,11 +355,11 @@ export class LoginView extends Dialog {
         this.显示选择单人或多人()
     }
     onClick别人的个人战局列表(event: Event, customEventData: string) {
-        this.fun玩家战局列表返回上一级 = ()=>this.选择单人或多人(true)
+        this.fun玩家战局列表返回上一级 = () => this.选择单人或多人(true)
         MainTest.instance.onClick获取别人的个人战局列表(event, customEventData)
     }
     onClick别人的多人战局列表(event: Event, customEventData: string) {
-        this.fun玩家战局列表返回上一级 = ()=>this.选择单人或多人(false)
+        this.fun玩家战局列表返回上一级 = () => this.选择单人或多人(false)
         MainTest.instance.onClick获取别人的多人战局列表(event, customEventData)
     }
     显示战局列表(arrPlayer: string[][], handler: string) {
@@ -400,5 +393,38 @@ export class LoginView extends Dialog {
     }
     onClick进入别人的多人战局(event: Event, customEventData: string) {
         MainTest.instance.onClick进入别人的多人战局(event, customEventData)
+    }
+    onClick排行榜(event: Event, customEventData: string) {
+        this.node单人战局选择种族.active = false
+        this.node排行榜面板.active = true
+
+        // for (let 战局 = 战局类型.单人ID_非法_MIN + 1; 战局 < 战局类型.单人ID_非法_MAX; 战局++) {
+        //     assetManager.loadRemote(`https://www.rtsgame.online/排行榜/战局_${战局}_赢.json`, (err, jsonAsset: JsonAsset) => {
+        //         console.log('resources.load callback:', err, jsonAsset)
+        //         let playerStats = jsonAsset.json
+        //         console.log(playerStats)
+        //     })
+
+        //     assetManager.loadRemote(`https://www.rtsgame.online/排行榜/战局_${战局}_输.json`, (err, jsonAsset: JsonAsset) => {
+        //         console.log('resources.load callback:', err, jsonAsset)
+        //         let playerStats = jsonAsset.json
+        //         console.log(playerStats)
+        //     })
+        // }
+    }
+    onToggle排行榜类型(toggle: Toggle, customEventData: string) {
+        //customEventData转战局类型
+        let 选中战局类型 = 战局类型[customEventData as keyof typeof 战局类型]
+        assetManager.loadRemote(`https://www.rtsgame.online/排行榜/战局_${选中战局类型}_赢.json`, (err, jsonAsset: JsonAsset) => {
+            console.log('resources.load callback:', err, jsonAsset)
+            let arrPlayerStats = jsonAsset.json as Array<{ nickname: string, wins: number, losses: number }>
+            this.richText排行榜内容.string = ''
+            for (let player of arrPlayerStats) {
+                this.richText排行榜内容.string += `${player.nickname}\t赢:${player.wins}\t输:${player.losses}\n`
+            }
+            // console.log(arrPlayer)
+
+        })
+        console.log('onToggle排行榜', toggle, customEventData)
     }
 }
