@@ -356,10 +356,12 @@ export class LoginView extends Dialog {
     }
     onClick别人的个人战局列表(event: Event, customEventData: string) {
         this.fun玩家战局列表返回上一级 = () => this.选择单人或多人(true)
+        MainTest.instance.fun离开战斗场景 = (loginView: LoginView) => loginView.选择单人或多人(true)
         MainTest.instance.onClick获取别人的个人战局列表(event, customEventData)
     }
     onClick别人的多人战局列表(event: Event, customEventData: string) {
         this.fun玩家战局列表返回上一级 = () => this.选择单人或多人(false)
+        MainTest.instance.fun离开战斗场景 = (loginView: LoginView) => loginView.选择单人或多人(false)
         MainTest.instance.onClick获取别人的多人战局列表(event, customEventData)
     }
     显示战局列表(arrPlayer: string[][], handler: string) {
