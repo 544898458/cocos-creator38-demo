@@ -206,37 +206,80 @@ export class MainTest extends Component {
     }
     //
     onSecen登录Load(): void {
-        if ((window as any).CC_WECHAT) {
-            // 创建插屏广告实例，提前初始化
-            if ((window as any).wx.createInterstitialAd) {
-                this.interstitialAd = (window as any).wx.createInterstitialAd({
+        if (window.CC_WECHAT) {
+            let thisLocal = this
+            // 创建插屏广告实例，提前初始化             进入战斗场景时显示
+            if (wx.createInterstitialAd) {
+                this.interstitialAd = wx.createInterstitialAd({
                     adUnitId: 'adunit-904480d5c9a873be'
                 })
                 this.interstitialAd.onLoad(() => { console.log('插屏 广告加载成功') })
-                let thisLocal = this
+                this.interstitialAd.onError((err: any) => {
+                    console.error('interstitialAd onError', err.errMsg)
+                });
                 this.interstitialAd.onClose(() => { thisLocal.on关闭广告() })
+                console.log('this.interstitialAd', this.interstitialAd)
+            } else {
+                console.log('微信流量主插屏广告未初始化')
             }
 
-            // 创建 原生模板 广告实例，提前初始化
-            let CustomAd = (window as any).wx.createCustomAd({
-                adUnitId: 'adunit-cce53ccb600523d1',
-                style: {
-                    left: 0,
-                    top: 0,
-                    width: 350
-                }
-            })
+            if (!this.customAd) {
+                // 创建 原生模板 广告实例，提前初始化           首页顶部广告条
+                const size = wx.getSystemInfoSync();
+                const adWidth = 350;
+                // Calculate centered position
+                const left = (size.screenWidth - adWidth) / 2;
+                console.log('left', left, 'size', size)
+                this.customAd = wx.createCustomAd({
+                    adUnitId: 'adunit-cce53ccb600523d1',
+                    style: {
+                        left: left,
+                        top: 0,
+                        width: adWidth
+                    }
+                })
 
-            // 在适合的场景显示 原生模板 广告
-            CustomAd.show()
+                console.log('CustomAd', this.customAd)
+                // 监听 原生模板 广告错误事件
+                this.customAd.onError(err => {
+                    console.error('CustomAd onError', err.errMsg)
+                });
+                this.customAd.onLoad(() => console.log('原生模板广告加载成功'))
+                // 在适合的场景显示 原生模板 广告
+                this.customAd.show().then(() => console.log('首次创建后原生模板广告显示成功')).catch(err => console.log('首次创建后原生模板广告显示错误', err))
 
-            // 监听 原生模板 广告错误事件
-            CustomAd.onError(err => {
-                console.error(err.errMsg)
-            });
+            } else {
+                this.customAd.show().then(() => console.log('原生模板广告再次显示成功')).catch(err => console.log('原生模板广告再次显示错误', err))
+            }
+
+            if (!this.rewardedVideoAd) {
+                // 创建激励视频广告实例，提前初始化
+                this.rewardedVideoAd = wx.createRewardedVideoAd({
+                    adUnitId: 'adunit-016e0f527a910f13'
+                })
+                this.rewardedVideoAd.onError(err => {
+                    console.error('rewardedVideoAd onError', err.errMsg)
+                });
+                this.rewardedVideoAd.onClose(res => {
+                    thisLocal.on关闭广告(res && res.isEnded || res === undefined)
+                    // 用户点击了【关闭广告】按钮
+                    // 小于 2.1.0 的基础库版本，res 是一个 undefined
+                    // if (res && res.isEnded || res === undefined) {
+                    //     // 正常播放结束，可以下发游戏奖励
+                    // }
+                    // else {
+                    //     // 播放中途退出，不下发游戏奖励
+                    // }
+                })
+                console.log('this.rewardedVideoAd', this.rewardedVideoAd)
+            }
+        } else if (MainTest.是抖音小游戏()) {
+
         }
     }
-
+    static 是抖音小游戏(): boolean {
+        return typeof tt !== 'undefined' && tt != null
+    }
     on关闭广告(b已看完激励视频广告 = false) {
         console.log('on关闭广告', this.fun关闭广告发消息, this)
         this.b已显示进战斗场景前的广告 = false
@@ -660,6 +703,24 @@ export class MainTest extends Component {
 
         if (this.scene登录)
             this.scene登录.lableMessage.string = Glob.str在线人数
+    }
+
+    销毁原生模板广告(): void {
+        if (window.CC_WECHAT) {
+            // if (this.interstitialAd) {
+            //     this.interstitialAd.offClose()
+            //     this.interstitialAd.offLoad()
+            //     this.interstitialAd.destroy()
+            //     this.interstitialAd = null
+            // }
+            // if (this.rewardedVideoAd) {
+            //     this.rewardedVideoAd.offClose()
+            // }
+            if (this.customAd) {
+                this.customAd.hide()
+                // this.customAd = null
+            }
+        }
     }
 }
 

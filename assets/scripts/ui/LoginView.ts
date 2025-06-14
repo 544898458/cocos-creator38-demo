@@ -140,6 +140,11 @@ export class LoginView extends Dialog {
             });
         }
     }
+    onClosed(): void {
+        console.log("LoginView.onClose")
+        MainTest.instance.销毁原生模板广告()
+        super.onClosed();
+    }
     static 是抖音小游戏(): boolean {
         return typeof tt !== 'undefined' && tt != null
     }

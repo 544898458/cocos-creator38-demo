@@ -12,6 +12,7 @@ import { sys } from 'cc'
 import { TextAsset } from 'cc'
 import { MsgId, 战局类型 } from '../配置/配置'
 import { RichText } from 'cc'
+import { MainTest } from '../MainTest'
 
 const { ccclass, property } = _decorator
 
@@ -120,7 +121,7 @@ export class Scene登录 extends Component {
     //销毁时
     onDestroy(): void {
         console.log('Scene登录.onDestroy', this.main)
-        this.main?.onDestroy()
+        MainTest.instance.销毁原生模板广告()
     }
 
     update(deltaTime: number) {
