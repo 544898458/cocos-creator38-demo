@@ -136,7 +136,7 @@ export class NetMessage {
         const hpMax = arr[idxArr++];
         const energyMax = arr[idxArr++];
 
-        let old = scene战斗.entities.get(id);
+        let old = scene战斗.entities.get(id)
         if (!old) {
             old = new ClientEntityComponent();
             old.hpMax = hpMax;
@@ -153,7 +153,8 @@ export class NetMessage {
                 old.initClipName = 单位配置.空闲动作
 
             resources.load(prefabName, Prefab, (err, prefab) => {
-                if (!scene战斗.roles) return console.warn('已离开战斗场景');
+                old = scene战斗.entities.get(id)
+                if (!old) return console.warn(id, '已离开战斗场景');
 
                 const newNode = instantiate(prefab);
                 scene战斗.roles.addChild(newNode);
