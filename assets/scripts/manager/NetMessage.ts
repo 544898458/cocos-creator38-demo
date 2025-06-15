@@ -154,7 +154,10 @@ export class NetMessage {
 
             resources.load(prefabName, Prefab, (err, prefab) => {
                 old = scene战斗.entities.get(id)
-                if (!old) return console.warn(id, '已离开战斗场景');
+                if (!old) {
+                    console.warn(id, '已离开战斗场景');
+                    return;
+                }
 
                 const newNode = instantiate(prefab);
                 scene战斗.roles.addChild(newNode);
@@ -202,7 +205,12 @@ export class NetMessage {
                     // console.log('近战兵骨骼动画', old.skeletalAnimation)
                 }
                 else if (单位配置 && 单位配置.动画节点路径) {
-                    old.skeletalAnimation = newNode.getChildByName(单位配置.动画节点路径).getComponent(SkeletalAnimation)
+                    let node = newNode.getChildByName(单位配置.动画节点路径)
+                    if (!node) {
+                        console.warn(id, newNode, '骨骼动画节点不存在', 单位配置.动画节点路径)
+                        return;
+                    }
+                    old.skeletalAnimation = node.getComponent(SkeletalAnimation)
                     // console.log('骨骼动画', 单位配置.动画节点路径, old.skeletalAnimation)
                 } else if (单位类型.苔蔓 == old.类型) {
                     old.view.getChildByName('苔蔓').getComponent(苔蔓Component).Set半径(old.苔蔓半径)
@@ -394,7 +402,7 @@ export class NetMessage {
         const id = arr[idxArr++];
         const loop: boolean = arr[idxArr++]
         const clipName: string = arr[idxArr++]
-        console.log('ChangeSkeleAnim', id, loop, clipName)
+        // console.log('ChangeSkeleAnim', id, loop, clipName)
 
         const scene战斗 = mainTest.scene战斗
         const old = scene战斗?.entities.get(id)
