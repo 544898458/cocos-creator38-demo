@@ -953,8 +953,8 @@ export class Scene战斗 extends Component {
             let 特效根 = this.roles.getChildByName('特效根')
             特效根.addChild(newNode)
             //获取单位战斗配置
-            let 配置目标 = MainTest.instance.配置.find战斗(entity目标.类型)
-            tween(newNode).to(0.1, { position: entity目标.position.clone().add3f(0, 配置目标.f弹丸起始高度, 0) }).start()
+            let 配置目标 = MainTest.instance.配置.find单位(entity目标.类型)
+            tween(newNode).to(0.1, { position: entity目标.position.clone().add3f(0, 配置目标.受击高度, 0) }).start()
             this.scheduleOnce(() => { 特效根.removeChild(newNode) }, 0.09)
         })
     }

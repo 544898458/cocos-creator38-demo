@@ -71,11 +71,12 @@ Error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} Error: Error: M
 5. obj文件复制到后端代码库的 Iocp20Coroutine\RecastDemo\Meshes
 6. 双击打开RecastDemo.exe，选择“Temp Obastacles”，“Agent Radius”改为1.0
 
-### 参与贡献
+### 贡献名单
 
 * 关卡：阳光下的一个虾(QQ 1179331661)  
 * 首页底图：不问清阴(QQ 3969340418)  
-* 3D模型：TripoAI、混元AI	抠图：豆包AI  
+* 3D模型：TripoAI、混元AI	
+* 抠图：豆包AI  
 * 地面纹理：夸克AI  
 * 头像图片：文小言AI  
 * 音乐：SunoAI  

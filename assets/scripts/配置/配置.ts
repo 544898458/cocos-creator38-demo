@@ -317,6 +317,7 @@ export class 单位配置 {
 	空闲动作: string
 	动画节点路径: string
 	描述: string
+	受击高度: number
 }
 export class 战斗配置 {
 	类型: 单位类型
