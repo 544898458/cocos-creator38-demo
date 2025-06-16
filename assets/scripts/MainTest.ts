@@ -226,16 +226,19 @@ export class MainTest extends Component {
             if (!this.customAd) {
                 // 创建 原生模板 广告实例，提前初始化           首页顶部广告条
                 const size = wx.getSystemInfoSync();
-                const adWidth = 350;
+                const adWidth = 375
+                const adHeight = 150
                 // Calculate centered position
-                const left = (size.screenWidth - adWidth) / 2;
+                const left = (size.screenWidth - adWidth) / 2
+                const top = size.screenHeight - adHeight
                 console.log('left', left, 'size', size)
                 this.customAd = wx.createCustomAd({
                     adUnitId: 'adunit-cce53ccb600523d1',
                     style: {
                         left: left,
-                        top: 0,
-                        width: adWidth
+                        top: top,
+                        width: adWidth,
+                        height: adHeight
                     }
                 })
 
