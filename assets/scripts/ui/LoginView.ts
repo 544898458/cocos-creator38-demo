@@ -404,19 +404,7 @@ export class LoginView extends Dialog {
         this.node单人战局选择种族.active = false
         this.node排行榜面板.active = true
 
-        // for (let 战局 = 战局类型.单人ID_非法_MIN + 1; 战局 < 战局类型.单人ID_非法_MAX; 战局++) {
-        //     assetManager.loadRemote(`https://www.rtsgame.online/排行榜/战局_${战局}_赢.json`, (err, jsonAsset: JsonAsset) => {
-        //         console.log('resources.load callback:', err, jsonAsset)
-        //         let playerStats = jsonAsset.json
-        //         console.log(playerStats)
-        //     })
-
-        //     assetManager.loadRemote(`https://www.rtsgame.online/排行榜/战局_${战局}_输.json`, (err, jsonAsset: JsonAsset) => {
-        //         console.log('resources.load callback:', err, jsonAsset)
-        //         let playerStats = jsonAsset.json
-        //         console.log(playerStats)
-        //     })
-        // }
+        this.拉取并显示排行榜(战局类型.防守战_人)
     }
     onToggle排行榜类型(toggle: Toggle, customEventData: string) {
         console.log('onToggle排行榜', toggle, customEventData)
