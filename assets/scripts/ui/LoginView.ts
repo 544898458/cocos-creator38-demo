@@ -419,18 +419,19 @@ export class LoginView extends Dialog {
         // }
     }
     onToggle排行榜类型(toggle: Toggle, customEventData: string) {
-        //customEventData转战局类型
+        console.log('onToggle排行榜', toggle, customEventData)
         let 选中战局类型 = 战局类型[customEventData as keyof typeof 战局类型]
-        assetManager.loadRemote(`https://www.rtsgame.online/排行榜/战局_${选中战局类型}_赢.json`, (err, jsonAsset: JsonAsset) => {
+        this.拉取并显示排行榜(选中战局类型)
+    }
+    拉取并显示排行榜(战局类型: 战局类型) {
+        assetManager.loadRemote(`https://www.rtsgame.online/排行榜/战局_${战局类型}_赢.json`, (err, jsonAsset: JsonAsset) => {
             console.log('resources.load callback:', err, jsonAsset)
             let arrPlayerStats = jsonAsset.json as Array<{ nickname: string, wins: number, losses: number }>
             this.richText排行榜内容.string = ''
             for (let player of arrPlayerStats) {
                 this.richText排行榜内容.string += `${player.nickname}\t赢:${player.wins}\t输:${player.losses}\n`
             }
-            // console.log(arrPlayer)
-
+            console.log(jsonAsset.json)
         })
-        console.log('onToggle排行榜', toggle, customEventData)
     }
 }
