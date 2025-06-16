@@ -441,7 +441,7 @@ export class Main extends Component {
         // https://developers.weixin.qq.com/miniprogram/dev/api/share/wx.showShareMenu.html
         console.log('window.CC_WECHAT', (window as any).CC_WECHAT)
         if ((window as any).CC_WECHAT) {
-            (window as any).wx.showShareMenu({
+            wx.showShareMenu({
                 withShareTicket: true,
                 menus: ['shareAppMessage', 'shareTimeline']
             })
