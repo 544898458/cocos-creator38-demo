@@ -287,30 +287,6 @@ export enum 属性类型 {
 	属性类型_最大_无效,
 }
 
-
-export enum 战局类型 {
-	单人ID_非法_MIN,
-	新手训练_单位介绍_人,
-	新手训练_单位介绍_虫,
-	新手训练_反空降战_人,
-	新手训练_空降战_虫,
-	新手训练_战斗_人,
-	新手训练_战斗_虫,
-	防守战_人,
-	防守战_虫,
-	攻坚战_人,
-	攻坚战_虫,
-	单人ID_非法_MAX,
-
-	多人ID_非法_MIN = 100,
-	四方对战,
-	多人ID_非法_MAX,
-
-	多人混战ID_非法_MIN = 200,
-	多玩家混战,
-	多人混战ID_非法_MAX
-}
-
 export class 单位配置 {
 	类型: 单位类型
 	名字: string
@@ -378,8 +354,8 @@ export class 配置 {
 	}
 	读取1个配置文件<T>(strName: string, fun: (arr: Array<T>) => void) {
 
-		// let url = 'https://www.rtsgame.online/配置/'
-		let url = 'https://www.rtsgame.online/配置2/'
+		let url = 'https://www.rtsgame.online/配置/'
+		// let url = 'https://www.rtsgame.online/配置2/'
 		assetManager.loadRemote(url + strName + '.yaml', { ext: '.txt' },
 			(err, textAsset: TextAsset) => {
 				console.log(err, textAsset)

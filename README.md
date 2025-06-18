@@ -12,6 +12,7 @@
 2. 在本项目根目录执行
 
 ```PowerShell
+    npm install fs-extra
     npm install msgpack-lite
     npm i --save-dev @types/msgpack-lite
     npm install js-yaml

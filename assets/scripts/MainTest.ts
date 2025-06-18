@@ -344,25 +344,10 @@ export class MainTest extends Component {
 
     }
     loadMap(sceneName: string, idMsg: MsgId, id副本: 战局类型, str房主昵称: string = '', b多人混战: boolean): void {
-        let sceneUrl;
-        switch (sceneName) {
-            case 'scene战斗':
-                sceneUrl = UI2Prefab.scene战斗_url;
-                break;
-            case 'scene四方对战':
-                sceneUrl = UI2Prefab.scene四方对战_url;
-                break;
-            case 'scene攻坚战':
-                sceneUrl = UI2Prefab.scene攻坚战_url;
-                break;
-            case 'scene防守战':
-                sceneUrl = UI2Prefab.scene防守战_url;
-                break;
-        }
         //加载地图
-        resources.load(sceneUrl, (err, scene: Prefab) => {
+        resources.load(sceneName, (err, scene: Prefab) => {
             if (err) {
-                console.error(err)
+                console.error(sceneName, err)
                 return
             }
             let MapNode = instantiate(scene)
@@ -389,6 +374,7 @@ export class MainTest extends Component {
         dispatcher.sendArray([[idMsg, 0, 0], id副本, str房主昵称, b已看完激励视频广告])
     }
     onClick进单人战局(id: 战局类型) {
+        console.log('onClick进单人战局', id)
         let 配置 = this.配置.find战局(id)
         this.进Scene战斗单人剧情副本(配置.strSceneName, id)
     }
