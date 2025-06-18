@@ -316,8 +316,7 @@ export class NetMessage {
         if (!mainTest) return;
 
         const id = arr[idxArr++];
-        const posX = arr[idxArr++];
-        const posZ = arr[idxArr++];
+        const arrPos = arr[idxArr++] as Array<number>
         let eulerAnglesY = arr[idxArr++];
 
         const scene战斗 = mainTest.scene战斗;
@@ -327,7 +326,7 @@ export class NetMessage {
             return;
         }
 
-        const posNew = new Vec3(posX, 0, posZ);
+        const posNew = new Vec3(arrPos[0], arrPos[1], arrPos[2]);
         old.position = posNew;
 
         if (old.view) {
