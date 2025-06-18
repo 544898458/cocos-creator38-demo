@@ -1,0 +1,182 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "15d2f6ef-4280-46ce-92af-6cc7ef9bac12",
+  "files": [],
+  "subMetas": {
+    "6454b": {
+      "importer": "gltf-mesh",
+      "uuid": "15d2f6ef-4280-46ce-92af-6cc7ef9bac12@6454b",
+      "displayName": "",
+      "id": "6454b",
+      "name": "floorcollide.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 94
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "35db7": {
+      "importer": "gltf-mesh",
+      "uuid": "15d2f6ef-4280-46ce-92af-6cc7ef9bac12@35db7",
+      "displayName": "",
+      "id": "35db7",
+      "name": "floor.mesh",
+      "userData": {
+        "gltfIndex": 1,
+        "triangleCount": 5117
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "6a0e4": {
+      "importer": "gltf-embeded-image",
+      "uuid": "15d2f6ef-4280-46ce-92af-6cc7ef9bac12@6a0e4",
+      "displayName": "",
+      "id": "6a0e4",
+      "name": "ditu4_1.png.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": true,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
+    "e6ab6": {
+      "importer": "texture",
+      "uuid": "15d2f6ef-4280-46ce-92af-6cc7ef9bac12@e6ab6",
+      "displayName": "",
+      "id": "e6ab6",
+      "name": "ditu4_1.png.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "15d2f6ef-4280-46ce-92af-6cc7ef9bac12@6a0e4"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e59fc": {
+      "importer": "gltf-material",
+      "uuid": "15d2f6ef-4280-46ce-92af-6cc7ef9bac12@e59fc",
+      "displayName": "",
+      "id": "e59fc",
+      "name": "Default-Material.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "f8ea0": {
+      "importer": "gltf-material",
+      "uuid": "15d2f6ef-4280-46ce-92af-6cc7ef9bac12@f8ea0",
+      "displayName": "",
+      "id": "f8ea0",
+      "name": "ditu4_1.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e20fd": {
+      "importer": "gltf-scene",
+      "uuid": "15d2f6ef-4280-46ce-92af-6cc7ef9bac12@e20fd",
+      "displayName": "",
+      "id": "e20fd",
+      "name": "Terrain.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "ditu4_1.png",
+        "uri": "15d2f6ef-4280-46ce-92af-6cc7ef9bac12@6a0e4"
+      }
+    ],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "15d2f6ef-4280-46ce-92af-6cc7ef9bac12@6454b",
+        "15d2f6ef-4280-46ce-92af-6cc7ef9bac12@35db7"
+      ],
+      "skeletons": [],
+      "textures": [
+        "15d2f6ef-4280-46ce-92af-6cc7ef9bac12@e6ab6"
+      ],
+      "materials": [
+        "15d2f6ef-4280-46ce-92af-6cc7ef9bac12@e59fc",
+        "15d2f6ef-4280-46ce-92af-6cc7ef9bac12@f8ea0"
+      ],
+      "scenes": [
+        "15d2f6ef-4280-46ce-92af-6cc7ef9bac12@e20fd"
+      ]
+    }
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "bdef0e84-9dd6-4bf4-8ed0-7e7aefb95d10",
+  "files": [],
+  "subMetas": {
+    "29629": {
+      "importer": "gltf-material",
+      "uuid": "bdef0e84-9dd6-4bf4-8ed0-7e7aefb95d10@29629",
+      "displayName": "",
+      "id": "29629",
+      "name": "sj2_1.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "cca2f": {
+      "importer": "gltf-mesh",
+      "uuid": "bdef0e84-9dd6-4bf4-8ed0-7e7aefb95d10@cca2f",
+      "displayName": "",
+      "id": "cca2f",
+      "name": "crystals.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 442
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "35db7": {
+      "importer": "gltf-mesh",
+      "uuid": "bdef0e84-9dd6-4bf4-8ed0-7e7aefb95d10@35db7",
+      "displayName": "",
+      "id": "35db7",
+      "name": "floor.mesh",
+      "userData": {
+        "gltfIndex": 1,
+        "triangleCount": 21526
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "6454b": {
+      "importer": "gltf-mesh",
+      "uuid": "bdef0e84-9dd6-4bf4-8ed0-7e7aefb95d10@6454b",
+      "displayName": "",
+      "id": "6454b",
+      "name": "floorcollide.mesh",
+      "userData": {
+        "gltfIndex": 2,
+        "triangleCount": 43
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "7ea82": {
+      "importer": "gltf-embeded-image",
+      "uuid": "bdef0e84-9dd6-4bf4-8ed0-7e7aefb95d10@7ea82",
+      "displayName": "",
+      "id": "7ea82",
+      "name": "ditu2_1.png.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": true,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
+    "e45b7": {
+      "importer": "texture",
+      "uuid": "bdef0e84-9dd6-4bf4-8ed0-7e7aefb95d10@e45b7",
+      "displayName": "",
+      "id": "e45b7",
+      "name": "ditu2_1.png.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "bdef0e84-9dd6-4bf4-8ed0-7e7aefb95d10@7ea82"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "31ed1": {
+      "importer": "gltf-material",
+      "uuid": "bdef0e84-9dd6-4bf4-8ed0-7e7aefb95d10@31ed1",
+      "displayName": "",
+      "id": "31ed1",
+      "name": "ditu2_1.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e59fc": {
+      "importer": "gltf-material",
+      "uuid": "bdef0e84-9dd6-4bf4-8ed0-7e7aefb95d10@e59fc",
+      "displayName": "",
+      "id": "e59fc",
+      "name": "Default-Material.material",
+      "userData": {
+        "gltfIndex": 2
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e20fd": {
+      "importer": "gltf-scene",
+      "uuid": "bdef0e84-9dd6-4bf4-8ed0-7e7aefb95d10@e20fd",
+      "displayName": "",
+      "id": "e20fd",
+      "name": "Terrain.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "ditu2_1.png",
+        "uri": "bdef0e84-9dd6-4bf4-8ed0-7e7aefb95d10@7ea82"
+      }
+    ],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "bdef0e84-9dd6-4bf4-8ed0-7e7aefb95d10@cca2f",
+        "bdef0e84-9dd6-4bf4-8ed0-7e7aefb95d10@35db7",
+        "bdef0e84-9dd6-4bf4-8ed0-7e7aefb95d10@6454b"
+      ],
+      "skeletons": [],
+      "textures": [
+        "bdef0e84-9dd6-4bf4-8ed0-7e7aefb95d10@e45b7"
+      ],
+      "materials": [
+        "bdef0e84-9dd6-4bf4-8ed0-7e7aefb95d10@29629",
+        "bdef0e84-9dd6-4bf4-8ed0-7e7aefb95d10@31ed1",
+        "bdef0e84-9dd6-4bf4-8ed0-7e7aefb95d10@e59fc"
+      ],
+      "scenes": [
+        "bdef0e84-9dd6-4bf4-8ed0-7e7aefb95d10@e20fd"
+      ]
+    }
+  }
+}
