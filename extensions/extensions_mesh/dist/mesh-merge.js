@@ -69,10 +69,14 @@ class MeshMerge {
                     _ns.push(ns[p * 3 + 1]);
                     _ns.push(ns[p * 3 + 2]);
                     //uv
-                    let uvX = us[p * 2];
-                    let uvY = us[p * 2 + 1];
-                    _us.push(uvX);
-                    _us.push(uvY);
+                    console.log(us);
+                    if(us)
+                    {
+                        let uvX = us[p * 2];
+                        let uvY = us[p * 2 + 1];
+                        _us.push(uvX);
+                        _us.push(uvY);
+                    }
                 }
                 // 通过顶点计算出索引
                 for (let n = 0; n < _ps.length; n += 3) {

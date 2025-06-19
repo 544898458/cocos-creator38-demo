@@ -13,6 +13,8 @@
 
 ```PowerShell
     npm install fs-extra
+    npm install vue@^2.6.14
+    npm install @gltf-transform/core
     npm install msgpack-lite
     npm i --save-dev @types/msgpack-lite
     npm install js-yaml

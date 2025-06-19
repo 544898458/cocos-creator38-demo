@@ -39,7 +39,7 @@ export class BattleMoude extends Component {
 
         return [
             [MsgId.Move, 0],
-            [hitPoint.x, hitPoint.z],
+            [hitPoint.x, hitPoint.y, hitPoint.z],
             b遇敌自动攻击
         ];
     }
