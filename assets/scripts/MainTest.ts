@@ -147,7 +147,7 @@ export class MainTest extends Component {
     }
     createMsg造建筑(hitPoint: Vec3, 类型: 单位类型) {
         console.log('createMsg造建筑', hitPoint)
-        return [[MsgId.AddBuilding, ++Glob.sendMsgSn, 0], 类型, [hitPoint.x, hitPoint.z]]
+        return [[MsgId.AddBuilding, ++Glob.sendMsgSn, 0], 类型, [hitPoint.x, hitPoint.y, hitPoint.z]]
     }
     on点击按钮_造建筑(类型: 单位类型) {
         BattleMoude.instance.fun创建消息 = (hitPoint: Vec3) => this.createMsg造建筑(hitPoint, 类型)
