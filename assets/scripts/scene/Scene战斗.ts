@@ -680,6 +680,7 @@ export class Scene战斗 extends Component {
 
         this.battleUI.onSelectUnits(arr);
 
+        let b第一个: boolean = true
         for (let id of BattleMoude._arr选中) {
             let old = this.entities.get(id)
             if (!old) {
@@ -714,96 +715,101 @@ export class Scene战斗 extends Component {
 
                 }
 
-                this.隐藏选中单位专用按钮()
-                switch (old.类型) {
-                    case 单位类型.地堡:
-                        this.battleUI.button离开地堡.node.active = true
-                        break;
-                    case 单位类型.兵厂:
-                        this.battleUI.button集结点.node.active = true
-                        if (!this.obj已解锁单位[单位类型.近战兵])
-                            this.battleUI.button解锁近战兵.node.active = true
+                if (b第一个) {
+                    b第一个 = false
+                    this.隐藏选中单位专用按钮()
 
-                        this.如果没满级就显示(单位类型.枪兵, 属性类型.攻击, this.battleUI.node升级枪兵攻击)
-                        this.如果没满级就显示(单位类型.近战兵, 属性类型.防御, this.battleUI.node升级近战兵防御)
-                        break;
-                    case 单位类型.虫营:
-                        console.log(typeof (this.obj已解锁单位))
-                        if (!this.obj已解锁单位[单位类型.枪虫])
-                            this.battleUI.button解锁枪虫.node.active = true
+                    switch (old.类型) {
+                        case 单位类型.地堡:
+                            this.battleUI.button离开地堡.node.active = true
+                            break;
+                        case 单位类型.兵厂:
+                            this.battleUI.button集结点.node.active = true
+                            if (!this.obj已解锁单位[单位类型.近战兵])
+                                this.battleUI.button解锁近战兵.node.active = true
 
-                        this.如果没满级就显示(单位类型.枪虫, 属性类型.防御, this.battleUI.node升级枪虫防御)
-                        this.如果没满级就显示(单位类型.近战虫, 属性类型.攻击, this.battleUI.node升级近战虫攻击)
-                        break
-                    case 单位类型.重车厂:
-                        this.battleUI.button集结点.node.active = true
-                        this.如果没满级就显示(单位类型.三色坦克, 属性类型.移动速度, this.battleUI.node升级三色坦克移速)
-                        break
-                    case 单位类型.机场:
-                        this.battleUI.button集结点.node.active = true
-                        this.如果没满级就显示(单位类型.飞机, 属性类型.攻击前摇_伤害耗时, this.battleUI.node升级飞机攻速)
-                        break
-                    case 单位类型.拟态源:
-                        this.如果没满级就显示(单位类型.绿色坦克, 属性类型.攻击前摇_伤害耗时, this.battleUI.node升级绿色坦克攻速)
-                        break
-                    case 单位类型.飞塔:
-                        this.如果没满级就显示(单位类型.飞虫, 属性类型.移动速度, this.battleUI.node升级飞虫移速)
-                        break
-                    case 单位类型.太岁:
-                        this.battleUI.node太岁分裂.active = true
-                        break
-                    case 单位类型.基地:
-                    case 单位类型.虫巢:
-                        this.battleUI.button集结点.node.active = true
-                        break
-                    case 单位类型.房虫:
-                        this.battleUI.button强行走.node.active = true
-                        this.battleUI.node离开房虫.active = true
-                        break
-                    default:
-                        if (MainTest.Is活动单位(old.类型)) {
-                            this.battleUI.button强行走.node.active = true
-                            this.battleUI.button原地坚守.node.active = true
+                            this.如果没满级就显示(单位类型.枪兵, 属性类型.攻击, this.battleUI.node升级枪兵攻击)
+                            this.如果没满级就显示(单位类型.近战兵, 属性类型.防御, this.battleUI.node升级近战兵防御)
+                            break;
+                        case 单位类型.虫营:
+                            console.log(typeof (this.obj已解锁单位))
+                            if (!this.obj已解锁单位[单位类型.枪虫])
+                                this.battleUI.button解锁枪虫.node.active = true
+
+                            this.如果没满级就显示(单位类型.枪虫, 属性类型.防御, this.battleUI.node升级枪虫防御)
+                            this.如果没满级就显示(单位类型.近战虫, 属性类型.攻击, this.battleUI.node升级近战虫攻击)
                             break
+                        case 单位类型.重车厂:
+                            this.battleUI.button集结点.node.active = true
+                            this.如果没满级就显示(单位类型.三色坦克, 属性类型.移动速度, this.battleUI.node升级三色坦克移速)
+                            break
+                        case 单位类型.机场:
+                            this.battleUI.button集结点.node.active = true
+                            this.如果没满级就显示(单位类型.飞机, 属性类型.攻击前摇_伤害耗时, this.battleUI.node升级飞机攻速)
+                            break
+                        case 单位类型.拟态源:
+                            this.如果没满级就显示(单位类型.绿色坦克, 属性类型.攻击前摇_伤害耗时, this.battleUI.node升级绿色坦克攻速)
+                            break
+                        case 单位类型.飞塔:
+                            this.如果没满级就显示(单位类型.飞虫, 属性类型.移动速度, this.battleUI.node升级飞虫移速)
+                            break
+                        case 单位类型.太岁:
+                            this.battleUI.node太岁分裂.active = true
+                            break
+                        case 单位类型.基地:
+                        case 单位类型.虫巢:
+                            this.battleUI.button集结点.node.active = true
+                            break
+                        case 单位类型.房虫:
+                            this.battleUI.button强行走.node.active = true
+                            this.battleUI.node离开房虫.active = true
+                            break
+                        default:
+                            if (MainTest.Is活动单位(old.类型)) {
+                                this.battleUI.button强行走.node.active = true
+                                this.battleUI.button原地坚守.node.active = true
+                                break
+                            }
+                            console.log('此单位没有专用菜单' + old.类型)
+                            break
+                    }
+                }
+            })
+
+            if (1 == arr.length) {
+                resources.load(prefabName范围特效, Prefab, (err, prefab) => {
+                    // console.log('resources.load callback:', err, prefab)
+                    if (0 > BattleMoude._arr选中.indexOf(id)) {
+                        console.log('已取消选中:', id)
+                        return
+                    }
+                    let old = this.entities.get(id)
+                    if (!old) {
+                        console.log('找不到:', id)
+                        return
+                    }
+
+                    let 战斗 = MainTest.instance.配置.find战斗(old.类型)
+                    if (战斗) {
+                        {
+                            old.view.getChildByName(nodeName攻击范围)?.removeFromParent()
+                            const newNode = instantiate(prefab)
+                            newNode.name = nodeName攻击范围
+                            old.view.addChild(newNode)
+                            let scale = 战斗.f攻击距离
+                            newNode.scale = newNode.scale.clone().multiply3f(scale, 1, scale)
                         }
-                        console.log('此单位没有专用菜单' + old.类型)
-                        break
-                }
-
-            })
-
-            resources.load(prefabName范围特效, Prefab, (err, prefab) => {
-                // console.log('resources.load callback:', err, prefab)
-                if (0 > BattleMoude._arr选中.indexOf(id)) {
-                    console.log('已取消选中:', id)
-                    return
-                }
-                let old = this.entities.get(id)
-                if (!old) {
-                    console.log('找不到:', id)
-                    return
-                }
-
-                let 战斗 = MainTest.instance.配置.find战斗(old.类型)
-                if (战斗) {
-                    {
-                        old.view.getChildByName(nodeName攻击范围)?.removeFromParent()
-                        const newNode = instantiate(prefab)
-                        newNode.name = nodeName攻击范围
-                        old.view.addChild(newNode)
-                        let scale = 战斗.f攻击距离
-                        newNode.scale = newNode.scale.clone().multiply3f(scale, 1, scale)
+                        {
+                            old.view.getChildByName(nodeName警戒范围)?.removeFromParent()
+                            const newNode = instantiate(prefab)
+                            newNode.name = nodeName警戒范围
+                            old.view.addChild(newNode)
+                            let scale = 战斗.f警戒距离
+                            newNode.scale = newNode.scale.clone().multiply3f(scale, 1, scale)
+                        }
                     }
-                    {
-                        old.view.getChildByName(nodeName警戒范围)?.removeFromParent()
-                        const newNode = instantiate(prefab)
-                        newNode.name = nodeName警戒范围
-                        old.view.addChild(newNode)
-                        let scale = 战斗.f警戒距离
-                        newNode.scale = newNode.scale.clone().multiply3f(scale, 1, scale)
-                    }
-                }
-            })
+                })
+            }
         }
         if (arr.length > 0)
             BattleMoude.instance.fun创建消息 = BattleMoude.instance.createMsgMove遇敌自动攻击
