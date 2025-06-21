@@ -617,7 +617,7 @@ export class NetMessage {
         if (!mainTest || !mainTest.scene战斗) return;
 
         const arrPos视口 = arr[idxArr++] as number[];
-        const pos = new Vec3(arrPos视口[0], 0, arrPos视口[1]);
+        const pos = new Vec3(arrPos视口[0], arrPos视口[1], arrPos视口[2]);
         mainTest.scene战斗.视口对准此处(pos);
     }
     private handleGame_播放声音(arr: any[], idxArr: number): void {
@@ -654,8 +654,8 @@ export class NetMessage {
 
         if (result === LoginResult.OK) return;
 
-        dispatcher.emit('login-failed', { result, message: strMsg });
-
+        dispatcher.emit(EC.SHOW_TOAST, strMsg);
+        this.mainTest.scene登录.lableMessage.string = strMsg
         Glob.websocket?.close();
         Glob.websocket = null;
 

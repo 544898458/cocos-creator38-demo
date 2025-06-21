@@ -76,8 +76,8 @@ export class LoginView extends Dialog {
         // },this);
 
         // 显示登录界面
-        // dispatcher.on(EC.SHOW_LOGIN_UI, this.显示登录界面, this);
-
+        dispatcher.on(EC.SHOW_LOGIN_UI, this.显示登录界面, this);
+        dispatcher.on(EC.SHOW_TOAST, toast.showToast, toast);
         console.log("LoginView.onOpened", param)
         MainTest.instance.scene登录 = this
         // this.loadNode.active = true;

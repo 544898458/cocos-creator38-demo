@@ -21,4 +21,6 @@ export class EC {
     static ONLINE_USERS_UPDATED = "ONLINE_USERS_UPDATED";
     /** 显示登录主页 */
     static SHOW_LOGIN_UI = "SHOW_LOGIN_UI";
+    
+    static SHOW_TOAST = "SHOW_TOAST";
 }
