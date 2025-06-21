@@ -25,6 +25,9 @@ import { Camera } from 'cc';
 import { Vec3, tween } from 'cc';
 import { assetManager } from 'cc';
 import { AudioClip } from 'cc';
+import { ImageAsset } from 'cc';
+import { Texture2D } from 'cc';
+import { MeshRenderer } from 'cc';
 
 export class NetMessage {
     private static _instance: NetMessage;
@@ -458,6 +461,22 @@ export class NetMessage {
         if (!mainTest) return;
 
         mainTest.离开战斗场景(false);
+    }
+    private handleGame_进Space(arr: any[], idxArr: number): void {
+        const nodeSpace = utils.find('map八方汇聚/Terrain没矿2/Terrain/ditu4_8(Clone)/floor', MainTest.GetMapNode())
+        console.log('进Space', nodeSpace)
+        if (nodeSpace) {
+            assetManager.loadRemote('https://www.rtsgame.online/图片/地图/ditu4_8_高清.png', (err, imageAsset: ImageAsset) => {
+                console.log('苔蔓贴图resources.load callback:', err, imageAsset)
+                // console.log(this.material.getProperty('albedoMap'))
+                // console.log(this.material.getProperty('mainTexture'))
+                const meshRenderer = nodeSpace.getComponent(MeshRenderer);
+                let texture:Texture2D = meshRenderer.material.getProperty('mainTexture') as Texture2D
+                texture.image = imageAsset;
+                console.log(texture)
+                meshRenderer.material.setProperty('mainTexture', texture);
+            })
+        }
     }
 
     private handleGame_苔蔓半径(arr: any[], idxArr: number): void {

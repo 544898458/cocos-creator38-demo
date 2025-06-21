@@ -28,14 +28,12 @@ export class 苔蔓Component extends Component {
     }
 
     createCircleMesh() {
-        // const vertices: Vec3[] = [];
         const vertices2: number[] = [];
         const uvs: Vec2[] = [];
         const indices: number[] = [];
         this._meshCreator.reset();
 
         // 中心点
-        // vertices.push(new Vec3(0, 0, 0))//, new Vec2(0.5, 0.5));
         uvs.push(new Vec2(0.5, 0.5));
         vertices2.push(0, 0, 0);
         {
@@ -65,42 +63,19 @@ export class 苔蔓Component extends Component {
         for (let i = 1; i < this.segments - 1; i++) {
             indices.push(0, i + 1, i);
             this._meshCreator.indices.push(0, i + 1, i);
-            // this._meshCreator.indices.push(i-1);    
         }
-        // let config: primitives.IGeometry = { positions: vertices2,indices:indices, uvs: uvs.map(v => [v.x, v.y]).flat(),  primitiveMode: gfx.PrimitiveMode.TRIANGLE_FAN }
-        // let config: primitives.IGeometry = { positions: vertices2}
-        // let mesh: Mesh = utils.MeshUtils.createMesh(config)
-        // console.log("mesh", mesh);
-        // mesh.setVertices(vertices);
-        // mesh.setIndices(indices);
-        // mesh.setPrimitiveType(geometry.PrimitiveMode.TRIANGLE_FAN);
-
-
+        
         let p0 = vec3Pool.alloc().set(0, 0, 0);
-
         let p1 = vec3Pool.alloc().set(1, 0, 0);
-
         let p2 = vec3Pool.alloc().set(1, 0, 1);
-
         let p3 = vec3Pool.alloc().set(0, 0, 1);
         let p4 = vec3Pool.alloc().set(-1, 0, 0);
 
-        // this._meshCreator.verticles.push(p0, p1, p2, p3, p4);
-
         let uv0 = vec2Pool.alloc().set(0, 0);
-
         let uv1 = vec2Pool.alloc().set(1, 0);
-
         let uv2 = vec2Pool.alloc().set(1, 1);
-
         let uv3 = vec2Pool.alloc().set(0, 1);
         let uv4 = vec2Pool.alloc().set(0.5, 1);
-
-        // this._meshCreator.uvs.push(uv0, uv1, uv2, uv3, uv4);
-
-
-
-        // this._meshCreator.indices.push(0, 2, 1, 0, 3, 2, 0, 4, 3);    
 
         let mesh: Mesh = this._meshCreator.buildMesh();
 
@@ -110,6 +85,7 @@ export class 苔蔓Component extends Component {
             meshRenderer.mesh = mesh;
             meshRenderer.material = this.material;
         }
+        
         assetManager.loadRemote('https://www.rtsgame.online/图片/苔蔓1024.png', (err, imageAsset: ImageAsset) => {
             console.log('苔蔓贴图resources.load callback:', err, imageAsset)
             // console.log(this.material.getProperty('albedoMap'))
