@@ -463,7 +463,7 @@ export class NetMessage {
         mainTest.离开战斗场景(false);
     }
     private handleGame_进Space(arr: any[], idxArr: number): void {
-        const nodeSpace = utils.find('map八方汇聚/Terrain没矿2/Terrain/ditu4_8(Clone)/floor', MainTest.GetMapNode())
+        const nodeSpace = utils.find('map八方汇聚/地图27处理法向/Terrain/ditu4_8(Clone)/floor', MainTest.GetMapNode())
         console.log('进Space', nodeSpace)
         if (nodeSpace) {
             assetManager.loadRemote('https://www.rtsgame.online/图片/地图/ditu4_8_高清.png', (err, imageAsset: ImageAsset) => {

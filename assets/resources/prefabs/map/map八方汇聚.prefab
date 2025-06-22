@@ -65,7 +65,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Terrain没矿2",
+    "_name": "地图27处理法向",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
@@ -138,14 +138,14 @@
       "__type__": "cc.Quat",
       "x": 0,
       "y": 0,
-      "z": -4.2385053878933584e-16,
+      "z": 0,
       "w": 1
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 1,
+      "x": 0.9999999403953552,
       "y": 1,
-      "z": 1
+      "z": 0.9999999403953552
     },
     "_mobility": 0,
     "_layer": 1073741824,
@@ -153,7 +153,7 @@
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
-      "z": -4.8569694033949866e-14
+      "z": 0
     },
     "_id": ""
   },
@@ -268,7 +268,7 @@
     },
     "_materials": [
       {
-        "__uuid__": "889b67db-f317-469c-a1a5-ffec3c32c9c0@b1faf",
+        "__uuid__": "7893f185-1738-4619-9e4b-3b59be38cf00@bbfef",
         "__expectedType__": "cc.Material"
       }
     ],
@@ -277,7 +277,7 @@
       "__id__": 8
     },
     "_mesh": {
-      "__uuid__": "889b67db-f317-469c-a1a5-ffec3c32c9c0@35db7",
+      "__uuid__": "7893f185-1738-4619-9e4b-3b59be38cf00@1c5ac",
       "__expectedType__": "cc.Mesh"
     },
     "_shadowCastingMode": 1,
@@ -293,7 +293,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "a202MhOA5MKoo4URGN429N"
+    "fileId": "357eNBC/FLSaytTtHCAqeU"
   },
   {
     "__type__": "cc.ModelBakeSettings",
@@ -323,7 +323,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "ec0g9hmylOpKPnZtj8mcuJ",
+    "fileId": "90LA/dgi1FQo35HjvkuSZA",
     "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
@@ -389,7 +389,7 @@
     },
     "_materials": [
       {
-        "__uuid__": "889b67db-f317-469c-a1a5-ffec3c32c9c0@e59fc",
+        "__uuid__": "7893f185-1738-4619-9e4b-3b59be38cf00@dce7d",
         "__expectedType__": "cc.Material"
       }
     ],
@@ -398,7 +398,7 @@
       "__id__": 13
     },
     "_mesh": {
-      "__uuid__": "889b67db-f317-469c-a1a5-ffec3c32c9c0@6454b",
+      "__uuid__": "7893f185-1738-4619-9e4b-3b59be38cf00@f1c02",
       "__expectedType__": "cc.Mesh"
     },
     "_shadowCastingMode": 0,
@@ -414,7 +414,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "574/lcRuZNhIRRG7k3c4Je"
+    "fileId": "d7aroO/ddNXJiKPBBLtKUh"
   },
   {
     "__type__": "cc.ModelBakeSettings",
@@ -444,7 +444,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "01WtAFFGpLnY+K3ZNee8F1",
+    "fileId": "21J72a/wdMY7gX3jggPAGd",
     "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
@@ -457,7 +457,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "4f97VN9m9CbJDrRlzmId1i",
+    "fileId": "5ePRz0IgVE+IKYIZGQ8v4m",
     "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
@@ -470,7 +470,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "6eItF6w0BIYJZthEMoc46S",
+    "fileId": "55zHEsP45CZ75AWAQoHTgQ",
     "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
@@ -483,7 +483,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "3fpJlKUrBEtYmvjHX7N8l0",
+    "fileId": "93l7LXPntOnIIlh3o9a/RE",
     "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
