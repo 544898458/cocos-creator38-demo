@@ -511,19 +511,11 @@ export class NetMessage {
         const mainTest = this.mainTest;
         if (!mainTest || !mainTest.audioManager) return;
 
-        const strHttps = arr[idxArr++] as string;
-        const audioSource = mainTest.audioManager;
-
-        assetManager.loadRemote(strHttps, (err, clip: AudioClip) => {
-            if (err) {
-                console.error('加载音频失败:', err);
-                return;
-            }
-
-            audioSource.stop();
-            audioSource.clip = clip;
-            audioSource.play();
-        });
+        const strHttps = arr[idxArr++] as string
+        if (mainTest.scene登录)
+            Glob.strHttps登录场景音乐Mp3 = strHttps
+        
+        mainTest.播放音乐(strHttps)
     }
 
     private handleGame_剧情对话已看完(arr: any[], idxArr: number): void {

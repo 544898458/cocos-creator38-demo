@@ -13,6 +13,8 @@ export class Glob {
     //全局常量  
     public static KEY_登录名: string = '登录名'
     public static strHttps登录场景音乐Mp3: string = "https://www.rtsgame.online/music/suno世界又恢复了和平低音质.mp3"
+    public static strHttps虫族主题音乐MP3: string = "https://www.rtsgame.online/music/漂泊低音质.mp3"
+    public static strHttps人类主题音乐MP3: string = "https://www.rtsgame.online/music/定居低音质.mp3"
     /** 全屏大小，非纯色背景放大系数 */
     // static scale: number = 1;
     /** 3d场景高度缩小倍率 */

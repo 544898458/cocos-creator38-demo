@@ -98,17 +98,8 @@ export class LoginView extends Dialog {
 
         MainTest.instance.onSecen登录Load()
 
-        if (Glob.strHttps登录场景音乐Mp3) {
-            assetManager.loadRemote(Glob.strHttps登录场景音乐Mp3, (err, clip: AudioClip) => {
-                console.log('resources.load callback:', err, clip)
-                let audioSource = MainTest.instance.audioManager.getComponent(AudioSource)
-                if (!audioSource)
-                    return
-
-                audioSource.stop()
-                audioSource.clip = clip
-                audioSource.play()
-            })
+        if (Glob.strHttps登录场景音乐Mp3 && (!this.node单人战局列表_虫.active && !this.node单人战局列表_人.active)) {
+            MainTest.instance.播放音乐(Glob.strHttps登录场景音乐Mp3)
         }
 
         assetManager.loadRemote('https://www.rtsgame.online/公告/公告.txt', (err, textAsset: TextAsset) => {
@@ -253,9 +244,11 @@ export class LoginView extends Dialog {
         switch (已选择种族) {
             case 种族.人:
                 this.node单人战局列表_人.active = true
+                MainTest.instance.播放音乐(Glob.strHttps人类主题音乐MP3)
                 break
             case 种族.虫:
                 this.node单人战局列表_虫.active = true
+                MainTest.instance.播放音乐(Glob.strHttps虫族主题音乐MP3)
                 break
             default:
                 toast.showToast('种族' + 已选择种族 + '未开放')

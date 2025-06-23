@@ -26,6 +26,8 @@ import { LoginView } from './ui/LoginView';
 import { Dialog } from './component/Dialog';
 import { NetMessage } from './manager/NetMessage';
 import { BattleMoude } from './scene/BattleMoude';
+import { assetManager } from 'cc';
+import { AudioClip } from 'cc';
 
 const { ccclass, property } = _decorator;
 
@@ -722,6 +724,18 @@ export class MainTest extends Component {
                 // this.customAd = null
             }
         }
+    }
+    播放音乐(strHttps: string) {
+        assetManager.loadRemote(strHttps, (err, clip: AudioClip) => {
+            console.log('resources.load callback:', err, clip)
+            let audioSource = MainTest.instance.audioManager.getComponent(AudioSource)
+            if (!audioSource)
+                return
+
+            audioSource.stop()
+            audioSource.clip = clip
+            audioSource.play()
+        })
     }
 }
 
