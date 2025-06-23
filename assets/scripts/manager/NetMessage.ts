@@ -223,7 +223,7 @@ export class NetMessage {
 
                 if (old.skeletalAnimation != undefined) {
                     // old.skeletalAnimation.play(old.initClipName)
-                    MainTest.播放动作(old, old.initClipName, true)
+                    MainTest.播放动作(old, old.initClipName, old.init初始动作Loop, old.init初始动作播放速度)
                 }
                 // if (!thisLocal.scene战斗.battleUI)
                 MainTest.instance.scene战斗.battleUI = MainTest.instance.dialogMgr.getDialog(UI2Prefab.BattleUI_url).getComponent(BattleUI);
@@ -404,7 +404,8 @@ export class NetMessage {
         const id = arr[idxArr++];
         const loop: boolean = arr[idxArr++]
         const clipName: string = arr[idxArr++]
-        // console.log('ChangeSkeleAnim', id, loop, clipName)
+        const 动作播放速度: number = arr[idxArr++]
+        console.log('handleGame_ChangeSkeleAnim', id, loop, clipName, 动作播放速度)
 
         const scene战斗 = mainTest.scene战斗
         const old = scene战斗?.entities.get(id)
@@ -414,9 +415,11 @@ export class NetMessage {
         }
 
         if (old.skeletalAnimation == undefined) {
-            old.initClipName = clipName;
+            old.initClipName = clipName
+            old.init初始动作播放速度 = 动作播放速度
+            old.init初始动作Loop = loop
         } else {
-            MainTest.播放动作(old, clipName, loop);
+            MainTest.播放动作(old, clipName, loop, 动作播放速度);
         }
     }
     private handleGame_DelRoleRet(arr: any[], idxArr: number): void {

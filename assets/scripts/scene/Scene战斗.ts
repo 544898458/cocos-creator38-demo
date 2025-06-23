@@ -36,6 +36,8 @@ export class ClientEntityComponent {
     label描述: Label
     skeletalAnimation: Animation
     initClipName: string = 'idle'
+    init初始动作播放速度: number = 1
+    init初始动作Loop: boolean = true
     nickName: string
     entityName: string
     position: Vec3//刚进地图Load没结束无法设置node坐标，暂存
