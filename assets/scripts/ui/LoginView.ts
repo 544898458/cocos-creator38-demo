@@ -172,7 +172,7 @@ export class LoginView extends Dialog {
                 0,
                 str登录名,
                 'Hello, world!pwd',
-                21,//版本号
+                22,//版本号
             ])
 
             // this.选择模式();
