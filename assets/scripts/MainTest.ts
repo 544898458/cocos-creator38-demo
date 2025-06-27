@@ -650,10 +650,7 @@ export class MainTest extends Component {
             BattleMoude._arr选中[0]
         ])
     }
-    createMsg集结点(hitPoint: Vec3) {
-        console.log('createMsg造建筑', hitPoint)
-        return [[MsgId.建筑产出活动单位的集结点, ++Glob.sendMsgSn, 0], [hitPoint.x, hitPoint.z]]
-    }
+
     createMsg太岁分裂(hitPoint: Vec3) {
         console.log('createMsg太岁分裂', hitPoint)
         return [[MsgId.太岁分裂, ++Glob.sendMsgSn, 0], [hitPoint.x, hitPoint.z]]
