@@ -9,7 +9,6 @@ import { Button } from 'cc';
 import { Toggle } from 'cc';
 import { Layers } from 'cc';
 import { Color } from 'cc';
-import { 制造配置, 属性类型, 单位类型, 战斗配置 } from '../配置/配置';
 import { RichText } from 'cc';
 import { 按下按钮显示单位详情Component } from '../component/按下按钮显示单位详情Component';
 import { EventMouse } from 'cc';
@@ -21,6 +20,7 @@ import { SpriteFrame } from 'cc';
 import { dispatcher } from '../manager/event/EventDispatcher';
 import { EC } from '../utils/EC';
 import { BattleMoude } from '../scene/BattleMoude';
+import { 单位类型, 属性类型 } from '../utils/Enum';
 const { ccclass, property } = _decorator;
 
 @ccclass('BattleUI')

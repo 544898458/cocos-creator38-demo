@@ -1,6 +1,6 @@
 import { _decorator, Component, Node } from 'cc';
 import { 按下按钮显示详情Component } from './按下按钮显示详情Component';
-import { 属性类型, 单位类型 } from '../配置/配置';
+import { 属性类型, 单位类型 } from '../utils/Enum';
 import { Enum } from 'cc';
 import { MainTest } from '../MainTest';
 const { ccclass, property } = _decorator;
