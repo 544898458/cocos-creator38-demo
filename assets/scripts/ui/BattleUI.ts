@@ -20,7 +20,9 @@ import { SpriteFrame } from 'cc';
 import { dispatcher } from '../manager/event/EventDispatcher';
 import { EC } from '../utils/EC';
 import { BattleMoude } from '../scene/BattleMoude';
-import { 单位类型, 属性类型 } from '../utils/Enum';
+import { MsgId, 单位类型, 属性类型 } from '../utils/Enum';
+import { Vec3 } from 'cc';
+import { Glob } from '../utils/Glob';
 const { ccclass, property } = _decorator;
 
 @ccclass('BattleUI')
@@ -134,7 +136,11 @@ export class BattleUI extends Dialog {
             return
         }
 
-        BattleMoude.instance.fun创建消息 = MainTest.instance.createMsg集结点
+        let 类型 = 单位类型[customEventData as keyof typeof 单位类型]
+        BattleMoude.instance.fun创建消息 = (hitPoint: Vec3):object => {
+            console.log('createMsg造建筑', hitPoint)
+            return [[MsgId.建筑产出活动单位的集结点, ++Glob.sendMsgSn, 0], [hitPoint.x, hitPoint.y, hitPoint.z], 类型]
+        }
         this.lable系统消息.string = '请点击地面设置此建筑产出活动单位的集结点'
         this.进入点击地面状态()
     }
