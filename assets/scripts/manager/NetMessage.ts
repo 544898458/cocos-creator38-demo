@@ -468,10 +468,13 @@ export class NetMessage {
     private handleGame_进Space(arr: any[], idxArr: number): void {
         const 战局 = arr[idxArr++] as 战局类型
         const 配置 = MainTest.instance.配置.find战局(战局)
-        const nodeSpace = utils.find(配置.strMeshRenderer路径, MainTest.GetMapNode())
+        if(0==配置.Https高清贴图.length)
+            return
+
+        const nodeSpace = utils.find(配置.MeshRenderer路径, MainTest.GetMapNode())
         console.log('进Space', nodeSpace)
         if (nodeSpace) {
-            assetManager.loadRemote(配置.strHttps高清贴图, (err, imageAsset: ImageAsset) => {
+            assetManager.loadRemote(配置.Https高清贴图, (err, imageAsset: ImageAsset) => {
                 console.log('地图高清贴图resources.load callback:', err, imageAsset)
                 // console.log(this.material.getProperty('albedoMap'))
                 // console.log(this.material.getProperty('mainTexture'))

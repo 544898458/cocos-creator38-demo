@@ -47,10 +47,10 @@ export class 建筑单位配置 {
 export class 战局配置 {
 	类型: 战局类型
 	strSceneName: string
-	str寻路文件名: string
-	strHttps音乐: string
-	strMeshRenderer路径: string
-	strHttps高清贴图: string
+	寻路文件名: string
+	Https音乐: string
+	MeshRenderer路径: string
+	Https高清贴图: string
 }
 
 export class 配置 {
