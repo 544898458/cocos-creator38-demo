@@ -22,6 +22,7 @@ import { Button } from 'cc';
 import { Toggle } from 'cc';
 import { dialogMgr } from '../manager/DialogManager';
 import { UI2Prefab } from '../autobind/UI2Prefab';
+import { ToggleContainer } from 'cc';
 const { ccclass, property } = _decorator;
 declare const tt: any;
 @ccclass('LoginView')
@@ -63,6 +64,8 @@ export class LoginView extends Dialog {
     node排行榜面板: Node
     @property(RichText)
     richText排行榜内容: RichText
+    @property(ToggleContainer)
+    toggle排行榜战局类型: ToggleContainer
 
     @property(Node) node登录面板: Node
     @property(Node) node选择单人多人: Node
@@ -172,7 +175,7 @@ export class LoginView extends Dialog {
                 0,
                 str登录名,
                 'Hello, world!pwd',
-                22,//版本号
+                23,//版本号
             ])
 
             // this.选择模式();
@@ -397,7 +400,13 @@ export class LoginView extends Dialog {
         this.node单人战局选择种族.active = false
         this.node排行榜面板.active = true
 
-        this.拉取并显示排行榜(战局类型.防守战_人)
+        let toggle = this.toggle排行榜战局类型.toggleItems[0].getComponent(Toggle)
+        if(toggle.isChecked)
+            this.onToggle排行榜类型(toggle, '新手训练_单位介绍_人')
+        else
+            toggle.isChecked = true
+        
+        // this.拉取并显示排行榜(战局类型.新手训练_单位介绍_人)
     }
     onToggle排行榜类型(toggle: Toggle, customEventData: string) {
         console.log('onToggle排行榜', toggle, customEventData)

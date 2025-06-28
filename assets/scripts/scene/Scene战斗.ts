@@ -17,7 +17,6 @@ import { SpriteFrame } from 'cc'
 import { ImageAsset } from 'cc'
 import { Tween } from 'cc'
 import { AudioSource } from 'cc'
-import { MsgId, 属性类型, 单位类型 } from '../配置/配置'
 import { 苔蔓Component } from '../component/苔蔓Component'
 import { Glob } from '../utils/Glob'
 import { dispatcher } from '../manager/event/EventDispatcher'
@@ -25,6 +24,7 @@ import { Enum } from 'cc'
 import { MainTest } from '../MainTest'
 import { UI2Prefab } from '../autobind/UI2Prefab'
 import { BattleMoude } from './BattleMoude'
+import { MsgId, 单位类型, 属性类型 } from '../utils/Enum'
 
 const { ccclass, property } = _decorator
 export class ClientEntityComponent {
