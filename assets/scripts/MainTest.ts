@@ -383,9 +383,8 @@ export class MainTest extends Component {
     进Scene战斗单人剧情副本(sceneName: string, id: 战局类型) {
         this.进Scene战斗(sceneName, MsgId.进单人剧情副本, id)
     }
-    onClick创建四方对战() {
-        
-        this.进Scene战斗(this.配置.find战局(战局类型.四方对战).strSceneName, MsgId.创建多人战局, 战局类型.四方对战)
+    onClick创建多人战局(战局: 战局类型) {
+        this.进Scene战斗(this.配置.find战局(战局).strSceneName, MsgId.创建多人战局, 战局)
     }
     onClick获取别人的个人战局列表(event: Event, customEventData: string) {
         console.log(event, customEventData)

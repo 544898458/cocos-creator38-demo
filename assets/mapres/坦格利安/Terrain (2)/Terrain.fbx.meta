@@ -177,6 +177,93 @@
       "scenes": [
         "0fe54559-c800-4dd1-a7b5-be17921996c7@e20fd"
       ]
+    },
+    "materials": {
+      "0fe54559-c800-4dd1-a7b5-be17921996c7@7515c": {
+        "__type__": "cc.Material",
+        "_name": "",
+        "_objFlags": 0,
+        "__editorExtras__": {},
+        "_native": "",
+        "_effectAsset": {
+          "__uuid__": "f648964e-8d32-41fc-9ac9-7a1e714dd17b",
+          "__expectedType__": "cc.EffectAsset"
+        },
+        "_techIdx": 0,
+        "_defines": [
+          {
+            "USE_ALBEDO_MAP": true
+          },
+          {},
+          {},
+          {}
+        ],
+        "_states": [
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          }
+        ],
+        "_props": [
+          {
+            "mainTexture": {
+              "__uuid__": "0fe54559-c800-4dd1-a7b5-be17921996c7@b933c",
+              "__expectedType__": "cc.Texture2D"
+            },
+            "emissive": {
+              "__type__": "cc.Color",
+              "r": 215,
+              "g": 126,
+              "b": 167,
+              "a": 255
+            },
+            "emissiveScale": 0,
+            "shininessExponent": 20,
+            "specularColor": {
+              "__type__": "cc.Color",
+              "r": 124,
+              "g": 124,
+              "b": 124,
+              "a": 255
+            }
+          },
+          {},
+          {},
+          {}
+        ]
+      }
     }
   }
 }

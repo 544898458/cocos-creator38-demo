@@ -49,6 +49,8 @@ export class 战局配置 {
 	strSceneName: string
 	str寻路文件名: string
 	strHttps音乐: string
+	strMeshRenderer路径: string
+	strHttps高清贴图: string
 }
 
 export class 配置 {
@@ -70,8 +72,8 @@ export class 配置 {
 	}
 	读取1个配置文件<T>(strName: string, fun: (arr: Array<T>) => void) {
 
-		let url = 'https://www.rtsgame.online/配置/'
-		// let url = 'https://www.rtsgame.online/配置2/'
+		// let url = 'https://www.rtsgame.online/配置/'
+		let url = 'https://www.rtsgame.online/配置2/'
 		assetManager.loadRemote(url + strName + '.yaml', { ext: '.txt' },
 			(err, textAsset: TextAsset) => {
 				console.log(err, textAsset)

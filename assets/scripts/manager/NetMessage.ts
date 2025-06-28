@@ -1,6 +1,6 @@
 // NetMessage.ts
 import { Glob } from '../utils/Glob';
-import { MsgId, SayChannel, 单位类型, 属性类型 } from '../utils/Enum';
+import { MsgId, SayChannel, 单位类型, 属性类型, 战局类型 } from '../utils/Enum';
 import { MainTest } from '../MainTest';
 import { LoginResult } from '../utils/Enum';
 import { dispatcher } from '../manager/event/EventDispatcher';
@@ -466,11 +466,13 @@ export class NetMessage {
         mainTest.离开战斗场景(false);
     }
     private handleGame_进Space(arr: any[], idxArr: number): void {
-        const nodeSpace = utils.find('map八方汇聚/地图27处理法向/Terrain/ditu4_8(Clone)/floor', MainTest.GetMapNode())
+        const 战局 = arr[idxArr++] as 战局类型
+        const 配置 = MainTest.instance.配置.find战局(战局)
+        const nodeSpace = utils.find(配置.strMeshRenderer路径, MainTest.GetMapNode())
         console.log('进Space', nodeSpace)
         if (nodeSpace) {
-            assetManager.loadRemote('https://www.rtsgame.online/图片/地图/ditu4_8_高清.png', (err, imageAsset: ImageAsset) => {
-                console.log('苔蔓贴图resources.load callback:', err, imageAsset)
+            assetManager.loadRemote(配置.strHttps高清贴图, (err, imageAsset: ImageAsset) => {
+                console.log('地图高清贴图resources.load callback:', err, imageAsset)
                 // console.log(this.material.getProperty('albedoMap'))
                 // console.log(this.material.getProperty('mainTexture'))
                 const meshRenderer = nodeSpace.getComponent(MeshRenderer);
