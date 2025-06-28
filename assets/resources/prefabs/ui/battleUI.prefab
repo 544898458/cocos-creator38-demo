@@ -20787,7 +20787,7 @@
         "__id__": 918
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 924
@@ -20858,7 +20858,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -10,
+      "y": -5,
       "z": 0
     },
     "_lrot": {
@@ -21172,7 +21172,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Button集结点（工虫）",
+    "_name": "Button集结点（工程车）",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
@@ -21183,7 +21183,7 @@
         "__id__": 935
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 941
@@ -21254,7 +21254,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -10,
+      "y": -5,
       "z": 0
     },
     "_lrot": {
@@ -21306,7 +21306,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "d5DuEZSJJBe5k/cV9GTg7x"
+    "fileId": "24EwfIb49LBJCQetLFUiFG"
   },
   {
     "__type__": "cc.Label",
@@ -21319,402 +21319,6 @@
     "_enabled": true,
     "__prefab": {
       "__id__": 939
-    },
-    "_customMaterial": null,
-    "_srcBlendFactor": 2,
-    "_dstBlendFactor": 4,
-    "_color": {
-      "__type__": "cc.Color",
-      "r": 231,
-      "g": 161,
-      "b": 148,
-      "a": 255
-    },
-    "_string": "工虫\n集结点",
-    "_horizontalAlign": 1,
-    "_verticalAlign": 1,
-    "_actualFontSize": 18,
-    "_fontSize": 18,
-    "_fontFamily": "Arial",
-    "_lineHeight": 21,
-    "_overflow": 0,
-    "_enableWrapText": true,
-    "_font": null,
-    "_isSystemFontUsed": true,
-    "_spacingX": 0,
-    "_isItalic": false,
-    "_isBold": false,
-    "_isUnderline": false,
-    "_underlineHeight": 2,
-    "_cacheMode": 0,
-    "_enableOutline": false,
-    "_outlineColor": {
-      "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
-      "a": 255
-    },
-    "_outlineWidth": 2,
-    "_enableShadow": false,
-    "_shadowColor": {
-      "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
-      "a": 255
-    },
-    "_shadowOffset": {
-      "__type__": "cc.Vec2",
-      "x": 2,
-      "y": 2
-    },
-    "_shadowBlur": 2,
-    "_id": ""
-  },
-  {
-    "__type__": "cc.CompPrefabInfo",
-    "fileId": "37i/RaPfRNXplpHbI/hAJa"
-  },
-  {
-    "__type__": "cc.PrefabInfo",
-    "root": {
-      "__id__": 1
-    },
-    "asset": {
-      "__id__": 0
-    },
-    "fileId": "eb6SHAOqZB+6zpnvNCHO2M",
-    "instance": null,
-    "targetOverrides": null,
-    "nestedPrefabInstanceRoots": null
-  },
-  {
-    "__type__": "cc.UITransform",
-    "_name": "",
-    "_objFlags": 0,
-    "__editorExtras__": {},
-    "node": {
-      "__id__": 934
-    },
-    "_enabled": true,
-    "__prefab": {
-      "__id__": 942
-    },
-    "_contentSize": {
-      "__type__": "cc.Size",
-      "width": 60,
-      "height": 60
-    },
-    "_anchorPoint": {
-      "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
-    },
-    "_id": ""
-  },
-  {
-    "__type__": "cc.CompPrefabInfo",
-    "fileId": "f5zl8q/SxHg6svENTPS8Bz"
-  },
-  {
-    "__type__": "cc.Sprite",
-    "_name": "",
-    "_objFlags": 0,
-    "__editorExtras__": {},
-    "node": {
-      "__id__": 934
-    },
-    "_enabled": true,
-    "__prefab": {
-      "__id__": 944
-    },
-    "_customMaterial": null,
-    "_srcBlendFactor": 2,
-    "_dstBlendFactor": 4,
-    "_color": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
-    "_spriteFrame": {
-      "__uuid__": "38f3c6ec-b695-4d45-bda0-1de8ac3b8a9e@f9941",
-      "__expectedType__": "cc.SpriteFrame"
-    },
-    "_type": 0,
-    "_fillType": 0,
-    "_sizeMode": 0,
-    "_fillCenter": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "_fillStart": 0,
-    "_fillRange": 0,
-    "_isTrimmedMode": true,
-    "_useGrayscale": false,
-    "_atlas": null,
-    "_id": ""
-  },
-  {
-    "__type__": "cc.CompPrefabInfo",
-    "fileId": "8eBeniHN9ElJYILp7LbFQi"
-  },
-  {
-    "__type__": "cc.Button",
-    "_name": "",
-    "_objFlags": 0,
-    "__editorExtras__": {},
-    "node": {
-      "__id__": 934
-    },
-    "_enabled": true,
-    "__prefab": {
-      "__id__": 946
-    },
-    "clickEvents": [
-      {
-        "__id__": 947
-      }
-    ],
-    "_interactable": true,
-    "_transition": 3,
-    "_normalColor": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
-    "_hoverColor": {
-      "__type__": "cc.Color",
-      "r": 211,
-      "g": 211,
-      "b": 211,
-      "a": 255
-    },
-    "_pressedColor": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
-    "_disabledColor": {
-      "__type__": "cc.Color",
-      "r": 124,
-      "g": 124,
-      "b": 124,
-      "a": 255
-    },
-    "_normalSprite": null,
-    "_hoverSprite": null,
-    "_pressedSprite": null,
-    "_disabledSprite": null,
-    "_duration": 0.1,
-    "_zoomScale": 1.2,
-    "_target": {
-      "__id__": 934
-    },
-    "_id": ""
-  },
-  {
-    "__type__": "cc.CompPrefabInfo",
-    "fileId": "0e+Eg/g0NOn43WDCLqn955"
-  },
-  {
-    "__type__": "cc.ClickEvent",
-    "target": {
-      "__id__": 1
-    },
-    "component": "",
-    "_componentId": "ba985/FGklKdYpL9XgoQFoE",
-    "handler": "on集结点",
-    "customEventData": "工虫"
-  },
-  {
-    "__type__": "7654eSoFXhOZYjnvRZFaCVS",
-    "_name": "",
-    "_objFlags": 0,
-    "__editorExtras__": {},
-    "node": {
-      "__id__": 934
-    },
-    "_enabled": true,
-    "__prefab": {
-      "__id__": 949
-    },
-    "str详情": "设置此建筑新产出单位的集结位置点，如果把目标点设置到资源上，会自动采集目标资源",
-    "_id": ""
-  },
-  {
-    "__type__": "cc.CompPrefabInfo",
-    "fileId": "derd6jG+hB1KioFO4qloKu"
-  },
-  {
-    "__type__": "cc.PrefabInfo",
-    "root": {
-      "__id__": 1
-    },
-    "asset": {
-      "__id__": 0
-    },
-    "fileId": "ffQSw9hiNBEbqz5Wl3My6T",
-    "instance": null,
-    "targetOverrides": null,
-    "nestedPrefabInstanceRoots": null
-  },
-  {
-    "__type__": "cc.Node",
-    "_name": "Button集结点（工程车）",
-    "_objFlags": 0,
-    "__editorExtras__": {},
-    "_parent": {
-      "__id__": 848
-    },
-    "_children": [
-      {
-        "__id__": 952
-      }
-    ],
-    "_active": true,
-    "_components": [
-      {
-        "__id__": 958
-      },
-      {
-        "__id__": 960
-      },
-      {
-        "__id__": 962
-      },
-      {
-        "__id__": 965
-      }
-    ],
-    "_prefab": {
-      "__id__": 967
-    },
-    "_lpos": {
-      "__type__": "cc.Vec3",
-      "x": -150,
-      "y": 0,
-      "z": 0
-    },
-    "_lrot": {
-      "__type__": "cc.Quat",
-      "x": 0,
-      "y": 0,
-      "z": 0,
-      "w": 1
-    },
-    "_lscale": {
-      "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
-      "z": 1
-    },
-    "_mobility": 0,
-    "_layer": 33554432,
-    "_euler": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    },
-    "_id": ""
-  },
-  {
-    "__type__": "cc.Node",
-    "_name": "Label",
-    "_objFlags": 0,
-    "__editorExtras__": {},
-    "_parent": {
-      "__id__": 951
-    },
-    "_children": [],
-    "_active": true,
-    "_components": [
-      {
-        "__id__": 953
-      },
-      {
-        "__id__": 955
-      }
-    ],
-    "_prefab": {
-      "__id__": 957
-    },
-    "_lpos": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": -10,
-      "z": 0
-    },
-    "_lrot": {
-      "__type__": "cc.Quat",
-      "x": 0,
-      "y": 0,
-      "z": 0,
-      "w": 1
-    },
-    "_lscale": {
-      "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
-      "z": 1
-    },
-    "_mobility": 0,
-    "_layer": 33554432,
-    "_euler": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    },
-    "_id": ""
-  },
-  {
-    "__type__": "cc.UITransform",
-    "_name": "",
-    "_objFlags": 0,
-    "__editorExtras__": {},
-    "node": {
-      "__id__": 952
-    },
-    "_enabled": true,
-    "__prefab": {
-      "__id__": 954
-    },
-    "_contentSize": {
-      "__type__": "cc.Size",
-      "width": 54,
-      "height": 47.459999999999994
-    },
-    "_anchorPoint": {
-      "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
-    },
-    "_id": ""
-  },
-  {
-    "__type__": "cc.CompPrefabInfo",
-    "fileId": "24EwfIb49LBJCQetLFUiFG"
-  },
-  {
-    "__type__": "cc.Label",
-    "_name": "",
-    "_objFlags": 0,
-    "__editorExtras__": {},
-    "node": {
-      "__id__": 952
-    },
-    "_enabled": true,
-    "__prefab": {
-      "__id__": 956
     },
     "_customMaterial": null,
     "_srcBlendFactor": 2,
@@ -21791,6 +21395,402 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
+      "__id__": 934
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 942
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 60,
+      "height": 60
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "a5Z58vJalPpK8lAMyAULyY"
+  },
+  {
+    "__type__": "cc.Sprite",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 934
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 944
+    },
+    "_customMaterial": null,
+    "_srcBlendFactor": 2,
+    "_dstBlendFactor": 4,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_spriteFrame": {
+      "__uuid__": "38f3c6ec-b695-4d45-bda0-1de8ac3b8a9e@f9941",
+      "__expectedType__": "cc.SpriteFrame"
+    },
+    "_type": 0,
+    "_fillType": 0,
+    "_sizeMode": 0,
+    "_fillCenter": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_fillStart": 0,
+    "_fillRange": 0,
+    "_isTrimmedMode": true,
+    "_useGrayscale": false,
+    "_atlas": null,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "6cUxXGSYRLmZAT5cizQKd4"
+  },
+  {
+    "__type__": "cc.Button",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 934
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 946
+    },
+    "clickEvents": [
+      {
+        "__id__": 947
+      }
+    ],
+    "_interactable": true,
+    "_transition": 3,
+    "_normalColor": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_hoverColor": {
+      "__type__": "cc.Color",
+      "r": 211,
+      "g": 211,
+      "b": 211,
+      "a": 255
+    },
+    "_pressedColor": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_disabledColor": {
+      "__type__": "cc.Color",
+      "r": 124,
+      "g": 124,
+      "b": 124,
+      "a": 255
+    },
+    "_normalSprite": null,
+    "_hoverSprite": null,
+    "_pressedSprite": null,
+    "_disabledSprite": null,
+    "_duration": 0.1,
+    "_zoomScale": 1.2,
+    "_target": {
+      "__id__": 934
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "79lIfeGvJCi5HA2yzvAav/"
+  },
+  {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 1
+    },
+    "component": "",
+    "_componentId": "ba985/FGklKdYpL9XgoQFoE",
+    "handler": "on集结点",
+    "customEventData": "工程车"
+  },
+  {
+    "__type__": "7654eSoFXhOZYjnvRZFaCVS",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 934
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 949
+    },
+    "str详情": "设置此建筑新产出单位的集结位置点，如果把目标点设置到资源上，会自动采集目标资源",
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "4bFA3nrklLZbsUzXICiMWa"
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__id__": 0
+    },
+    "fileId": "4dnZS+xOZMw6f5uaVe98pO",
+    "instance": null,
+    "targetOverrides": null,
+    "nestedPrefabInstanceRoots": null
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Button集结点（工虫）",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "_parent": {
+      "__id__": 848
+    },
+    "_children": [
+      {
+        "__id__": 952
+      }
+    ],
+    "_active": false,
+    "_components": [
+      {
+        "__id__": 958
+      },
+      {
+        "__id__": 960
+      },
+      {
+        "__id__": 962
+      },
+      {
+        "__id__": 965
+      }
+    ],
+    "_prefab": {
+      "__id__": 967
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": -150,
+      "y": 0,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_mobility": 0,
+    "_layer": 33554432,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Label",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "_parent": {
+      "__id__": 951
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 953
+      },
+      {
+        "__id__": 955
+      }
+    ],
+    "_prefab": {
+      "__id__": 957
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": -5,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_mobility": 0,
+    "_layer": 33554432,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.UITransform",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 952
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 954
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 54,
+      "height": 47.459999999999994
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "d5DuEZSJJBe5k/cV9GTg7x"
+  },
+  {
+    "__type__": "cc.Label",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 952
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 956
+    },
+    "_customMaterial": null,
+    "_srcBlendFactor": 2,
+    "_dstBlendFactor": 4,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 231,
+      "g": 104,
+      "b": 80,
+      "a": 255
+    },
+    "_string": "工虫\n集结点",
+    "_horizontalAlign": 1,
+    "_verticalAlign": 1,
+    "_actualFontSize": 18,
+    "_fontSize": 18,
+    "_fontFamily": "Arial",
+    "_lineHeight": 21,
+    "_overflow": 0,
+    "_enableWrapText": true,
+    "_font": null,
+    "_isSystemFontUsed": true,
+    "_spacingX": 0,
+    "_isItalic": false,
+    "_isBold": false,
+    "_isUnderline": false,
+    "_underlineHeight": 2,
+    "_cacheMode": 0,
+    "_enableOutline": false,
+    "_outlineColor": {
+      "__type__": "cc.Color",
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 255
+    },
+    "_outlineWidth": 2,
+    "_enableShadow": false,
+    "_shadowColor": {
+      "__type__": "cc.Color",
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 255
+    },
+    "_shadowOffset": {
+      "__type__": "cc.Vec2",
+      "x": 2,
+      "y": 2
+    },
+    "_shadowBlur": 2,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "37i/RaPfRNXplpHbI/hAJa"
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__id__": 0
+    },
+    "fileId": "eb6SHAOqZB+6zpnvNCHO2M",
+    "instance": null,
+    "targetOverrides": null,
+    "nestedPrefabInstanceRoots": null
+  },
+  {
+    "__type__": "cc.UITransform",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
       "__id__": 951
     },
     "_enabled": true,
@@ -21811,7 +21811,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "a5Z58vJalPpK8lAMyAULyY"
+    "fileId": "f5zl8q/SxHg6svENTPS8Bz"
   },
   {
     "__type__": "cc.Sprite",
@@ -21856,7 +21856,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "6cUxXGSYRLmZAT5cizQKd4"
+    "fileId": "8eBeniHN9ElJYILp7LbFQi"
   },
   {
     "__type__": "cc.Button",
@@ -21918,7 +21918,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "79lIfeGvJCi5HA2yzvAav/"
+    "fileId": "0e+Eg/g0NOn43WDCLqn955"
   },
   {
     "__type__": "cc.ClickEvent",
@@ -21928,7 +21928,7 @@
     "component": "",
     "_componentId": "ba985/FGklKdYpL9XgoQFoE",
     "handler": "on集结点",
-    "customEventData": "工程车"
+    "customEventData": "工虫"
   },
   {
     "__type__": "7654eSoFXhOZYjnvRZFaCVS",
@@ -21947,7 +21947,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "4bFA3nrklLZbsUzXICiMWa"
+    "fileId": "derd6jG+hB1KioFO4qloKu"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -21957,7 +21957,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "4dnZS+xOZMw6f5uaVe98pO",
+    "fileId": "ffQSw9hiNBEbqz5Wl3My6T",
     "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
@@ -21975,7 +21975,7 @@
         "__id__": 969
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 975
@@ -22046,7 +22046,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -10,
+      "y": -5,
       "z": 0
     },
     "_lrot": {
@@ -26736,7 +26736,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 240,
+      "width": 0,
       "height": 70
     },
     "_anchorPoint": {
@@ -42386,6 +42386,15 @@
     },
     "button集结点": {
       "__id__": 928
+    },
+    "button集结点_工程车": {
+      "__id__": 945
+    },
+    "button集结点_工虫": {
+      "__id__": 962
+    },
+    "button集结点_房虫": {
+      "__id__": 979
     },
     "button解锁近战兵": {
       "__id__": 996

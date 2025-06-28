@@ -9044,7 +9044,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 89.837,
+      "y": 95,
       "z": 0
     },
     "_lrot": {
@@ -9101,7 +9101,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 189,
+      "y": 182,
       "z": 0
     },
     "_lrot": {
@@ -9475,7 +9475,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 105.5,
+      "y": 116,
       "z": 0
     },
     "_lrot": {
@@ -9565,8 +9565,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 231.1875,
-      "height": 91.28
+      "width": 291.1767578125,
+      "height": 63.279999999999994
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -9592,15 +9592,15 @@
       "__id__": 389
     },
     "_lineHeight": 28,
-    "_string": "多  玩  家  混  战\n<size=16>看30秒广告送10单位和1000资源\n提前关闭广告送2单位和80资源</size>",
+    "_string": "多  玩  家  混  战\n<size=10>看30秒广告送10单位和1000资源，提前关闭广告送2单位和80资源</size>",
     "_horizontalAlign": 1,
     "_verticalAlign": 0,
     "_fontSize": 21,
     "_fontColor": {
       "__type__": "cc.Color",
-      "r": 250,
-      "g": 229,
-      "b": 122,
+      "r": 255,
+      "g": 184,
+      "b": 0,
       "a": 255
     },
     "_maxWidth": 0,
@@ -9644,8 +9644,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 300,
-      "height": 135
+      "width": 320,
+      "height": 100
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -9819,7 +9819,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -20.5,
+      "y": 25,
       "z": 0
     },
     "_lrot": {
@@ -9909,8 +9909,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 200,
-      "height": 81.5
+      "width": 276,
+      "height": 56.49999999999999
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -9936,7 +9936,7 @@
       "__id__": 404
     },
     "_lineHeight": 25,
-    "_string": "四方对战（您是房主）\n<size=15>其他玩家可加入您的战局\n您退出场景就会结束战局</size>",
+    "_string": "四方对战（您是房主）\n<size=12>其他玩家可加入您的战局，您退出场景就会结束战局</size>",
     "_horizontalAlign": 1,
     "_verticalAlign": 0,
     "_fontSize": 20,
@@ -9988,8 +9988,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 300,
-      "height": 135
+      "width": 320,
+      "height": 100
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -10163,7 +10163,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -20.5,
+      "y": -66,
       "z": 0
     },
     "_lrot": {
@@ -10253,8 +10253,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 200,
-      "height": 81.5
+      "width": 276,
+      "height": 56.49999999999999
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -10280,7 +10280,7 @@
       "__id__": 419
     },
     "_lineHeight": 25,
-    "_string": "四方对战（您是房主）\n<size=15>其他玩家可加入您的战局\n您退出场景就会结束战局</size>",
+    "_string": "一打一（您是房主）\n<size=12>其他玩家可加入您的战局，您退出场景就会结束战局</size>",
     "_horizontalAlign": 1,
     "_verticalAlign": 0,
     "_fontSize": 20,
@@ -10332,8 +10332,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 300,
-      "height": 135
+      "width": 320,
+      "height": 100
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -10478,7 +10478,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "旁观其他人的多人战局",
+    "_name": "加入其他玩家的多人战局",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
@@ -10507,7 +10507,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -146.5,
+      "y": -157,
       "z": 0
     },
     "_lrot": {
@@ -10557,7 +10557,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -22,
+      "y": -18,
       "z": 0
     },
     "_lrot": {
@@ -10598,7 +10598,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 260,
-      "height": 67.8
+      "height": 56.49999999999999
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -10623,8 +10623,8 @@
     "__prefab": {
       "__id__": 434
     },
-    "_lineHeight": 30,
-    "_string": "加入其他玩家创建的四方对战\n<size=15>看看谁更厉害</size>",
+    "_lineHeight": 25,
+    "_string": "加入其他玩家创建的多人战局\n<size=15>挑战其他玩家</size>",
     "_horizontalAlign": 1,
     "_verticalAlign": 0,
     "_fontSize": 20,
@@ -10676,8 +10676,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 300,
-      "height": 135
+      "width": 320,
+      "height": 100
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -10835,7 +10835,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 207.658,
-      "height": 428
+      "height": 414
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -25170,7 +25170,7 @@
       "__id__": 1038
     },
     "_lineHeight": 15,
-    "_string": "游戏版本：2025年6月26日\n玩家QQ群：1015518075\t开发QQ群：285842297\n微信小游戏：即时战略指挥\t微信公众号：即时战略指挥\n#腾讯频道：即时战略指挥\t#腾讯频道：pd72667234\n百度贴吧：即时战略指挥\n<color=#ffff00><size=13>健康游戏忠告\n抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。\n适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活。</size></color>",
+    "_string": "游戏版本：2025年6月28日\n玩家QQ群：1015518075\t开发QQ群：285842297\n微信小游戏：即时战略指挥\t微信公众号：即时战略指挥\n#腾讯频道：即时战略指挥\t#腾讯频道：pd72667234\n百度贴吧：即时战略指挥\n<color=#ffff00><size=13>健康游戏忠告\n抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。\n适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活。</size></color>",
     "_horizontalAlign": 1,
     "_verticalAlign": 0,
     "_fontSize": 10,

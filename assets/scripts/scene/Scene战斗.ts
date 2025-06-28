@@ -657,6 +657,9 @@ export class Scene战斗 extends Component {
         }
         this.battleUI.button强行走.node.active = false
         this.battleUI.button集结点.node.active = false
+        this.battleUI.button集结点_房虫.node.active = false
+        this.battleUI.button集结点_工虫.node.active = false
+        this.battleUI.button集结点_工程车.node.active = false
         this.battleUI.button离开地堡.node.active = false
         this.battleUI.button原地坚守.node.active = false
         this.battleUI.button解锁枪虫.node.active = false
@@ -759,8 +762,13 @@ export class Scene战斗 extends Component {
                             this.battleUI.node太岁分裂.active = true
                             break
                         case 单位类型.基地:
+                            this.battleUI.button集结点.node.active = true
+                            this.battleUI.button集结点_工程车.node.active = true
+                            break
                         case 单位类型.虫巢:
                             this.battleUI.button集结点.node.active = true
+                            this.battleUI.button集结点_房虫.node.active = true
+                            this.battleUI.button集结点_工虫.node.active = true
                             break
                         case 单位类型.房虫:
                             this.battleUI.button强行走.node.active = true

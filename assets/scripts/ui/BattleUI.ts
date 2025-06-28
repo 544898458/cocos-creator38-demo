@@ -61,6 +61,9 @@ export class BattleUI extends Dialog {
     @property({ type: Button }) button强行走: Button
     @property({ type: Button }) button原地坚守: Button
     @property({ type: Button }) button集结点: Button
+    @property({ type: Button }) button集结点_工程车: Button
+    @property({ type: Button }) button集结点_工虫: Button
+    @property({ type: Button }) button集结点_房虫: Button
     @property({ type: Button }) button解锁近战兵: Button
     @property({ type: Button }) button解锁枪虫: Button
     @property(Node) node升级枪兵攻击: Node
