@@ -10,6 +10,7 @@ export class 单位配置 {
 	动画节点路径: string
 	描述: string
 	受击高度: number
+	是骨骼动画: boolean
 }
 export class 战斗配置 {
 	类型: 单位类型
@@ -72,8 +73,8 @@ export class 配置 {
 	}
 	读取1个配置文件<T>(strName: string, fun: (arr: Array<T>) => void) {
 
-		// let url = 'https://www.rtsgame.online/配置/'
-		let url = 'https://www.rtsgame.online/配置2/'
+		let url = 'https://www.rtsgame.online/配置/'
+		// let url = 'https://www.rtsgame.online/配置2/'
 		assetManager.loadRemote(url + strName + '.yaml', { ext: '.txt' },
 			(err, textAsset: TextAsset) => {
 				console.log(err, textAsset)

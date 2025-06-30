@@ -213,8 +213,9 @@ export class NetMessage {
                         console.warn(id, newNode, '骨骼动画节点不存在', 单位配置.动画节点路径)
                         return;
                     }
-                    old.skeletalAnimation = node.getComponent(SkeletalAnimation)
-                    // console.log('骨骼动画', 单位配置.动画节点路径, old.skeletalAnimation)
+                    
+                    old.skeletalAnimation = node.getComponent(单位配置.是骨骼动画 ? SkeletalAnimation : Animation)
+                    // console.log('动画', 单位配置.动画节点路径, old.skeletalAnimation)
                 } else if (单位类型.苔蔓 == old.类型) {
                     old.view.getChildByName('苔蔓').getComponent(苔蔓Component).Set半径(old.苔蔓半径)
 
@@ -223,7 +224,7 @@ export class NetMessage {
 
                 if (old.skeletalAnimation != undefined) {
                     // old.skeletalAnimation.play(old.initClipName)
-                    MainTest.播放动作(old, old.initClipName, old.init初始动作Loop, old.init初始动作播放速度)
+                    MainTest.播放动作(old, old.initClipName, old.init初始动作Loop, old.init初始动作播放速度, old.init初始动作起始时刻秒, old.init初始动作结束时刻秒)
                 }
                 // if (!thisLocal.scene战斗.battleUI)
                 MainTest.instance.scene战斗.battleUI = MainTest.instance.dialogMgr.getDialog(UI2Prefab.BattleUI_url).getComponent(BattleUI);
@@ -405,7 +406,9 @@ export class NetMessage {
         const loop: boolean = arr[idxArr++]
         const clipName: string = arr[idxArr++]
         const 动作播放速度: number = arr[idxArr++]
-        console.log('handleGame_ChangeSkeleAnim', id, loop, clipName, 动作播放速度)
+        const f动作起始时刻秒: number = arr[idxArr++]
+        const f动作结束时刻秒: number = arr[idxArr++]
+        console.log('handleGame_ChangeSkeleAnim', id, loop, clipName, 动作播放速度, f动作起始时刻秒, f动作结束时刻秒)
 
         const scene战斗 = mainTest.scene战斗
         const old = scene战斗?.entities.get(id)
@@ -418,8 +421,10 @@ export class NetMessage {
             old.initClipName = clipName
             old.init初始动作播放速度 = 动作播放速度
             old.init初始动作Loop = loop
+            old.init初始动作起始时刻秒 = f动作起始时刻秒
+            old.init初始动作结束时刻秒 = f动作结束时刻秒
         } else {
-            MainTest.播放动作(old, clipName, loop, 动作播放速度);
+            MainTest.播放动作(old, clipName, loop, 动作播放速度, f动作起始时刻秒, f动作结束时刻秒);
         }
     }
     private handleGame_DelRoleRet(arr: any[], idxArr: number): void {

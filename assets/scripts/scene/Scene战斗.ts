@@ -38,6 +38,8 @@ export class ClientEntityComponent {
     initClipName: string = 'idle'
     init初始动作播放速度: number = 1
     init初始动作Loop: boolean = true
+    init初始动作起始时刻秒: number = 0
+    init初始动作结束时刻秒: number = 0
     nickName: string
     entityName: string
     position: Vec3//刚进地图Load没结束无法设置node坐标，暂存
