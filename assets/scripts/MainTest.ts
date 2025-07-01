@@ -465,18 +465,7 @@ export class MainTest extends Component {
                 state.time = 11.8
             }
         }
-        else if (old.view.name == '兵厂') {
-            old.skeletalAnimation.play()
-            let state = old.skeletalAnimation.getState('barracksdeath')
-            if (strClipName == 'idle') {
-                state.wrapMode = AnimationClip.WrapMode.Normal
-                state.playbackRange = { min: 0, max: 0.4 }
-            } else if (strClipName == '兵厂损毁') {
-                state.wrapMode = AnimationClip.WrapMode.Normal
-                state.playbackRange = { min: 0.4, max: 2 } // 动画总长度
-                state.time = 0.4
-            }
-        } else if (old.view.name == '近战兵') {
+        else if (old.view.name == '近战兵') {
             old.skeletalAnimation.play()
             if (strClipName == 'idle') {
                 let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[0])

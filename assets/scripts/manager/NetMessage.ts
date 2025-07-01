@@ -152,9 +152,13 @@ export class NetMessage {
                 scene战斗.battleUI.lableCount.string = '共' + scene战斗.entities.size + '单位'
 
             let 单位配置 = MainTest.instance.配置.find单位(old.类型)
-            if (单位配置)
-                old.initClipName = 单位配置.空闲动作
-
+            if (单位配置){
+                old.initClipName = 单位配置.空闲动作.名字或索引
+                old.init初始动作播放速度 = 单位配置.空闲动作.播放速度
+                old.init初始动作Loop = true
+                old.init初始动作起始时刻秒 = 单位配置.空闲动作.起始时刻秒
+                old.init初始动作结束时刻秒 = 单位配置.空闲动作.结束时刻秒
+            }
             resources.load(prefabName, Prefab, (err, prefab) => {
                 old = scene战斗.entities.get(id)
                 if (!old) {
@@ -189,11 +193,7 @@ export class NetMessage {
                     old.skeletalAnimation = newNode.getChildByName('平常状态').getComponent(Animation)
                     old.initClipName = '平常状态'
                     // console.log('光子炮骨骼动画', old.skeletalAnimation)
-                } else if (newNode.name == '兵厂') {
-                    old.skeletalAnimation = newNode.getChildByName('barracks').getComponent(Animation)
-                    // old.initClipName = '平常状态'
-                    // console.log('兵厂骨骼动画', old.skeletalAnimation)
-                } else if (newNode.name == '近战兵') {
+                }  else if (newNode.name == '近战兵') {
                     old.skeletalAnimation = newNode.getChildByName('Idle').getComponent(SkeletalAnimation)
                     // old.initClipName = '平常状态'
                     // console.log('近战兵骨骼动画', old.skeletalAnimation)
@@ -408,14 +408,21 @@ export class NetMessage {
         const 动作播放速度: number = arr[idxArr++]
         const f动作起始时刻秒: number = arr[idxArr++]
         const f动作结束时刻秒: number = arr[idxArr++]
-        console.log('handleGame_ChangeSkeleAnim', id, loop, clipName, 动作播放速度, f动作起始时刻秒, f动作结束时刻秒)
-
+        
         const scene战斗 = mainTest.scene战斗
         const old = scene战斗?.entities.get(id)
         if (!old) {
-            console.log('已离开战斗场景', id)
+            console.log('handleGame_ChangeSkeleAnim 已离开战斗场景', id, clipName, loop, 动作播放速度, f动作起始时刻秒, f动作结束时刻秒)
             return;
         }
+
+        // 获取单位类型枚举名字
+        const enumKeys = Object.keys(单位类型);
+        const enumValues = Object.values(单位类型);
+        const 单位类型名称 = enumKeys[enumValues.indexOf(old.类型)];
+        
+        console.log('handleGame_ChangeSkeleAnim', 单位类型名称, id, loop, clipName, 动作播放速度, f动作起始时刻秒, f动作结束时刻秒)
+
 
         if (old.skeletalAnimation == undefined) {
             old.initClipName = clipName

@@ -3,10 +3,16 @@ import { assetManager } from 'cc';
 import { parse } from 'yaml'
 import { 单位类型, 属性类型, 战局类型 } from '../utils/Enum';
 
+export class 动作 {
+	名字或索引: string
+	播放速度: number
+	起始时刻秒: number
+	结束时刻秒: number
+}
 export class 单位配置 {
 	类型: 单位类型
 	名字: string
-	空闲动作: string
+	空闲动作: 动作
 	动画节点路径: string
 	描述: string
 	受击高度: number
