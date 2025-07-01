@@ -221,7 +221,9 @@
         },
         "events": [],
         "embeddedPlayers": [],
-        "editorExtras": {},
+        "editorExtras": {
+          "embeddedPlayerGroups": []
+        },
         "speed": 1,
         "auxiliaryCurves": {}
       },
@@ -455,6 +457,7 @@
         "_techIdx": 0,
         "_defines": [
           {
+            "USE_NORMAL_MAP": true,
             "USE_ALBEDO_MAP": true
           },
           {},
@@ -523,6 +526,10 @@
           {
             "mainTexture": {
               "__uuid__": "5a82e758-a9f2-43de-9107-16e5c68cad6b@6c48a",
+              "__expectedType__": "cc.Texture2D"
+            },
+            "normalMap": {
+              "__uuid__": "8482987e-4c99-4369-8984-24ff6a766cab@6c48a",
               "__expectedType__": "cc.Texture2D"
             }
           },

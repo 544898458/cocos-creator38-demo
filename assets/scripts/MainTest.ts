@@ -592,7 +592,7 @@ export class MainTest extends Component {
                 } else {
                     state.time = 0
                 }
-                console.log('播放动作', old.view.name, strClipName, state)
+                console.log('播放动作', old.view.name, strClipName, state, loop, 动作播放速度, f动作起始时刻秒, f动作结束时刻秒)
             }
 
             if (null == state) {
