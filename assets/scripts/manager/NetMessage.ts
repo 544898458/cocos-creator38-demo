@@ -160,6 +160,10 @@ export class NetMessage {
                 old.init初始动作结束时刻秒 = 单位配置.空闲动作.结束时刻秒
             }
             resources.load(prefabName, Prefab, (err, prefab) => {
+                if(!prefab){
+                    console.warn(id, '单位预设不存在', prefabName, err)
+                    return;
+                }
                 old = scene战斗.entities.get(id)
                 if (!old) {
                     console.warn(id, '已离开战斗场景');
