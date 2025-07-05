@@ -47,6 +47,7 @@ export class BattleUI extends Dialog {
     lableGas: Label
     @property({ type: Label, displayName: "活动单位" })
     lableUnit: Label
+    @property(Label) lable建筑单位: Label
     @property({ type: Label, displayName: "聊天消息" })
     lable聊天消息: Label
     @property({ type: Label, displayName: "系统消息" })
