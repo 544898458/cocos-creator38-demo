@@ -1,0 +1,156 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "b78eb60c-3cd8-422d-baf0-d52dbcc22dd2",
+  "files": [
+    "__original-animation-0.cconb"
+  ],
+  "subMetas": {
+    "930e8": {
+      "importer": "gltf-mesh",
+      "uuid": "b78eb60c-3cd8-422d-baf0-d52dbcc22dd2@930e8",
+      "displayName": "",
+      "id": "930e8",
+      "name": "Melee soldier.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 1768
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "18d6f": {
+      "importer": "gltf-animation",
+      "uuid": "b78eb60c-3cd8-422d-baf0-d52dbcc22dd2@18d6f",
+      "displayName": "",
+      "id": "18d6f",
+      "name": "mixamo.com.animation",
+      "userData": {
+        "gltfIndex": 0,
+        "wrapMode": 2,
+        "sample": 30,
+        "span": {
+          "from": 0,
+          "to": 1.399999976158142
+        },
+        "events": []
+      },
+      "ver": "1.0.17",
+      "imported": true,
+      "files": [
+        ".cconb"
+      ],
+      "subMetas": {}
+    },
+    "438fe": {
+      "importer": "gltf-skeleton",
+      "uuid": "b78eb60c-3cd8-422d-baf0-d52dbcc22dd2@438fe",
+      "displayName": "",
+      "id": "438fe",
+      "name": "UnnamedSkeleton.skeleton",
+      "userData": {
+        "gltfIndex": 0,
+        "jointsLength": 52
+      },
+      "ver": "1.0.1",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "aa02d": {
+      "importer": "gltf-material",
+      "uuid": "b78eb60c-3cd8-422d-baf0-d52dbcc22dd2@aa02d",
+      "displayName": "",
+      "id": "aa02d",
+      "name": "aiStandardSurface1SG.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "c60ae": {
+      "importer": "gltf-scene",
+      "uuid": "b78eb60c-3cd8-422d-baf0-d52dbcc22dd2@c60ae",
+      "displayName": "",
+      "id": "c60ae",
+      "name": "Melee Soldier Standing Melee Attack Kick Ver. 2.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "animationImportSettings": [
+      {
+        "name": "mixamo.com",
+        "duration": 1.399999976158142,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "mixamo.com",
+            "from": 0,
+            "to": 1.399999976158142,
+            "wrapMode": 2,
+            "previousId": "18d6f"
+          }
+        ]
+      }
+    ],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "b78eb60c-3cd8-422d-baf0-d52dbcc22dd2@930e8"
+      ],
+      "skeletons": [
+        "b78eb60c-3cd8-422d-baf0-d52dbcc22dd2@438fe"
+      ],
+      "textures": [],
+      "materials": [
+        "b78eb60c-3cd8-422d-baf0-d52dbcc22dd2@aa02d"
+      ],
+      "scenes": [
+        "b78eb60c-3cd8-422d-baf0-d52dbcc22dd2@c60ae"
+      ]
+    }
+  }
+}

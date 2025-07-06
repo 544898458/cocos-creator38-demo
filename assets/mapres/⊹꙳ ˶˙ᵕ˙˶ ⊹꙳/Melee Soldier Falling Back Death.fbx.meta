@@ -1,0 +1,156 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "2043cf42-7adc-417f-a82a-53124271c75c",
+  "files": [
+    "__original-animation-0.cconb"
+  ],
+  "subMetas": {
+    "930e8": {
+      "importer": "gltf-mesh",
+      "uuid": "2043cf42-7adc-417f-a82a-53124271c75c@930e8",
+      "displayName": "",
+      "id": "930e8",
+      "name": "Melee soldier.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 1768
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "18d6f": {
+      "importer": "gltf-animation",
+      "uuid": "2043cf42-7adc-417f-a82a-53124271c75c@18d6f",
+      "displayName": "",
+      "id": "18d6f",
+      "name": "mixamo.com.animation",
+      "userData": {
+        "gltfIndex": 0,
+        "wrapMode": 2,
+        "sample": 30,
+        "span": {
+          "from": 0,
+          "to": 2.5999999046325684
+        },
+        "events": []
+      },
+      "ver": "1.0.17",
+      "imported": true,
+      "files": [
+        ".cconb"
+      ],
+      "subMetas": {}
+    },
+    "438fe": {
+      "importer": "gltf-skeleton",
+      "uuid": "2043cf42-7adc-417f-a82a-53124271c75c@438fe",
+      "displayName": "",
+      "id": "438fe",
+      "name": "UnnamedSkeleton.skeleton",
+      "userData": {
+        "gltfIndex": 0,
+        "jointsLength": 52
+      },
+      "ver": "1.0.1",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "aa02d": {
+      "importer": "gltf-material",
+      "uuid": "2043cf42-7adc-417f-a82a-53124271c75c@aa02d",
+      "displayName": "",
+      "id": "aa02d",
+      "name": "aiStandardSurface1SG.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "db96d": {
+      "importer": "gltf-scene",
+      "uuid": "2043cf42-7adc-417f-a82a-53124271c75c@db96d",
+      "displayName": "",
+      "id": "db96d",
+      "name": "Melee Soldier Falling Back Death.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "animationImportSettings": [
+      {
+        "name": "mixamo.com",
+        "duration": 2.5999999046325684,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "mixamo.com",
+            "from": 0,
+            "to": 2.5999999046325684,
+            "wrapMode": 2,
+            "previousId": "18d6f"
+          }
+        ]
+      }
+    ],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "2043cf42-7adc-417f-a82a-53124271c75c@930e8"
+      ],
+      "skeletons": [
+        "2043cf42-7adc-417f-a82a-53124271c75c@438fe"
+      ],
+      "textures": [],
+      "materials": [
+        "2043cf42-7adc-417f-a82a-53124271c75c@aa02d"
+      ],
+      "scenes": [
+        "2043cf42-7adc-417f-a82a-53124271c75c@db96d"
+      ]
+    }
+  }
+}

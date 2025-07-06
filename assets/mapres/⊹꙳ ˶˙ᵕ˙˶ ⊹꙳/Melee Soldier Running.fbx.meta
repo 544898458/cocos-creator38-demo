@@ -1,0 +1,156 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "3cdbf65c-ae73-4dc0-a347-2816cc21c443",
+  "files": [
+    "__original-animation-0.cconb"
+  ],
+  "subMetas": {
+    "43018": {
+      "importer": "gltf-scene",
+      "uuid": "3cdbf65c-ae73-4dc0-a347-2816cc21c443@43018",
+      "displayName": "",
+      "id": "43018",
+      "name": "Melee Soldier Running.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "930e8": {
+      "importer": "gltf-mesh",
+      "uuid": "3cdbf65c-ae73-4dc0-a347-2816cc21c443@930e8",
+      "displayName": "",
+      "id": "930e8",
+      "name": "Melee soldier.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 1768
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "18d6f": {
+      "importer": "gltf-animation",
+      "uuid": "3cdbf65c-ae73-4dc0-a347-2816cc21c443@18d6f",
+      "displayName": "",
+      "id": "18d6f",
+      "name": "mixamo.com.animation",
+      "userData": {
+        "gltfIndex": 0,
+        "wrapMode": 2,
+        "sample": 30,
+        "span": {
+          "from": 0,
+          "to": 0.699999988079071
+        },
+        "events": []
+      },
+      "ver": "1.0.17",
+      "imported": true,
+      "files": [
+        ".cconb"
+      ],
+      "subMetas": {}
+    },
+    "438fe": {
+      "importer": "gltf-skeleton",
+      "uuid": "3cdbf65c-ae73-4dc0-a347-2816cc21c443@438fe",
+      "displayName": "",
+      "id": "438fe",
+      "name": "UnnamedSkeleton.skeleton",
+      "userData": {
+        "gltfIndex": 0,
+        "jointsLength": 52
+      },
+      "ver": "1.0.1",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "aa02d": {
+      "importer": "gltf-material",
+      "uuid": "3cdbf65c-ae73-4dc0-a347-2816cc21c443@aa02d",
+      "displayName": "",
+      "id": "aa02d",
+      "name": "aiStandardSurface1SG.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "animationImportSettings": [
+      {
+        "name": "mixamo.com",
+        "duration": 0.699999988079071,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "mixamo.com",
+            "from": 0,
+            "to": 0.699999988079071,
+            "wrapMode": 2,
+            "previousId": "18d6f"
+          }
+        ]
+      }
+    ],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "3cdbf65c-ae73-4dc0-a347-2816cc21c443@930e8"
+      ],
+      "skeletons": [
+        "3cdbf65c-ae73-4dc0-a347-2816cc21c443@438fe"
+      ],
+      "textures": [],
+      "materials": [
+        "3cdbf65c-ae73-4dc0-a347-2816cc21c443@aa02d"
+      ],
+      "scenes": [
+        "3cdbf65c-ae73-4dc0-a347-2816cc21c443@43018"
+      ]
+    }
+  }
+}

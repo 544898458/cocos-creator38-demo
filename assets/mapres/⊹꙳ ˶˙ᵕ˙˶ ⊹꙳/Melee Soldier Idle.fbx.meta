@@ -1,0 +1,258 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "085f703e-091c-4ae7-b848-39031f231fa7",
+  "files": [
+    "__original-animation-0.cconb"
+  ],
+  "subMetas": {
+    "930e8": {
+      "importer": "gltf-mesh",
+      "uuid": "085f703e-091c-4ae7-b848-39031f231fa7@930e8",
+      "displayName": "",
+      "id": "930e8",
+      "name": "Melee soldier.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 1768
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "18d6f": {
+      "importer": "gltf-animation",
+      "uuid": "085f703e-091c-4ae7-b848-39031f231fa7@18d6f",
+      "displayName": "",
+      "id": "18d6f",
+      "name": "mixamo.com.animation",
+      "userData": {
+        "gltfIndex": 0,
+        "wrapMode": 2,
+        "sample": 30,
+        "span": {
+          "from": 0,
+          "to": 1.9666666984558105
+        },
+        "events": []
+      },
+      "ver": "1.0.17",
+      "imported": true,
+      "files": [
+        ".cconb"
+      ],
+      "subMetas": {}
+    },
+    "438fe": {
+      "importer": "gltf-skeleton",
+      "uuid": "085f703e-091c-4ae7-b848-39031f231fa7@438fe",
+      "displayName": "",
+      "id": "438fe",
+      "name": "UnnamedSkeleton.skeleton",
+      "userData": {
+        "gltfIndex": 0,
+        "jointsLength": 52
+      },
+      "ver": "1.0.1",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "aa02d": {
+      "importer": "gltf-material",
+      "uuid": "085f703e-091c-4ae7-b848-39031f231fa7@aa02d",
+      "displayName": "",
+      "id": "aa02d",
+      "name": "aiStandardSurface1SG.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "52a24": {
+      "importer": "gltf-scene",
+      "uuid": "085f703e-091c-4ae7-b848-39031f231fa7@52a24",
+      "displayName": "",
+      "id": "52a24",
+      "name": "Melee Soldier Idle.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "animationImportSettings": [
+      {
+        "name": "mixamo.com",
+        "duration": 1.9666666984558105,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "mixamo.com",
+            "from": 0,
+            "to": 1.9666666984558105,
+            "wrapMode": 2,
+            "previousId": "18d6f"
+          }
+        ]
+      }
+    ],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "085f703e-091c-4ae7-b848-39031f231fa7@930e8"
+      ],
+      "skeletons": [
+        "085f703e-091c-4ae7-b848-39031f231fa7@438fe"
+      ],
+      "textures": [],
+      "materials": [
+        "085f703e-091c-4ae7-b848-39031f231fa7@aa02d"
+      ],
+      "scenes": [
+        "085f703e-091c-4ae7-b848-39031f231fa7@52a24"
+      ]
+    },
+    "materials": {
+      "085f703e-091c-4ae7-b848-39031f231fa7@aa02d": {
+        "__type__": "cc.Material",
+        "_name": "",
+        "_objFlags": 0,
+        "__editorExtras__": {},
+        "_native": "",
+        "_effectAsset": {
+          "__uuid__": "2ec11458-f855-4978-b14d-f3ed5cf697fa",
+          "__expectedType__": "cc.EffectAsset"
+        },
+        "_techIdx": 0,
+        "_defines": [
+          {
+            "USE_NORMAL_MAP": true,
+            "USE_ALBEDO_MAP": true,
+            "USE_METALLIC_MAP": true,
+            "USE_ROUGHNESS_MAP": true
+          },
+          {},
+          {},
+          {}
+        ],
+        "_states": [
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          }
+        ],
+        "_props": [
+          {
+            "mainColor": {
+              "__type__": "cc.Color",
+              "r": 231,
+              "g": 231,
+              "b": 231,
+              "a": 255
+            },
+            "mainTexture": {
+              "__uuid__": "321190f2-f3a9-4208-bce4-6cf5e85489a5@6c48a",
+              "__expectedType__": "cc.Texture2D"
+            },
+            "roughnessMap": {
+              "__uuid__": "4727be42-68d6-4b19-afba-daba901a62a0@6c48a",
+              "__expectedType__": "cc.Texture2D"
+            },
+            "metallic": 0,
+            "metallicMap": {
+              "__uuid__": "4b2d440b-c826-40e0-8436-4a45bcd59b4d@6c48a",
+              "__expectedType__": "cc.Texture2D"
+            },
+            "emissiveScale": 0,
+            "emissive": {
+              "__type__": "cc.Color",
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 255
+            },
+            "normalMap": {
+              "__uuid__": "11a7da9d-bc52-4dd6-9d3a-166b13edf6fc@6c48a",
+              "__expectedType__": "cc.Texture2D"
+            }
+          },
+          {},
+          {},
+          {}
+        ]
+      }
+    }
+  }
+}

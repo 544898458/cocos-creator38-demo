@@ -197,10 +197,6 @@ export class NetMessage {
                     old.skeletalAnimation = newNode.getChildByName('平常状态').getComponent(Animation)
                     old.initClipName = '平常状态'
                     // console.log('光子炮骨骼动画', old.skeletalAnimation)
-                }  else if (newNode.name == '近战兵') {
-                    old.skeletalAnimation = newNode.getChildByName('Idle').getComponent(SkeletalAnimation)
-                    // old.initClipName = '平常状态'
-                    // console.log('近战兵骨骼动画', old.skeletalAnimation)
                 } else if (newNode.name == '地堡') {
                     old.skeletalAnimation = newNode.getChildByName('地堡872面').getComponent(Animation)
                     // old.initClipName = '平常状态'

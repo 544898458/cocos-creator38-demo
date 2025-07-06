@@ -465,33 +465,6 @@ export class MainTest extends Component {
                 state.time = 11.8
             }
         }
-        else if (old.view.name == '近战兵') {
-            old.skeletalAnimation.play()
-            if (strClipName == 'idle') {
-                let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[0])
-                state.wrapMode = AnimationClip.WrapMode.Loop
-                old.skeletalAnimation.play()
-            } else if (strClipName == 'died') {
-                let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[3])
-                state.wrapMode = AnimationClip.WrapMode.Normal
-                old.skeletalAnimation.play()
-            } else if (strClipName == 'attack') {
-                let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[2])
-                state.wrapMode = AnimationClip.WrapMode.Normal
-                // state.playbackRange = {min:0.4, max:2} // 动画总长度
-                state.speed = 4
-                state.time = 0.5
-                old.skeletalAnimation.play()
-            } else if (strClipName == 'run') {
-                let state = old.skeletalAnimation.createState(old.skeletalAnimation.clips[1])
-                state.wrapMode = AnimationClip.WrapMode.Loop
-                state.speed = 0.8
-                old.skeletalAnimation.play()
-                // state.time = 0
-                // old.skeletalAnimation.play('Take 001')
-                // console.log(old.view.name, 'state', state, 'old.skeletalAnimation', old.skeletalAnimation)
-            }
-        }
         else if (old.view.name == '工虫') {
             old.skeletalAnimation.play()
             if (strClipName == 'idle') {
