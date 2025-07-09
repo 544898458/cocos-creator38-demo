@@ -131,7 +131,13 @@
           "from": 0,
           "to": 1.3666666746139526
         },
-        "events": []
+        "events": [],
+        "embeddedPlayers": [],
+        "editorExtras": {
+          "embeddedPlayerGroups": []
+        },
+        "speed": 1,
+        "auxiliaryCurves": {}
       },
       "ver": "1.0.17",
       "imported": true,
@@ -353,6 +359,85 @@
       "scenes": [
         "d8528617-139b-4708-b46b-a88bd1fbdc1f@71e60"
       ]
+    },
+    "materials": {
+      "d8528617-139b-4708-b46b-a88bd1fbdc1f@229ba": {
+        "__type__": "cc.Material",
+        "_name": "",
+        "_objFlags": 0,
+        "__editorExtras__": {},
+        "_native": "",
+        "_effectAsset": {
+          "__uuid__": "f648964e-8d32-41fc-9ac9-7a1e714dd17b",
+          "__expectedType__": "cc.EffectAsset"
+        },
+        "_techIdx": 0,
+        "_defines": [
+          {
+            "USE_ALBEDO_MAP": true
+          },
+          {},
+          {},
+          {}
+        ],
+        "_states": [
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          }
+        ],
+        "_props": [
+          {
+            "mainTexture": {
+              "__uuid__": "6da41f6a-917d-4b4a-91a0-5fa0063eec54@6c48a",
+              "__expectedType__": "cc.Texture2D"
+            },
+            "shininessExponent": 20,
+            "specularColor": {
+              "__type__": "cc.Color",
+              "r": 124,
+              "g": 124,
+              "b": 124,
+              "a": 255
+            }
+          },
+          {},
+          {},
+          {}
+        ]
+      }
     }
   }
 }

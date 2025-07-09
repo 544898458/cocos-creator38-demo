@@ -694,6 +694,9 @@ export class Scene战斗 extends Component {
                 console.log('找不到:', id)
                 return
             }
+            
+            if (!old.view)
+                continue
 
             if (old.view.getChildByName(prefabName选中特效))
                 continue//已有特效

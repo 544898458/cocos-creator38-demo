@@ -215,7 +215,7 @@ export class NetMessage {
                     }
                     
                     old.skeletalAnimation = node.getComponent(单位配置.是骨骼动画 ? SkeletalAnimation : Animation)
-                    // console.log('动画', 单位配置.动画节点路径, old.skeletalAnimation)
+                    console.log(id, newNode, 单位配置.动画节点路径, 'skeletalAnimation=', old.skeletalAnimation)
                 } else if (单位类型.苔蔓 == old.类型) {
                     old.view.getChildByName('苔蔓').getComponent(苔蔓Component).Set半径(old.苔蔓半径)
 
