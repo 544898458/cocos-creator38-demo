@@ -26,7 +26,7 @@ export class 战斗配置 {
 	防御: number
 	f每帧移动距离: number
 	dura开始播放攻击动作: number//毫秒，（前摇第1部分）
-	str攻击动作: string	
+	攻击动作: 动作
 	str弹丸特效: string
 	f弹丸起始高度: number
 	dura开始伤害: number//毫秒，（前摇第2部分）

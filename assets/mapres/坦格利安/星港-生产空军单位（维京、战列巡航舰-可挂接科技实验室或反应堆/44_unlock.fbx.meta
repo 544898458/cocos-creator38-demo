@@ -1,0 +1,146 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "65e80dce-e87b-4c70-a7eb-8473e66b1d8f",
+  "files": [],
+  "subMetas": {
+    "57576": {
+      "importer": "gltf-mesh",
+      "uuid": "65e80dce-e87b-4c70-a7eb-8473e66b1d8f@57576",
+      "displayName": "",
+      "id": "57576",
+      "name": "junbeisuo_01.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 1226
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "0b1b5": {
+      "importer": "gltf-embeded-image",
+      "uuid": "65e80dce-e87b-4c70-a7eb-8473e66b1d8f@0b1b5",
+      "displayName": "",
+      "id": "0b1b5",
+      "name": "junbeisuo_01t.png.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": true,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
+    "de1b9": {
+      "importer": "texture",
+      "uuid": "65e80dce-e87b-4c70-a7eb-8473e66b1d8f@de1b9",
+      "displayName": "",
+      "id": "de1b9",
+      "name": "junbeisuo_01t.png.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "65e80dce-e87b-4c70-a7eb-8473e66b1d8f@0b1b5"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "49f6b": {
+      "importer": "gltf-material",
+      "uuid": "65e80dce-e87b-4c70-a7eb-8473e66b1d8f@49f6b",
+      "displayName": "",
+      "id": "49f6b",
+      "name": "junbeisuo_01.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "d0b82": {
+      "importer": "gltf-scene",
+      "uuid": "65e80dce-e87b-4c70-a7eb-8473e66b1d8f@d0b82",
+      "displayName": "",
+      "id": "d0b82",
+      "name": "44_unlock.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "junbeisuo_01t.png",
+        "uri": "65e80dce-e87b-4c70-a7eb-8473e66b1d8f@0b1b5"
+      }
+    ],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "65e80dce-e87b-4c70-a7eb-8473e66b1d8f@57576"
+      ],
+      "skeletons": [],
+      "textures": [
+        "65e80dce-e87b-4c70-a7eb-8473e66b1d8f@de1b9"
+      ],
+      "materials": [
+        "65e80dce-e87b-4c70-a7eb-8473e66b1d8f@49f6b"
+      ],
+      "scenes": [
+        "65e80dce-e87b-4c70-a7eb-8473e66b1d8f@d0b82"
+      ]
+    }
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "d549cfb1-6955-4981-bc71-7c819250ba66",
+  "files": [
+    "__original-animation-0.cconb"
+  ],
+  "subMetas": {
+    "78dab": {
+      "importer": "gltf-mesh",
+      "uuid": "d549cfb1-6955-4981-bc71-7c819250ba66@78dab",
+      "displayName": "",
+      "id": "78dab",
+      "name": "defaultmesh.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 0
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "76c04": {
+      "importer": "gltf-mesh",
+      "uuid": "d549cfb1-6955-4981-bc71-7c819250ba66@76c04",
+      "displayName": "",
+      "id": "76c04",
+      "name": "polySurface4mesh.mesh",
+      "userData": {
+        "gltfIndex": 1,
+        "triangleCount": 999
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "18d6f": {
+      "importer": "gltf-animation",
+      "uuid": "d549cfb1-6955-4981-bc71-7c819250ba66@18d6f",
+      "displayName": "",
+      "id": "18d6f",
+      "name": "mixamo.com.animation",
+      "userData": {
+        "gltfIndex": 0,
+        "wrapMode": 2,
+        "sample": 30,
+        "span": {
+          "from": 0,
+          "to": 4.599999904632568
+        },
+        "events": [],
+        "embeddedPlayers": [],
+        "editorExtras": {
+          "embeddedPlayerGroups": []
+        },
+        "speed": 1,
+        "auxiliaryCurves": {}
+      },
+      "ver": "1.0.17",
+      "imported": true,
+      "files": [
+        ".cconb"
+      ],
+      "subMetas": {}
+    },
+    "438fe": {
+      "importer": "gltf-skeleton",
+      "uuid": "d549cfb1-6955-4981-bc71-7c819250ba66@438fe",
+      "displayName": "",
+      "id": "438fe",
+      "name": "UnnamedSkeleton.skeleton",
+      "userData": {
+        "gltfIndex": 0,
+        "jointsLength": 52
+      },
+      "ver": "1.0.1",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "37cce": {
+      "importer": "gltf-scene",
+      "uuid": "d549cfb1-6955-4981-bc71-7c819250ba66@37cce",
+      "displayName": "",
+      "id": "37cce",
+      "name": "近战兵999面_Dying Backwards.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "animationImportSettings": [
+      {
+        "name": "mixamo.com",
+        "duration": 4.599999904632568,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "mixamo.com",
+            "from": 0,
+            "to": 4.599999904632568,
+            "wrapMode": 2,
+            "previousId": "18d6f"
+          }
+        ]
+      }
+    ],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "d549cfb1-6955-4981-bc71-7c819250ba66@78dab",
+        "d549cfb1-6955-4981-bc71-7c819250ba66@76c04"
+      ],
+      "skeletons": [
+        "d549cfb1-6955-4981-bc71-7c819250ba66@438fe"
+      ],
+      "textures": [],
+      "materials": [],
+      "scenes": [
+        "d549cfb1-6955-4981-bc71-7c819250ba66@37cce"
+      ]
+    }
+  }
+}
