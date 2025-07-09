@@ -23,6 +23,10 @@ import { BattleMoude } from '../scene/BattleMoude';
 import { MsgId, 单位类型, 属性类型 } from '../utils/Enum';
 import { Vec3 } from 'cc';
 import { Glob } from '../utils/Glob';
+import { map } from 'yaml/dist/schema/common/map';
+import { string } from 'yaml/dist/schema/common/string';
+import { UI2Prefab } from '../autobind/UI2Prefab';
+import { dialogMgr } from '../manager/DialogManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('BattleUI')
@@ -303,7 +307,12 @@ export class BattleUI extends Dialog {
         this.uiTransform剧情对话根.node.active = false
     }
     onClick游戏攻略(): void {
-        this.游戏攻略.active = !this.游戏攻略.active;
+        // this.游戏攻略.active = !this.游戏攻略.active;
+        dialogMgr.openDialog(UI2Prefab.PopView_url, null, null, (dlg: Dialog): void => {
+            // let popView = dlg.getComponent(PopView)
+            // popView.node游戏攻略.active = !popView.node游戏攻略.active;
+        })
+
     }
     onClick游戏设置(): void {
         this.游戏设置.active = !this.游戏设置.active;

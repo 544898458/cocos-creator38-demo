@@ -142,6 +142,8 @@ export class DialogManager {
                         if (onLoad) {
                             onLoad(dialog);
                         }
+                    }else{
+                        console.error('打开界面 Url：', url, ' 没有Dialog组件');
                     }
                 }
             }
