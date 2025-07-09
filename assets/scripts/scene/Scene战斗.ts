@@ -695,10 +695,7 @@ export class Scene战斗 extends Component {
                 return
             }
             
-            if (!old.view)
-                continue
-
-            if (old.view.getChildByName(prefabName选中特效))
+            if (old.view && old.view.getChildByName(prefabName选中特效))
                 continue//已有特效
 
             resources.load(prefabName选中特效, Prefab, (err, prefab) => {
@@ -708,8 +705,8 @@ export class Scene战斗 extends Component {
                     return
                 }
                 let old = this.entities.get(id)
-                if (!old) {
-                    console.log('找不到:', id)
+                if (!old || !old.view) {
+                    console.log('找不到Entity或view:', id)
                     return
                 }
                 old.view.getChildByName(prefabName选中特效)?.removeFromParent()
