@@ -29,6 +29,11 @@ import { ImageAsset } from 'cc';
 import { Texture2D } from 'cc';
 import { MeshRenderer } from 'cc';
 
+// 聊天消息接口
+interface ChatMessage {
+    content: string;
+}
+
 export class NetMessage {
     private static _instance: NetMessage;
     public static get instance(): NetMessage {
@@ -39,6 +44,11 @@ export class NetMessage {
     }
 
     private mainTest: MainTest | null = null;
+    
+    // 聊天历史记录
+    private chatHistory: ChatMessage[] = [];
+    private maxChatHistory: number = 100; // 最大保存100条记录
+    private chatMessageId: number = 0; // 消息ID计数器
 
     constructor() {
         // 可延迟加载 MainTest 实例
@@ -46,6 +56,33 @@ export class NetMessage {
 
     public setMainTest(mainTest: MainTest): void {
         this.mainTest = mainTest;
+    }
+
+    // 获取聊天历史记录
+    public getChatHistory(): ChatMessage[] {
+        return [...this.chatHistory]; // 返回副本以避免外部修改
+    }
+
+    // 清空聊天历史记录
+    public clearChatHistory(): void {
+        this.chatHistory = [];
+        this.chatMessageId = 0;
+    }
+
+    // 记录聊天消息
+    private recordChatMessage(content: string): void {
+        const message: ChatMessage = {
+            content: content,   
+        };
+
+        this.chatHistory.push(message);
+
+        // 如果超过最大记录数，删除最旧的记录
+        if (this.chatHistory.length > this.maxChatHistory) {
+            this.chatHistory.shift();
+        }
+
+        console.log(`[聊天记录]: ${content}`);
     }
 
     // 接收并处理 WebSocket 消息
@@ -373,7 +410,10 @@ export class NetMessage {
                 if (content.length > 0) battleUI.lable系统消息.string = content;
                 break;
             case SayChannel.聊天:
-                if (content.length > 0) battleUI.lable聊天消息.string = content;
+                if (content.length > 0){
+                    battleUI.lable聊天消息.string = content;
+                    this.recordChatMessage(content);
+                }
                 break;
             case SayChannel.任务提示:
                 if (content.length > 0) battleUI.richText任务提示.string = content;

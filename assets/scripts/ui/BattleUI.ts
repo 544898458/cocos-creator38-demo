@@ -27,6 +27,10 @@ import { map } from 'yaml/dist/schema/common/map';
 import { string } from 'yaml/dist/schema/common/string';
 import { UI2Prefab } from '../autobind/UI2Prefab';
 import { dialogMgr } from '../manager/DialogManager';
+import { PopView } from './PopView';
+import { assetManager } from 'cc';
+import { TextAsset } from 'cc';
+import { NetMessage } from '../manager/NetMessage';
 const { ccclass, property } = _decorator;
 
 @ccclass('BattleUI')
@@ -306,11 +310,26 @@ export class BattleUI extends Dialog {
         MainTest.instance.send离开Space()
         this.uiTransform剧情对话根.node.active = false
     }
-    onClick游戏攻略(): void {
-        // this.游戏攻略.active = !this.游戏攻略.active;
+    onBtn聊天历史记录(): void {
         dialogMgr.openDialog(UI2Prefab.PopView_url, null, null, (dlg: Dialog): void => {
-            // let popView = dlg.getComponent(PopView)
-            // popView.node游戏攻略.active = !popView.node游戏攻略.active;
+            let popView = dlg.getComponent(PopView)
+            popView.label标题.string = '聊天历史记录';
+            // 获取聊天历史记录     
+            const chatHistory = NetMessage.instance.getChatHistory();
+            // 将聊天历史记录转换为字符串
+            const chatHistoryString = chatHistory.map(msg => `${msg.content}`).join('\n');
+            popView.richText内容.string = chatHistoryString;
+        })
+    }
+    onClick游戏攻略(): void {
+        dialogMgr.openDialog(UI2Prefab.PopView_url, null, null, (dlg: Dialog): void => {
+            let popView = dlg.getComponent(PopView)
+            popView.label标题.string = '游戏攻略';
+            popView.richText内容.string = '请稍后……';
+            assetManager.loadRemote('https://www.rtsgame.online/攻略/攻略.txt', (err, textAsset: TextAsset) => {
+                console.log('resources.load callback:', err, textAsset)
+                popView.richText内容.string = textAsset.text
+            })
         })
 
     }
