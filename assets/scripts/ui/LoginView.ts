@@ -175,7 +175,7 @@ export class LoginView extends Dialog {
                 0,
                 str登录名,
                 'Hello, world!pwd',
-                26,//版本号
+                27,//版本号
             ])
 
             // this.选择模式();
@@ -329,9 +329,9 @@ export class LoginView extends Dialog {
         window.open("https://tieba.baidu.com/f?kw=%E5%8D%B3%E6%97%B6%E6%88%98%E7%95%A5%E6%8C%87%E6%8C%A5")
     }
 
-    //进入游戏
-    onClickToggle进Space1(event: Event, customEventData: string) {//混战
-        MainTest.instance.进Scene战斗(MainTest.instance.配置.find战局(战局类型.多玩家混战).strSceneName, MsgId.进Space, 战局类型.多玩家混战, '', true)
+    onClick进混战(event: Event, customEventData: string) {
+        const 战局 = 战局类型[customEventData as keyof typeof 战局类型]
+        MainTest.instance.进Scene战斗(MainTest.instance.配置.find战局(战局).strSceneName, MsgId.进Space, 战局, '', true)
     }
     onClick创建多人战局(event: Event, customEventData: string) {
         const 战局 = 战局类型[customEventData as keyof typeof 战局类型]
