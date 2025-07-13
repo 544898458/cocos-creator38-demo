@@ -630,7 +630,7 @@ export class MainTest extends Component {
 
     createMsg太岁分裂(hitPoint: Vec3) {
         console.log('createMsg太岁分裂', hitPoint)
-        return [[MsgId.太岁分裂, ++Glob.sendMsgSn, 0], [hitPoint.x, hitPoint.z]]
+        return [[MsgId.太岁分裂, ++Glob.sendMsgSn, 0], [hitPoint.x, hitPoint.y, hitPoint.z]]
     }
     send原地坚守() {
         dispatcher.sendArray([[MsgId.原地坚守, ++Glob.sendMsgSn, 0]])
