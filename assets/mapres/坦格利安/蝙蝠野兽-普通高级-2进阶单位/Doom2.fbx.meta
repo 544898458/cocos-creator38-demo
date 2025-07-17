@@ -1,0 +1,396 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "4ee2ef02-2e18-43d3-a68d-0f3389b1afa7",
+  "files": [
+    "__original-animation-0.cconb",
+    "__original-animation-1.cconb",
+    "__original-animation-2.cconb",
+    "__original-animation-3.cconb",
+    "__original-animation-4.cconb",
+    "__original-animation-5.cconb"
+  ],
+  "subMetas": {
+    "26220": {
+      "importer": "gltf-embeded-image",
+      "uuid": "4ee2ef02-2e18-43d3-a68d-0f3389b1afa7@26220",
+      "displayName": "",
+      "id": "26220",
+      "name": "Doom2.png.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": true,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
+    "77f2a": {
+      "importer": "gltf-mesh",
+      "uuid": "4ee2ef02-2e18-43d3-a68d-0f3389b1afa7@77f2a",
+      "displayName": "",
+      "id": "77f2a",
+      "name": "Sphere01.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 1120
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "989ed": {
+      "importer": "gltf-animation",
+      "uuid": "4ee2ef02-2e18-43d3-a68d-0f3389b1afa7@989ed",
+      "displayName": "",
+      "id": "989ed",
+      "name": "attack.animation",
+      "userData": {
+        "gltfIndex": 0,
+        "wrapMode": 2,
+        "sample": 30,
+        "span": {
+          "from": 0,
+          "to": 1.4666666984558105
+        },
+        "events": []
+      },
+      "ver": "1.0.17",
+      "imported": true,
+      "files": [
+        ".cconb"
+      ],
+      "subMetas": {}
+    },
+    "6018c": {
+      "importer": "gltf-animation",
+      "uuid": "4ee2ef02-2e18-43d3-a68d-0f3389b1afa7@6018c",
+      "displayName": "",
+      "id": "6018c",
+      "name": "dead.animation",
+      "userData": {
+        "gltfIndex": 1,
+        "wrapMode": 2,
+        "sample": 30,
+        "span": {
+          "from": 0,
+          "to": 1.7000000476837158
+        },
+        "events": []
+      },
+      "ver": "1.0.17",
+      "imported": true,
+      "files": [
+        ".cconb"
+      ],
+      "subMetas": {}
+    },
+    "a80c5": {
+      "importer": "gltf-animation",
+      "uuid": "4ee2ef02-2e18-43d3-a68d-0f3389b1afa7@a80c5",
+      "displayName": "",
+      "id": "a80c5",
+      "name": "hurt.animation",
+      "userData": {
+        "gltfIndex": 2,
+        "wrapMode": 2,
+        "sample": 30,
+        "span": {
+          "from": 0,
+          "to": 1.7000000476837158
+        },
+        "events": []
+      },
+      "ver": "1.0.17",
+      "imported": true,
+      "files": [
+        ".cconb"
+      ],
+      "subMetas": {}
+    },
+    "cf5ee": {
+      "importer": "gltf-animation",
+      "uuid": "4ee2ef02-2e18-43d3-a68d-0f3389b1afa7@cf5ee",
+      "displayName": "",
+      "id": "cf5ee",
+      "name": "run.animation",
+      "userData": {
+        "gltfIndex": 3,
+        "wrapMode": 2,
+        "sample": 30,
+        "span": {
+          "from": 0,
+          "to": 0.8333333134651184
+        },
+        "events": []
+      },
+      "ver": "1.0.17",
+      "imported": true,
+      "files": [
+        ".cconb"
+      ],
+      "subMetas": {}
+    },
+    "0969b": {
+      "importer": "gltf-animation",
+      "uuid": "4ee2ef02-2e18-43d3-a68d-0f3389b1afa7@0969b",
+      "displayName": "",
+      "id": "0969b",
+      "name": "stand.animation",
+      "userData": {
+        "gltfIndex": 4,
+        "wrapMode": 2,
+        "sample": 30,
+        "span": {
+          "from": 0,
+          "to": 1
+        },
+        "events": []
+      },
+      "ver": "1.0.17",
+      "imported": true,
+      "files": [
+        ".cconb"
+      ],
+      "subMetas": {}
+    },
+    "db06a": {
+      "importer": "gltf-animation",
+      "uuid": "4ee2ef02-2e18-43d3-a68d-0f3389b1afa7@db06a",
+      "displayName": "",
+      "id": "db06a",
+      "name": "skill01.animation",
+      "userData": {
+        "gltfIndex": 5,
+        "wrapMode": 2,
+        "sample": 30,
+        "span": {
+          "from": 0,
+          "to": 1.7000000476837158
+        },
+        "events": []
+      },
+      "ver": "1.0.17",
+      "imported": true,
+      "files": [
+        ".cconb"
+      ],
+      "subMetas": {}
+    },
+    "438fe": {
+      "importer": "gltf-skeleton",
+      "uuid": "4ee2ef02-2e18-43d3-a68d-0f3389b1afa7@438fe",
+      "displayName": "",
+      "id": "438fe",
+      "name": "UnnamedSkeleton.skeleton",
+      "userData": {
+        "gltfIndex": 0,
+        "jointsLength": 41
+      },
+      "ver": "1.0.1",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "b6dc2": {
+      "importer": "texture",
+      "uuid": "4ee2ef02-2e18-43d3-a68d-0f3389b1afa7@b6dc2",
+      "displayName": "",
+      "id": "b6dc2",
+      "name": "Doom2.png.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "4ee2ef02-2e18-43d3-a68d-0f3389b1afa7@26220"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "c7996": {
+      "importer": "gltf-material",
+      "uuid": "4ee2ef02-2e18-43d3-a68d-0f3389b1afa7@c7996",
+      "displayName": "",
+      "id": "c7996",
+      "name": "Doom2.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "aebae": {
+      "importer": "gltf-scene",
+      "uuid": "4ee2ef02-2e18-43d3-a68d-0f3389b1afa7@aebae",
+      "displayName": "",
+      "id": "aebae",
+      "name": "Doom2.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "Doom2.png",
+        "uri": "4ee2ef02-2e18-43d3-a68d-0f3389b1afa7@26220"
+      }
+    ],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "animationImportSettings": [
+      {
+        "name": "attack",
+        "duration": 1.4666666984558105,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "attack",
+            "from": 0,
+            "to": 1.4666666984558105,
+            "wrapMode": 2,
+            "previousId": "989ed"
+          }
+        ]
+      },
+      {
+        "name": "dead",
+        "duration": 1.7000000476837158,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "dead",
+            "from": 0,
+            "to": 1.7000000476837158,
+            "wrapMode": 2,
+            "previousId": "6018c"
+          }
+        ]
+      },
+      {
+        "name": "hurt",
+        "duration": 1.7000000476837158,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "hurt",
+            "from": 0,
+            "to": 1.7000000476837158,
+            "wrapMode": 2,
+            "previousId": "a80c5"
+          }
+        ]
+      },
+      {
+        "name": "run",
+        "duration": 0.8333333134651184,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "run",
+            "from": 0,
+            "to": 0.8333333134651184,
+            "wrapMode": 2,
+            "previousId": "cf5ee"
+          }
+        ]
+      },
+      {
+        "name": "stand",
+        "duration": 1,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "stand",
+            "from": 0,
+            "to": 1,
+            "wrapMode": 2,
+            "previousId": "0969b"
+          }
+        ]
+      },
+      {
+        "name": "skill01",
+        "duration": 1.7000000476837158,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "skill01",
+            "from": 0,
+            "to": 1.7000000476837158,
+            "wrapMode": 2,
+            "previousId": "db06a"
+          }
+        ]
+      }
+    ],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "4ee2ef02-2e18-43d3-a68d-0f3389b1afa7@77f2a"
+      ],
+      "skeletons": [
+        "4ee2ef02-2e18-43d3-a68d-0f3389b1afa7@438fe"
+      ],
+      "textures": [
+        "4ee2ef02-2e18-43d3-a68d-0f3389b1afa7@b6dc2"
+      ],
+      "materials": [
+        "4ee2ef02-2e18-43d3-a68d-0f3389b1afa7@c7996"
+      ],
+      "scenes": [
+        "4ee2ef02-2e18-43d3-a68d-0f3389b1afa7@aebae"
+      ]
+    }
+  }
+}

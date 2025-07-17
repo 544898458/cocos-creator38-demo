@@ -280,6 +280,7 @@ export
     房虫,//overload
     飞虫,//Mutalisk
     医疗兵,//Medic,
+    防空兵,
 
     活动单位Max非法,
 
