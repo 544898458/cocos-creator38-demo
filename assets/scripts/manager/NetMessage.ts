@@ -252,7 +252,7 @@ export class NetMessage {
                     }
                     
                     old.skeletalAnimation = node.getComponent(单位配置.是骨骼动画 ? SkeletalAnimation : Animation)
-                    console.log(id, newNode, 单位配置.动画节点路径, 'skeletalAnimation=', old.skeletalAnimation)
+                    // console.log(id, newNode, 单位配置.动画节点路径, 'skeletalAnimation=', old.skeletalAnimation)
                 } else if (单位类型.苔蔓 == old.类型) {
                     old.view.getChildByName('苔蔓').getComponent(苔蔓Component).Set半径(old.苔蔓半径)
 
@@ -368,7 +368,7 @@ export class NetMessage {
         }
 
         const posNew = new Vec3(arrPos[0], arrPos[1], arrPos[2]);
-        console.log('handleGame_NotifyPos', id, posNew)
+        // console.log('handleGame_NotifyPos', id, posNew)
         old.position = posNew;
 
         if (old.view) {
@@ -462,7 +462,7 @@ export class NetMessage {
         const enumValues = Object.values(单位类型);
         const 单位类型名称 = enumKeys[enumValues.indexOf(old.类型)];
         
-        console.log('handleGame_ChangeSkeleAnim', 单位类型名称, id, loop, clipName, 动作播放速度, f动作起始时刻秒, f动作结束时刻秒)
+        // console.log('handleGame_ChangeSkeleAnim', 单位类型名称, id, loop, clipName, 动作播放速度, f动作起始时刻秒, f动作结束时刻秒)
 
 
         if (old.skeletalAnimation == undefined) {
