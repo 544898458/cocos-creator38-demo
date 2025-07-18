@@ -368,6 +368,7 @@ export class NetMessage {
         }
 
         const posNew = new Vec3(arrPos[0], arrPos[1], arrPos[2]);
+        console.log('handleGame_NotifyPos', id, posNew)
         old.position = posNew;
 
         if (old.view) {

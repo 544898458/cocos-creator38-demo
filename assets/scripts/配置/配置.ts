@@ -31,6 +31,8 @@ export class 战斗配置 {
 	f弹丸起始高度: number
 	dura开始伤害: number//毫秒，（前摇第2部分）
 	dura后摇: number//毫秒
+	b可打空中: boolean
+	b可打地面: boolean
 }
 export class 制造配置 {
 	类型: 单位类型
