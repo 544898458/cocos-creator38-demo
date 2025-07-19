@@ -43,6 +43,7 @@ export class ClientEntityComponent {
     nickName: string
     entityName: string
     position: Vec3//刚进地图Load没结束无法设置node坐标，暂存
+    eulerAngles: Vec3
     node血条: Node
     hpMax: number = 0
     node能量条: Node
@@ -968,7 +969,7 @@ export class Scene战斗 extends Component {
             let 方向向量 = entity目标.position.clone().subtract(entity起始.position).normalize()
             起始位置.add(方向向量.multiplyScalar(3)) // 提前向目标方向移动
             newNode.position = 起始位置
-            newNode.rotation = entity起始.view.rotation.clone()
+            newNode.eulerAngles = entity起始.eulerAngles
             let 特效根 = this.roles.getChildByName('特效根')
             特效根.addChild(newNode)
             //获取单位战斗配置

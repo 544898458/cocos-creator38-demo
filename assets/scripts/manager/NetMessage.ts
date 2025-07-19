@@ -370,11 +370,11 @@ export class NetMessage {
         const posNew = new Vec3(arrPos[0], arrPos[1], arrPos[2]);
         // console.log('handleGame_NotifyPos', id, posNew)
         old.position = posNew;
-
+        old.eulerAngles = new Vec3(0, eulerAnglesY, 0);
         if (old.view) {
             if (!old.view.position || old.view.position.clone().subtract(old.position).lengthSqr() > 20) {
                 old.view.position = old.position;
-                old.view.eulerAngles = new Vec3(0, eulerAnglesY, 0);
+                old.view.eulerAngles = old.eulerAngles;
             } else {
                 if (eulerAnglesY !== old.view.eulerAngles.y) {
                     if (eulerAnglesY - old.view.eulerAngles.y > 180) {
@@ -387,7 +387,7 @@ export class NetMessage {
                 const 延时 = 0.15;
                 old.tween移动 = tween(old.view).to(延时, {
                     position: old.position,
-                    eulerAngles: new Vec3(0, eulerAnglesY, 0)
+                    eulerAngles: old.eulerAngles
                 });
                 old.tween移动.start();
             }
