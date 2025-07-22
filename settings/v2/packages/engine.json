@@ -7,7 +7,6 @@
     },
     "configs": {
       "migrationsConfig": {
-        "name": "迁移生成的配置",
         "cache": {
           "base": {
             "_value": true
@@ -16,7 +15,7 @@
             "_value": true
           },
           "gfx-webgl2": {
-            "_value": false
+            "_value": true
           },
           "gfx-webgpu": {
             "_value": false
@@ -172,10 +171,10 @@
             "_value": false
           },
           "marionette": {
-            "_value": false
+            "_value": true
           },
           "procedural-animation": {
-            "_value": false
+            "_value": true
           },
           "custom-pipeline-post-process": {
             "_value": false
@@ -191,7 +190,10 @@
             "_value": false
           }
         },
-        "flags": {},
+        "flags": {
+          "LOAD_BULLET_MANUALLY": false
+        },
+        "name": "迁移生成的配置",
         "includeModules": [
           "2d",
           "3d",
@@ -201,12 +203,15 @@
           "base",
           "custom-pipeline",
           "gfx-webgl",
+          "gfx-webgl2",
           "graphics",
           "light-probe",
+          "marionette",
           "mask",
           "particle",
           "physics-ammo",
           "primitive",
+          "procedural-animation",
           "profiler",
           "rich-text",
           "skeletal-animation",
