@@ -1,0 +1,546 @@
+{
+  "__version__": "1.3.9",
+  "log": {
+    "level": 4
+  },
+  "common": {
+    "polyfills": {
+      "asyncFunctions": false
+    },
+    "buildPath": "project://build",
+    "outputName": "web-mobile",
+    "mainBundleCompressionType": "merge_all_json",
+    "platform": "windows",
+    "scenes": [
+      {
+        "url": "db://assets/scene/main.scene",
+        "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+        "bundle": "db://assets/scene"
+      },
+      {
+        "url": "db://assets/scene主包/Start.scene",
+        "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+      }
+    ],
+    "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
+    "debug": false,
+    "startSceneAssetBundle": true,
+    "bundleConfigs": [],
+    "mainBundleIsRemote": false,
+    "name": "即时战略指挥",
+    "useBuiltinServer": true,
+    "nativeCodeBundleMode": "wasm",
+    "mangleProperties": true,
+    "useSplashScreen": false,
+    "overwriteProjectSettings": {
+      "includeModules": {
+        "gfx-webgl2": "on"
+      }
+    }
+  },
+  "BuildTaskManager": {
+    "taskMap": {
+      "1733855257659": {
+        "type": "build",
+        "id": "1733855257659",
+        "progress": 1,
+        "state": "success",
+        "stage": "build",
+        "message": "2025-7-20 18:59:36 build success in 39 s!",
+        "detailMessage": "// ---- build task 填充脚本数据到 settings.json ----\r",
+        "options": {
+          "name": "即时战略指挥",
+          "server": "",
+          "platform": "web-mobile",
+          "buildPath": "project://build",
+          "debug": false,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": false,
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": false,
+          "bundleConfigs": [],
+          "useBuiltinServer": false,
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_all_json",
+          "useSplashScreen": false,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
+          "outputName": "web-mobile",
+          "taskName": "web-mobile-001",
+          "scenes": [
+            {
+              "url": "db://assets/scene/main.scene",
+              "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+              "bundle": "db://assets/scene"
+            },
+            {
+              "url": "db://assets/scene主包/Start.scene",
+              "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+            }
+          ],
+          "packages": {},
+          "__version__": "1.3.6",
+          "buildMode": "bundle",
+          "logDest": "project://temp/builder/log/web-mobile2024-12-11 02-27.log",
+          "overwriteProjectSettings": {
+            "includeModules": {
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting",
+              "gfx-webgl2": "inherit-project-setting"
+            },
+            "macroConfig": {
+              "cleanupImageCache": "inherit-project-setting"
+            }
+          },
+          "nativeCodeBundleMode": "both",
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "wasmCompressionMode": false,
+          "engineModulesConfigKey": "migrationsConfig",
+          "mangleProperties": true,
+          "inlineEnum": true
+        },
+        "time": "2025-7-20 18:58:56",
+        "dirty": false
+      },
+      "1734472901911": {
+        "type": "build",
+        "id": "1734472901911",
+        "progress": 1,
+        "state": "success",
+        "stage": "build",
+        "message": "2025-7-23 00:19:32 build success in 1 min 26 s!",
+        "detailMessage": "builder:build-project-total (85927ms)\r",
+        "options": {
+          "name": "即时战略指挥",
+          "server": "",
+          "platform": "wechatgame",
+          "buildPath": "project://build",
+          "debug": false,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": false,
+          "overwriteProjectSettings": {
+            "macroConfig": {
+              "cleanupImageCache": "on"
+            },
+            "includeModules": {
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting",
+              "gfx-webgl2": "on"
+            }
+          },
+          "nativeCodeBundleMode": "wasm",
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": true,
+          "bundleConfigs": [],
+          "useBuiltinServer": false,
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "subpackage",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
+          "outputName": "wechatgame",
+          "taskName": "wechatgame",
+          "scenes": [
+            {
+              "url": "db://assets/scene/main.scene",
+              "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+              "bundle": "db://assets/scene"
+            },
+            {
+              "url": "db://assets/scene主包/Start.scene",
+              "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+            },
+            {
+              "url": "db://assets/mapres/3D复古建筑/3D复古建筑/scene.scene",
+              "uuid": "cc58df02-8cf8-43e7-ae2a-f245a1c2350e"
+            }
+          ],
+          "wasmCompressionMode": false,
+          "packages": {},
+          "__version__": "1.3.8",
+          "buildMode": "normal",
+          "logDest": "project://temp/builder/log/wechatgame2024-12-18 06-01.log",
+          "mangleProperties": false,
+          "engineModulesConfigKey": "migrationsConfig",
+          "inlineEnum": true
+        },
+        "time": "2025-7-23 00:18:06",
+        "dirty": false
+      },
+      "1746626156194": {
+        "type": "build",
+        "id": "1746626156194",
+        "progress": 1,
+        "state": "success",
+        "stage": "build",
+        "message": "2025-5-8 23:46:08 build success in 29 s!",
+        "detailMessage": "// ---- build task 整理部分构建选项内数据到 settings.json ----\r",
+        "options": {
+          "name": "cocos-creator38-demo",
+          "server": "",
+          "platform": "bytedance-mini-game",
+          "buildPath": "project://build",
+          "debug": false,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": false,
+          "overwriteProjectSettings": {
+            "macroConfig": {
+              "cleanupImageCache": "inherit-project-setting"
+            },
+            "includeModules": {
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting",
+              "gfx-webgl2": "off"
+            }
+          },
+          "nativeCodeBundleMode": "both",
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": false,
+          "bundleConfigs": [],
+          "useBuiltinServer": false,
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_dep",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
+          "outputName": "bytedance-mini-game",
+          "taskName": "bytedance-mini-game",
+          "scenes": [
+            {
+              "url": "db://assets/scene/scene四方对战.scene",
+              "uuid": "43fbab0d-cd30-41bd-8ce6-c6ace63ac043",
+              "bundle": "db://assets/scene"
+            },
+            {
+              "url": "db://assets/scene/scene战斗.scene",
+              "uuid": "a2a6dcbf-5442-46e3-be3b-a623e01230cf",
+              "bundle": "db://assets/scene"
+            },
+            {
+              "url": "db://assets/scene/scene攻坚战.scene",
+              "uuid": "230a1890-4323-4440-93ac-fe2ce7e367f0",
+              "bundle": "db://assets/scene"
+            },
+            {
+              "url": "db://assets/scene/scene登录.scene",
+              "uuid": "5a529a1a-acd9-483f-8e6d-aa2f3d1b0919",
+              "bundle": "db://assets/scene"
+            },
+            {
+              "url": "db://assets/scene/scene防守战.scene",
+              "uuid": "90f36ef0-7435-4950-97c5-21ef41abf552",
+              "bundle": "db://assets/scene"
+            },
+            {
+              "url": "db://assets/scene主包/Start.scene",
+              "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+            }
+          ],
+          "wasmCompressionMode": false,
+          "packages": {},
+          "__version__": "1.3.8",
+          "logDest": "project://temp/builder/log/bytedance-mini-game2025-5-7 21-55.log",
+          "buildMode": "bundle"
+        },
+        "time": "2025-5-8 23:45:38",
+        "dirty": false
+      },
+      "1747025212998": {
+        "type": "build",
+        "id": "1747025212998",
+        "progress": 1,
+        "state": "success",
+        "stage": "build",
+        "message": "2025-6-21 08:00:58 build success in 2 min 3 s!",
+        "detailMessage": "builder:build-project-total (123228ms)\r",
+        "options": {
+          "name": "即时战略指挥",
+          "server": "",
+          "platform": "wechatgame",
+          "buildPath": "project://build",
+          "debug": false,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": false,
+          "overwriteProjectSettings": {
+            "macroConfig": {
+              "cleanupImageCache": "on"
+            },
+            "includeModules": {
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting",
+              "gfx-webgl2": "off"
+            }
+          },
+          "nativeCodeBundleMode": "wasm",
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": true,
+          "bundleConfigs": [],
+          "useBuiltinServer": true,
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "subpackage",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
+          "outputName": "XiaoHongShu",
+          "taskName": "wechatgame",
+          "scenes": [
+            {
+              "url": "db://assets/scene/main.scene",
+              "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+              "bundle": "db://assets/scene"
+            },
+            {
+              "url": "db://assets/scene主包/Start.scene",
+              "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+            },
+            {
+              "url": "db://assets/mapres/3D复古建筑/3D复古建筑/scene.scene",
+              "uuid": "cc58df02-8cf8-43e7-ae2a-f245a1c2350e"
+            }
+          ],
+          "wasmCompressionMode": false,
+          "buildMode": "normal",
+          "packages": {},
+          "__version__": "1.3.8",
+          "logDest": "project://temp/builder/log/wechatgame2025-5-12 12-46.log",
+          "engineModulesConfigKey": "migrationsConfig",
+          "mangleProperties": false,
+          "inlineEnum": true
+        },
+        "time": "2025-6-21 07:58:54",
+        "dirty": false
+      },
+      "1747144331532": {
+        "type": "build",
+        "id": "1747144331532",
+        "progress": 1,
+        "state": "success",
+        "stage": "build",
+        "message": "2025-6-4 23:08:39 build success in 42 s!",
+        "detailMessage": "builder:build-project-total (41726ms)\r",
+        "options": {
+          "name": "即时战略指挥",
+          "server": "",
+          "platform": "android",
+          "buildPath": "project://build",
+          "debug": false,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": false,
+          "overwriteProjectSettings": {
+            "macroConfig": {
+              "cleanupImageCache": "inherit-project-setting"
+            },
+            "includeModules": {
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting",
+              "gfx-webgl2": "off"
+            }
+          },
+          "nativeCodeBundleMode": "wasm",
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": false,
+          "bundleConfigs": [],
+          "useBuiltinServer": false,
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_dep",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
+          "outputName": "android",
+          "taskName": "android",
+          "scenes": [
+            {
+              "url": "db://assets/scene/scene四方对战.scene",
+              "uuid": "43fbab0d-cd30-41bd-8ce6-c6ace63ac043",
+              "bundle": "db://assets/scene"
+            },
+            {
+              "url": "db://assets/scene/scene战斗.scene",
+              "uuid": "a2a6dcbf-5442-46e3-be3b-a623e01230cf",
+              "bundle": "db://assets/scene"
+            },
+            {
+              "url": "db://assets/scene/scene攻坚战.scene",
+              "uuid": "230a1890-4323-4440-93ac-fe2ce7e367f0",
+              "bundle": "db://assets/scene"
+            },
+            {
+              "url": "db://assets/scene/scene登录.scene",
+              "uuid": "5a529a1a-acd9-483f-8e6d-aa2f3d1b0919",
+              "bundle": "db://assets/scene"
+            },
+            {
+              "url": "db://assets/scene/scene防守战.scene",
+              "uuid": "90f36ef0-7435-4950-97c5-21ef41abf552",
+              "bundle": "db://assets/scene"
+            },
+            {
+              "url": "db://assets/scene主包/Start.scene",
+              "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+            },
+            {
+              "url": "db://assets/mapres/3D复古建筑/3D复古建筑/scene.scene",
+              "uuid": "cc58df02-8cf8-43e7-ae2a-f245a1c2350e"
+            }
+          ],
+          "wasmCompressionMode": false,
+          "packages": {},
+          "__version__": "1.3.8",
+          "buildMode": "normal",
+          "logDest": "project://temp/builder/log/android2025-5-13 21-52.log",
+          "engineModulesConfigKey": "migrationsConfig",
+          "mangleProperties": false,
+          "inlineEnum": true
+        },
+        "time": "2025-6-4 23:07:56",
+        "dirty": false
+      },
+      "1749048944155": {
+        "type": "build",
+        "id": "1749048944155",
+        "progress": 1,
+        "state": "success",
+        "stage": "build",
+        "message": "2025-6-4 22:57:28 build success in 1 min 42 s!",
+        "detailMessage": "// ---- build task adsense-h5g-plugin：onAfterBuild ----\r",
+        "options": {
+          "name": "cocos-creator38-demo",
+          "server": "",
+          "engineModulesConfigKey": "migrationsConfig",
+          "platform": "windows",
+          "buildPath": "project://build",
+          "debug": false,
+          "buildMode": "normal",
+          "mangleProperties": false,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": false,
+          "overwriteProjectSettings": {
+            "macroConfig": {
+              "cleanupImageCache": "inherit-project-setting"
+            },
+            "includeModules": {
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting",
+              "gfx-webgl2": "off"
+            }
+          },
+          "nativeCodeBundleMode": "wasm",
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": false,
+          "bundleConfigs": [],
+          "inlineEnum": true,
+          "useBuiltinServer": false,
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_dep",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
+          "outputName": "windows",
+          "taskName": "windows",
+          "scenes": [
+            {
+              "url": "db://assets/scene/scene四方对战.scene",
+              "uuid": "43fbab0d-cd30-41bd-8ce6-c6ace63ac043",
+              "bundle": "db://assets/scene"
+            },
+            {
+              "url": "db://assets/scene/scene战斗.scene",
+              "uuid": "a2a6dcbf-5442-46e3-be3b-a623e01230cf",
+              "bundle": "db://assets/scene"
+            },
+            {
+              "url": "db://assets/scene/scene攻坚战.scene",
+              "uuid": "230a1890-4323-4440-93ac-fe2ce7e367f0",
+              "bundle": "db://assets/scene"
+            },
+            {
+              "url": "db://assets/scene/scene登录.scene",
+              "uuid": "5a529a1a-acd9-483f-8e6d-aa2f3d1b0919",
+              "bundle": "db://assets/scene"
+            },
+            {
+              "url": "db://assets/scene/scene防守战.scene",
+              "uuid": "90f36ef0-7435-4950-97c5-21ef41abf552",
+              "bundle": "db://assets/scene"
+            },
+            {
+              "url": "db://assets/scene主包/Start.scene",
+              "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+            }
+          ],
+          "wasmCompressionMode": false,
+          "packages": {},
+          "__version__": "1.3.9",
+          "logDest": "project://temp/builder/log/windows2025-6-4 22-55.log"
+        },
+        "time": "2025-6-4 22:55:45",
+        "dirty": false
+      }
+    }
+  }
+}

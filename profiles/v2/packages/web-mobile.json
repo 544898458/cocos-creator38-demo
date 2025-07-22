@@ -1,0 +1,48 @@
+{
+  "__version__": "1.0.1",
+  "builder": {
+    "common": {
+      "polyfills": {
+        "asyncFunctions": false
+      },
+      "buildPath": "project://build",
+      "outputName": "web-mobile",
+      "mainBundleCompressionType": "merge_all_json",
+      "platform": "web-mobile",
+      "scenes": [
+        {
+          "url": "db://assets/scene/main.scene",
+          "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+          "bundle": "db://assets/scene"
+        },
+        {
+          "url": "db://assets/scene主包/Start.scene",
+          "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+        }
+      ],
+      "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
+      "debug": false,
+      "buildMode": "bundle",
+      "name": "即时战略指挥",
+      "useSplashScreen": false,
+      "mainBundleIsRemote": false,
+      "mangleProperties": true
+    },
+    "taskOptionsMap": {
+      "1733852504157": {
+        "orientation": "auto",
+        "embedWebDebugger": false,
+        "cullEngineAsmJsModule": false,
+        "__version__": "1.0.1"
+      },
+      "1733855257659": {
+        "orientation": "auto",
+        "embedWebDebugger": false,
+        "cullEngineAsmJsModule": false,
+        "__version__": "1.0.1",
+        "useWebGPU": false
+      }
+    },
+    "__version__": "1.3.9"
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "builder": {
+    "common": {
+      "buildPath": "project://build",
+      "outputName": "XiaoHongShu",
+      "mainBundleCompressionType": "subpackage",
+      "platform": "wechatgame",
+      "scenes": [
+        {
+          "url": "db://assets/scene/scene四方对战.scene",
+          "uuid": "43fbab0d-cd30-41bd-8ce6-c6ace63ac043",
+          "bundle": "db://assets/scene"
+        },
+        {
+          "url": "db://assets/scene/scene战斗.scene",
+          "uuid": "a2a6dcbf-5442-46e3-be3b-a623e01230cf",
+          "bundle": "db://assets/scene"
+        },
+        {
+          "url": "db://assets/scene/scene攻坚战.scene",
+          "uuid": "230a1890-4323-4440-93ac-fe2ce7e367f0",
+          "bundle": "db://assets/scene"
+        },
+        {
+          "url": "db://assets/scene/scene登录.scene",
+          "uuid": "5a529a1a-acd9-483f-8e6d-aa2f3d1b0919",
+          "bundle": "db://assets/scene"
+        },
+        {
+          "url": "db://assets/scene/scene防守战.scene",
+          "uuid": "90f36ef0-7435-4950-97c5-21ef41abf552",
+          "bundle": "db://assets/scene"
+        },
+        {
+          "url": "db://assets/scene主包/Start.scene",
+          "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+        }
+      ],
+      "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
+      "startSceneAssetBundle": true,
+      "buildMode": "normal",
+      "bundleConfigs": [],
+      "mainBundleIsRemote": false,
+      "name": "即时战略指挥",
+      "useBuiltinServer": true,
+      "nativeCodeBundleMode": "wasm",
+      "mangleProperties": false,
+      "overwriteProjectSettings": {
+        "includeModules": {
+          "gfx-webgl2": "on"
+        }
+      }
+    },
+    "taskOptionsMap": {
+      "1734472901911": {
+        "orientation": "portrait",
+        "appid": "wx57e5c006d2ac186e",
+        "buildOpenDataContextTemplate": "",
+        "separateEngine": false,
+        "highPerformanceMode": true,
+        "__version__": "1.0.4",
+        "wasmSubpackage": false
+      },
+      "1747025212998": {
+        "orientation": "portrait",
+        "appid": "68217296a79f670001a07ccd",
+        "buildOpenDataContextTemplate": "",
+        "separateEngine": false,
+        "highPerformanceMode": false,
+        "__version__": "1.0.4",
+        "wasmSubpackage": false
+      }
+    },
+    "__version__": "1.3.9",
+    "options": {
+      "wechatgame": {
+        "orientation": "portrait",
+        "appid": "wx57e5c006d2ac186e",
+        "buildOpenDataContextTemplate": "",
+        "separateEngine": false,
+        "highPerformanceMode": true,
+        "__version__": "1.0.4",
+        "wasmSubpackage": false
+      }
+    }
+  },
+  "__version__": "1.0.4"
+}
