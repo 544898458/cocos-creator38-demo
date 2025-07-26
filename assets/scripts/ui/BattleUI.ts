@@ -38,6 +38,7 @@ const { ccclass, property } = _decorator;
 export class BattleUI extends Dialog {
     @property(Node) node按钮设置: Node;
     @property(Node) node按钮战报: Node
+    @property(Node) node按钮面板: Node
     @property(Node)
     下部列表: Node;
     @property(Node)
@@ -333,7 +334,7 @@ export class BattleUI extends Dialog {
 
     }
     onClick游戏设置(): void {
-        this.node按钮设置.active = !this.node按钮设置.active;
+        this.node按钮面板.active = !this.node按钮面板.active;
         this.toggle点击活动单位都是追加选中.isChecked = BattleMoude._追加选中
         this.toggle显示单位类型.isChecked = MainTest.instance.b显示单位类型
     }
