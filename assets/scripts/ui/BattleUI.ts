@@ -479,14 +479,7 @@ export class BattleUI extends Dialog {
                     const victimUnitName = 单位类型[player.victim_unit];
                     // 自定义时间格式，不显示年份，使用本地时间
                     const date = new Date(player.timestamp_utc);
-                    const timeString = date.toLocaleString('zh-CN', {
-                        month: 'numeric',
-                        day: 'numeric',
-                        hour: '2-digit',
-                        minute: '2-digit',
-                        second: '2-digit',
-                        hour12: false
-                    });
+                    const timeString = `${date.getMonth() + 1}/${date.getDate()} ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}`;
                     return `${timeString} : ${player.killer} 的 ${killerUnitName} 击败了 ${player.victim} 的 ${victimUnitName}`;
                 }).join('\n')
             })
