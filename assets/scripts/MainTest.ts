@@ -35,6 +35,7 @@ const { ccclass, property } = _decorator;
 export class MainTest extends Component {
     // 单例实例
     private static _instance: MainTest;
+    战局: 战局类型;
     public static get instance(): MainTest {
         return this._instance;
     }
@@ -339,8 +340,16 @@ export class MainTest extends Component {
         this.dialogMgr.openDialog(UI2Prefab.BattleUI_url, null, null, (dlg: Dialog): void => {
             if (!this.scene战斗.battleUI) {
                 this.scene战斗.battleUI = dlg.getComponent(BattleUI)
-                this.scene战斗.battleUI.lable在线人数.string = Glob.str在线人数
             }
+            
+            if (this.scene战斗.battleUI) {
+                this.scene战斗.battleUI.lable在线人数.string = Glob.str在线人数
+                this.scene战斗.battleUI.node按钮战报.active = b多人混战
+            }
+            else {
+                console.error('战斗UI未找到')
+            }
+
             this.loadMap(sceneName, idMsg, id副本, str房主昵称, b多人混战)
         })
 

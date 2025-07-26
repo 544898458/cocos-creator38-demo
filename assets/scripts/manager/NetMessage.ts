@@ -523,10 +523,13 @@ export class NetMessage {
     }
     private handleGame_进Space(arr: any[], idxArr: number): void {
         const 战局 = arr[idxArr++] as 战局类型
+        MainTest.instance.战局 = 战局
+
+        //加载高清贴图
         const 配置 = MainTest.instance.配置.find战局(战局)
         if(0==配置.Https高清贴图.length)
             return
-
+        
         const nodeSpace = utils.find(配置.MeshRenderer路径, MainTest.GetMapNode())
         console.log('进Space', nodeSpace)
         if (nodeSpace) {

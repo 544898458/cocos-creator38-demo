@@ -20,7 +20,7 @@ import { SpriteFrame } from 'cc';
 import { dispatcher } from '../manager/event/EventDispatcher';
 import { EC } from '../utils/EC';
 import { BattleMoude } from '../scene/BattleMoude';
-import { MsgId, 单位类型, 属性类型 } from '../utils/Enum';
+import { MsgId, 单位类型, 属性类型, 战局类型 } from '../utils/Enum';
 import { Vec3 } from 'cc';
 import { Glob } from '../utils/Glob';
 import { map } from 'yaml/dist/schema/common/map';
@@ -30,15 +30,14 @@ import { dialogMgr } from '../manager/DialogManager';
 import { PopView } from './PopView';
 import { assetManager } from 'cc';
 import { TextAsset } from 'cc';
+import { JsonAsset } from 'cc';
 import { NetMessage } from '../manager/NetMessage';
 const { ccclass, property } = _decorator;
 
 @ccclass('BattleUI')
 export class BattleUI extends Dialog {
-    @property(Node)
-    游戏攻略: Node;
-    @property(Node)
-    游戏设置: Node;
+    @property(Node) node按钮设置: Node;
+    @property(Node) node按钮战报: Node
     @property(Node)
     下部列表: Node;
     @property(Node)
@@ -334,7 +333,7 @@ export class BattleUI extends Dialog {
 
     }
     onClick游戏设置(): void {
-        this.游戏设置.active = !this.游戏设置.active;
+        this.node按钮设置.active = !this.node按钮设置.active;
         this.toggle点击活动单位都是追加选中.isChecked = BattleMoude._追加选中
         this.toggle显示单位类型.isChecked = MainTest.instance.b显示单位类型
     }
@@ -465,6 +464,33 @@ export class BattleUI extends Dialog {
         BattleMoude.instance.fun创建消息 = null
         this.node取消点击地面.active = false
         this.下部列表.active = true
+    }
+    on按钮战报(event: Event, customEventData: string) {
+        dialogMgr.openDialog(UI2Prefab.PopView_url, null, null, (dlg: Dialog): void => {
+            let popView = dlg.getComponent(PopView)
+            popView.label标题.string = '战报';
+            popView.richText内容.string = '请稍后……';
+            assetManager.loadRemote(`https://www.rtsgame.online/战报/战局_${MainTest.instance.战局}.json`, (err, jsonAsset: JsonAsset) => {
+                console.log('resources.load callback:', err, jsonAsset)
+                let arrPlayerStats = jsonAsset.json as Array<{ id: number, battle_type: number, killer: string, victim: string, killer_unit: 单位类型, victim_unit: 单位类型, timestamp_utc: string }>
+                popView.richText内容.string = arrPlayerStats.map(player => {
+                    // 获取单位类型的枚举名字
+                    const killerUnitName = 单位类型[player.killer_unit];
+                    const victimUnitName = 单位类型[player.victim_unit];
+                    // 自定义时间格式，不显示年份，使用本地时间
+                    const date = new Date(player.timestamp_utc);
+                    const timeString = date.toLocaleString('zh-CN', {
+                        month: 'numeric',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit',
+                        hour12: false
+                    });
+                    return `${timeString} : ${player.killer} 的 ${killerUnitName} 击败了 ${player.victim} 的 ${victimUnitName}`;
+                }).join('\n')
+            })
+        })
     }
     剧情对话(str头像左: string, str名字左: string, str头像右: string, str名字右: string, str对话内容: string, b显示退出面板: boolean): void {
         this.uiTransform剧情对话根.node.active = true
