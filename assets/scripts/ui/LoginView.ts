@@ -55,7 +55,9 @@ export class LoginView extends Dialog {
     @property({ type: Node })
     node跳转社区微信小游戏: Node
     @property({ type: Node })
-    node跳转社区抖音小游戏: Node
+    node抖音小游戏面板: Node
+    @property({ type: Node })
+    node哔哩哔哩小游戏面板: Node
 
     @property(RichText)
     richText公告: RichText
@@ -81,7 +83,7 @@ export class LoginView extends Dialog {
         // 显示登录界面
         dispatcher.on(EC.SHOW_LOGIN_UI, this.显示登录界面, this);
         dispatcher.on(EC.SHOW_TOAST, toast.showToast, toast);
-        console.log("LoginView.onOpened", param)
+        console.log("LoginView.onOpened,param:", param)
         MainTest.instance.scene登录 = this
         // this.loadNode.active = true;
         if (Glob.str在线人数 && Glob.websocket)
@@ -95,9 +97,10 @@ export class LoginView extends Dialog {
         if (sys.isBrowser)
             this.node跳转社区浏览器H5.active = true
         else if (LoginView.是抖音小游戏())
-            this.node跳转社区抖音小游戏.active = true
-        else if(typeof bl !== 'undefined' && bl != null){
-            console.log('是哔哩哔哩小游戏')
+            this.node抖音小游戏面板.active = true
+        else if(MainTest.是哔哩哔哩小游戏()){
+            console.log('LoginView.onOpened,是哔哩哔哩小游戏')
+            this.node哔哩哔哩小游戏面板.active = true
         }
         else if ((window as any).CC_WECHAT)
             this.node跳转社区微信小游戏.active = true
@@ -430,5 +433,29 @@ export class LoginView extends Dialog {
             }
             console.log(jsonAsset.json)
         })
+    }
+    on哔哩哔哩首页侧边栏复访教育(event: Event, customEventData: string) {
+        console.log('on哔哩哔哩首页侧边栏复访教育')
+        bl.navigateToScene({
+            scene: "sidebar",
+            success: (res) => {
+                console.log("navigate to scene success,跳转到侧边栏成功");
+            },
+            fail: (res) => {
+                console.log("navigate to scene fail: 跳转到侧边栏失败", res);
+            },
+        });
+    }
+    on哔哩哔哩添加桌面快捷方式(event: Event, customEventData: string) {
+        console.log('on哔哩哔哩添加桌面快捷方式')
+        bl.addShortcut({
+            success() {
+              console.log("添加桌面成功");
+              // 可提示用户：添加成功，明天从桌面进入可领取礼包哦~
+            },
+            fail(err) {
+              console.log("添加桌面失败", err.errMsg);
+            }
+          });
     }
 }

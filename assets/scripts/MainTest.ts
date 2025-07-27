@@ -209,9 +209,55 @@ export class MainTest extends Component {
     }
     //
     onSecen登录Load(): void {
-        if(typeof bl !== 'undefined' && bl != null)
+        if(MainTest.是哔哩哔哩小游戏())
         {
-            console.log('是哔哩哔哩小游戏')
+            console.log('onSecen登录Load,是哔哩哔哩小游戏')
+            //https://miniapp.bilibili.com/small-game-doc/open/sidebar
+            bl.onShow(res => {
+                // 侧边栏返回小游戏后，会触发onShow事件。
+                // 在此监听场景值，触发侧边栏奖励
+                //https://miniapp.bilibili.com/small-game-doc/ability/scene-type
+                //场景值	类型	含义
+                //10001	    string	我的(首页Tab)-小游戏中心
+                //10002	    string	手机设备桌面快捷入口
+                //10003	    string	各分享渠道
+                //021036	string	从侧边栏进入小游戏
+                const scene = res.scene;
+                console.log('bl.onShow,从哔哩哔哩', scene, '进入')
+                if (scene == '021036') {
+                  // 从侧边栏进入，发送奖励
+                  console.log('从哔哩哔哩侧边栏进入')
+                }
+              });
+              
+              bl.checkScene({
+                scene: "sidebar",
+                success: (res) => {
+                    console.log("哔哩哔哩从侧边栏进入小游戏检查结果,接口调用成功,当前宿主版本是否支持跳转某个小游戏入口场景，目前仅支持「侧边栏」场景。  ", res.isExist);
+                    //成功回调逻辑
+                },
+                fail: (res) => {
+                    console.log("检查失败,不知哔哩哔哩是否从侧边栏进入小游戏,接口调用失败:", res);
+                    //失败回调逻辑
+                }
+            });
+
+            bl.reportScene({
+                sceneId: 7,
+                // costTime: 350,
+                // dimension: {
+                //   d1: '2.1.0', // value仅支持传入String类型。若value表示Boolean，请将值处理为'0'、'1'进行上报；若value为Number，请转换为String进行上报
+                // },
+                // metric: {
+                //   m1: '546', // value仅支持传入数值且需要转换为String类型进行上报
+                // },
+                success (res) {
+                  console.log('上报接口执行完成后的回调，用于检查上报数据是否符合预期', res)
+                },
+                fail (res) {
+                  console.log('上报报错时的回调，用于查看上报错误的原因：如参数类型错误等', res)
+                }
+              })
         }
         else if ((window as any).CC_WECHAT) {
             let thisLocal = this
@@ -289,6 +335,9 @@ export class MainTest extends Component {
     }
     static 是抖音小游戏(): boolean {
         return typeof tt !== 'undefined' && tt != null
+    }
+    static 是哔哩哔哩小游戏(): boolean {
+        return typeof bl !== 'undefined' && bl != null
     }
     on关闭广告(b已看完激励视频广告 = false) {
         console.log('on关闭广告', this.fun关闭广告发消息, this)
