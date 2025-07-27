@@ -96,7 +96,10 @@ export class LoginView extends Dialog {
             this.node跳转社区浏览器H5.active = true
         else if (LoginView.是抖音小游戏())
             this.node跳转社区抖音小游戏.active = true
-        else if (window.CC_WECHAT)
+        else if(typeof bl !== 'undefined' && bl != null){
+            console.log('是哔哩哔哩小游戏')
+        }
+        else if ((window as any).CC_WECHAT)
             this.node跳转社区微信小游戏.active = true
 
         MainTest.instance.onSecen登录Load()
@@ -126,6 +129,9 @@ export class LoginView extends Dialog {
                     // this.btnSidebar.active = true
                 }
             });
+        }
+        else if(typeof bl !== 'undefined' && bl != null){
+            
         }
     }
     onClosed(): void {

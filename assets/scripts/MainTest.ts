@@ -209,7 +209,11 @@ export class MainTest extends Component {
     }
     //
     onSecen登录Load(): void {
-        if (window.CC_WECHAT) {
+        if(typeof bl !== 'undefined' && bl != null)
+        {
+            console.log('是哔哩哔哩小游戏')
+        }
+        else if ((window as any).CC_WECHAT) {
             let thisLocal = this
             // 创建插屏广告实例，提前初始化             进入战斗场景时显示
             if (wx.createInterstitialAd) {

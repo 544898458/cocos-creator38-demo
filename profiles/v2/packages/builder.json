@@ -8,9 +8,9 @@
       "asyncFunctions": false
     },
     "buildPath": "project://build",
-    "outputName": "web-mobile",
-    "mainBundleCompressionType": "merge_all_json",
-    "platform": "windows",
+    "outputName": "wechatgame-Bilibili",
+    "mainBundleCompressionType": "subpackage",
+    "platform": "wechatgame",
     "scenes": [
       {
         "url": "db://assets/scene/main.scene",
@@ -535,6 +535,78 @@
           "logDest": "project://temp/builder/log/windows2025-6-4 22-55.log"
         },
         "time": "2025-6-4 22:55:45",
+        "dirty": false
+      },
+      "1753592266477": {
+        "type": "build",
+        "id": "1753592266477",
+        "progress": 1,
+        "state": "success",
+        "stage": "build",
+        "message": "2025-7-27 14:17:30 build success in 1 min 24 s!",
+        "detailMessage": "Asset DB is resume!\r",
+        "options": {
+          "name": "即时战略指挥",
+          "server": "",
+          "engineModulesConfigKey": "migrationsConfig",
+          "platform": "wechatgame",
+          "buildPath": "project://build",
+          "debug": false,
+          "buildMode": "normal",
+          "mangleProperties": false,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": false,
+          "overwriteProjectSettings": {
+            "macroConfig": {
+              "cleanupImageCache": "on"
+            },
+            "includeModules": {
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting",
+              "gfx-webgl2": "on"
+            }
+          },
+          "nativeCodeBundleMode": "wasm",
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": true,
+          "bundleConfigs": [],
+          "inlineEnum": true,
+          "useBuiltinServer": true,
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "subpackage",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
+          "outputName": "wechatgame-Bilibili",
+          "taskName": "wechatgame-001",
+          "scenes": [
+            {
+              "url": "db://assets/scene/main.scene",
+              "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+              "bundle": "db://assets/scene"
+            },
+            {
+              "url": "db://assets/scene主包/Start.scene",
+              "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+            }
+          ],
+          "wasmCompressionMode": false,
+          "packages": {},
+          "__version__": "1.3.9",
+          "logDest": "project://temp/builder/log/wechatgame2025-7-27 12-57.log"
+        },
+        "time": "2025-7-27 14:16:05",
         "dirty": false
       }
     }

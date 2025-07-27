@@ -2,7 +2,7 @@
   "builder": {
     "common": {
       "buildPath": "project://build",
-      "outputName": "XiaoHongShu",
+      "outputName": "wechatgame-Bilibili",
       "mainBundleCompressionType": "subpackage",
       "platform": "wechatgame",
       "scenes": [
@@ -18,7 +18,7 @@
       ],
       "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
       "startSceneAssetBundle": true,
-      "buildMode": "bundle",
+      "buildMode": "normal",
       "bundleConfigs": [],
       "mainBundleIsRemote": false,
       "name": "即时战略指挥",
@@ -47,6 +47,15 @@
         "buildOpenDataContextTemplate": "",
         "separateEngine": false,
         "highPerformanceMode": false,
+        "__version__": "1.0.4",
+        "wasmSubpackage": false
+      },
+      "1753592266477": {
+        "orientation": "portrait",
+        "appid": "wx57e5c006d2ac186e",
+        "buildOpenDataContextTemplate": "",
+        "separateEngine": false,
+        "highPerformanceMode": true,
         "__version__": "1.0.4",
         "wasmSubpackage": false
       }

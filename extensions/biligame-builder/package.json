@@ -1,0 +1,34 @@
+{
+    "name": "biligame-builder",
+    "title": "biligame-builder",
+    "package_version": 2,
+    "version": "1.0.3",
+    "author": "bilibili小游戏团队",
+    "description": "bilibili小游戏构建扩展",
+    "editor": ">=3.3.0",
+    "contributions": {
+        "builder": "./dist/builder.js"
+    },
+    "devDependencies": {
+        "@types/node": "^16.0.1",
+        "@types/fs-extra": "^9.0.5",
+        "typescript": "^4.3.4"
+    },
+    "dependencies": {
+        "@babel/generator": "^7.24.5",
+        "@babel/parser": "^7.24.5",
+        "@babel/traverse": "^7.24.5",
+        "@babel/types": "^7.24.5",
+        "@types/fs-extra": "^5.0.4",
+        "@types/node": "^14.5.2",
+        "axios": "^1.6.7",
+        "bluebird": "^3.7.2",
+        "fs-extra": "^10.0.0",
+        "graceful-fs": "^4.2.11",
+        "open": "^10.0.3"
+    },
+    "scripts": {
+        "build": "tsc -b",
+        "watch": "tsc -w"
+    }
+}
