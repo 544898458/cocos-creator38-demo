@@ -27,7 +27,7 @@
     "startSceneAssetBundle": true,
     "bundleConfigs": [],
     "mainBundleIsRemote": false,
-    "name": "即时战略指挥",
+    "name": "即使战略指挥",
     "useBuiltinServer": false,
     "nativeCodeBundleMode": "wasm",
     "mangleProperties": true,
@@ -118,8 +118,8 @@
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "2025-7-29 22:45:51 build success in 2 min 16 s!",
-        "detailMessage": "builder:build-project-total (135306ms)\r",
+        "message": "2025-7-29 23:50:27 build success in 1 min 15 s!",
+        "detailMessage": "Asset DB is resume!\r",
         "options": {
           "name": "即时战略指挥",
           "server": "",
@@ -181,7 +181,7 @@
           "engineModulesConfigKey": "migrationsConfig",
           "inlineEnum": true
         },
-        "time": "2025-7-29 22:43:35",
+        "time": "2025-7-29 23:49:12",
         "dirty": false
       },
       "1746626156194": {
@@ -190,10 +190,10 @@
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "2025-5-8 23:46:08 build success in 29 s!",
-        "detailMessage": "// ---- build task 整理部分构建选项内数据到 settings.json ----\r",
+        "message": "2025-7-29 23:58:53 build success in 1 min 21 s!",
+        "detailMessage": "builder:build-project-total (80352ms)\r",
         "options": {
-          "name": "cocos-creator38-demo",
+          "name": "即使战略指挥",
           "server": "",
           "platform": "bytedance-mini-game",
           "buildPath": "project://build",
@@ -208,10 +208,10 @@
             "includeModules": {
               "physics": "inherit-project-setting",
               "physics-2d": "inherit-project-setting",
-              "gfx-webgl2": "off"
+              "gfx-webgl2": "on"
             }
           },
-          "nativeCodeBundleMode": "both",
+          "nativeCodeBundleMode": "wasm",
           "polyfills": {
             "asyncFunctions": false
           },
@@ -235,28 +235,8 @@
           "taskName": "bytedance-mini-game",
           "scenes": [
             {
-              "url": "db://assets/scene/scene四方对战.scene",
-              "uuid": "43fbab0d-cd30-41bd-8ce6-c6ace63ac043",
-              "bundle": "db://assets/scene"
-            },
-            {
-              "url": "db://assets/scene/scene战斗.scene",
-              "uuid": "a2a6dcbf-5442-46e3-be3b-a623e01230cf",
-              "bundle": "db://assets/scene"
-            },
-            {
-              "url": "db://assets/scene/scene攻坚战.scene",
-              "uuid": "230a1890-4323-4440-93ac-fe2ce7e367f0",
-              "bundle": "db://assets/scene"
-            },
-            {
-              "url": "db://assets/scene/scene登录.scene",
-              "uuid": "5a529a1a-acd9-483f-8e6d-aa2f3d1b0919",
-              "bundle": "db://assets/scene"
-            },
-            {
-              "url": "db://assets/scene/scene防守战.scene",
-              "uuid": "90f36ef0-7435-4950-97c5-21ef41abf552",
+              "url": "db://assets/scene/main.scene",
+              "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
               "bundle": "db://assets/scene"
             },
             {
@@ -268,9 +248,12 @@
           "packages": {},
           "__version__": "1.3.8",
           "logDest": "project://temp/builder/log/bytedance-mini-game2025-5-7 21-55.log",
-          "buildMode": "bundle"
+          "buildMode": "normal",
+          "engineModulesConfigKey": "migrationsConfig",
+          "mangleProperties": false,
+          "inlineEnum": true
         },
-        "time": "2025-5-8 23:45:38",
+        "time": "2025-7-29 23:57:32",
         "dirty": false
       },
       "1747025212998": {
