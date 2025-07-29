@@ -2,28 +2,34 @@
   "builder": {
     "common": {
       "buildPath": "project://build",
-      "outputName": "bytedance-mini-game",
+      "outputName": "bytedance-mini-game-001",
       "mainBundleCompressionType": "merge_dep",
       "platform": "bytedance-mini-game",
       "scenes": [
         {
-          "url": "db://assets/scene/main.scene",
-          "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
-          "bundle": "db://assets/scene"
-        },
-        {
           "url": "db://assets/scene主包/Start.scene",
           "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+        },
+        {
+          "url": "db://assets/resources/main.scene",
+          "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+          "bundle": "db://assets/resources"
         }
       ],
       "buildMode": "normal",
       "name": "即使战略指挥",
-      "nativeCodeBundleMode": "wasm",
+      "nativeCodeBundleMode": "both",
       "overwriteProjectSettings": {
         "includeModules": {
-          "gfx-webgl2": "on"
+          "gfx-webgl2": "off"
         }
-      }
+      },
+      "useSplashScreen": true,
+      "engineModulesConfigKey": "migrationsConfig",
+      "server": "https://www.rtsgame.online/bytedance/",
+      "startSceneAssetBundle": false,
+      "useBuiltinServer": false,
+      "md5Cache": true
     },
     "options": {
       "bytedance-mini-game": {
@@ -43,6 +49,20 @@
     },
     "taskOptionsMap": {
       "1746626156194": {
+        "buildOpenDataContextTemplate": "",
+        "appid": "tt4b0f3db2d407a43a02",
+        "orientation": "portrait",
+        "physX": {
+          "use": "project",
+          "notPackPhysXLibs": false,
+          "multiThread": false,
+          "subThreadCount": 1,
+          "epsilon": 0.001
+        },
+        "devToolsLaunchMethod": "lite",
+        "__version__": "1.0.3"
+      },
+      "1753810040471": {
         "buildOpenDataContextTemplate": "",
         "appid": "tt4b0f3db2d407a43a02",
         "orientation": "portrait",

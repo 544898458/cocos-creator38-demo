@@ -31,7 +31,7 @@
           },
           "web": {
             "preferredOptions": {
-              "isRemote": false,
+              "isRemote": true,
               "compressionType": "merge_dep"
             },
             "fallbackOptions": {
@@ -47,6 +47,9 @@
             "overwriteSettings": {
               "wechatgame": {
                 "compressionType": "subpackage"
+              },
+              "bytedance-mini-game": {
+                "isRemote": true
               }
             }
           }

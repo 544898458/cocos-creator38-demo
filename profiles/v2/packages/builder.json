@@ -8,35 +8,38 @@
       "asyncFunctions": false
     },
     "buildPath": "project://build",
-    "outputName": "wechatgame-Bilibili",
-    "mainBundleCompressionType": "subpackage",
-    "platform": "wechatgame",
+    "outputName": "bytedance-mini-game-001",
+    "mainBundleCompressionType": "merge_dep",
+    "platform": "bytedance-mini-game",
     "scenes": [
-      {
-        "url": "db://assets/scene/main.scene",
-        "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
-        "bundle": "db://assets/scene"
-      },
       {
         "url": "db://assets/scene主包/Start.scene",
         "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+      },
+      {
+        "url": "db://assets/resources/main.scene",
+        "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+        "bundle": "db://assets/resources"
       }
     ],
     "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
     "debug": false,
-    "startSceneAssetBundle": true,
+    "startSceneAssetBundle": false,
     "bundleConfigs": [],
     "mainBundleIsRemote": false,
     "name": "即使战略指挥",
     "useBuiltinServer": false,
-    "nativeCodeBundleMode": "wasm",
+    "nativeCodeBundleMode": "both",
     "mangleProperties": true,
-    "useSplashScreen": false,
+    "useSplashScreen": true,
     "overwriteProjectSettings": {
       "includeModules": {
-        "gfx-webgl2": "on"
+        "gfx-webgl2": "off"
       }
-    }
+    },
+    "engineModulesConfigKey": "migrationsConfig",
+    "server": "https://www.rtsgame.online/bytedance/",
+    "md5Cache": true
   },
   "BuildTaskManager": {
     "taskMap": {
@@ -116,10 +119,10 @@
         "type": "build",
         "id": "1734472901911",
         "progress": 1,
-        "state": "success",
+        "state": "failure",
         "stage": "build",
-        "message": "2025-7-29 23:50:27 build success in 1 min 15 s!",
-        "detailMessage": "Asset DB is resume!\r",
+        "message": "The build task was interrupted",
+        "detailMessage": "Build script in bundle start, progress: 49%\r",
         "options": {
           "name": "即时战略指挥",
           "server": "",
@@ -175,85 +178,13 @@
           "wasmCompressionMode": false,
           "packages": {},
           "__version__": "1.3.8",
-          "buildMode": "normal",
+          "buildMode": "bundle",
           "logDest": "project://temp/builder/log/wechatgame2024-12-18 06-01.log",
           "mangleProperties": false,
           "engineModulesConfigKey": "migrationsConfig",
           "inlineEnum": true
         },
-        "time": "2025-7-29 23:49:12",
-        "dirty": false
-      },
-      "1746626156194": {
-        "type": "build",
-        "id": "1746626156194",
-        "progress": 1,
-        "state": "success",
-        "stage": "build",
-        "message": "2025-7-29 23:58:53 build success in 1 min 21 s!",
-        "detailMessage": "builder:build-project-total (80352ms)\r",
-        "options": {
-          "name": "即使战略指挥",
-          "server": "",
-          "platform": "bytedance-mini-game",
-          "buildPath": "project://build",
-          "debug": false,
-          "md5Cache": false,
-          "skipCompressTexture": false,
-          "sourceMaps": false,
-          "overwriteProjectSettings": {
-            "macroConfig": {
-              "cleanupImageCache": "inherit-project-setting"
-            },
-            "includeModules": {
-              "physics": "inherit-project-setting",
-              "physics-2d": "inherit-project-setting",
-              "gfx-webgl2": "on"
-            }
-          },
-          "nativeCodeBundleMode": "wasm",
-          "polyfills": {
-            "asyncFunctions": false
-          },
-          "experimentalEraseModules": false,
-          "startSceneAssetBundle": false,
-          "bundleConfigs": [],
-          "useBuiltinServer": false,
-          "md5CacheOptions": {
-            "excludes": [],
-            "includes": [],
-            "replaceOnly": [],
-            "handleTemplateMd5Link": true
-          },
-          "mainBundleIsRemote": false,
-          "mainBundleCompressionType": "merge_dep",
-          "useSplashScreen": true,
-          "bundleCommonChunk": false,
-          "packAutoAtlas": true,
-          "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
-          "outputName": "bytedance-mini-game",
-          "taskName": "bytedance-mini-game",
-          "scenes": [
-            {
-              "url": "db://assets/scene/main.scene",
-              "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
-              "bundle": "db://assets/scene"
-            },
-            {
-              "url": "db://assets/scene主包/Start.scene",
-              "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
-            }
-          ],
-          "wasmCompressionMode": false,
-          "packages": {},
-          "__version__": "1.3.8",
-          "logDest": "project://temp/builder/log/bytedance-mini-game2025-5-7 21-55.log",
-          "buildMode": "normal",
-          "engineModulesConfigKey": "migrationsConfig",
-          "mangleProperties": false,
-          "inlineEnum": true
-        },
-        "time": "2025-7-29 23:57:32",
+        "time": "2025-7-30 00:04:59",
         "dirty": false
       },
       "1747025212998": {
@@ -262,8 +193,8 @@
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "2025-6-21 08:00:58 build success in 2 min 3 s!",
-        "detailMessage": "builder:build-project-total (123228ms)\r",
+        "message": "2025-7-30 00:17:21 build success in 2 min 1 s!",
+        "detailMessage": "builder:build-project-total (120748ms)\r",
         "options": {
           "name": "即时战略指挥",
           "server": "",
@@ -329,7 +260,7 @@
           "mangleProperties": false,
           "inlineEnum": true
         },
-        "time": "2025-6-21 07:58:54",
+        "time": "2025-7-30 00:15:19",
         "dirty": false
       },
       "1747144331532": {
@@ -590,6 +521,78 @@
           "logDest": "project://temp/builder/log/wechatgame2025-7-27 12-57.log"
         },
         "time": "2025-7-28 01:08:37",
+        "dirty": false
+      },
+      "1753810040471": {
+        "type": "build",
+        "id": "1753810040471",
+        "progress": 1,
+        "state": "success",
+        "stage": "build",
+        "message": "2025-7-30 03:10:40 build success in 1 min 34 s!",
+        "detailMessage": "// ---- build task adsense-h5g-plugin：onAfterBuild ----\r",
+        "options": {
+          "name": "即使战略指挥",
+          "server": "https://www.rtsgame.online/bytedance/",
+          "engineModulesConfigKey": "migrationsConfig",
+          "platform": "bytedance-mini-game",
+          "buildPath": "project://build",
+          "debug": false,
+          "buildMode": "normal",
+          "mangleProperties": false,
+          "md5Cache": true,
+          "skipCompressTexture": false,
+          "sourceMaps": false,
+          "overwriteProjectSettings": {
+            "macroConfig": {
+              "cleanupImageCache": "inherit-project-setting"
+            },
+            "includeModules": {
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting",
+              "gfx-webgl2": "off"
+            }
+          },
+          "nativeCodeBundleMode": "both",
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": false,
+          "bundleConfigs": [],
+          "inlineEnum": true,
+          "useBuiltinServer": false,
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_dep",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
+          "outputName": "bytedance-mini-game-001",
+          "taskName": "bytedance-mini-game-001",
+          "scenes": [
+            {
+              "url": "db://assets/scene主包/Start.scene",
+              "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+            },
+            {
+              "url": "db://assets/resources/main.scene",
+              "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+              "bundle": "db://assets/resources"
+            }
+          ],
+          "wasmCompressionMode": false,
+          "packages": {},
+          "__version__": "1.3.9",
+          "logDest": "project://temp/builder/log/bytedance-mini-game2025-7-30 01-27.log"
+        },
+        "time": "2025-7-30 03:09:05",
         "dirty": false
       }
     }
