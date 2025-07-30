@@ -18,10 +18,10 @@
       ],
       "buildMode": "normal",
       "name": "即使战略指挥",
-      "nativeCodeBundleMode": "both",
+      "nativeCodeBundleMode": "wasm",
       "overwriteProjectSettings": {
         "includeModules": {
-          "gfx-webgl2": "off"
+          "gfx-webgl2": "on"
         }
       },
       "useSplashScreen": true,
