@@ -209,6 +209,38 @@ export class MainTest extends Component {
     }
     //
     onSecen登录Load(): void {
+        if(MainTest.是微信小游戏()){
+            console.log('onSecen登录Load,是微信小游戏')
+        }
+        else if(MainTest.是抖音小游戏()){
+            console.log('onSecen登录Load,是抖音小游戏')
+                       // --侧边栏按钮判断--//
+            tt.onShow((res) => {
+                //判断用户是否是从侧边栏进来的
+                let isFromSidebar = (res.launch_from == 'homepage' && res.location == 'sidebar_card')
+
+                if (isFromSidebar) {
+                    //如果是从侧边栏进来的，隐藏“去侧边栏”
+                    // this.btnSidebar.active = false
+                    this.scene登录.登录界面显示消息('您从侧边栏进入了游戏，可免除一次插屏广告')
+                }
+                else {
+                    //否则 显示“去侧边栏”按钮
+                    // this.btnSidebar.active = true
+                    tt.checkScene({
+                        scene: "sidebar",
+                        success: (res) => {
+                            console.log("抖音确认当前宿主版本是否支持跳转某个小游戏入口场景，目前仅支持「侧边栏」场景。接口调用成功，结果:", res.isExist);
+                            //成功回调逻辑
+                        },
+                        fail: (res) => {
+                            console.log("抖音确认当前宿主版本是否支持跳转某个小游戏入口场景，目前仅支持「侧边栏」场景。接口调用失败:", res);
+                            //失败回调逻辑
+                        }
+                    });
+                }
+            });
+        }
         if(MainTest.是哔哩哔哩小游戏())
         {
             console.log('onSecen登录Load,是哔哩哔哩小游戏')
@@ -227,20 +259,22 @@ export class MainTest extends Component {
                 if (scene == '021036') {
                   // 从侧边栏进入，发送奖励
                   console.log('从哔哩哔哩侧边栏进入')
+                }else{
+                    
+                    bl.checkScene({
+                        scene: "sidebar",
+                        success: (res) => {
+                            console.log("哔哩哔哩从侧边栏进入小游戏检查结果,接口调用成功,当前宿主版本是否支持跳转某个小游戏入口场景，目前仅支持「侧边栏」场景。  ", res.isExist);
+                            //成功回调逻辑
+                        },
+                        fail: (res) => {
+                            console.log("检查失败,不知哔哩哔哩是否从侧边栏进入小游戏,接口调用失败:", res);
+                            //失败回调逻辑
+                        }
+                    });   
                 }
               });
               
-              bl.checkScene({
-                scene: "sidebar",
-                success: (res) => {
-                    console.log("哔哩哔哩从侧边栏进入小游戏检查结果,接口调用成功,当前宿主版本是否支持跳转某个小游戏入口场景，目前仅支持「侧边栏」场景。  ", res.isExist);
-                    //成功回调逻辑
-                },
-                fail: (res) => {
-                    console.log("检查失败,不知哔哩哔哩是否从侧边栏进入小游戏,接口调用失败:", res);
-                    //失败回调逻辑
-                }
-            });
 
             bl.reportScene({
                 sceneId: 7,
@@ -332,6 +366,9 @@ export class MainTest extends Component {
         } else if (MainTest.是抖音小游戏()) {
 
         }
+    }
+    static 是微信小游戏(): boolean {
+        return typeof wx !== 'undefined' && wx != null
     }
     static 是抖音小游戏(): boolean {
         return typeof tt !== 'undefined' && tt != null

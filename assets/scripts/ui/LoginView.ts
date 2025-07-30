@@ -117,24 +117,11 @@ export class LoginView extends Dialog {
         })
 
         if (LoginView.是抖音小游戏()) {
-            // --侧边栏按钮判断--//
-            tt.onShow((res) => {
-                //判断用户是否是从侧边栏进来的
-                let isFromSidebar = (res.launch_from == 'homepage' && res.location == 'sidebar_card')
-
-                if (isFromSidebar) {
-                    //如果是从侧边栏进来的，隐藏“去侧边栏”
-                    // this.btnSidebar.active = false
-                    this.lableMessage.string = '您从侧边栏进入了游戏，可免除一次插屏广告'
-                }
-                else {
-                    //否则 显示“去侧边栏”按钮
-                    // this.btnSidebar.active = true
-                }
-            });
+ 
         }
-        else if(typeof bl !== 'undefined' && bl != null){
-            
+        else if(MainTest.是哔哩哔哩小游戏()){
+            console.log('LoginView.onOpened,是哔哩哔哩小游戏')
+            this.node哔哩哔哩小游戏面板.active = true
         }
     }
     onClosed(): void {
@@ -433,6 +420,18 @@ export class LoginView extends Dialog {
             }
             console.log(jsonAsset.json)
         })
+    }
+    on抖音侧边栏进入小游戏复访教育(event: Event, customEventData: string) {
+        console.log('on抖音侧边栏进入小游戏复访教育')
+        tt.navigateToScene({
+            scene: "sidebar",
+            success: (res) => {
+                console.log("navigate to scene success,跳转到侧边栏成功");
+            },
+            fail: (res) => {
+                console.log("navigate to scene fail: 跳转到侧边栏失败", res);
+            },
+        });
     }
     on哔哩哔哩首页侧边栏复访教育(event: Event, customEventData: string) {
         console.log('on哔哩哔哩首页侧边栏复访教育')
