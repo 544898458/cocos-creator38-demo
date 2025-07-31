@@ -216,13 +216,16 @@ export class MainTest extends Component {
         else if(MainTest.是抖音小游戏()){
             console.log('onSecen登录Load,是抖音小游戏')
                        
-            MainTest.b显示侧边栏引导按钮 = false
+            const launchOptions = tt.getLaunchOptionsSync().scene as string
+            const b从侧边栏进入 = launchOptions == '021036'
+            console.log('抖音onSecen登录Load,从侧边栏进入', b从侧边栏进入, launchOptions)
+            MainTest.b显示侧边栏引导按钮 = !b从侧边栏进入
             tt.onShow((res) => {
                 //判断用户是否是从侧边栏进来的
                 let isFromSidebar = (res.launch_from == 'homepage' && res.location == 'sidebar_card')
 
                 if (isFromSidebar) {
-                    console.log('抖音onShow,从侧边栏进入')
+                    console.log('抖音onShow,从侧边栏进入，可免除广告')
 
                     MainTest.b显示侧边栏引导按钮 = false
                     if(MainTest.instance && MainTest.instance.scene登录){
