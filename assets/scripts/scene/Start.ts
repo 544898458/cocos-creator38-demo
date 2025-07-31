@@ -14,6 +14,7 @@ export class Start extends Component {
     }
 
     start() {
+        MainTest.onSecen登录Load()
         let strUri = "resources"
         if(MainTest.是抖音小游戏()){
             strUri = "https://www.rtsgame.online/bytedance/remote/resources"

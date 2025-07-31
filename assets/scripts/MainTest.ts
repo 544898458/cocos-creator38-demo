@@ -33,6 +33,7 @@ const { ccclass, property } = _decorator;
 
 @ccclass('MainTest')
 export class MainTest extends Component {
+    static b显示侧边栏引导按钮: boolean = false
     // 单例实例
     private static _instance: MainTest;
     战局: 战局类型;
@@ -208,30 +209,39 @@ export class MainTest extends Component {
         }
     }
     //
-    onSecen登录Load(): void {
+    static onSecen登录Load(): void {
         if(MainTest.是微信小游戏()){
             console.log('onSecen登录Load,是微信小游戏')
         }
         else if(MainTest.是抖音小游戏()){
             console.log('onSecen登录Load,是抖音小游戏')
-                       // --侧边栏按钮判断--//
+                       
+            MainTest.b显示侧边栏引导按钮 = false
             tt.onShow((res) => {
                 //判断用户是否是从侧边栏进来的
                 let isFromSidebar = (res.launch_from == 'homepage' && res.location == 'sidebar_card')
 
                 if (isFromSidebar) {
-                    //如果是从侧边栏进来的，隐藏“去侧边栏”
-                    // this.btnSidebar.active = false
-                    this.scene登录.登录界面显示消息('您从侧边栏进入了游戏，可免除一次插屏广告')
+                    console.log('抖音onShow,从侧边栏进入')
+
+                    MainTest.b显示侧边栏引导按钮 = false
+                    if(MainTest.instance && MainTest.instance.scene登录){
+                        MainTest.instance.scene登录.node抖音侧边栏引导按钮.active = false
+                        MainTest.instance.scene登录.登录界面显示消息('您从侧边栏进入了游戏，可免除所有广告')
+                    }
                 }
                 else {
-                    //否则 显示“去侧边栏”按钮
-                    // this.btnSidebar.active = true
+                    console.log('抖音onShow,不是从侧边栏进入')
                     tt.checkScene({
                         scene: "sidebar",
                         success: (res) => {
                             console.log("抖音确认当前宿主版本是否支持跳转某个小游戏入口场景，目前仅支持「侧边栏」场景。接口调用成功，结果:", res.isExist);
-                            //成功回调逻辑
+                            if(res.isExist){
+                                MainTest.b显示侧边栏引导按钮 = true
+                                if(MainTest.instance && MainTest.instance.scene登录){
+                                    MainTest.instance.scene登录.node抖音侧边栏引导按钮.active = true
+                                }
+                            }
                         },
                         fail: (res) => {
                             console.log("抖音确认当前宿主版本是否支持跳转某个小游戏入口场景，目前仅支持「侧边栏」场景。接口调用失败:", res);

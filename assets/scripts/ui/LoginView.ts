@@ -59,6 +59,8 @@ export class LoginView extends Dialog {
     @property({ type: Node })
     node哔哩哔哩小游戏面板: Node
 
+    @property(Node) node抖音侧边栏引导按钮: Node
+
     @property(RichText) richText公告: RichText
     @property(RichText) richText社区: RichText
 
@@ -105,7 +107,7 @@ export class LoginView extends Dialog {
         else if ((window as any).CC_WECHAT)
             this.node跳转社区微信小游戏.active = true
 
-        MainTest.instance.onSecen登录Load()
+        // MainTest.instance.onSecen登录Load()
 
         if (Glob.strHttps登录场景音乐Mp3 && (!this.node单人战局列表_虫.active && !this.node单人战局列表_人.active)) {
             MainTest.instance.播放音乐(Glob.strHttps登录场景音乐Mp3)
@@ -119,6 +121,7 @@ export class LoginView extends Dialog {
         if (LoginView.是抖音小游戏()) {
             console.log('LoginView.onOpened,是抖音小游戏')
             this.node抖音小游戏面板.active = true
+            this.node抖音侧边栏引导按钮.active = MainTest.b显示侧边栏引导按钮
             assetManager.loadRemote('https://www.rtsgame.online/公告/社区_抖音小游戏.txt', (err, textAsset: TextAsset) => {
                 console.log('resources.load callback:', err, textAsset)
                 this.richText社区.string = textAsset.text

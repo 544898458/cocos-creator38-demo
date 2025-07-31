@@ -4827,7 +4827,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -114,
+      "y": -44.494,
       "z": 0
     },
     "_lrot": {
@@ -4855,7 +4855,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Button侧边栏",
+    "_name": "Button侧边栏引导",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
@@ -4974,7 +4974,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 150,
+      "width": 220,
       "height": 40
     },
     "_anchorPoint": {
@@ -5010,7 +5010,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "从侧边栏进入本游戏",
+    "_string": "从侧边栏进入可免除所有广告",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 12,
@@ -5083,8 +5083,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 150,
-      "height": 40
+      "width": 220,
+      "height": 45
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -5241,7 +5241,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 150,
+      "width": 220,
       "height": 50
     },
     "_anchorPoint": {
@@ -26660,6 +26660,9 @@
     },
     "node哔哩哔哩小游戏面板": {
       "__id__": 213
+    },
+    "node抖音侧边栏引导按钮": {
+      "__id__": 193
     },
     "richText公告": {
       "__id__": 48
