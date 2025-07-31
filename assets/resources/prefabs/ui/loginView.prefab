@@ -29,19 +29,22 @@
       },
       {
         "__id__": 1085
+      },
+      {
+        "__id__": 1091
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 1091
+        "__id__": 1097
       },
       {
-        "__id__": 1093
+        "__id__": 1099
       }
     ],
     "_prefab": {
-      "__id__": 1095
+      "__id__": 1101
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -26317,7 +26320,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "健康游戏忠告",
+    "_name": "社区",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
@@ -26339,7 +26342,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -260,
+      "y": -194,
       "z": 0
     },
     "_lrot": {
@@ -26379,8 +26382,137 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
+      "width": 20,
+      "height": 15.120000000000001
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "9aJvkPVJZGVonZHnY4NMWl"
+  },
+  {
+    "__type__": "cc.RichText",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 1085
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 1089
+    },
+    "_lineHeight": 12,
+    "_string": "社区",
+    "_horizontalAlign": 1,
+    "_verticalAlign": 0,
+    "_fontSize": 10,
+    "_fontColor": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_maxWidth": 0,
+    "_fontFamily": "",
+    "_font": null,
+    "_isSystemFontUsed": true,
+    "_userDefinedFont": null,
+    "_cacheMode": 0,
+    "_imageAtlas": null,
+    "_handleTouchEvent": true,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "de1l8cxURAmJXOJ2hnyBDR"
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__id__": 0
+    },
+    "fileId": "eb4wgeyI1HM5YAi2AaZfMu",
+    "instance": null,
+    "targetOverrides": null,
+    "nestedPrefabInstanceRoots": null
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "健康游戏忠告",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 1092
+      },
+      {
+        "__id__": 1094
+      }
+    ],
+    "_prefab": {
+      "__id__": 1096
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": -260,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_mobility": 0,
+    "_layer": 33554432,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.UITransform",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 1091
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 1093
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
       "width": 364,
-      "height": 108.89999999999999
+      "height": 63.9
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -26399,14 +26531,14 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 1085
+      "__id__": 1091
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1089
+      "__id__": 1095
     },
     "_lineHeight": 15,
-    "_string": "游戏版本：2025年7月31日\n玩家QQ群：1015518075\t开发QQ群：285842297\n小游戏：即时战略指挥\t公众号：即时战略指挥\t\n百度贴吧：即时战略指挥\n<color=#ffff00><size=13>健康游戏忠告\n抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。\n适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活。</size></color>",
+    "_string": "游戏版本：2025年8月1日\n<color=#ffff00><size=13>健康游戏忠告\n抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。\n适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活。</size></color>",
     "_horizontalAlign": 1,
     "_verticalAlign": 0,
     "_fontSize": 10,
@@ -26454,7 +26586,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1092
+      "__id__": 1098
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -26482,7 +26614,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1094
+      "__id__": 1100
     },
     "editBox登录名": {
       "__id__": 55
@@ -26531,6 +26663,9 @@
     },
     "richText公告": {
       "__id__": 48
+    },
+    "richText社区": {
+      "__id__": 1088
     },
     "node排行榜面板": {
       "__id__": 750

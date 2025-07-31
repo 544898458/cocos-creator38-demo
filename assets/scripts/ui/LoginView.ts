@@ -59,8 +59,8 @@ export class LoginView extends Dialog {
     @property({ type: Node })
     node哔哩哔哩小游戏面板: Node
 
-    @property(RichText)
-    richText公告: RichText
+    @property(RichText) richText公告: RichText
+    @property(RichText) richText社区: RichText
 
     @property(Node)
     node排行榜面板: Node
@@ -117,11 +117,33 @@ export class LoginView extends Dialog {
         })
 
         if (LoginView.是抖音小游戏()) {
- 
+            console.log('LoginView.onOpened,是抖音小游戏')
+            this.node抖音小游戏面板.active = true
+            assetManager.loadRemote('https://www.rtsgame.online/公告/社区_抖音小游戏.txt', (err, textAsset: TextAsset) => {
+                console.log('resources.load callback:', err, textAsset)
+                this.richText社区.string = textAsset.text
+            })
         }
         else if(MainTest.是哔哩哔哩小游戏()){
             console.log('LoginView.onOpened,是哔哩哔哩小游戏')
             this.node哔哩哔哩小游戏面板.active = true
+            assetManager.loadRemote('https://www.rtsgame.online/公告/社区_哔哩哔哩小游戏.txt', (err, textAsset: TextAsset) => {
+                console.log('resources.load callback:', err, textAsset)
+                this.richText社区.string = textAsset.text
+            })
+        }else if(MainTest.是微信小游戏()){
+            console.log('LoginView.onOpened,是微信小游戏')
+            this.node跳转社区微信小游戏.active = true
+            assetManager.loadRemote('https://www.rtsgame.online/公告/社区_微信小游戏.txt', (err, textAsset: TextAsset) => {
+                console.log('resources.load callback:', err, textAsset)
+                this.richText社区.string = textAsset.text
+            })
+        }else{
+            this.node跳转社区浏览器H5.active = true
+            assetManager.loadRemote('https://www.rtsgame.online/公告/社区_浏览器H5.txt', (err, textAsset: TextAsset) => {
+                console.log('resources.load callback:', err, textAsset)
+                this.richText社区.string = textAsset.text
+            })
         }
     }
     onClosed(): void {
