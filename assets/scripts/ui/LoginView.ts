@@ -60,6 +60,7 @@ export class LoginView extends Dialog {
     node哔哩哔哩小游戏面板: Node
 
     @property(Node) node抖音侧边栏引导按钮: Node
+    @property(Node) node抖音侧边栏复访教育面板: Node
 
     @property(RichText) richText公告: RichText
     @property(RichText) richText社区: RichText
@@ -448,6 +449,10 @@ export class LoginView extends Dialog {
     }
     on抖音侧边栏进入小游戏复访教育(event: Event, customEventData: string) {
         console.log('on抖音侧边栏进入小游戏复访教育')
+        this.node抖音侧边栏复访教育面板.active = true
+    }
+    on抖音打开侧边栏(event: Event, customEventData: string) {
+        console.log('on抖音打开侧边栏')
         tt.navigateToScene({
             scene: "sidebar",
             success: (res) => {

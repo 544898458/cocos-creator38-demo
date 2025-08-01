@@ -28,6 +28,7 @@ import { NetMessage } from './manager/NetMessage';
 import { BattleMoude } from './scene/BattleMoude';
 import { assetManager } from 'cc';
 import { AudioClip } from 'cc';
+import { toast } from './manager/ToastMgr';
 
 const { ccclass, property } = _decorator;
 
@@ -56,9 +57,9 @@ export class MainTest extends Component {
     b显示单位类型: boolean = true
     b点击活动单位都是追加选中: boolean = false
 
-    interstitialAd = null// 定义插屏广告    微信流量主
-    rewardedVideoAd// 定义激励视频广告
-    customAd// 定义原生模板广告
+    static interstitialAd = null// 定义插屏广告    微信流量主
+    static rewardedVideoAd// 定义激励视频广告
+    static customAd// 定义原生模板广告
 
     fun关闭广告发消息: (boolean: boolean) => void
     b已显示进战斗场景前的广告: boolean = false
@@ -208,117 +209,117 @@ export class MainTest extends Component {
             })
         }
     }
-    //
-    static onSecen登录Load(): void {
-        if(MainTest.是微信小游戏()){
-            console.log('onSecen登录Load,是微信小游戏')
-        }
-        else if(MainTest.是抖音小游戏()){
-            console.log('onSecen登录Load,是抖音小游戏')
-                       
-            const launchOptions = tt.getLaunchOptionsSync().scene as string
-            const b从侧边栏进入 = launchOptions == '021036'
-            console.log('抖音onSecen登录Load,从侧边栏进入', b从侧边栏进入, launchOptions)
-            MainTest.b显示侧边栏引导按钮 = !b从侧边栏进入
-            tt.onShow((res) => {
-                //判断用户是否是从侧边栏进来的
-                let isFromSidebar = (res.launch_from == 'homepage' && res.location == 'sidebar_card')
+    static 抖音小游戏初始化(): void {
+        console.log('onSecen登录Load,是抖音小游戏')
 
-                if (isFromSidebar) {
-                    console.log('抖音onShow,从侧边栏进入，可免除广告')
+        const launchOptions = tt.getLaunchOptionsSync().scene as string
+        const b从侧边栏进入 = launchOptions == '021036'
+        console.log('抖音onSecen登录Load,从侧边栏进入', b从侧边栏进入, launchOptions)
+        MainTest.b显示侧边栏引导按钮 = !b从侧边栏进入
+        tt.onShow((res) => {
+            //判断用户是否是从侧边栏进来的
+            if(MainTest.instance && MainTest.instance.scene登录)
+            {
+                MainTest.instance.scene登录.node抖音侧边栏复访教育面板.active = false
+            }
 
-                    MainTest.b显示侧边栏引导按钮 = false
-                    if(MainTest.instance && MainTest.instance.scene登录){
-                        MainTest.instance.scene登录.node抖音侧边栏引导按钮.active = false
-                        MainTest.instance.scene登录.登录界面显示消息('您从侧边栏进入了游戏，可免除所有广告')
-                    }
+            let isFromSidebar = (res.launch_from == 'homepage' && res.location == 'sidebar_card')
+
+            if (isFromSidebar) {
+                console.log('抖音onShow,从侧边栏进入，可免除广告')
+
+                MainTest.b显示侧边栏引导按钮 = false
+                if (MainTest.instance && MainTest.instance.scene登录) {
+                    MainTest.instance.scene登录.node抖音侧边栏引导按钮.active = false
+                    toast.showToast('您从侧边栏进入了游戏，可免除部分广告', 100)
                 }
-                else {
-                    console.log('抖音onShow,不是从侧边栏进入')
-                    tt.checkScene({
-                        scene: "sidebar",
-                        success: (res) => {
-                            console.log("抖音确认当前宿主版本是否支持跳转某个小游戏入口场景，目前仅支持「侧边栏」场景。接口调用成功，结果:", res.isExist);
-                            if(res.isExist){
-                                MainTest.b显示侧边栏引导按钮 = true
-                                if(MainTest.instance && MainTest.instance.scene登录){
-                                    MainTest.instance.scene登录.node抖音侧边栏引导按钮.active = true
-                                }
+            }
+            else {
+                console.log('抖音onShow,不是从侧边栏进入')
+                tt.checkScene({
+                    scene: "sidebar",
+                    success: (res) => {
+                        console.log("抖音确认当前宿主版本是否支持跳转某个小游戏入口场景，目前仅支持「侧边栏」场景。接口调用成功，结果:", res.isExist);
+                        if (res.isExist) {
+                            MainTest.b显示侧边栏引导按钮 = true
+                            if (MainTest.instance && MainTest.instance.scene登录) {
+                                MainTest.instance.scene登录.node抖音侧边栏引导按钮.active = true
                             }
-                        },
-                        fail: (res) => {
-                            console.log("抖音确认当前宿主版本是否支持跳转某个小游戏入口场景，目前仅支持「侧边栏」场景。接口调用失败:", res);
-                            //失败回调逻辑
                         }
-                    });
-                }
-            });
-        }
-        if(MainTest.是哔哩哔哩小游戏())
-        {
-            console.log('onSecen登录Load,是哔哩哔哩小游戏')
-            //https://miniapp.bilibili.com/small-game-doc/open/sidebar
-            bl.onShow(res => {
-                // 侧边栏返回小游戏后，会触发onShow事件。
-                // 在此监听场景值，触发侧边栏奖励
-                //https://miniapp.bilibili.com/small-game-doc/ability/scene-type
-                //场景值	类型	含义
-                //10001	    string	我的(首页Tab)-小游戏中心
-                //10002	    string	手机设备桌面快捷入口
-                //10003	    string	各分享渠道
-                //021036	string	从侧边栏进入小游戏
-                const scene = res.scene;
-                console.log('bl.onShow,从哔哩哔哩', scene, '进入')
-                if (scene == '021036') {
-                  // 从侧边栏进入，发送奖励
-                  console.log('从哔哩哔哩侧边栏进入')
-                }else{
-                    
-                    bl.checkScene({
-                        scene: "sidebar",
-                        success: (res) => {
-                            console.log("哔哩哔哩从侧边栏进入小游戏检查结果,接口调用成功,当前宿主版本是否支持跳转某个小游戏入口场景，目前仅支持「侧边栏」场景。  ", res.isExist);
-                            //成功回调逻辑
-                        },
-                        fail: (res) => {
-                            console.log("检查失败,不知哔哩哔哩是否从侧边栏进入小游戏,接口调用失败:", res);
-                            //失败回调逻辑
-                        }
-                    });   
-                }
-              });
-              
+                    },
+                    fail: (res) => {
+                        console.log("抖音确认当前宿主版本是否支持跳转某个小游戏入口场景，目前仅支持「侧边栏」场景。接口调用失败:", res);
+                    }
+                });
+            }
+        });
+    }
+    static 哔哩哔哩小游戏初始化():void
+    {
+        console.log('onSecen登录Load,是哔哩哔哩小游戏')
+        //https://miniapp.bilibili.com/small-game-doc/open/sidebar
+        bl.onShow(res => {
+            // 侧边栏返回小游戏后，会触发onShow事件。
+            // 在此监听场景值，触发侧边栏奖励
+            //https://miniapp.bilibili.com/small-game-doc/ability/scene-type
+            //场景值	类型	含义
+            //10001	    string	我的(首页Tab)-小游戏中心
+            //10002	    string	手机设备桌面快捷入口
+            //10003	    string	各分享渠道
+            //021036	string	从侧边栏进入小游戏
+            const scene = res.scene;
+            console.log('bl.onShow,从哔哩哔哩', scene, '进入')
+            if (scene == '021036') {
+                // 从侧边栏进入，发送奖励
+                console.log('从哔哩哔哩侧边栏进入')
+            } else {
 
-            bl.reportScene({
-                sceneId: 7,
-                // costTime: 350,
-                // dimension: {
-                //   d1: '2.1.0', // value仅支持传入String类型。若value表示Boolean，请将值处理为'0'、'1'进行上报；若value为Number，请转换为String进行上报
-                // },
-                // metric: {
-                //   m1: '546', // value仅支持传入数值且需要转换为String类型进行上报
-                // },
-                success (res) {
-                  console.log('上报接口执行完成后的回调，用于检查上报数据是否符合预期', res)
-                },
-                fail (res) {
-                  console.log('上报报错时的回调，用于查看上报错误的原因：如参数类型错误等', res)
-                }
-              })
-        }
-        else if ((window as any).CC_WECHAT) {
-            let thisLocal = this
+                bl.checkScene({
+                    scene: "sidebar",
+                    success: (res) => {
+                        console.log("哔哩哔哩从侧边栏进入小游戏检查结果,接口调用成功,当前宿主版本是否支持跳转某个小游戏入口场景，目前仅支持「侧边栏」场景。  ", res.isExist);
+                        //成功回调逻辑
+                    },
+                    fail: (res) => {
+                        console.log("检查失败,不知哔哩哔哩是否从侧边栏进入小游戏,接口调用失败:", res);
+                        //失败回调逻辑
+                    }
+                });
+            }
+        });
+
+
+        bl.reportScene({
+            sceneId: 7,
+            // costTime: 350,
+            // dimension: {
+            //   d1: '2.1.0', // value仅支持传入String类型。若value表示Boolean，请将值处理为'0'、'1'进行上报；若value为Number，请转换为String进行上报
+            // },
+            // metric: {
+            //   m1: '546', // value仅支持传入数值且需要转换为String类型进行上报
+            // },
+            success(res) {
+                console.log('上报接口执行完成后的回调，用于检查上报数据是否符合预期', res)
+            },
+            fail(res) {
+                console.log('上报报错时的回调，用于查看上报错误的原因：如参数类型错误等', res)
+            }
+        })
+    }
+    static 微信小游戏初始化():void
+    {
+        let thisLocal = this
             // 创建插屏广告实例，提前初始化             进入战斗场景时显示
             if (wx.createInterstitialAd) {
-                this.interstitialAd = wx.createInterstitialAd({
+                MainTest.interstitialAd = wx.createInterstitialAd({
                     adUnitId: 'adunit-904480d5c9a873be'
                 })
-                this.interstitialAd.onLoad(() => { console.log('插屏 广告加载成功') })
-                this.interstitialAd.onError((err: any) => {
+                MainTest.interstitialAd.onLoad(() => { console.log('插屏 广告加载成功') })
+                MainTest.interstitialAd.onError((err: any) => {
                     console.error('interstitialAd onError', err.errMsg)
                 });
-                this.interstitialAd.onClose(() => { thisLocal.on关闭广告() })
-                console.log('this.interstitialAd', this.interstitialAd)
+                MainTest.interstitialAd.onClose(() => { thisLocal.on关闭广告() })
+                console.log('MainTest.interstitialAd', MainTest.interstitialAd)
             } else {
                 console.log('微信流量主插屏广告未初始化')
             }
@@ -332,7 +333,7 @@ export class MainTest extends Component {
                 const left = (size.screenWidth - adWidth) / 2
                 const top = size.screenHeight - adHeight
                 console.log('left', left, 'size', size)
-                this.customAd = wx.createCustomAd({
+                MainTest.customAd = wx.createCustomAd({
                     adUnitId: 'adunit-cce53ccb600523d1',
                     style: {
                         left: left,
@@ -342,29 +343,29 @@ export class MainTest extends Component {
                     }
                 })
 
-                console.log('CustomAd', this.customAd)
+                console.log('CustomAd', MainTest.customAd)
                 // 监听 原生模板 广告错误事件
-                this.customAd.onError(err => {
+                MainTest.customAd.onError(err => {
                     console.error('CustomAd onError', err.errMsg)
                 });
-                this.customAd.onLoad(() => console.log('原生模板广告加载成功'))
+                MainTest.customAd.onLoad(() => console.log('原生模板广告加载成功'))
                 // 在适合的场景显示 原生模板 广告
-                this.customAd.show().then(() => console.log('首次创建后原生模板广告显示成功')).catch(err => console.log('首次创建后原生模板广告显示错误', err))
+                MainTest.customAd.show().then(() => console.log('首次创建后原生模板广告显示成功')).catch(err => console.log('首次创建后原生模板广告显示错误', err))
 
             } else {
-                this.customAd.show().then(() => console.log('原生模板广告再次显示成功')).catch(err => console.log('原生模板广告再次显示错误', err))
+                MainTest.customAd.show().then(() => console.log('原生模板广告再次显示成功')).catch(err => console.log('原生模板广告再次显示错误', err))
             }
 
-            if (!this.rewardedVideoAd) {
+            if (!MainTest.rewardedVideoAd) {
                 // 创建激励视频广告实例，提前初始化
-                this.rewardedVideoAd = wx.createRewardedVideoAd({
+                MainTest.rewardedVideoAd = wx.createRewardedVideoAd({
                     adUnitId: 'adunit-016e0f527a910f13'
                 })
-                this.rewardedVideoAd.onError(err => {
+                MainTest.rewardedVideoAd.onError(err => {
                     console.error('rewardedVideoAd onError', err.errMsg)
                 });
-                this.rewardedVideoAd.onClose(res => {
-                    thisLocal.on关闭广告(res && res.isEnded || res === undefined)
+                MainTest.rewardedVideoAd.onClose(res => {
+                    MainTest.instance.on关闭广告(res && res.isEnded || res === undefined)
                     // 用户点击了【关闭广告】按钮
                     // 小于 2.1.0 的基础库版本，res 是一个 undefined
                     // if (res && res.isEnded || res === undefined) {
@@ -374,14 +375,22 @@ export class MainTest extends Component {
                     //     // 播放中途退出，不下发游戏奖励
                     // }
                 })
-                console.log('this.rewardedVideoAd', this.rewardedVideoAd)
+                console.log('MainTest.rewardedVideoAd', MainTest.rewardedVideoAd)
             }
-        } else if (MainTest.是抖音小游戏()) {
-
+    }
+    static onSecen登录Load(): void {
+        if (MainTest.是抖音小游戏()) {
+            MainTest.抖音小游戏初始化()
         }
+        else if (MainTest.是哔哩哔哩小游戏()) {
+           MainTest.哔哩哔哩小游戏初始化() 
+        }
+        else if (MainTest.是微信小游戏()) {
+            MainTest.微信小游戏初始化()
+        } 
     }
     static 是微信小游戏(): boolean {
-        return typeof wx !== 'undefined' && wx != null
+        return (window as any).CC_WECHAT//typeof wx !== 'undefined' && wx != null
     }
     static 是抖音小游戏(): boolean {
         return typeof tt !== 'undefined' && tt != null
@@ -406,15 +415,15 @@ export class MainTest extends Component {
         this.scene登录 = null
         if ((window as any).CC_WECHAT) {
             if (b多人混战) {
-                if (this.rewardedVideoAd) {
+                if (MainTest.rewardedVideoAd) {
                     this.b已显示进战斗场景前的广告 = true
-                    this.rewardedVideoAd.show().catch((err) => {
+                    MainTest.rewardedVideoAd.show().catch((err) => {
                         this.b已显示进战斗场景前的广告 = false
                         console.error('激励视频 广告显示失败第1次', err)
                         // 失败重试
-                        this.rewardedVideoAd.load().then(() => {
+                        MainTest.rewardedVideoAd.load().then(() => {
                             this.b已显示进战斗场景前的广告 = true
-                            this.rewardedVideoAd.show()
+                            MainTest.rewardedVideoAd.show()
                         }).catch(err => {
                             this.b已显示进战斗场景前的广告 = false
                             console.error('激励视频 广告显示失败第2次', err)
@@ -424,10 +433,10 @@ export class MainTest extends Component {
                     console.log('没有插屏广告')
                 }
             } else {
-                if (this.interstitialAd) {
+                if (MainTest.interstitialAd) {
                     this.b已显示进战斗场景前的广告 = true
                     console.log('准备显示插屏广告')
-                    this.interstitialAd.show().catch((err) => {
+                    MainTest.interstitialAd.show().catch((err) => {
                         this.b已显示进战斗场景前的广告 = false
                         console.error('插屏广告显示失败', err)
                     })
@@ -444,7 +453,7 @@ export class MainTest extends Component {
             if (!this.scene战斗.battleUI) {
                 this.scene战斗.battleUI = dlg.getComponent(BattleUI)
             }
-            
+
             if (this.scene战斗.battleUI) {
                 this.scene战斗.battleUI.lable在线人数.string = Glob.str在线人数
                 this.scene战斗.battleUI.node按钮战报.active = b多人混战
@@ -651,7 +660,7 @@ export class MainTest extends Component {
                 // state.wrapMode = AnimationClip.WrapMode.Loop
                 state.wrapMode = loop ? AnimationClip.WrapMode.Loop : AnimationClip.WrapMode.Normal
                 state.speed = 动作播放速度
-                
+
                 if (f动作结束时刻秒 > 0) {
                     state.playbackRange = { min: f动作起始时刻秒, max: f动作结束时刻秒 }
                     state.time = f动作起始时刻秒
@@ -805,8 +814,8 @@ export class MainTest extends Component {
             // if (this.rewardedVideoAd) {
             //     this.rewardedVideoAd.offClose()
             // }
-            if (this.customAd) {
-                this.customAd.hide()
+            if (MainTest.customAd) {
+                MainTest.customAd.hide()
                 // this.customAd = null
             }
         }
