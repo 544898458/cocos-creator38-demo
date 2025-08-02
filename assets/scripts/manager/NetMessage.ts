@@ -709,10 +709,13 @@ export class NetMessage {
     private handleLoginResponse(payload: any[]): void {
         const [rpcSnId, result, strMsg, idSvr] = payload as [number, LoginResult, string, number];
 
-        console.log(result, strMsg);
+        console.log('rpcSnId', rpcSnId, 'result', result, 'strMsg', strMsg, 'idSvr', idSvr);
+        MainTest.idSvr = idSvr;
 
-        if (result === LoginResult.OK) return;
+        if (result === LoginResult.OK)
+            return;
 
+        //登录失败，显示错误信息
         dispatcher.emit(EC.SHOW_TOAST, strMsg);
         this.mainTest.scene登录.lableMessage.string = strMsg
         Glob.websocket?.close();

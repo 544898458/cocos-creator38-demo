@@ -471,8 +471,13 @@ export class BattleUI extends Dialog {
             let popView = dlg.getComponent(PopView)
             popView.label标题.string = '战报';
             popView.richText内容.string = '请稍后……';
-            assetManager.loadRemote(`https://www.rtsgame.online/战报/战局_${MainTest.instance.idSvr}_${MainTest.instance.战局}.json`, (err, jsonAsset: JsonAsset) => {
+            assetManager.loadRemote(`https://www.rtsgame.online/战报/战局_${MainTest.idSvr}_${MainTest.instance.战局}.json`, (err, jsonAsset: JsonAsset) => {
                 console.log('resources.load callback:', err, jsonAsset)
+                if(!jsonAsset){
+                    popView.richText内容.string = '战报不存在'
+                    return;
+                }
+                
                 let arrPlayerStats = jsonAsset.json as Array<{ id: number, battle_type: number, killer: string, victim: string, killer_unit: 单位类型, victim_unit: 单位类型, timestamp_utc: string }>
                 popView.richText内容.string = arrPlayerStats.map(player => {
                     // 获取单位类型的枚举名字
