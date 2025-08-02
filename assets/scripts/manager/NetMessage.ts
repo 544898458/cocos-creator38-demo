@@ -707,7 +707,7 @@ export class NetMessage {
     }
     // 处理登录响应
     private handleLoginResponse(payload: any[]): void {
-        const [rpcSnId, result, strMsg] = payload as [number, LoginResult, string];
+        const [rpcSnId, result, strMsg, idSvr] = payload as [number, LoginResult, string, number];
 
         console.log(result, strMsg);
 

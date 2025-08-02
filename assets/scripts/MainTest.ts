@@ -46,6 +46,7 @@ export class MainTest extends Component {
     // @property(Scene战斗)
     scene战斗: Scene战斗 = null;
     scene登录: LoginView = null
+    idSvr: number = 0;
     //摄像机
     @property(Node)
     cavas: Node = null;

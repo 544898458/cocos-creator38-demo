@@ -437,7 +437,7 @@ export class LoginView extends Dialog {
         this.拉取并显示排行榜(选中战局类型)
     }
     拉取并显示排行榜(战局类型: 战局类型) {
-        assetManager.loadRemote(`https://www.rtsgame.online/排行榜/战局_${战局类型}_赢.json`, (err, jsonAsset: JsonAsset) => {
+        assetManager.loadRemote(`https://www.rtsgame.online/排行榜/战局_${MainTest.instance.idSvr}_${战局类型}_赢.json`, (err, jsonAsset: JsonAsset) => {
             console.log('resources.load callback:', err, jsonAsset)
             let arrPlayerStats = jsonAsset.json as Array<{ nickname: string, wins: number, losses: number }>
             this.richText排行榜内容.string = ''
