@@ -13,13 +13,13 @@
     "platform": "bytedance-mini-game",
     "scenes": [
       {
-        "url": "db://assets/scene主包/Start.scene",
-        "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
-      },
-      {
         "url": "db://assets/resources/main.scene",
         "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
         "bundle": "db://assets/resources"
+      },
+      {
+        "url": "db://assets/scene主包/Start.scene",
+        "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
       }
     ],
     "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
@@ -29,12 +29,15 @@
     "mainBundleIsRemote": false,
     "name": "即使战略指挥",
     "useBuiltinServer": false,
-    "nativeCodeBundleMode": "both",
+    "nativeCodeBundleMode": "wasm",
     "mangleProperties": true,
     "useSplashScreen": true,
     "overwriteProjectSettings": {
       "includeModules": {
         "gfx-webgl2": "on"
+      },
+      "macroConfig": {
+        "cleanupImageCache": "inherit-project-setting"
       }
     },
     "engineModulesConfigKey": "migrationsConfig",
@@ -49,8 +52,8 @@
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "2025-8-2 20:35:49 build success in 1 min 36 s!",
-        "detailMessage": "Asset DB is resume!\r",
+        "message": "2025-8-3 00:03:27 build success in 37 s!",
+        "detailMessage": "// ---- build task 给所有的资源加上 MD5 后缀 ----\r",
         "options": {
           "name": "即时战略指挥",
           "server": "",
@@ -74,12 +77,12 @@
           "packAutoAtlas": true,
           "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
           "outputName": "web-mobile",
-          "taskName": "web-mobile-001",
+          "taskName": "网页h5",
           "scenes": [
             {
-              "url": "db://assets/scene/main.scene",
+              "url": "db://assets/resources/main.scene",
               "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
-              "bundle": "db://assets/scene"
+              "bundle": "db://assets/resources"
             },
             {
               "url": "db://assets/scene主包/Start.scene",
@@ -112,7 +115,7 @@
           "mangleProperties": true,
           "inlineEnum": true
         },
-        "time": "2025-8-2 20:34:12",
+        "time": "2025-8-3 00:02:49",
         "dirty": false
       },
       "1734472901911": {
@@ -121,8 +124,8 @@
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "2025-8-2 18:47:18 build success in 1 min 35 s!",
-        "detailMessage": "Asset DB is resume!\r",
+        "message": "2025-8-3 15:50:32 build success in 1 min 19 s!",
+        "detailMessage": "getJsonPathInfo of image\r\r",
         "options": {
           "name": "即时战略指挥",
           "server": "",
@@ -134,7 +137,7 @@
           "sourceMaps": false,
           "overwriteProjectSettings": {
             "macroConfig": {
-              "cleanupImageCache": "on"
+              "cleanupImageCache": "inherit-project-setting"
             },
             "includeModules": {
               "physics": "inherit-project-setting",
@@ -147,7 +150,7 @@
             "asyncFunctions": false
           },
           "experimentalEraseModules": false,
-          "startSceneAssetBundle": true,
+          "startSceneAssetBundle": false,
           "bundleConfigs": [],
           "useBuiltinServer": false,
           "md5CacheOptions": {
@@ -163,12 +166,12 @@
           "packAutoAtlas": true,
           "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
           "outputName": "wechatgame",
-          "taskName": "wechatgame",
+          "taskName": "微信小游戏",
           "scenes": [
             {
-              "url": "db://assets/scene/main.scene",
+              "url": "db://assets/resources/main.scene",
               "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
-              "bundle": "db://assets/scene"
+              "bundle": "db://assets/resources"
             },
             {
               "url": "db://assets/scene主包/Start.scene",
@@ -184,7 +187,7 @@
           "engineModulesConfigKey": "migrationsConfig",
           "inlineEnum": true
         },
-        "time": "2025-8-2 18:45:43",
+        "time": "2025-8-3 15:49:12",
         "dirty": false
       },
       "1747025212998": {
@@ -235,12 +238,12 @@
           "packAutoAtlas": true,
           "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
           "outputName": "XiaoHongShu",
-          "taskName": "wechatgame",
+          "taskName": "小红书",
           "scenes": [
             {
-              "url": "db://assets/scene/main.scene",
+              "url": "db://assets/resources/main.scene",
               "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
-              "bundle": "db://assets/scene"
+              "bundle": "db://assets/resources"
             },
             {
               "url": "db://assets/scene主包/Start.scene",
@@ -575,7 +578,7 @@
           "packAutoAtlas": true,
           "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
           "outputName": "bytedance-mini-game-001",
-          "taskName": "bytedance-mini-game-001",
+          "taskName": "抖音小游戏",
           "scenes": [
             {
               "url": "db://assets/scene主包/Start.scene",

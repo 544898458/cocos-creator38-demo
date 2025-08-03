@@ -9,7 +9,98 @@
     },
     "highQuality": false
   },
-  "custom_joint_texture_layouts": [],
+  "custom_joint_texture_layouts": [
+    {
+      "name": "Texture - 近战兵",
+      "textureLength": 312,
+      "contents": [
+        {
+          "skeleton": "e02925e5-0fb1-459c-bf56-38fddf65196f@438fe",
+          "clips": [
+            "e02925e5-0fb1-459c-bf56-38fddf65196f@18d6f",
+            "e8344958-5aa5-40b8-b2c4-0b010868abf8@18d6f",
+            "d549cfb1-6955-4981-bc71-7c819250ba66@18d6f",
+            "2f0264db-db2a-43e9-af3b-9403cd4aba90@18d6f"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Texture - 枪兵",
+      "textureLength": 192,
+      "contents": [
+        {
+          "skeleton": "1417a0f7-bfea-4eb9-a4d6-e46f234b1108@438fe",
+          "clips": [
+            "1417a0f7-bfea-4eb9-a4d6-e46f234b1108@989ed",
+            "1417a0f7-bfea-4eb9-a4d6-e46f234b1108@1f586",
+            "1417a0f7-bfea-4eb9-a4d6-e46f234b1108@5d069",
+            "1417a0f7-bfea-4eb9-a4d6-e46f234b1108@cf5ee"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Texture - 防空兵",
+      "textureLength": 204,
+      "contents": [
+        {
+          "skeleton": "1be7908b-0c5a-4cd6-8f9c-088b29334acd@438fe",
+          "clips": [
+            "1be7908b-0c5a-4cd6-8f9c-088b29334acd@1f586",
+            "1be7908b-0c5a-4cd6-8f9c-088b29334acd@5d069",
+            "1be7908b-0c5a-4cd6-8f9c-088b29334acd@cf5ee",
+            "1be7908b-0c5a-4cd6-8f9c-088b29334acd@989ed"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Texture - 绿色坦克",
+      "textureLength": 312,
+      "contents": [
+        {
+          "skeleton": "d6d81b9c-58df-4ebd-9eb0-44a9936ff0fd@438fe",
+          "clips": [
+            "d6d81b9c-58df-4ebd-9eb0-44a9936ff0fd@1f586",
+            "d6d81b9c-58df-4ebd-9eb0-44a9936ff0fd@ab427",
+            "d6d81b9c-58df-4ebd-9eb0-44a9936ff0fd@b95bb",
+            "d6d81b9c-58df-4ebd-9eb0-44a9936ff0fd@cf5ee"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Texture - 三色坦克",
+      "textureLength": 252,
+      "contents": [
+        {
+          "skeleton": "7943aaef-6c02-43e0-bb9b-764f2b738907@438fe",
+          "clips": [
+            "7943aaef-6c02-43e0-bb9b-764f2b738907@1f586",
+            "7943aaef-6c02-43e0-bb9b-764f2b738907@b95bb",
+            "7943aaef-6c02-43e0-bb9b-764f2b738907@cf5ee",
+            "7943aaef-6c02-43e0-bb9b-764f2b738907@ab427"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Texture - 医疗兵",
+      "textureLength": 252,
+      "contents": [
+        {
+          "skeleton": "bba9c790-fdf2-4e71-ad0d-81c81d61ef27@438fe",
+          "clips": [
+            "bba9c790-fdf2-4e71-ad0d-81c81d61ef27@18d6f",
+            "96fe62aa-73c1-4d99-8124-8a2dc2a02fef@18d6f",
+            "026b4893-c129-4bb5-8d1c-5239fc4b9b53@18d6f",
+            "b03e7320-f105-4076-a299-ac18e4ff8b22@18d6f"
+          ]
+        }
+      ]
+    }
+  ],
   "script": {
     "preserveSymlinks": true
   }
