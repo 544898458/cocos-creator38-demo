@@ -85,7 +85,7 @@ export class BattleUI extends Dialog {
     @property(Node) node升级飞虫移速: Node
     @property(Node) node太岁分裂: Node
     @property(Node) node离开房虫: Node
-    
+    @property(Node) node删除自己的单位: Node
     @property(Toggle) toggle建筑单位: Toggle
 
     @property({ type: UITransform, displayName: "所有单位头顶名字" })
