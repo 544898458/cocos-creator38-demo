@@ -67,6 +67,7 @@ export class BattleUI extends Dialog {
 
     //根据选中单位类型显示不同的按钮
     @property({ type: Button }) button离开地堡: Button
+    @property({ type: Button }) button跟随: Button
     @property({ type: Button }) button强行走: Button
     @property({ type: Button }) button原地坚守: Button
     @property({ type: Button }) button集结点: Button
@@ -154,6 +155,19 @@ export class BattleUI extends Dialog {
             return [[MsgId.建筑产出活动单位的集结点, ++Glob.sendMsgSn, 0], [hitPoint.x, hitPoint.y, hitPoint.z], 类型]
         }
         this.lable系统消息.string = '请点击地面设置此建筑产出活动单位的集结点'
+        this.进入点击地面状态()
+    }
+    on跟随(event: Event, customEventData: string) {
+        // if (0 == BattleMoude._arr选中.length) {
+        //     this.lable系统消息.string = '请先选中活动单位'
+        //     AudioMgr.inst.playOneShot('BUZZ')
+        //     return
+        // }
+        BattleMoude.instance.fun点击单位创建消息 = (entity: ClientEntityComponent, id:number):object => {
+            console.log('createMsg跟随', entity, id)
+            return [[MsgId.跟随, ++Glob.sendMsgSn, 0], id]
+        }
+        this.lable系统消息.string = '请点击要跟随的目标单位'
         this.进入点击地面状态()
     }
     进入点击地面状态() {

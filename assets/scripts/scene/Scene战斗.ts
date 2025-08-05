@@ -531,7 +531,16 @@ export class Scene战斗 extends Component {
         let id = this.entityId[item.collider.node.uuid]
         let entity = this.entities.get(id)
         let nodeName = item.collider.node.name
-        if (nodeName == "晶体矿" || nodeName == "燃气矿")//点击晶体矿或者燃气矿
+        if(BattleMoude.instance.fun点击单位创建消息)
+        {
+            let object = BattleMoude.instance.fun点击单位创建消息(entity, id)
+            if (object) {
+                const encoded = msgpack.encode(object)
+                dispatcher.send(encoded)
+            }
+            BattleMoude.instance.fun点击单位创建消息 = null
+        }
+        else if (nodeName == "晶体矿" || nodeName == "燃气矿")//点击晶体矿或者燃气矿
         {
             let id = this.entityId[item.collider.node.uuid]
 
@@ -539,7 +548,6 @@ export class Scene战斗 extends Component {
                 [MsgId.采集, ++Glob.sendMsgSn, 0],
                 id
             ])
-
         }
         else if ((nodeName == '地堡' || nodeName == '房虫') && b鼠标右键)//点击地堡
         {
@@ -658,6 +666,8 @@ export class Scene战斗 extends Component {
         if (!this.battleUI) {
             this.battleUI = MainTest.instance.dialogMgr.getDialog(UI2Prefab.BattleUI_url)?.getComponent(BattleUI);
         }
+
+        this.battleUI.button跟随.node.active = false
         this.battleUI.button强行走.node.active = false
         this.battleUI.button集结点.node.active = false
         this.battleUI.button集结点_房虫.node.active = false
@@ -677,6 +687,7 @@ export class Scene战斗 extends Component {
         this.battleUI.node升级飞虫移速.active = false
         this.battleUI.node太岁分裂.active = false
         this.battleUI.node离开房虫.active = false
+        this.battleUI.node删除自己的单位.active = false
     }
 
     选中(arr: number[]) {
@@ -727,6 +738,12 @@ export class Scene战斗 extends Component {
                     b第一个 = false
                     this.隐藏选中单位专用按钮()
 
+                    if(MainTest.Is活动单位(old.类型)){
+                        this.battleUI.button跟随.node.active = true
+                        this.battleUI.button强行走.node.active = true
+                        this.battleUI.button原地坚守.node.active = true
+                    }
+
                     switch (old.类型) {
                         case 单位类型.地堡:
                             this.battleUI.button离开地堡.node.active = true
@@ -774,18 +791,12 @@ export class Scene战斗 extends Component {
                             this.battleUI.button集结点_工虫.node.active = true
                             break
                         case 单位类型.房虫:
-                            this.battleUI.button强行走.node.active = true
                             this.battleUI.node离开房虫.active = true
                             break
                         case 单位类型.方墩:
                             this.battleUI.node删除自己的单位.active = true
                             break
                         default:
-                            if (MainTest.Is活动单位(old.类型)) {
-                                this.battleUI.button强行走.node.active = true
-                                this.battleUI.button原地坚守.node.active = true
-                                break
-                            }
                             console.log('此单位没有专用菜单' + old.类型)
                             break
                     }
