@@ -298,6 +298,9 @@ export class BattleUI extends Dialog {
     onClick解锁枪虫(event: Event, customEventData: string): void {
         MainTest.instance.onClick解锁枪虫()
     }
+    onClick删除自己的单位(event: Event, customEventData: string): void {
+        MainTest.instance.onClick删除自己的单位()
+    }
     onClick剧情对话全屏点击(): void {
         MainTest.instance.onClick剧情对话全屏点击()
         // this.uiTransform剧情对话根.node.active = false

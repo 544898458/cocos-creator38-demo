@@ -784,6 +784,9 @@ export class MainTest extends Component {
     onClick解锁枪虫() {
         this.解锁单位(单位类型.枪虫)
     }
+    onClick删除自己的单位() {
+        dispatcher.sendArray([[MsgId.删除自己的单位, ++Glob.sendMsgSn, 0]])
+    }
     onClick剧情对话全屏点击() {
         dispatcher.sendArray([[MsgId.剧情对话已看完, ++Glob.sendMsgSn, 0]])
     }
