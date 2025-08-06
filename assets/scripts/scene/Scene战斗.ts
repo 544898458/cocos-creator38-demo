@@ -748,7 +748,7 @@ export class Scene战斗 extends Component {
                         case 单位类型.地堡:
                             this.battleUI.button离开地堡.node.active = true
                             break;
-                        case 单位类型.兵厂:
+                        case 单位类型.兵营:
                             this.battleUI.button集结点.node.active = true
                             if (!this.obj已解锁单位[单位类型.近战兵])
                                 this.battleUI.button解锁近战兵.node.active = true

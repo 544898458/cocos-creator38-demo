@@ -171,7 +171,7 @@ export class MainTest extends Component {
         this.on点击按钮_造建筑(单位类型.地堡)
     }
     onClickAdd兵厂(event: Event, customEventData: string): void {
-        this.on点击按钮_造建筑(单位类型.兵厂)
+        this.on点击按钮_造建筑(单位类型.兵营)
     }
 
     onClickAdd民房(event: Event, customEventData: string): void {

@@ -290,7 +290,7 @@ export
 
     建筑Min非法 = 300,
     基地,//指挥中心(Command Center),用来造工程车()
-    兵厂,//兵营(Barracks)，用来造兵
+    兵营,//兵营(Barracks)，用来造兵
     民房,//供给站(Supply Depot)
     地堡,//掩体; 地堡(Bunker),可以进兵
     炮台,//Photon Cannon
