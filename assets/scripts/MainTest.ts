@@ -693,14 +693,6 @@ export class MainTest extends Component {
             if (null == state) {
                 console.error(old.view.name, '缺动作:', strClipName)
             }
-
-
-            if (old.view.name == '步兵') {
-                if (strClipName == 'run')
-                    state.playbackRange = { min: 0, max: 0.8 }
-                else if (strClipName == 'idle')
-                    state.playbackRange = { min: 0, max: 2.0 }
-            }
         }
     }
     离开战斗场景(b显示登录界面, str: string = ''): void {
