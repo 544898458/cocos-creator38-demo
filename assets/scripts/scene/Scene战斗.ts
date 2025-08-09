@@ -321,8 +321,15 @@ export class Scene战斗 extends Component {
 
                 fun点击地面处理 = () => {
                     if (!BattleMoude.instance.fun创建消息)
+                    {
+                        if(BattleMoude.instance.list巡逻点)
+                        {
+                            BattleMoude.instance.list巡逻点.push(item.hitPoint)
+                            this.battleUI.lable系统消息.string = item.hitPoint + '已添加为巡逻点，请继续点击地面添加巡逻点，或点击“确定”提交巡逻点列表'
+                            return
+                        }
                         return
-
+                    }
                     let object = b鼠标右键 ? BattleMoude.instance.createMsgMove强行走(item.hitPoint) : BattleMoude.instance.fun创建消息(item.hitPoint)
                     if (object) {
 

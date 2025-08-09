@@ -170,6 +170,17 @@ export class BattleUI extends Dialog {
         this.lable系统消息.string = '请点击要跟随的目标单位'
         this.进入点击地面状态()
     }
+    on巡逻(event: Event, customEventData: string) {
+        if (0 == BattleMoude._arr选中.length) {
+            this.lable系统消息.string = '请先选中活动单位'
+            AudioMgr.inst.playOneShot('BUZZ')
+            return
+        }
+        BattleMoude.instance.fun点击单位创建消息 = null
+        BattleMoude.instance.list巡逻点 = []
+        this.lable系统消息.string = '请点击地面设置巡逻点'
+        this.进入点击地面状态()
+    }   
     进入点击地面状态() {
         this.下部列表.active = false
         this.node取消点击地面.active = true
@@ -480,8 +491,17 @@ export class BattleUI extends Dialog {
     }
     on取消点击地面() {
         BattleMoude.instance.fun创建消息 = null
+        BattleMoude.instance.list巡逻点 = null
         this.node取消点击地面.active = false
         this.下部列表.active = true
+    }
+    on确定点击地面() {
+        if(BattleMoude.instance.list巡逻点)
+        {
+            dispatcher.sendArray([[MsgId.巡逻, ++Glob.sendMsgSn, 0], BattleMoude.instance.list巡逻点])
+        }
+        
+        this.on取消点击地面() 
     }
     on按钮战报(event: Event, customEventData: string) {
         dialogMgr.openDialog(UI2Prefab.PopView_url, null, null, (dlg: Dialog): void => {

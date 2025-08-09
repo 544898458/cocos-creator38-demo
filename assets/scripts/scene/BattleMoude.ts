@@ -24,6 +24,7 @@ export class BattleMoude extends Component {
             BattleMoude._instance = new BattleMoude();
         }
     }
+    list巡逻点: Vec3[] = null;
     send选中(arr选中: number[]): void {
         BattleMoude._arr选中 = arr选中;
 
