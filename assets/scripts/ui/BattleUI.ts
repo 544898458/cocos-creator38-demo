@@ -175,8 +175,8 @@ export class BattleUI extends Dialog {
             AudioMgr.inst.playOneShot('BUZZ')
             return
         }
-        BattleMoude.instance.fun点击单位创建消息 = null
-        BattleMoude.instance.fun点击地面创建消息 = null
+        // BattleMoude.instance.fun点击单位创建消息 = null
+        // BattleMoude.instance.fun点击地面创建消息 = null
         BattleMoude.instance.arr巡逻点 = []
         this.lable系统消息.string = '请点击地面设置巡逻点'
         this.node确定点击地面.active = true
@@ -492,6 +492,9 @@ export class BattleUI extends Dialog {
     }
     on取消点击地面() {
         BattleMoude.instance.fun点击地面创建消息 = null
+        this.恢复战斗界面()
+    }
+    恢复战斗界面() {
         BattleMoude.instance.arr巡逻点 = null
         this.node确定点击地面.active = false
         this.node取消点击地面.active = false
@@ -506,7 +509,7 @@ export class BattleUI extends Dialog {
             dispatcher.sendArray([[MsgId.巡逻, ++Glob.sendMsgSn, 0], arr])
         }
         
-        this.on取消点击地面() 
+        this.恢复战斗界面() 
     }
     on按钮战报(event: Event, customEventData: string) {
         dialogMgr.openDialog(UI2Prefab.PopView_url, null, null, (dlg: Dialog): void => {

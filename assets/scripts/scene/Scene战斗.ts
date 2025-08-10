@@ -280,12 +280,9 @@ export class Scene战斗 extends Component {
         }).start()
     }
     onMouseUp(pos: Vec2, b鼠标右键: boolean) {
+        console.log('onMouseUp', this.pos上次按下, pos)
         if (this.posWorld按下准备拖动地面) {
             this.posWorld按下准备拖动地面 = null
-
-            // console.log('createMsgMove遇敌自动攻击', this.main.createMsgMove遇敌自动攻击)
-            // console.log('createMsg造建筑', this.main.createMsg造建筑)
-            // console.log('createMsgMove强行走', this.main.createMsgMove强行走)
 
             if (BattleMoude.instance.arr巡逻点) {
 
@@ -296,8 +293,7 @@ export class Scene战斗 extends Component {
                 this.恢复战斗界面()//正在强行走、正在摆放建筑物
             }
         }
-        console.log('onMouseUp', this.pos上次按下, pos)
-
+        
         if (this.pos上次按下 && this.pos上次按下.clone().subtract(pos).length() < 5) {//单击
             this.pos上次按下 = null
 
@@ -324,15 +320,16 @@ export class Scene战斗 extends Component {
 
                 fun点击地面处理 = () => {
                     let vecHitPoint = item.hitPoint.clone()
-                    if (!BattleMoude.instance.fun点击地面创建消息) {
-                        if (BattleMoude.instance.arr巡逻点) {
-                            BattleMoude.instance.arr巡逻点.push(vecHitPoint)
+                    if (BattleMoude.instance.arr巡逻点) {
+                        BattleMoude.instance.arr巡逻点.push(vecHitPoint)
 
-                            //输出vecHitPoint.x vecHitPoint.y vecHitPoint.z时只保留1位小数
-                            this.battleUI.lable系统消息.string = vecHitPoint.x.toFixed(1) + ',' + vecHitPoint.y.toFixed(1) + ',' + vecHitPoint.z.toFixed(1) 
-                                + ' 已添加为巡逻点，请继续点击地面添加巡逻点，或点击“确定”提交巡逻点列表'
-                            return
-                        }
+                        //输出vecHitPoint.x vecHitPoint.y vecHitPoint.z时只保留1位小数
+                        this.battleUI.lable系统消息.string = vecHitPoint.x.toFixed(1) + ',' + vecHitPoint.y.toFixed(1) + ',' + vecHitPoint.z.toFixed(1) 
+                            + ' 已添加为巡逻点，请继续点击地面添加巡逻点，或点击“确定”提交巡逻点列表'
+                        return
+                    }
+
+                    if (!BattleMoude.instance.fun点击地面创建消息) {
                         return
                     }
                     let object = b鼠标右键 ? BattleMoude.instance.createMsgMove强行走(vecHitPoint) : BattleMoude.instance.fun点击地面创建消息(vecHitPoint)
@@ -417,7 +414,7 @@ export class Scene战斗 extends Component {
             this.battleUI.lable系统消息.string = '已退出框选状态'
         }
 
-        this.battleUI.on取消点击地面()
+        this.battleUI.恢复战斗界面()
         this.Clear然后显示小地图视口框()// this.graphics.clear()//清掉框选框
     }
     //视角移动
