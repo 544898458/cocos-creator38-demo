@@ -293,7 +293,7 @@ export class Scene战斗 extends Component {
                 this.恢复战斗界面()//正在强行走、正在摆放建筑物
             }
         }
-        
+
         if (this.pos上次按下 && this.pos上次按下.clone().subtract(pos).length() < 5) {//单击
             this.pos上次按下 = null
 
@@ -322,8 +322,7 @@ export class Scene战斗 extends Component {
                     let vecHitPoint = item.hitPoint.clone()
                     if (BattleMoude.instance.arr巡逻点) {
                         BattleMoude.instance.arr巡逻点.push(vecHitPoint)
-
-                        //输出vecHitPoint.x vecHitPoint.y vecHitPoint.z时只保留1位小数
+                        this.点击地面特效(vecHitPoint)
                         this.battleUI.lable系统消息.string = vecHitPoint.x.toFixed(1) + ',' + vecHitPoint.y.toFixed(1) + ',' + vecHitPoint.z.toFixed(1) 
                             + ' 已添加为巡逻点，请继续点击地面添加巡逻点，或点击“确定”提交巡逻点列表'
                         return
