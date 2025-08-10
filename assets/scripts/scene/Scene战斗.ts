@@ -287,10 +287,13 @@ export class Scene战斗 extends Component {
             // console.log('createMsg造建筑', this.main.createMsg造建筑)
             // console.log('createMsgMove强行走', this.main.createMsgMove强行走)
 
-            if (MainTest.instance.funCreateMsg造建筑 !== BattleMoude.instance.fun创建消息
-                && BattleMoude.instance.createMsgMove强行走 !== BattleMoude.instance.fun创建消息
-            ) { //正在强行走、正在摆放建筑物
-                this.恢复战斗界面()
+            if (BattleMoude.instance.arr巡逻点) {
+
+            }
+            else if (MainTest.instance.funCreateMsg造建筑 !== BattleMoude.instance.fun点击地面创建消息
+                && BattleMoude.instance.createMsgMove强行走 !== BattleMoude.instance.fun点击地面创建消息
+            ) {
+                this.恢复战斗界面()//正在强行走、正在摆放建筑物
             }
         }
         console.log('onMouseUp', this.pos上次按下, pos)
@@ -320,17 +323,19 @@ export class Scene战斗 extends Component {
 
 
                 fun点击地面处理 = () => {
-                    if (!BattleMoude.instance.fun创建消息)
-                    {
-                        if(BattleMoude.instance.list巡逻点)
-                        {
-                            BattleMoude.instance.list巡逻点.push(item.hitPoint)
-                            this.battleUI.lable系统消息.string = item.hitPoint + '已添加为巡逻点，请继续点击地面添加巡逻点，或点击“确定”提交巡逻点列表'
+                    let vecHitPoint = item.hitPoint.clone()
+                    if (!BattleMoude.instance.fun点击地面创建消息) {
+                        if (BattleMoude.instance.arr巡逻点) {
+                            BattleMoude.instance.arr巡逻点.push(vecHitPoint)
+
+                            //输出vecHitPoint.x vecHitPoint.y vecHitPoint.z时只保留1位小数
+                            this.battleUI.lable系统消息.string = vecHitPoint.x.toFixed(1) + ',' + vecHitPoint.y.toFixed(1) + ',' + vecHitPoint.z.toFixed(1) 
+                                + ' 已添加为巡逻点，请继续点击地面添加巡逻点，或点击“确定”提交巡逻点列表'
                             return
                         }
                         return
                     }
-                    let object = b鼠标右键 ? BattleMoude.instance.createMsgMove强行走(item.hitPoint) : BattleMoude.instance.fun创建消息(item.hitPoint)
+                    let object = b鼠标右键 ? BattleMoude.instance.createMsgMove强行走(vecHitPoint) : BattleMoude.instance.fun点击地面创建消息(vecHitPoint)
                     if (object) {
 
                         const encoded = msgpack.encode(object)
@@ -338,9 +343,9 @@ export class Scene战斗 extends Component {
                         console.log('send', encoded)
                         dispatcher.send(encoded)
 
-                        this.点击地面特效(item.hitPoint)
+                        this.点击地面特效(vecHitPoint)
                     }
-                    BattleMoude.instance.fun创建消息 = 0 < BattleMoude._arr选中.length ? BattleMoude.instance.createMsgMove遇敌自动攻击 : null
+                    BattleMoude.instance.fun点击地面创建消息 = 0 < BattleMoude._arr选中.length ? BattleMoude.instance.createMsgMove遇敌自动攻击 : null
                     this.恢复战斗界面()
                 }
             })
@@ -411,8 +416,8 @@ export class Scene战斗 extends Component {
             this.posWorld框选起始点 = null
             this.battleUI.lable系统消息.string = '已退出框选状态'
         }
-        this.battleUI.下部列表.active = true
-        this.battleUI.node取消点击地面.active = false
+
+        this.battleUI.on取消点击地面()
         this.Clear然后显示小地图视口框()// this.graphics.clear()//清掉框选框
     }
     //视角移动
@@ -538,8 +543,7 @@ export class Scene战斗 extends Component {
         let id = this.entityId[item.collider.node.uuid]
         let entity = this.entities.get(id)
         let nodeName = item.collider.node.name
-        if(BattleMoude.instance.fun点击单位创建消息)
-        {
+        if (BattleMoude.instance.fun点击单位创建消息) {
             let object = BattleMoude.instance.fun点击单位创建消息(entity, id)
             if (object) {
                 const encoded = msgpack.encode(object)
@@ -682,6 +686,7 @@ export class Scene战斗 extends Component {
         this.battleUI.button集结点_工程车.node.active = false
         this.battleUI.button离开地堡.node.active = false
         this.battleUI.button原地坚守.node.active = false
+        this.battleUI.button巡逻.node.active = false
         this.battleUI.button解锁枪虫.node.active = false
         this.battleUI.button解锁近战兵.node.active = false
         this.battleUI.node升级枪兵攻击.active = false
@@ -713,7 +718,7 @@ export class Scene战斗 extends Component {
                 console.log('找不到:', id)
                 return
             }
-            
+
             if (old.view && old.view.getChildByName(prefabName选中特效))
                 continue//已有特效
 
@@ -745,10 +750,11 @@ export class Scene战斗 extends Component {
                     b第一个 = false
                     this.隐藏选中单位专用按钮()
 
-                    if(MainTest.Is活动单位(old.类型)){
+                    if (MainTest.Is活动单位(old.类型)) {
                         this.battleUI.button跟随.node.active = true
                         this.battleUI.button强行走.node.active = true
                         this.battleUI.button原地坚守.node.active = true
+                        this.battleUI.button巡逻.node.active = true
                     }
 
                     switch (old.类型) {
@@ -846,7 +852,7 @@ export class Scene战斗 extends Component {
             }
         }
         if (arr.length > 0)
-            BattleMoude.instance.fun创建消息 = BattleMoude.instance.createMsgMove遇敌自动攻击
+            BattleMoude.instance.fun点击地面创建消息 = BattleMoude.instance.createMsgMove遇敌自动攻击
     }
     worldToGraphics(graphicsNode: Node, worldPoint: Vec3) {
         // 获取graphics节点在世界坐标系中的位置

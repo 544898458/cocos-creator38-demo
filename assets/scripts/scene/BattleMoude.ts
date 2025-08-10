@@ -16,7 +16,7 @@ export class BattleMoude extends Component {
     }
     public static _arr选中: number[] = [];
     public static _追加选中: boolean = false;
-    fun创建消息: (Vec3) => object = null//this.createMsgMove强行走//点击地面操作 = 点击地面操作类型.移动单位
+    fun点击地面创建消息: (Vec3) => object = null//this.createMsgMove强行走//点击地面操作 = 点击地面操作类型.移动单位
     fun点击单位创建消息: (entity: ClientEntityComponent, id:number) => object = null//this.createMsgMove强行走//点击地面操作 = 点击地面操作类型.移动单位
     // 单例初始化方法
     public static init(): void {
@@ -24,7 +24,7 @@ export class BattleMoude extends Component {
             BattleMoude._instance = new BattleMoude();
         }
     }
-    list巡逻点: Vec3[] = null;
+    arr巡逻点: Vec3[] = null;
     send选中(arr选中: number[]): void {
         BattleMoude._arr选中 = arr选中;
 

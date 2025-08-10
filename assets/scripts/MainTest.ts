@@ -156,8 +156,8 @@ export class MainTest extends Component {
         return [[MsgId.AddBuilding, ++Glob.sendMsgSn, 0], 类型, [hitPoint.x, hitPoint.y, hitPoint.z]]
     }
     on点击按钮_造建筑(类型: 单位类型) {
-        BattleMoude.instance.fun创建消息 = (hitPoint: Vec3) => this.createMsg造建筑(hitPoint, 类型)
-        this.funCreateMsg造建筑 = BattleMoude.instance.fun创建消息
+        BattleMoude.instance.fun点击地面创建消息 = (hitPoint: Vec3) => this.createMsg造建筑(hitPoint, 类型)
+        this.funCreateMsg造建筑 = BattleMoude.instance.fun点击地面创建消息
         this.scene战斗.battleUI.lable系统消息.string = '请点击地面放置建筑'
         this.scene战斗.battleUI.进入点击地面状态()
     }

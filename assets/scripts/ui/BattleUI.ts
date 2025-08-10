@@ -41,12 +41,10 @@ export class BattleUI extends Dialog {
     @property(Node) node按钮面板: Node
     @property(Node)
     下部列表: Node;
-    @property(Node)
-    node取消点击地面: Node
-    @property(Node)
-    node取消选中: Node
-    @property(Node)
-    nodeFightPanel: Node
+    @property(Node)node确定点击地面: Node
+    @property(Node)node取消点击地面: Node
+    @property(Node)node取消选中: Node
+    @property(Node)nodeFightPanel: Node
     @property({ type: Label, displayName: "数量单位" })
     lableCount: Label
     @property({ type: Label, displayName: "晶体矿" })
@@ -70,6 +68,7 @@ export class BattleUI extends Dialog {
     @property({ type: Button }) button跟随: Button
     @property({ type: Button }) button强行走: Button
     @property({ type: Button }) button原地坚守: Button
+    @property({ type: Button }) button巡逻: Button
     @property({ type: Button }) button集结点: Button
     @property({ type: Button }) button集结点_工程车: Button
     @property({ type: Button }) button集结点_工虫: Button
@@ -150,7 +149,7 @@ export class BattleUI extends Dialog {
         }
 
         let 类型 = 单位类型[customEventData as keyof typeof 单位类型]
-        BattleMoude.instance.fun创建消息 = (hitPoint: Vec3):object => {
+        BattleMoude.instance.fun点击地面创建消息 = (hitPoint: Vec3):object => {
             console.log('createMsg造建筑', hitPoint)
             return [[MsgId.建筑产出活动单位的集结点, ++Glob.sendMsgSn, 0], [hitPoint.x, hitPoint.y, hitPoint.z], 类型]
         }
@@ -177,8 +176,10 @@ export class BattleUI extends Dialog {
             return
         }
         BattleMoude.instance.fun点击单位创建消息 = null
-        BattleMoude.instance.list巡逻点 = []
+        BattleMoude.instance.fun点击地面创建消息 = null
+        BattleMoude.instance.arr巡逻点 = []
         this.lable系统消息.string = '请点击地面设置巡逻点'
+        this.node确定点击地面.active = true
         this.进入点击地面状态()
     }   
     进入点击地面状态() {
@@ -191,7 +192,7 @@ export class BattleUI extends Dialog {
             AudioMgr.inst.playOneShot('BUZZ')
             return
         }
-        BattleMoude.instance.fun创建消息 = BattleMoude.instance.createMsgMove强行走
+        BattleMoude.instance.fun点击地面创建消息 = BattleMoude.instance.createMsgMove强行走
         this.lable系统消息.string = '行走过程不会攻击敌人，请点击地面确定目的地'
         this.进入点击地面状态()
     }
@@ -201,7 +202,7 @@ export class BattleUI extends Dialog {
             AudioMgr.inst.playOneShot('BUZZ')
             return
         }
-        BattleMoude.instance.fun创建消息 = MainTest.instance.createMsg太岁分裂
+        BattleMoude.instance.fun点击地面创建消息 = MainTest.instance.createMsg太岁分裂
         this.lable系统消息.string = '请在选中太岁的苔蔓(wàn)上放置分裂的太岁'
         this.进入点击地面状态()
     }
@@ -490,15 +491,19 @@ export class BattleUI extends Dialog {
         return [等级数值, 属性等级]
     }
     on取消点击地面() {
-        BattleMoude.instance.fun创建消息 = null
-        BattleMoude.instance.list巡逻点 = null
+        BattleMoude.instance.fun点击地面创建消息 = null
+        BattleMoude.instance.arr巡逻点 = null
+        this.node确定点击地面.active = false
         this.node取消点击地面.active = false
         this.下部列表.active = true
     }
     on确定点击地面() {
-        if(BattleMoude.instance.list巡逻点)
+        if(BattleMoude.instance.arr巡逻点)
         {
-            dispatcher.sendArray([[MsgId.巡逻, ++Glob.sendMsgSn, 0], BattleMoude.instance.list巡逻点])
+            let arr = BattleMoude.instance.arr巡逻点.map(item => {
+                return [item.x, item.y, item.z]
+            })
+            dispatcher.sendArray([[MsgId.巡逻, ++Glob.sendMsgSn, 0], arr])
         }
         
         this.on取消点击地面() 
