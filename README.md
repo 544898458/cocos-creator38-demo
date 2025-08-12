@@ -10,6 +10,17 @@
 
 1. 首先要有npm命令，安装了node.js才会有npm这个命令
 2. 在本项目根目录执行
+<>.切记安装完node.js和下列npm内容之前，不要打开和导入项目，
+也不要解压工程根目录下的biligame-builder-1.0.3.zip包，
+把下列npm按下面要求安装完后才能打开cocos导入和运行工程文件，
+需要注意的是，要用管理员身份运行cmd 或 PowerShell，
+并且要跳转到工程根目录下，在工程根目录下，完成npm的安装，
+安装完才能正常播放程序。。。。。。。。
+还有biligame-builder-1.0.3.zip包不要在外面解压，
+安装完npm游戏播放没问题后，点击菜单的extension表单，
+选择extension manager，进入后点左边栏最上方的，最右边的录入按钮
+<在放大镜#查找-右边>然后找到根目录下的biligame-builder-1.0.3.zip导入，
+导入后弹出一个框，选择confirm即可。。。。。。。。
 
 ```PowerShell
 npm install fs-extra
