@@ -531,7 +531,7 @@ export class NetMessage {
         const nodeSpace = utils.find(配置.MeshRenderer路径, MainTest.GetMapNode())
         console.log('进Space', nodeSpace)
         if (nodeSpace) {
-            assetManager.loadRemote(配置.Https高清贴图, (err, imageAsset: ImageAsset) => {
+            assetManager.loadRemote(encodeURI(配置.Https高清贴图), (err, imageAsset: ImageAsset) => {
                 console.log('地图高清贴图resources.load callback:', err, imageAsset)
                 // console.log(this.material.getProperty('albedoMap'))
                 // console.log(this.material.getProperty('mainTexture'))

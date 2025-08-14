@@ -817,7 +817,7 @@ export class MainTest extends Component {
         }
     }
     播放音乐(strHttps: string) {
-        assetManager.loadRemote(strHttps, (err, clip: AudioClip) => {
+        assetManager.loadRemote(encodeURI(strHttps), (err, clip: AudioClip) => {
             console.log('resources.load callback:', err, clip)
             let audioSource = MainTest.instance.audioManager.getComponent(AudioSource)
             if (!audioSource)

@@ -355,7 +355,7 @@ export class BattleUI extends Dialog {
             let popView = dlg.getComponent(PopView)
             popView.label标题.string = '游戏攻略';
             popView.richText内容.string = '请稍后……';
-            assetManager.loadRemote('https://www.rtsgame.online/攻略/攻略.txt', (err, textAsset: TextAsset) => {
+            assetManager.loadRemote(encodeURI('https://www.rtsgame.online/攻略/攻略.txt'), (err, textAsset: TextAsset) => {
                 console.log('resources.load callback:', err, textAsset)
                 popView.richText内容.string = textAsset.text
             })
@@ -516,7 +516,7 @@ export class BattleUI extends Dialog {
             let popView = dlg.getComponent(PopView)
             popView.label标题.string = '战报';
             popView.richText内容.string = '请稍后……';
-            assetManager.loadRemote(`https://www.rtsgame.online/战报/战局_${MainTest.idSvr}_${MainTest.instance.战局}.json`, (err, jsonAsset: JsonAsset) => {
+            assetManager.loadRemote(encodeURI(`https://www.rtsgame.online/战报/战局_${MainTest.idSvr}_${MainTest.instance.战局}.json`), (err, jsonAsset: JsonAsset) => {
                 console.log('resources.load callback:', err, jsonAsset)
                 if(!jsonAsset){
                     popView.richText内容.string = '战报不存在'

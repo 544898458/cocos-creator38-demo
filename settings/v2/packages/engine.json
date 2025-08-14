@@ -134,7 +134,7 @@
             "_value": true
           },
           "websocket": {
-            "_value": false
+            "_value": true
           },
           "websocket-server": {
             "_value": false
@@ -210,7 +210,8 @@
           "rich-text",
           "skeletal-animation",
           "tween",
-          "ui"
+          "ui",
+          "websocket"
         ],
         "noDeprecatedFeatures": {
           "value": false,

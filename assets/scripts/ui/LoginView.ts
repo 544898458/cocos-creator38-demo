@@ -114,7 +114,7 @@ export class LoginView extends Dialog {
             MainTest.instance.播放音乐(Glob.strHttps登录场景音乐Mp3)
         }
 
-        assetManager.loadRemote('https://www.rtsgame.online/公告/公告.txt', (err, textAsset: TextAsset) => {
+        assetManager.loadRemote(encodeURI('https://www.rtsgame.online/公告/公告.txt'), (err, textAsset: TextAsset) => {
             console.log('resources.load callback:', err, textAsset)
             this.richText公告.string = textAsset.text
         })
@@ -123,7 +123,7 @@ export class LoginView extends Dialog {
             console.log('LoginView.onOpened,是抖音小游戏')
             this.node抖音小游戏面板.active = true
             this.node抖音侧边栏引导按钮.active = MainTest.b显示侧边栏引导按钮
-            assetManager.loadRemote('https://www.rtsgame.online/公告/社区_抖音小游戏.txt', (err, textAsset: TextAsset) => {
+            assetManager.loadRemote(encodeURI('https://www.rtsgame.online/公告/社区_抖音小游戏.txt'), (err, textAsset: TextAsset) => {
                 console.log('resources.load callback:', err, textAsset)
                 this.richText社区.string = textAsset.text
             })
@@ -131,20 +131,20 @@ export class LoginView extends Dialog {
         else if(MainTest.是哔哩哔哩小游戏()){
             console.log('LoginView.onOpened,是哔哩哔哩小游戏')
             this.node哔哩哔哩小游戏面板.active = true
-            assetManager.loadRemote('https://www.rtsgame.online/公告/社区_哔哩哔哩小游戏.txt', (err, textAsset: TextAsset) => {
+            assetManager.loadRemote(encodeURI('https://www.rtsgame.online/公告/社区_哔哩哔哩小游戏.txt'), (err, textAsset: TextAsset) => {
                 console.log('resources.load callback:', err, textAsset)
                 this.richText社区.string = textAsset.text
             })
         }else if(MainTest.是微信小游戏()){
             console.log('LoginView.onOpened,是微信小游戏')
             this.node跳转社区微信小游戏.active = true
-            assetManager.loadRemote('https://www.rtsgame.online/公告/社区_微信小游戏.txt', (err, textAsset: TextAsset) => {
+            assetManager.loadRemote(encodeURI('https://www.rtsgame.online/公告/社区_微信小游戏.txt'), (err, textAsset: TextAsset) => {
                 console.log('resources.load callback:', err, textAsset)
                 this.richText社区.string = textAsset.text
             })
         }else{
             this.node跳转社区浏览器H5.active = true
-            assetManager.loadRemote('https://www.rtsgame.online/公告/社区_浏览器H5.txt', (err, textAsset: TextAsset) => {
+            assetManager.loadRemote(encodeURI('https://www.rtsgame.online/公告/社区_浏览器H5.txt'), (err, textAsset: TextAsset) => {
                 console.log('resources.load callback:', err, textAsset)
                 this.richText社区.string = textAsset.text
             })
@@ -437,7 +437,7 @@ export class LoginView extends Dialog {
         this.拉取并显示排行榜(选中战局类型)
     }
     拉取并显示排行榜(战局类型: 战局类型) {
-        assetManager.loadRemote(`https://www.rtsgame.online/排行榜/战局_${MainTest.idSvr}_${战局类型}_赢.json`, (err, jsonAsset: JsonAsset) => {
+        assetManager.loadRemote(encodeURI(`https://www.rtsgame.online/排行榜/战局_${MainTest.idSvr}_${战局类型}_赢.json`), (err, jsonAsset: JsonAsset) => {
             console.log('resources.load callback:', err, jsonAsset)
             let arrPlayerStats = jsonAsset.json as Array<{ nickname: string, wins: number, losses: number }>
             this.richText排行榜内容.string = ''

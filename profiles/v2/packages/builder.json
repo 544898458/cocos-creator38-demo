@@ -8,9 +8,9 @@
       "asyncFunctions": false
     },
     "buildPath": "project://build",
-    "outputName": "bytedance-mini-game-001",
+    "outputName": "harmonyos-next",
     "mainBundleCompressionType": "merge_dep",
-    "platform": "bytedance-mini-game",
+    "platform": "harmonyos-next",
     "scenes": [
       {
         "url": "db://assets/resources/main.scene",
@@ -23,11 +23,11 @@
       }
     ],
     "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
-    "debug": false,
+    "debug": true,
     "startSceneAssetBundle": false,
     "bundleConfigs": [],
     "mainBundleIsRemote": false,
-    "name": "即使战略指挥",
+    "name": "即时战略指挥",
     "useBuiltinServer": false,
     "nativeCodeBundleMode": "wasm",
     "mangleProperties": true,
@@ -596,6 +596,78 @@
           "logDest": "project://temp/builder/log/bytedance-mini-game2025-7-30 01-27.log"
         },
         "time": "2025-8-2 14:05:24",
+        "dirty": false
+      },
+      "1754925332894": {
+        "type": "build",
+        "id": "1754925332894",
+        "progress": 1,
+        "state": "success",
+        "stage": "build",
+        "message": "2025-8-14 22:25:19 build success in 1 min 17 s!",
+        "detailMessage": "Asset DB is resume!\r",
+        "options": {
+          "name": "即时战略指挥",
+          "server": "",
+          "engineModulesConfigKey": "migrationsConfig",
+          "platform": "harmonyos-next",
+          "buildPath": "project://build",
+          "debug": true,
+          "buildMode": "normal",
+          "mangleProperties": false,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": false,
+          "overwriteProjectSettings": {
+            "macroConfig": {
+              "cleanupImageCache": "inherit-project-setting"
+            },
+            "includeModules": {
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting",
+              "gfx-webgl2": "off"
+            }
+          },
+          "nativeCodeBundleMode": "asmjs",
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": false,
+          "bundleConfigs": [],
+          "inlineEnum": true,
+          "useBuiltinServer": false,
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_dep",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
+          "outputName": "harmonyos-next",
+          "taskName": "harmonyos-next",
+          "scenes": [
+            {
+              "url": "db://assets/resources/main.scene",
+              "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+              "bundle": "db://assets/resources"
+            },
+            {
+              "url": "db://assets/scene主包/Start.scene",
+              "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+            }
+          ],
+          "wasmCompressionMode": false,
+          "packages": {},
+          "__version__": "1.3.9",
+          "logDest": "project://temp/builder/log/harmonyos-next2025-8-11 23-15.log"
+        },
+        "time": "2025-8-14 22:24:02",
         "dirty": false
       }
     }
