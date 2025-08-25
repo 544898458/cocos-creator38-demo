@@ -8,9 +8,9 @@
       "asyncFunctions": false
     },
     "buildPath": "project://build",
-    "outputName": "harmonyos-next",
+    "outputName": "huawei-quick-game",
     "mainBundleCompressionType": "merge_dep",
-    "platform": "harmonyos-next",
+    "platform": "huawei-quick-game",
     "scenes": [
       {
         "url": "db://assets/resources/main.scene",
@@ -29,7 +29,7 @@
     "mainBundleIsRemote": false,
     "name": "即时战略指挥",
     "useBuiltinServer": false,
-    "nativeCodeBundleMode": "wasm",
+    "nativeCodeBundleMode": "both",
     "mangleProperties": true,
     "useSplashScreen": true,
     "overwriteProjectSettings": {
@@ -668,6 +668,83 @@
           "logDest": "project://temp/builder/log/harmonyos-next2025-8-11 23-15.log"
         },
         "time": "2025-8-14 22:24:02",
+        "dirty": false
+      },
+      "1755407078207": {
+        "type": "build",
+        "id": "1755407078207",
+        "progress": 1,
+        "state": "success",
+        "stage": "build",
+        "message": "2025-8-17 15:06:56 build -> make success in 1 min 43 s!",
+        "detailMessage": "onAfterMake: root: D:\\UGit\\cocos-creator38-demo\\build\\huawei-quick-game, options: [object Object]\r",
+        "options": {
+          "name": "即时战略指挥",
+          "server": "",
+          "engineModulesConfigKey": "migrationsConfig",
+          "platform": "huawei-quick-game",
+          "buildPath": "project://build",
+          "debug": true,
+          "buildMode": "normal",
+          "mangleProperties": false,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": false,
+          "overwriteProjectSettings": {
+            "macroConfig": {
+              "cleanupImageCache": "inherit-project-setting"
+            },
+            "includeModules": {
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting",
+              "gfx-webgl2": "on"
+            }
+          },
+          "nativeCodeBundleMode": "both",
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": false,
+          "bundleConfigs": [],
+          "inlineEnum": true,
+          "useBuiltinServer": false,
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_dep",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
+          "outputName": "huawei-quick-game",
+          "taskName": "huawei-quick-game",
+          "scenes": [
+            {
+              "url": "db://assets/resources/main.scene",
+              "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+              "bundle": "db://assets/resources"
+            },
+            {
+              "url": "db://assets/scene主包/Start.scene",
+              "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+            }
+          ],
+          "wasmCompressionMode": false,
+          "packages": {},
+          "__version__": "1.3.9",
+          "logDest": "project://temp/builder/log/huawei-quick-game2025-8-17 13-04.log",
+          "buildStageGroup": {
+            "build": [
+              "make"
+            ]
+          }
+        },
+        "time": "2025-8-17 15:05:12",
         "dirty": false
       }
     }
