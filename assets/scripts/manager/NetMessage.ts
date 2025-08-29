@@ -203,7 +203,7 @@ export class NetMessage {
                 }
                 old = scene战斗.entities.get(id)
                 if (!old) {
-                    console.warn(id, '已离开战斗场景');
+                    // console.warn(id, '已离开战斗场景');
                     return;
                 }
 
@@ -228,10 +228,6 @@ export class NetMessage {
                     old.skeletalAnimation = newNode.getChildByName('Drone').getComponent(SkeletalAnimation)
                     // old.initClipName = 'Take 001'
                     // console.log('工蜂骨骼动画', old.skeletalAnimation)
-                } else if (newNode.name == '光子炮') {
-                    old.skeletalAnimation = newNode.getChildByName('平常状态').getComponent(Animation)
-                    old.initClipName = '平常状态'
-                    // console.log('光子炮骨骼动画', old.skeletalAnimation)
                 } else if (newNode.name == '地堡') {
                     old.skeletalAnimation = newNode.getChildByName('地堡872面').getComponent(Animation)
                     // old.initClipName = '平常状态'
@@ -361,7 +357,7 @@ export class NetMessage {
         const scene战斗 = mainTest.scene战斗;
         const old = scene战斗?.entities.get(id);
         if (!old) {
-            console.log('已离开战斗场景', id);
+            // console.log('已离开战斗场景', id);
             return;
         }
 
@@ -629,7 +625,7 @@ export class NetMessage {
         const entity = mainTest.scene战斗.entities.get(id);
 
         if (!entity) {
-            console.warn('已离开战斗场景，无法更新属性:', id);
+            // console.warn('已离开战斗场景，无法更新属性:', id);
             return;
         }
 

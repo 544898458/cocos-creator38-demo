@@ -81,9 +81,9 @@ export class 配置 {
 	}
 	读取1个配置文件<T>(strName: string, fun: (arr: Array<T>) => void) {
 
-		// let url = 'https://www.rtsgame.online/配置/'
-		let url = 'https://www.rtsgame.online/配置2/' + strName + '.yaml'
-		assetManager.loadRemote(encodeURI(url), { ext: '.txt' },
+		let url = 'https://www.rtsgame.online/配置/'	//版本32
+		// let url = 'https://www.rtsgame.online/配置2/'
+		assetManager.loadRemote(encodeURI(url + strName + '.yaml'), { ext: '.txt' },
 			(err, textAsset: TextAsset) => {
 				console.log(err, textAsset)
 				let arr = parse(textAsset.text) as Array<T>;
