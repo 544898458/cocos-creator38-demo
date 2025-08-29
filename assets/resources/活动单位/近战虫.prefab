@@ -34,14 +34,14 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 169
+        "__id__": 165
       },
       {
-        "__id__": 171
+        "__id__": 167
       }
     ],
     "_prefab": {
-      "__id__": 173
+      "__id__": 169
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -353,13 +353,10 @@
     "_components": [
       {
         "__id__": 162
-      },
-      {
-        "__id__": 164
       }
     ],
     "_prefab": {
-      "__id__": 168
+      "__id__": 164
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -4800,121 +4797,6 @@
     "fileId": "fb/mtuScBImoqwoWRkYXBa"
   },
   {
-    "__type__": "cc.SkinnedMeshBatchRenderer",
-    "_name": "",
-    "_objFlags": 0,
-    "__editorExtras__": {},
-    "node": {
-      "__id__": 14
-    },
-    "_enabled": true,
-    "__prefab": {
-      "__id__": 165
-    },
-    "_materials": [
-      {
-        "__uuid__": "190830c6-bb48-44d9-8ba0-2dc6e1a1fc67",
-        "__expectedType__": "cc.Material"
-      }
-    ],
-    "_visFlags": 0,
-    "bakeSettings": {
-      "__id__": 166
-    },
-    "_mesh": null,
-    "_shadowCastingMode": 0,
-    "_shadowReceivingMode": 1,
-    "_shadowBias": 0,
-    "_shadowNormalBias": 0,
-    "_reflectionProbeId": -1,
-    "_reflectionProbeBlendId": -1,
-    "_reflectionProbeBlendWeight": 0,
-    "_enabledGlobalStandardSkinObject": false,
-    "_enableMorph": true,
-    "_skeleton": null,
-    "_skinningRoot": {
-      "__id__": 14
-    },
-    "atlasSize": 1024,
-    "batchableTextureNames": [
-      "Texture - 近战虫"
-    ],
-    "units": [
-      {
-        "__id__": 167
-      }
-    ],
-    "_id": ""
-  },
-  {
-    "__type__": "cc.CompPrefabInfo",
-    "fileId": "a4E9VCLM1JHaVTv1+yBCq5"
-  },
-  {
-    "__type__": "cc.ModelBakeSettings",
-    "texture": null,
-    "uvParam": {
-      "__type__": "cc.Vec4",
-      "x": 0,
-      "y": 0,
-      "z": 0,
-      "w": 0
-    },
-    "_bakeable": false,
-    "_castShadow": false,
-    "_receiveShadow": false,
-    "_recieveShadow": false,
-    "_lightmapSize": 64,
-    "_useLightProbe": false,
-    "_bakeToLightProbe": true,
-    "_reflectionProbeType": 0,
-    "_bakeToReflectionProbe": true
-  },
-  {
-    "__type__": "cc.SkinnedMeshUnit",
-    "mesh": {
-      "__uuid__": "4c225d61-3d9f-4ae8-bee6-af1917e706ea@3bfc2",
-      "__expectedType__": "cc.Mesh"
-    },
-    "skeleton": {
-      "__uuid__": "4c225d61-3d9f-4ae8-bee6-af1917e706ea@438fe",
-      "__expectedType__": "cc.Skeleton"
-    },
-    "material": {
-      "__uuid__": "4c225d61-3d9f-4ae8-bee6-af1917e706ea@66ac4",
-      "__expectedType__": "cc.Material"
-    },
-    "_localTransform": {
-      "__type__": "cc.Mat4",
-      "m00": 1,
-      "m01": 0,
-      "m02": 0,
-      "m03": 0,
-      "m04": 0,
-      "m05": -2.220446049250313e-16,
-      "m06": -1.0000000000000002,
-      "m07": 0,
-      "m08": 0,
-      "m09": 1.0000000000000002,
-      "m10": -2.220446049250313e-16,
-      "m11": 0,
-      "m12": 0,
-      "m13": 0,
-      "m14": 0,
-      "m15": 1
-    },
-    "_offset": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "_size": {
-      "__type__": "cc.Vec2",
-      "x": 1,
-      "y": 1
-    }
-  },
-  {
     "__type__": "cc.PrefabInfo",
     "root": {
       "__id__": 1
@@ -4937,7 +4819,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 170
+      "__id__": 166
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -4965,7 +4847,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 172
+      "__id__": 168
     },
     "_material": null,
     "_isTrigger": false,
