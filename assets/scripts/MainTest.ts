@@ -525,7 +525,7 @@ export class MainTest extends Component {
         this.进Scene战斗(this.map玩家场景.get(customEventData), MsgId.进其他玩家多人战局, 战局类型.四方对战, customEventData)
     }
     static 播放动作(old: ClientEntityComponent, strClipName: string, loop: boolean, 动作播放速度: number = 1, f动作起始时刻秒: number = 0, f动作结束时刻秒: number = 0) {
-        // console.log('strClipName', strClipName, 'old.view.name', old.view.name, 'loop', loop, '动作播放速度', 动作播放速度, 'f动作起始时刻秒', f动作起始时刻秒, 'f动作结束时刻秒', f动作结束时刻秒)
+        console.log('strClipName', strClipName, 'old.view.name', old.view.name, 'loop', loop, '动作播放速度', 动作播放速度, 'f动作起始时刻秒', f动作起始时刻秒, 'f动作结束时刻秒', f动作结束时刻秒)
         const str星2动作: string = 'Take 001'
         if (old.view.name == '跳虫') {
             old.skeletalAnimation.play(str星2动作)

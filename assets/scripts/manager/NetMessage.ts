@@ -125,10 +125,12 @@ export class NetMessage {
 
     // 处理 GameSvr 消息
     private handleGameMessage(payload: any[]): void {
-        const arr = msgpack.decode(new Uint8Array(payload))
+        const uint8Array = new Uint8Array(payload)
+        const arr = msgpack.decode(uint8Array)
         let msgHead = arr[0];
         let msgId = msgHead[0];
         let sn = msgHead[1] as number
+        //console.log('msgId', msgId, 'sn', sn, 'uint8Array.length', uint8Array.length)
 
         Glob.recvMsgSnGameSvr = (Glob.recvMsgSnGameSvr + 1) % 256;
         if (Glob.recvMsgSnGameSvr !== sn) {

@@ -1436,7 +1436,7 @@
     },
     "_materials": [
       {
-        "__uuid__": "c1fcbfb3-9e60-498b-a2a6-be482d1441f1",
+        "__uuid__": "38b06ade-7faa-4bca-ac78-8d21c9feb97a",
         "__expectedType__": "cc.Material"
       }
     ],
@@ -1459,7 +1459,9 @@
       "__id__": 14
     },
     "atlasSize": 1024,
-    "batchableTextureNames": [],
+    "batchableTextureNames": [
+      "Texture - 工程车"
+    ],
     "units": [
       {
         "__id__": 55
@@ -1537,8 +1539,8 @@
     },
     "_size": {
       "__type__": "cc.Vec2",
-      "x": 1,
-      "y": 1
+      "x": 0.5,
+      "y": 0.5
     }
   },
   {
@@ -1576,13 +1578,13 @@
     },
     "_offset": {
       "__type__": "cc.Vec2",
-      "x": 0,
+      "x": 0.5,
       "y": 0
     },
     "_size": {
       "__type__": "cc.Vec2",
       "x": 1,
-      "y": 1
+      "y": 0.5
     }
   },
   {
@@ -1621,11 +1623,11 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 0
+      "y": 0.5
     },
     "_size": {
       "__type__": "cc.Vec2",
-      "x": 1,
+      "x": 0.5,
       "y": 1
     }
   },

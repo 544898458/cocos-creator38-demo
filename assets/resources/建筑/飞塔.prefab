@@ -34,14 +34,14 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 208
+        "__id__": 227
       },
       {
-        "__id__": 210
+        "__id__": 229
       }
     ],
     "_prefab": {
-      "__id__": 212
+      "__id__": 231
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -401,10 +401,13 @@
     "_components": [
       {
         "__id__": 205
+      },
+      {
+        "__id__": 207
       }
     ],
     "_prefab": {
-      "__id__": 207
+      "__id__": 226
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -5773,7 +5776,7 @@
     "__prefab": {
       "__id__": 206
     },
-    "playOnLoad": false,
+    "playOnLoad": true,
     "_clips": [
       {
         "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@2785e",
@@ -5785,7 +5788,7 @@
       }
     ],
     "_defaultClip": {
-      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@2785e",
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@ac823",
       "__expectedType__": "cc.AnimationClip"
     },
     "_useBakedAnimation": true,
@@ -5795,6 +5798,826 @@
   {
     "__type__": "cc.CompPrefabInfo",
     "fileId": "f0ZMbfV39GM7AwvSQ9XK+x"
+  },
+  {
+    "__type__": "cc.SkinnedMeshBatchRenderer",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 14
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 208
+    },
+    "_materials": [
+      {
+        "__uuid__": "21070fad-e6c3-4ab8-9c16-b2ade7cc7cda",
+        "__expectedType__": "cc.Material"
+      }
+    ],
+    "_visFlags": 0,
+    "bakeSettings": {
+      "__id__": 209
+    },
+    "_mesh": null,
+    "_shadowCastingMode": 0,
+    "_shadowReceivingMode": 1,
+    "_shadowBias": 0,
+    "_shadowNormalBias": 0,
+    "_reflectionProbeId": -1,
+    "_reflectionProbeBlendId": -1,
+    "_reflectionProbeBlendWeight": 0,
+    "_enabledGlobalStandardSkinObject": false,
+    "_enableMorph": true,
+    "_skeleton": null,
+    "_skinningRoot": {
+      "__id__": 14
+    },
+    "atlasSize": 1024,
+    "batchableTextureNames": [
+      "Texture - 飞塔"
+    ],
+    "units": [
+      {
+        "__id__": 210
+      },
+      {
+        "__id__": 211
+      },
+      {
+        "__id__": 212
+      },
+      {
+        "__id__": 213
+      },
+      {
+        "__id__": 214
+      },
+      {
+        "__id__": 215
+      },
+      {
+        "__id__": 216
+      },
+      {
+        "__id__": 217
+      },
+      {
+        "__id__": 218
+      },
+      {
+        "__id__": 219
+      },
+      {
+        "__id__": 220
+      },
+      {
+        "__id__": 221
+      },
+      {
+        "__id__": 222
+      },
+      {
+        "__id__": 223
+      },
+      {
+        "__id__": 224
+      },
+      {
+        "__id__": 225
+      }
+    ],
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "073fIp+ghH86SHdPpLuiWw"
+  },
+  {
+    "__type__": "cc.ModelBakeSettings",
+    "texture": null,
+    "uvParam": {
+      "__type__": "cc.Vec4",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 0
+    },
+    "_bakeable": false,
+    "_castShadow": false,
+    "_receiveShadow": false,
+    "_recieveShadow": false,
+    "_lightmapSize": 64,
+    "_useLightProbe": false,
+    "_bakeToLightProbe": true,
+    "_reflectionProbeType": 0,
+    "_bakeToReflectionProbe": true
+  },
+  {
+    "__type__": "cc.SkinnedMeshUnit",
+    "mesh": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@b92a4",
+      "__expectedType__": "cc.Mesh"
+    },
+    "skeleton": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@30732",
+      "__expectedType__": "cc.Skeleton"
+    },
+    "material": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@22e2a",
+      "__expectedType__": "cc.Material"
+    },
+    "_localTransform": {
+      "__type__": "cc.Mat4",
+      "m00": 1,
+      "m01": 0,
+      "m02": 0,
+      "m03": 0,
+      "m04": 0,
+      "m05": -2.220446049250313e-16,
+      "m06": -1.0000000000000002,
+      "m07": 0,
+      "m08": 0,
+      "m09": 1.0000000000000002,
+      "m10": -2.220446049250313e-16,
+      "m11": 0,
+      "m12": 0.061091866344213486,
+      "m13": 3.3072195053100586,
+      "m14": -0.05461754649877548,
+      "m15": 1
+    },
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_size": {
+      "__type__": "cc.Vec2",
+      "x": 1,
+      "y": 1
+    }
+  },
+  {
+    "__type__": "cc.SkinnedMeshUnit",
+    "mesh": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@b1501",
+      "__expectedType__": "cc.Mesh"
+    },
+    "skeleton": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@f1394",
+      "__expectedType__": "cc.Skeleton"
+    },
+    "material": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@22e2a",
+      "__expectedType__": "cc.Material"
+    },
+    "_localTransform": {
+      "__type__": "cc.Mat4",
+      "m00": 1,
+      "m01": 0,
+      "m02": 0,
+      "m03": 0,
+      "m04": 0,
+      "m05": -2.220446049250313e-16,
+      "m06": -1.0000000000000002,
+      "m07": 0,
+      "m08": 0,
+      "m09": 1.0000000000000002,
+      "m10": -2.220446049250313e-16,
+      "m11": 0,
+      "m12": 0,
+      "m13": 0,
+      "m14": 0,
+      "m15": 1
+    },
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_size": {
+      "__type__": "cc.Vec2",
+      "x": 1,
+      "y": 1
+    }
+  },
+  {
+    "__type__": "cc.SkinnedMeshUnit",
+    "mesh": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@cbfe7",
+      "__expectedType__": "cc.Mesh"
+    },
+    "skeleton": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@75ee4",
+      "__expectedType__": "cc.Skeleton"
+    },
+    "material": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@22e2a",
+      "__expectedType__": "cc.Material"
+    },
+    "_localTransform": {
+      "__type__": "cc.Mat4",
+      "m00": 0.6238558578461669,
+      "m01": 0,
+      "m02": 0.7815394223140782,
+      "m03": 0,
+      "m04": 0.7815394223140782,
+      "m05": 0,
+      "m06": -0.623855857846167,
+      "m07": 0,
+      "m08": 0,
+      "m09": 1,
+      "m10": 0,
+      "m11": 0,
+      "m12": 0.27536773681640625,
+      "m13": -0.4115535318851471,
+      "m14": -0.2605648338794708,
+      "m15": 1
+    },
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_size": {
+      "__type__": "cc.Vec2",
+      "x": 1,
+      "y": 1
+    }
+  },
+  {
+    "__type__": "cc.SkinnedMeshUnit",
+    "mesh": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@11a9b",
+      "__expectedType__": "cc.Mesh"
+    },
+    "skeleton": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@a72ab",
+      "__expectedType__": "cc.Skeleton"
+    },
+    "material": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@22e2a",
+      "__expectedType__": "cc.Material"
+    },
+    "_localTransform": {
+      "__type__": "cc.Mat4",
+      "m00": 0.10471173414336189,
+      "m01": 0,
+      "m02": -0.9945024958812949,
+      "m03": 0,
+      "m04": -0.9945024958812949,
+      "m05": 0,
+      "m06": -0.10471173414336189,
+      "m07": 0,
+      "m08": 0,
+      "m09": 1,
+      "m10": 0,
+      "m11": 0,
+      "m12": 0,
+      "m13": 0,
+      "m14": 0,
+      "m15": 1
+    },
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_size": {
+      "__type__": "cc.Vec2",
+      "x": 1,
+      "y": 1
+    }
+  },
+  {
+    "__type__": "cc.SkinnedMeshUnit",
+    "mesh": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@63d2a",
+      "__expectedType__": "cc.Mesh"
+    },
+    "skeleton": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@2224c",
+      "__expectedType__": "cc.Skeleton"
+    },
+    "material": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@22e2a",
+      "__expectedType__": "cc.Material"
+    },
+    "_localTransform": {
+      "__type__": "cc.Mat4",
+      "m00": -0.3750795029275209,
+      "m01": 0,
+      "m02": -0.9269926464021406,
+      "m03": 0,
+      "m04": -0.9269926464021406,
+      "m05": 0,
+      "m06": 0.3750795029275208,
+      "m07": 0,
+      "m08": 0,
+      "m09": 1,
+      "m10": 0,
+      "m11": 0,
+      "m12": 0,
+      "m13": 0,
+      "m14": 0,
+      "m15": 1
+    },
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_size": {
+      "__type__": "cc.Vec2",
+      "x": 1,
+      "y": 1
+    }
+  },
+  {
+    "__type__": "cc.SkinnedMeshUnit",
+    "mesh": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@a46be",
+      "__expectedType__": "cc.Mesh"
+    },
+    "skeleton": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@0e3d2",
+      "__expectedType__": "cc.Skeleton"
+    },
+    "material": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@dd992",
+      "__expectedType__": "cc.Material"
+    },
+    "_localTransform": {
+      "__type__": "cc.Mat4",
+      "m00": 0.8683495127002905,
+      "m01": 0.05440929320746901,
+      "m02": 0.4929591794518404,
+      "m03": 0,
+      "m04": -0.4956848908970966,
+      "m05": 0.12787333183568056,
+      "m06": 0.8590371241874764,
+      "m07": 0,
+      "m08": -0.016296729969472727,
+      "m09": -0.9902968852629617,
+      "m10": 0.1380086099542082,
+      "m11": 0,
+      "m12": 0.563515305519104,
+      "m13": 6.549287796020508,
+      "m14": -1.2311725616455078,
+      "m15": 1
+    },
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_size": {
+      "__type__": "cc.Vec2",
+      "x": 1,
+      "y": 1
+    }
+  },
+  {
+    "__type__": "cc.SkinnedMeshUnit",
+    "mesh": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@4e2ec",
+      "__expectedType__": "cc.Mesh"
+    },
+    "skeleton": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@62756",
+      "__expectedType__": "cc.Skeleton"
+    },
+    "material": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@81688",
+      "__expectedType__": "cc.Material"
+    },
+    "_localTransform": {
+      "__type__": "cc.Mat4",
+      "m00": -0.939280770455583,
+      "m01": 0,
+      "m02": -0.3431495799973621,
+      "m03": 0,
+      "m04": -0.3431495799973621,
+      "m05": 1.1102230246251565e-16,
+      "m06": 0.9392807704555831,
+      "m07": 0,
+      "m08": 0,
+      "m09": 0.9999999999999999,
+      "m10": 1.1102230246251565e-16,
+      "m11": 0,
+      "m12": 0,
+      "m13": 0,
+      "m14": 0,
+      "m15": 1
+    },
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_size": {
+      "__type__": "cc.Vec2",
+      "x": 1,
+      "y": 1
+    }
+  },
+  {
+    "__type__": "cc.SkinnedMeshUnit",
+    "mesh": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@5b160",
+      "__expectedType__": "cc.Mesh"
+    },
+    "skeleton": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@7d08b",
+      "__expectedType__": "cc.Skeleton"
+    },
+    "material": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@22e2a",
+      "__expectedType__": "cc.Material"
+    },
+    "_localTransform": {
+      "__type__": "cc.Mat4",
+      "m00": -0.29172714153323565,
+      "m01": 0,
+      "m02": 0.9565015189133586,
+      "m03": 0,
+      "m04": 0.9565015189133586,
+      "m05": 0,
+      "m06": 0.29172714153323553,
+      "m07": 0,
+      "m08": 0,
+      "m09": 1,
+      "m10": 0,
+      "m11": 0,
+      "m12": 0.04978500306606293,
+      "m13": -0.1050918698310852,
+      "m14": 0.047430649399757385,
+      "m15": 1
+    },
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_size": {
+      "__type__": "cc.Vec2",
+      "x": 1,
+      "y": 1
+    }
+  },
+  {
+    "__type__": "cc.SkinnedMeshUnit",
+    "mesh": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@8ccd3",
+      "__expectedType__": "cc.Mesh"
+    },
+    "skeleton": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@b5902",
+      "__expectedType__": "cc.Skeleton"
+    },
+    "material": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@22e2a",
+      "__expectedType__": "cc.Material"
+    },
+    "_localTransform": {
+      "__type__": "cc.Mat4",
+      "m00": 0.9446435696382603,
+      "m01": 0,
+      "m02": 0.3280981669131955,
+      "m03": 0,
+      "m04": 0.3280981669131955,
+      "m05": 2.220445916901415e-16,
+      "m06": -0.9446435696382601,
+      "m07": 0,
+      "m08": 0,
+      "m09": 0.9999999999999998,
+      "m10": 2.220446049250313e-16,
+      "m11": 0,
+      "m12": 0,
+      "m13": 0,
+      "m14": 0,
+      "m15": 1
+    },
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_size": {
+      "__type__": "cc.Vec2",
+      "x": 1,
+      "y": 1
+    }
+  },
+  {
+    "__type__": "cc.SkinnedMeshUnit",
+    "mesh": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@4e0f5",
+      "__expectedType__": "cc.Mesh"
+    },
+    "skeleton": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@2d5df",
+      "__expectedType__": "cc.Skeleton"
+    },
+    "material": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@22e2a",
+      "__expectedType__": "cc.Material"
+    },
+    "_localTransform": {
+      "__type__": "cc.Mat4",
+      "m00": 0.8831572419322892,
+      "m01": 0,
+      "m02": -0.4690769305916313,
+      "m03": 0,
+      "m04": -0.4690769305916313,
+      "m05": 0,
+      "m06": -0.8831572419322891,
+      "m07": 0,
+      "m08": 0,
+      "m09": 1,
+      "m10": 0,
+      "m11": 0,
+      "m12": 0,
+      "m13": 0,
+      "m14": 0,
+      "m15": 1
+    },
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_size": {
+      "__type__": "cc.Vec2",
+      "x": 1,
+      "y": 1
+    }
+  },
+  {
+    "__type__": "cc.SkinnedMeshUnit",
+    "mesh": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@d5a25",
+      "__expectedType__": "cc.Mesh"
+    },
+    "skeleton": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@8feb8",
+      "__expectedType__": "cc.Skeleton"
+    },
+    "material": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@22e2a",
+      "__expectedType__": "cc.Material"
+    },
+    "_localTransform": {
+      "__type__": "cc.Mat4",
+      "m00": 0.5180292287371352,
+      "m01": 0,
+      "m02": -0.8553629160619537,
+      "m03": 0,
+      "m04": -0.8553629160619537,
+      "m05": 0,
+      "m06": -0.5180292287371353,
+      "m07": 0,
+      "m08": 0,
+      "m09": 1,
+      "m10": 0,
+      "m11": 0,
+      "m12": -0.003858901560306549,
+      "m13": -0.9760695099830627,
+      "m14": -0.43016302585601807,
+      "m15": 1
+    },
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_size": {
+      "__type__": "cc.Vec2",
+      "x": 1,
+      "y": 1
+    }
+  },
+  {
+    "__type__": "cc.SkinnedMeshUnit",
+    "mesh": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@0f94a",
+      "__expectedType__": "cc.Mesh"
+    },
+    "skeleton": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@ad32d",
+      "__expectedType__": "cc.Skeleton"
+    },
+    "material": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@22e2a",
+      "__expectedType__": "cc.Material"
+    },
+    "_localTransform": {
+      "__type__": "cc.Mat4",
+      "m00": -0.9785359040933278,
+      "m01": 0,
+      "m02": 0.20607611504239662,
+      "m03": 0,
+      "m04": 0.20607611504239662,
+      "m05": 1.1102229584507075e-16,
+      "m06": 0.9785359040933279,
+      "m07": 0,
+      "m08": 0,
+      "m09": 0.9999999999999999,
+      "m10": 1.1102230246251565e-16,
+      "m11": 0,
+      "m12": 0,
+      "m13": 0,
+      "m14": 0,
+      "m15": 1
+    },
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_size": {
+      "__type__": "cc.Vec2",
+      "x": 1,
+      "y": 1
+    }
+  },
+  {
+    "__type__": "cc.SkinnedMeshUnit",
+    "mesh": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@ad499",
+      "__expectedType__": "cc.Mesh"
+    },
+    "skeleton": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@df8aa",
+      "__expectedType__": "cc.Skeleton"
+    },
+    "material": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@22e2a",
+      "__expectedType__": "cc.Material"
+    },
+    "_localTransform": {
+      "__type__": "cc.Mat4",
+      "m00": -0.5435183093758367,
+      "m01": 0.04874914795548024,
+      "m02": 0.8379805295750296,
+      "m03": 0,
+      "m04": 0.8393972619563506,
+      "m05": 0.03156555486011933,
+      "m06": 0.5426008967531005,
+      "m07": 0,
+      "m08": 1.101857990058891e-8,
+      "m09": 0.9983120246630298,
+      "m10": -0.058076354866996624,
+      "m11": 0,
+      "m12": 0.41253480315208435,
+      "m13": -0.6755088567733765,
+      "m14": 0.3869524896144867,
+      "m15": 1
+    },
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_size": {
+      "__type__": "cc.Vec2",
+      "x": 1,
+      "y": 1
+    }
+  },
+  {
+    "__type__": "cc.SkinnedMeshUnit",
+    "mesh": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@89cf3",
+      "__expectedType__": "cc.Mesh"
+    },
+    "skeleton": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@2bf59",
+      "__expectedType__": "cc.Skeleton"
+    },
+    "material": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@22e2a",
+      "__expectedType__": "cc.Material"
+    },
+    "_localTransform": {
+      "__type__": "cc.Mat4",
+      "m00": 0.19350183743821892,
+      "m01": 0,
+      "m02": 0.9810999128060469,
+      "m03": 0,
+      "m04": 0.9810999128060469,
+      "m05": 2.220446049250313e-16,
+      "m06": -0.1935018374382187,
+      "m07": 0,
+      "m08": 0,
+      "m09": 0.9999999999999998,
+      "m10": 2.220446049250313e-16,
+      "m11": 0,
+      "m12": 0,
+      "m13": 0,
+      "m14": 0,
+      "m15": 1
+    },
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_size": {
+      "__type__": "cc.Vec2",
+      "x": 1,
+      "y": 1
+    }
+  },
+  {
+    "__type__": "cc.SkinnedMeshUnit",
+    "mesh": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@b76be",
+      "__expectedType__": "cc.Mesh"
+    },
+    "skeleton": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@531c4",
+      "__expectedType__": "cc.Skeleton"
+    },
+    "material": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@dd992",
+      "__expectedType__": "cc.Material"
+    },
+    "_localTransform": {
+      "__type__": "cc.Mat4",
+      "m00": 0.8683495224052458,
+      "m01": 0.054409312353265266,
+      "m02": 0.4929591602433474,
+      "m03": 0,
+      "m04": -0.49568487460871075,
+      "m05": 0.12787332730550593,
+      "m06": 0.8590371342606089,
+      "m07": 0,
+      "m08": -0.016296708285005578,
+      "m09": -0.9902968847960099,
+      "m10": 0.1380086158654803,
+      "m11": 0,
+      "m12": -0.768891453742981,
+      "m13": 6.1385626792907715,
+      "m14": -0.6657373309135437,
+      "m15": 1
+    },
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_size": {
+      "__type__": "cc.Vec2",
+      "x": 1,
+      "y": 1
+    }
+  },
+  {
+    "__type__": "cc.SkinnedMeshUnit",
+    "mesh": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@7cdd9",
+      "__expectedType__": "cc.Mesh"
+    },
+    "skeleton": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@1c110",
+      "__expectedType__": "cc.Skeleton"
+    },
+    "material": {
+      "__uuid__": "9a1679fc-b5bb-4cd5-975e-69bbe8170944@dd992",
+      "__expectedType__": "cc.Material"
+    },
+    "_localTransform": {
+      "__type__": "cc.Mat4",
+      "m00": 0.868349470647581,
+      "m01": 0.05440930911021753,
+      "m02": 0.49295913086069176,
+      "m03": 0,
+      "m04": -0.49568487460871075,
+      "m05": 0.12787332730550593,
+      "m06": 0.8590371342606089,
+      "m07": 0,
+      "m08": -0.016296708285005578,
+      "m09": -0.9902968847960099,
+      "m10": 0.1380086158654803,
+      "m11": 0,
+      "m12": 0.1798776388168335,
+      "m13": 6.019031524658203,
+      "m14": 1.218642234802246,
+      "m15": 1
+    },
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_size": {
+      "__type__": "cc.Vec2",
+      "x": 1,
+      "y": 1
+    }
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -5819,7 +6642,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 209
+      "__id__": 228
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -5847,7 +6670,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 211
+      "__id__": 230
     },
     "_material": null,
     "_isTrigger": false,
