@@ -29,7 +29,7 @@
     "mainBundleIsRemote": false,
     "name": "即时战略指挥",
     "useBuiltinServer": false,
-    "nativeCodeBundleMode": "both",
+    "nativeCodeBundleMode": "wasm",
     "mangleProperties": true,
     "useSplashScreen": true,
     "overwriteProjectSettings": {
@@ -124,8 +124,8 @@
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "2025-8-10 18:31:30 build success in 26 s!",
-        "detailMessage": "// ---- build task wechatgame：onAfterBundleBuildTask ----\r",
+        "message": "2025-8-30 10:30:30 build success in 1 min 53 s!",
+        "detailMessage": "builder:build-project-total (110982ms)\r",
         "options": {
           "name": "即时战略指挥",
           "server": "",
@@ -181,13 +181,13 @@
           "wasmCompressionMode": false,
           "packages": {},
           "__version__": "1.3.8",
-          "buildMode": "bundle",
+          "buildMode": "normal",
           "logDest": "project://temp/builder/log/wechatgame2024-12-18 06-01.log",
           "mangleProperties": false,
           "engineModulesConfigKey": "migrationsConfig",
           "inlineEnum": true
         },
-        "time": "2025-8-10 18:31:03",
+        "time": "2025-8-30 10:28:36",
         "dirty": false
       },
       "1747025212998": {
@@ -529,11 +529,11 @@
       "1753810040471": {
         "type": "build",
         "id": "1753810040471",
-        "progress": 0.2090909090909091,
-        "state": "processing",
+        "progress": 1,
+        "state": "success",
         "stage": "build",
-        "message": "构建引擎脚本 start...",
-        "detailMessage": "[build-engine]Module source \"cc\":\rexport * from 'C:\\\\ProgramData\\\\cocos\\\\editors\\\\Creator\\\\3.8.6\\\\resources\\\\resources\\\\3d\\\\engine\\\\exports\\\\2d.ts';\rexport * from 'C:\\\\ProgramData\\\\cocos\\\\editors\\\\Cre...",
+        "message": "2025-8-30 10:28:35 build success in 1 min 38 s!",
+        "detailMessage": "Asset DB is resume!\r",
         "options": {
           "name": "即使战略指挥",
           "server": "https://www.rtsgame.online/bytedance/",
@@ -556,7 +556,7 @@
               "gfx-webgl2": "on"
             }
           },
-          "nativeCodeBundleMode": "both",
+          "nativeCodeBundleMode": "wasm",
           "polyfills": {
             "asyncFunctions": false
           },
@@ -595,7 +595,7 @@
           "__version__": "1.3.9",
           "logDest": "project://temp/builder/log/bytedance-mini-game2025-7-30 01-27.log"
         },
-        "time": "2025-8-30 10:06:26",
+        "time": "2025-8-30 10:26:56",
         "dirty": false
       },
       "1754925332894": {
