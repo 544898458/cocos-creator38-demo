@@ -1,30 +1,19 @@
 # CocosCreator38Demo
 
-#### 介绍
+## 介绍
 
 * 用于测试C++20协程服务器
 
-### 软件架构
-
-### 安装教程
-
+## 安装
+### 注意
+*  安装完node.js和下列npm内容之前，不要打开和导入项目；
+*  把下列npm按下面要求安装完后才能打开cocos导入和运行工程文件，
+*  要用管理员身份运行cmd 或 PowerShell，并且要跳转到工程根目录下，在工程根目录下，完成npm的安装
+*  不要解压工程根目录下的biligame-builder-1.0.3.zip包，安装完npm游戏播放没问题后，点击菜单的extension表单，选择 extension manager，进入后点左边栏最上方的，最右边的导入按钮，在放大镜->查找->右边，然后找到根目录下的biligame-builder-1.0.3.zip导入，导入后弹出一个框，选择confirm即可；
+* 刚开始不熟悉情况，打开Cocos Creator编辑器可能看不懂，看不到地图，想看到地图，就在左下角搜索map，里面的内容都是地图，只要左键双击一下文件，就能在编辑器主窗口里预览。
+### 步骤
 1. 首先要有npm命令，安装了node.js才会有npm这个命令
 2. 在本项目根目录执行
-<>.切记安装完node.js和下列npm内容之前，不要打开和导入项目，
-也不要解压工程根目录下的biligame-builder-1.0.3.zip包，
-把下列npm按下面要求安装完后才能打开cocos导入和运行工程文件，
-需要注意的是，要用管理员身份运行cmd 或 PowerShell，
-并且要跳转到工程根目录下，在工程根目录下，完成npm的安装，
-安装完才能正常播放程序。。。。。。。。
-还有biligame-builder-1.0.3.zip包不要在外面解压，
-安装完npm游戏播放没问题后，点击菜单的extension表单，
-选择extension manager，进入后点左边栏最上方的，最右边的录入按钮
-<在放大镜#查找-右边>然后找到根目录下的biligame-builder-1.0.3.zip导入，
-导入后弹出一个框，选择confirm即可。。。。。。。。
-<>.再注意，刚开始不熟悉情况，看到展示框可能看不懂，看不到地图，
-想看到地图，就搜索map，里面的内容都是地图，只要左键点击一下文件，
-地图的预览就在右下角<一般来说都在这里>。。。。。。。。
-
 ```PowerShell
 npm install fs-extra
     npm install vue@^2.6.14
@@ -74,11 +63,12 @@ Error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} Error: Error: M
     at file:///C:/Users/Administrator/source/repos/cocos-creator38-demo/temp/programming/packer-driver/targets/editor/chunks/52/cce:/internal/x/prerequisite-imports:8:13
 ```
 
-3. 用Cocos Creator 3.8.6打开本项目
+3. 用Cocos Creator 3.8.7打开本项目
 4. 修改Cocos Creator本地测试浏览器端口为7456或者7457
-5. 如果要连接本地服务器的话，就修改电脑本地hosts文件把域名 rtsgame.online 定位到 127.0.0.1
-6. 调试：直接在浏览器按 F12，在源代码文件内加断点
-7. 服务器代码在 https://gitee.com/griffon2/iocp20coroutine
+5. 选中场景Start，然后点三角形的播放按钮运行游戏
+6. 如果要连接本地服务器的话，就修改电脑本地hosts文件把域名 test.rtsgame.online 定位到 127.0.0.1
+7. 调试：直接在浏览器按 F12，在源代码文件内加断点
+8. 服务器代码在 https://gitee.com/griffon2/iocp20coroutine
 
 ### 导出后端寻路文件的方法
 
@@ -89,7 +79,7 @@ Error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} Error: Error: M
 5. obj文件复制到后端代码库的 Iocp20Coroutine\RecastDemo\Meshes
 6. 双击打开RecastDemo.exe，选择“Temp Obastacles”，“Agent Radius”改为1.0
 
-### 贡献名单
+### 贡献者名单
 
 * 关卡：阳光下的一个虾(QQ 1179331661)
 * 首页底图：不问清阴(QQ 3969340418)
@@ -97,7 +87,7 @@ Error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} Error: Error: M
 * 抠图：豆包AI
 * 地面纹理：夸克AI
 * 头像图片：文小言AI
-* 音乐：电波暴击(QQ 1106551898)
+* 音乐：乌鸦Producer(QQ 2998975740)、电波暴击(QQ 1106551898)
 * 音乐：SunoAI
 * 绑定/动作：mixamo.com
 * 绑定/动作：小白阿姨(QQ 3276812319)、九里庆安(QQ 284102069)
