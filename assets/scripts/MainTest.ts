@@ -57,6 +57,7 @@ export class MainTest extends Component {
 
     b显示单位类型: boolean = true
     b点击活动单位都是追加选中: boolean = false
+    b显示名字: boolean = true
 
     static interstitialAd = null// 定义插屏广告    微信流量主
     static rewardedVideoAd// 定义激励视频广告

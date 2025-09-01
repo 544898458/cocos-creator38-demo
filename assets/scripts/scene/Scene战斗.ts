@@ -68,10 +68,11 @@ export class ClientEntityComponent {
         this.node血条?.removeFromParent()
         this.node能量条?.removeFromParent()
     }
-    显示头顶名字(b显示单位类型: boolean): void {
+    显示头顶名字(b显示单位类型: boolean, b显示名字: boolean): void {
         if (!this.labelName)
             return
 
+        this.nodeName.active = b显示名字
         if (b显示单位类型)
             this.labelName.string = this.nickName + ' ' + this.entityName
         else
@@ -1005,7 +1006,7 @@ export class Scene战斗 extends Component {
 
     刷新单位名字() {
         this.entities.forEach((entity: ClientEntityComponent) => {
-            entity.显示头顶名字(MainTest.instance.b显示单位类型)
+            entity.显示头顶名字(MainTest.instance.b显示单位类型, MainTest.instance.b显示名字)
         })
     }
 

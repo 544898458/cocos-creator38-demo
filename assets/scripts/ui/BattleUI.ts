@@ -376,6 +376,11 @@ export class BattleUI extends Dialog {
         MainTest.instance.scene战斗?.刷新单位名字()
         console.log('b显示单位类型,toggle.isChecked', toggle.isChecked)
     }
+    onCheck显示名字(toggle: Toggle, customEventData: string) {
+        MainTest.instance.b显示名字 = toggle.isChecked
+        MainTest.instance.scene战斗?.刷新单位名字()
+        console.log('b显示名字,toggle.isChecked', toggle.isChecked)
+    }
     onClickTitle(toggle: Toggle, customEventData: string): void {
         console.log(toggle,'选中', customEventData)
         this.lastTitle.active = false;

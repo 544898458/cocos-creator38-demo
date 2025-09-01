@@ -334,7 +334,7 @@ export class NetMessage {
                 old.nickName = nickName
                 old.entityName = entityName
                 // old.labelName.string = old.nickName + '(' + id + ')hp=' + old.hp
-                old.显示头顶名字(MainTest.instance.b显示单位类型) //+ ',hp=' + old.hp
+                old.显示头顶名字(MainTest.instance.b显示单位类型, MainTest.instance.b显示名字) //+ ',hp=' + old.hp
 
                 if (old.position != undefined)
                     old.view.position = old.position
@@ -368,7 +368,8 @@ export class NetMessage {
         old.position = posNew;
         old.eulerAngles = new Vec3(0, eulerAnglesY, 0);
         if (old.view) {
-            if (!old.view.position || old.view.position.clone().subtract(old.position).lengthSqr() > 20) {
+            if (//MainTest.是抖音小游戏() || 
+                !old.view.position || old.view.position.clone().subtract(old.position).lengthSqr() > 20) {
                 old.view.position = old.position;
                 old.view.eulerAngles = old.eulerAngles;
             } else {
@@ -381,6 +382,7 @@ export class NetMessage {
                 }
 
                 const 延时 = 0.15;
+                old.tween移动?.stop();
                 old.tween移动 = tween(old.view).to(延时, {
                     position: old.position,
                     eulerAngles: old.eulerAngles
