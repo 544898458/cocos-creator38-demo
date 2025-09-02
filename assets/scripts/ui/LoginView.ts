@@ -163,6 +163,10 @@ export class LoginView extends Dialog {
     }
     //点击登录
     onClickLogin(event: Event, customEventData: string) {
+        if(MainTest.是微信小游戏()){
+            this.on微信小游戏登录(event, customEventData)
+            return
+        }
         MainTest.instance.b登录成功 = false
         // this.微信小游戏获得OpenID()
         let str登录名 = this.editBox登录名.string
@@ -487,4 +491,134 @@ export class LoginView extends Dialog {
             }
           });
     }
+
+    on微信小游戏登录(event: Event, customEventData: string) {
+        console.log('on微信小游戏登录')
+        // wx.authorize({scope: "scope.userInfo"})，不会弹出授权窗口，请使用 wx.createUserInfoButton
+        // let button = wx.createUserInfoButton({
+        //     type: 'text',
+        //     text: '获取用户信息',
+        //     style: {
+        //       left: 10,
+        //       top: 76,
+        //       width: 200,
+        //       height: 40,
+        //       lineHeight: 40,
+        //       backgroundColor: '#ff0000',
+        //       color: '#ffffff',
+        //       textAlign: 'center',
+        //       fontSize: 16,
+        //       borderRadius: 4
+        //     }
+        //   })
+        //   button.onTap((res) => {
+        //     console.log(res)
+        //   })
+        wx.getSetting({
+            success(res) {
+                console.log('获取用户的当前设置成功', res)
+                if (!res.authSetting['scope.userInfo']) {
+                    console.log('没有获取用户信息的权限，准备发起授权')
+                    wx.authorize({//必须现在微信小游戏后台设置“隐私授权弹窗”，否则会失败
+                        scope: 'scope.userInfo',
+                        success () {
+                            console.log('以获得获取用户信息的权限，开始获取用户信息')
+                            wx.getUserInfo({
+                                success: function(res) {
+                                    console.log('授权后获取用户信息成功', res)
+                                    var userInfo = res.userInfo
+                                    var nickName = userInfo.nickName
+                                    var avatarUrl = userInfo.avatarUrl
+                                    var gender = userInfo.gender //性别 0：未知、1：男、2：女
+                                    var province = userInfo.province
+                                    var city = userInfo.city
+                                    var country = userInfo.country
+                                    console.log('用户信息', userInfo, nickName, avatarUrl, gender, province, city, country)
+                                },
+                                fail() {
+                                    console.log('获取用户信息失败')
+                                },
+                                complete() {
+                                    console.log('获取用户信息完成')
+                                }
+                            })
+                        }
+                    })
+                }else{
+                    console.log('本来就已获得获取用户信息的权限，开始获取用户信息')
+                    wx.getUserInfo({
+                        success: function(res) {
+                            console.log('获取用户信息成功', res)
+                            var userInfo = res.userInfo
+                            var nickName = userInfo.nickName
+                            var avatarUrl = userInfo.avatarUrl
+                            var gender = userInfo.gender //性别 0：未知、1：男、2：女
+                            var province = userInfo.province
+                            var city = userInfo.city
+                            var country = userInfo.country
+                            console.log('用户信息', userInfo, nickName, avatarUrl, gender, province, city, country)
+                        },
+                        fail() {
+                            console.log('获取用户信息失败')
+                        },
+                        complete() {
+                            console.log('获取用户信息完成')
+                        }
+                    });
+                }
+            },
+            fail() {
+                console.log('获取用户的当前设置失败')
+            },
+            complete() {
+                console.log('获取用户的当前设置完成')
+            }
+        });
+        // 调用wx.requirePrivacyAuthorize拉起自定义隐私弹窗
+        // 若用户已同意且隐私政策无变更则直接跳过用户确认阶段进入success回调，否则需要拉起隐私弹窗，请求用户确认（通过调用wx.onNeedPrivacyAuthorization注册的回调函数来拉起自定义的隐私弹窗），用户同意后才进入success回调
+        // wx.requirePrivacyAuthorize({
+        //     success: res => {
+        //         console.log('隐私授权成功:', res);
+        //         // 进入success回调说明用户已同意隐私政策
+        //         // TODO：非标准API的方式处理用户个人信息
+        //         toast.showToast('隐私授权成功');
+        //     },
+        //     fail: (err) => {
+        //         console.error('隐私授权失败:', err);
+        //         // 进入fail回调说明用户拒绝隐私政策
+        //         // 游戏需要放弃处理用户个人信息，同时不要阻断游戏主流程
+        //         toast.showToast('隐私授权失败，部分功能可能受限');
+        //     },
+        //     complete: (res) => {
+        //         console.log('隐私授权完成:', res);
+        //     } 
+        // })
+        // wx.getSetting({
+        //     success(res) {
+        //       if (res.authSetting['scope.userInfo'] === true) {
+        //         wx.getUserInfo({
+        //           success: (res) => {
+        //             // 已经授权，直接获取用户信息
+        //           },
+        //         });
+        //       } else {
+        //         const button = wx.createUserInfoButton({
+        //           type: "image",
+        //           style: {
+        //             left: 100,
+        //             top: 100,
+        //             width: 100,
+        //             height: 100,
+        //             backgroundColor: "rgba(255, 255, 255, 0.5)",
+        //           },
+        //         });
+        //         button.onTap((res) => {
+        //           if (res.errMsg.indexOf(':ok') > -1 && !!res.rawData) {
+        //             console.log(res.rawData)
+        //           }
+        //         });
+        //       }
+        //     },
+        //   });
+    }   
 }
