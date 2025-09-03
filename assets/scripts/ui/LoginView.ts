@@ -164,12 +164,14 @@ export class LoginView extends Dialog {
     //点击登录
     onClickLogin(event: Event, customEventData: string) {
         if(MainTest.是微信小游戏()){
-            this.on微信小游戏登录(event, customEventData)
+            this.on微信小游戏登录(customEventData)
             return
         }
-        MainTest.instance.b登录成功 = false
-        // this.微信小游戏获得OpenID()
-        let str登录名 = this.editBox登录名.string
+        
+        this.登录(customEventData, this.editBox登录名.string, '')
+    }
+
+    private 登录(strGateSvrHost: string, str登录名: string, strWxLoginCode: string) {
         Glob.myNickName = str登录名
         sys.localStorage.setItem(Glob.KEY_登录名, str登录名)
 
@@ -180,9 +182,10 @@ export class LoginView extends Dialog {
             return
         }
 
+        MainTest.instance.b登录成功 = false
         this.LoginPanel.active = false//隐藏主页面
         this.lableMessage.string = '正在连接'
-        Glob.websocket = new WebSocket("wss://" + customEventData)
+        Glob.websocket = new WebSocket("wss://" + strGateSvrHost)
         Glob.websocket.binaryType = 'arraybuffer'
         console.log(Glob.websocket)
 
@@ -202,6 +205,7 @@ export class LoginView extends Dialog {
                 str登录名,
                 'Hello, world!pwd',
                 32,//版本号
+                strWxLoginCode,
             ])
 
             // this.选择模式();
@@ -239,23 +243,19 @@ export class LoginView extends Dialog {
             console.log("onbeforeunload")
         }
     }
-
-    onSetting(): void {
-        toast.showToast('暂未开放设置')
-    }
     //连接成功，打开选择战役模式
-    显示选择单人或多人() {
+    显示选择单人或多人(): void {
         this.node选择单人或多人.active = true
-        this.LoginPanel.active = false;
+        this.LoginPanel.active = false
         this.node单人战局选择种族.active = false
         this.node多人战局面板.active = false
     }
 
-    on单人或多人(event: Event, customEventData: string) {
+    on单人或多人(event: Event, customEventData: string): void {
         let b个人战局 = customEventData === 'true'
         this.选择单人或多人(b个人战局)
     }
-    选择单人或多人(b个人战局: boolean) {
+    选择单人或多人(b个人战局: boolean): void {
         if (b个人战局) {
             this.node单人战局选择种族.active = true
         } else {
@@ -264,11 +264,11 @@ export class LoginView extends Dialog {
         }
         this.node选择单人或多人.active = false
     }
-    on单人战局选择种族(event: Event, customEventData: string) {
+    on单人战局选择种族(event: Event, customEventData: string): void {
         let 已选择种族 = 种族[customEventData as keyof typeof 种族]
         this.单人战局选择种族(已选择种族)
     }
-    单人战局选择种族(已选择种族: 种族) {
+    单人战局选择种族(已选择种族: 种族): void {
         MainTest.instance.fun离开战斗场景 = (loginView: LoginView) => loginView.单人战局选择种族(已选择种族)
         switch (已选择种族) {
             case 种族.人:
@@ -300,10 +300,10 @@ export class LoginView extends Dialog {
     }
 
     //游戏讨论关于
-    onClick浏览器H5打开游戏圈(event: Event, customEventData: string) {
+    onClick浏览器H5打开游戏圈(event: Event, customEventData: string): void {
         window.open('https://game.weixin.qq.com/cgi-bin/comm/openlink?auth_appid=wx62d9035fd4fd2059&url=https%3A%2F%2Fgame.weixin.qq.com%2Fcgi-bin%2Fh5%2Flite%2Fcirclecenter%2Findex.html%3Fwechat_pkgid%3Dlite_circlecenter%26liteapp%3Dliteapp%253A%252F%252Fwxalited17d79803d8c228a7eac78129f40484c%253Fpath%253Dpages%25252Findex%25252Findex%26appid%3Dwx57e5c006d2ac186e%26ssid%3D30%23wechat_redirect')
     }
-    onClick微信小游戏内打开游戏圈(event: Event, customEventData: string) {
+    onClick微信小游戏内打开游戏圈(event: Event, customEventData: string): void {
         const pageManager = wx.createPageManager();
 
         //在这里获取链接
@@ -322,7 +322,7 @@ export class LoginView extends Dialog {
             console.error(err);
         })
     }
-    onClick微信公众号(event: Event, customEventData: string) {
+    onClick微信公众号(event: Event, customEventData: string): void {
         console.log('window.CC_WECHAT', (window as any).CC_WECHAT)
         if ((window as any).CC_WECHAT) {
             // 调用微信小游戏的跳转方法
@@ -346,52 +346,52 @@ export class LoginView extends Dialog {
             this.lableMessage.string = '请搜索公众号：<color=#ffff00>即时战略指挥</color>'
         }
     }
-    onClick玩家QQ群(event: Event, customEventData: string) {
+    onClick玩家QQ群(event: Event, customEventData: string): void {
         //在这里获取链接
         //https://qun.qq.com/#/handy-tool/join-group
         window.open("https://qm.qq.com/cgi-bin/qm/qr?k=uKSxRp6smVkEPkKdFTfPJ9LpS_fy1-IH&jump_from=webapi&authKey=94/gex13gRVyrye9ScLqliCQQ3m7kWWRHyYgo82kp1eEuHOdkZOaLHufZDubw6WQ")
     }
-    onClick百度贴吧(event: Event, customEventData: string) {
+    onClick百度贴吧(event: Event, customEventData: string): void {
         window.open("https://tieba.baidu.com/f?kw=%E5%8D%B3%E6%97%B6%E6%88%98%E7%95%A5%E6%8C%87%E6%8C%A5")
     }
 
-    onClick进混战(event: Event, customEventData: string) {
+    onClick进混战(event: Event, customEventData: string): void {
         const 战局 = 战局类型[customEventData as keyof typeof 战局类型]
         MainTest.instance.进Scene战斗(MainTest.instance.配置.find战局(战局).strSceneName, MsgId.进Space, 战局, '', true)
     }
-    onClick创建多人战局(event: Event, customEventData: string) {
+    onClick创建多人战局(event: Event, customEventData: string): void {
         const 战局 = 战局类型[customEventData as keyof typeof 战局类型]
         MainTest.instance.onClick创建多人战局(战局)
     }
-    onClick进单人战局(event: Event, customEventData: string) {
+    onClick进单人战局(event: Event, customEventData: string): void {
         const id = 战局类型[customEventData as keyof typeof 战局类型]
         MainTest.instance.onClick进单人战局(id)
     }
-    onClick显示选择种族() {
+    onClick显示选择种族(): void {
         this.node单人战局列表_人.active = false
         this.node单人战局列表_虫.active = false
         this.node玩家战局列表面板.active = false
         this.node排行榜面板.active = false
         this.node单人战局选择种族.active = true
     }
-    on玩家战局列表返回上一级() {
+    on玩家战局列表返回上一级(): void {
         this.fun玩家战局列表返回上一级()
         this.node玩家战局列表面板.active = false
     }
-    onClick显示选择单人或多人() {
+    onClick显示选择单人或多人(): void {
         this.显示选择单人或多人()
     }
-    onClick别人的个人战局列表(event: Event, customEventData: string) {
+    onClick别人的个人战局列表(event: Event, customEventData: string): void {
         this.fun玩家战局列表返回上一级 = () => this.选择单人或多人(true)
         MainTest.instance.fun离开战斗场景 = (loginView: LoginView) => loginView.选择单人或多人(true)
         MainTest.instance.onClick获取别人的个人战局列表(event, customEventData)
     }
-    onClick别人的多人战局列表(event: Event, customEventData: string) {
+    onClick别人的多人战局列表(event: Event, customEventData: string): void {
         this.fun玩家战局列表返回上一级 = () => this.选择单人或多人(false)
         MainTest.instance.fun离开战斗场景 = (loginView: LoginView) => loginView.选择单人或多人(false)
         MainTest.instance.onClick获取别人的多人战局列表(event, customEventData)
     }
-    显示战局列表(arrPlayer: string[][], handler: string) {
+    显示战局列表(arrPlayer: string[][], handler: string): void {
         console.log('显示战局列表', arrPlayer, handler)
         this.node单人战局选择种族.active = false
         this.node多人战局面板.active = false
@@ -417,13 +417,13 @@ export class LoginView extends Dialog {
             MainTest.instance.map玩家场景.set(nickName, sceneName)
         }
     }
-    onClick进入别人的个人战局(event: Event, customEventData: string) {
+    onClick进入别人的个人战局(event: Event, customEventData: string): void {
         MainTest.instance.onClick进入别人的多人战局(event, customEventData)
     }
-    onClick进入别人的多人战局(event: Event, customEventData: string) {
+    onClick进入别人的多人战局(event: Event, customEventData: string): void {
         MainTest.instance.onClick进入别人的多人战局(event, customEventData)
     }
-    onClick排行榜(event: Event, customEventData: string) {
+    onClick排行榜(event: Event, customEventData: string): void {
         this.node单人战局选择种族.active = false
         this.node排行榜面板.active = true
 
@@ -435,12 +435,12 @@ export class LoginView extends Dialog {
         
         // this.拉取并显示排行榜(战局类型.新手训练_单位介绍_人)
     }
-    onToggle排行榜类型(toggle: Toggle, customEventData: string) {
+    onToggle排行榜类型(toggle: Toggle, customEventData: string): void {
         console.log('onToggle排行榜', toggle, customEventData)
         let 选中战局类型 = 战局类型[customEventData as keyof typeof 战局类型]
         this.拉取并显示排行榜(选中战局类型)
     }
-    拉取并显示排行榜(战局类型: 战局类型) {
+    拉取并显示排行榜(战局类型: 战局类型): void {
         assetManager.loadRemote(encodeURI(`https://www.rtsgame.online/排行榜/战局_${MainTest.idSvr}_${战局类型}_赢.json`), (err, jsonAsset: JsonAsset) => {
             console.log('resources.load callback:', err, jsonAsset)
             let arrPlayerStats = jsonAsset.json as Array<{ nickname: string, wins: number, losses: number }>
@@ -451,11 +451,11 @@ export class LoginView extends Dialog {
             console.log(jsonAsset.json)
         })
     }
-    on抖音侧边栏进入小游戏复访教育(event: Event, customEventData: string) {
+    on抖音侧边栏进入小游戏复访教育(event: Event, customEventData: string): void {
         console.log('on抖音侧边栏进入小游戏复访教育')
         this.node抖音侧边栏复访教育面板.active = true
     }
-    on抖音打开侧边栏(event: Event, customEventData: string) {
+    on抖音打开侧边栏(event: Event, customEventData: string): void {
         console.log('on抖音打开侧边栏')
         tt.navigateToScene({
             scene: "sidebar",
@@ -467,7 +467,7 @@ export class LoginView extends Dialog {
             },
         });
     }
-    on哔哩哔哩首页侧边栏复访教育(event: Event, customEventData: string) {
+    on哔哩哔哩首页侧边栏复访教育(event: Event, customEventData: string): void {
         console.log('on哔哩哔哩首页侧边栏复访教育')
         bl.navigateToScene({
             scene: "sidebar",
@@ -479,7 +479,7 @@ export class LoginView extends Dialog {
             },
         });
     }
-    on哔哩哔哩添加桌面快捷方式(event: Event, customEventData: string) {
+    on哔哩哔哩添加桌面快捷方式(event: Event, customEventData: string): void {
         console.log('on哔哩哔哩添加桌面快捷方式')
         bl.addShortcut({
             success() {
@@ -492,28 +492,42 @@ export class LoginView extends Dialog {
           });
     }
 
-    on微信小游戏登录(event: Event, customEventData: string) {
+    微信GetUserInfo(strGateSvrHost: string): void {
+        wx.getUserInfo({
+            success: function(res) {
+                console.log('获取用户信息成功', res)
+                var userInfo = res.userInfo
+                var nickName = userInfo.nickName
+                var avatarUrl = userInfo.avatarUrl
+                var gender = userInfo.gender //性别 0：未知、1：男、2：女
+                var province = userInfo.province
+                var city = userInfo.city
+                var country = userInfo.country
+                console.log('用户信息', userInfo, nickName, avatarUrl, gender, province, city, country)
+                // this.登录(strGateSvrHost, nickName)
+
+                wx.login({
+                    success (res) {
+                      if (res.code) {
+                        this.登录(strGateSvrHost, nickName, res.code)
+                      } else {
+                        toast.showToast('登录失败！' + res.errMsg)
+                      }
+                    }
+                  })
+            },
+            fail() {
+                toast.showToast('获取用户信息失败')
+            },
+            complete() {
+                console.log('获取用户信息完成')
+            }
+        })
+    }
+
+    on微信小游戏登录(strGateSvrHost: string): void {
         console.log('on微信小游戏登录')
-        // wx.authorize({scope: "scope.userInfo"})，不会弹出授权窗口，请使用 wx.createUserInfoButton
-        // let button = wx.createUserInfoButton({
-        //     type: 'text',
-        //     text: '获取用户信息',
-        //     style: {
-        //       left: 10,
-        //       top: 76,
-        //       width: 200,
-        //       height: 40,
-        //       lineHeight: 40,
-        //       backgroundColor: '#ff0000',
-        //       color: '#ffffff',
-        //       textAlign: 'center',
-        //       fontSize: 16,
-        //       borderRadius: 4
-        //     }
-        //   })
-        //   button.onTap((res) => {
-        //     console.log(res)
-        //   })
+  
         wx.getSetting({
             success(res) {
                 console.log('获取用户的当前设置成功', res)
@@ -522,103 +536,52 @@ export class LoginView extends Dialog {
                     wx.authorize({//必须现在微信小游戏后台设置“隐私授权弹窗”，否则会失败
                         scope: 'scope.userInfo',
                         success () {
-                            console.log('以获得获取用户信息的权限，开始获取用户信息')
-                            wx.getUserInfo({
-                                success: function(res) {
-                                    console.log('授权后获取用户信息成功', res)
-                                    var userInfo = res.userInfo
-                                    var nickName = userInfo.nickName
-                                    var avatarUrl = userInfo.avatarUrl
-                                    var gender = userInfo.gender //性别 0：未知、1：男、2：女
-                                    var province = userInfo.province
-                                    var city = userInfo.city
-                                    var country = userInfo.country
-                                    console.log('用户信息', userInfo, nickName, avatarUrl, gender, province, city, country)
-                                },
-                                fail() {
-                                    console.log('获取用户信息失败')
-                                },
-                                complete() {
-                                    console.log('获取用户信息完成')
+                            console.log('已获得获取用户信息的权限，开始获取用户信息')
+                            this.微信GetUserInfo(strGateSvrHost)
+                        },
+                        fail() {
+                            toast.showToast('获取用户信息隐私授权失败')
+                            wx.showModal({
+                                content: '检测到您未开启获取用户信息的权限，是否去设置打开？',
+                                confirmText: "确认",
+                                cancelText: "取消",
+                                success: function (res) {
+                                  console.log(res);
+                                  //点击“确认”时打开设置页面
+                                  if (res.confirm) {
+                                    console.log('用户点击确认')
+                                    wx.openSetting({
+                                      success: (res) => { 
+                                        console.log('打开设置页面成功', res)
+                                      },
+                                      fail: (res) => {
+                                        toast.showToast('打开设置页面失败')
+                                      },
+                                      complete: (res) => {
+                                        console.log('打开设置页面完成', res)
+                                      }
+                                    })
+                                  } else {
+                                    toast.showToast('用户点击取消')
+                                  }
                                 }
-                            })
+                              });
+                        },
+                        complete() {
+                            console.log('获取用户信息隐私授权完成')
                         }
                     })
                 }else{
                     console.log('本来就已获得获取用户信息的权限，开始获取用户信息')
-                    wx.getUserInfo({
-                        success: function(res) {
-                            console.log('获取用户信息成功', res)
-                            var userInfo = res.userInfo
-                            var nickName = userInfo.nickName
-                            var avatarUrl = userInfo.avatarUrl
-                            var gender = userInfo.gender //性别 0：未知、1：男、2：女
-                            var province = userInfo.province
-                            var city = userInfo.city
-                            var country = userInfo.country
-                            console.log('用户信息', userInfo, nickName, avatarUrl, gender, province, city, country)
-                        },
-                        fail() {
-                            console.log('获取用户信息失败')
-                        },
-                        complete() {
-                            console.log('获取用户信息完成')
-                        }
-                    });
+                    this.微信GetUserInfo(strGateSvrHost)
                 }
             },
             fail() {
-                console.log('获取用户的当前设置失败')
+                toast.showToast('获取用户的当前设置失败')
             },
             complete() {
                 console.log('获取用户的当前设置完成')
             }
         });
-        // 调用wx.requirePrivacyAuthorize拉起自定义隐私弹窗
-        // 若用户已同意且隐私政策无变更则直接跳过用户确认阶段进入success回调，否则需要拉起隐私弹窗，请求用户确认（通过调用wx.onNeedPrivacyAuthorization注册的回调函数来拉起自定义的隐私弹窗），用户同意后才进入success回调
-        // wx.requirePrivacyAuthorize({
-        //     success: res => {
-        //         console.log('隐私授权成功:', res);
-        //         // 进入success回调说明用户已同意隐私政策
-        //         // TODO：非标准API的方式处理用户个人信息
-        //         toast.showToast('隐私授权成功');
-        //     },
-        //     fail: (err) => {
-        //         console.error('隐私授权失败:', err);
-        //         // 进入fail回调说明用户拒绝隐私政策
-        //         // 游戏需要放弃处理用户个人信息，同时不要阻断游戏主流程
-        //         toast.showToast('隐私授权失败，部分功能可能受限');
-        //     },
-        //     complete: (res) => {
-        //         console.log('隐私授权完成:', res);
-        //     } 
-        // })
-        // wx.getSetting({
-        //     success(res) {
-        //       if (res.authSetting['scope.userInfo'] === true) {
-        //         wx.getUserInfo({
-        //           success: (res) => {
-        //             // 已经授权，直接获取用户信息
-        //           },
-        //         });
-        //       } else {
-        //         const button = wx.createUserInfoButton({
-        //           type: "image",
-        //           style: {
-        //             left: 100,
-        //             top: 100,
-        //             width: 100,
-        //             height: 100,
-        //             backgroundColor: "rgba(255, 255, 255, 0.5)",
-        //           },
-        //         });
-        //         button.onTap((res) => {
-        //           if (res.errMsg.indexOf(':ok') > -1 && !!res.rawData) {
-        //             console.log(res.rawData)
-        //           }
-        //         });
-        //       }
-        //     },
-        //   });
     }   
 }
