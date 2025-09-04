@@ -493,6 +493,7 @@ export class LoginView extends Dialog {
     }
 
     微信GetUserInfo(strGateSvrHost: string): void {
+        let thisLocal = this
         wx.getUserInfo({
             success: function(res) {
                 console.log('获取用户信息成功', res)
@@ -506,13 +507,23 @@ export class LoginView extends Dialog {
                 console.log('用户信息', userInfo, nickName, avatarUrl, gender, province, city, country)
                 // this.登录(strGateSvrHost, nickName)
 
+                console.log('开始微信登录')
                 wx.login({
                     success (res) {
-                      if (res.code) {
-                        this.登录(strGateSvrHost, nickName, res.code)
+                        console.log('微信登录成功', res)
+                        if (res.code) {
+                            console.log('微信登录成功，开始登录', strGateSvrHost, nickName, res.code)
+                            thisLocal.登录(strGateSvrHost, nickName, res.code)
                       } else {
-                        toast.showToast('登录失败！' + res.errMsg)
+                        toast.showToast('微信登录失败！' + res.errMsg)
                       }
+                    },
+                    fail(res) {
+                        console.log('微信登录失败', res)
+                        toast.showToast('微信登录失败！' + res.errMsg)
+                    },
+                    complete(res) {
+                        console.log('微信登录完成', res)
                     }
                   })
             },
@@ -527,7 +538,7 @@ export class LoginView extends Dialog {
 
     on微信小游戏登录(strGateSvrHost: string): void {
         console.log('on微信小游戏登录')
-  
+        let thisLocal = this
         wx.getSetting({
             success(res) {
                 console.log('获取用户的当前设置成功', res)
@@ -537,7 +548,7 @@ export class LoginView extends Dialog {
                         scope: 'scope.userInfo',
                         success () {
                             console.log('已获得获取用户信息的权限，开始获取用户信息')
-                            this.微信GetUserInfo(strGateSvrHost)
+                            thisLocal.微信GetUserInfo(strGateSvrHost)
                         },
                         fail() {
                             toast.showToast('获取用户信息隐私授权失败')
@@ -573,7 +584,7 @@ export class LoginView extends Dialog {
                     })
                 }else{
                     console.log('本来就已获得获取用户信息的权限，开始获取用户信息')
-                    this.微信GetUserInfo(strGateSvrHost)
+                    thisLocal.微信GetUserInfo(strGateSvrHost)
                 }
             },
             fail() {
