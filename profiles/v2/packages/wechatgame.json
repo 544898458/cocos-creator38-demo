@@ -18,7 +18,7 @@
       ],
       "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
       "startSceneAssetBundle": false,
-      "buildMode": "normal",
+      "buildMode": "bundle",
       "bundleConfigs": [],
       "mainBundleIsRemote": false,
       "name": "即时战略指挥",
@@ -33,7 +33,11 @@
           "cleanupImageCache": "inherit-project-setting"
         }
       },
-      "md5Cache": true
+      "md5Cache": true,
+      "binGroupConfig": {
+        "threshold": 16,
+        "enable": false
+      }
     },
     "taskOptionsMap": {
       "1734472901911": {

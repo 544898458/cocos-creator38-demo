@@ -138,6 +138,7 @@ export class LoginView extends Dialog {
         }else if(MainTest.是微信小游戏()){
             console.log('LoginView.onOpened,是微信小游戏')
             this.node跳转社区微信小游戏.active = true
+            this.editBox登录名.node.active = false //微信小游戏不支持输入昵称
             assetManager.loadRemote(encodeURI('https://www.rtsgame.online/公告/社区_微信小游戏.txt'), (err, textAsset: TextAsset) => {
                 console.log('resources.load callback:', err, textAsset)
                 this.richText社区.string = textAsset.text

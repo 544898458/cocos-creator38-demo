@@ -56,8 +56,8 @@
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "2025-8-29 20:30:42 build success in 1 min 46 s!",
-        "detailMessage": "builder:build-project-total (106464ms)\r",
+        "message": "2025-9-5 21:36:45 build success in 1 min 58 s!",
+        "detailMessage": "build task(网页h5) in 116925!\r",
         "options": {
           "name": "即时战略指挥",
           "server": "",
@@ -95,7 +95,7 @@
           ],
           "packages": {},
           "__version__": "1.3.6",
-          "buildMode": "normal",
+          "buildMode": "bundle",
           "logDest": "project://temp/builder/log/web-mobile2024-12-11 02-27.log",
           "overwriteProjectSettings": {
             "includeModules": {
@@ -117,9 +117,13 @@
           "wasmCompressionMode": false,
           "engineModulesConfigKey": "migrationsConfig",
           "mangleProperties": true,
-          "inlineEnum": true
+          "inlineEnum": true,
+          "binGroupConfig": {
+            "threshold": 16,
+            "enable": false
+          }
         },
-        "time": "2025-8-29 20:28:55",
+        "time": "2025-9-5 21:34:46",
         "dirty": false
       },
       "1734472901911": {
@@ -128,8 +132,8 @@
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "2025-8-30 10:49:51 build success in 2 min 15 s!",
-        "detailMessage": "Asset DB is resume!\r",
+        "message": "2025-9-6 00:13:57 build success in 33 s!",
+        "detailMessage": "// ---- build task 填充脚本数据到 settings.json ----\r",
         "options": {
           "name": "即时战略指挥",
           "server": "",
@@ -185,7 +189,7 @@
           "wasmCompressionMode": false,
           "packages": {},
           "__version__": "1.3.8",
-          "buildMode": "normal",
+          "buildMode": "bundle",
           "logDest": "project://temp/builder/log/wechatgame2024-12-18 06-01.log",
           "mangleProperties": false,
           "engineModulesConfigKey": "migrationsConfig",
@@ -195,7 +199,7 @@
             "enable": false
           }
         },
-        "time": "2025-8-30 10:47:36",
+        "time": "2025-9-6 00:13:23",
         "dirty": false
       },
       "1747025212998": {
@@ -540,17 +544,17 @@
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "2025-8-30 11:19:20 build success in 1 min 37 s!",
-        "detailMessage": "build task(抖音小游戏) in 97407!\r",
+        "message": "2025-9-6 00:41:18 build success in 31 s!",
+        "detailMessage": "getJsonPathInfo of image\r\r",
         "options": {
           "name": "即使战略指挥",
           "server": "https://www.rtsgame.online/bytedance/",
           "engineModulesConfigKey": "migrationsConfig",
           "platform": "bytedance-mini-game",
           "buildPath": "project://build",
-          "debug": false,
+          "debug": true,
           "buildMode": "normal",
-          "mangleProperties": false,
+          "mangleProperties": true,
           "md5Cache": true,
           "skipCompressTexture": false,
           "sourceMaps": false,
@@ -607,7 +611,7 @@
             "enable": false
           }
         },
-        "time": "2025-8-30 11:17:42",
+        "time": "2025-9-6 00:40:46",
         "dirty": false
       },
       "1754925332894": {

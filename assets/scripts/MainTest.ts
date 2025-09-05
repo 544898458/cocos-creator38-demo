@@ -619,36 +619,7 @@ export class MainTest extends Component {
                 state.speed = 0.8
                 old.skeletalAnimation.play()
             }
-        }
-        else if (old.view.name == '飞机') {
-            if (strClipName == 'idle' || strClipName == 'run') {
-                old.skeletalAnimation.play('flight_04')
-                let state = old.skeletalAnimation.getState('flight_04')
-                state.wrapMode = AnimationClip.WrapMode.Loop
-                state.playbackRange = { min: 0, max: 2 }
-                state.time = 0
-            } else if (strClipName == 'attack') {
-                old.skeletalAnimation.play('slide')
-                let state = old.skeletalAnimation.getState('slide')
-                state.wrapMode = AnimationClip.WrapMode.Normal
-                state.playbackRange = { min: 0, max: 1 }
-                state.time = 0
-            } else if (strClipName == 'died') {
-                old.skeletalAnimation.play('slide')
-                let state = old.skeletalAnimation.getState('slide')
-                state.wrapMode = AnimationClip.WrapMode.Normal
-                state.playbackRange = { min: 1, max: 2 }
-                state.time = 0
-
-                let pos地下 = old.skeletalAnimation.node.position.clone()
-                pos地下.y = -10
-                let quat: Quat = new Quat();
-                Quat.fromEuler(quat, 0, 180, 0);
-                tween(old.skeletalAnimation.node).to(1, { rotation: quat, position: pos地下 }).start()
-            }
-            // old.skeletalAnimation.play()
-        }
-        else {
+        }else {
             if (strClipName == 'Root|走路.001')
                 strClipName = 'Root|走路.001 '
 

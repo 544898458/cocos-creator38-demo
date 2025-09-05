@@ -235,11 +235,6 @@ export class NetMessage {
                     // old.initClipName = '平常状态'
                     // console.log('近战兵骨骼动画', old.skeletalAnimation)
                 }
-                else if (newNode.name == '飞机') {
-                    old.skeletalAnimation = newNode.getChildByName('p_plane_01').getComponent(SkeletalAnimation)
-                    old.initClipName = 'flight_04'
-                    // console.log('近战兵骨骼动画', old.skeletalAnimation)
-                }
                 else if (单位配置 && 单位配置.动画节点路径) {
                     let node = newNode.getChildByName(单位配置.动画节点路径)
                     if (!node) {
