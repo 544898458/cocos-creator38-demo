@@ -23,13 +23,13 @@
       }
     ],
     "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
-    "debug": true,
+    "debug": false,
     "startSceneAssetBundle": false,
     "bundleConfigs": [],
     "mainBundleIsRemote": false,
     "name": "即时战略指挥",
     "useBuiltinServer": false,
-    "nativeCodeBundleMode": "wasm",
+    "nativeCodeBundleMode": "both",
     "mangleProperties": true,
     "useSplashScreen": true,
     "overwriteProjectSettings": {
@@ -132,7 +132,7 @@
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "2025-9-6 00:13:57 build success in 33 s!",
+        "message": "2025-9-6 13:44:06 build success in 25 s!",
         "detailMessage": "// ---- build task 填充脚本数据到 settings.json ----\r",
         "options": {
           "name": "即时战略指挥",
@@ -199,7 +199,7 @@
             "enable": false
           }
         },
-        "time": "2025-9-6 00:13:23",
+        "time": "2025-9-6 13:43:40",
         "dirty": false
       },
       "1747025212998": {
@@ -544,15 +544,15 @@
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "2025-9-6 00:41:18 build success in 31 s!",
-        "detailMessage": "getJsonPathInfo of image\r\r",
+        "message": "2025-9-6 07:21:28 build success in 1 min 55 s!",
+        "detailMessage": "build task(抖音小游戏) in 115408!\r",
         "options": {
           "name": "即使战略指挥",
           "server": "https://www.rtsgame.online/bytedance/",
           "engineModulesConfigKey": "migrationsConfig",
           "platform": "bytedance-mini-game",
           "buildPath": "project://build",
-          "debug": true,
+          "debug": false,
           "buildMode": "normal",
           "mangleProperties": true,
           "md5Cache": true,
@@ -568,7 +568,7 @@
               "gfx-webgl2": "on"
             }
           },
-          "nativeCodeBundleMode": "wasm",
+          "nativeCodeBundleMode": "both",
           "polyfills": {
             "asyncFunctions": false
           },
@@ -611,7 +611,7 @@
             "enable": false
           }
         },
-        "time": "2025-9-6 00:40:46",
+        "time": "2025-9-6 07:19:32",
         "dirty": false
       },
       "1754925332894": {
