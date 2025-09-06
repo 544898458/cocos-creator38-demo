@@ -530,6 +530,31 @@ export class LoginView extends Dialog {
             },
             fail() {
                 toast.showToast('获取用户信息失败')
+                wx.showModal({
+                    content: '检测到您未开启获取用户信息的权限，是否去设置打开？',
+                    confirmText: "确认",
+                    cancelText: "取消",
+                    success: function (res) {
+                      console.log(res);
+                      //点击“确认”时打开设置页面
+                      if (res.confirm) {
+                        console.log('用户点击确认')
+                        wx.openSetting({
+                          success: (res) => { 
+                            console.log('打开设置页面成功', res)
+                          },
+                          fail: (res) => {
+                            toast.showToast('打开设置页面失败')
+                          },
+                          complete: (res) => {
+                            console.log('打开设置页面完成', res)
+                          }
+                        })
+                      } else {
+                        toast.showToast('用户点击取消')
+                      }
+                    }
+                  });
             },
             complete() {
                 console.log('获取用户信息完成')
@@ -544,45 +569,42 @@ export class LoginView extends Dialog {
             success(res) {
                 console.log('获取用户的当前设置成功', res)
                 if (!res.authSetting['scope.userInfo']) {
-                    console.log('没有获取用户信息的权限，准备发起授权')
-                    wx.authorize({//必须现在微信小游戏后台设置“隐私授权弹窗”，否则会失败
-                        scope: 'scope.userInfo',
-                        success () {
-                            console.log('已获得获取用户信息的权限，开始获取用户信息')
-                            thisLocal.微信GetUserInfo(strGateSvrHost)
-                        },
-                        fail() {
-                            toast.showToast('获取用户信息隐私授权失败')
-                            wx.showModal({
-                                content: '检测到您未开启获取用户信息的权限，是否去设置打开？',
-                                confirmText: "确认",
-                                cancelText: "取消",
-                                success: function (res) {
-                                  console.log(res);
-                                  //点击“确认”时打开设置页面
-                                  if (res.confirm) {
-                                    console.log('用户点击确认')
-                                    wx.openSetting({
-                                      success: (res) => { 
-                                        console.log('打开设置页面成功', res)
-                                      },
-                                      fail: (res) => {
-                                        toast.showToast('打开设置页面失败')
-                                      },
-                                      complete: (res) => {
-                                        console.log('打开设置页面完成', res)
-                                      }
-                                    })
-                                  } else {
-                                    toast.showToast('用户点击取消')
-                                  }
-                                }
-                              });
-                        },
-                        complete() {
-                            console.log('获取用户信息隐私授权完成')
+                    console.log('没有获取用户信息的权限，创建获取用户信息按钮')
+                    // thisLocal.微信GetUserInfo(strGateSvrHost)
+                    // wx.authorize({//必须现在微信小游戏后台设置“隐私授权弹窗”，否则会失败
+                    //     scope: 'scope.userInfo',
+                    //     success () {
+                    //         console.log('已获得获取用户信息的权限，开始获取用户信息')
+                    //         thisLocal.微信GetUserInfo(strGateSvrHost)
+                    //     },
+                    //     fail() {
+                    //         toast.showToast('获取用户信息隐私授权失败，强制调用：微信GetUserInfo')
+                    //         thisLocal.微信GetUserInfo(strGateSvrHost)
+                    //     },
+                    //     complete() {
+                    //         console.log('获取用户信息隐私授权完成')
+                    //     }
+                    // })
+                    const button = wx.createUserInfoButton({
+                        type: 'text',
+                        text: '授权获取昵称和头像',
+                        style: {
+                          left: (wx.getSystemInfoSync().windowWidth - 200) / 2,
+                          top: (wx.getSystemInfoSync().windowHeight - 200) / 2,
+                          width: 200,
+                          height: 200,
+                          lineHeight: 200,
+                          backgroundColor: '#8B4513',
+                          color: '#ffffff',
+                          textAlign: 'center',
+                          fontSize: 20,
+                          borderRadius: 10
                         }
-                    })
+                      })
+                      button.onTap((res) => {
+                        button.destroy()
+                        thisLocal.微信GetUserInfo(strGateSvrHost)
+                      })
                 }else{
                     console.log('本来就已获得获取用户信息的权限，开始获取用户信息')
                     thisLocal.微信GetUserInfo(strGateSvrHost)
