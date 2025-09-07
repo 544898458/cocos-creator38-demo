@@ -18,7 +18,7 @@
       ],
       "buildMode": "normal",
       "name": "即使战略指挥",
-      "nativeCodeBundleMode": "wasm",
+      "nativeCodeBundleMode": "both",
       "overwriteProjectSettings": {
         "includeModules": {
           "gfx-webgl2": "on"
@@ -34,7 +34,7 @@
         "threshold": 16,
         "enable": false
       },
-      "debug": true,
+      "debug": false,
       "mangleProperties": true
     },
     "options": {

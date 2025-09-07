@@ -81,8 +81,8 @@ export class 配置 {
 	}
 	读取1个配置文件<T>(strName: string, fun: (arr: Array<T>) => void) {
 
-		let url = 'https://www.rtsgame.online/配置/'	//版本32
-		// let url = 'https://www.rtsgame.online/配置2/'
+		// let url = 'https://www.rtsgame.online/配置/'	//版本32
+		let url = 'https://www.rtsgame.online/配置2/'	//改机场模型
 		assetManager.loadRemote(encodeURI(url + strName + '.yaml'), { ext: '.txt' },
 			(err, textAsset: TextAsset) => {
 				console.log(err, textAsset)
