@@ -83,12 +83,9 @@ Error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} Error: Error: M
 #### 问题解决
 * 没有贴图
 1. 左上层级管理器点击已经导入的fbx名称
-2. 在右侧属性检查器里，点击添加组件->mesh->SkinnedMeshBatchRenderer
-3. 将左下资源管理器的material拖到SkinnedMeshBatchRenderer，Material属性中，成功后Material数量从0变为1
-4. 选择蒙皮根：左上层级管理器中的模型根节点拖到SkinnedMeshBatchRenderer，蒙皮根属性中
-5. 选中左下资源管理器的fbx文件->material，右侧属性检查器 Pass 0 属性中，勾选USE ALBEDO MAP，在下方出现的DiffuseMap属性中选择正确的贴图
-6. material被修改后需要保存才能生效，右上角点击 绿色√ 保存
-7. 测试是否成功
+2. 选中左下资源管理器的fbx文件->material，右侧属性检查器 Pass 0 属性中，勾选USE ALBEDO MAP，在下方出现的DiffuseMap属性中选择正确的贴图
+3. material被修改后需要保存才能生效，右上角点击 绿色√ 保存
+4. 测试是否成功
 
 * 没有动画
 1. 左上层级管理器点击已经导入的fbx名称
