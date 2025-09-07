@@ -70,6 +70,33 @@ Error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} Error: Error: M
 7. 调试：直接在浏览器按 F12，在源代码文件内加断点
 8. 服务器代码在 https://gitee.com/griffon2/iocp20coroutine
 
+### 本地模型替换当前使用模型
+1. 使用cocos creater，将项目导入到本地
+2. 本地模型复制粘贴到项目中，如\assets\mapres\3D混元AI\机场  这样的位置
+3. 找到单位的prefeb文件，双击
+4. 在左上角层级管理器已经打开prefeb文件的前提下，找到第二步已经粘贴到项目的文件
+5. 将文件中的.prefeb文件拖到左上角层级管理器中
+6. 删除原本的模型
+7. 场景编辑器左上角，点击保存prefeb
+8. 运行测试
+
+#### 问题解决
+* 没有贴图
+1. 左上层级管理器点击已经导入的fbx名称
+2. 在右侧属性检查器里，点击添加组件->mesh->SkinnedMeshBatchRenderer
+3. 将左下资源管理器的material拖到SkinnedMeshBatchRenderer，Material属性中，成功后Material数量从0变为1
+4. 选择蒙皮根：左上层级管理器中的模型根节点拖到SkinnedMeshBatchRenderer，蒙皮根属性中
+5. 选中左下资源管理器的fbx文件->material，右侧属性检查器 Pass 0 属性中，勾选USE ALBEDO MAP，在下方出现的DiffuseMap属性中选择正确的贴图
+6. material被修改后需要保存才能生效，右上角点击 绿色√ 保存
+7. 测试是否成功
+
+* 没有动画
+1. 左上层级管理器点击已经导入的fbx名称
+2. 在右侧属性检查器里，找到SkeletalAnimation->剪辑列表，剪辑列表数量为0则没有动画
+3. 左下资源管理器中找到对应的动画，拖到剪辑列表中
+4. 保存prefeb
+
+
 ### 导出后端寻路文件的方法
 
 1. 地面y坐标0，高于或低于面的地方不可站立，无网格处不可站立
