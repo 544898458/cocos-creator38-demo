@@ -119,7 +119,14 @@ export class LoginView extends Dialog {
             this.richText公告.string = textAsset.text
         })
 
-        if (LoginView.是抖音小游戏()) {
+        if (MainTest.是华为快应用()) {
+            console.log('LoginView.onOpened,是华为快应用（花瓣轻游）')
+            assetManager.loadRemote(encodeURI('https://www.rtsgame.online/公告/社区_华为快应用.txt'), (err, textAsset: TextAsset) => {
+                console.log('resources.load callback:', err, textAsset)
+                this.richText社区.string = textAsset.text
+            })
+        }
+        else if (LoginView.是抖音小游戏()) {
             console.log('LoginView.onOpened,是抖音小游戏')
             this.node抖音小游戏面板.active = true
             this.node抖音侧边栏引导按钮.active = MainTest.b显示侧边栏引导按钮

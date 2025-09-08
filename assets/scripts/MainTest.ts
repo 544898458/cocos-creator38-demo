@@ -400,6 +400,9 @@ export class MainTest extends Component {
     static 是哔哩哔哩小游戏(): boolean {
         return typeof bl !== 'undefined' && bl != null
     }
+    static 是华为快应用(): boolean {
+        return window.hbs;  //华为花瓣轻游
+    }
     on关闭广告(b已看完激励视频广告 = false) {
         console.log('on关闭广告', this.fun关闭广告发消息, this)
         this.b已显示进战斗场景前的广告 = false

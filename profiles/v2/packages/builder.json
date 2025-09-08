@@ -618,10 +618,10 @@
         "type": "build",
         "id": "1754925332894",
         "progress": 1,
-        "state": "success",
+        "state": "failure",
         "stage": "build",
-        "message": "2025-8-14 22:25:19 build success in 1 min 17 s!",
-        "detailMessage": "Asset DB is resume!\r",
+        "message": "The build task was interrupted",
+        "detailMessage": "",
         "options": {
           "name": "即时战略指挥",
           "server": "",
@@ -691,8 +691,8 @@
         "id": "1755407078207",
         "progress": 1,
         "state": "success",
-        "stage": "build",
-        "message": "2025-8-17 15:06:56 build -> make success in 1 min 43 s!",
+        "stage": "make",
+        "message": "2025-9-8 23:06:04 make package D:\\UGit\\cocos-creator38-demo\\build\\huawei-quick-game success!",
         "detailMessage": "onAfterMake: root: D:\\UGit\\cocos-creator38-demo\\build\\huawei-quick-game, options: [object Object]\r",
         "options": {
           "name": "即时战略指挥",
@@ -700,7 +700,7 @@
           "engineModulesConfigKey": "migrationsConfig",
           "platform": "huawei-quick-game",
           "buildPath": "project://build",
-          "debug": true,
+          "debug": false,
           "buildMode": "normal",
           "mangleProperties": false,
           "md5Cache": false,
@@ -754,13 +754,12 @@
           "packages": {},
           "__version__": "1.3.9",
           "logDest": "project://temp/builder/log/huawei-quick-game2025-8-17 13-04.log",
-          "buildStageGroup": {
-            "build": [
-              "make"
-            ]
+          "binGroupConfig": {
+            "threshold": 16,
+            "enable": false
           }
         },
-        "time": "2025-8-17 15:05:12",
+        "time": "2025-9-8 23:03:25",
         "dirty": false
       }
     }
