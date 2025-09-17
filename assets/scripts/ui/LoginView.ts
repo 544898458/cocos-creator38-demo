@@ -212,7 +212,7 @@ export class LoginView extends Dialog {
                 0,
                 str登录名,
                 'Hello, world!pwd',
-                32,//版本号
+                33,//版本号
                 strWxLoginCode,
             ])
 
@@ -474,6 +474,33 @@ export class LoginView extends Dialog {
                 console.log("navigate to scene fail: 跳转到侧边栏失败", res);
             },
         });
+    }
+    on抖音添加桌面快捷方式(event: Event, customEventData: string): void {
+        console.log('on抖音添加桌面快捷方式')
+        tt.addShortcut({
+            success: (res) => {
+                toast.showToast("添加到桌面成功");
+            },
+            fail: (res) => {
+                toast.showToast("添加到桌面失败");
+            },
+            complete: (res) => {
+                console.log("添加到桌面完成", res);
+            },
+        });
+    }
+    on抖音小游戏站(event: Event, customEventData: string): void {
+        console.log('on抖音小游戏站')
+        tt.navigateToMiniProgram({
+            appId: 'ttc9e5bf5856eff54001',    // 小游戏站appid
+            // path: 'xxx',
+            success: (res) => {
+                toast.showToast("跳转到小游戏站成功");
+            },
+            fail: (res) => {
+                toast.showToast("跳转到小游戏站失败");
+            },
+          });
     }
     on哔哩哔哩首页侧边栏复访教育(event: Event, customEventData: string): void {
         console.log('on哔哩哔哩首页侧边栏复访教育')
