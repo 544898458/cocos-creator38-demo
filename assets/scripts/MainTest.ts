@@ -62,6 +62,11 @@ export class MainTest extends Component {
     static interstitialAd = null// 定义插屏广告    微信流量主
     static rewardedVideoAd// 定义激励视频广告
     static customAd// 定义原生模板广告
+    /**
+ *  推荐组件参考代码
+ *  核心由 pageManager实例 + openlink值 决定活动，开发者可根据下方代码自行适配
+ */
+ static recommendPageManager;
 
     fun关闭广告发消息: (boolean: boolean) => void
     b已显示进战斗场景前的广告: boolean = false
@@ -378,6 +383,33 @@ export class MainTest extends Component {
                     // }
                 })
                 console.log('MainTest.rewardedVideoAd', MainTest.rewardedVideoAd)
+            }
+
+            if (!MainTest.recommendPageManager) {
+                if(wx.createPageManager){
+                    MainTest.recommendPageManager = wx.createPageManager();
+                    MainTest.recommendPageManager.load({
+                        openlink: 'TWFRCqV5WeM2AkMXhKwJ03MhfPOieJfAsvXKUbWvQFQtLyyA5etMPabBehga950uzfZcH3Vi3QeEh41xRGEVFw',
+                    }).then((res: any) => {
+                        console.log(res);
+                    })
+                    MainTest.recommendPageManager.on(
+                        'show', // show | destroy | error
+                        () => {
+                            console.log('recommend component show.');
+                        },
+                    )
+                    MainTest.recommendPageManager.on(
+                        'destroy', // show | destroy | error
+                        (res) => {
+                            console.log('recommend component destroy：', res.isRecommended);
+                        },
+                    )
+                }
+                else
+                {
+                    console.log('微信推荐组件未初始化')
+                }
             }
     }
     static onSecen登录Load(): void {

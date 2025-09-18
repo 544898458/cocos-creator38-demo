@@ -330,6 +330,9 @@ export class LoginView extends Dialog {
             console.error(err);
         })
     }
+    onClick微信小游戏推荐给好友(event: Event, customEventData: string): void {
+        MainTest.recommendPageManager.show();
+    }
     onClick微信公众号(event: Event, customEventData: string): void {
         console.log('window.CC_WECHAT', (window as any).CC_WECHAT)
         if ((window as any).CC_WECHAT) {
@@ -493,7 +496,7 @@ export class LoginView extends Dialog {
         console.log('on抖音小游戏站')
         tt.navigateToMiniProgram({
             appId: 'ttc9e5bf5856eff54001',    // 小游戏站appid
-            // path: 'xxx',
+            path: 'pages/circle/index?appId=tt4b0f3db2d407a43a02',//页面路径path：可通过“开发者后台-运营能力-小游戏站-运营管理”生成对应的首页链接           https://partner.open-douyin.com/docs/resource/zh-CN/mini-game/develop/guide/open-ability/mini-game-station/tt-minigame-access#a055aad7
             success: (res) => {
                 toast.showToast("跳转到小游戏站成功");
             },
