@@ -119,7 +119,7 @@ Error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} Error: Error: M
 * 抠图：豆包AI
 * 地面纹理：夸克AI
 * 头像图片：文小言AI
-* 音乐：乌鸦Producer(QQ 2998975740)、电波暴击(QQ 1106551898)
+* 音乐：EinhornN7獬羽柏(QQ 2990490699)、乌鸦Producer(QQ 2998975740)、电波暴击(QQ 1106551898)
 * 音乐：SunoAI
 * 绑定/动作：mixamo.com
 * 绑定/动作：小白阿姨(QQ 3276812319)、九里庆安(QQ 284102069)
