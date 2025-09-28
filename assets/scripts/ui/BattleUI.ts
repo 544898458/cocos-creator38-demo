@@ -110,10 +110,10 @@ export class BattleUI extends Dialog {
     @property({ type: Node, displayName: "选中单位列表" })
     node_selectedList: Node
 
-    @property(Node)
-    node按钮详情: Node
-    @property(RichText)
-    richEdit按钮详情: RichText
+    @property(Node)node按钮详情: Node
+    @property(RichText)richEdit按钮详情: RichText
+    @property(RichText)richText战报排行榜: RichText
+
 
     lastTitle: Node
     b菱形框选: boolean = false //切换菱形框选和矩形框选两种模式
@@ -565,6 +565,37 @@ export class BattleUI extends Dialog {
         }
 
         this.uiTransform剧情对话退出面板.node.active = b显示退出面板
+    }
+    /**
+     * 通用的战报排行方法
+     * @param title 对话框标题
+     * @param urlSuffix URL后缀（击败单位数 或 被击败单位数）
+     * @param displayText 显示文本模板（共击败 或 共损失）
+     * @param playerField 玩家字段名（killer 或 victim）
+     */
+    private showBattleReportRanking(title: string, urlSuffix: string, displayText: string, playerField: 'killer' | 'victim'): void {
+        dialogMgr.openDialog(UI2Prefab.PopView_url, null, null, (dlg: Dialog): void => {
+            let popView = dlg.getComponent(PopView)
+            popView.label标题.string = title;
+            popView.richText内容.string = '请稍后……';
+            assetManager.loadRemote(encodeURI(`https://www.rtsgame.online/战报/战报排行_${MainTest.idSvr}_${MainTest.instance.战局}_${urlSuffix}.json`), (err, jsonAsset: JsonAsset) => {
+                console.log('resources.load callback:', err, jsonAsset)
+                let arrPlayerStats = jsonAsset.json as Array<{ killer: string, victim: string, count: number }>
+                popView.richText内容.string = arrPlayerStats.map(player => {
+                    const playerName = playerField === 'killer' ? player.killer : player.victim;
+                    return `${playerName}\t${displayText}${player.count}单位`
+                }).join('\n')
+                console.log(jsonAsset.json)
+            })
+        })
+    }
+
+    on按钮战报排行击败单位数(event: Event, customEventData: string) {
+        this.showBattleReportRanking('击败单位排行', '击败单位数', '共击败', 'killer');
+    }
+    
+    on按钮战报排行被击败单位数(event: Event, customEventData: string) {
+        this.showBattleReportRanking('被击败单位排行', '被击败单位数', '共损失', 'victim');
     }
 }
 
