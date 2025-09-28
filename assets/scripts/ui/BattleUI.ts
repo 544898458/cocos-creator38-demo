@@ -415,8 +415,8 @@ export class BattleUI extends Dialog {
             // node.position = new Vec3(0, 0 + i * 20, 0);
             node.addComponent(UITransform).anchorX = 0
             let label = node.addComponent(Label);
-            label.fontSize = 12;
-            label.lineHeight = 13;
+            label.fontSize = 10;
+            label.lineHeight = 11;
             label.color = new Color("#FFE86D");
             label.horizontalAlign = Label.HorizontalAlign.LEFT;
             label.string = `${key} x${value}`;
@@ -583,7 +583,7 @@ export class BattleUI extends Dialog {
                 let arrPlayerStats = jsonAsset.json as Array<{ killer: string, victim: string, count: number }>
                 popView.richText内容.string = arrPlayerStats.map(player => {
                     const playerName = playerField === 'killer' ? player.killer : player.victim;
-                    return `${playerName}\t${displayText}${player.count}单位`
+                    return `${playerName}\t${displayText} ${player.count} 单位`
                 }).join('\n')
                 console.log(jsonAsset.json)
             })
