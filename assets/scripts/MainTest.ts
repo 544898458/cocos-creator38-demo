@@ -494,6 +494,8 @@ export class MainTest extends Component {
             if (this.scene战斗.battleUI) {
                 this.scene战斗.battleUI.lable在线人数.string = Glob.str在线人数
                 this.scene战斗.battleUI.node按钮战报.active = b多人混战
+                this.scene战斗.battleUI.node按钮排行击败单位数.active = b多人混战
+                this.scene战斗.battleUI.node按钮排行损失单位数.active = b多人混战
             }
             else {
                 console.error('战斗UI未找到')

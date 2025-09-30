@@ -38,6 +38,8 @@ const { ccclass, property } = _decorator;
 export class BattleUI extends Dialog {
     @property(Node) node按钮设置: Node;
     @property(Node) node按钮战报: Node
+    @property(Node) node按钮排行击败单位数: Node
+    @property(Node) node按钮排行损失单位数: Node
     @property(Node) node按钮面板: Node
     @property(Node)
     下部列表: Node;
@@ -112,7 +114,6 @@ export class BattleUI extends Dialog {
 
     @property(Node)node按钮详情: Node
     @property(RichText)richEdit按钮详情: RichText
-    @property(RichText)richText战报排行榜: RichText
 
 
     lastTitle: Node
