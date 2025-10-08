@@ -749,9 +749,11 @@ export class Scene战斗 extends Component {
 
                     if (MainTest.Is活动单位(old.类型)) {
                         this.battleUI.button跟随.node.active = true
-                        this.battleUI.button强行走.node.active = true
                         this.battleUI.button原地坚守.node.active = true
                         this.battleUI.button巡逻.node.active = true
+                        
+                        if(old.类型 != 单位类型.房虫)
+                            this.battleUI.button强行走.node.active = true
                     }
 
                     switch (old.类型) {

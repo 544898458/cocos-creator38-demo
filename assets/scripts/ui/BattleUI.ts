@@ -596,7 +596,7 @@ export class BattleUI extends Dialog {
     }
     
     on按钮战报排行被击败单位数(event: Event, customEventData: string) {
-        this.showBattleReportRanking('被击败单位排行', '被击败单位数', '共损失', 'victim');
+        this.showBattleReportRanking('损失单位排行', '被击败单位数', '共损失', 'victim');
     }
 }
 
