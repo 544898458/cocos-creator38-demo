@@ -30,7 +30,7 @@ export class BattleMoude extends Component {
 
         if (Glob.websocket) {
             dispatcher.sendArray([
-                [MsgId.SelectRoles, ++Glob.sendMsgSn, 0],
+                [MsgId.SelectRoles, Glob.getSendMsgSn自增(), 0],
                 arr选中,//虽然是整数，但是也强制转成FLOAT64发出去了
                 BattleMoude._追加选中
             ]);

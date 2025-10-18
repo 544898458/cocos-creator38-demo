@@ -152,7 +152,7 @@ export class BattleUI extends Dialog {
         let 类型 = 单位类型[customEventData as keyof typeof 单位类型]
         BattleMoude.instance.fun点击地面创建消息 = (hitPoint: Vec3):object => {
             console.log('createMsg造建筑', hitPoint)
-            return [[MsgId.建筑产出活动单位的集结点, ++Glob.sendMsgSn, 0], [hitPoint.x, hitPoint.y, hitPoint.z], 类型]
+            return [[MsgId.建筑产出活动单位的集结点, Glob.getSendMsgSn自增(), 0], [hitPoint.x, hitPoint.y, hitPoint.z], 类型]
         }
         this.lable系统消息.string = '请点击地面设置此建筑产出活动单位的集结点'
         this.进入点击地面状态()
@@ -165,7 +165,7 @@ export class BattleUI extends Dialog {
         // }
         BattleMoude.instance.fun点击单位创建消息 = (entity: ClientEntityComponent, id:number):object => {
             console.log('createMsg跟随', entity, id)
-            return [[MsgId.跟随, ++Glob.sendMsgSn, 0], id]
+            return [[MsgId.跟随, Glob.getSendMsgSn自增(), 0], id]
         }
         this.lable系统消息.string = '请点击要跟随的目标单位'
         this.进入点击地面状态()
@@ -512,7 +512,7 @@ export class BattleUI extends Dialog {
             let arr = BattleMoude.instance.arr巡逻点.map(item => {
                 return [item.x, item.y, item.z]
             })
-            dispatcher.sendArray([[MsgId.巡逻, ++Glob.sendMsgSn, 0], arr])
+            dispatcher.sendArray([[MsgId.巡逻, Glob.getSendMsgSn自增(), 0], arr])
         }
         
         this.恢复战斗界面() 

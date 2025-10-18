@@ -5,7 +5,12 @@ export class Glob {
     public static myNickName: String = null;
 
     public static websocket: WebSocket;
-    public static sendMsgSn: number = 0;
+    private static sendMsgSn: number = 0;
+    public static getSendMsgSn自增(): number {
+        ++this.sendMsgSn;
+        this.sendMsgSn %= 256;
+        return this.sendMsgSn;
+    }
     public static recvMsgSn: number = 0;
     public static recvMsgSnGameSvr: number = 0
     public static recvMsgSnWorldSvr: number = 0;

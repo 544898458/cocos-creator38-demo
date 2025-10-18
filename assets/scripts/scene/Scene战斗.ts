@@ -375,7 +375,7 @@ export class Scene战斗 extends Component {
                 }
                 if (this.battleUI.b菱形框选) {
                     dispatcher.sendArray([
-                        [MsgId.框选, ++Glob.sendMsgSn, 0],
+                        [MsgId.框选, Glob.getSendMsgSn自增(), 0],
                         [this.posWorld框选起始点.x, this.posWorld框选起始点.z],
                         [item.hitPoint.x, item.hitPoint.z]
                     ])
@@ -394,7 +394,7 @@ export class Scene战斗 extends Component {
                         }
                     })
                     dispatcher.sendArray([
-                        [MsgId.SelectRoles, ++Glob.sendMsgSn, 0],
+                        [MsgId.SelectRoles, Glob.getSendMsgSn自增(), 0],
                         arr选中//虽然是整数，但是也强制转成FLOAT64发出去了
                     ])
                 }
@@ -553,7 +553,7 @@ export class Scene战斗 extends Component {
             let id = this.entityId[item.collider.node.uuid]
 
             dispatcher.sendArray([
-                [MsgId.采集, ++Glob.sendMsgSn, 0],
+                [MsgId.采集, Glob.getSendMsgSn自增(), 0],
                 id
             ])
         }
@@ -563,7 +563,7 @@ export class Scene战斗 extends Component {
 
             let idMsg = entity.类型 == 单位类型.地堡 ? MsgId.出地堡 : MsgId.出房虫
             dispatcher.sendArray([
-                [idMsg, ++Glob.sendMsgSn, 0],
+                [idMsg, Glob.getSendMsgSn自增(), 0],
                 id
             ])
         }
@@ -576,7 +576,7 @@ export class Scene战斗 extends Component {
                 this.请求选中此单位(item.collider.node)
             } else
                 dispatcher.sendArray([
-                    [idMsg, ++Glob.sendMsgSn, 0],
+                    [idMsg, Glob.getSendMsgSn自增(), 0],
                     id,
                     [0.0]
                 ])

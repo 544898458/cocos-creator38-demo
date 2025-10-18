@@ -208,7 +208,7 @@ export class LoginView extends Dialog {
             this.lableMessage.string = "连接成功，请等待登录结果……"
             console.log(this.lableMessage.string)
             dispatcher.sendArray([
-                [MsgId.Login, ++Glob.sendMsgSn],
+                [MsgId.Login, Glob.getSendMsgSn自增()],
                 0,
                 str登录名,
                 'Hello, world!pwd',

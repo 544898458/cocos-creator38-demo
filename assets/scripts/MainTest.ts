@@ -159,7 +159,7 @@ export class MainTest extends Component {
     }
     createMsg造建筑(hitPoint: Vec3, 类型: 单位类型) {
         console.log('createMsg造建筑', hitPoint)
-        return [[MsgId.AddBuilding, ++Glob.sendMsgSn, 0], 类型, [hitPoint.x, hitPoint.y, hitPoint.z]]
+        return [[MsgId.AddBuilding, Glob.getSendMsgSn自增(), 0], 类型, [hitPoint.x, hitPoint.y, hitPoint.z]]
     }
     on点击按钮_造建筑(类型: 单位类型) {
         BattleMoude.instance.fun点击地面创建消息 = (hitPoint: Vec3) => this.createMsg造建筑(hitPoint, 类型)
@@ -168,7 +168,7 @@ export class MainTest extends Component {
         this.scene战斗.battleUI.进入点击地面状态()
     }
     on升级单位属性(单位: 单位类型, 属性: 属性类型) {
-        dispatcher.sendArray([[MsgId.升级单位属性, ++Glob.sendMsgSn, 0], 单位, 属性])
+        dispatcher.sendArray([[MsgId.升级单位属性, Glob.getSendMsgSn自增(), 0], 单位, 属性])
     }
     onClickAdd基地(event: Event, customEventData: string): void {
         this.on点击按钮_造建筑(单位类型.基地)
@@ -548,11 +548,11 @@ export class MainTest extends Component {
     }
     onClick获取别人的个人战局列表(event: Event, customEventData: string) {
         console.log(event, customEventData)
-        dispatcher.sendArray([[MsgId.玩家个人战局列表, ++Glob.sendMsgSn, 0, 0]])
+        dispatcher.sendArray([[MsgId.玩家个人战局列表, Glob.getSendMsgSn自增(), 0, 0]])
     }
     onClick获取别人的多人战局列表(event: Event, customEventData: string) {
         console.log(event, customEventData)
-        dispatcher.sendArray([[MsgId.玩家多人战局列表, ++Glob.sendMsgSn, 0, 0]])
+        dispatcher.sendArray([[MsgId.玩家多人战局列表, Glob.getSendMsgSn自增(), 0, 0]])
     }
     onClick进入别人的个人战局(event: Event, customEventData: string) {
         console.log(event, customEventData)
@@ -746,17 +746,17 @@ export class MainTest extends Component {
             return
         }
         dispatcher.sendArray([
-            [MsgId.出地堡, ++Glob.sendMsgSn, 0],
+            [MsgId.出地堡, Glob.getSendMsgSn自增(), 0],
             BattleMoude._arr选中[0]
         ])
     }
 
     createMsg太岁分裂(hitPoint: Vec3) {
         console.log('createMsg太岁分裂', hitPoint)
-        return [[MsgId.太岁分裂, ++Glob.sendMsgSn, 0], [hitPoint.x, hitPoint.y, hitPoint.z]]
+        return [[MsgId.太岁分裂, Glob.getSendMsgSn自增(), 0], [hitPoint.x, hitPoint.y, hitPoint.z]]
     }
     send原地坚守() {
-        dispatcher.sendArray([[MsgId.原地坚守, ++Glob.sendMsgSn, 0]])
+        dispatcher.sendArray([[MsgId.原地坚守, Glob.getSendMsgSn自增(), 0]])
     }
     onClickSay(str: string) {
         if (str.length == 0)
@@ -777,7 +777,7 @@ export class MainTest extends Component {
         }
     }
     onClick空闲工程车() {
-        dispatcher.sendArray([[MsgId.切换空闲工程车, ++Glob.sendMsgSn, 0]])
+        dispatcher.sendArray([[MsgId.切换空闲工程车, Glob.getSendMsgSn自增(), 0]])
     }
     onClick解锁近战兵() {
         this.解锁单位(单位类型.近战兵)
@@ -786,13 +786,13 @@ export class MainTest extends Component {
         this.解锁单位(单位类型.枪虫)
     }
     onClick删除自己的单位() {
-        dispatcher.sendArray([[MsgId.删除自己的单位, ++Glob.sendMsgSn, 0]])
+        dispatcher.sendArray([[MsgId.删除自己的单位, Glob.getSendMsgSn自增(), 0]])
     }
     onClick剧情对话全屏点击() {
-        dispatcher.sendArray([[MsgId.剧情对话已看完, ++Glob.sendMsgSn, 0]])
+        dispatcher.sendArray([[MsgId.剧情对话已看完, Glob.getSendMsgSn自增(), 0]])
     }
     解锁单位(单位: 单位类型) {
-        dispatcher.sendArray([[MsgId.解锁单位, ++Glob.sendMsgSn, 0], 单位])
+        dispatcher.sendArray([[MsgId.解锁单位, Glob.getSendMsgSn自增(), 0], 单位])
     }
     static Is活动单位(类型: 单位类型): boolean {
         return 单位类型.活动单位Min非法 < 类型 && 类型 < 单位类型.活动单位Max非法;
