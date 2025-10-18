@@ -714,10 +714,7 @@ export class NetMessage {
         Glob.websocket?.close();
         Glob.websocket = null;
 
-        Glob.recvMsgSnGameSvr = 0;
-        Glob.recvMsgSnWorldSvr = 0;
-        Glob.recvMsgSn = 0;
-        Glob.sendMsgSn = 0;
+        Glob.清零网络数据包序号()
 
         dispatcher.emit(EC.SHOW_LOGIN_UI);
     }
