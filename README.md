@@ -104,7 +104,17 @@ Error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} Error: Error: M
 4. 保存prefeb
 
 ### 导出后端寻路文件的方法
+#### 安装插件
+根据文档 https://gitee.com/carlosyzy/carlosyzy_extensions_mesh/blob/master/README.zh-CN.md
+进入 extensions\extensions_mesh 然后执行
+```
+# 安装依赖模块
+npm install
+# 构建
+npm run build
+```
 
+#### 导出
 1. 地面y坐标0，高于或低于面的地方不可站立，无网格处不可站立
 2. 选中要导出的场景，必须双击选中打开“scene四方对战”
 3. 菜单，扩展，杨宗保，网格
@@ -132,6 +142,17 @@ Error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} Error: Error: M
 * 语音：若有道心(QQ 1602576119)、潭(QQ 1514475926)、<span style="color: #a0ff50">* 凌枭(QQ 2862703087)</span>
 * 程序：火凤凰(QQ 75187631)、<span style="color:#a0ff50">江沉晚吟时(QQ 3380125833)</span>
 * 程序：庄园(QQ 2516080307)、kunnka(QQ 954436840)、樱木花道(QQ 251949672)
+
+### 第三方库（视同贡献者）
+* https://gitee.com/carlosyzy/carlosyzy_extensions_mesh
+* https://github.com/microsoft/proxy
+* https://github.com/google/glog
+* https://github.com/open-source-parsers/jsoncpp
+* https://github.com/recastnavigation/recastnavigation
+* https://github.com/YunYouJun/cocos-creator-joystick
+* https://gitee.com/wcp_code/websocketfiles
+* openssl-3.4.0
+* msgpack-c-cpp-2.1.2
 
 ### 协议
 
