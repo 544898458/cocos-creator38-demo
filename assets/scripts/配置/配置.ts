@@ -1,8 +1,9 @@
-import { TextAsset } from 'cc';
-import { assetManager } from 'cc';
+import { TextAsset } from 'cc'
+import { assetManager } from 'cc'
 import { parse } from 'yaml'
-import { 单位类型, 属性类型, 战局类型 } from '../utils/Enum';
-
+import { 单位类型, 属性类型, 战局类型 } from '../utils/Enum'
+import url配置1 from './此游戏专用配置'
+import url配置2 from './此游戏专用配置'
 export class 动作 {
 	名字或索引: string
 	播放速度: number
@@ -70,6 +71,7 @@ export class 配置 {
 	arr建筑单位: Array<建筑单位配置>
 	arr单位属性等级: Array<单位属性等级配置>
 	arr战局: Array<战局配置>
+	static 正在下载的配置文件数量: number = 0
 	读取配置文件() {
 		this.读取1个配置文件<单位配置>('单位', (arr) => this.arr单位 = arr)
 		this.读取1个配置文件<战斗配置>('战斗', (arr) => this.arr战斗 = arr)
@@ -80,15 +82,17 @@ export class 配置 {
 		this.读取1个配置文件<战局配置>('战局', (arr) => this.arr战局 = arr)
 	}
 	读取1个配置文件<T>(strName: string, fun: (arr: Array<T>) => void) {
-
-		// let url = 'https://www.rtsgame.online/配置/'	//改兵营模型	版本35
-		let url = 'https://www.rtsgame.online/配置2/'	//虫族反防空战	版本36
+		++配置.正在下载的配置文件数量
+		// let url = url配置1	//改兵营模型	版本35
+		let url = url配置1	//虫族反防空战	版本36
 		assetManager.loadRemote(encodeURI(url + strName + '.yaml'), { ext: '.txt' },
 			(err, textAsset: TextAsset) => {
 				console.log(err, textAsset)
 				let arr = parse(textAsset.text) as Array<T>;
 				arr.forEach((配置: T) => { console.log(配置) })
 				fun(arr)
+				--配置.正在下载的配置文件数量
+				console.log('配置.正在下载的配置文件数量', 配置.正在下载的配置文件数量)
 			})
 	}
 	find战斗(类型: 单位类型): 战斗配置 {

@@ -23,6 +23,7 @@ import { Toggle } from 'cc';
 import { dialogMgr } from '../manager/DialogManager';
 import { UI2Prefab } from '../autobind/UI2Prefab';
 import { ToggleContainer } from 'cc';
+import { 配置 } from '../配置/配置';
 const { ccclass, property } = _decorator;
 declare const tt: any;
 @ccclass('LoginView')
@@ -171,6 +172,10 @@ export class LoginView extends Dialog {
     }
     //点击登录
     onClickLogin(event: Event, customEventData: string) {
+        if(配置.正在下载的配置文件数量 > 0){
+            toast.showToast(配置.正在下载的配置文件数量 + '个配置文件正在下载，请稍后再试')
+            return
+        }
         if(MainTest.是微信小游戏()){
             this.on微信小游戏登录(customEventData)
             return
