@@ -50,6 +50,8 @@ export class LoginView extends Dialog {
     node个人战局按钮模板: Node
     @property({ type: Node })
     node多人战局面板: Node
+    @property({ type: Node })
+    node音乐鉴赏面板: Node
 
     @property({ type: Node })
     node跳转社区浏览器H5: Node
@@ -72,9 +74,11 @@ export class LoginView extends Dialog {
     richText排行榜内容: RichText
     @property(ToggleContainer)
     toggle排行榜战局类型: ToggleContainer
+    @property(ToggleContainer) toggle音乐所有: ToggleContainer
+    @property(Node) node音乐一曲模板: Node
+    @property(RichText) richText音乐详情: RichText
 
     @property(Node) node登录面板: Node
-    @property(Node) node选择单人多人: Node
 
     fun玩家战局列表返回上一级: () => void
 
@@ -659,5 +663,47 @@ export class LoginView extends Dialog {
                 console.log('获取用户的当前设置完成')
             }
         });
-    }   
+    }
+    on音乐鉴赏(event: Event, customEventData: string): void {
+        console.log('on音乐鉴赏')
+        this.node音乐鉴赏面板.active = true
+        this.node选择单人或多人.active = false
+        
+        this.toggle音乐所有.node.removeAllChildren()
+        MainTest.instance.配置.arr音乐.forEach(音乐 => {
+            let node一曲 = instantiate(this.node音乐一曲模板)
+            node一曲.active = true
+            node一曲.getChildByName('Label').getComponent(Label).string = 音乐.名字
+            const clickEventHandler = new LoginView.EventHandler();
+            clickEventHandler.target = this.node; // 这个 node 节点是你的事件处理代码组件所属的节点
+            clickEventHandler.component = 'LoginView';// 这个是脚本类名
+            clickEventHandler.handler = 'onToggle音乐播放';
+            clickEventHandler.customEventData = 音乐.编号.toString();
+            let toggle = node一曲.getComponent(Toggle)
+            toggle.clickEvents.push(clickEventHandler)
+            if(this.toggle音乐所有.node.children.length == 0){
+                // if(toggle.isChecked)
+                    this.onToggle音乐播放(null, 音乐.编号.toString())
+                // else
+                    toggle.isChecked = true
+            }
+            this.toggle音乐所有.node.addChild(node一曲)
+        })
+    }
+    on音乐鉴赏返回上一级(event: Event, customEventData: string): void {
+        console.log('on音乐鉴赏返回上一级')
+
+        this.node音乐鉴赏面板.active = false
+        this.node选择单人或多人.active = true
+    }
+    onToggle音乐播放(event: Event, customEventData: string): void {
+        console.log('on音乐鉴赏一曲')
+        let 音乐配置 = MainTest.instance.配置.find音乐(parseInt(customEventData))
+        console.log('音乐', 音乐配置)
+        if (音乐配置) {
+            console.log('音乐', 音乐配置)
+            MainTest.instance.播放音乐(音乐配置.Https音乐)
+            this.richText音乐详情.string = `<size=12>曲名：\n</size><size=18>${音乐配置.名字}</size>\n\n<size=12>作者：\n</size>${音乐配置.作者}\n\n<size=12>版权：\n</size>${音乐配置.版权}`
+        }
+    }
 }

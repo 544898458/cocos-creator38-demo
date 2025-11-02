@@ -445,7 +445,7 @@ export class MainTest extends Component {
     }
 
     进Scene战斗(sceneName: string, idMsg: MsgId, id副本: 战局类型, str房主昵称: string = '', b多人混战: boolean = false) {
-        this.scene登录.node选择单人多人.active = false
+        this.scene登录.node选择单人或多人.active = false
         this.dialogMgr.closeDialog(UI2Prefab.LoginView_url);
         // this.scene登录.onDestroy()
         // this.scene登录.main = null

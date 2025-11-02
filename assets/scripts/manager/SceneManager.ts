@@ -20,7 +20,7 @@ class LoginMgr {
         dialogMgr.openDialog(UI2Prefab.LoginView_url, null, null, (dlg: Dialog): void => {
             let loginView = dlg.getComponent(LoginView)
             if (Glob.websocket) {
-                loginView.node选择单人多人.active = true
+                loginView.node选择单人或多人.active = true
                 loginView.node登录面板.active = false
             }
         })
