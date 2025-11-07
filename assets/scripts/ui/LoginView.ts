@@ -24,10 +24,15 @@ import { dialogMgr } from '../manager/DialogManager';
 import { UI2Prefab } from '../autobind/UI2Prefab';
 import { ToggleContainer } from 'cc';
 import { 配置 } from '../配置/配置';
+import { Sprite } from 'cc';
+import { ImageAsset } from 'cc';
+import { SpriteFrame } from 'cc';
 const { ccclass, property } = _decorator;
 declare const tt: any;
 @ccclass('LoginView')
 export class LoginView extends Dialog {
+    @property({ type: Sprite })
+    sprite背景大图: Sprite
     @property({ type: EditBox })
     editBox登录名: EditBox
     @property({ type: Node, displayName: "主页面" })
@@ -295,6 +300,11 @@ export class LoginView extends Dialog {
             case 种族.虫:
                 this.node单人战局列表_虫.active = true
                 MainTest.instance.播放音乐(Glob.strHttps虫族主题音乐MP3)
+                assetManager.loadRemote(encodeURI('https://www.rtsgame.online/图片/界面/房虫与黄色行星 豆包AI 游戏背景大图.jpg'),
+                (err, imageAsset: ImageAsset) => {
+                    console.log('resources.load callback:', err, imageAsset)
+                    this.sprite背景大图.spriteFrame = SpriteFrame.createWithImage(imageAsset);
+                })
                 break
             default:
                 toast.showToast('种族' + 已选择种族 + '未开放')
