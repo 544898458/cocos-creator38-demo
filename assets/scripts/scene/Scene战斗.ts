@@ -112,12 +112,23 @@ export class ClientEntityComponent {
     }
     判断是否同玩家名着色单位() {
         if (Glob.myNickName != null) {
-            if (this.nickName != Glob.myNickName) {
-                this.labelName.color = new Color(255, 100, 100);
+            if(this.nickName.length == 0){
+                this.labelName.color = new Color(255, 50, 50)//怪
+                return
             }
-            else {
-                this.labelName.color = new Color(100, 255, 100);
+
+            if (this.nickName == Glob.myNickName){
+                this.labelName.color = new Color(100, 255, 100);//自己
+                return
             }
+
+            let 配置 = MainTest.instance.配置.find战局(MainTest.instance.战局)
+            if (配置 && 配置.玩家同阵营) {
+                this.labelName.color = new Color(50, 255, 50);//友方玩家
+                return
+            }
+
+            this.labelName.color = new Color(255, 100, 100);//敌方玩家
         }
     }
 }

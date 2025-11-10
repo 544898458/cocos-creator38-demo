@@ -60,6 +60,7 @@ export class 战局配置 {
 	Https音乐: string
 	MeshRenderer路径: string
 	Https高清贴图: string
+	玩家同阵营: boolean
 }
 export class 音乐配置 {
 	编号: number
