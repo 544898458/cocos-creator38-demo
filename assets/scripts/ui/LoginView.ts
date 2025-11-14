@@ -296,6 +296,11 @@ export class LoginView extends Dialog {
             case 种族.人:
                 this.node单人战局列表_人.active = true
                 MainTest.instance.播放音乐(Glob.strHttps人类主题音乐MP3)
+                assetManager.loadRemote(encodeURI('https://www.rtsgame.online/图片/界面/工程车采集绿色燃气矿.jpg'),
+                (err, imageAsset: ImageAsset) => {
+                    console.log('resources.load callback:', err, imageAsset)
+                    this.sprite背景大图.spriteFrame = SpriteFrame.createWithImage(imageAsset);
+                })
                 break
             case 种族.虫:
                 this.node单人战局列表_虫.active = true
