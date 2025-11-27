@@ -598,6 +598,42 @@ export class BattleUI extends Dialog {
     on按钮战报排行被击败单位数(event: Event, customEventData: string) {
         this.showBattleReportRanking('损失单位排行', '被击败单位数', '共损失', 'victim');
     }
+    on全选战斗单位() {
+        let arr选中: number[] = []
+        let vec3中心点 = new Vec3(0, 0, 0)
+        MainTest.instance.scene战斗.entities.forEach((entity, id, _) => {
+            if(entity.nickName != Glob.myNickName)
+                return
+
+            if(!MainTest.Is活动单位(entity.类型))
+                return
+
+            switch(entity.类型)
+            {
+                case 单位类型.幼虫:
+                case 单位类型.房虫:
+                case 单位类型.工虫:
+                case 单位类型.工程车:
+                    return
+                default:
+                    break
+            }
+            arr选中.push(id)
+            vec3中心点.add(entity.position)
+            console.log('vec3中心点', entity.position, entity.prefabName)
+        })
+        
+        if(0 >= arr选中.length)
+            return
+
+        vec3中心点.divide3f(arr选中.length, arr选中.length, arr选中.length)
+        MainTest.instance.scene战斗.视口对准此处(vec3中心点)
+
+        dispatcher.sendArray([
+            [MsgId.SelectRoles, Glob.getSendMsgSn自增(), 0],
+            arr选中//虽然是整数，但是也强制转成FLOAT64发出去了
+        ])
+    }
 }
 
 
