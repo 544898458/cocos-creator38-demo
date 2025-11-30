@@ -623,8 +623,11 @@ export class BattleUI extends Dialog {
             console.log('vec3中心点', entity.position, entity.prefabName)
         })
         
-        if(0 >= arr选中.length)
+        if(0 >= arr选中.length){
+            AudioMgr.inst.playOneShot('BUZZ');
+            this.lable系统消息.string = '没有可移动的战斗单位'
             return
+        }
 
         vec3中心点.divide3f(arr选中.length, arr选中.length, arr选中.length)
         MainTest.instance.scene战斗.视口对准此处(vec3中心点)
