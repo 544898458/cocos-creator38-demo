@@ -8,7 +8,7 @@
       "asyncFunctions": false
     },
     "buildPath": "project://build",
-    "outputName": "huawei-quick-game",
+    "outputName": "bytedance-mini-game",
     "mainBundleCompressionType": "merge_dep",
     "platform": "huawei-quick-game",
     "scenes": [
@@ -542,13 +542,13 @@
       "1753810040471": {
         "type": "build",
         "id": "1753810040471",
-        "progress": 0.2090909090909091,
-        "state": "processing",
+        "progress": 1,
+        "state": "success",
         "stage": "build",
-        "message": "构建引擎脚本 start...",
-        "detailMessage": "[buildEngineCommand]Module source \"cc\":\rexport * from 'C:\\\\ProgramData\\\\cocos\\\\editors\\\\Creator\\\\3.8.7\\\\resources\\\\resources\\\\3d\\\\engine\\\\exports\\\\2d.ts';\rexport * from 'C:\\\\ProgramData\\\\cocos\\\\editor...",
+        "message": "2025-11-30 13:47:54 build success in 2 min 21 s!",
+        "detailMessage": "build task(抖音小游戏) in 141434!\r",
         "options": {
-          "name": "即使战略指挥",
+          "name": "即时战略指挥",
           "server": "https://www.rtsgame.online/bytedance/",
           "engineModulesConfigKey": "migrationsConfig",
           "platform": "bytedance-mini-game",
@@ -590,7 +590,7 @@
           "bundleCommonChunk": false,
           "packAutoAtlas": true,
           "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
-          "outputName": "bytedance-mini-game-001",
+          "outputName": "bytedance-mini-game",
           "taskName": "抖音小游戏",
           "scenes": [
             {

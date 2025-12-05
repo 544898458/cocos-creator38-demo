@@ -381,6 +381,30 @@ export class LoginView extends Dialog {
             this.lableMessage.string = '请搜索公众号：<color=#ffff00>即时战略指挥</color>'
         }
     }
+    onClick机甲合金幸存者(event: Event, customEventData: string): void {
+        console.log('window.CC_WECHAT', (window as any).CC_WECHAT)
+        if ((window as any).CC_WECHAT) {
+            // 调用微信小游戏的跳转方法
+            wx.navigateToMiniProgram({
+                appId: 'wx57e5c006d2ac186e', 
+                path: '', 
+                extraData: {
+                    // 可以传递额外的数据，如果需要
+                },
+                success(res: any) {
+                    // 跳转成功后的回调
+                    console.log('跳转成功', res);
+                },
+                fail(res: any) {
+                    // 跳转失败后的回调
+                    console.log('跳转失败', res);
+                }
+            });
+
+        } else {
+            this.lableMessage.string = '请搜索小游戏：<color=#ffff00>机甲合金幸存者</color>'
+        }
+    }
     onClick玩家QQ群(event: Event, customEventData: string): void {
         //在这里获取链接
         //https://qun.qq.com/#/handy-tool/join-group
