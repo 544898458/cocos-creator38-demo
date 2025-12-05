@@ -386,7 +386,7 @@ export class LoginView extends Dialog {
         if ((window as any).CC_WECHAT) {
             // 调用微信小游戏的跳转方法
             wx.navigateToMiniProgram({
-                appId: 'wx57e5c006d2ac186e', 
+                appId: 'wx59bbdd6bf1e0c9ac', 
                 path: '', 
                 extraData: {
                     // 可以传递额外的数据，如果需要
