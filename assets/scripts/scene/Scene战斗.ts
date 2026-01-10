@@ -128,7 +128,7 @@ export class ClientEntityComponent {
                 return
             }
 
-            this.labelName.color = new Color(255, 35, 35);//敌方玩家
+            this.labelName.color = new Color(255, 50, 50);//敌方玩家
         }
     }
 }
