@@ -1,0 +1,48 @@
+locale: en-US
+items:
+  - - GameName
+    - key: GameName
+      value: RTS Command
+      type: 2
+      isVariant: false
+      associations:
+        - sceneUuid: 1df7d620-667f-482f-831a-4531d0430501
+          nodeUuid: aaMzzPCeVAH7bKLIUL3wzk
+          reference: 1df7d620-667f-482f-831a-4531d0430501
+        - sceneUuid: 1df7d620-667f-482f-831a-4531d0430501
+          nodeUuid: aaMzzPCeVAH7bKLIUL3wzk
+          reference: 1df7d620-667f-482f-831a-4531d0430501
+      _variants: []
+  - - MainSvr
+    - key: MainSvr
+      value: Main Svr
+      type: 2
+      isVariant: false
+      associations:
+        - sceneUuid: 1df7d620-667f-482f-831a-4531d0430501
+          nodeUuid: 43A/QLn6BK2Z5I2uwJAokY
+          reference: 1df7d620-667f-482f-831a-4531d0430501
+        - sceneUuid: 1df7d620-667f-482f-831a-4531d0430501
+          nodeUuid: 43A/QLn6BK2Z5I2uwJAokY
+          reference: 1df7d620-667f-482f-831a-4531d0430501
+      _variants: []
+  - - TestSvr
+    - key: TestSvr
+      value: Test Svr
+      type: 2
+      isVariant: false
+      associations:
+        - sceneUuid: 1df7d620-667f-482f-831a-4531d0430501
+          nodeUuid: 68Fwi2hg9ND6PE6qvmYZP5
+          reference: 1df7d620-667f-482f-831a-4531d0430501
+        - sceneUuid: 1df7d620-667f-482f-831a-4531d0430501
+          nodeUuid: 68Fwi2hg9ND6PE6qvmYZP5
+          reference: 1df7d620-667f-482f-831a-4531d0430501
+      _variants: []
+languageConfig:
+  bcp47Tag: en-US
+  providerTag: en
+  translateFinished: 16
+  translateTotal: 27
+  compileFinished: 0
+  compileTotal: 3

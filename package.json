@@ -2,7 +2,13 @@
   "name": "cocos-creator38-demo",
   "uuid": "8032a2d2-61a3-4536-a71a-7fbfdb3f0291",
   "creator": {
-    "version": "3.8.8"
+    "version": "3.8.8",
+    "registry": {
+      "remote": {}
+    },
+    "dependencies": {
+      "localization-editor": "1.0.4"
+    }
   },
   "dependencies": {
     "@gltf-transform/core": "^4.2.1",
