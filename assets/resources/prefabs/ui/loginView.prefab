@@ -28,14 +28,14 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 1456
+        "__id__": 1457
       },
       {
-        "__id__": 1458
+        "__id__": 1459
       }
     ],
     "_prefab": {
-      "__id__": 1460
+      "__id__": 1461
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -287,17 +287,17 @@
         "__id__": 1365
       },
       {
-        "__id__": 1423
+        "__id__": 1424
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 1453
+        "__id__": 1454
       }
     ],
     "_prefab": {
-      "__id__": 1455
+      "__id__": 1456
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -9171,7 +9171,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 150,
+      "width": 160,
       "height": 80
     },
     "_anchorPoint": {
@@ -33185,23 +33185,23 @@
         "__id__": 1366
       },
       {
-        "__id__": 1391
+        "__id__": 1390
       },
       {
-        "__id__": 1406
+        "__id__": 1407
       },
       {
-        "__id__": 1414
+        "__id__": 1415
       }
     ],
     "_active": false,
     "_components": [
       {
-        "__id__": 1420
+        "__id__": 1421
       }
     ],
     "_prefab": {
-      "__id__": 1422
+      "__id__": 1423
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -33261,7 +33261,7 @@
       }
     ],
     "_prefab": {
-      "__id__": 1390
+      "__id__": 1389
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -33628,8 +33628,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 164.443359375,
-      "height": 50.4
+      "width": 162,
+      "height": 37.9
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -33664,14 +33664,14 @@
       "b": 255,
       "a": 255
     },
-    "_string": "单位介绍(人)和平2",
+    "_string": "单位介绍(人)和是是平2啊手动阀手动阀",
     "_horizontalAlign": 0,
     "_verticalAlign": 1,
-    "_actualFontSize": 20,
-    "_fontSize": 20,
+    "_actualFontSize": 15,
+    "_fontSize": 15,
     "_fontFamily": "Arial",
-    "_lineHeight": 40,
-    "_overflow": 0,
+    "_lineHeight": 10,
+    "_overflow": 3,
     "_enableWrapText": true,
     "_font": null,
     "_isSystemFontUsed": true,
@@ -33806,11 +33806,7 @@
     "_target": {
       "__id__": 1366
     },
-    "checkEvents": [
-      {
-        "__id__": 1389
-      }
-    ],
+    "checkEvents": [],
     "_isChecked": false,
     "_checkMark": {
       "__id__": 1376
@@ -33820,16 +33816,6 @@
   {
     "__type__": "cc.CompPrefabInfo",
     "fileId": "92sPnjoR1O5IBPVTveZI0a"
-  },
-  {
-    "__type__": "cc.ClickEvent",
-    "target": {
-      "__id__": 1
-    },
-    "component": "",
-    "_componentId": "bc221NbXlZB5LY5i+XDY+gR",
-    "handler": "onToggle排行榜类型",
-    "customEventData": "新手训练_单位介绍_人"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -33854,23 +33840,23 @@
     },
     "_children": [
       {
-        "__id__": 1392
+        "__id__": 1391
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 1398
+        "__id__": 1399
       },
       {
-        "__id__": 1400
+        "__id__": 1401
       },
       {
-        "__id__": 1402
+        "__id__": 1403
       }
     ],
     "_prefab": {
-      "__id__": 1405
+      "__id__": 1406
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -33907,20 +33893,23 @@
     "_objFlags": 512,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 1391
+      "__id__": 1390
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 1393
+        "__id__": 1392
       },
       {
-        "__id__": 1395
+        "__id__": 1394
+      },
+      {
+        "__id__": 1396
       }
     ],
     "_prefab": {
-      "__id__": 1397
+      "__id__": 1398
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -33957,11 +33946,11 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 1392
+      "__id__": 1391
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1394
+      "__id__": 1393
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -33985,11 +33974,11 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 1392
+      "__id__": 1391
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1396
+      "__id__": 1395
     },
     "_customMaterial": null,
     "_srcBlendFactor": 2,
@@ -34001,11 +33990,11 @@
       "b": 122,
       "a": 255
     },
-    "_string": "返回上一级",
+    "_string": "Return to Previous Level",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 15,
-    "_fontSize": 15,
+    "_fontSize": 12,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
     "_overflow": 1,
@@ -34048,6 +34037,26 @@
     "fileId": "5fVrkH5gNI+ZXuspQjnTUb"
   },
   {
+    "__type__": "30d83qzRfZHLYMFn4KA9PG4",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 1391
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 1397
+    },
+    "_key": "BackToPreMenu",
+    "_count": 0,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "d9TcbWTrxERbnOpN/E4PS3"
+  },
+  {
     "__type__": "cc.PrefabInfo",
     "root": {
       "__id__": 1
@@ -34066,15 +34075,15 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 1391
+      "__id__": 1390
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1399
+      "__id__": 1400
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 150,
+      "width": 160,
       "height": 50
     },
     "_anchorPoint": {
@@ -34094,11 +34103,11 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 1391
+      "__id__": 1390
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1401
+      "__id__": 1402
     },
     "_customMaterial": null,
     "_srcBlendFactor": 2,
@@ -34139,15 +34148,15 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 1391
+      "__id__": 1390
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1403
+      "__id__": 1404
     },
     "clickEvents": [
       {
-        "__id__": 1404
+        "__id__": 1405
       }
     ],
     "_interactable": true,
@@ -34187,7 +34196,7 @@
     "_duration": 0.1,
     "_zoomScale": 1.1,
     "_target": {
-      "__id__": 1391
+      "__id__": 1390
     },
     "_id": ""
   },
@@ -34230,17 +34239,17 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 1407
+        "__id__": 1408
       },
       {
-        "__id__": 1409
+        "__id__": 1410
       },
       {
-        "__id__": 1411
+        "__id__": 1412
       }
     ],
     "_prefab": {
-      "__id__": 1413
+      "__id__": 1414
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -34277,11 +34286,11 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 1406
+      "__id__": 1407
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1408
+      "__id__": 1409
     },
     "_allowSwitchOff": false,
     "checkEvents": [],
@@ -34297,11 +34306,11 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 1406
+      "__id__": 1407
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1410
+      "__id__": 1411
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -34325,11 +34334,11 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 1406
+      "__id__": 1407
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1412
+      "__id__": 1413
     },
     "_resizeMode": 0,
     "_layoutType": 2,
@@ -34344,7 +34353,7 @@
     "_paddingTop": 0,
     "_paddingBottom": 0,
     "_spacingX": 0,
-    "_spacingY": 0,
+    "_spacingY": 1,
     "_verticalDirection": 1,
     "_horizontalDirection": 0,
     "_constraint": 0,
@@ -34382,18 +34391,18 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 1415
+        "__id__": 1416
       },
       {
-        "__id__": 1417
+        "__id__": 1418
       }
     ],
     "_prefab": {
-      "__id__": 1419
+      "__id__": 1420
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -180,
+      "x": -185,
       "y": 150,
       "z": 0
     },
@@ -34426,16 +34435,16 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 1414
+      "__id__": 1415
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1416
+      "__id__": 1417
     },
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 160,
-      "height": 22.68
+      "height": 15.120000000000001
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -34454,22 +34463,22 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 1414
+      "__id__": 1415
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1418
+      "__id__": 1419
     },
-    "_lineHeight": 18,
+    "_lineHeight": 12,
     "_string": "<color=#00ff00>Rich</color><color=#0fffff>Text</color>",
     "_horizontalAlign": 0,
     "_verticalAlign": 0,
-    "_fontSize": 15,
+    "_fontSize": 10,
     "_fontColor": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 143,
-      "b": 0,
+      "r": 117,
+      "g": 117,
+      "b": 255,
       "a": 255
     },
     "_maxWidth": 160,
@@ -34509,7 +34518,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1421
+      "__id__": 1422
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -34550,29 +34559,29 @@
     },
     "_children": [
       {
-        "__id__": 1424
+        "__id__": 1425
       },
       {
-        "__id__": 1430
+        "__id__": 1431
       },
       {
-        "__id__": 1436
+        "__id__": 1437
       },
       {
-        "__id__": 1442
+        "__id__": 1443
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 1448
+        "__id__": 1449
       },
       {
-        "__id__": 1450
+        "__id__": 1451
       }
     ],
     "_prefab": {
-      "__id__": 1452
+      "__id__": 1453
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -34609,20 +34618,20 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 1423
+      "__id__": 1424
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 1425
+        "__id__": 1426
       },
       {
-        "__id__": 1427
+        "__id__": 1428
       }
     ],
     "_prefab": {
-      "__id__": 1429
+      "__id__": 1430
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -34659,11 +34668,11 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 1424
+      "__id__": 1425
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1426
+      "__id__": 1427
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -34687,11 +34696,11 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 1424
+      "__id__": 1425
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1428
+      "__id__": 1429
     },
     "_lineHeight": 15,
     "_string": "<color=#ffff00><size=13>健康游戏忠告\n抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。\n适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活。</size></color>",
@@ -34738,20 +34747,20 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 1423
+      "__id__": 1424
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 1431
+        "__id__": 1432
       },
       {
-        "__id__": 1433
+        "__id__": 1434
       }
     ],
     "_prefab": {
-      "__id__": 1435
+      "__id__": 1436
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -34788,11 +34797,11 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 1430
+      "__id__": 1431
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1432
+      "__id__": 1433
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -34816,11 +34825,11 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 1430
+      "__id__": 1431
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1434
+      "__id__": 1435
     },
     "_customMaterial": null,
     "_srcBlendFactor": 2,
@@ -34897,20 +34906,20 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 1423
+      "__id__": 1424
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 1437
+        "__id__": 1438
       },
       {
-        "__id__": 1439
+        "__id__": 1440
       }
     ],
     "_prefab": {
-      "__id__": 1441
+      "__id__": 1442
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -34947,11 +34956,11 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 1436
+      "__id__": 1437
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1438
+      "__id__": 1439
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -34975,11 +34984,11 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 1436
+      "__id__": 1437
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1440
+      "__id__": 1441
     },
     "_lineHeight": 8,
     "_string": "社区：加载中……",
@@ -35026,20 +35035,20 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
-      "__id__": 1423
+      "__id__": 1424
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 1443
+        "__id__": 1444
       },
       {
-        "__id__": 1445
+        "__id__": 1446
       }
     ],
     "_prefab": {
-      "__id__": 1447
+      "__id__": 1448
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -35076,11 +35085,11 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 1442
+      "__id__": 1443
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1444
+      "__id__": 1445
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -35104,11 +35113,11 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 1442
+      "__id__": 1443
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1446
+      "__id__": 1447
     },
     "_lineHeight": 10,
     "_string": "音乐：EinhornN7獬羽柏(QQ 2990490699)、乌鸦Producer(QQ 2998975740)、电波暴击(QQ 1106551898)\n首页底图：不问清阴(QQ 3969340418)\t关卡：阳光下的一个虾(QQ 1179331661)\n3D模型：TripoAI、混元AI\t抠图：豆包AI\t地面纹理：夸克AI、豆包AI\n头像图片：文小言AI\t音乐：SunoAI\t辅助编程：通义灵码AI、CusorAI\n绑定/动作：苽禾(QQ 3223213062)、mixamo.com\n绑定/动作：小白阿姨(QQ 3276812319)、九里庆安(QQ 284102069)\n绑定/动作：大呲花(QQ 3029823814)、恒(QQ 2682677034)\n绑定/动作：天涳の翼(QQ 349070005)、适中(QQ 1136976220)\n绑定/动作：哈哈哈哈(QQ 2517969872)、一方狂三(QQ 1256604813)\n模型/动作：⊹꙳ ˶˙ᵕ˙˶ ⊹꙳(QQ 2104435032)、<color=#a0ff50>荧瞳(QQ 287859992)、荒野乱斗(QQ 2930801690)</color>\n语音：无梦(QQ 1744500392)、水薄荷(QQ 1982131539)\n语音：若有道心(QQ 1602576119)、潭(QQ 1514475926)、<color=#a0ff50>凌枭(QQ 2862703087)</color>\n程序：火凤凰(QQ 75187631)、<color=#a0ff50>江沉晚吟时(QQ 3380125833)</color>\n程序：庄园(QQ 2516080307)、kunnka(QQ 954436840)、樱木花道(QQ 251949672)\n游戏引擎：Cocos Creator 3.8",
@@ -35155,11 +35164,11 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 1423
+      "__id__": 1424
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1449
+      "__id__": 1450
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -35183,11 +35192,11 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 1423
+      "__id__": 1424
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1451
+      "__id__": 1452
     },
     "_resizeMode": 0,
     "_layoutType": 2,
@@ -35238,7 +35247,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1454
+      "__id__": 1455
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -35279,7 +35288,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1457
+      "__id__": 1458
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -35307,7 +35316,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 1459
+      "__id__": 1460
     },
     "sprite背景大图": {
       "__id__": 5
@@ -35319,7 +35328,7 @@
       "__id__": 39
     },
     "lableMessage": {
-      "__id__": 1445
+      "__id__": 1446
     },
     "node选择单人或多人": {
       "__id__": 320
@@ -35376,13 +35385,22 @@
       "__id__": 31
     },
     "richText社区": {
-      "__id__": 1439
+      "__id__": 1440
     },
     "richText健康游戏忠告": {
-      "__id__": 1427
+      "__id__": 1428
     },
     "richText多玩家混战": {
       "__id__": 505
+    },
+    "richText单玩家战局": {
+      "__id__": 325
+    },
+    "richText多玩家战局": {
+      "__id__": 340
+    },
+    "richText音乐鉴赏": {
+      "__id__": 370
     },
     "node排行榜面板": {
       "__id__": 906
@@ -35394,13 +35412,13 @@
       "__id__": 1298
     },
     "toggle音乐所有": {
-      "__id__": 1407
+      "__id__": 1408
     },
     "node音乐一曲模板": {
       "__id__": 1366
     },
     "richText音乐详情": {
-      "__id__": 1417
+      "__id__": 1418
     },
     "node登录面板": {
       "__id__": 39

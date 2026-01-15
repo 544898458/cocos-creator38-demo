@@ -78,6 +78,9 @@ export class LoginView extends Dialog {
     @property(RichText) richText社区: RichText
     @property(RichText) richText健康游戏忠告: RichText
     @property(RichText) richText多玩家混战: RichText
+    @property(RichText) richText单玩家战局: RichText
+    @property(RichText) richText多玩家战局: RichText
+    @property(RichText) richText音乐鉴赏: RichText
 
     @property(Node)
     node排行榜面板: Node
@@ -131,12 +134,15 @@ export class LoginView extends Dialog {
             this.richText社区.enabled = false
             this.richText健康游戏忠告.string = 翻译Key.翻译(翻译Key.健康游戏忠告)
             this.richText多玩家混战.string = 翻译Key.翻译(翻译Key.多玩家混战)
+            this.richText单玩家战局.string = 翻译Key.翻译(翻译Key.单玩家战局)
+            this.richText多玩家战局.string = 翻译Key.翻译(翻译Key.多玩家战局)
+            this.richText音乐鉴赏.string = 翻译Key.翻译(翻译Key.音乐鉴赏)
             this.node适龄提示.active = false
             this.node登录正式服按钮.active = false
         }
         else if (MainTest.是华为快应用()) {
             console.log('LoginView.onOpened,是华为快应用（花瓣轻游）')
-            assetManager.loadRemote(encodeURI('https://www.rtsgame.online/公告/社区_华为快应用.txt'), (err, textAsset: TextAsset) => {
+            assetManager.loadRemote(encodeURI(host静态 + '公告/社区_华为快应用.txt'), (err, textAsset: TextAsset) => {
                 console.log('resources.load callback:', err, textAsset)
                 this.richText社区.string = textAsset.text
             })
@@ -145,7 +151,7 @@ export class LoginView extends Dialog {
             console.log('LoginView.onOpened,是抖音小游戏')
             this.node抖音小游戏面板.active = true
             this.node抖音侧边栏引导按钮.active = MainTest.b显示侧边栏引导按钮
-            assetManager.loadRemote(encodeURI('https://www.rtsgame.online/公告/社区_抖音小游戏.txt'), (err, textAsset: TextAsset) => {
+            assetManager.loadRemote(encodeURI(host静态 + '公告/社区_抖音小游戏.txt'), (err, textAsset: TextAsset) => {
                 console.log('resources.load callback:', err, textAsset)
                 this.richText社区.string = textAsset.text
             })
@@ -153,7 +159,7 @@ export class LoginView extends Dialog {
         else if(MainTest.是哔哩哔哩小游戏()){
             console.log('LoginView.onOpened,是哔哩哔哩小游戏')
             this.node哔哩哔哩小游戏面板.active = true
-            assetManager.loadRemote(encodeURI('https://www.rtsgame.online/公告/社区_哔哩哔哩小游戏.txt'), (err, textAsset: TextAsset) => {
+            assetManager.loadRemote(encodeURI(host静态 + '公告/社区_哔哩哔哩小游戏.txt'), (err, textAsset: TextAsset) => {
                 console.log('resources.load callback:', err, textAsset)
                 this.richText社区.string = textAsset.text
             })
@@ -162,13 +168,13 @@ export class LoginView extends Dialog {
             MainTest.instance.微信小游戏允许分享()
             this.node跳转社区微信小游戏.active = true
             this.editBox登录名.node.active = false //微信小游戏不支持输入昵称
-            assetManager.loadRemote(encodeURI('https://www.rtsgame.online/公告/社区_微信小游戏.txt'), (err, textAsset: TextAsset) => {
+            assetManager.loadRemote(encodeURI(host静态 + '公告/社区_微信小游戏.txt'), (err, textAsset: TextAsset) => {
                 console.log('resources.load callback:', err, textAsset)
                 this.richText社区.string = textAsset.text
             })
         }else{
             this.node跳转社区浏览器H5.active = true
-            assetManager.loadRemote(encodeURI('https://www.rtsgame.online/公告/社区_浏览器H5.txt'), (err, textAsset: TextAsset) => {
+            assetManager.loadRemote(encodeURI(host静态 + '公告/社区_浏览器H5.txt'), (err, textAsset: TextAsset) => {
                 console.log('resources.load callback:', err, textAsset)
                 this.richText社区.string = textAsset.text
             })
@@ -302,7 +308,7 @@ export class LoginView extends Dialog {
             case 种族.人:
                 this.node单人战局列表_人.active = true
                 MainTest.instance.播放音乐(Glob.strHttps人类主题音乐MP3)
-                assetManager.loadRemote(encodeURI('https://www.rtsgame.online/图片/界面/工程车采集绿色燃气矿.jpg'),
+                assetManager.loadRemote(encodeURI(host静态 + '图片/界面/工程车采集绿色燃气矿.jpg'),
                 (err, imageAsset: ImageAsset) => {
                     console.log('resources.load callback:', err, imageAsset)
                     this.sprite背景大图.spriteFrame = SpriteFrame.createWithImage(imageAsset);
@@ -311,7 +317,7 @@ export class LoginView extends Dialog {
             case 种族.虫:
                 this.node单人战局列表_虫.active = true
                 MainTest.instance.播放音乐(Glob.strHttps虫族主题音乐MP3)
-                assetManager.loadRemote(encodeURI('https://www.rtsgame.online/图片/界面/房虫与黄色行星 豆包AI 游戏背景大图.jpg'),
+                assetManager.loadRemote(encodeURI(host静态 + '图片/界面/房虫与黄色行星 豆包AI 游戏背景大图.jpg'),
                 (err, imageAsset: ImageAsset) => {
                     console.log('resources.load callback:', err, imageAsset)
                     this.sprite背景大图.spriteFrame = SpriteFrame.createWithImage(imageAsset);
@@ -506,7 +512,7 @@ export class LoginView extends Dialog {
         this.拉取并显示排行榜(选中战局类型)
     }
     拉取并显示排行榜(战局类型: 战局类型): void {
-        assetManager.loadRemote(encodeURI(`https://www.rtsgame.online/排行榜/战局_${MainTest.idSvr}_${战局类型}_赢.json`), (err, jsonAsset: JsonAsset) => {
+        assetManager.loadRemote(encodeURI(host静态 + `排行榜/战局_${MainTest.idSvr}_${战局类型}_赢.json`), (err, jsonAsset: JsonAsset) => {
             console.log('resources.load callback:', err, jsonAsset)
             let arrPlayerStats = jsonAsset.json as Array<{ nickname: string, wins: number, losses: number }>
             this.richText排行榜内容.string = ''
@@ -718,7 +724,7 @@ export class LoginView extends Dialog {
         MainTest.instance.配置.arr音乐.forEach(音乐 => {
             let node一曲 = instantiate(this.node音乐一曲模板)
             node一曲.active = true
-            node一曲.getChildByName('Label').getComponent(Label).string = 音乐.名字
+            node一曲.getChildByName('Label').getComponent(Label).string = 翻译Key.翻译(音乐.名字Key)
             const clickEventHandler = new LoginView.EventHandler();
             clickEventHandler.target = this.node; // 这个 node 节点是你的事件处理代码组件所属的节点
             clickEventHandler.component = 'LoginView';// 这个是脚本类名
@@ -747,8 +753,8 @@ export class LoginView extends Dialog {
         console.log('音乐', 音乐配置)
         if (音乐配置) {
             console.log('音乐', 音乐配置)
-            MainTest.instance.播放音乐(音乐配置.Https音乐)
-            this.richText音乐详情.string = `<size=12>曲名：\n</size><size=18>${音乐配置.名字}</size>\n\n<size=12>作者：\n</size>${音乐配置.作者}\n\n<size=12>版权：\n</size>${音乐配置.版权}`
+            MainTest.instance.播放音乐( host静态 + 音乐配置.Https音乐)
+            this.richText音乐详情.string = `${翻译Key.翻译(翻译Key.曲名)}：\n${翻译Key.翻译(音乐配置.名字Key)}\n\n${翻译Key.翻译(翻译Key.作者)}：\n${翻译Key.翻译(音乐配置.作者Key)}\n\n${翻译Key.翻译(翻译Key.版权)}：\n${翻译Key.翻译(音乐配置.版权Key)}`
         }
     }
 }

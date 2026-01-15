@@ -210,10 +210,212 @@ items:
       isVariant: false
       associations: []
       _variants: []
+  - - SinglePlayerBattle
+    - key: SinglePlayerBattle
+      value: |-
+        单玩家战局
+        <size=15>新手训练、防守、攻坚、中央防守</size>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MultiPlayerBattle
+    - key: MultiPlayerBattle
+      value: |-
+        多玩家战局
+        <size=15>混战、四方对战、一打一</size>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicGallery
+    - key: MusicGallery
+      value: |-
+        音乐鉴赏
+        <size=12>曲名、作者、版权</size>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - RenZaiXian
+    - key: RenZaiXian
+      value: 人在线
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - BackToPreMenu
+    - key: BackToPreMenu
+      value: 返回上一级
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - CopyRightSuno
+    - key: CopyRightSuno
+      value: 版权归Suno和提示词作者共有，使用权开放给所有人。
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - CopyRightFree
+    - key: CopyRightFree
+      value: 版权归作者所有，通知作者后可共享商用（强制署名）。
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - AuthorSuno
+    - key: AuthorSuno
+      value: Suno AI、提示词作者
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - AuthorWuYaProducer
+    - key: AuthorWuYaProducer
+      value: 乌鸦Producer(QQ 2998975740)
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - AuthorXieYuBai
+    - key: AuthorXieYuBai
+      value: EinhornN7獬羽柏(QQ 2990490699)
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - AuthorDianBoBaoji
+    - key: AuthorDianBoBaoji
+      value: 电波暴击(QQ 1106551898)
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicShiJieYouHuiFuLeHePing
+    - key: MusicShiJieYouHuiFuLeHePing
+      value: 世界又恢复了和平
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicShiJieYouHuiFuLeHePing2
+    - key: MusicShiJieYouHuiFuLeHePing2
+      value: 世界又恢复了和平2
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicZhanXianBengKui
+    - key: MusicZhanXianBengKui
+      value: 战线崩溃
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicShanJiZhan
+    - key: MusicShanJiZhan
+      value: 闪击战
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicHouQinYunYing
+    - key: MusicHouQinYunYing
+      value: 后勤运营
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicZhongGongYeLangMan
+    - key: MusicZhongGongYeLangMan
+      value: 重工业浪漫
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicYuanJunDaoDaZhanChang
+    - key: MusicYuanJunDaoDaZhanChang
+      value: 援军到达战场
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicDingJv
+    - key: MusicDingJv
+      value: 定居
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicPiaoBo
+    - key: MusicPiaoBo
+      value: 漂泊
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicSampleKiller
+    - key: MusicSampleKiller
+      value: Sample Killer
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicFollowTheLight
+    - key: MusicFollowTheLight
+      value: Follow The Light
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicDesert
+    - key: MusicDesert
+      value: Desert
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicXingLian
+    - key: MusicXingLian
+      value: 星联
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicSpaceLight
+    - key: MusicSpaceLight
+      value: Space Fight
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicName
+    - key: MusicName
+      value: 曲名
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicAuthor
+    - key: MusicAuthor
+      value: 作者
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicCopyright
+    - key: MusicCopyright
+      value: 版权
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
 languageConfig:
   bcp47Tag: zh-Hans-CN
   providerTag: zh-CHS
   translateFinished: 16
   translateTotal: 16
   compileFinished: 0
-  compileTotal: 23
+  compileTotal: 51

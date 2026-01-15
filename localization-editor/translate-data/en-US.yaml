@@ -224,10 +224,216 @@ items:
       isVariant: false
       associations: []
       _variants: []
+  - - SinglePlayerBattle
+    - key: SinglePlayerBattle
+      value: |-
+        Single-player Modes
+        <size=10>Newbie Training, Defense, Assault, Central Defense</size>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MultiPlayerBattle
+    - key: MultiPlayerBattle
+      value: |-
+        Multi-player Modes
+        <size=15>Free-for-all, 4-way Battle, 1v1 Duel</size>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicGallery
+    - key: MusicGallery
+      value: |-
+        Music Gallery
+        <size=9>Song Name, Composer, Copyright</size>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - RenZaiXian
+    - key: RenZaiXian
+      value: ' players online'
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - BackToPreMenu
+    - key: BackToPreMenu
+      value: Return to Previous Level
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - CopyRightSuno
+    - key: CopyRightSuno
+      value: >-
+        Copyright is jointly owned by Suno and the prompt author; usage rights
+        are open to all.
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - CopyRightFree
+    - key: CopyRightFree
+      value: >-
+        Copyright is owned by the author; commercial sharing is permitted after
+        notifying the author (attribution is mandatory).
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - AuthorSuno
+    - key: AuthorSuno
+      value: Suno AI, Prompt Author
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - AuthorWuYaProducer
+    - key: AuthorWuYaProducer
+      value: Wuya Producer (QQ 2998975740)
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - AuthorXieYuBai
+    - key: AuthorXieYuBai
+      value: EinhornN7 Xie Yubo (QQ 2990490699)
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - AuthorDianBoBaoji
+    - key: AuthorDianBoBaoji
+      value: Dianbo Baoji (QQ 1106551898)
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicShiJieYouHuiFuLeHePing
+    - key: MusicShiJieYouHuiFuLeHePing
+      value: Peace has returned to the world
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicShiJieYouHuiFuLeHePing2
+    - key: MusicShiJieYouHuiFuLeHePing2
+      value: Peace has returned to the world 2
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicZhanXianBengKui
+    - key: MusicZhanXianBengKui
+      value: Frontline Collapse
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicShanJiZhan
+    - key: MusicShanJiZhan
+      value: Blitzkrieg
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicHouQinYunYing
+    - key: MusicHouQinYunYing
+      value: Logistics Operation
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicZhongGongYeLangMan
+    - key: MusicZhongGongYeLangMan
+      value: Heavy Industry Romance
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicYuanJunDaoDaZhanChang
+    - key: MusicYuanJunDaoDaZhanChang
+      value: Reinforcements Have Arrived on the Battlefield
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicDingJv
+    - key: MusicDingJv
+      value: Settle Down
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicPiaoBo
+    - key: MusicPiaoBo
+      value: Wander
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicSampleKiller
+    - key: MusicSampleKiller
+      value: Sample Killer
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicFollowTheLight
+    - key: MusicFollowTheLight
+      value: Follow The Light
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicDesert
+    - key: MusicDesert
+      value: Desert
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicXingLian
+    - key: MusicXingLian
+      value: Star Alliance
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicSpaceLight
+    - key: MusicSpaceLight
+      value: Space Fight
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicName
+    - key: MusicName
+      value: Title
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicAuthor
+    - key: MusicAuthor
+      value: Author
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MusicCopyright
+    - key: MusicCopyright
+      value: Copyright
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
 languageConfig:
   bcp47Tag: en-US
   providerTag: en
   translateFinished: 16
   translateTotal: 27
   compileFinished: 0
-  compileTotal: 22
+  compileTotal: 50

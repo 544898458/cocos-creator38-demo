@@ -64,9 +64,9 @@ export class 战局配置 {
 }
 export class 音乐配置 {
 	编号: number
-	名字: string
-	作者: string
-	版权: string
+	名字Key: string
+	作者Key: string
+	版权Key: string
 	Https音乐: string
 }
 export class 配置 {

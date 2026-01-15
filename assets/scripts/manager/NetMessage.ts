@@ -28,6 +28,7 @@ import { AudioClip } from 'cc';
 import { ImageAsset } from 'cc';
 import { Texture2D } from 'cc';
 import { MeshRenderer } from 'cc';
+import { 翻译Key } from '../配置/翻译Key';
 
 // 聊天消息接口
 interface ChatMessage {
@@ -423,7 +424,7 @@ export class NetMessage {
         const count = arr[idxArr++];
         const names = arr[idxArr++] as string[];
 
-        Glob.str在线人数 = `${count}人在线:`;
+        Glob.str在线人数 = `${count}${翻译Key.翻译(翻译Key.人在线)}:`;
         names.forEach(name => Glob.str在线人数 += name + '、');
 
         if (!mainTest.b登录成功) {

@@ -1,4 +1,5 @@
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
+import { host静态 } from "../配置/此游戏专用配置";
 export class Glob {
     public static HEIGHT: number = 750;
     public static WIDTH: number = 1334;
@@ -17,9 +18,9 @@ export class Glob {
     public static str在线人数: string;
     //全局常量  
     public static KEY_登录名: string = '登录名'
-    public static strHttps登录场景音乐Mp3: string = "https://www.rtsgame.online/music/suno世界又恢复了和平低音质.mp3"
-    public static strHttps虫族主题音乐MP3: string = "https://www.rtsgame.online/music/漂泊低音质.mp3"
-    public static strHttps人类主题音乐MP3: string = "https://www.rtsgame.online/music/定居低音质.mp3"
+    public static strHttps登录场景音乐Mp3: string = host静态 + "music/suno世界又恢复了和平低音质.mp3"
+    public static strHttps虫族主题音乐MP3: string = host静态 + "music/漂泊低音质.mp3"
+    public static strHttps人类主题音乐MP3: string = host静态 + "music/定居低音质.mp3"
     /** 全屏大小，非纯色背景放大系数 */
     // static scale: number = 1;
     /** 3d场景高度缩小倍率 */

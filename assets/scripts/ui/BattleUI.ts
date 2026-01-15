@@ -32,6 +32,7 @@ import { assetManager } from 'cc';
 import { TextAsset } from 'cc';
 import { JsonAsset } from 'cc';
 import { NetMessage } from '../manager/NetMessage';
+import { host静态 } from '../配置/此游戏专用配置';
 const { ccclass, property } = _decorator;
 
 @ccclass('BattleUI')
@@ -356,7 +357,7 @@ export class BattleUI extends Dialog {
             let popView = dlg.getComponent(PopView)
             popView.label标题.string = '游戏攻略';
             popView.richText内容.string = '请稍后……';
-            assetManager.loadRemote(encodeURI('https://www.rtsgame.online/攻略/攻略.txt'), (err, textAsset: TextAsset) => {
+            assetManager.loadRemote(encodeURI(host静态 + '即时战略指挥攻略/攻略.txt'), (err, textAsset: TextAsset) => {
                 console.log('resources.load callback:', err, textAsset)
                 popView.richText内容.string = textAsset.text
             })
@@ -522,7 +523,7 @@ export class BattleUI extends Dialog {
             let popView = dlg.getComponent(PopView)
             popView.label标题.string = '战报';
             popView.richText内容.string = '请稍后……';
-            assetManager.loadRemote(encodeURI(`https://www.rtsgame.online/战报/战局_${MainTest.idSvr}_${MainTest.instance.战局}.json`), (err, jsonAsset: JsonAsset) => {
+            assetManager.loadRemote(encodeURI(host静态 + `战报/战局_${MainTest.idSvr}_${MainTest.instance.战局}.json`), (err, jsonAsset: JsonAsset) => {
                 console.log('resources.load callback:', err, jsonAsset)
                 if(!jsonAsset){
                     popView.richText内容.string = '战报不存在'
@@ -579,7 +580,7 @@ export class BattleUI extends Dialog {
             let popView = dlg.getComponent(PopView)
             popView.label标题.string = title;
             popView.richText内容.string = '请稍后……';
-            assetManager.loadRemote(encodeURI(`https://www.rtsgame.online/战报/战报排行_${MainTest.idSvr}_${MainTest.instance.战局}_${urlSuffix}.json`), (err, jsonAsset: JsonAsset) => {
+            assetManager.loadRemote(encodeURI(host静态 + `战报/战报排行_${MainTest.idSvr}_${MainTest.instance.战局}_${urlSuffix}.json`), (err, jsonAsset: JsonAsset) => {
                 console.log('resources.load callback:', err, jsonAsset)
                 let arrPlayerStats = jsonAsset.json as Array<{ killer: string, victim: string, count: number }>
                 popView.richText内容.string = arrPlayerStats.map(player => {
