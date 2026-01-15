@@ -27,6 +27,8 @@ import { 配置 } from '../配置/配置';
 import { Sprite } from 'cc';
 import { ImageAsset } from 'cc';
 import { SpriteFrame } from 'cc';
+import { 翻译Key } from '../配置/翻译Key';
+import { host静态 } from '../配置/此游戏专用配置';
 const { ccclass, property } = _decorator;
 declare const tt: any;
 @ccclass('LoginView')
@@ -69,9 +71,13 @@ export class LoginView extends Dialog {
 
     @property(Node) node抖音侧边栏引导按钮: Node
     @property(Node) node抖音侧边栏复访教育面板: Node
+    @property(Node) node适龄提示: Node
+    @property(Node) node登录正式服按钮: Node
 
     @property(RichText) richText公告: RichText
     @property(RichText) richText社区: RichText
+    @property(RichText) richText健康游戏忠告: RichText
+    @property(RichText) richText多玩家混战: RichText
 
     @property(Node)
     node排行榜面板: Node
@@ -106,30 +112,29 @@ export class LoginView extends Dialog {
         this.editBox登录名.string = sys.localStorage.getItem(Glob.KEY_登录名) || ""
         // this.显示登录界面();
 
-        MainTest.instance.微信小游戏允许分享()
-        if (sys.isBrowser)
-            this.node跳转社区浏览器H5.active = true
-        else if (LoginView.是抖音小游戏())
-            this.node抖音小游戏面板.active = true
-        else if(MainTest.是哔哩哔哩小游戏()){
-            console.log('LoginView.onOpened,是哔哩哔哩小游戏')
-            this.node哔哩哔哩小游戏面板.active = true
-        }
-        else if ((window as any).CC_WECHAT)
-            this.node跳转社区微信小游戏.active = true
-
         // MainTest.instance.onSecen登录Load()
 
         if (Glob.strHttps登录场景音乐Mp3 && (!this.node单人战局列表_虫.active && !this.node单人战局列表_人.active)) {
             MainTest.instance.播放音乐(Glob.strHttps登录场景音乐Mp3)
         }
 
-        assetManager.loadRemote(encodeURI('https://www.rtsgame.online/公告/公告.txt'), (err, textAsset: TextAsset) => {
+        this.richText公告.string = 翻译Key.翻译(翻译Key.加载中)
+        assetManager.loadRemote(encodeURI(host静态 + 翻译Key.翻译(翻译Key.url公告)), (err, textAsset: TextAsset) => {
             console.log('resources.load callback:', err, textAsset)
             this.richText公告.string = textAsset.text
         })
 
-        if (MainTest.是华为快应用()) {
+        this.lableMessage.string = 翻译Key.翻译(翻译Key.贡献者名单)
+
+        if(翻译Key.Is英语()){
+            console.log('LoginView.onOpened,是英语')
+            this.richText社区.enabled = false
+            this.richText健康游戏忠告.string = 翻译Key.翻译(翻译Key.健康游戏忠告)
+            this.richText多玩家混战.string = 翻译Key.翻译(翻译Key.多玩家混战)
+            this.node适龄提示.active = false
+            this.node登录正式服按钮.active = false
+        }
+        else if (MainTest.是华为快应用()) {
             console.log('LoginView.onOpened,是华为快应用（花瓣轻游）')
             assetManager.loadRemote(encodeURI('https://www.rtsgame.online/公告/社区_华为快应用.txt'), (err, textAsset: TextAsset) => {
                 console.log('resources.load callback:', err, textAsset)
@@ -154,6 +159,7 @@ export class LoginView extends Dialog {
             })
         }else if(MainTest.是微信小游戏()){
             console.log('LoginView.onOpened,是微信小游戏')
+            MainTest.instance.微信小游戏允许分享()
             this.node跳转社区微信小游戏.active = true
             this.editBox登录名.node.active = false //微信小游戏不支持输入昵称
             assetManager.loadRemote(encodeURI('https://www.rtsgame.online/公告/社区_微信小游戏.txt'), (err, textAsset: TextAsset) => {
@@ -206,20 +212,20 @@ export class LoginView extends Dialog {
 
         MainTest.instance.b登录成功 = false
         this.LoginPanel.active = false//隐藏主页面
-        this.lableMessage.string = '正在连接'
+        this.lableMessage.string = 翻译Key.翻译(翻译Key.正在连接)
         Glob.websocket = new WebSocket("wss://" + strGateSvrHost)
         Glob.websocket.binaryType = 'arraybuffer'
         console.log(Glob.websocket)
 
         //连接发生错误的回调方法
         Glob.websocket.onerror = () => {
-            this.lableMessage.string = "连接错误，您可以再试一次"
+            this.lableMessage.string = 翻译Key.翻译(翻译Key.连接错误)
             this.LoginPanel.active = true//再次显示，可以再点登录
         }
 
         //连接成功建立的回调方法
         Glob.websocket.onopen = (event: Event) => {
-            this.lableMessage.string = "连接成功，请等待登录结果……"
+            this.lableMessage.string = 翻译Key.翻译(翻译Key.连接成功)
             console.log(this.lableMessage.string)
             dispatcher.sendArray([
                 [MsgId.Login, Glob.getSendMsgSn自增()],
@@ -251,7 +257,7 @@ export class LoginView extends Dialog {
             Glob.websocket = null
 
             let loginView = dialogMgr.getDialog(UI2Prefab.LoginView_url)?.getComponent(LoginView)
-            const str = '连接已断开，已回到登录场景'
+            const str = 翻译Key.翻译(翻译Key.连接已断开)
             if (loginView) {
                 loginView.登录界面显示消息(str)
                 loginView.显示登录界面()

@@ -6,11 +6,12 @@ items:
       type: 2
       isVariant: false
       associations:
-        - &ref_0
-          sceneUuid: 1df7d620-667f-482f-831a-4531d0430501
+        - sceneUuid: 1df7d620-667f-482f-831a-4531d0430501
           nodeUuid: aaMzzPCeVAH7bKLIUL3wzk
           reference: 1df7d620-667f-482f-831a-4531d0430501
-        - *ref_0
+        - sceneUuid: 1df7d620-667f-482f-831a-4531d0430501
+          nodeUuid: aaMzzPCeVAH7bKLIUL3wzk
+          reference: 1df7d620-667f-482f-831a-4531d0430501
       _variants: []
   - - MainSvr
     - key: MainSvr
@@ -18,11 +19,12 @@ items:
       type: 2
       isVariant: false
       associations:
-        - &ref_1
-          sceneUuid: 1df7d620-667f-482f-831a-4531d0430501
+        - sceneUuid: 1df7d620-667f-482f-831a-4531d0430501
           nodeUuid: 43A/QLn6BK2Z5I2uwJAokY
           reference: 1df7d620-667f-482f-831a-4531d0430501
-        - *ref_1
+        - sceneUuid: 1df7d620-667f-482f-831a-4531d0430501
+          nodeUuid: 43A/QLn6BK2Z5I2uwJAokY
+          reference: 1df7d620-667f-482f-831a-4531d0430501
       _variants: []
   - - TestSvr
     - key: TestSvr
@@ -30,11 +32,152 @@ items:
       type: 2
       isVariant: false
       associations:
-        - &ref_2
-          sceneUuid: 1df7d620-667f-482f-831a-4531d0430501
+        - sceneUuid: 1df7d620-667f-482f-831a-4531d0430501
           nodeUuid: 68Fwi2hg9ND6PE6qvmYZP5
           reference: 1df7d620-667f-482f-831a-4531d0430501
-        - *ref_2
+        - sceneUuid: 1df7d620-667f-482f-831a-4531d0430501
+          nodeUuid: 68Fwi2hg9ND6PE6qvmYZP5
+          reference: 1df7d620-667f-482f-831a-4531d0430501
+      _variants: []
+  - - urlNotice
+    - key: urlNotice
+      value: ''
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - urlNoticeLeft
+    - key: urlNoticeLeft
+      value: ''
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - LoginTestSvr
+    - key: LoginTestSvr
+      value: ''
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - JianKangYouXiZhongDao
+    - key: JianKangYouXiZhongDao
+      value: ''
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - DuoWanJiaHunZhan
+    - key: DuoWanJiaHunZhan
+      value: ''
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - LeaveScene
+    - key: LeaveScene
+      value: ''
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - InputChat
+    - key: InputChat
+      value: ''
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ChatHistory
+    - key: ChatHistory
+      value: ''
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - GameStrategy
+    - key: GameStrategy
+      value: ''
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - urlGameStrategy
+    - key: urlGameStrategy
+      value: ''
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ConnectSuccess
+    - key: ConnectSuccess
+      value: ''
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Connecting
+    - key: Connecting
+      value: ''
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ConnectError
+    - key: ConnectError
+      value: ''
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - PleaseInputNickname
+    - key: PleaseInputNickname
+      value: ''
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - SceneLoaded
+    - key: SceneLoaded
+      value: ''
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - CountConfigFileDownloading
+    - key: CountConfigFileDownloading
+      value: ''
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ContributorsList
+    - key: ContributorsList
+      value: ''
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - InputNickName
+    - key: InputNickName
+      value: ''
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Loading
+    - key: Loading
+      value: ''
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ConnectClosed
+    - key: ConnectClosed
+      value: ''
+      type: 4
+      isVariant: false
+      associations: []
       _variants: []
 languageConfig:
   bcp47Tag: index

@@ -1,0 +1,70 @@
+import { l10n } from "db://localization-editor/l10n"
+import { 属性类型 } from "../utils/Enum"
+
+/*
+对于静态Label组件，用官方 L10nLabel 组件
+其它比如RichText这种官方不支持的，全部在 “面板=>本地化编辑器”里，中英文，先到处excel编辑后再导入，代码用 this.richText公告.string = l10n.t(加载中) 强行赋值
+*/
+export class 翻译Key {
+    static Is英语(): boolean {
+        console.log('翻译Key.Is英语,l10n.currentLanguage:', l10n.currentLanguage)
+        return l10n.currentLanguage === 'en-US'
+    }
+    static 翻译(key: string): string {
+        return l10n.t(key)
+    }
+    /**
+     * 格式化翻译字符串，支持 {0}, {1}, {2} 等占位符
+     * @param key 翻译key
+     * @param args 要替换的参数
+     * @returns 格式化后的字符串
+     */
+    static 翻译格式化(key: string, ...args: any[]): string {
+        let str = l10n.t(key)
+        return str.replace(/{(\d+)}/g, (match, index) => {
+            const idx = parseInt(index)
+            return typeof args[idx] !== 'undefined' ? String(args[idx]) : match
+        })
+    }
+    /**
+     * 获取属性名称并去除'等级'后缀
+     * @param 属性 属性类型枚举值
+     * @returns 处理后的属性名称
+     */
+        static 属性名称翻译(属性: 属性类型): string {
+            return 翻译Key.翻译('AttrName_' + 属性)
+        }
+    static 加载中 = 'Loading'
+    static 连接成功 = 'ConnectSuccess' //+ "连接成功，请等待登录结果……"
+    static 正在连接 = 'Connecting' //'正在连接'
+    static 连接错误 = 'ConnectError' //'连接错误，您可以再试一次'
+    static 连接已断开 = 'ConnectClosed' //'连接已断开，已回到登录场景'
+    static 请输入昵称 = 'PleaseInputNickname' //'请输入昵称（随便什么都可以）'
+    static url公告 = 'urlNotice'//'https://www.rtsgame.online/机甲合金幸存者公告/公告.txt'
+    static url公告左 = 'urlNoticeLeft'//'https://www.rtsgame.online/机甲合金幸存者公告/公告左.txt'
+    static url游戏攻略 = 'urlGameStrategy'//'https://www.rtsgame.online/机甲合金幸存者攻略/帮助.txt'
+    static 健康游戏忠告 = 'JianKangYouXiZhongDao'//'https://www.rtsgame.online/机甲合金幸存者公告/健康游戏忠告.txt'
+    static 多玩家混战 = 'DuoWanJiaHunZhan'//'https://www.rtsgame.online/机甲合金幸存者公告/多玩家混战.txt'
+    static 单位 = 'Unit'//'共' + scene战斗.entities.size + '单位'
+    static 生命 = 'Hp'//'生命:${当前生命}/${最大生命}'
+    static 经验 = 'Exp'//'经验:${经验}/${升级配置.本级满经验}'
+    static 等级 = 'Level'//'等级:${entity.等级()}'
+    static 满级 = 'MaxLevel'//'等级:${entity.等级()}满级'
+    static 人在线 = 'RenZaiXian'//'${count}人在线:'
+    static 等级格式 = 'LevelFormat'//'Level {0}' 格式字符串，{0}会被替换为等级数字
+    static 聊天历史记录 = 'ChatHistory'//'聊天历史记录'
+    static 游戏攻略 = 'GameStrategy'//'游戏攻略'
+    static 每次发射 = 'ProjectileFireCount'//'每次发射{0}个' 格式字符串
+    static 每间隔发射 = 'ProjectileFireInterval'//'每间隔{0}毫秒发射一个' 格式字符串
+    static 可穿透 = 'ProjectilePenetrate'//'可穿透{0}个敌人' 格式字符串
+    static 后摇 = 'ProjectileAfterDelay'//'后摇: {0}毫秒' 格式字符串
+    static 射程 = 'ProjectileRange'//'射程: {0}{1}米' 格式字符串，{0}是基础射程，{1}是增程（可能为空或+XX）
+    static 火焰Buff伤害 = 'FlameBuffDamage'//'每{0}毫秒降低{1}生命，持续{2}毫秒' 格式字符串
+    static 锥体范围 = 'FlameConeRange'//'锥体范围: {0}{1}米' 格式字符串，{0}是基础射程，{1}是增程（可能为空或+XX）
+    static 锥体角度 = 'FlameConeAngle'//'锥体角度: {0}°' 格式字符串
+    static 射程增程 = 'RangeBonus'//'投射物射程: +{0}米' 格式字符串，中英文格式可能不同
+    static 场景加载完成 = 'SceneLoaded' //'场景加载完成！'
+    static 升级 = 'Upgrade' //'升级'
+    static 个配置文件正在下载中 = 'CountConfigFileDownloading' //'个配置文件正在下载中，请稍后再试' 格式字符串
+    static 贡献者名单 = 'ContributorsList' //'贡献者名单'
+}
