@@ -527,7 +527,7 @@ export class LoginView extends Dialog {
             let arrPlayerStats = jsonAsset.json as Array<{ nickname: string, wins: number, losses: number }>
             this.richText排行榜内容.string = ''
             for (let player of arrPlayerStats) {
-                this.richText排行榜内容.string += `${player.nickname}\t赢:${player.wins}\t输:${player.losses}\n`
+                this.richText排行榜内容.string += `${player.nickname}\t<color=#a0ff50>${翻译Key.赢}:</color>${player.wins}\t<color=#ff5050>${翻译Key.输}:</color>${player.losses}\n`
             }
             console.log(jsonAsset.json)
         })

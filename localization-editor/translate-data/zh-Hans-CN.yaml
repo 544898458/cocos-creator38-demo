@@ -487,11 +487,128 @@ items:
       _variants: []
   - - ZhongYangFangShou_WanJiaHeZuo
     - key: ZhongYangFangShou_WanJiaHeZuo
-      value: >-
-        Central Defense - Co-op (You're the Host)
-
-        <size=12>Other players can join your match. The match ends if you leave
-        the scene.</size>
+      value: |-
+        中央防守 玩家合作（我是房主）
+        <size=12>其他玩家可加入您的战局，您退出场景就会结束战局</size>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - FanKongJiangZhan_Ren
+    - key: FanKongJiangZhan_Ren
+      value: 反空降战（人）
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - DanWeiJieShao_Ren
+    - key: DanWeiJieShao_Ren
+      value: 单位介绍（人）
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - FangKongZhan_Ren
+    - key: FangKongZhan_Ren
+      value: 防空战（人）
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - QiangBingDanTiaoTanKe_Ren
+    - key: QiangBingDanTiaoTanKe_Ren
+      value: 枪兵单挑坦克（人）
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - CaiJi_JianZao_ZhanDou_Ren
+    - key: CaiJi_JianZao_ZhanDou_Ren
+      value: 采集、建造、战斗（人）
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - FangShouZhan_Ren
+    - key: FangShouZhan_Ren
+      value: 防守战（人）
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - GongJianZhan_Ren
+    - key: GongJianZhan_Ren
+      value: 攻坚战（人）
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ZhonYangFangShou_Ren
+    - key: ZhonYangFangShou_Ren
+      value: 中央防守（人）
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - DanWeiJieShao_Chong
+    - key: DanWeiJieShao_Chong
+      value: 单位介绍（虫）
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - KongJiangZhan_Chong
+    - key: KongJiangZhan_Chong
+      value: 空降战（虫）
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - FanFangKongZhan_Chong
+    - key: FanFangKongZhan_Chong
+      value: 反防空战（虫）
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - FeiChongDanTiaoPaoTai_Chong
+    - key: FeiChongDanTiaoPaoTai_Chong
+      value: 飞虫单挑炮台（虫）
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - CaiJi_JianZao_ZhanDou_Chong
+    - key: CaiJi_JianZao_ZhanDou_Chong
+      value: 采集、建造、战斗（虫）
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - FangShouZHan_Chong
+    - key: FangShouZHan_Chong
+      value: 防守战（虫）
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - GongJianZhan_Chong
+    - key: GongJianZhan_Chong
+      value: 攻坚战（虫）
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Win
+    - key: Win
+      value: 赢
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Loss
+    - key: Loss
+      value: 输
       type: 4
       isVariant: false
       associations: []
@@ -499,7 +616,7 @@ items:
 languageConfig:
   bcp47Tag: zh-Hans-CN
   providerTag: zh-CHS
-  translateFinished: 92
-  translateTotal: 92
+  translateFinished: 196
+  translateTotal: 196
   compileFinished: 0
-  compileTotal: 61
+  compileTotal: 78

@@ -80,4 +80,6 @@ export class 翻译Key {
     static 曲名 = 'MusicName'
     static 作者 = 'MusicAuthor'
     static 版权 = 'MusicCopyright'
+    static 赢 = 'Win'
+    static 输 = 'Loss'
 }
