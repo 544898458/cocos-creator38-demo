@@ -430,10 +430,98 @@ items:
       isVariant: false
       associations: []
       _variants: []
+  - - PangGuanBieRen
+    - key: PangGuanBieRen
+      value: Spectate other players' matches
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - PaiHangBang
+    - key: PaiHangBang
+      value: Leaderboard
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - RenLei
+    - key: RenLei
+      value: Humans
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ChongZu
+    - key: ChongZu
+      value: Insectoids
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - DuoWanJiaHunZhan_ShaMo
+    - key: DuoWanJiaHunZhan_ShaMo
+      value: |-
+        Multiplayer FFA (Desert)
+        <size=10>All players are enemies</size>
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - YiDaYi
+    - key: YiDaYi
+      value: >-
+        1v1 (You're the Host)
+
+        <size=10>Other players can join your match. The match ends if you leave
+        the scene.</size>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ZhongYangFangShou
+    - key: ZhongYangFangShou
+      value: >-
+        Central Defense - Co-op (You're the Host)
+
+        <size=12>Other players can join your match. The match ends if you leave
+        the scene.</size>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - JiaRuDuoRenZhanJu
+    - key: JiaRuDuoRenZhanJu
+      value: |-
+        Join Other Players' Multiplayer Matches
+        <size=12>Challenge other players!</size>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - SiFangDuiZhan
+    - key: SiFangDuiZhan
+      value: |-
+        4-Way Battle (Host)
+        <size=12>Others may join your match. Match ends when you leave.</size>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ZhongYangFangShou_WanJiaHeZuo
+    - key: ZhongYangFangShou_WanJiaHeZuo
+      value: >-
+        Central Defense - Co-op (You're the Host)
+
+        <size=10>Other players can join your match. The match ends if you leave
+        the scene.</size>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
 languageConfig:
   bcp47Tag: en-US
   providerTag: en
-  translateFinished: 16
-  translateTotal: 27
+  translateFinished: 92
+  translateTotal: 149
   compileFinished: 0
-  compileTotal: 50
+  compileTotal: 60

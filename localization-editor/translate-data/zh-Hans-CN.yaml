@@ -67,8 +67,8 @@ items:
   - - DuoWanJiaHunZhan
     - key: DuoWanJiaHunZhan
       value: |-
-        多玩家混战
-        <size=10>玩家互为敌对阵营</size>
+        多  玩  家  混  战
+        <size=10>看30秒广告送10单位和1000资源，提前关闭广告送2单位和80资源</size>
       type: 4
       isVariant: false
       associations: []
@@ -412,10 +412,94 @@ items:
       isVariant: false
       associations: []
       _variants: []
+  - - PangGuanBieRen
+    - key: PangGuanBieRen
+      value: 旁观其他玩家的战局
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - PaiHangBang
+    - key: PaiHangBang
+      value: 排行榜
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - RenLei
+    - key: RenLei
+      value: 人类
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ChongZu
+    - key: ChongZu
+      value: 虫族
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - YiDaYi
+    - key: YiDaYi
+      value: |-
+        一打一（我是房主）
+        <size=12>其他玩家可加入您的战局，您退出场景就会结束战局</size>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - DuoWanJiaHunZhan_ShaMo
+    - key: DuoWanJiaHunZhan_ShaMo
+      value: |-
+        多玩家混战（沙漠）
+        <size=10>看30秒广告送10单位和1000资源，提前关闭广告送2单位和80资源</size>
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ZhongYangFangShou
+    - key: ZhongYangFangShou
+      value: |-
+        中央防守 玩家合作（我是房主）
+        <size=12>其他玩家可加入您的战局，您退出场景就会结束战局</size>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - JiaRuDuoRenZhanJu
+    - key: JiaRuDuoRenZhanJu
+      value: |-
+        加入其他玩家创建的多人战局
+        <size=12>挑战其他玩家</size>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - SiFangDuiZhan
+    - key: SiFangDuiZhan
+      value: |-
+        四方对战（我是房主）
+        <size=12>其他玩家可加入您的战局，您退出场景就会结束战局</size>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ZhongYangFangShou_WanJiaHeZuo
+    - key: ZhongYangFangShou_WanJiaHeZuo
+      value: >-
+        Central Defense - Co-op (You're the Host)
+
+        <size=12>Other players can join your match. The match ends if you leave
+        the scene.</size>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
 languageConfig:
   bcp47Tag: zh-Hans-CN
   providerTag: zh-CHS
-  translateFinished: 16
-  translateTotal: 16
+  translateFinished: 92
+  translateTotal: 92
   compileFinished: 0
-  compileTotal: 51
+  compileTotal: 61
