@@ -25,6 +25,7 @@ import { MainTest } from '../MainTest'
 import { UI2Prefab } from '../autobind/UI2Prefab'
 import { BattleMoude } from './BattleMoude'
 import { MsgId, 单位类型, 属性类型 } from '../utils/Enum'
+import { 翻译Key } from '../配置/翻译Key'
 
 const { ccclass, property } = _decorator
 export class ClientEntityComponent {
@@ -422,7 +423,7 @@ export class Scene战斗 extends Component {
         }
         if (this.posWorld框选起始点) {
             this.posWorld框选起始点 = null
-            this.battleUI.lable系统消息.string = '已退出框选状态'
+            this.battleUI.lable系统消息.string = 翻译Key.翻译(翻译Key.已退出框选状态)
         }
 
         this.battleUI.恢复战斗界面()
@@ -518,7 +519,7 @@ export class Scene战斗 extends Component {
                 this.b框选等待按下起始点 = false
                 this.posWorld框选起始点 = item.hitPoint.clone()
                 this.pos屏幕框选起始点 = posMouseDown.clone()
-                this.battleUI.lable系统消息.string = '已开始框选，请拖动后放开'
+                this.battleUI.lable系统消息.string = 翻译Key.翻译(翻译Key.已开始框选请拖动后放开)
                 this.battleUI.进入点击地面状态()
                 return
             } else if (this.posWorld框选起始点) {

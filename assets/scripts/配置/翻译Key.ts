@@ -83,4 +83,10 @@ export class 翻译Key {
     static 赢 = 'Win'
     static 输 = 'Loss'
     static 的战局 = 'DeZhanJv'
+    static 晶体矿 = 'JingTiKuang'
+    static 燃气矿 = 'RanQiKuang'
+    static 活动单位 = 'HuoDongDanWei'
+    static 建筑单位 = 'JianZhuDanWei'
+    static 已开始框选请拖动后放开 = 'YiKaiShiKuangXuanQingTuoDongHouFangKai'
+    static 已退出框选状态 = 'YiTuiChuKuangXuanZhuangTai'
 }

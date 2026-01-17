@@ -646,18 +646,14 @@ items:
       _variants: []
   - - JianZhuDanWei
     - key: JianZhuDanWei
-      value: |-
-        Construction
-        Unit
+      value: Construction Unit
       type: 2
       isVariant: false
       associations: []
       _variants: []
   - - HuoDongDanWei
     - key: HuoDongDanWei
-      value: |-
-        Mobile
-        Unit
+      value: Mobile Unit
       type: 2
       isVariant: false
       associations: []
@@ -813,10 +809,66 @@ items:
       isVariant: false
       associations: []
       _variants: []
+  - - JingTiKuang
+    - key: JingTiKuang
+      value: Crysta
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - RanQiKuang
+    - key: RanQiKuang
+      value: Gas
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - LoginMainSvr
+    - key: LoginMainSvr
+      value: 登录正式服
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - LoginTestSvr
+    - key: LoginTestSvr
+      value: 登录测试体验服
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - YiKaiShiKuangXuanQingTuoDongHouFangKai
+    - key: YiKaiShiKuangXuanQingTuoDongHouFangKai
+      value: Box selection initiated. Please drag and release.
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - YiTuiChuKuangXuanZhuangTai
+    - key: YiTuiChuKuangXuanZhuangTai
+      value: Box selection mode exited.
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - QuXiao
+    - key: QuXiao
+      value: Cancel
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - QueDing
+    - key: QueDing
+      value: Confirm
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
 languageConfig:
   bcp47Tag: en-US
   providerTag: en
   translateFinished: 269
   translateTotal: 815
   compileFinished: 0
-  compileTotal: 100
+  compileTotal: 108

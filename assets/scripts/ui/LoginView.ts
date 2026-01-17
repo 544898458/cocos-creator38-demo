@@ -29,7 +29,7 @@ import { ImageAsset } from 'cc';
 import { SpriteFrame } from 'cc';
 import { 翻译Key } from '../配置/翻译Key';
 import { host静态 } from '../配置/此游戏专用配置';
-import { L10nLabel } from 'db://localization-editor/l10n';
+import { l10n, L10nLabel } from 'db://localization-editor/l10n';
 
 const { ccclass, property } = _decorator;
 declare const tt: any;
@@ -252,6 +252,7 @@ export class LoginView extends Dialog {
                 'Hello, world!pwd',
                 37,//版本号
                 strWxLoginCode,
+                l10n.currentLanguage
             ])
 
             // this.选择模式();

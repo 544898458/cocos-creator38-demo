@@ -503,10 +503,10 @@ export class NetMessage {
         const 建筑单位 = arr[idxArr++];
         const 建筑单位上限 = arr[idxArr++];
 
-        battleUI.lableGas.string = `燃气矿:${燃气矿}`;
-        battleUI.lableCrystal.string = `晶体矿:${晶体矿}`;
-        battleUI.lableUnit.string = `活动单位:${活动单位}/${活动单位上限}`;
-        battleUI.lable建筑单位.string = `建筑单位:${建筑单位}/${建筑单位上限}`;
+        battleUI.lableGas.string = `${翻译Key.翻译(翻译Key.燃气矿)}:${燃气矿}`;
+        battleUI.lableCrystal.string = `${翻译Key.翻译(翻译Key.晶体矿)}:${晶体矿}`;
+        battleUI.lableUnit.string = `${翻译Key.翻译(翻译Key.活动单位)}:${活动单位}/${活动单位上限}`;
+        battleUI.lable建筑单位.string = `${翻译Key.翻译(翻译Key.建筑单位)}:${建筑单位}/${建筑单位上限}`;
     }
 
     private handleGame_离开Space(arr: any[], idxArr: number): void {
