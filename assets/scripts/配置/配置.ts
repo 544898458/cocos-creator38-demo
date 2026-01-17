@@ -11,10 +11,10 @@ export class 动作 {
 }
 export class 单位配置 {
 	类型: 单位类型
-	名字: string
+	名字Key: string
 	空闲动作: 动作
 	动画节点路径: string
-	描述: string
+	描述Key: string
 	受击高度: number
 	是骨骼动画: boolean
 }

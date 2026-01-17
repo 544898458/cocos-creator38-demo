@@ -33,6 +33,7 @@ import { TextAsset } from 'cc';
 import { JsonAsset } from 'cc';
 import { NetMessage } from '../manager/NetMessage';
 import { host静态 } from '../配置/此游戏专用配置';
+import { 翻译Key } from '../配置/翻译Key';
 const { ccclass, property } = _decorator;
 
 @ccclass('BattleUI')
@@ -155,7 +156,7 @@ export class BattleUI extends Dialog {
             console.log('createMsg造建筑', hitPoint)
             return [[MsgId.建筑产出活动单位的集结点, Glob.getSendMsgSn自增(), 0], [hitPoint.x, hitPoint.y, hitPoint.z], 类型]
         }
-        this.lable系统消息.string = '请点击地面设置此建筑产出活动单位的集结点'
+        this.lable系统消息.string = 翻译Key.翻译(翻译Key.请点击地面设置此建筑产出活动单位的集结点)
         this.进入点击地面状态()
     }
     on跟随(event: Event, customEventData: string) {
@@ -168,7 +169,7 @@ export class BattleUI extends Dialog {
             console.log('createMsg跟随', entity, id)
             return [[MsgId.跟随, Glob.getSendMsgSn自增(), 0], id]
         }
-        this.lable系统消息.string = '请点击要跟随的目标单位'
+        this.lable系统消息.string = 翻译Key.翻译(翻译Key.请点击要跟随的目标单位)
         this.进入点击地面状态()
     }
     on巡逻(event: Event, customEventData: string) {
@@ -180,7 +181,7 @@ export class BattleUI extends Dialog {
         // BattleMoude.instance.fun点击单位创建消息 = null
         // BattleMoude.instance.fun点击地面创建消息 = null
         BattleMoude.instance.arr巡逻点 = []
-        this.lable系统消息.string = '请点击地面设置巡逻点'
+        this.lable系统消息.string = 翻译Key.翻译(翻译Key.请点击地面设置巡逻点)
         this.node确定点击地面.active = true
         this.进入点击地面状态()
     }   
@@ -195,7 +196,7 @@ export class BattleUI extends Dialog {
             return
         }
         BattleMoude.instance.fun点击地面创建消息 = BattleMoude.instance.createMsgMove强行走
-        this.lable系统消息.string = '行走过程不会攻击敌人，请点击地面确定目的地'
+        this.lable系统消息.string = 翻译Key.翻译(翻译Key.请点击地面确定强行走目的地)
         this.进入点击地面状态()
     }
     on太岁分裂(event: Event, customEventData: string) {
@@ -205,7 +206,7 @@ export class BattleUI extends Dialog {
             return
         }
         BattleMoude.instance.fun点击地面创建消息 = MainTest.instance.createMsg太岁分裂
-        this.lable系统消息.string = '请在选中太岁的苔蔓(wàn)上放置分裂的太岁'
+        this.lable系统消息.string = 翻译Key.翻译(翻译Key.请在选中太岁的苔蔓wàn上放置分裂的太岁)
         this.进入点击地面状态()
     }
     on原地坚守(event: Event, customEventData: string) {
@@ -219,7 +220,7 @@ export class BattleUI extends Dialog {
     on框选(event: Event, customEventData: string) {
         MainTest.instance.scene战斗.posWorld框选起始点 = null
         MainTest.instance.scene战斗.b框选等待按下起始点 = true
-        this.lable系统消息.string = '请在屏幕上下拖动框选活动单位'
+        this.lable系统消息.string = 翻译Key.翻译(翻译Key.请在屏幕上拖动以框选单位)
         this.进入点击地面状态()
     }
     on聊天框输入结束(editbox: EditBox, customEventData: String) {
@@ -457,31 +458,31 @@ export class BattleUI extends Dialog {
         const 制造 = MainTest.instance.配置.find制造(类型)
         const 战斗 = MainTest.instance.配置.find战斗(类型)
 
-        let str详情 = 单位.名字 + '\n' + 单位.描述 + '\n'
+        let str详情 = 翻译Key.翻译(单位.名字Key) + '\n' + 翻译Key.翻译(单位.描述Key) + '\n'
         if (制造) {
             str详情 +=
-                '晶体矿:' + 制造.消耗晶体矿 + '\n' +
-                '燃气矿:' + 制造.消耗燃气矿 + '\n'
+                翻译Key.翻译(翻译Key.晶体矿) + ':' + 制造.消耗晶体矿 + '\n' +
+                翻译Key.翻译(翻译Key.燃气矿) + ':' + 制造.消耗燃气矿 + '\n'
             if (entity && entity.hp())
                 str详情 += 'HP:' + entity.hp() + '/' + 制造.初始HP + '\n'
             else
-                str详情 += '初始HP:' + 制造.初始HP + '\n'
+                str详情 += 翻译Key.翻译(翻译Key.初始HP) + ':' + 制造.初始HP + '\n'
         }
         if (战斗) {
-            str详情 += this.属性加等级('攻击', 战斗.攻击, 类型, 属性类型.攻击)
-            str详情 += this.属性加等级('防御', 战斗.防御, 类型, 属性类型.防御)
-            str详情 += this.属性加等级('移动速度', 战斗.f每帧移动距离, 类型, 属性类型.移动速度, '米/秒', 10)
+            str详情 += this.属性加等级(翻译Key.翻译(翻译Key.攻击), 战斗.攻击, 类型, 属性类型.攻击)
+            str详情 += this.属性加等级(翻译Key.翻译(翻译Key.防御), 战斗.防御, 类型, 属性类型.防御)
+            str详情 += this.属性加等级(翻译Key.翻译(翻译Key.移动速度), 战斗.f每帧移动距离, 类型, 属性类型.移动速度, 翻译Key.翻译(翻译Key.米_秒), 10)
 
-            str详情 += '警戒距离:' + 战斗.f警戒距离 + '米\n' +
-                '攻击距离:' + 战斗.f攻击距离 + '米\n'
+            str详情 += 翻译Key.翻译(翻译Key.警戒距离) + ':' + 战斗.f警戒距离 + 翻译Key.翻译(翻译Key.米) + '\n' +
+                翻译Key.翻译(翻译Key.攻击距离) + ':' + 战斗.f攻击距离 + 翻译Key.翻译(翻译Key.米) + '\n'
 
             // let 前摇毫秒 = 战斗.dura开始播放攻击动作 + 战斗.dura开始伤害
             // if (0 < 前摇毫秒)
-            //     str详情 += '攻击前摇:' + 前摇毫秒 + '毫秒\n'
-            str详情 += this.属性加等级('攻击前摇', 战斗.dura开始播放攻击动作 + 战斗.dura开始伤害, 类型, 属性类型.攻击前摇_伤害耗时, '毫秒')
+            //     str详情 += 翻译Key.翻译(翻译Key.攻击前摇) + ':' + 前摇毫秒 + '毫秒\n'
+            str详情 += this.属性加等级(翻译Key.翻译(翻译Key.攻击前摇), 战斗.dura开始播放攻击动作 + 战斗.dura开始伤害, 类型, 属性类型.攻击前摇_伤害耗时, 翻译Key.翻译(翻译Key.毫秒))
 
             if (0 < 战斗.dura后摇)
-                str详情 += '攻击后摇:' + 战斗.dura后摇 + '毫秒\n'
+                str详情 += 翻译Key.翻译(翻译Key.攻击后摇) + ':' + 战斗.dura后摇 + 翻译Key.翻译(翻译Key.毫秒) + '\n'
         }
         return str详情
     }

@@ -29,6 +29,7 @@ import { BattleMoude } from './scene/BattleMoude';
 import { assetManager } from 'cc';
 import { AudioClip } from 'cc';
 import { toast } from './manager/ToastMgr';
+import { 翻译Key } from './配置/翻译Key';
 
 const { ccclass, property } = _decorator;
 
@@ -164,7 +165,7 @@ export class MainTest extends Component {
     on点击按钮_造建筑(类型: 单位类型) {
         BattleMoude.instance.fun点击地面创建消息 = (hitPoint: Vec3) => this.createMsg造建筑(hitPoint, 类型)
         this.funCreateMsg造建筑 = BattleMoude.instance.fun点击地面创建消息
-        this.scene战斗.battleUI.lable系统消息.string = '请点击地面放置建筑'
+        this.scene战斗.battleUI.lable系统消息.string = 翻译Key.翻译(翻译Key.请点击地面放置建筑)
         this.scene战斗.battleUI.进入点击地面状态()
     }
     on升级单位属性(单位: 单位类型, 属性: 属性类型) {

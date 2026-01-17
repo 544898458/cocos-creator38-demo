@@ -11,6 +11,9 @@ export class 翻译Key {
         return l10n.currentLanguage === 'en-US'
     }
     static 翻译(key: string): string {
+        if(key === undefined || key === null || key === '')
+            return ''
+
         return l10n.t(key)
     }
     /**
@@ -89,4 +92,23 @@ export class 翻译Key {
     static 建筑单位 = 'JianZhuDanWei'
     static 已开始框选请拖动后放开 = 'YiKaiShiKuangXuanQingTuoDongHouFangKai'
     static 已退出框选状态 = 'YiTuiChuKuangXuanZhuangTai'
+    static 攻击 = 'GongJi'
+    static 防御 = 'FangYu'
+    static 移动速度 = 'YiDongSuDu'
+    static 警戒距离 = 'JingJieJvLi'
+    static 攻击距离 = 'GongJiJvLi'
+    static 攻击前摇 = 'GongJiQianYao'
+    static 攻击后摇 = 'GongJiHouYao'
+    static 毫秒 = 'HaoMiao'
+    static 米 = 'Mi'
+    static 秒 = 'Miao'
+    static 初始HP = 'ChuShiHP'
+    static 米_秒 = 'Mi_Miao'//'米/秒'
+    static 请点击地面放置建筑 = 'QingDianJiDiMianZhiZhiJianZhu'//'请点击地面放置建筑'
+    static 请点击要跟随的目标单位 = 'QingDianJiDiMianZhiZhiJianZhu'//'请点击要跟随的目标单位'
+    static 请点击地面设置巡逻点 = 'QingDianJiDiMianZhiZhiXunLvDian'//'请点击地面设置巡逻点'
+    static 请点击地面确定强行走目的地 = 'QingDianJiDiMianZhiZhiQiangZouXingDiMuDi'//'强行走过程不会攻击敌人，请点击地面确定目的地'
+    static 请点击地面设置此建筑产出活动单位的集结点 = 'QingDianJiDiMianZhiZhiSheZhiCiJianZhuChanChuHuoDongDanWeiDeJiJiDian'//'请点击地面设置此建筑产出活动单位的集结点'
+    static 请在屏幕上拖动以框选单位 = 'QingZaiPingMuShangTuoDongYiKuangXuanDanWei'//'请在屏幕上拖动以框选单位'
+    static 请在选中太岁的苔蔓wàn上放置分裂的太岁 = 'QingZaiXuanZhongTaiShuiDeTaiManWanShangFangZhiFenLieDeTaiShui'//'请在选中太岁的苔蔓(wàn)上放置分裂的太岁'
 }

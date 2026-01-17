@@ -1044,10 +1044,619 @@ items:
       isVariant: false
       associations: []
       _variants: []
+  - - GongJi
+    - key: GongJi
+      value: 攻击
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - FangYu
+    - key: FangYu
+      value: 防御
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - YiDongSuDu
+    - key: YiDongSuDu
+      value: 移动速度
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - JingJieJvLi
+    - key: JingJieJvLi
+      value: 警戒距离
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - GongJiJvLi
+    - key: GongJiJvLi
+      value: 攻击距离
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - GongJiQianYao
+    - key: GongJiQianYao
+      value: 攻击前摇
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - GongJiHouYao
+    - key: GongJiHouYao
+      value: 攻击后摇
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - HaoMiao
+    - key: HaoMiao
+      value: 毫秒
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ChuShiHP
+    - key: ChuShiHP
+      value: 初始HP
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_FangDun
+    - key: MiaoShu_FangDun
+      value: 永久阻挡，不会损坏
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_GongChengChe
+    - key: MiaoShu_GongChengChe
+      value: 可采集资源，可建造建筑
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_QiangBing
+    - key: MiaoShu_QiangBing
+      value: 远程攻击
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_JinZhanBing
+    - key: MiaoShu_JinZhanBing
+      value: 近程攻击
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_SanSeTanKe
+    - key: MiaoShu_SanSeTanKe
+      value: 超远距离范围攻击，前摇较长，克制炮台。爆炸溅射可能会伤害己方单位。
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_GongChong
+    - key: MiaoShu_GongChong
+      value: 可采集资源，可变成建筑
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_FeiJi
+    - key: MiaoShu_FeiJi
+      value: 可飞越障碍物
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_YouChong
+    - key: MiaoShu_YouChong
+      value: 可蜕变为其它活动单位
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_LvSeTanKe
+    - key: MiaoShu_LvSeTanKe
+      value: 超远距离发射光刺，光刺会遭到障碍物阻挡。
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_FangChong
+    - key: MiaoShu_FangChong
+      value: 可增加活动单位上限
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_FeiChong
+    - key: MiaoShu_FeiChong
+      value: 可飞跃障碍物
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_YiLiaoBing
+    - key: MiaoShu_YiLiaoBing
+      value: 可给友方单位恢复HP
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_FangKongBing
+    - key: MiaoShu_FangKongBing
+      value: 远程对空范围攻击，爆炸溅射会伤害己方单位，不可对地攻击
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_JiDi
+    - key: MiaoShu_JiDi
+      value: 可产出工程车
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_BingYing
+    - key: MiaoShu_BingYing
+      value: 可产出枪兵和近战兵
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_DiBao
+    - key: MiaoShu_DiBao
+      value: 高HP，可派遣步兵进入地堡
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_PaoTai
+    - key: MiaoShu_PaoTai
+      value: 克制除了坦克以外的一切单位
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_ChongChao
+    - key: MiaoShu_ChongChao
+      value: 可产出幼虫
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_JiChang
+    - key: MiaoShu_JiChang
+      value: 可产出飞机
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_ZhongCheChang
+    - key: MiaoShu_ZhongCheChang
+      value: 可产出三色坦克
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_ChongYing
+    - key: MiaoShu_ChongYing
+      value: 近战虫和枪虫的前置建筑，只需1个就够了
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_FeiTa
+    - key: MiaoShu_FeiTa
+      value: 飞虫的前置建筑，只需1个就够了
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_NiTaiYuan
+    - key: MiaoShu_NiTaiYuan
+      value: 绿色坦克的前置建筑，只需1个就够了
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_TaiSui
+    - key: MiaoShu_TaiSui
+      value: 可扩张苔蔓(wàn)，扩张完成后可分裂另一个太岁
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key特效
+    - key: Key特效
+      value: 特效
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key视口
+    - key: Key视口
+      value: 视口
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key苔蔓(wàn)
+    - key: Key苔蔓(wàn)
+      value: 苔蔓(wàn)
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key工程车
+    - key: Key工程车
+      value: 工程车
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key枪兵
+    - key: Key枪兵
+      value: 枪兵
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key近战兵
+    - key: Key近战兵
+      value: 近战兵
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key三色坦克
+    - key: Key三色坦克
+      value: 三色坦克
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key工虫
+    - key: Key工虫
+      value: 工虫
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key飞机
+    - key: Key飞机
+      value: 飞机
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key枪虫
+    - key: Key枪虫
+      value: 枪虫
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key近战虫
+    - key: Key近战虫
+      value: 近战虫
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key幼虫
+    - key: Key幼虫
+      value: 幼虫
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key绿色坦克
+    - key: Key绿色坦克
+      value: 绿色坦克
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key光刺
+    - key: Key光刺
+      value: 光刺
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key房虫
+    - key: Key房虫
+      value: 房虫
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key飞虫
+    - key: Key飞虫
+      value: 飞虫
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key医疗兵
+    - key: Key医疗兵
+      value: 医疗兵
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key防空兵
+    - key: Key防空兵
+      value: 防空兵
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key飞塔
+    - key: Key飞塔
+      value: 飞塔
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key太岁
+    - key: Key太岁
+      value: 太岁
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key枪虫怪
+    - key: Key枪虫怪
+      value: 枪虫怪
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key近战虫怪
+    - key: Key近战虫怪
+      value: 近战虫怪
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key工虫怪
+    - key: Key工虫怪
+      value: 工虫怪
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key枪兵怪
+    - key: Key枪兵怪
+      value: 枪兵怪
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key近战兵怪
+    - key: Key近战兵怪
+      value: 近战兵怪
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key工程车怪
+    - key: Key工程车怪
+      value: 工程车怪
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key幼虫怪
+    - key: Key幼虫怪
+      value: 幼虫怪
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key飞虫怪
+    - key: Key飞虫怪
+      value: 飞虫怪
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key绿色坦克怪
+    - key: Key绿色坦克怪
+      value: 绿色坦克怪
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key房虫怪
+    - key: Key房虫怪
+      value: 房虫怪
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key防空兵怪
+    - key: Key防空兵怪
+      value: 防空兵怪
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_QiangChong
+    - key: MiaoShu_QiangChong
+      value: 远程攻击
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_JinZhanChong
+    - key: MiaoShu_JinZhanChong
+      value: 近程攻击
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_MinFang
+    - key: MiaoShu_MinFang
+      value: 可增加活动单位上限
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key方墩
+    - key: Key方墩
+      value: 方墩
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key晶体矿
+    - key: Key晶体矿
+      value: 晶体矿
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key燃气矿
+    - key: Key燃气矿
+      value: 燃气矿
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key基地
+    - key: Key基地
+      value: 基地
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key兵营
+    - key: Key兵营
+      value: 兵营
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key民房
+    - key: Key民房
+      value: 民房
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key地堡
+    - key: Key地堡
+      value: 地堡
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key炮台
+    - key: Key炮台
+      value: 炮台
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key虫巢
+    - key: Key虫巢
+      value: 虫巢
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key机场
+    - key: Key机场
+      value: 机场
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key重车厂
+    - key: Key重车厂
+      value: 重车厂
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key虫营
+    - key: Key虫营
+      value: 虫营
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key拟态源
+    - key: Key拟态源
+      value: 拟态源
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Mi_Miao
+    - key: Mi_Miao
+      value: 米/秒
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - QingDianJiDiMianZhiZhiJianZhu
+    - key: QingDianJiDiMianZhiZhiJianZhu
+      value: 请点击要跟随的目标单位
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - QingDianJiDiMianZhiZhiXunLvDian
+    - key: QingDianJiDiMianZhiZhiXunLvDian
+      value: 请点击地面设置巡逻点
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - QingDianJiDiMianZhiZhiQiangZouXingDiMuDi
+    - key: QingDianJiDiMianZhiZhiQiangZouXingDiMuDi
+      value: 强行走过程不会攻击敌人，请点击地面确定目的地
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - QingDianJiDiMianZhiZhiSheZhiCiJianZhuChanChuHuoDongDanWeiDeJiJiDian
+    - key: QingDianJiDiMianZhiZhiSheZhiCiJianZhuChanChuHuoDongDanWeiDeJiJiDian
+      value: 请点击地面设置此建筑产出活动单位的集结点
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - QingZaiPingMuShangTuoDongYiKuangXuanDanWei
+    - key: QingZaiPingMuShangTuoDongYiKuangXuanDanWei
+      value: 请在屏幕上拖动以框选单位
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - QingZaiXuanZhongTaiShuiDeTaiManWanShangFangZhiFenLieDeTaiShui
+    - key: QingZaiXuanZhongTaiShuiDeTaiManWanShangFangZhiFenLieDeTaiShui
+      value: 请在选中太岁的苔蔓(wàn)上放置分裂的太岁
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
 languageConfig:
   bcp47Tag: zh-Hans-CN
   providerTag: zh-CHS
   translateFinished: 269
   translateTotal: 269
   compileFinished: 0
-  compileTotal: 132
+  compileTotal: 219

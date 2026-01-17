@@ -1066,10 +1066,627 @@ items:
       isVariant: false
       associations: []
       _variants: []
+  - - GongJi
+    - key: GongJi
+      value: Attack
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - FangYu
+    - key: FangYu
+      value: Defense
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - YiDongSuDu
+    - key: YiDongSuDu
+      value: Movement Speed
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - JingJieJvLi
+    - key: JingJieJvLi
+      value: Alert Range
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - GongJiJvLi
+    - key: GongJiJvLi
+      value: Attack Range
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - GongJiQianYao
+    - key: GongJiQianYao
+      value: Attack Wind-up
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - GongJiHouYao
+    - key: GongJiHouYao
+      value: Attack Wind-down
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - HaoMiao
+    - key: HaoMiao
+      value: Millisecond
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ChuShiHP
+    - key: ChuShiHP
+      value: Initial HP
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_FangDun
+    - key: MiaoShu_FangDun
+      value: Permanently blocks, indestructible
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_GongChengChe
+    - key: MiaoShu_GongChengChe
+      value: Resource collectable, building constructible
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_QiangBing
+    - key: MiaoShu_QiangBing
+      value: Ranged Attack
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_JinZhanBing
+    - key: MiaoShu_JinZhanBing
+      value: Melee Attack
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_SanSeTanKe
+    - key: MiaoShu_SanSeTanKe
+      value: >-
+        Ultra-long range area attack, long wind-up, effective against turrets.
+        Explosion splash damage may harm allied units.
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_GongChong
+    - key: MiaoShu_GongChong
+      value: Resource collectable, convertible to building
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_FeiJi
+    - key: MiaoShu_FeiJi
+      value: Can fly over obstacles
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_QiangChong
+    - key: MiaoShu_QiangChong
+      value: Ranged Attack
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_JinZhanChong
+    - key: MiaoShu_JinZhanChong
+      value: Melee Attack
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_YouChong
+    - key: MiaoShu_YouChong
+      value: Can metamorphose into other mobile units
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_LvSeTanKe
+    - key: MiaoShu_LvSeTanKe
+      value: Fires ultra-long range light spikes, which are blocked by obstacles.
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_FangChong
+    - key: MiaoShu_FangChong
+      value: Increases mobile unit cap
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_FeiChong
+    - key: MiaoShu_FeiChong
+      value: Can fly over obstacles
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_YiLiaoBing
+    - key: MiaoShu_YiLiaoBing
+      value: Restores HP to allied units
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_FangKongBing
+    - key: MiaoShu_FangKongBing
+      value: >-
+        Ranged anti-air area attack, explosion splash damage harms allied units,
+        cannot attack ground targets.
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_JiDi
+    - key: MiaoShu_JiDi
+      value: Produces engineering vehicles
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_BingYing
+    - key: MiaoShu_BingYing
+      value: Produces riflemen and melee infantry
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_MinFang
+    - key: MiaoShu_MinFang
+      value: Increases mobile unit cap
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_DiBao
+    - key: MiaoShu_DiBao
+      value: High HP, allows infantry to garrison inside the bunker
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_PaoTai
+    - key: MiaoShu_PaoTai
+      value: Effective against all units except tanks
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_ChongChao
+    - key: MiaoShu_ChongChao
+      value: Produces larvae
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_JiChang
+    - key: MiaoShu_JiChang
+      value: Produces aircraft
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_ZhongCheChang
+    - key: MiaoShu_ZhongCheChang
+      value: Produces three-color tanks
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_ChongYing
+    - key: MiaoShu_ChongYing
+      value: Prerequisite building for melee bugs and gun bugs, only 1 required
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_FeiTa
+    - key: MiaoShu_FeiTa
+      value: Prerequisite building for flying bugs, only 1 required
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_NiTaiYuan
+    - key: MiaoShu_NiTaiYuan
+      value: Prerequisite building for green tanks, only 1 required
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MiaoShu_TaiSui
+    - key: MiaoShu_TaiSui
+      value: Can spread creep, splits into another Taisui upon completion of spread
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key特效
+    - key: Key特效
+      value: Special Effects
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key视口
+    - key: Key视口
+      value: Viewport
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key苔蔓(wàn)
+    - key: Key苔蔓(wàn)
+      value: Moss Vines
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key方墩
+    - key: Key方墩
+      value: Square Pillar
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key晶体矿
+    - key: Key晶体矿
+      value: Crystal Ore
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key燃气矿
+    - key: Key燃气矿
+      value: Gas Ore
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key工程车
+    - key: Key工程车
+      value: Construction Vehicle
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key枪兵
+    - key: Key枪兵
+      value: Rifleman
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key近战兵
+    - key: Key近战兵
+      value: Melee Infantry
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key三色坦克
+    - key: Key三色坦克
+      value: Tricolor Tank
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key工虫
+    - key: Key工虫
+      value: Worker Larva
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key飞机
+    - key: Key飞机
+      value: Aircraft
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key枪虫
+    - key: Key枪虫
+      value: Rifle Bug
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key近战虫
+    - key: Key近战虫
+      value: Melee Bug
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key幼虫
+    - key: Key幼虫
+      value: Larva
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key绿色坦克
+    - key: Key绿色坦克
+      value: Green Tank
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key光刺
+    - key: Key光刺
+      value: Light Spiker
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key房虫
+    - key: Key房虫
+      value: Population Drone
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key飞虫
+    - key: Key飞虫
+      value: Flying Bug
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key医疗兵
+    - key: Key医疗兵
+      value: Medic
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key防空兵
+    - key: Key防空兵
+      value: Anti-Air Trooper
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key基地
+    - key: Key基地
+      value: Command Center
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key民房
+    - key: Key民房
+      value: Civilian House
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key炮台
+    - key: Key炮台
+      value: Gun Emplacement
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key虫巢
+    - key: Key虫巢
+      value: Bug Hive
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key虫营
+    - key: Key虫营
+      value: Bug Barracks
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key飞塔
+    - key: Key飞塔
+      value: Anti-Air Tower
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key拟态源
+    - key: Key拟态源
+      value: Mimic Source
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key太岁
+    - key: Key太岁
+      value: Giant Flesh Mass
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key枪虫怪
+    - key: Key枪虫怪
+      value: Rifle Bug Mutant
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key近战虫怪
+    - key: Key近战虫怪
+      value: Melee Bug Mutant
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key工虫怪
+    - key: Key工虫怪
+      value: Worker Mutant
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key枪兵怪
+    - key: Key枪兵怪
+      value: Rifleman Mutant
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key近战兵怪
+    - key: Key近战兵怪
+      value: Melee Infantry Mutant
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key工程车怪
+    - key: Key工程车怪
+      value: Constructor Mutant
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key幼虫怪
+    - key: Key幼虫怪
+      value: Larva Mutant
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key飞虫怪
+    - key: Key飞虫怪
+      value: Flying Bug Mutant
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key绿色坦克怪
+    - key: Key绿色坦克怪
+      value: Green Tank Mutant
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key房虫怪
+    - key: Key房虫怪
+      value: Hive Bug Mutant
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key防空兵怪
+    - key: Key防空兵怪
+      value: Anti-Air Trooper Mutant
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key兵营
+    - key: Key兵营
+      value: Barracks
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key地堡
+    - key: Key地堡
+      value: Bunker
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key机场
+    - key: Key机场
+      value: Airfield
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Key重车厂
+    - key: Key重车厂
+      value: Heavy Vehicle Factory
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Mi_Miao
+    - key: Mi_Miao
+      value: m/s
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - QingDianJiDiMianZhiZhiJianZhu
+    - key: QingDianJiDiMianZhiZhiJianZhu
+      value: Please click the target unit to follow
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - QingDianJiDiMianZhiZhiXunLvDian
+    - key: QingDianJiDiMianZhiZhiXunLvDian
+      value: Please click the ground to set the patrol point
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - QingDianJiDiMianZhiZhiQiangZouXingDiMuDi
+    - key: QingDianJiDiMianZhiZhiQiangZouXingDiMuDi
+      value: >-
+        Forced movement will not attack enemies. Please click the ground to
+        confirm the destination
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - QingDianJiDiMianZhiZhiSheZhiCiJianZhuChanChuHuoDongDanWeiDeJiJiDian
+    - key: QingDianJiDiMianZhiZhiSheZhiCiJianZhuChanChuHuoDongDanWeiDeJiJiDian
+      value: >-
+        Please click the ground to set the rally point for mobile units produced
+        by this building
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - QingZaiPingMuShangTuoDongYiKuangXuanDanWei
+    - key: QingZaiPingMuShangTuoDongYiKuangXuanDanWei
+      value: Please drag on the screen to select units
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - QingZaiXuanZhongTaiShuiDeTaiManWanShangFangZhiFenLieDeTaiShui
+    - key: QingZaiXuanZhongTaiShuiDeTaiManWanShangFangZhiFenLieDeTaiShui
+      value: Please place the split Taisui on the creep of the selected Taisui
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
 languageConfig:
   bcp47Tag: en-US
   providerTag: en
   translateFinished: 269
   translateTotal: 806
   compileFinished: 0
-  compileTotal: 132
+  compileTotal: 219
