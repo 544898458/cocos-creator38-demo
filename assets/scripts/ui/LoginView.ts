@@ -29,6 +29,8 @@ import { ImageAsset } from 'cc';
 import { SpriteFrame } from 'cc';
 import { 翻译Key } from '../配置/翻译Key';
 import { host静态 } from '../配置/此游戏专用配置';
+import { L10nLabel } from 'db://localization-editor/l10n';
+
 const { ccclass, property } = _decorator;
 declare const tt: any;
 @ccclass('LoginView')
@@ -483,8 +485,9 @@ export class LoginView extends Dialog {
             let nickName = arrNikcScene[0]
             let sceneName = arrNikcScene[1]
             let node按钮 = instantiate(this.node个人战局按钮模板)
+            node按钮.getChildByName('Label').getComponent(L10nLabel).destroy()
             node按钮.active = true
-            node按钮.getChildByName('Label').getComponent(Label).string = nickName + ' 的战局'
+            node按钮.getChildByName('Label').getComponent(Label).string = nickName + 翻译Key.翻译(翻译Key.的战局)
             let button = node按钮.getComponent(Button)
             const clickEventHandler = new LoginView.EventHandler();
             clickEventHandler.target = this.node; // 这个 node 节点是你的事件处理代码组件所属的节点
