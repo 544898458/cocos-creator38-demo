@@ -487,7 +487,7 @@ export class NetMessage {
 
         // 更新 UI 上的单位数量显示
         if (scene战斗.battleUI?.lableCount) {
-            scene战斗.battleUI.lableCount.string = `共${scene战斗.entities.size}单位`;
+            scene战斗.battleUI.lableCount.string = `${scene战斗.entities.size} ${翻译Key.翻译(翻译Key.单位)}`;
         }
     }
     private handleGame_资源(arr: any[], idxArr: number): void {

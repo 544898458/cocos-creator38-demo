@@ -693,7 +693,7 @@ items:
       _variants: []
   - - JiBaiDanWeiPaiHang
     - key: JiBaiDanWeiPaiHang
-      value: Destruction Ranking
+      value: Dest. Rank
       type: 2
       isVariant: false
       associations: []
@@ -865,10 +865,199 @@ items:
       isVariant: false
       associations: []
       _variants: []
+  - - QiangXingZou
+    - key: QiangXingZou
+      value: Force Move
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - YuanDiJianShou
+    - key: YuanDiJianShou
+      value: |-
+        Hold
+        Pos
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - GenSui
+    - key: GenSui
+      value: Follow
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XunLuo
+    - key: XunLuo
+      value: Patrol
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - LiKaiDiBao
+    - key: LiKaiDiBao
+      value: |-
+        Exit
+        Bunker
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - LiKaiFangChong
+    - key: LiKaiFangChong
+      value: Exit Population Drone
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - JiJieDian
+    - key: JiJieDian
+      value: Rally Point
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - GongChengCheJiJieDian
+    - key: GongChengCheJiJieDian
+      value: |-
+        Constrctr
+        Rally
+        Point
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - GongChongJiJieDian
+    - key: GongChongJiJieDian
+      value: |-
+        Worker Larva
+        Rally Point
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - FangChongJiJieDian
+    - key: FangChongJiJieDian
+      value: |-
+        Popl. Drone
+        Rally Point
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - JieSuoJinZhanBing
+    - key: JieSuoJinZhanBing
+      value: |-
+        Unlock
+        Melee Infantry
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - JieSuoQiangChong
+    - key: JieSuoQiangChong
+      value: |-
+        Unlock
+        Rifle Bug
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ShengJiQiangBingGongJi
+    - key: ShengJiQiangBingGongJi
+      value: |-
+        Upgrade
+        Rifleman
+        Attack
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ShengJiJinZhanBingFangYu
+    - key: ShengJiJinZhanBingFangYu
+      value: |-
+        Upgrade
+        Melee Infantry
+        Defense
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ShengJiJinZhanChongGongJi
+    - key: ShengJiJinZhanChongGongJi
+      value: |-
+        Upgrade
+        Rifle Bug
+        Defense
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ShengJiQiangChongFangYu
+    - key: ShengJiQiangChongFangYu
+      value: |-
+        Upgrade
+        Rifle Bug
+        Defense
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ShengJiTanKeYiSu
+    - key: ShengJiTanKeYiSu
+      value: Upgrade Tank Move Speed
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ShengJiFeiJiGongSu
+    - key: ShengJiFeiJiGongSu
+      value: |-
+        Upgrade
+        Aircraft
+        Attack Speed
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ShengJiTanKeGongSu
+    - key: ShengJiTanKeGongSu
+      value: |-
+        Upgrade
+        Tank
+        Attack Speed
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ShengJiFeiChongYiSu
+    - key: ShengJiFeiChongYiSu
+      value: Upgrade Flying Bug Move Speed
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - TaiSuiFenLie
+    - key: TaiSuiFenLie
+      value: Taisui Split
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ShanChuDanWei
+    - key: ShanChuDanWei
+      value: |-
+        Delete
+        Unit
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
 languageConfig:
   bcp47Tag: en-US
   providerTag: en
   translateFinished: 269
-  translateTotal: 815
+  translateTotal: 806
   compileFinished: 0
-  compileTotal: 108
+  compileTotal: 130
