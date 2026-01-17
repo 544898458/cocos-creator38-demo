@@ -337,7 +337,7 @@ export class Scene战斗 extends Component {
                         BattleMoude.instance.arr巡逻点.push(vecHitPoint)
                         this.点击地面特效(vecHitPoint)
                         this.battleUI.lable系统消息.string = vecHitPoint.x.toFixed(1) + ',' + vecHitPoint.y.toFixed(1) + ',' + vecHitPoint.z.toFixed(1) 
-                            + ' 已添加为巡逻点，请继续点击地面添加巡逻点，或点击“确定”提交巡逻点列表'
+                            + ' ' + 翻译Key.翻译(翻译Key.已添加为巡逻点)
                         return
                     }
 

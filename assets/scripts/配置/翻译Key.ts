@@ -43,9 +43,9 @@ export class 翻译Key {
     static 连接错误 = 'ConnectError' //'连接错误，您可以再试一次'
     static 连接已断开 = 'ConnectClosed' //'连接已断开，已回到登录场景'
     static 请输入昵称 = 'PleaseInputNickname' //'请输入昵称（随便什么都可以）'
-    static url公告 = 'urlNotice'//'https://www.rtsgame.online/机甲合金幸存者公告/公告.txt'
-    static url公告左 = 'urlNoticeLeft'//'https://www.rtsgame.online/机甲合金幸存者公告/公告左.txt'
-    static url游戏攻略 = 'urlGameStrategy'//'https://www.rtsgame.online/机甲合金幸存者攻略/帮助.txt'
+    static url公告 = 'urlNotice'
+    static url公告左 = 'urlNoticeLeft'
+    static url游戏攻略 = 'urlGameStrategy'
     static 健康游戏忠告 = 'JianKangYouXiZhongDao'
     static 多玩家混战 = 'DuoWanJiaHunZhan'
     static 多玩家混战_沙漠 = 'DuoWanJiaHunZhan_ShaMo'
@@ -111,4 +111,9 @@ export class 翻译Key {
     static 请点击地面设置此建筑产出活动单位的集结点 = 'QingDianJiDiMianZhiZhiSheZhiCiJianZhuChanChuHuoDongDanWeiDeJiJiDian'//'请点击地面设置此建筑产出活动单位的集结点'
     static 请在屏幕上拖动以框选单位 = 'QingZaiPingMuShangTuoDongYiKuangXuanDanWei'//'请在屏幕上拖动以框选单位'
     static 请在选中太岁的苔蔓wàn上放置分裂的太岁 = 'QingZaiXuanZhongTaiShuiDeTaiManWanShangFangZhiFenLieDeTaiShui'//'请在选中太岁的苔蔓(wàn)上放置分裂的太岁'
+    static 菱形框选 = 'LingXingKuangXuan'
+    static 正矩形框选 = 'ZhengJuXingKuangXuan'
+    static 模式 = 'MoShi'
+    static 已切换到 = 'YiQieHuanDao'
+    static 已添加为巡逻点 = 'YiTianJiaWeiXunLvDian'//已添加为巡逻点，请继续点击地面添加巡逻点，或点击“确定”提交巡逻点列表
 }

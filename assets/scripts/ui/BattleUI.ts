@@ -345,7 +345,7 @@ export class BattleUI extends Dialog {
     onBtn聊天历史记录(): void {
         dialogMgr.openDialog(UI2Prefab.PopView_url, null, null, (dlg: Dialog): void => {
             let popView = dlg.getComponent(PopView)
-            popView.label标题.string = '聊天历史记录';
+            popView.label标题.string = 翻译Key.翻译(翻译Key.聊天历史记录);
             // 获取聊天历史记录     
             const chatHistory = NetMessage.instance.getChatHistory();
             // 将聊天历史记录转换为字符串
@@ -356,9 +356,9 @@ export class BattleUI extends Dialog {
     onClick游戏攻略(): void {
         dialogMgr.openDialog(UI2Prefab.PopView_url, null, null, (dlg: Dialog): void => {
             let popView = dlg.getComponent(PopView)
-            popView.label标题.string = '游戏攻略';
-            popView.richText内容.string = '请稍后……';
-            assetManager.loadRemote(encodeURI(host静态 + '即时战略指挥攻略/攻略.txt'), (err, textAsset: TextAsset) => {
+            popView.label标题.string = 翻译Key.翻译(翻译Key.游戏攻略);
+            popView.richText内容.string = 翻译Key.翻译(翻译Key.加载中);
+            assetManager.loadRemote(encodeURI(host静态 + 翻译Key.翻译(翻译Key.url游戏攻略)), (err, textAsset: TextAsset) => {
                 console.log('resources.load callback:', err, textAsset)
                 popView.richText内容.string = textAsset.text
             })
@@ -393,7 +393,7 @@ export class BattleUI extends Dialog {
     }
     onClick框选模式(): void {
         this.b菱形框选 = !this.b菱形框选
-        this.lable系统消息.string = '已切换到 ' + (this.b菱形框选 ? '菱形框选' : '正矩形框选') + '模式'
+        this.lable系统消息.string = 翻译Key.翻译(翻译Key.已切换到) + ' ' + (this.b菱形框选 ? 翻译Key.翻译(翻译Key.菱形框选) : 翻译Key.翻译(翻译Key.正矩形框选)) + ' ' + 翻译Key.翻译(翻译Key.模式)
     }
 
     onSelectUnits(selectUids: number[]): void {

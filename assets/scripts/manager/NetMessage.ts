@@ -189,7 +189,7 @@ export class NetMessage {
             scene战斗.entities.set(id, old);
 
             if (scene战斗.battleUI.lableCount != undefined)
-                scene战斗.battleUI.lableCount.string = '共' + scene战斗.entities.size + '单位'
+                scene战斗.battleUI.lableCount.string = scene战斗.entities.size + 翻译Key.翻译(翻译Key.单位)
 
             let 单位配置 = MainTest.instance.配置.find单位(old.类型)
             if (单位配置){

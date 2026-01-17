@@ -103,7 +103,7 @@ items:
       _variants: []
   - - urlGameStrategy
     - key: urlGameStrategy
-      value: 即时战略指挥攻略/帮助.txt
+      value: 即时战略指挥攻略/攻略.txt
       type: 4
       isVariant: false
       associations: []
@@ -1653,10 +1653,101 @@ items:
       isVariant: false
       associations: []
       _variants: []
+  - - SheZhi
+    - key: SheZhi
+      value: 设置
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - JingTouTouYing
+    - key: JingTouTouYing
+      value: 镜头投影
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - KuangXuanMoShi
+    - key: KuangXuanMoShi
+      value: 框选模式
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ShiKouFangDa
+    - key: ShiKouFangDa
+      value: 视口放大
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ShiKouSuoXiao
+    - key: ShiKouSuoXiao
+      value: 视口缩小
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - DianJiZhuiJiaZuanZhong
+    - key: DianJiZhuiJiaZuanZhong
+      value: 点击单位都是追加选中
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XianShiMingZi
+    - key: XianShiMingZi
+      value: 显示名字
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MingZiXianShiDanWeiLeiXing
+    - key: MingZiXianShiDanWeiLeiXing
+      value: 名字里显示单位类型
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - LingXingKuangXuan
+    - key: LingXingKuangXuan
+      value: 菱形框选
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ZhengJuXingKuangXuan
+    - key: ZhengJuXingKuangXuan
+      value: 正矩形框选
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MoShi
+    - key: MoShi
+      value: 模式
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - YiQieHuanDao
+    - key: YiQieHuanDao
+      value: 已切换到
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - YiTianJiaWeiXunLvDian
+    - key: YiTianJiaWeiXunLvDian
+      value: ' 已添加为巡逻点，请继续点击地面添加巡逻点，或点击“确定”提交巡逻点列表'
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
 languageConfig:
   bcp47Tag: zh-Hans-CN
   providerTag: zh-CHS
   translateFinished: 269
   translateTotal: 269
   compileFinished: 0
-  compileTotal: 219
+  compileTotal: 232
