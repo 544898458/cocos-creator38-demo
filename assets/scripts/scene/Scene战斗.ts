@@ -388,8 +388,8 @@ export class Scene战斗 extends Component {
                 if (this.battleUI.b菱形框选) {
                     dispatcher.sendArray([
                         [MsgId.框选, Glob.getSendMsgSn自增(), 0],
-                        [this.posWorld框选起始点.x, this.posWorld框选起始点.z],
-                        [item.hitPoint.x, item.hitPoint.z]
+                        [this.posWorld框选起始点.x, this.posWorld框选起始点.y, this.posWorld框选起始点.z],
+                        [item.hitPoint.x, item.hitPoint.y, item.hitPoint.z]
                     ])
                 } else {//矩形框选
                     let arr选中: Number[] = []
