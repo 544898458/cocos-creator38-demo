@@ -8,6 +8,7 @@ import { Texture } from '../../../extensions/extensions_mesh/@types/packages/eng
 import { assetManager } from 'cc';
 import { Texture2D } from 'cc';
 import { ImageAsset } from 'cc';
+import { host静态 } from '../配置/此游戏专用配置';
 const { ccclass, property } = _decorator;
 
 @ccclass('苔蔓Component')
