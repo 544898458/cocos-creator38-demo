@@ -1613,7 +1613,7 @@ items:
       _variants: []
   - - QingDianJiDiMianZhiZhiJianZhu
     - key: QingDianJiDiMianZhiZhiJianZhu
-      value: 请点击要跟随的目标单位
+      value: 请点击地面放置建筑
       type: 4
       isVariant: false
       associations: []
@@ -2052,10 +2052,17 @@ items:
       isVariant: false
       associations: []
       _variants: []
+  - - QingDianJiYaoGenSuiDeMuBiaoDanWei
+    - key: QingDianJiYaoGenSuiDeMuBiaoDanWei
+      value: Please click the target unit to follow
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
 languageConfig:
   bcp47Tag: zh-Hans-CN
   providerTag: zh-CHS
   translateFinished: 269
   translateTotal: 269
   compileFinished: 0
-  compileTotal: 276
+  compileTotal: 277

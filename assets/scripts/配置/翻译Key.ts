@@ -105,7 +105,7 @@ export class 翻译Key {
     static 初始HP = 'ChuShiHP'
     static 米_秒 = 'Mi_Miao'//'米/秒'
     static 请点击地面放置建筑 = 'QingDianJiDiMianZhiZhiJianZhu'//'请点击地面放置建筑'
-    static 请点击要跟随的目标单位 = 'QingDianJiDiMianZhiZhiJianZhu'//'请点击要跟随的目标单位'
+    static 请点击要跟随的目标单位 = 'QingDianJiYaoGenSuiDeMuBiaoDanWei'//'请点击要跟随的目标单位'
     static 请点击地面设置巡逻点 = 'QingDianJiDiMianZhiZhiXunLvDian'//'请点击地面设置巡逻点'
     static 请点击地面确定强行走目的地 = 'QingDianJiDiMianZhiZhiQiangZouXingDiMuDi'//'强行走过程不会攻击敌人，请点击地面确定目的地'
     static 请点击地面设置此建筑产出活动单位的集结点 = 'QingDianJiDiMianZhiZhiSheZhiCiJianZhuChanChuHuoDongDanWeiDeJiJiDian'//'请点击地面设置此建筑产出活动单位的集结点'
