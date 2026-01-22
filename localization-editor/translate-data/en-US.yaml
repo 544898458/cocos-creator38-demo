@@ -595,7 +595,7 @@ items:
       _variants: []
   - - FeiChongDanTiaoPaoTai_Chong
     - key: FeiChongDanTiaoPaoTai_Chong
-      value: Flying Bugs vs. Turret (Insectoids)
+      value: Flying Bugs vs. Turrets (Insectoids)
       type: 2
       isVariant: false
       associations: []
@@ -644,7 +644,7 @@ items:
       _variants: []
   - - JianZhuDanWei
     - key: JianZhuDanWei
-      value: Constr. Unit
+      value: Structures
       type: 2
       isVariant: false
       associations: []
@@ -809,7 +809,7 @@ items:
       _variants: []
   - - JingTiKuang
     - key: JingTiKuang
-      value: Crysta
+      value: Cryst
       type: 4
       isVariant: false
       associations: []
@@ -1788,7 +1788,7 @@ items:
       _variants: []
   - - KeyTaiWan
     - key: KeyTaiWan
-      value: Moss Vines
+      value: Mossy Vines
       type: 4
       isVariant: false
       associations: []
@@ -1998,7 +1998,7 @@ items:
       _variants: []
   - - KeyTaiSui
     - key: KeyTaiSui
-      value: Giant Flesh Mass
+      value: Taisui
       type: 4
       isVariant: false
       associations: []
@@ -2080,10 +2080,17 @@ items:
       isVariant: false
       associations: []
       _variants: []
+  - - QingDianJiYaoGenSuiDeMuBiaoDanWei
+    - key: QingDianJiYaoGenSuiDeMuBiaoDanWei
+      value: Please click the target unit to follow
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
 languageConfig:
   bcp47Tag: en-US
   providerTag: en
   translateFinished: 269
-  translateTotal: 805
+  translateTotal: 804
   compileFinished: 0
-  compileTotal: 276
+  compileTotal: 277
