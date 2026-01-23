@@ -651,7 +651,7 @@ items:
       _variants: []
   - - HuoDongDanWei
     - key: HuoDongDanWei
-      value: Mobile Unit
+      value: Mobile Units
       type: 2
       isVariant: false
       associations: []
@@ -795,7 +795,7 @@ items:
       _variants: []
   - - QuXiaoXuanZhong
     - key: QuXiaoXuanZhong
-      value: DeSelect
+      value: Deselect
       type: 2
       isVariant: false
       associations: []
@@ -1115,7 +1115,7 @@ items:
       _variants: []
   - - HaoMiao
     - key: HaoMiao
-      value: Millisecond
+      value: ms
       type: 4
       isVariant: false
       associations: []
@@ -1294,21 +1294,21 @@ items:
       _variants: []
   - - MiaoShu_ChongYing
     - key: MiaoShu_ChongYing
-      value: Prerequisite building for melee bugs and gun bugs, only 1 required
+      value: Prerequisite structure for melee bugs and rifle bugs, only 1 required
       type: 4
       isVariant: false
       associations: []
       _variants: []
   - - MiaoShu_FeiTa
     - key: MiaoShu_FeiTa
-      value: Prerequisite building for flying bugs, only 1 required
+      value: Prerequisite structure for flying bugs, only 1 required
       type: 4
       isVariant: false
       associations: []
       _variants: []
   - - MiaoShu_NiTaiYuan
     - key: MiaoShu_NiTaiYuan
-      value: Prerequisite building for green tanks, only 1 required
+      value: Prerequisite structure for green tanks, only 1 required
       type: 4
       isVariant: false
       associations: []
@@ -1637,7 +1637,7 @@ items:
       _variants: []
   - - QingDianJiDiMianZhiZhiJianZhu
     - key: QingDianJiDiMianZhiZhiJianZhu
-      value: Please click the ground to place the building
+      value: Please click the ground to place the structure
       type: 4
       isVariant: false
       associations: []
@@ -1662,7 +1662,7 @@ items:
     - key: QingDianJiDiMianZhiZhiSheZhiCiJianZhuChanChuHuoDongDanWeiDeJiJiDian
       value: >-
         Please click the ground to set the rally point for mobile units produced
-        by this building
+        by this structure
       type: 4
       isVariant: false
       associations: []
@@ -1816,7 +1816,7 @@ items:
       _variants: []
   - - KeyGongChengChe
     - key: KeyGongChengChe
-      value: Constr. Vehicle
+      value: Constru. Vehicle
       type: 4
       isVariant: false
       associations: []
@@ -2091,6 +2091,6 @@ languageConfig:
   bcp47Tag: en-US
   providerTag: en
   translateFinished: 269
-  translateTotal: 804
+  translateTotal: 805
   compileFinished: 0
   compileTotal: 277
