@@ -201,7 +201,7 @@ export class NetMessage {
             }
             resources.load(prefabName, Prefab, (err, prefab) => {
                 if(!prefab){
-                    console.warn(id, '单位预设不存在', prefabName, err)
+                    console.warn(id, '单位预设不存在', prefabName, type, err)
                     return;
                 }
                 old = scene战斗.entities.get(id)

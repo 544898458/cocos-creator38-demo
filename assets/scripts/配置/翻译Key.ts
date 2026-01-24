@@ -116,4 +116,15 @@ export class 翻译Key {
     static 模式 = 'MoShi'
     static 已切换到 = 'YiQieHuanDao'
     static 已添加为巡逻点 = 'YiTianJiaWeiXunLvDian'//已添加为巡逻点，请继续点击地面添加巡逻点，或点击“确定”提交巡逻点列表
+    static 没有可移动的战斗单位 = 'MeiYouKeYiDongDeZhanDouDanWei'//没有可移动的战斗单位
+    static 请先选中建筑单位 = 'QingXianXuanZhongJianZhuDanWei'//请先选中建筑单位
+    static 请先选中太岁 = 'QingXianXuanZhongTaiShui'//请先选中太岁
+    static 战报 = 'ZhanBao'//战报
+    static 战报不存在 = 'ZhanBaoBuCunZai'//
+    static 的 = 'De'//  的 
+    static 击败了 = 'JiBaiLe'//击败了
+    static 损失单位排行 = 'SunShiDanWeiPaiHang'//损失单位排行
+    static 共损失 = 'GongSunShi'//共损失
+    static 击败单位排行 = 'JiBaiDanWeiPaiHang'//击败单位排行
+    static 共击败 = 'GongJiBai'//共击败
 }

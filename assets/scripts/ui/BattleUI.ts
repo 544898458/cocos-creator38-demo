@@ -146,7 +146,7 @@ export class BattleUI extends Dialog {
     }
     on集结点(event: Event, customEventData: string) {
         if (0 == BattleMoude._arr选中.length) {
-            this.lable系统消息.string = '请先选中建筑单位'
+            this.lable系统消息.string = 翻译Key.翻译(翻译Key.请先选中建筑单位)
             AudioMgr.inst.playOneShot('BUZZ')
             return
         }
@@ -174,7 +174,7 @@ export class BattleUI extends Dialog {
     }
     on巡逻(event: Event, customEventData: string) {
         if (0 == BattleMoude._arr选中.length) {
-            this.lable系统消息.string = '请先选中活动单位'
+            this.lable系统消息.string = 翻译Key.翻译(翻译Key.请先选中建筑单位)
             AudioMgr.inst.playOneShot('BUZZ')
             return
         }
@@ -191,7 +191,7 @@ export class BattleUI extends Dialog {
     }
     on强行走(event: Event, customEventData: string) {
         if (0 == BattleMoude._arr选中.length) {
-            this.lable系统消息.string = '请先选中活动单位'
+            this.lable系统消息.string = 翻译Key.翻译(翻译Key.请先选中建筑单位)
             AudioMgr.inst.playOneShot('BUZZ')
             return
         }
@@ -201,7 +201,7 @@ export class BattleUI extends Dialog {
     }
     on太岁分裂(event: Event, customEventData: string) {
         if (0 == BattleMoude._arr选中.length) {
-            this.lable系统消息.string = '请先选中太岁'
+            this.lable系统消息.string = 翻译Key.翻译(翻译Key.请先选中建筑单位)
             AudioMgr.inst.playOneShot('BUZZ')
             return
         }
@@ -211,7 +211,7 @@ export class BattleUI extends Dialog {
     }
     on原地坚守(event: Event, customEventData: string) {
         if (0 == BattleMoude._arr选中.length) {
-            this.lable系统消息.string = '请先选中活动单位'
+            this.lable系统消息.string = 翻译Key.翻译(翻译Key.请先选中建筑单位)
             AudioMgr.inst.playOneShot('BUZZ')
             return
         }
@@ -522,24 +522,25 @@ export class BattleUI extends Dialog {
     on按钮战报(event: Event, customEventData: string) {
         dialogMgr.openDialog(UI2Prefab.PopView_url, null, null, (dlg: Dialog): void => {
             let popView = dlg.getComponent(PopView)
-            popView.label标题.string = '战报';
-            popView.richText内容.string = '请稍后……';
+            popView.label标题.string = 翻译Key.翻译(翻译Key.战报);
+            popView.richText内容.string = 翻译Key.翻译(翻译Key.加载中);
             assetManager.loadRemote(encodeURI(host静态 + `战报/战局_${MainTest.idSvr}_${MainTest.instance.战局}.json`), (err, jsonAsset: JsonAsset) => {
                 console.log('resources.load callback:', err, jsonAsset)
                 if(!jsonAsset){
-                    popView.richText内容.string = '战报不存在'
+                    popView.richText内容.string = 翻译Key.翻译(翻译Key.战报不存在)
                     return;
                 }
                 
                 let arrPlayerStats = jsonAsset.json as Array<{ id: number, battle_type: number, killer: string, victim: string, killer_unit: 单位类型, victim_unit: 单位类型, timestamp_utc: string }>
                 popView.richText内容.string = arrPlayerStats.map(player => {
-                    // 获取单位类型的枚举名字
-                    const killerUnitName = 单位类型[player.killer_unit];
-                    const victimUnitName = 单位类型[player.victim_unit];
+                    const killerUnitNameKey = MainTest.instance.配置.find单位(player.killer_unit).名字Key
+                    const victimUnitNameKey = MainTest.instance.配置.find单位(player.victim_unit).名字Key
+                    const killerUnitName = 翻译Key.翻译(killerUnitNameKey)
+                    const victimUnitName = 翻译Key.翻译(victimUnitNameKey)
                     // 自定义时间格式，不显示年份，使用本地时间
                     const date = new Date(player.timestamp_utc);
                     const timeString = `${date.getMonth() + 1}/${date.getDate()} ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}`;
-                    return `${timeString} : ${player.killer} 的 ${killerUnitName} 击败了 ${player.victim} 的 ${victimUnitName}`;
+                    return `<size=9>${timeString} : ${player.killer} ${翻译Key.翻译(翻译Key.的)} ${killerUnitName} <color=#a0ff50>${翻译Key.翻译(翻译Key.击败了)}</color> ${player.victim} ${翻译Key.翻译(翻译Key.的)} ${victimUnitName}</size>`;
                 }).join('\n')
             })
         })
@@ -580,13 +581,13 @@ export class BattleUI extends Dialog {
         dialogMgr.openDialog(UI2Prefab.PopView_url, null, null, (dlg: Dialog): void => {
             let popView = dlg.getComponent(PopView)
             popView.label标题.string = title;
-            popView.richText内容.string = '请稍后……';
+            popView.richText内容.string =  翻译Key.翻译(翻译Key.加载中);
             assetManager.loadRemote(encodeURI(host静态 + `战报/战报排行_${MainTest.idSvr}_${MainTest.instance.战局}_${urlSuffix}.json`), (err, jsonAsset: JsonAsset) => {
                 console.log('resources.load callback:', err, jsonAsset)
                 let arrPlayerStats = jsonAsset.json as Array<{ killer: string, victim: string, count: number }>
                 popView.richText内容.string = arrPlayerStats.map(player => {
                     const playerName = playerField === 'killer' ? player.killer : player.victim;
-                    return `${playerName}\t${displayText} ${player.count} 单位`
+                    return `${playerName}\t<color=#a0ff50>${displayText}</color> ${player.count} ${翻译Key.翻译(翻译Key.单位)}</color>`
                 }).join('\n')
                 console.log(jsonAsset.json)
             })
@@ -594,11 +595,11 @@ export class BattleUI extends Dialog {
     }
 
     on按钮战报排行击败单位数(event: Event, customEventData: string) {
-        this.showBattleReportRanking('击败单位排行', '击败单位数', '共击败', 'killer');
+        this.showBattleReportRanking(翻译Key.翻译(翻译Key.击败单位排行), '击败单位数', 翻译Key.翻译(翻译Key.共击败), 'killer');
     }
     
     on按钮战报排行被击败单位数(event: Event, customEventData: string) {
-        this.showBattleReportRanking('损失单位排行', '被击败单位数', '共损失', 'victim');
+        this.showBattleReportRanking(翻译Key.翻译(翻译Key.损失单位排行), '被击败单位数', 翻译Key.翻译(翻译Key.共损失), 'victim');
     }
     on全选战斗单位() {
         let arr选中: number[] = []
@@ -627,7 +628,7 @@ export class BattleUI extends Dialog {
         
         if(0 >= arr选中.length){
             AudioMgr.inst.playOneShot('BUZZ');
-            this.lable系统消息.string = '没有可移动的战斗单位'
+            this.lable系统消息.string = 翻译Key.翻译(翻译Key.没有可移动的战斗单位)
             return
         }
 

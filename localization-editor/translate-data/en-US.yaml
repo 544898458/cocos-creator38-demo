@@ -171,7 +171,7 @@ items:
         <b>3D Models:</b> TripoAI, Hunyuan AI <b>Image Matting:</b> Doubao AI
         <b>Ground Textures:</b> Quark AI, Doubao AI
 
-        <b>Avatar Images:</b> Wen Xiaoyan AI <b>Music:</b> SunoAI <b>Assisted
+        <b>Avatar Images:</b> ERNIE Bot AI <b>Music:</b> SunoAI <b>Assisted
         Programming:</b> Tongyi Lingma AI, Cursor AI
 
         <b>Rigging/Animation:</b> Gu He (QQ 3223213062), mixamo.com
@@ -459,7 +459,7 @@ items:
   - - DuoWanJiaHunZhan_ShaMo
     - key: DuoWanJiaHunZhan_ShaMo
       value: |-
-        Multiplayer FFA (Desert)
+        Free-for-all(Desert)
         <size=10>All players are enemies</size>
       type: 2
       isVariant: false
@@ -660,8 +660,8 @@ items:
     - key: KongXianGongChengCheGongChong
       value: |-
         Idle
-        Engineer Vehicle
-        Drone
+        Constu. Vehicle
+        Worker Drone
       type: 2
       isVariant: false
       associations: []
@@ -684,14 +684,14 @@ items:
       _variants: []
   - - SunShiDanWeiPaiHang
     - key: SunShiDanWeiPaiHang
-      value: Loss Ranking
+      value: Unit Loss Ranking
       type: 2
       isVariant: false
       associations: []
       _variants: []
   - - JiBaiDanWeiPaiHang
     - key: JiBaiDanWeiPaiHang
-      value: Dest. Rank
+      value: Unit Kill Ranking
       type: 2
       isVariant: false
       associations: []
@@ -1816,7 +1816,7 @@ items:
       _variants: []
   - - KeyGongChengChe
     - key: KeyGongChengChe
-      value: Constru. Vehicle
+      value: Construc. Vehicle
       type: 4
       isVariant: false
       associations: []
@@ -1984,7 +1984,7 @@ items:
       _variants: []
   - - KeyFeiTa
     - key: KeyFeiTa
-      value: Anti-Air Tower
+      value: Air Tower
       type: 4
       isVariant: false
       associations: []
@@ -2087,10 +2087,80 @@ items:
       isVariant: false
       associations: []
       _variants: []
+  - - MeiYouKeYiDongDeZhanDouDanWei
+    - key: MeiYouKeYiDongDeZhanDouDanWei
+      value: No movable combat units
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - QingXianXuanZhongJianZhuDanWei
+    - key: QingXianXuanZhongJianZhuDanWei
+      value: Select Mobile Unit(s) first
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - QingXianXuanZhongTaiShui
+    - key: QingXianXuanZhongTaiShui
+      value: Select a Taisui first
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ZhanBaoBuCunZai
+    - key: ZhanBaoBuCunZai
+      value: Battle Report does not exist
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - De
+    - key: De
+      value: '''s '
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - JiBaiLe
+    - key: JiBaiLe
+      value: ' Defeated '
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - BeiJiBaiDanWeiShu
+    - key: BeiJiBaiDanWeiShu
+      value: 'Number of Units Lost '
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - GongSunShi
+    - key: GongSunShi
+      value: ' Total Losses '
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - JiBaiDanWeiShu
+    - key: JiBaiDanWeiShu
+      value: 'Number of Units Killed '
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - GongJiBai
+    - key: GongJiBai
+      value: ' Total Kills'
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
 languageConfig:
   bcp47Tag: en-US
   providerTag: en
   translateFinished: 269
-  translateTotal: 805
+  translateTotal: 819
   compileFinished: 0
-  compileTotal: 277
+  compileTotal: 287
