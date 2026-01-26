@@ -15,7 +15,7 @@ items:
       _variants: []
   - - MainSvr
     - key: MainSvr
-      value: Main Svr
+      value: Main Server
       type: 2
       isVariant: false
       associations:
@@ -28,7 +28,7 @@ items:
       _variants: []
   - - TestSvr
     - key: TestSvr
-      value: Test Svr
+      value: Test Server
       type: 2
       isVariant: false
       associations:
@@ -917,7 +917,8 @@ items:
   - - GongChengCheJiJieDian
     - key: GongChengCheJiJieDian
       value: |-
-        Constrctr
+        Constr.
+        Vehicle
         Rally
         Point
       type: 4
@@ -1476,21 +1477,21 @@ items:
       _variants: []
   - - Key民房
     - key: Key民房
-      value: Civilian House
+      value: Supply Depots
       type: 4
       isVariant: false
       associations: []
       _variants: []
   - - Key炮台
     - key: Key炮台
-      value: Gun Emplacement
+      value: Turret
       type: 4
       isVariant: false
       associations: []
       _variants: []
   - - Key虫巢
     - key: Key虫巢
-      value: Bug Hive
+      value: Hive
       type: 4
       isVariant: false
       associations: []
@@ -2157,10 +2158,22 @@ items:
       isVariant: false
       associations: []
       _variants: []
+  - - KuangXuanXiangQiang
+    - key: KuangXuanXiangQiang
+      value: >-
+        Drag a box on the screen to select all active units within it.
+
+        You can switch between <color=#a0ff50>Axis-Aligned Bounding Box</color>
+        mode and <color=#a0ff50>Diamond-Shaped Box</color> mode in the settings
+        button (gear icon) on the left.
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
 languageConfig:
   bcp47Tag: en-US
   providerTag: en
   translateFinished: 269
-  translateTotal: 816
+  translateTotal: 822
   compileFinished: 0
-  compileTotal: 287
+  compileTotal: 288
