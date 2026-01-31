@@ -34,9 +34,9 @@ export class 翻译Key {
      * @param 属性 属性类型枚举值
      * @returns 处理后的属性名称
      */
-        static 属性名称翻译(属性: 属性类型): string {
-            return 翻译Key.翻译('AttrName_' + 属性)
-        }
+    static 属性名称翻译(属性: 属性类型): string {
+        return 翻译Key.翻译('AttrName_' + 属性)
+    }
     static 加载中 = 'Loading'
     static 连接成功 = 'ConnectSuccess' //+ "连接成功，请等待登录结果……"
     static 正在连接 = 'Connecting' //'正在连接'
@@ -127,4 +127,6 @@ export class 翻译Key {
     static 共损失 = 'GongSunShi'//共损失
     static 击败单位排行 = 'JiBaiDanWeiPaiHang'//击败单位排行
     static 共击败 = 'GongJiBai'//共击败
+    static 当前 = 'DangQian'//当前
+    static 升级后 = 'ShengJiHou'//升级后
 }

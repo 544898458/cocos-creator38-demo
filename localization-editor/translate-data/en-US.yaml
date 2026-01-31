@@ -2175,10 +2175,248 @@ items:
       isVariant: false
       associations: []
       _variants: []
+  - - XiangQingKongXianGongChengCheGongChong
+    - key: XiangQingKongXianGongChengCheGongChong
+      value: >-
+        Click once to switch to the next <color=#a0ff50>Construction
+        Vehicle</color> or <color=#a0ff50>Worker Drone</color>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingQuanBuZhanDouDanWei
+    - key: XiangQingQuanBuZhanDouDanWei
+      value: Select all mobile combat units
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingQuXiaoXuanZhong
+    - key: XiangQingQuXiaoXuanZhong
+      value: |2-
+          Cancel the currently selected unit.
+          Prevents misoperation.
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - QuXiaoDianJiDiMian
+    - key: QuXiaoDianJiDiMian
+      value: Cancel
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingQuXiaoDianJiDiMian
+    - key: XiangQingQuXiaoDianJiDiMian
+      value: Cancel current ground click action
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - QueDingDianJiDianMian
+    - key: QueDingDianJiDianMian
+      value: Confirm
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingQueDingDianJiDianMian
+    - key: XiangQingQueDingDianJiDianMian
+      value: Confirm ground click action
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingQiangXingZou
+    - key: XiangQingQiangXingZou
+      value: Ignore enemies en route and move to the target point forcibly
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingYuanDiJianShou
+    - key: XiangQingYuanDiJianShou
+      value: Cease pursuing enemies within the alert range
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingGenSui
+    - key: XiangQingGenSui
+      value: Follow target movement
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingXunLuo
+    - key: XiangQingXunLuo
+      value: Patrol among selected waypoints
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingLiKaiDiBao
+    - key: XiangQingLiKaiDiBao
+      value: Deploy all units in the <color=#a0ff50>Bunker</color>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingLiKaiFangChong
+    - key: XiangQingLiKaiFangChong
+      value: Deploy all units in the <color=#a0ff50>PopuLifter</color>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingJiJieDian
+    - key: XiangQingJiJieDian
+      value: Set rally point for new units of this structure.
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingGongChengCheJiJieDian
+    - key: XiangQingGongChengCheJiJieDian
+      value: >-
+        Set rally point for new Construction Vehicles of this structure. Set on
+        a resource to auto-harvest it.
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingGongChongJiJieDian
+    - key: XiangQingGongChongJiJieDian
+      value: >-
+        Set rally point for new Worker Drones of this structure. Set on a
+        resource to auto-harvest it.
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingFangChongJiJieDian
+    - key: XiangQingFangChongJiJieDian
+      value: Set rally point for new PopuLifters of this structure.
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingJieSuoJinZhanBing
+    - key: XiangQingJieSuoJinZhanBing
+      value: >-
+        Unlocked to allow production of <color=#a0ff50>Melee Infantry</color> in
+        the Barracks.
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingJieSuoQiangChong
+    - key: XiangQingJieSuoQiangChong
+      value: Unlocked to allow larvae to morph into <color=#a0ff50>Rifle Bug</color>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingTaiSuiFenLie
+    - key: XiangQingTaiSuiFenLie
+      value: >-
+        Split off a new Taisui and place it on the Moss Vines of the original
+        Taisui.
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingShanChuDanWei
+    - key: XiangQingShanChuDanWei
+      value: Quickly remove your own units
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingKuangXuan
+    - key: XiangQingKuangXuan
+      value: |2-
+          Drag a box on the screen to select all active units within it.
+          You can switch between <color=#a0ff50>Axis-Aligned Bounding Box</color> mode and <color=#a0ff50>Diamond-Shaped Box</color> mode in the settings button (gear icon) on the left.
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingQu
+    - key: XiangQingQu
+      value: Cancel current action
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingQuXiao
+    - key: XiangQingQuXiao
+      value: Cancel current action
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - AttrName_3
+    - key: AttrName_3
+      value: Health
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - AttrName_5
+    - key: AttrName_5
+      value: Cast Time
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - AttrName_7
+    - key: AttrName_7
+      value: Max Health
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - AttrName_8
+    - key: AttrName_8
+      value: Energy
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - DangQian
+    - key: DangQian
+      value: Current
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ShengJiHou
+    - key: ShengJiHou
+      value: After Upgrade
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MaxLevel
+    - key: MaxLevel
+      value: Max Level
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - LevelFormat
+    - key: LevelFormat
+      value: Lv.{0}
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
 languageConfig:
   bcp47Tag: en-US
   providerTag: en
-  translateFinished: 269
-  translateTotal: 822
+  translateFinished: 272
+  translateTotal: 835
   compileFinished: 0
-  compileTotal: 289
+  compileTotal: 321

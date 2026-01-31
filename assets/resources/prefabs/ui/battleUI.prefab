@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.Prefab",
-    "_name": "",
+    "_name": "battleUI",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_native": "",
@@ -2351,7 +2351,7 @@
     "__prefab": {
       "__id__": 103
     },
-    "str详情Key": "XiangQiangQuXiaoXuanZhong",
+    "str详情Key": "XiangQingQuXiaoXuanZhong",
     "_id": ""
   },
   {
@@ -2882,7 +2882,7 @@
     "__prefab": {
       "__id__": 128
     },
-    "str详情Key": "KuangXuanXiangQiang",
+    "str详情Key": "XiangQingKuangXuan",
     "_id": ""
   },
   {
@@ -20870,7 +20870,7 @@
     "__prefab": {
       "__id__": 953
     },
-    "str详情Key": "XiangQiangQiangXingZou",
+    "str详情Key": "XiangQingQiangXingZou",
     "_id": ""
   },
   {
@@ -21289,6 +21289,7 @@
     "__prefab": {
       "__id__": 972
     },
+    "str详情Key": "XiangQingYuanDiJianShou",
     "_id": ""
   },
   {
@@ -21707,6 +21708,7 @@
     "__prefab": {
       "__id__": 991
     },
+    "str详情Key": "XiangQingGenSui",
     "_id": ""
   },
   {
@@ -22125,6 +22127,7 @@
     "__prefab": {
       "__id__": 1010
     },
+    "str详情Key": "XiangQingXunLuo",
     "_id": ""
   },
   {
@@ -22543,6 +22546,7 @@
     "__prefab": {
       "__id__": 1029
     },
+    "str详情Key": "XiangQingLiKaiDiBao",
     "_id": ""
   },
   {
@@ -22961,6 +22965,7 @@
     "__prefab": {
       "__id__": 1048
     },
+    "str详情Key": "XiangQingLiKaiFangChong",
     "_id": ""
   },
   {
@@ -23379,6 +23384,7 @@
     "__prefab": {
       "__id__": 1067
     },
+    "str详情Key": "XiangQingJiJieDian",
     "_id": ""
   },
   {
@@ -23797,6 +23803,7 @@
     "__prefab": {
       "__id__": 1086
     },
+    "str详情Key": "XiangQingGongChengCheJiJieDian",
     "_id": ""
   },
   {
@@ -24215,6 +24222,7 @@
     "__prefab": {
       "__id__": 1105
     },
+    "str详情Key": "XiangQingGongChongJiJieDian",
     "_id": ""
   },
   {
@@ -24633,6 +24641,7 @@
     "__prefab": {
       "__id__": 1124
     },
+    "str详情Key": "XiangQingFangChongJiJieDian",
     "_id": ""
   },
   {
@@ -25051,6 +25060,7 @@
     "__prefab": {
       "__id__": 1143
     },
+    "str详情Key": "XiangQingJieSuoJinZhanBing",
     "_id": ""
   },
   {
@@ -25469,6 +25479,7 @@
     "__prefab": {
       "__id__": 1162
     },
+    "str详情Key": "XiangQingJieSuoQiangChong",
     "_id": ""
   },
   {
@@ -29247,6 +29258,7 @@
     "__prefab": {
       "__id__": 1333
     },
+    "str详情Key": "XiangQingTaiSuiFenLie",
     "_id": ""
   },
   {
@@ -29665,6 +29677,7 @@
     "__prefab": {
       "__id__": 1352
     },
+    "str详情Key": "XiangQingShanChuDanWei",
     "_id": ""
   },
   {
@@ -32493,7 +32506,7 @@
     "__prefab": {
       "__id__": 1474
     },
-    "str详情Key": "XiangQiangKongXianGongChengCheGongChong",
+    "str详情Key": "XiangQingKongXianGongChengCheGongChong",
     "_id": ""
   },
   {
@@ -44057,7 +44070,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 87.51220703125,
+      "width": 273.74267578125,
       "height": 31.5
     },
     "_anchorPoint": {
@@ -44093,7 +44106,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "Confirm",
+    "_string": "QueDingDianJiDianMian",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 25,
@@ -44151,7 +44164,7 @@
     "__prefab": {
       "__id__": 1973
     },
-    "_key": "QueDing",
+    "_key": "QueDingDianJiDianMian",
     "_count": 0,
     "_id": ""
   },
@@ -44302,7 +44315,7 @@
     "__prefab": {
       "__id__": 1983
     },
-    "str详情Key": "XiangQingQuXiao",
+    "str详情Key": "XiangQingQueDingDianJiDianMian",
     "_id": ""
   },
   {
@@ -44324,7 +44337,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Button取消点击地面",
+    "_name": "Button取消",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
@@ -44588,7 +44601,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 63.8916015625,
+      "width": 77.81982421875,
       "height": 32.76
     },
     "_anchorPoint": {
@@ -44624,7 +44637,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "取  消",
+    "_string": "Cancel",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 25,
@@ -44833,6 +44846,7 @@
     "__prefab": {
       "__id__": 2008
     },
+    "str详情Key": "XiangQingQuXiao",
     "_id": ""
   },
   {

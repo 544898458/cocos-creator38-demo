@@ -2145,7 +2145,272 @@ items:
       _variants: []
   - - XiangQingQuanBuZhanDouDanWei
     - key: XiangQingQuanBuZhanDouDanWei
-      value: Select all mobile combat units
+      value: 选中所有可移动的战斗单位
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQiangKongXianGongChengCheGongChong
+    - key: XiangQiangKongXianGongChengCheGongChong
+      value: 每点击一次切换到下一个<color=#a0ff50>工程车</color>或<color=#a0ff50>工虫</color>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQiangQuXiaoXuanZhong
+    - key: XiangQiangQuXiaoXuanZhong
+      value: |2-
+            取消当前选中的单位。
+            可以防止误操作。
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingQuXiao
+    - key: XiangQingQuXiao
+      value: 取消当前操作
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQiangQiangXingZou
+    - key: XiangQiangQiangXingZou
+      value: 不理会途中遇到的敌人，强行走到目标点
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingKuangXuan
+    - key: XiangQingKuangXuan
+      value: |2-
+          Drag a box on the screen to select all active units within it.
+          You can switch between <color=#a0ff50>Axis-Aligned Bounding Box</color> mode and <color=#a0ff50>Diamond-Shaped Box</color> mode in the settings button (gear icon) on the left.
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingKongXianGongChengCheGongChong
+    - key: XiangQingKongXianGongChengCheGongChong
+      value: 每点击一次切换到下一个<color=#a0ff50>工程车</color>或<color=#a0ff50>工虫</color>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingQuXiaoXuanZhong
+    - key: XiangQingQuXiaoXuanZhong
+      value: |2-
+            取消当前选中的单位。
+            可以防止误操作。
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingQuXiaoDianJiDiMian
+    - key: XiangQingQuXiaoDianJiDiMian
+      value: Cancel current ground click action
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingQueDingDianJiDianMian
+    - key: XiangQingQueDingDianJiDianMian
+      value: 确定点击地面操作
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingQiangXingZou
+    - key: XiangQingQiangXingZou
+      value: 不理会途中遇到的敌人，强行走到目标点
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingYuanDiJianShou
+    - key: XiangQingYuanDiJianShou
+      value: 不再追击警戒距离内的敌人
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingGenSui
+    - key: XiangQingGenSui
+      value: 跟随目标移动
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingXunLuo
+    - key: XiangQingXunLuo
+      value: 在选中的多个巡逻点之间巡逻
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingLiKaiDiBao
+    - key: XiangQingLiKaiDiBao
+      value: 让<color=#a0ff50>地堡</color>里的单位都出来
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingLiKaiFangChong
+    - key: XiangQingLiKaiFangChong
+      value: 让<color=#a0ff50>房虫</color>里的单位都出来
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingJiJieDian
+    - key: XiangQingJiJieDian
+      value: 设置此建筑新产出单位的集结位置点
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingGongChengCheJiJieDian
+    - key: XiangQingGongChengCheJiJieDian
+      value: 设置此建筑新产出工程车的集结位置点，如果把目标点设置到资源上，会自动采集目标资源
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingGongChongJiJieDian
+    - key: XiangQingGongChongJiJieDian
+      value: 设置此建筑新产出工虫的集结位置点，如果把目标点设置到资源上，会自动采集目标资源
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingFangChongJiJieDian
+    - key: XiangQingFangChongJiJieDian
+      value: 设置此建筑新产出房虫的集结位置点
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingJieSuoJinZhanBing
+    - key: XiangQingJieSuoJinZhanBing
+      value: 解锁后允许在兵营里产出<color=#a0ff50>近战兵</color>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingJieSuoQiangChong
+    - key: XiangQingJieSuoQiangChong
+      value: 解锁后允许幼虫蜕变为<color=#a0ff50>枪虫</color>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingTaiSuiFenLie
+    - key: XiangQingTaiSuiFenLie
+      value: 分裂出一个新的太岁放置到源太岁的苔蔓(wàn)上
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingShanChuDanWei
+    - key: XiangQingShanChuDanWei
+      value: 快速删除自己的单位
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingQu
+    - key: XiangQingQu
+      value: 取消当前操作
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - QueDingDianJiDianMian
+    - key: QueDingDianJiDianMian
+      value: 确 定
+      type: 2
+      isVariant: false
+      associations: []
+      _variants: []
+  - - AttrName_3
+    - key: AttrName_3
+      value: 生命
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - AttrName_5
+    - key: AttrName_5
+      value: 前摇耗时
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - AttrName_7
+    - key: AttrName_7
+      value: 最大生命
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - AttrName_8
+    - key: AttrName_8
+      value: 能量
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - DangQian
+    - key: DangQian
+      value: 当前
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ShengJiHou
+    - key: ShengJiHou
+      value: 升级后
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - MaxLevel
+    - key: MaxLevel
+      value: 满级
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - LevelFormat
+    - key: LevelFormat
+      value: '{0}级'
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - AttrName_1
+    - key: AttrName_1
+      value: Attack
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - AttrName_2
+    - key: AttrName_2
+      value: Defense
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - AttrName_4
+    - key: AttrName_4
+      value: Movement Speed
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - AttrName_6
+    - key: AttrName_6
+      value: Attack Range
       type: 4
       isVariant: false
       associations: []
@@ -2153,7 +2418,7 @@ items:
 languageConfig:
   bcp47Tag: zh-Hans-CN
   providerTag: zh-CHS
-  translateFinished: 269
-  translateTotal: 269
+  translateFinished: 272
+  translateTotal: 272
   compileFinished: 0
-  compileTotal: 290
+  compileTotal: 327

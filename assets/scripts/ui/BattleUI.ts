@@ -448,7 +448,7 @@ export class BattleUI extends Dialog {
         str详情 += 数值单位
 
         if (属性等级)
-            str详情 += '(' + 属性等级 + '级)'
+            str详情 += '(' + 翻译Key.翻译格式化(翻译Key.等级格式,属性等级) + ')'
 
         str详情 += '\n'
         return str详情
