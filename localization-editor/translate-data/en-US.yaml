@@ -2313,7 +2313,7 @@ items:
       _variants: []
   - - XiangQingJieSuoQiangChong
     - key: XiangQingJieSuoQiangChong
-      value: Unlocked to allow larvae to morph into <color=#a0ff50>Rifle Bug</color>
+      value: Unlocked to allow larvae to morph into <color=#a0ff50> Rifle Bug</color>
       type: 4
       isVariant: false
       associations: []
@@ -2413,10 +2413,38 @@ items:
       isVariant: false
       associations: []
       _variants: []
+  - - AttrName_1
+    - key: AttrName_1
+      value: Attack
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - AttrName_2
+    - key: AttrName_2
+      value: Defense
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - AttrName_4
+    - key: AttrName_4
+      value: Movement Speed
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - AttrName_6
+    - key: AttrName_6
+      value: Attack Range
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
 languageConfig:
   bcp47Tag: en-US
   providerTag: en
   translateFinished: 272
   translateTotal: 835
   compileFinished: 0
-  compileTotal: 321
+  compileTotal: 325
