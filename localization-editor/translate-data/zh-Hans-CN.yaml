@@ -175,7 +175,7 @@ items:
         <b>模型/动作：</b>⊹꙳ ˶˙ᵕ˙˶ ⊹꙳(QQ 2104435032)、<color=#a0ff50>荧瞳(QQ
         287859992)、荒野乱斗(QQ 2930801690)</color>
 
-        <b>语音：</b>无梦(QQ 1744500392)、水薄荷(QQ 1982131539)
+        <b>语音：</b>无梦(QQ 1744500392)、水薄荷(QQ 1982131539)、luvvoice.com、speechgen.io
 
         <b>语音：</b>若有道心(QQ 1602576119)、潭(QQ 1514475926)、<color=#a0ff50>凌枭(QQ
         2862703087)</color>
@@ -2136,10 +2136,24 @@ items:
       isVariant: false
       associations: []
       _variants: []
+  - - XiangQuanBuZhanDouDanWei
+    - key: XiangQuanBuZhanDouDanWei
+      value: 选中所有可移动的战斗单位
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - XiangQingQuanBuZhanDouDanWei
+    - key: XiangQingQuanBuZhanDouDanWei
+      value: Select all mobile combat units
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
 languageConfig:
   bcp47Tag: zh-Hans-CN
   providerTag: zh-CHS
   translateFinished: 269
   translateTotal: 269
   compileFinished: 0
-  compileTotal: 288
+  compileTotal: 290
