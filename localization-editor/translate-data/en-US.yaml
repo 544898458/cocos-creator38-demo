@@ -140,7 +140,9 @@ items:
       _variants: []
   - - PleaseInputNickname
     - key: PleaseInputNickname
-      value: Please enter a nickname (anything is acceptable).
+      value: |-
+        Please enter a nickname.
+        (anything is acceptable)
       type: 4
       isVariant: false
       associations: []

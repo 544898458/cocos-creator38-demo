@@ -224,7 +224,7 @@ export class LoginView extends Dialog {
         console.log(str登录名 + "登录游戏")
         if (str登录名.length == 0) {
             //飘字
-            toast.showToast('请输入昵称（随便什么都可以）', 100)
+            toast.showToast(翻译Key.翻译(翻译Key.请输入昵称), 100)
             return
         }
 
