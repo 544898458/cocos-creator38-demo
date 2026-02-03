@@ -2389,28 +2389,42 @@ items:
       _variants: []
   - - AttrName_1
     - key: AttrName_1
-      value: Attack
+      value: 攻击
       type: 4
       isVariant: false
       associations: []
       _variants: []
   - - AttrName_2
     - key: AttrName_2
-      value: Defense
+      value: 防御
       type: 4
       isVariant: false
       associations: []
       _variants: []
   - - AttrName_4
     - key: AttrName_4
-      value: Movement Speed
+      value: 移动速度
       type: 4
       isVariant: false
       associations: []
       _variants: []
   - - AttrName_6
     - key: AttrName_6
-      value: Attack Range
+      value: 攻击距离
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Mi
+    - key: Mi
+      value: 米
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Miao
+    - key: Miao
+      value: 秒
       type: 4
       isVariant: false
       associations: []
@@ -2421,4 +2435,4 @@ languageConfig:
   translateFinished: 272
   translateTotal: 272
   compileFinished: 0
-  compileTotal: 327
+  compileTotal: 329
