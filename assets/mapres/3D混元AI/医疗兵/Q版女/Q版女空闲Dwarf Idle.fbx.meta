@@ -324,7 +324,13 @@
               "b": 202,
               "a": 255
             },
-            "albedoScale": 0.5,
+            "emissive": {
+              "__type__": "cc.Color",
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 255
+            },
             "emissiveScale": 0,
             "shininessExponent": 5,
             "specularColor": {

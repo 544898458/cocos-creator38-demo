@@ -254,6 +254,7 @@ export class Scene战斗 extends Component {
     }
 
     static 缩放步长: number = 500
+    
     镜头缩小() {
         this.镜头缩放(-Scene战斗.缩放步长)
     }
@@ -273,11 +274,30 @@ export class Scene战斗 extends Component {
         else//透视投影
         {
             var y = 鼠标滚轮变化
-            y /= 300
-            // vec2Delta = vec2Delta.divide2f(10,10)
-            // this.mainCamera.node.position = this.mainCamera.node.position.add3f(0, y, 0)
-            this.mainCamera.fov = Math.max(this.mainCamera.fov - y, 5)
-            //console.log('fov', this.mainCamera.fov);
+            y /= 50  // 调整移动速度，可以根据需要调整这个值
+            
+            // 获取摄像机的前方向向量
+            let forward = this.mainCamera.node.forward.clone()
+            let currentPosition = this.mainCamera.node.position.clone()
+            let moveVector = forward.multiplyScalar(y)
+            let newPosition = currentPosition.add(moveVector)
+            if(newPosition.y < 5 || newPosition.y > 500)
+                return
+            
+            // 移动摄像机
+            this.mainCamera.node.position = newPosition
+            
+            // 根据摄像机距离动态调整 near 和 far
+            let cameraDistance = this.mainCamera.node.position.length()
+            
+            // 设置 near 值，保持较小但根据距离稍微调整
+            this.mainCamera.near = Math.max(0.1, cameraDistance * 0.01)
+            
+            // 设置 far 值，确保能看到足够远的物体
+            // far 值应该是距离的几倍，这里设置为距离的 3 倍
+            this.mainCamera.far = Math.max(500, cameraDistance * 3)
+            
+            //console.log('camera position', this.mainCamera.node.position, 'near', this.mainCamera.near, 'far', this.mainCamera.far);
         }
         this.Clear然后显示小地图视口框()
     }
