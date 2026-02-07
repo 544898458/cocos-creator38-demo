@@ -1,0 +1,254 @@
+{
+  "ver": "2.3.14",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "0bed32fa-07a7-4aff-b7bb-4b5b9187a6fa",
+  "files": [
+    "__original-animation-0.bin"
+  ],
+  "subMetas": {
+    "51429": {
+      "importer": "gltf-material",
+      "uuid": "0bed32fa-07a7-4aff-b7bb-4b5b9187a6fa@51429",
+      "displayName": "",
+      "id": "51429",
+      "name": "Material #28.001.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "80c75": {
+      "importer": "gltf-mesh",
+      "uuid": "0bed32fa-07a7-4aff-b7bb-4b5b9187a6fa@80c75",
+      "displayName": "",
+      "id": "80c75",
+      "name": "Mesh.001.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 1069
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "18d6f": {
+      "importer": "gltf-animation",
+      "uuid": "0bed32fa-07a7-4aff-b7bb-4b5b9187a6fa@18d6f",
+      "displayName": "",
+      "id": "18d6f",
+      "name": "mixamo.com.animation",
+      "userData": {
+        "gltfIndex": 0,
+        "wrapMode": 2,
+        "sample": 30,
+        "span": {
+          "from": 0,
+          "to": 3.433333396911621
+        },
+        "events": []
+      },
+      "ver": "1.0.18",
+      "imported": true,
+      "files": [
+        ".bin"
+      ],
+      "subMetas": {}
+    },
+    "438fe": {
+      "importer": "gltf-skeleton",
+      "uuid": "0bed32fa-07a7-4aff-b7bb-4b5b9187a6fa@438fe",
+      "displayName": "",
+      "id": "438fe",
+      "name": "UnnamedSkeleton.skeleton",
+      "userData": {
+        "gltfIndex": 0,
+        "jointsLength": 34
+      },
+      "ver": "1.0.1",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "48b02": {
+      "importer": "gltf-embeded-image",
+      "uuid": "0bed32fa-07a7-4aff-b7bb-4b5b9187a6fa@48b02",
+      "displayName": "",
+      "id": "48b02",
+      "name": "base_color_texture.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": true,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
+    "7c09f": {
+      "importer": "gltf-embeded-image",
+      "uuid": "0bed32fa-07a7-4aff-b7bb-4b5b9187a6fa@7c09f",
+      "displayName": "",
+      "id": "7c09f",
+      "name": "alpha_texture.image",
+      "userData": {
+        "gltfIndex": 1,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": true,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
+    "7d6ab": {
+      "importer": "texture",
+      "uuid": "0bed32fa-07a7-4aff-b7bb-4b5b9187a6fa@7d6ab",
+      "displayName": "",
+      "id": "7d6ab",
+      "name": "base_color_texture.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "0bed32fa-07a7-4aff-b7bb-4b5b9187a6fa@48b02"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "43a9c": {
+      "importer": "texture",
+      "uuid": "0bed32fa-07a7-4aff-b7bb-4b5b9187a6fa@43a9c",
+      "displayName": "",
+      "id": "43a9c",
+      "name": "alpha_texture.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "0bed32fa-07a7-4aff-b7bb-4b5b9187a6fa@7c09f"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "bb85f": {
+      "importer": "gltf-scene",
+      "uuid": "0bed32fa-07a7-4aff-b7bb-4b5b9187a6fa@bb85f",
+      "displayName": "",
+      "id": "bb85f",
+      "name": "Q版女阵亡Death From The Front.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "base_color_texture",
+        "uri": "0bed32fa-07a7-4aff-b7bb-4b5b9187a6fa@48b02"
+      },
+      {
+        "name": "alpha_texture",
+        "uri": "0bed32fa-07a7-4aff-b7bb-4b5b9187a6fa@7c09f"
+      }
+    ],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "animationImportSettings": [
+      {
+        "name": "mixamo.com",
+        "duration": 3.433333396911621,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "mixamo.com",
+            "from": 0,
+            "to": 3.433333396911621,
+            "wrapMode": 2,
+            "previousId": "18d6f"
+          }
+        ]
+      }
+    ],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "0bed32fa-07a7-4aff-b7bb-4b5b9187a6fa@80c75"
+      ],
+      "skeletons": [
+        "0bed32fa-07a7-4aff-b7bb-4b5b9187a6fa@438fe"
+      ],
+      "textures": [
+        "0bed32fa-07a7-4aff-b7bb-4b5b9187a6fa@7d6ab",
+        "0bed32fa-07a7-4aff-b7bb-4b5b9187a6fa@43a9c"
+      ],
+      "materials": [
+        "0bed32fa-07a7-4aff-b7bb-4b5b9187a6fa@51429"
+      ],
+      "scenes": [
+        "0bed32fa-07a7-4aff-b7bb-4b5b9187a6fa@bb85f"
+      ]
+    }
+  }
+}
