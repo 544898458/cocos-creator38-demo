@@ -89,6 +89,10 @@ export class 按下按钮显示详情Component extends Component {
             console.log("按钮TOUCH_END");
             this.隐藏单位详情()
         }, this);
+        this.node.on(Node.EventType.TOUCH_CANCEL, function (event) {
+            console.log("TOUCH_CANCEL");
+            this.隐藏单位详情()
+        }, this);
     }
 }
 
