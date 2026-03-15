@@ -25,7 +25,7 @@ export class Start extends Component {
             console.log(err, bundle);
             
             // 输出开始加载场景的信息
-            this.UpdateProgress("开始加载场景: main");
+            this.UpdateProgress("main");
             
             director.preloadScene("main", (completedCount: number, totalCount: number, item: any)=>{
                 this.UpdateProgress("" + completedCount + "/" + totalCount);
