@@ -51,6 +51,7 @@ export class 翻译Key {
     static 多玩家混战_沙漠 = 'DuoWanJiaHunZhan_ShaMo'
     static 四方对战 = 'SiFangDuiZhan'
     static 一打一 = 'YiDaYi'
+    static 一打一_PvE = 'YiDaYi_PvE'
     static 中央防守_玩家合作 = 'ZhongYangFangShou_WanJiaHeZuo'
     static 加入其他玩家的多人战局 = 'JiaRuDuoRenZhanJu'
 

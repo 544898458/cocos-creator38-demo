@@ -85,6 +85,7 @@ export class LoginView extends Dialog {
     @property(RichText) richText多玩家混战_沙漠: RichText
     @property(RichText) richText四方对战: RichText
     @property(RichText) richText一打一: RichText
+    @property(RichText) richText一打一_PvE: RichText
     @property(RichText) richText中央防守_玩家合作: RichText
     @property(RichText) richText加入其他玩家的多人战局: RichText
     @property(RichText) richText音乐鉴赏: RichText
@@ -147,6 +148,7 @@ export class LoginView extends Dialog {
             this.richText多玩家混战_沙漠.string = 翻译Key.翻译(翻译Key.多玩家混战_沙漠)
             this.richText四方对战.string = 翻译Key.翻译(翻译Key.四方对战)
             this.richText一打一.string = 翻译Key.翻译(翻译Key.一打一)
+            this.richText一打一_PvE.string = 翻译Key.翻译(翻译Key.一打一_PvE)
             this.richText中央防守_玩家合作.string = 翻译Key.翻译(翻译Key.中央防守_玩家合作)
             this.richText加入其他玩家的多人战局.string = 翻译Key.翻译(翻译Key.加入其他玩家的多人战局)
             this.node适龄提示.active = false
