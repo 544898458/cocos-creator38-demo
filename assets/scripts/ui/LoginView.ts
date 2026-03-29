@@ -252,7 +252,7 @@ export class LoginView extends Dialog {
                 0,
                 str登录名,
                 'Hello, world!pwd',
-                39,//版本号
+                50,//版本号
                 strWxLoginCode,
                 l10n.currentLanguage
             ])
