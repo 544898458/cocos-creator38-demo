@@ -42,7 +42,7 @@ export class MainTest extends Component {
     public static get instance(): MainTest {
         return this._instance;
     }
-
+    static time乒开始: number = 0;
     dialogMgr: DialogManager;
     // @property(Scene战斗)
     scene战斗: Scene战斗 = null;

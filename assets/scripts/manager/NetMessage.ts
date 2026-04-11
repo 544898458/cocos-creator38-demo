@@ -728,4 +728,12 @@ export class NetMessage {
         mainTest.scene登录?.显示战局列表(arr玩家, 'onClick进入别人的个人战局')
         console.log('收到玩家个人战局列表:', arr玩家);
     }
+    on乒(event: Event): void {
+        console.log('on Ping')
+        if(MainTest.time乒开始 > 0)
+            return
+
+        MainTest.time乒开始 = Date.now()
+        dispatcher.sendArray([[MsgId.乒, Glob.getSendMsgSn自增(), 0]])
+    }
 }

@@ -640,6 +640,15 @@ export class BattleUI extends Dialog {
             arr选中//虽然是整数，但是也强制转成FLOAT64发出去了
         ])
     }
+
+    on乒(event: Event): void {
+        console.log('on Ping')
+        if(MainTest.time乒开始 > 0)
+            return
+
+        MainTest.time乒开始 = Date.now()
+        dispatcher.sendArray([[MsgId.乒, Glob.getSendMsgSn自增(), 0]])
+    }
 }
 
 
