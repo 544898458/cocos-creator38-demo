@@ -1,0 +1,79 @@
+CCEffect %{
+  techniques:
+  - name: transparent
+    passes:
+    - vert: smoke-vs:vert
+      frag: smoke-fs:frag
+      rasterizerState:
+        cullMode: none
+      depthStencilState:
+        depthTest: true
+        depthWrite: false
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendSrcAlpha: src_alpha
+          blendDstAlpha: one_minus_src_alpha
+      properties:
+        mainTexture:   { value: grey }
+        mainColor:     { value: [1, 1, 1, 1], editor: { type: color } }
+        atlasParams:   { value: [4, 4, 16, 0] }
+        runtimeParams: { value: [0, 0, 0, 0] }
+        brightness:    { value: 1.0, target: materialParams.x }
+}%
+
+CCProgram smoke-vs %{
+  precision highp float;
+  #include <legacy/input>
+  #include <builtin/uniforms/cc-global>
+  #include <legacy/decode-base>
+  #include <legacy/local-batch>
+  in lowp vec4 a_color;
+
+  uniform Constant {
+    vec4 mainColor;
+    vec4 atlasParams;
+    vec4 runtimeParams;
+    vec4 materialParams;
+  };
+
+  out vec2 v_uv;
+  out lowp vec4 v_color;
+
+  vec4 vert () {
+    vec4 position;
+    CCVertInput(position);
+
+    mat4 matWorld;
+    CCGetWorldMatrix(matWorld);
+
+    v_uv = a_texCoord;
+    v_color = a_color;
+    return cc_matProj * (cc_matView * matWorld) * position;
+  }
+}%
+
+CCProgram smoke-fs %{
+  precision highp float;
+  #include <legacy/output>
+
+  in vec2 v_uv;
+  in lowp vec4 v_color;
+
+  uniform sampler2D mainTexture;
+  uniform Constant {
+    vec4 mainColor;
+    vec4 atlasParams;
+    vec4 runtimeParams;
+    vec4 materialParams;
+  };
+
+  vec4 frag () {
+    vec4 texColor = texture(mainTexture, v_uv);
+    vec4 color = texColor * v_color;
+    color.rgb *= materialParams.x;
+    return CCFragOutput(color);
+  }
+}%
