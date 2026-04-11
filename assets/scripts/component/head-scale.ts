@@ -18,6 +18,9 @@ export class HeadScale extends Component {
     @property
     _hpValueScale=1;
     update(){
+        if(!this.target)
+            return
+        
         let wpos = this.target.worldPosition;
         // @ts-ignore
         if (!this.camera!._camera ){//|| this._lastWPos.equals(wpos)) {

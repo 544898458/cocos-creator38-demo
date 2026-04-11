@@ -29,6 +29,7 @@ import { ImageAsset } from 'cc';
 import { Texture2D } from 'cc';
 import { MeshRenderer } from 'cc';
 import { 翻译Key } from '../配置/翻译Key';
+import { toast } from './ToastMgr';
 
 // 聊天消息接口
 interface ChatMessage {
@@ -728,12 +729,12 @@ export class NetMessage {
         mainTest.scene登录?.显示战局列表(arr玩家, 'onClick进入别人的个人战局')
         console.log('收到玩家个人战局列表:', arr玩家);
     }
-    on乒(event: Event): void {
-        console.log('on Ping')
-        if(MainTest.time乒开始 > 0)
-            return
+    private handleGame_乒(arr: any[], idxArr: number): void {
+    if(MainTest.time乒开始 == 0)
+        return
 
-        MainTest.time乒开始 = Date.now()
-        dispatcher.sendArray([[MsgId.乒, Glob.getSendMsgSn自增(), 0]])
-    }
+    const fPing = Date.now() - MainTest.time乒开始
+    MainTest.time乒开始 = 0
+    toast.showToast(fPing.toString())
+}
 }

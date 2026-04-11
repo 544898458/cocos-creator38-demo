@@ -643,9 +643,10 @@ export class BattleUI extends Dialog {
 
     on乒(event: Event): void {
         console.log('on Ping')
-        if(MainTest.time乒开始 > 0)
+        if(MainTest.time乒开始 > 0){
+            console.log('上次还没回复')
             return
-
+        }
         MainTest.time乒开始 = Date.now()
         dispatcher.sendArray([[MsgId.乒, Glob.getSendMsgSn自增(), 0]])
     }
