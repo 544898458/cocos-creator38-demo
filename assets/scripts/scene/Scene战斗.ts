@@ -74,6 +74,10 @@ export class ClientEntityComponent {
             return
 
         this.nodeName.active = b显示名字
+        this.node描述.active = b显示名字
+        if(this.node血条)
+            this.node血条.active = b显示名字
+        
         if (b显示单位类型)
             this.labelName.string = this.nickName + ' ' + this.entityName
         else

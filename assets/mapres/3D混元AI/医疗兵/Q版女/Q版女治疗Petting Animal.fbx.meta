@@ -81,46 +81,6 @@
       ],
       "subMetas": {}
     },
-    "48b02": {
-      "importer": "gltf-embeded-image",
-      "uuid": "a6bfd9e7-4926-44b4-ae96-21cbe8b1e92a@48b02",
-      "displayName": "",
-      "id": "48b02",
-      "name": "base_color_texture.image",
-      "userData": {
-        "gltfIndex": 0,
-        "fixAlphaTransparencyArtifacts": true,
-        "hasAlpha": true,
-        "type": "texture"
-      },
-      "ver": "1.0.3",
-      "imported": true,
-      "files": [
-        ".json",
-        ".png"
-      ],
-      "subMetas": {}
-    },
-    "7c09f": {
-      "importer": "gltf-embeded-image",
-      "uuid": "a6bfd9e7-4926-44b4-ae96-21cbe8b1e92a@7c09f",
-      "displayName": "",
-      "id": "7c09f",
-      "name": "alpha_texture.image",
-      "userData": {
-        "gltfIndex": 1,
-        "fixAlphaTransparencyArtifacts": true,
-        "hasAlpha": true,
-        "type": "texture"
-      },
-      "ver": "1.0.3",
-      "imported": true,
-      "files": [
-        ".json",
-        ".png"
-      ],
-      "subMetas": {}
-    },
     "7d6ab": {
       "importer": "texture",
       "uuid": "a6bfd9e7-4926-44b4-ae96-21cbe8b1e92a@7d6ab",
@@ -134,8 +94,8 @@
         "magfilter": "linear",
         "mipfilter": "none",
         "anisotropy": 0,
-        "isUuid": true,
-        "imageUuidOrDatabaseUri": "a6bfd9e7-4926-44b4-ae96-21cbe8b1e92a@48b02"
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/mapres/3D混元AI/医疗兵/Q版女/Q版女.fbm/green.png"
       },
       "ver": "1.0.22",
       "imported": true,
@@ -157,8 +117,8 @@
         "magfilter": "linear",
         "mipfilter": "none",
         "anisotropy": 0,
-        "isUuid": true,
-        "imageUuidOrDatabaseUri": "a6bfd9e7-4926-44b4-ae96-21cbe8b1e92a@7c09f"
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/mapres/3D混元AI/医疗兵/Q版女/Q版女.fbm/green.png"
       },
       "ver": "1.0.22",
       "imported": true,
@@ -188,11 +148,11 @@
     "imageMetas": [
       {
         "name": "base_color_texture",
-        "uri": "a6bfd9e7-4926-44b4-ae96-21cbe8b1e92a@48b02"
+        "uri": "db://assets/mapres/3D混元AI/医疗兵/Q版女/Q版女.fbm/green.png"
       },
       {
         "name": "alpha_texture",
-        "uri": "a6bfd9e7-4926-44b4-ae96-21cbe8b1e92a@7c09f"
+        "uri": "db://assets/mapres/3D混元AI/医疗兵/Q版女/Q版女.fbm/green.png"
       }
     ],
     "fbx": {
