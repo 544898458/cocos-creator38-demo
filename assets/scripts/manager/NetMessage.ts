@@ -269,21 +269,19 @@ export class NetMessage {
 
                 if (newNode.name != "smoke") {
                     let nodeRoleHp = utils.find("血条", node所有单位头顶名字)
-                    old.node血条 = instantiate(nodeRoleHp)
-                    old.node血条.active = true;
-                    node所有单位头顶名字.addChild(old.node血条)
-
-                    if (hpMax <= 0)
-                        old.node血条.active = false
-                    else {
+                    if (0<hpMax)
+                    {
+                        old.node血条 = instantiate(nodeRoleHp)
+                        old.node血条.active = true;
                         old.node血条.getComponent(ProgressBar).progress = old.hp() / old.hpMax
-                        let calculateHPLength = Math.pow(old.hpMax, 0.5) / 3.0
 
-                        let headScal = old.node血条.getComponent(HeadScale)
+                        const calculateHPLength = Math.pow(old.hpMax, 0.5) / 3.0
+                        const headScal = old.node血条.getComponent(HeadScale)
                         headScal.target = utils.find("血条", newNode)
                         headScal.camera = MainTest.instance.scene战斗.mainCamera
                         headScal.camera小地图 = MainTest.instance.scene战斗.camera小地图
                         headScal._hpValueScale = calculateHPLength;
+                        node所有单位头顶名字.addChild(old.node血条)
                     }
 
 
@@ -522,7 +520,7 @@ export class NetMessage {
 
         //加载高清贴图
         const 配置 = MainTest.instance.配置.find战局(战局)
-        if(0==配置.Https高清贴图.length)
+        if(!配置.Https高清贴图 || 0 == 配置.Https高清贴图.length)
             return
         
         const nodeSpace = utils.find(配置.MeshRenderer路径, MainTest.GetMapNode())
