@@ -19,16 +19,7 @@ CCEffect %{
       properties:
         mainTexture:   { value: grey }
         tilingOffset:  { value: [1, 1, 0, 0] }
-        shallowColor:  { value: [0.43, 0.68, 0.92, 1], editor: { type: color } }
-        deepColor:     { value: [0.16, 0.38, 0.67, 1], editor: { type: color } }
-        specularTint:  { value: [0.92, 0.96, 1.0, 1], editor: { type: color } }
-        styleParams:   { value: [1.05, 0.78, 0.22, 1.7] }
-        extraParams:   { value: [0.35, 0, 0, 0] }
-        waveStrength:  { value: 1.05, target: styleParams.x }
-        opacity:       { value: 0.78, target: styleParams.y }
-        edgeFadeWidth: { value: 0.22, target: styleParams.z }
-        edgePower:     { value: 1.7, target: styleParams.w }
-        specularBoost: { value: 0.35, target: extraParams.x }
+        opacity:       { value: 1.0 }
 }%
 
 CCProgram water-soft-vs %{
@@ -37,17 +28,12 @@ CCProgram water-soft-vs %{
   #include <builtin/uniforms/cc-global>
   #include <legacy/local-batch>
 
-  uniform Constant {
+  uniform Material {
     vec4 tilingOffset;
-    vec4 shallowColor;
-    vec4 deepColor;
-    vec4 specularTint;
-    vec4 styleParams;
-    vec4 extraParams;
+    float opacity;
   };
 
   out vec2 v_uv;
-  out vec2 v_uvRaw;
 
   vec4 vert () {
     vec4 position;
@@ -56,7 +42,6 @@ CCProgram water-soft-vs %{
     mat4 matWorld;
     CCGetWorldMatrix(matWorld);
 
-    v_uvRaw = a_texCoord;
     v_uv = a_texCoord * tilingOffset.xy + tilingOffset.zw;
     return cc_matProj * (cc_matView * matWorld) * position;
   }
@@ -67,31 +52,18 @@ CCProgram water-soft-fs %{
   #include <legacy/output>
 
   in vec2 v_uv;
-  in vec2 v_uvRaw;
 
   uniform sampler2D mainTexture;
-  uniform Constant {
+  uniform Material {
     vec4 tilingOffset;
-    vec4 shallowColor;
-    vec4 deepColor;
-    vec4 specularTint;
-    vec4 styleParams;
-    vec4 extraParams;
+    float opacity;
   };
 
   vec4 frag () {
     vec4 tex = texture(mainTexture, v_uv);
-    float wave = tex.r;
 
-    float edgeDist = min(min(v_uvRaw.x, 1.0 - v_uvRaw.x), min(v_uvRaw.y, 1.0 - v_uvRaw.y));
-    float edgeAlpha = smoothstep(0.0, max(0.0001, styleParams.z), edgeDist);
-    edgeAlpha = pow(edgeAlpha, max(0.0001, styleParams.w));
-
-    vec3 baseColor = mix(deepColor.rgb, shallowColor.rgb, wave);
-    vec3 specular = specularTint.rgb * pow(max(wave, 0.0), 3.0) * extraParams.x;
-    vec3 finalColor = baseColor * (0.6 + wave * styleParams.x) + specular;
-
-    float alpha = clamp((0.35 + wave * 0.65) * styleParams.y * edgeAlpha, 0.0, 1.0);
+    vec3 finalColor = vec3(1.0);
+    float alpha = tex.r * opacity;
     return CCFragOutput(vec4(finalColor, alpha));
   }
 }%
