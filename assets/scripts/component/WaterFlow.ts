@@ -41,7 +41,7 @@ export class WaterFlow extends Component {
             return;
         }
 
-        // 使用默认的属性路径，直到effect加载成功
+        // 使用默认的属性路径
         this.tilingOffsetProperty = 'tilingOffset';
         console.log('[WaterFlow] Set tilingOffsetProperty to:', this.tilingOffsetProperty);
 
@@ -83,22 +83,13 @@ export class WaterFlow extends Component {
         }
         console.log('[WaterFlow] Applying opacity:', this.opacity);
         try {
-            // 尝试使用Material.opacity属性
-            this._material.setProperty('Material.opacity', this.opacity);
+            // 使用默认的属性路径
+            this._material.setProperty('opacity', this.opacity);
             // 检查属性是否设置成功
-            const currentOpacity = this._material.getProperty('Material.opacity');
+            const currentOpacity = this._material.getProperty('opacity');
             console.log('[WaterFlow] Current opacity in material:', currentOpacity);
         } catch (error) {
             console.log('[WaterFlow] Error setting opacity:', error);
-            // 尝试使用默认的opacity属性
-            try {
-                this._material.setProperty('opacity', this.opacity);
-                // 检查属性是否设置成功
-                const currentOpacity = this._material.getProperty('opacity');
-                console.log('[WaterFlow] Current opacity in material (default):', currentOpacity);
-            } catch (error2) {
-                console.log('[WaterFlow] Error setting default opacity:', error2);
-            }
         }
     }
 
@@ -136,17 +127,11 @@ export class WaterFlow extends Component {
 
             // 检查材质是否支持opacity属性
             try {
-                mat.setProperty('Material.opacity', this.opacity);
-                console.log('[WaterFlow] Material supports Material.opacity property');
+                // 使用默认的属性路径
+                mat.setProperty('opacity', this.opacity);
+                console.log('[WaterFlow] Material supports opacity property');
             } catch (error) {
-                console.log('[WaterFlow] Material does not support Material.opacity property:', error);
-                // 尝试使用默认的opacity属性
-                try {
-                    mat.setProperty('opacity', this.opacity);
-                    console.log('[WaterFlow] Material supports opacity property');
-                } catch (error2) {
-                    console.log('[WaterFlow] Material does not support opacity property:', error2);
-                }
+                console.log('[WaterFlow] Material does not support opacity property:', error);
             }
 
             this._renderer.sharedMaterials = [mat];

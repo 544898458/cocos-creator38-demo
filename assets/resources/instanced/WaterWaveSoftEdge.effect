@@ -63,7 +63,7 @@ CCProgram water-soft-fs %{
     vec4 tex = texture(mainTexture, v_uv);
 
     vec3 finalColor = vec3(1.0);
-    float alpha = tex.r * opacity;
+    float alpha = tex.r - opacity;
     return CCFragOutput(vec4(finalColor, alpha));
   }
 }%
