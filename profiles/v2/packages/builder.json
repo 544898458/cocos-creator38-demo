@@ -131,16 +131,16 @@
         "type": "build",
         "id": "1734472901911",
         "progress": 1,
-        "state": "success",
+        "state": "failure",
         "stage": "build",
-        "message": "2026-4-11 23:02:48 build success in 1 min 47 s!",
-        "detailMessage": "Asset DB is resume!\r",
+        "message": "The build task was interrupted",
+        "detailMessage": "asset-db-hook-engine-extends-afterRefresh (2ms)\r",
         "options": {
           "name": "即时战略指挥",
           "server": "",
           "platform": "wechatgame",
           "buildPath": "project://build",
-          "debug": true,
+          "debug": false,
           "md5Cache": false,
           "skipCompressTexture": false,
           "sourceMaps": false,
@@ -200,7 +200,7 @@
             "enable": false
           }
         },
-        "time": "2026-4-11 23:01:00",
+        "time": "2026-4-12 19:42:17",
         "dirty": false
       },
       "1747025212998": {
