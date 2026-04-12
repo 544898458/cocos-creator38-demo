@@ -1,0 +1,98 @@
+CCEffect %{
+  techniques:
+  - name: transparent
+    passes:
+    - vert: water-soft-vs:vert
+      frag: water-soft-fs:frag
+      rasterizerState:
+        cullMode: none
+      depthStencilState:
+        depthTest: true
+        depthWrite: false
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendSrcAlpha: src_alpha
+          blendDstAlpha: one_minus_src_alpha
+      properties:
+        mainTexture:   { value: grey }
+        tilingOffset:  { value: [1, 1, 0, 0] }
+        shallowColor:  { value: [0.43, 0.68, 0.92, 1], editor: { type: color } }
+        deepColor:     { value: [0.16, 0.38, 0.67, 1], editor: { type: color } }
+        specularTint:  { value: [0.92, 0.96, 1.0, 1], editor: { type: color } }
+        styleParams:   { value: [1.05, 0.78, 0.22, 1.7] }
+        extraParams:   { value: [0.35, 0, 0, 0] }
+        waveStrength:  { value: 1.05, target: styleParams.x }
+        opacity:       { value: 0.78, target: styleParams.y }
+        edgeFadeWidth: { value: 0.22, target: styleParams.z }
+        edgePower:     { value: 1.7, target: styleParams.w }
+        specularBoost: { value: 0.35, target: extraParams.x }
+}%
+
+CCProgram water-soft-vs %{
+  precision highp float;
+  #include <legacy/input>
+  #include <builtin/uniforms/cc-global>
+  #include <legacy/local-batch>
+
+  uniform Constant {
+    vec4 tilingOffset;
+    vec4 shallowColor;
+    vec4 deepColor;
+    vec4 specularTint;
+    vec4 styleParams;
+    vec4 extraParams;
+  };
+
+  out vec2 v_uv;
+  out vec2 v_uvRaw;
+
+  vec4 vert () {
+    vec4 position;
+    CCVertInput(position);
+
+    mat4 matWorld;
+    CCGetWorldMatrix(matWorld);
+
+    v_uvRaw = a_texCoord;
+    v_uv = a_texCoord * tilingOffset.xy + tilingOffset.zw;
+    return cc_matProj * (cc_matView * matWorld) * position;
+  }
+}%
+
+CCProgram water-soft-fs %{
+  precision highp float;
+  #include <legacy/output>
+
+  in vec2 v_uv;
+  in vec2 v_uvRaw;
+
+  uniform sampler2D mainTexture;
+  uniform Constant {
+    vec4 tilingOffset;
+    vec4 shallowColor;
+    vec4 deepColor;
+    vec4 specularTint;
+    vec4 styleParams;
+    vec4 extraParams;
+  };
+
+  vec4 frag () {
+    vec4 tex = texture(mainTexture, v_uv);
+    float wave = tex.r;
+
+    float edgeDist = min(min(v_uvRaw.x, 1.0 - v_uvRaw.x), min(v_uvRaw.y, 1.0 - v_uvRaw.y));
+    float edgeAlpha = smoothstep(0.0, max(0.0001, styleParams.z), edgeDist);
+    edgeAlpha = pow(edgeAlpha, max(0.0001, styleParams.w));
+
+    vec3 baseColor = mix(deepColor.rgb, shallowColor.rgb, wave);
+    vec3 specular = specularTint.rgb * pow(max(wave, 0.0), 3.0) * extraParams.x;
+    vec3 finalColor = baseColor * (0.6 + wave * styleParams.x) + specular;
+
+    float alpha = clamp((0.35 + wave * 0.65) * styleParams.y * edgeAlpha, 0.0, 1.0);
+    return CCFragOutput(vec4(finalColor, alpha));
+  }
+}%
+
