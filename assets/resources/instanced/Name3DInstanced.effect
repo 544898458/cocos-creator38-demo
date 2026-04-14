@@ -1,10 +1,22 @@
 // Name3DInstanced.effect
 CCEffect %{
   techniques:
-  - name: technique
+  - name: transparent
     passes:
-    - vert: name3d-vs
-      frag: name3d-fs
+    - vert: name3d-vs:vert
+      frag: name3d-fs:frag
+      rasterizerState:
+        cullMode: none
+      depthStencilState:
+        depthTest: false
+        depthWrite: false
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendSrcAlpha: src_alpha
+          blendDstAlpha: one_minus_src_alpha
       properties:
         mainTexture: { value: white }
         color: { value: [1, 1, 1, 1] }
@@ -12,69 +24,54 @@ CCEffect %{
 
 CCProgram name3d-vs %{
   precision highp float;
-  #include <cc-global>
-  #include <cc-local>
-  
-  in vec3 a_position;
-  in vec2 a_uv0;
-  
-  out vec2 v_uv0;
-  
-  // 实例化属性
-  attribute vec3 inst_positions;
-  attribute vec4 inst_rotations;
-  
-  // 四元数转矩阵
-  mat4 quatToMat4(vec4 q) {
-    float x = q.x;
-    float y = q.y;
-    float z = q.z;
-    float w = q.w;
-    
-    float xx = x * x;
-    float yy = y * y;
-    float zz = z * z;
-    float xy = x * y;
-    float xz = x * z;
-    float yz = y * z;
-    float wx = w * x;
-    float wy = w * y;
-    float wz = w * z;
-    
-    return mat4(
-      1.0 - 2.0 * (yy + zz), 2.0 * (xy - wz), 2.0 * (xz + wy), 0.0,
-      2.0 * (xy + wz), 1.0 - 2.0 * (xx + zz), 2.0 * (yz - wx), 0.0,
-      2.0 * (xz - wy), 2.0 * (yz + wx), 1.0 - 2.0 * (xx + yy), 0.0,
-      0.0, 0.0, 0.0, 1.0
-    );
-  }
-  
-  void main () {
-    vec4 pos = vec4(a_position, 1.0);
-    
-    // 应用实例化位置和旋转
-    mat4 instMat = quatToMat4(inst_rotations);
-    pos = instMat * pos;
-    pos.xyz += inst_positions;
-    
-    v_uv0 = a_uv0;
-    gl_Position = cc_matProj * (cc_matView) * pos;
+  #pragma define-meta USE_INSTANCING
+  #include <legacy/input>
+  #include <legacy/decode-base>
+  #include <builtin/uniforms/cc-global>
+  #include <legacy/local-batch>
+
+  out vec2 v_uv;
+
+  // 实例化平移（每个实例对应一个世界坐标）
+  vec4 vert () {
+    vec4 position;
+    CCVertInput(position);
+
+    mat4 matWorld;
+    CCGetWorldMatrix(matWorld);
+
+    vec3 instPos = matWorld[3].xyz;
+
+    vec3 worldScale = vec3(length(matWorld[0].xyz), length(matWorld[1].xyz), length(matWorld[2].xyz));
+    float sx = worldScale.x;
+    float sy = max(worldScale.y, worldScale.z);
+
+    // 兼容 Quad 在 XY 或 XZ 平面的情况：优先取幅度更大的那个做“竖直分量”
+    float ox = position.x;
+    float oy = (abs(position.y) > abs(position.z)) ? position.y : position.z;
+
+    // Billboard：把实例中心转到视空间，再叠加局部顶点偏移
+    // 这样四边形始终面向相机，且保持世界单位大小
+    vec4 centerVS = cc_matView * vec4(instPos, 1.0);
+    vec4 posVS = centerVS + vec4(ox * sx, oy * sy, 0.0, 0.0);
+
+    v_uv = a_texCoord;
+    return cc_matProj * posVS;
   }
 }%
 
 CCProgram name3d-fs %{
   precision highp float;
-  #include <cc-global>
-  
-  in vec2 v_uv0;
-  
+  #include <legacy/output>
+
+  in vec2 v_uv;
   uniform sampler2D mainTexture;
-  uniform Material {
+  uniform Constant {
     vec4 color;
   };
-  
-  void main () {
-    vec4 texColor = texture(mainTexture, v_uv0);
-    gl_FragColor = texColor * color;
+
+  vec4 frag () {
+    vec4 texColor = texture(mainTexture, v_uv);
+    return CCFragOutput(texColor * color);
   }
 }%

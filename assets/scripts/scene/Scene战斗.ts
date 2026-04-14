@@ -1064,5 +1064,3 @@ export class Scene战斗 extends Component {
         entity.view?.getChildByName('苔蔓').getComponent(苔蔓Component).Set半径(半径)
     }
 }
-
-

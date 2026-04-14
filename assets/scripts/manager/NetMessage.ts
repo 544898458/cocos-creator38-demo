@@ -17,7 +17,6 @@ import { BattleUI } from '../ui/BattleUI';
 import { UI2Prefab } from '../autobind/UI2Prefab';
 import { 翻译Key } from '../配置/翻译Key';
 import { toast } from './ToastMgr';
-import { Name3DManager } from './Name3DManager';
 
 // 聊天消息接口
 interface ChatMessage {
@@ -253,11 +252,9 @@ export class NetMessage {
                 // 使用3D名字管理器
                 if (this.mainTest && this.mainTest.scene战斗 && this.mainTest.scene战斗.名字管理器) {
                     const 名字 = nickName || entityName;
-                    const 位置 = newNode.position;
-                    // 确保位置在单位上方
-                    const 新位置 = new cc.Vec3(位置.x, 位置.y + 2, 位置.z);
+                    const 名字锚点 = utils.find("NamePos", newNode) || newNode;
                     // 直接使用单位ID作为实例ID
-                    this.mainTest.scene战斗.名字管理器.添加名字实例(名字, 新位置, id);
+                    this.mainTest.scene战斗.名字管理器.添加名字实例(名字, 名字锚点, id);
                 } else {
                     console.log('名字管理器未设置，跳过添加名字实例');
                 }
@@ -365,13 +362,7 @@ export class NetMessage {
             }
         }
         
-        // 更新现有的名字实例的位置
-        if (this.mainTest && this.mainTest.scene战斗 && this.mainTest.scene战斗.名字管理器 && old.nickName) {
-            if (id) {
-                const 新位置 = new Vec3(posNew.x, posNew.y + 2, posNew.z);
-                this.mainTest.scene战斗.名字管理器.更新名字实例位置(old.nickName, id, 新位置);
-            }
-        }
+        // 3D名字绑定 NamePos 后由 Name3DManager 每帧自动采样，无需手动同步位置
     }
     // 示例：处理 GameSvr 的 Say 消息
     private handleGame_Say(arr: any[], idxArr: number): void {
