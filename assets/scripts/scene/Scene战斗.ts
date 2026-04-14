@@ -71,13 +71,14 @@ export class ClientEntityComponent {
         this.node能量条?.removeFromParent()
     }
     显示头顶名字(b显示单位类型: boolean, b显示名字: boolean): void {
+        if(this.node血条)
+            this.node血条.active = b显示名字
+        
         if (!this.labelName)
             return
 
         this.nodeName.active = b显示名字
         this.node描述.active = b显示名字
-        if(this.node血条)
-            this.node血条.active = b显示名字
         
         if (b显示单位类型)
             this.labelName.string = this.nickName + ' ' + this.entityName

@@ -1,5 +1,5 @@
 // Name3DManager.ts
-import { _decorator, Component, Node, MeshRenderer, Material, Vec3, Prefab, instantiate, Layers, Texture2D, ImageAsset, director, gfx } from 'cc';
+import { _decorator, Component, Node, MeshRenderer, Material, Vec3, Prefab, instantiate, Layers, Texture2D, ImageAsset, director, gfx, sys } from 'cc';
 
 const { ccclass, property } = _decorator;
 
@@ -222,6 +222,20 @@ export class Name3DManager extends Component {
             mr.visibility = Layers.BitMask.DEFAULT;
             mr.priority = 0;
             const anyMr = mr as any;
+            if (anyMr.shadowCastingMode !== undefined) {
+                anyMr.shadowCastingMode = 0;
+            }
+            if (anyMr.receiveShadow !== undefined) {
+                anyMr.receiveShadow = false;
+            }
+            if (anyMr.useLightProbe !== undefined) {
+                anyMr.useLightProbe = false;
+            }
+            if (anyMr.bakeSettings) {
+                anyMr.bakeSettings.useLightProbe = false;
+                anyMr.bakeSettings.reflectionProbe = 0;
+                anyMr.bakeSettings.texture = null;
+            }
             if (anyMr.reflectionProbeType !== undefined) {
                 anyMr.reflectionProbeType = 0;
             } else if (anyMr.reflectionProbe !== undefined) {
@@ -235,6 +249,7 @@ export class Name3DManager extends Component {
             this.扩展模型包围盒(mr);
             const m0 = mr.getSharedMaterial(0);
             console.log(`[Name3D] 绑定材质 名字=${名字} 节点=${mr.node.name} shared0=${m0 ? 'OK' : 'EMPTY'} 同对象=${m0 === 材质}`);
+            console.log(`[Name3D] 渲染状态 名字=${名字} 节点=${mr.node.name} receiveShadow=${anyMr.receiveShadow} useLightProbe=${anyMr.useLightProbe ?? anyMr.bakeSettings?.useLightProbe} reflectionProbe=${anyMr.reflectionProbe ?? anyMr.bakeSettings?.reflectionProbe}`);
         }
         return true;
     }
@@ -281,14 +296,17 @@ export class Name3DManager extends Component {
     private 打印Instancing信息(材质: Material, 名字: string) {
         if (!this.已打印硬件Instancing能力) {
             this.已打印硬件Instancing能力 = true;
-            const 设备支持 = !!director.root?.device?.hasFeature(gfx.Feature.INSTANCED_ARRAYS);
-            console.log(`[Name3D] 设备 Instancing 支持=${设备支持}`);
+            const device = director.root?.device;
+            const 设备支持 = !!device?.hasFeature(gfx.Feature.INSTANCED_ARRAYS);
+            const gfxApi = (device as any)?.gfxAPI;
+            console.log(`[Name3D] 设备 Instancing 支持=${设备支持} platform=${sys.platform} os=${sys.os} gfxAPI=${gfxApi}`);
         }
 
         const pass = 材质.passes?.[0] as any;
-        const useInstancing = pass?.defines?.USE_INSTANCING;
+        const useInstancing = pass?.defines?.USE_INSTANCING ?? pass?.getDefine?.('USE_INSTANCING');
         const batchingScheme = pass?.batchingScheme;
-        console.log(`[Name3D] 材质Instancing 名字=${名字} batchingScheme=${batchingScheme} USE_INSTANCING=${useInstancing}`);
+        const effectName = (材质.effectAsset as any)?.name ?? 材质.effectName ?? 'unknown';
+        console.log(`[Name3D] 材质Instancing 名字=${名字} effect=${effectName} batchingScheme=${batchingScheme} USE_INSTANCING=${useInstancing}`);
     }
 
     // 获取或创建名字纹理（同名共享）
@@ -306,15 +324,23 @@ export class Name3DManager extends Component {
     private 使用Canvas绘制纹理(名字: string): Texture2D {
         const g = globalThis as any;
         const doc = g?.document;
-        if (!doc || typeof doc.createElement !== 'function') {
+        let canvas: any = null;
+        if (doc && typeof doc.createElement === 'function') {
+            canvas = doc.createElement('canvas');
+        } else if (g?.__globalAdapter?.createCanvas) {
+            canvas = g.__globalAdapter.createCanvas();
+        } else if (g?.wx?.createOffscreenCanvas) {
+            canvas = g.wx.createOffscreenCanvas();
+        }
+
+        if (!canvas) {
             if (!this.已打印无DOM警告) {
                 this.已打印无DOM警告 = true;
-                console.warn('[Name3D] 当前环境无 DOM，无法生成文字贴图，名字将不可见');
+                console.warn('[Name3D] 无法创建 Canvas，无法生成文字贴图，名字将不可见');
             }
             return new Texture2D();
         }
 
-        const canvas = doc.createElement('canvas');
         canvas.width = Math.max(2, this.纹理宽度);
         canvas.height = Math.max(2, this.纹理高度);
 
