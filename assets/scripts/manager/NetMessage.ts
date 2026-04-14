@@ -7,29 +7,17 @@ import { dispatcher } from '../manager/event/EventDispatcher';
 import { EC } from '../utils/EC';
 import { AudioMgr } from './audio/AudioMgr';
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
-import { instantiate } from 'cc';
-import { Prefab } from 'cc';
-import { resources } from 'cc';
+import * as cc from 'cc';
+import { instantiate, Prefab, resources, SkeletalAnimation, Animation, utils, ProgressBar, Label, ParticleSystem, Camera, Quat, Vec3, tween, assetManager, AudioClip, ImageAsset, Texture2D, MeshRenderer } from 'cc';
 import { ClientEntityComponent } from '../scene/Scene战斗';
 import { 配置 } from '../配置/配置';
-import { SkeletalAnimation, Animation } from 'cc';
 import { 苔蔓Component } from '../component/苔蔓Component';
-import { utils } from 'cc';
-import { ProgressBar } from 'cc';
 import { HeadScale } from '../component/head-scale';
-import { Label } from 'cc';
-import { ParticleSystem } from 'cc';
 import { BattleUI } from '../ui/BattleUI';
 import { UI2Prefab } from '../autobind/UI2Prefab';
-import { Camera } from 'cc';
-import { Vec3, tween } from 'cc';
-import { assetManager } from 'cc';
-import { AudioClip } from 'cc';
-import { ImageAsset } from 'cc';
-import { Texture2D } from 'cc';
-import { MeshRenderer } from 'cc';
 import { 翻译Key } from '../配置/翻译Key';
 import { toast } from './ToastMgr';
+import { Name3DManager } from './Name3DManager';
 
 // 聊天消息接口
 interface ChatMessage {
@@ -47,6 +35,8 @@ export class NetMessage {
 
     private mainTest: MainTest | null = null;
     
+    // 3D名字管理器通过 Scene战斗 获取
+    
     // 聊天历史记录
     private chatHistory: ChatMessage[] = [];
     private maxChatHistory: number = 100; // 最大保存100条记录
@@ -58,6 +48,9 @@ export class NetMessage {
 
     public setMainTest(mainTest: MainTest): void {
         this.mainTest = mainTest;
+        
+        // 名字管理器通过编辑器设置
+        console.log('名字管理器通过编辑器设置');
     }
 
     // 获取聊天历史记录
@@ -172,7 +165,7 @@ export class NetMessage {
         if (!mainTest) return;
 
         const scene战斗 = mainTest.scene战斗;
-        const id = arr[idxArr++];
+        const id = arr[idxArr++] as number;
         const nickName = arr[idxArr++];
         const entityName = arr[idxArr++];
         const prefabName = arr[idxArr++];
@@ -257,15 +250,21 @@ export class NetMessage {
                     MainTest.播放动作(old, old.initClipName, old.init初始动作Loop, old.init初始动作播放速度, old.init初始动作起始时刻秒, old.init初始动作结束时刻秒)
                 }
                 // if (!thisLocal.scene战斗.battleUI)
+                // 使用3D名字管理器
+                if (this.mainTest && this.mainTest.scene战斗 && this.mainTest.scene战斗.名字管理器) {
+                    const 名字 = nickName || entityName;
+                    const 位置 = newNode.position;
+                    // 确保位置在单位上方
+                    const 新位置 = new cc.Vec3(位置.x, 位置.y + 2, 位置.z);
+                    // 直接使用单位ID作为实例ID
+                    this.mainTest.scene战斗.名字管理器.添加名字实例(名字, 新位置, id);
+                } else {
+                    console.log('名字管理器未设置，跳过添加名字实例');
+                }
+
+                // 保留血条和能量条的2D显示
                 MainTest.instance.scene战斗.battleUI = MainTest.instance.dialogMgr.getDialog(UI2Prefab.BattleUI_url).getComponent(BattleUI);
                 let node所有单位头顶名字 = MainTest.instance.scene战斗.battleUI.uiTransform所有单位头顶名字.node
-                let nodeRoleName = utils.find("RoleName", node所有单位头顶名字)
-                // console.log('RoleName',this.nodeRoleName)
-                // this.nodeRoleName.getComponent(HeadScale).target = this.nodeRoleName
-
-                old.nodeName = instantiate(nodeRoleName)
-                old.nodeName.active = true
-                node所有单位头顶名字.addChild(old.nodeName)
 
                 if (newNode.name != "smoke") {
                     let nodeRoleHp = utils.find("血条", node所有单位头顶名字)
@@ -300,26 +299,6 @@ export class NetMessage {
                     }
 
                 }
-                old.labelName = old.nodeName.getComponent(Label)
-                {
-                    let headScal = old.nodeName.getComponent(HeadScale)
-                    headScal.target = utils.find("NamePos", newNode)
-                    headScal.camera = MainTest.instance.scene战斗.mainCamera
-                    headScal.camera小地图 = MainTest.instance.scene战斗.camera小地图
-                }
-
-                old.node描述 = instantiate(nodeRoleName)
-                old.node描述.active = true
-                node所有单位头顶名字.addChild(old.node描述)
-                old.label描述 = old.node描述.getComponent(Label)
-                {
-                    let headScal = old.node描述.getComponent(HeadScale)
-                    headScal.target = utils.find("描述", newNode)
-                    headScal.camera = MainTest.instance.scene战斗.mainCamera
-                    headScal.camera小地图 = MainTest.instance.scene战斗.camera小地图
-
-                    // console.log(headScal.target)
-                }
 
 
                 let camera3D = utils.find("Main Camera", MainTest.instance.scene战斗.roles.parent).getComponent(Camera)
@@ -347,7 +326,7 @@ export class NetMessage {
         const mainTest = this.mainTest;
         if (!mainTest) return;
 
-        const id = arr[idxArr++];
+        const id = arr[idxArr++] as number;
         const arrPos = arr[idxArr++] as Array<number>
         let eulerAnglesY = arr[idxArr++];
 
@@ -383,6 +362,14 @@ export class NetMessage {
                     eulerAngles: old.eulerAngles
                 });
                 old.tween移动.start();
+            }
+        }
+        
+        // 更新现有的名字实例的位置
+        if (this.mainTest && this.mainTest.scene战斗 && this.mainTest.scene战斗.名字管理器 && old.nickName) {
+            if (id) {
+                const 新位置 = new Vec3(posNew.x, posNew.y + 2, posNew.z);
+                this.mainTest.scene战斗.名字管理器.更新名字实例位置(old.nickName, id, 新位置);
             }
         }
     }
@@ -479,6 +466,11 @@ export class NetMessage {
         if (!entity) {
             console.warn('无法删除', id);
             return;
+        }
+
+        // 移除3D名字实例
+        if (this.mainTest && this.mainTest.scene战斗 && this.mainTest.scene战斗.名字管理器 && entity.nickName) {
+            this.mainTest.scene战斗.名字管理器.移除名字实例(entity.nickName, id);
         }
 
         entity.removeFromParent();

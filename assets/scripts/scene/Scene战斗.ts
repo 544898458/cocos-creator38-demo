@@ -26,6 +26,7 @@ import { UI2Prefab } from '../autobind/UI2Prefab'
 import { BattleMoude } from './BattleMoude'
 import { MsgId, 单位类型, 属性类型 } from '../utils/Enum'
 import { 翻译Key } from '../配置/翻译Key'
+import { Name3DManager } from '../manager/Name3DManager'
 
 const { ccclass, property } = _decorator
 export class ClientEntityComponent {
@@ -160,6 +161,8 @@ export class Scene战斗 extends Component {
     roles: Node
     @property({ type: AudioSource })
     audioSource: AudioSource
+    @property(Name3DManager)
+    名字管理器: Name3DManager
 
     //鼠标点击世界坐标
     posWorld按下准备拖动地面: Vec3

@@ -1,0 +1,80 @@
+// Name3DInstanced.effect
+CCEffect %{
+  techniques:
+  - name: technique
+    passes:
+    - vert: name3d-vs
+      frag: name3d-fs
+      properties:
+        mainTexture: { value: white }
+        color: { value: [1, 1, 1, 1] }
+}%
+
+CCProgram name3d-vs %{
+  precision highp float;
+  #include <cc-global>
+  #include <cc-local>
+  
+  in vec3 a_position;
+  in vec2 a_uv0;
+  
+  out vec2 v_uv0;
+  
+  // 实例化属性
+  attribute vec3 inst_positions;
+  attribute vec4 inst_rotations;
+  
+  // 四元数转矩阵
+  mat4 quatToMat4(vec4 q) {
+    float x = q.x;
+    float y = q.y;
+    float z = q.z;
+    float w = q.w;
+    
+    float xx = x * x;
+    float yy = y * y;
+    float zz = z * z;
+    float xy = x * y;
+    float xz = x * z;
+    float yz = y * z;
+    float wx = w * x;
+    float wy = w * y;
+    float wz = w * z;
+    
+    return mat4(
+      1.0 - 2.0 * (yy + zz), 2.0 * (xy - wz), 2.0 * (xz + wy), 0.0,
+      2.0 * (xy + wz), 1.0 - 2.0 * (xx + zz), 2.0 * (yz - wx), 0.0,
+      2.0 * (xz - wy), 2.0 * (yz + wx), 1.0 - 2.0 * (xx + yy), 0.0,
+      0.0, 0.0, 0.0, 1.0
+    );
+  }
+  
+  void main () {
+    vec4 pos = vec4(a_position, 1.0);
+    
+    // 应用实例化位置和旋转
+    mat4 instMat = quatToMat4(inst_rotations);
+    pos = instMat * pos;
+    pos.xyz += inst_positions;
+    
+    v_uv0 = a_uv0;
+    gl_Position = cc_matProj * (cc_matView) * pos;
+  }
+}%
+
+CCProgram name3d-fs %{
+  precision highp float;
+  #include <cc-global>
+  
+  in vec2 v_uv0;
+  
+  uniform sampler2D mainTexture;
+  uniform Material {
+    vec4 color;
+  };
+  
+  void main () {
+    vec4 texColor = texture(mainTexture, v_uv0);
+    gl_FragColor = texColor * color;
+  }
+}%
