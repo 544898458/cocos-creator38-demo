@@ -354,7 +354,7 @@ export class Name3DManager extends Component {
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillStyle = 'rgba(255,255,255,1)';
-        ctx.font = `bold ${Math.max(8, this.字体大小)}px "Microsoft YaHei", "PingFang SC", Arial, sans-serif`;
+        ctx.font = `${Math.max(8, this.字体大小)}px "Microsoft YaHei", "PingFang SC", Arial, sans-serif`;
         ctx.fillText(名字, canvas.width * 0.5, canvas.height * 0.5);
 
         const imageAsset = new ImageAsset(canvas);

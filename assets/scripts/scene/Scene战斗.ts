@@ -47,8 +47,10 @@ export class ClientEntityComponent {
     position: Vec3//刚进地图Load没结束无法设置node坐标，暂存
     eulerAngles: Vec3
     node血条: Node
+    node血条前景: Node
     hpMax: number = 0
     node能量条: Node
+    node能量条前景: Node
     // 能量: number = 0
     能量Max: number = 0
     prefabName: string
@@ -73,6 +75,9 @@ export class ClientEntityComponent {
     显示头顶名字(b显示单位类型: boolean, b显示名字: boolean): void {
         if(this.node血条)
             this.node血条.active = b显示名字
+
+        if (this.node能量条)
+            this.node能量条.active = b显示名字
         
         if (!this.labelName)
             return

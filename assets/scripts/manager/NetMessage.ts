@@ -8,19 +8,23 @@ import { EC } from '../utils/EC';
 import { AudioMgr } from './audio/AudioMgr';
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import * as cc from 'cc';
-import { instantiate, Prefab, resources, SkeletalAnimation, Animation, utils, ProgressBar, Label, ParticleSystem, Camera, Quat, Vec3, tween, assetManager, AudioClip, ImageAsset, Texture2D, MeshRenderer } from 'cc';
+import { instantiate, Node, Prefab, resources, SkeletalAnimation, Animation, utils, Label, ParticleSystem, Camera, Quat, Vec3, Vec4, tween, assetManager, AudioClip, ImageAsset, Texture2D, MeshRenderer, Material, Layers, Sprite } from 'cc';
 import { ClientEntityComponent } from '../scene/Scene战斗';
 import { 配置 } from '../配置/配置';
 import { 苔蔓Component } from '../component/苔蔓Component';
-import { HeadScale } from '../component/head-scale';
-import { BattleUI } from '../ui/BattleUI';
-import { UI2Prefab } from '../autobind/UI2Prefab';
 import { 翻译Key } from '../配置/翻译Key';
 import { toast } from './ToastMgr';
 
 // 聊天消息接口
 interface ChatMessage {
     content: string;
+}
+
+interface EntityBarCache {
+    hpFillNode: Node | null;
+    energyFillNode: Node | null;
+    lastHpProgress: number;
+    lastEnergyProgress: number;
 }
 
 export class NetMessage {
@@ -33,6 +37,19 @@ export class NetMessage {
     }
 
     private mainTest: MainTest | null = null;
+    private readonly entityBarCache: Map<number, EntityBarCache> = new Map<number, EntityBarCache>();
+    private static readonly BAR_PROGRESS_EPSILON = 0.0005;
+    private static readonly HP_BAR_THICKNESS = 0.3;
+    private static readonly ENERGY_BAR_THICKNESS = 0.3;
+    private static readonly HP_BAR_INSET_RATIO = 0.06;
+    private static readonly ENERGY_BAR_INSET_RATIO = 0.08;
+    private barPiecePrefab: Prefab | null = null;
+    private hpBarBgMaterial: Material | null = null;
+    private hpBarFillMaterial: Material | null = null;
+    private energyBarBgMaterial: Material | null = null;
+    private energyBarFillMaterial: Material | null = null;
+    private 已打印状态条Instancing = false;
+    private 已尝试应用能量条贴图 = false;
     
     // 3D名字管理器通过 Scene战斗 获取
     
@@ -43,6 +60,191 @@ export class NetMessage {
 
     constructor() {
         // 可延迟加载 MainTest 实例
+    }
+
+    private getEntityBarCache(id: number, entity: ClientEntityComponent): EntityBarCache {
+        let cache = this.entityBarCache.get(id);
+        if (!cache) {
+            cache = {
+                hpFillNode: null,
+                energyFillNode: null,
+                lastHpProgress: -1,
+                lastEnergyProgress: -1,
+            };
+            this.entityBarCache.set(id, cache);
+        }
+
+        if ((!cache.hpFillNode || !cache.hpFillNode.isValid) && entity.node血条前景?.isValid) {
+            cache.hpFillNode = entity.node血条前景;
+        }
+
+        if ((!cache.energyFillNode || !cache.energyFillNode.isValid) && entity.node能量条前景?.isValid) {
+            cache.energyFillNode = entity.node能量条前景;
+        }
+
+        return cache;
+    }
+
+    private 设置实例填充(根节点: Node | null, fill: number) {
+        if (!根节点 || !根节点.isValid) return;
+        const 归一化填充 = Number.isFinite(fill) ? Math.max(0, Math.min(1, fill)) : 0;
+        const 渲染器列表 = 根节点.getComponentsInChildren(MeshRenderer);
+        for (const mr of 渲染器列表) {
+            mr.setInstancedAttribute('a_barFill', [归一化填充]);
+        }
+    }
+
+    private setBarFillIfChanged(fillNode: Node | null, value: number, lastValue: number): number {
+        if (!fillNode || !fillNode.isValid) return lastValue;
+
+        const nextValue = Number.isFinite(value) ? Math.max(0, Math.min(1, value)) : 0;
+        if (lastValue >= 0 && Math.abs(lastValue - nextValue) < NetMessage.BAR_PROGRESS_EPSILON) {
+            return lastValue;
+        }
+
+        this.设置实例填充(fillNode, nextValue);
+        return nextValue;
+    }
+
+    private 创建Instancing材质(基础材质: Material, 颜色: Vec4): Material {
+        const 新材质 = new Material();
+        新材质.copy(基础材质);
+        try {
+            新材质.recompileShaders({ USE_INSTANCING: true });
+        } catch (e) {
+            console.warn('[HeadBar3D] 重编译 instancing 变体失败，继续使用默认变体:', e);
+        }
+        新材质.setProperty('color', 颜色);
+        return 新材质;
+    }
+
+    private 应用共享材质(根节点: Node, 材质: Material) {
+        const 渲染器列表 = 根节点.getComponentsInChildren(MeshRenderer);
+        for (const mr of 渲染器列表) {
+            mr.node.layer = Layers.Enum.DEFAULT;
+            mr.visibility = Layers.BitMask.DEFAULT;
+            mr.sharedMaterials = [材质];
+            mr.setSharedMaterial(材质, 0);
+        }
+    }
+
+    private 准备3D状态条资源(): boolean {
+        if (this.barPiecePrefab && this.hpBarBgMaterial && this.hpBarFillMaterial && this.energyBarFillMaterial) {
+            return true;
+        }
+
+        const scene战斗 = this.mainTest?.scene战斗;
+        const 名字管理器 = scene战斗?.名字管理器 as any;
+        if (!名字管理器?.头顶名字预制体 || !名字管理器?.名字材质) {
+            console.warn('[HeadBar3D] 缺少头顶名字预制体或名字材质，无法创建3D状态条');
+            return false;
+        }
+
+        this.barPiecePrefab = 名字管理器.头顶名字预制体 as Prefab;
+        const 基础材质 = 名字管理器.名字材质 as Material;
+        this.hpBarBgMaterial = this.创建Instancing材质(基础材质, new Vec4(0.18, 0.18, 0.18, 0.7));
+        this.hpBarFillMaterial = this.创建Instancing材质(基础材质, new Vec4(0.10, 0.85, 0.22, 0.95));
+        this.energyBarFillMaterial = this.创建Instancing材质(基础材质, new Vec4(0.20, 0.55, 1.00, 0.95));
+        this.hpBarBgMaterial.setProperty('barUseFill', 1.0);
+        this.hpBarFillMaterial.setProperty('barUseFill', 1.0);
+        this.energyBarFillMaterial.setProperty('barUseFill', 1.0);
+
+        if (!this.已打印状态条Instancing) {
+            this.已打印状态条Instancing = true;
+            const pass = (this.hpBarFillMaterial.passes?.[0] as any);
+            const useInstancing = pass?.defines?.USE_INSTANCING ?? pass?.getDefine?.('USE_INSTANCING');
+            const batchingScheme = pass?.batchingScheme;
+            console.log(`[HeadBar3D] 材质Instancing batchingScheme=${batchingScheme} USE_INSTANCING=${useInstancing}`);
+        }
+        return true;
+    }
+
+    private 创建3D条片段(父节点: Node, 名字: string, 材质: Material, 宽: number, 高: number, y偏移: number, fill: number): Node | null {
+        if (!this.barPiecePrefab) return null;
+        const 节点 = instantiate(this.barPiecePrefab);
+        节点.name = 名字;
+        节点.parent = 父节点;
+        节点.setPosition(0, y偏移, 0);
+        节点.setScale(宽, 高, 高);
+        this.应用共享材质(节点, 材质);
+        this.设置实例填充(节点, fill);
+        return 节点;
+    }
+
+    private 计算前景宽度(背景宽: number, 内缩比例: number): number {
+        const ratio = Math.max(0, Math.min(0.45, 内缩比例));
+        return Math.max(0.01, 背景宽 * (1 - ratio * 2));
+    }
+
+    private 创建单位3D状态条(id: number, entity: ClientEntityComponent, 单位节点: Node) {
+        if (单位节点.name === 'smoke') return;
+        if (!this.准备3D状态条资源()) return;
+
+        const 血条锚点 = utils.find('血条', 单位节点) || utils.find('NamePos', 单位节点) || 单位节点;
+        const 能量条锚点 = utils.find('能量条', 单位节点) || 血条锚点;
+        const cache = this.getEntityBarCache(id, entity);
+
+        if (entity.hpMax > 0 && 血条锚点) {
+            const 血条根节点 = new Node(`HPBar3D_${id}`);
+            血条锚点.addChild(血条根节点);
+            血条根节点.setPosition(0, 0, 0);
+            entity.node血条 = 血条根节点;
+
+            const 血条宽 = Math.max(0.9, Math.sqrt(entity.hpMax) / 2.35);
+            const 血条前景宽 = this.计算前景宽度(血条宽, NetMessage.HP_BAR_INSET_RATIO);
+            this.创建3D条片段(血条根节点, 'HP_BG', this.hpBarBgMaterial!, 血条宽, NetMessage.HP_BAR_THICKNESS, 0, 1);
+            const 血条前景 = this.创建3D条片段(血条根节点, 'HP_FILL', this.hpBarFillMaterial!, 血条前景宽, NetMessage.HP_BAR_THICKNESS * 0.72, 0, 1);
+            entity.node血条前景 = 血条前景;
+            cache.hpFillNode = 血条前景;
+            cache.lastHpProgress = this.setBarFillIfChanged(血条前景, entity.hp() / entity.hpMax, -1);
+        }
+
+        if (entity.能量Max > 0 && 能量条锚点) {
+            const 能量条根节点 = new Node(`EnergyBar3D_${id}`);
+            能量条锚点.addChild(能量条根节点);
+            能量条根节点.setPosition(0, 0, 0);
+            entity.node能量条 = 能量条根节点;
+
+            const 能量条宽 = Math.max(0.75, Math.sqrt(entity.能量Max) / 2.5);
+            const 能量条前景宽 = this.计算前景宽度(能量条宽, NetMessage.ENERGY_BAR_INSET_RATIO);
+            this.创建3D条片段(能量条根节点, 'ENERGY_BG', this.hpBarBgMaterial!, 能量条宽, NetMessage.ENERGY_BAR_THICKNESS, 0, 1);
+            const 能量条前景 = this.创建3D条片段(能量条根节点, 'ENERGY_FILL', this.energyBarFillMaterial!, 能量条前景宽, NetMessage.ENERGY_BAR_THICKNESS * 0.72, 0, 1);
+            entity.node能量条前景 = 能量条前景;
+            cache.energyFillNode = 能量条前景;
+            cache.lastEnergyProgress = this.setBarFillIfChanged(能量条前景, entity.能量() / entity.能量Max, -1);
+        }
+
+        this.刷新单位状态条尺寸(entity);
+    }
+
+    private 刷新单位状态条尺寸(entity: ClientEntityComponent) {
+        if (entity.node血条?.isValid) {
+            const 血条宽 = Math.max(0.9, Math.sqrt(entity.hpMax) / 2.35);
+            const 血条前景宽 = this.计算前景宽度(血条宽, NetMessage.HP_BAR_INSET_RATIO);
+            const hpBg = entity.node血条.getChildByName('HP_BG');
+            const hpFill = entity.node血条.getChildByName('HP_FILL');
+            if (hpBg?.isValid) {
+                hpBg.setScale(血条宽, NetMessage.HP_BAR_THICKNESS, NetMessage.HP_BAR_THICKNESS);
+            }
+            if (hpFill?.isValid) {
+                const 前景厚度 = NetMessage.HP_BAR_THICKNESS * 0.72;
+                hpFill.setScale(血条前景宽, 前景厚度, 前景厚度);
+            }
+        }
+
+        if (entity.node能量条?.isValid) {
+            const 能量条宽 = Math.max(0.75, Math.sqrt(entity.能量Max) / 2.5);
+            const 能量条前景宽 = this.计算前景宽度(能量条宽, NetMessage.ENERGY_BAR_INSET_RATIO);
+            const energyBg = entity.node能量条.getChildByName('ENERGY_BG');
+            const energyFill = entity.node能量条.getChildByName('ENERGY_FILL');
+            if (energyBg?.isValid) {
+                energyBg.setScale(能量条宽, NetMessage.ENERGY_BAR_THICKNESS, NetMessage.ENERGY_BAR_THICKNESS);
+            }
+            if (energyFill?.isValid) {
+                const 前景厚度 = NetMessage.ENERGY_BAR_THICKNESS * 0.72;
+                energyFill.setScale(能量条前景宽, 前景厚度, 前景厚度);
+            }
+        }
     }
 
     public setMainTest(mainTest: MainTest): void {
@@ -259,43 +461,8 @@ export class NetMessage {
                     console.log('名字管理器未设置，跳过添加名字实例');
                 }
 
-                // 保留血条和能量条的2D显示
-                MainTest.instance.scene战斗.battleUI = MainTest.instance.dialogMgr.getDialog(UI2Prefab.BattleUI_url).getComponent(BattleUI);
-                let node所有单位头顶名字 = MainTest.instance.scene战斗.battleUI.uiTransform所有单位头顶名字.node
-
-                if (newNode.name != "smoke") {
-                    let nodeRoleHp = utils.find("血条", node所有单位头顶名字)
-                    if (0<hpMax)
-                    {
-                        old.node血条 = instantiate(nodeRoleHp)
-                        old.node血条.active = true;
-                        old.node血条.getComponent(ProgressBar).progress = old.hp() / old.hpMax
-
-                        const calculateHPLength = Math.pow(old.hpMax, 0.5) / 3.0
-                        const headScal = old.node血条.getComponent(HeadScale)
-                        headScal.target = utils.find("血条", newNode)
-                        headScal.camera = MainTest.instance.scene战斗.mainCamera
-                        headScal.camera小地图 = MainTest.instance.scene战斗.camera小地图
-                        headScal._hpValueScale = calculateHPLength;
-                        node所有单位头顶名字.addChild(old.node血条)
-                    }
-
-
-                    if (0 < old.能量Max) {
-                        let node能量条 = utils.find("能量条", node所有单位头顶名字)
-                        old.node能量条 = instantiate(node能量条)
-                        old.node能量条.active = true;
-                        node所有单位头顶名字.addChild(old.node能量条)
-                        old.node能量条.getComponent(ProgressBar).progress = old.能量() / old.能量Max
-                        let 能量条长 = Math.pow(old.能量Max, 0.5) / 3.0
-                        let headScal = old.node能量条.getComponent(HeadScale)
-                        headScal.target = utils.find("能量条", newNode)
-                        headScal.camera = MainTest.instance.scene战斗.mainCamera
-                        headScal.camera小地图 = MainTest.instance.scene战斗.camera小地图
-                        headScal._hpValueScale = 能量条长;
-                    }
-
-                }
+                // 血条/能量条改为 3D Mesh（共享材质 + Instancing）
+                this.创建单位3D状态条(id, old, newNode);
 
 
                 let camera3D = utils.find("Main Camera", MainTest.instance.scene战斗.roles.parent).getComponent(Camera)
@@ -466,6 +633,7 @@ export class NetMessage {
 
         entity.removeFromParent();
         scene战斗.entities.delete(id);
+        this.entityBarCache.delete(id);
 
         // 更新 UI 上的单位数量显示
         if (scene战斗.battleUI?.lableCount) {
@@ -612,6 +780,8 @@ export class NetMessage {
         }
 
         const obj属性数值 = arr[idxArr++] as object;
+        const barCache = this.getEntityBarCache(id, entity);
+        this.刷新单位状态条尺寸(entity);
 
         for (const key in obj属性数值) {
             const 属性 = parseInt(key) as 属性类型;
@@ -621,9 +791,12 @@ export class NetMessage {
             switch (属性) {
                 case 属性类型.生命:
                     if (entity.node血条) {
-                        const progressBar = entity.node血条.getComponent(ProgressBar);
                         if (entity.hpMax > 0) {
-                            progressBar.progress = 数值 / entity.hpMax;
+                            barCache.lastHpProgress = this.setBarFillIfChanged(
+                                barCache.hpFillNode,
+                                数值 / entity.hpMax,
+                                barCache.lastHpProgress,
+                            );
                         } else {
                             entity.node血条.active = false; // 资源没有血量
                         }
@@ -632,8 +805,12 @@ export class NetMessage {
 
                 case 属性类型.能量:
                     if (entity.node能量条) {
-                        const progressBar = entity.node能量条.getComponent(ProgressBar);
-                        progressBar.progress = 数值 / entity.能量Max;
+                        const energyProgress = entity.能量Max > 0 ? 数值 / entity.能量Max : 0;
+                        barCache.lastEnergyProgress = this.setBarFillIfChanged(
+                            barCache.energyFillNode,
+                            energyProgress,
+                            barCache.lastEnergyProgress,
+                        );
                     }
                     break;
             }

@@ -20,6 +20,7 @@ CCEffect %{
       properties:
         mainTexture: { value: white }
         color: { value: [1, 1, 1, 1] }
+        barUseFill: { value: 0.0 }
 }%
 
 CCProgram name3d-vs %{
@@ -31,6 +32,11 @@ CCProgram name3d-vs %{
   #include <legacy/local-batch>
 
   out vec2 v_uv;
+  out float v_fill;
+
+  #if USE_INSTANCING
+    in float a_barFill;
+  #endif
 
   // 实例化平移（每个实例对应一个世界坐标）
   vec4 vert () {
@@ -44,18 +50,25 @@ CCProgram name3d-vs %{
 
     vec3 worldScale = vec3(length(matWorld[0].xyz), length(matWorld[1].xyz), length(matWorld[2].xyz));
     float sx = worldScale.x;
-    float sy = max(worldScale.y, worldScale.z);
 
-    // 兼容 Quad 在 XY 或 XZ 平面的情况：优先取幅度更大的那个做“竖直分量”
+    // 兼容 Quad 在 XY 或 XZ 平面的情况，并选择对应轴的缩放值
     float ox = position.x;
-    float oy = (abs(position.y) > abs(position.z)) ? position.y : position.z;
+    bool useY = abs(position.y) > abs(position.z);
+    float oy = useY ? position.y : position.z;
+    float sy = useY ? worldScale.y : worldScale.z;
 
     // Billboard：把实例中心转到视空间，再叠加局部顶点偏移
     // 这样四边形始终面向相机，且保持世界单位大小
     vec4 centerVS = cc_matView * vec4(instPos, 1.0);
     vec4 posVS = centerVS + vec4(ox * sx, oy * sy, 0.0, 0.0);
 
+    float barFill = 1.0;
+    #if USE_INSTANCING
+      barFill = a_barFill;
+    #endif
+
     v_uv = a_texCoord;
+    v_fill = clamp(barFill, 0.0, 1.0);
     return cc_matProj * posVS;
   }
 }%
@@ -65,12 +78,17 @@ CCProgram name3d-fs %{
   #include <legacy/output>
 
   in vec2 v_uv;
+  in float v_fill;
   uniform sampler2D mainTexture;
   uniform Constant {
     vec4 color;
+    float barUseFill;
   };
 
   vec4 frag () {
+    if (barUseFill > 0.5 && v_uv.x > v_fill) {
+      discard;
+    }
     vec4 texColor = texture(mainTexture, v_uv);
     return CCFragOutput(texColor * color);
   }
