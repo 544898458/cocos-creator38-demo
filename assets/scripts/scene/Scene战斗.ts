@@ -78,12 +78,13 @@ export class ClientEntityComponent {
 
         if (this.node能量条)
             this.node能量条.active = b显示名字
-        
+
+        this.node描述.active = b显示名字
+
         if (!this.labelName)
             return
 
         this.nodeName.active = b显示名字
-        this.node描述.active = b显示名字
         
         if (b显示单位类型)
             this.labelName.string = this.nickName + ' ' + this.entityName

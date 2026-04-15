@@ -39,10 +39,11 @@ export class NetMessage {
     private mainTest: MainTest | null = null;
     private readonly entityBarCache: Map<number, EntityBarCache> = new Map<number, EntityBarCache>();
     private static readonly BAR_PROGRESS_EPSILON = 0.0005;
-    private static readonly HP_BAR_THICKNESS = 0.3;
+    private static readonly BAR_BG_ALPHA = 0.5;
+    private static readonly HP_BAR_THICKNESS = 0.2;
     private static readonly ENERGY_BAR_THICKNESS = 0.3;
-    private static readonly HP_BAR_INSET_RATIO = 0.06;
-    private static readonly ENERGY_BAR_INSET_RATIO = 0.08;
+    private static readonly HP_BAR_INSET_RATIO = 0;
+    private static readonly ENERGY_BAR_INSET_RATIO = 0;
     private barPiecePrefab: Prefab | null = null;
     private hpBarBgMaterial: Material | null = null;
     private hpBarFillMaterial: Material | null = null;
@@ -106,7 +107,7 @@ export class NetMessage {
         return nextValue;
     }
 
-    private 创建Instancing材质(基础材质: Material, 颜色: Vec4): Material {
+    private 创建Instancing材质(基础材质: Material): Material {
         const 新材质 = new Material();
         新材质.copy(基础材质);
         try {
@@ -114,7 +115,6 @@ export class NetMessage {
         } catch (e) {
             console.warn('[HeadBar3D] 重编译 instancing 变体失败，继续使用默认变体:', e);
         }
-        新材质.setProperty('color', 颜色);
         return 新材质;
     }
 
@@ -129,7 +129,7 @@ export class NetMessage {
     }
 
     private 准备3D状态条资源(): boolean {
-        if (this.barPiecePrefab && this.hpBarBgMaterial && this.hpBarFillMaterial && this.energyBarFillMaterial) {
+        if (this.barPiecePrefab && this.hpBarBgMaterial && this.hpBarFillMaterial && this.energyBarBgMaterial && this.energyBarFillMaterial) {
             return true;
         }
 
@@ -142,12 +142,17 @@ export class NetMessage {
 
         this.barPiecePrefab = 名字管理器.头顶名字预制体 as Prefab;
         const 基础材质 = 名字管理器.名字材质 as Material;
-        this.hpBarBgMaterial = this.创建Instancing材质(基础材质, new Vec4(0.18, 0.18, 0.18, 0.7));
-        this.hpBarFillMaterial = this.创建Instancing材质(基础材质, new Vec4(0.10, 0.85, 0.22, 0.95));
-        this.energyBarFillMaterial = this.创建Instancing材质(基础材质, new Vec4(0.20, 0.55, 1.00, 0.95));
+        this.hpBarBgMaterial = this.创建Instancing材质(基础材质);
+        this.hpBarFillMaterial = this.创建Instancing材质(基础材质);
+        this.energyBarBgMaterial = this.创建Instancing材质(基础材质);
+        this.energyBarFillMaterial = this.创建Instancing材质(基础材质);
+        this.hpBarBgMaterial.setProperty('color', new Vec4(1, 1, 1, NetMessage.BAR_BG_ALPHA));
+        this.energyBarBgMaterial.setProperty('color', new Vec4(1, 1, 1, NetMessage.BAR_BG_ALPHA));
         this.hpBarBgMaterial.setProperty('barUseFill', 1.0);
         this.hpBarFillMaterial.setProperty('barUseFill', 1.0);
+        this.energyBarBgMaterial.setProperty('barUseFill', 1.0);
         this.energyBarFillMaterial.setProperty('barUseFill', 1.0);
+        this.尝试应用能量条贴图();
 
         if (!this.已打印状态条Instancing) {
             this.已打印状态条Instancing = true;
@@ -157,6 +162,68 @@ export class NetMessage {
             console.log(`[HeadBar3D] 材质Instancing batchingScheme=${batchingScheme} USE_INSTANCING=${useInstancing}`);
         }
         return true;
+    }
+
+    private 尝试应用能量条贴图() {
+        if (this.已尝试应用能量条贴图) return;
+        this.已尝试应用能量条贴图 = true;
+
+        resources.load('prefabs/ui/battleUI', Prefab, (err, prefab) => {
+            if (err || !prefab) {
+                console.warn('[HeadBar3D] 加载 battleUI.prefab 失败，能量条沿用默认贴图', err);
+                return;
+            }
+
+            const 临时节点 = instantiate(prefab);
+            const 血条节点 =
+                utils.find('should_hide_in_hierarchy/battleUI/所有单位头顶名字/血条', 临时节点)
+                || utils.find('所有单位头顶名字/血条', 临时节点)
+                || utils.find('血条', 临时节点);
+            const 能量条节点 =
+                utils.find('should_hide_in_hierarchy/battleUI/所有单位头顶名字/能量条', 临时节点)
+                || utils.find('所有单位头顶名字/能量条', 临时节点)
+                || utils.find('能量条', 临时节点);
+
+            const 血条背景精灵 = 血条节点?.getComponent(Sprite) || null; // should_hide_in_hierarchy/battleUI/所有单位头顶名字/血条
+            const 血条前景精灵 = 血条节点?.getChildByName('Bar')?.getComponent(Sprite) || null; // .../血条/Bar
+            const 血条背景纹理 = 血条背景精灵?.spriteFrame?.texture as Texture2D | null;
+            const 血条前景纹理 = 血条前景精灵?.spriteFrame?.texture as Texture2D | null;
+
+            if (this.hpBarBgMaterial && 血条背景纹理) {
+                this.hpBarBgMaterial.setProperty('mainTexture', 血条背景纹理);
+            }
+            if (this.hpBarFillMaterial && 血条前景纹理) {
+                this.hpBarFillMaterial.setProperty('mainTexture', 血条前景纹理);
+            }
+
+            if (!血条背景纹理) {
+                console.warn('[HeadBar3D] 未提取到血条背景贴图: should_hide_in_hierarchy/battleUI/所有单位头顶名字/血条');
+            }
+            if (!血条前景纹理) {
+                console.warn('[HeadBar3D] 未提取到血条前景贴图: should_hide_in_hierarchy/battleUI/所有单位头顶名字/血条/Bar');
+            }
+
+            const 背景精灵 = 能量条节点?.getComponent(Sprite) || null; // should_hide_in_hierarchy/battleUI/所有单位头顶名字/能量条
+            const 前景精灵 = 能量条节点?.getChildByName('Bar')?.getComponent(Sprite) || null; // .../能量条/Bar
+            const 背景纹理 = 背景精灵?.spriteFrame?.texture as Texture2D | null;
+            const 前景纹理 = 前景精灵?.spriteFrame?.texture as Texture2D | null;
+
+            if (this.energyBarBgMaterial && 背景纹理) {
+                this.energyBarBgMaterial.setProperty('mainTexture', 背景纹理);
+            }
+            if (this.energyBarFillMaterial && 前景纹理) {
+                this.energyBarFillMaterial.setProperty('mainTexture', 前景纹理);
+            }
+
+            if (!背景纹理) {
+                console.warn('[HeadBar3D] 未提取到能量条背景贴图: should_hide_in_hierarchy/battleUI/所有单位头顶名字/能量条');
+            }
+            if (!前景纹理) {
+                console.warn('[HeadBar3D] 未提取到能量条前景贴图: should_hide_in_hierarchy/battleUI/所有单位头顶名字/能量条/Bar');
+            }
+
+            临时节点.destroy();
+        });
     }
 
     private 创建3D条片段(父节点: Node, 名字: string, 材质: Material, 宽: number, 高: number, y偏移: number, fill: number): Node | null {
@@ -193,7 +260,7 @@ export class NetMessage {
             const 血条宽 = Math.max(0.9, Math.sqrt(entity.hpMax) / 2.35);
             const 血条前景宽 = this.计算前景宽度(血条宽, NetMessage.HP_BAR_INSET_RATIO);
             this.创建3D条片段(血条根节点, 'HP_BG', this.hpBarBgMaterial!, 血条宽, NetMessage.HP_BAR_THICKNESS, 0, 1);
-            const 血条前景 = this.创建3D条片段(血条根节点, 'HP_FILL', this.hpBarFillMaterial!, 血条前景宽, NetMessage.HP_BAR_THICKNESS * 0.72, 0, 1);
+            const 血条前景 = this.创建3D条片段(血条根节点, 'HP_FILL', this.hpBarFillMaterial!, 血条前景宽, NetMessage.HP_BAR_THICKNESS, 0, 1);
             entity.node血条前景 = 血条前景;
             cache.hpFillNode = 血条前景;
             cache.lastHpProgress = this.setBarFillIfChanged(血条前景, entity.hp() / entity.hpMax, -1);
@@ -207,8 +274,8 @@ export class NetMessage {
 
             const 能量条宽 = Math.max(0.75, Math.sqrt(entity.能量Max) / 2.5);
             const 能量条前景宽 = this.计算前景宽度(能量条宽, NetMessage.ENERGY_BAR_INSET_RATIO);
-            this.创建3D条片段(能量条根节点, 'ENERGY_BG', this.hpBarBgMaterial!, 能量条宽, NetMessage.ENERGY_BAR_THICKNESS, 0, 1);
-            const 能量条前景 = this.创建3D条片段(能量条根节点, 'ENERGY_FILL', this.energyBarFillMaterial!, 能量条前景宽, NetMessage.ENERGY_BAR_THICKNESS * 0.72, 0, 1);
+            this.创建3D条片段(能量条根节点, 'ENERGY_BG', this.energyBarBgMaterial!, 能量条宽, NetMessage.ENERGY_BAR_THICKNESS, 0, 1);
+            const 能量条前景 = this.创建3D条片段(能量条根节点, 'ENERGY_FILL', this.energyBarFillMaterial!, 能量条前景宽, NetMessage.ENERGY_BAR_THICKNESS, 0, 1);
             entity.node能量条前景 = 能量条前景;
             cache.energyFillNode = 能量条前景;
             cache.lastEnergyProgress = this.setBarFillIfChanged(能量条前景, entity.能量() / entity.能量Max, -1);
@@ -227,7 +294,7 @@ export class NetMessage {
                 hpBg.setScale(血条宽, NetMessage.HP_BAR_THICKNESS, NetMessage.HP_BAR_THICKNESS);
             }
             if (hpFill?.isValid) {
-                const 前景厚度 = NetMessage.HP_BAR_THICKNESS * 0.72;
+                const 前景厚度 = NetMessage.HP_BAR_THICKNESS;
                 hpFill.setScale(血条前景宽, 前景厚度, 前景厚度);
             }
         }
@@ -241,7 +308,7 @@ export class NetMessage {
                 energyBg.setScale(能量条宽, NetMessage.ENERGY_BAR_THICKNESS, NetMessage.ENERGY_BAR_THICKNESS);
             }
             if (energyFill?.isValid) {
-                const 前景厚度 = NetMessage.ENERGY_BAR_THICKNESS * 0.72;
+                const 前景厚度 = NetMessage.ENERGY_BAR_THICKNESS;
                 energyFill.setScale(能量条前景宽, 前景厚度, 前景厚度);
             }
         }
