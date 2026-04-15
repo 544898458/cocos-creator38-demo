@@ -14,6 +14,7 @@ import { 配置 } from '../配置/配置';
 import { 苔蔓Component } from '../component/苔蔓Component';
 import { 翻译Key } from '../配置/翻译Key';
 import { toast } from './ToastMgr';
+import { HeadScale } from '../component/head-scale';
 
 // 聊天消息接口
 interface ChatMessage {
@@ -321,6 +322,15 @@ export class NetMessage {
         console.log('名字管理器通过编辑器设置');
     }
 
+    private 刷新3D名字颜色(id: number, entity: ClientEntityComponent) {
+        const scene战斗 = this.mainTest?.scene战斗;
+        const 名字管理器 = scene战斗?.名字管理器;
+        if (!名字管理器) return;
+        const 名字 = entity.nickName || entity.entityName;
+        if (!名字) return;
+        名字管理器.更新名字实例颜色(名字, id, entity.获取头顶名字颜色());
+    }
+
     // 获取聊天历史记录
     public getChatHistory(): ChatMessage[] {
         return [...this.chatHistory]; // 返回副本以避免外部修改
@@ -517,13 +527,16 @@ export class NetMessage {
                     // old.skeletalAnimation.play(old.initClipName)
                     MainTest.播放动作(old, old.initClipName, old.init初始动作Loop, old.init初始动作播放速度, old.init初始动作起始时刻秒, old.init初始动作结束时刻秒)
                 }
+                old.nickName = nickName
+                old.entityName = entityName
+
                 // if (!thisLocal.scene战斗.battleUI)
                 // 使用3D名字管理器
                 if (this.mainTest && this.mainTest.scene战斗 && this.mainTest.scene战斗.名字管理器) {
                     const 名字 = nickName || entityName;
                     const 名字锚点 = utils.find("NamePos", newNode) || newNode;
                     // 直接使用单位ID作为实例ID
-                    this.mainTest.scene战斗.名字管理器.添加名字实例(名字, 名字锚点, id);
+                    this.mainTest.scene战斗.名字管理器.添加名字实例(名字, 名字锚点, id, old.获取头顶名字颜色());
                 } else {
                     console.log('名字管理器未设置，跳过添加名字实例');
                 }
@@ -531,13 +544,26 @@ export class NetMessage {
                 // 血条/能量条改为 3D Mesh（共享材质 + Instancing）
                 this.创建单位3D状态条(id, old, newNode);
 
+                {
+                    let node所有单位头顶名字 = MainTest.instance.scene战斗.battleUI.uiTransform所有单位头顶名字.node
+                    let nodeRoleName = utils.find("RoleName", node所有单位头顶名字)
+                    old.node描述 = instantiate(nodeRoleName)
+                    old.node描述.active = true
+                    node所有单位头顶名字.addChild(old.node描述)
+                    old.label描述 = old.node描述.getComponent(Label)
+
+                    let headScal = old.node描述.getComponent(HeadScale)
+                    headScal.target = utils.find("描述", newNode)
+                    headScal.camera = MainTest.instance.scene战斗.mainCamera
+                    headScal.camera小地图 = MainTest.instance.scene战斗.camera小地图
+
+                    // console.log(headScal.target)
+                }
 
                 let camera3D = utils.find("Main Camera", MainTest.instance.scene战斗.roles.parent).getComponent(Camera)
                 // console.log('Main Camera',camera3D)
                 //  headScal.camera = camera3D
                 // headScal.distance = 55
-                old.nickName = nickName
-                old.entityName = entityName
                 // old.labelName.string = old.nickName + '(' + id + ')hp=' + old.hp
                 old.显示头顶名字(MainTest.instance.b显示单位类型, MainTest.instance.b显示名字) //+ ',hp=' + old.hp
 
@@ -882,6 +908,7 @@ export class NetMessage {
                     break;
             }
         }
+        this.刷新3D名字颜色(id, entity);
     }
     private handleGame_SelectRoles(arr: any[], idxArr: number): void {
         const mainTest = this.mainTest;

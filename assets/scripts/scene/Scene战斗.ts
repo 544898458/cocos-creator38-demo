@@ -79,7 +79,8 @@ export class ClientEntityComponent {
         if (this.node能量条)
             this.node能量条.active = b显示名字
 
-        this.node描述.active = b显示名字
+        if(this.node描述)
+            this.node描述.active = b显示名字
 
         if (!this.labelName)
             return
@@ -94,55 +95,56 @@ export class ClientEntityComponent {
     }
 
     头顶名字着色(): void {
+        if (!this.labelName) return
+        this.labelName.color = this.获取头顶名字颜色()
+    }
+
+    获取头顶名字颜色(): Color {
         if (this.类型 == 单位类型.晶体矿 || this.类型 == 单位类型.燃气矿) {
-            this.labelName.color = new Color(170, 255, 255);
+            return new Color(170, 255, 255);
         }
         else if (this.类型 == 单位类型.光刺 || this.类型 == 单位类型.特效) {
-            this.labelName.color = new Color(80, 80, 80);
-            this.判断是否同玩家名着色子弹();
-
+            return this.判断是否同玩家名着色子弹();
         }
         else if (this.类型 == 单位类型.视口) {
-            // ClientEntityComponent.myNickName = this.nickName
-            this.labelName.color = new Color(50, 50, 50);
+            return new Color(50, 50, 50);
         }
         else if (this.hp() <= 0) {
-            this.labelName.color = new Color(130, 130, 130);
+            return new Color(130, 130, 130);
         }
         else {
-            this.判断是否同玩家名着色单位();
+            return this.判断是否同玩家名着色单位();
         }
     }
-    判断是否同玩家名着色子弹() {
+    判断是否同玩家名着色子弹(): Color {
         if (Glob.myNickName != null) {
             if (this.nickName != Glob.myNickName) {
-                this.labelName.color = new Color(80, 30, 30);
+                return new Color(80, 30, 30);
             }
             else {
-                this.labelName.color = new Color(30, 80, 30);
+                return new Color(30, 80, 30);
             }
         }
+        return new Color(80, 80, 80);
     }
-    判断是否同玩家名着色单位() {
+    判断是否同玩家名着色单位(): Color {
         if (Glob.myNickName != null) {
             if(this.nickName == '敌人'){
-                this.labelName.color = new Color(255, 80, 80)//怪
-                return
+                return new Color(255, 80, 80)//怪
             }
 
             if (this.nickName == Glob.myNickName){
-                this.labelName.color = new Color(10, 255, 10);//自己
-                return
+                return new Color(10, 255, 10);//自己
             }
 
             let 配置 = MainTest.instance.配置.find战局(MainTest.instance.战局)
             if (配置 && 配置.玩家同阵营) {
-                this.labelName.color = new Color(150, 255, 150);//友方玩家
-                return
+                return new Color(150, 255, 150);//友方玩家
             }
 
-            this.labelName.color = new Color(255, 50, 50);//敌方玩家
+            return new Color(255, 50, 50);//敌方玩家
         }
+        return new Color(255, 255, 255);
     }
 }
 

@@ -1,9 +1,9 @@
 // Name3DManager.ts
-import { _decorator, Component, Node, MeshRenderer, Material, Vec3, Prefab, instantiate, Layers, Texture2D, ImageAsset, director, gfx, sys } from 'cc';
+import { _decorator, Component, Node, MeshRenderer, Material, Vec3, Prefab, instantiate, Layers, Texture2D, ImageAsset, director, gfx, sys, Color, Vec4 } from 'cc';
 
 const { ccclass, property } = _decorator;
 
-type 名字实例 = { id: number; 锚点: Node; 节点: Node };
+type 名字实例 = { id: number; 锚点: Node; 节点: Node; 名字: string; 颜色键: string };
 
 @ccclass('Name3DManager')
 export class Name3DManager extends Component {
@@ -28,11 +28,12 @@ export class Name3DManager extends Component {
     // 纹理缓存，key 为名字，value 为对应文字贴图
     private 纹理缓存: Map<string, Texture2D> = new Map();
 
-    // 材质缓存，key 为名字，value 为共享材质（同名共享）
+    // 材质缓存，key 为 组键(名字+颜色)，value 为共享材质（同文字同颜色共享）
     private 材质缓存: Map<string, Material> = new Map();
 
-    // 实例数据，key 为名字，value 为该名字下的所有单位实例
+    // 实例数据，key 为 组键(名字+颜色)，value 为该组下的所有单位实例
     private 实例数据: Map<string, 名字实例[]> = new Map();
+    private 实例索引: Map<number, string> = new Map();
 
     private 已打印无DOM警告 = false;
     private 已打印硬件Instancing能力 = false;
@@ -41,14 +42,68 @@ export class Name3DManager extends Component {
         return (名字 ?? '').trim();
     }
 
+    private 规范化颜色(颜色?: Color): Color {
+        if (!颜色) return new Color(255, 255, 255, 255);
+        return new Color(颜色.r, 颜色.g, 颜色.b, 颜色.a);
+    }
+
+    private 颜色转键(颜色: Color): string {
+        return `${颜色.r},${颜色.g},${颜色.b},${颜色.a}`;
+    }
+
+    private 颜色键转颜色(颜色键: string): Color {
+        const [r, g, b, a] = 颜色键.split(',').map((v) => Number(v));
+        return new Color(
+            Number.isFinite(r) ? r : 255,
+            Number.isFinite(g) ? g : 255,
+            Number.isFinite(b) ? b : 255,
+            Number.isFinite(a) ? a : 255,
+        );
+    }
+
+    private 组键(名字: string, 颜色键: string): string {
+        return `${名字}||${颜色键}`;
+    }
+
+    private 拆组键(组键: string): { 名字: string; 颜色键: string } {
+        const idx = 组键.lastIndexOf('||');
+        if (idx < 0) return { 名字: 组键, 颜色键: '255,255,255,255' };
+        return {
+            名字: 组键.slice(0, idx),
+            颜色键: 组键.slice(idx + 2),
+        };
+    }
+
+    private 查找实例(id: number): { 组键: string; 实例: 名字实例 } | null {
+        const 已知组键 = this.实例索引.get(id);
+        if (已知组键) {
+            const arr = this.实例数据.get(已知组键);
+            const inst = arr?.find((v) => v.id === id);
+            if (inst) return { 组键: 已知组键, 实例: inst };
+            this.实例索引.delete(id);
+        }
+
+        for (const [组键, arr] of this.实例数据.entries()) {
+            const inst = arr.find((v) => v.id === id);
+            if (inst) {
+                this.实例索引.set(id, 组键);
+                return { 组键, 实例: inst };
+            }
+        }
+        return null;
+    }
+
     onDestroy() {
         this.清空所有实例();
     }
 
     // 添加名字实例（绑定单位 NamePos）
-    public 添加名字实例(名字: string, 锚点: Node, 实例ID: number) {
+    public 添加名字实例(名字: string, 锚点: Node, 实例ID: number, 颜色?: Color) {
         const 归一化名字 = this.规范化名字(名字);
-        console.log('添加名字实例:', 归一化名字, '锚点:', 锚点?.name, '实例ID:', 实例ID);
+        const 归一化颜色 = this.规范化颜色(颜色);
+        const 颜色键 = this.颜色转键(归一化颜色);
+        const 目标组键 = this.组键(归一化名字, 颜色键);
+        console.log('添加名字实例:', 归一化名字, '锚点:', 锚点?.name, '实例ID:', 实例ID, '颜色:', 颜色键);
 
         if (!归一化名字 || 归一化名字.length === 0) {
             console.log('名字为空，跳过');
@@ -59,79 +114,97 @@ export class Name3DManager extends Component {
             return;
         }
 
-        if (!this.实例数据.has(归一化名字)) {
-            this.实例数据.set(归一化名字, []);
-        }
+        const 已有 = this.查找实例(实例ID);
+        if (已有) {
+            const oldGroup = 已有.组键;
+            const 实例 = 已有.实例;
+            实例.锚点 = 锚点;
 
-        const 实例数组 = this.实例数据.get(归一化名字)!;
-        const 已有实例 = 实例数组.find(inst => inst.id === 实例ID);
-        if (已有实例) {
-            已有实例.锚点 = 锚点;
-            if (!已有实例.节点 || !已有实例.节点.isValid) {
-                const 新节点 = this.创建名字节点(归一化名字, 锚点);
-                if (!新节点) {
-                    return;
-                }
-                已有实例.节点 = 新节点;
-            } else {
-                已有实例.节点.parent = 锚点;
-                已有实例.节点.setPosition(0, 0, 0);
-                const 材质 = this.获取或创建材质(归一化名字);
-                if (材质) {
-                    this.应用材质到节点内渲染器(已有实例.节点, 材质, 归一化名字);
+            if (oldGroup !== 目标组键) {
+                const oldArr = this.实例数据.get(oldGroup);
+                if (oldArr) {
+                    const idx = oldArr.findIndex(v => v.id === 实例ID);
+                    if (idx >= 0) oldArr.splice(idx, 1);
+                    if (oldArr.length === 0) {
+                        this.实例数据.delete(oldGroup);
+                        this.释放组资源(oldGroup);
+                    }
                 }
             }
+
+            if (!实例.节点 || !实例.节点.isValid) {
+                const 新节点 = this.创建名字节点(归一化名字, 锚点, 归一化颜色);
+                if (!新节点) return;
+                实例.节点 = 新节点;
+            } else {
+                实例.节点.parent = 锚点;
+                实例.节点.setPosition(0, 0, 0);
+                const 材质 = this.获取或创建材质(归一化名字, 归一化颜色);
+                if (材质) {
+                    this.应用材质到节点内渲染器(实例.节点, 材质, `${归一化名字}@${颜色键}`);
+                }
+            }
+
+            实例.名字 = 归一化名字;
+            实例.颜色键 = 颜色键;
+            if (!this.实例数据.has(目标组键)) this.实例数据.set(目标组键, []);
+            const 目标数组 = this.实例数据.get(目标组键)!;
+            if (!目标数组.some(v => v.id === 实例ID)) 目标数组.push(实例);
+            this.实例索引.set(实例ID, 目标组键);
             return;
         }
 
-        const 节点 = this.创建名字节点(归一化名字, 锚点);
-        if (!节点) {
-            return;
-        }
+        const 节点 = this.创建名字节点(归一化名字, 锚点, 归一化颜色);
+        if (!节点) return;
 
-        实例数组.push({ id: 实例ID, 锚点, 节点 });
+        if (!this.实例数据.has(目标组键)) this.实例数据.set(目标组键, []);
+        const 实例数组 = this.实例数据.get(目标组键)!;
+        实例数组.push({ id: 实例ID, 锚点, 节点, 名字: 归一化名字, 颜色键 });
+        this.实例索引.set(实例ID, 目标组键);
         console.log('添加实例数据，当前实例数量:', 实例数组.length);
     }
 
     // 移除名字实例
     public 移除名字实例(名字: string, 实例ID: number) {
-        const 归一化名字 = this.规范化名字(名字);
-        if (!this.实例数据.has(归一化名字)) {
+        const 命中 = this.查找实例(实例ID);
+        if (!命中) {
+            console.log('未找到要移除的名字实例，实例ID:', 实例ID, '名字:', this.规范化名字(名字));
             return;
         }
 
-        const 实例数组 = this.实例数据.get(归一化名字)!;
+        const 组键 = 命中.组键;
+        const 实例数组 = this.实例数据.get(组键);
+        if (!实例数组) return;
         const 索引 = 实例数组.findIndex(inst => inst.id === 实例ID);
-        if (索引 === -1) {
-            console.log('未找到要移除的名字实例，实例ID:', 实例ID);
-            return;
-        }
-
+        if (索引 < 0) return;
         const 实例 = 实例数组[索引];
         if (实例.节点 && 实例.节点.isValid) {
             实例.节点.destroy();
         }
         实例数组.splice(索引, 1);
+        this.实例索引.delete(实例ID);
         console.log('移除名字实例，当前实例数量:', 实例数组.length);
 
         if (实例数组.length === 0) {
-            this.实例数据.delete(归一化名字);
-            this.释放名字资源(归一化名字);
+            this.实例数据.delete(组键);
+            this.释放组资源(组键);
         }
     }
 
     // 兼容旧调用：现在默认绑定 NamePos，不依赖外部同步位置
-    public 更新名字实例位置(名字: string, 实例ID: number, 新位置: Vec3) {
-        const 归一化名字 = this.规范化名字(名字);
-        if (!this.实例数据.has(归一化名字)) {
-            return;
-        }
-        const 实例 = this.实例数据.get(归一化名字)!.find(inst => inst.id === 实例ID);
-        if (!实例 || !实例.节点 || !实例.节点.isValid) {
+    public 更新名字实例位置(_名字: string, 实例ID: number, 新位置: Vec3) {
+        const 命中 = this.查找实例(实例ID);
+        if (!命中 || !命中.实例.节点 || !命中.实例.节点.isValid) {
             return;
         }
         // 兼容历史代码：仍允许强制设置世界坐标
-        实例.节点.setWorldPosition(新位置);
+        命中.实例.节点.setWorldPosition(新位置);
+    }
+
+    public 更新名字实例颜色(名字: string, 实例ID: number, 颜色: Color) {
+        const 命中 = this.查找实例(实例ID);
+        if (!命中) return;
+        this.添加名字实例(名字 || 命中.实例.名字, 命中.实例.锚点, 实例ID, 颜色);
     }
 
     // 清空所有实例
@@ -144,6 +217,7 @@ export class Name3DManager extends Component {
             }
         }
         this.实例数据.clear();
+        this.实例索引.clear();
 
         for (const 材质 of this.材质缓存.values()) {
             if (材质 && 材质.isValid) {
@@ -160,27 +234,29 @@ export class Name3DManager extends Component {
         this.纹理缓存.clear();
     }
 
-    private 释放名字资源(名字: string) {
-        const 材质 = this.材质缓存.get(名字);
+    private 释放组资源(组键: string) {
+        const 材质 = this.材质缓存.get(组键);
         if (材质 && 材质.isValid) {
             材质.destroy();
         }
-        this.材质缓存.delete(名字);
+        this.材质缓存.delete(组键);
+
+        const { 名字 } = this.拆组键(组键);
+        const 仍在使用该名字 = Array.from(this.实例数据.keys()).some(k => this.拆组键(k).名字 === 名字);
+        if (仍在使用该名字) return;
 
         const 纹理 = this.纹理缓存.get(名字);
-        if (纹理 && 纹理.isValid) {
-            纹理.destroy();
-        }
+        if (纹理 && 纹理.isValid) 纹理.destroy();
         this.纹理缓存.delete(名字);
     }
 
-    private 创建名字节点(名字: string, 锚点: Node): Node | null {
+    private 创建名字节点(名字: string, 锚点: Node, 颜色: Color): Node | null {
         if (!this.头顶名字预制体) {
             console.error('头顶名字预制体未设置，无法创建名字节点');
             return null;
         }
 
-        const 材质 = this.获取或创建材质(名字);
+        const 材质 = this.获取或创建材质(名字, 颜色);
         if (!材质) {
             console.error('创建材质失败，无法创建名字节点');
             return null;
@@ -268,9 +344,11 @@ export class Name3DManager extends Component {
     }
 
     // 获取或创建材质（同名共享）
-    private 获取或创建材质(名字: string): Material | null {
-        if (this.材质缓存.has(名字)) {
-            return this.材质缓存.get(名字)!;
+    private 获取或创建材质(名字: string, 颜色: Color): Material | null {
+        const 颜色键 = this.颜色转键(颜色);
+        const 组键 = this.组键(名字, 颜色键);
+        if (this.材质缓存.has(组键)) {
+            return this.材质缓存.get(组键)!;
         }
 
         if (!this.名字材质) {
@@ -287,9 +365,10 @@ export class Name3DManager extends Component {
             console.warn('名字材质重编译 instancing 变体失败，继续使用默认变体:', e);
         }
         新材质.setProperty('mainTexture', 纹理);
-        this.打印Instancing信息(新材质, 名字);
+        新材质.setProperty('color', new Vec4(颜色.r / 255, 颜色.g / 255, 颜色.b / 255, 颜色.a / 255));
+        this.打印Instancing信息(新材质, `${名字}@${颜色键}`);
 
-        this.材质缓存.set(名字, 新材质);
+        this.材质缓存.set(组键, 新材质);
         return 新材质;
     }
 
