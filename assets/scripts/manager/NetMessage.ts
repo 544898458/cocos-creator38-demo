@@ -135,14 +135,14 @@ export class NetMessage {
         }
 
         const scene战斗 = this.mainTest?.scene战斗;
-        const 名字管理器 = scene战斗?.名字管理器 as any;
-        if (!名字管理器?.头顶名字预制体 || !名字管理器?.名字材质) {
-            console.warn('[HeadBar3D] 缺少头顶名字预制体或名字材质，无法创建3D状态条');
+        const 名字管理器 = scene战斗?.名字管理器;
+        if (!名字管理器?.条片段预制体 || !名字管理器?.名字材质模板) {
+            console.warn('[HeadBar3D] 缺少条片段预制体或名字材质模板，无法创建3D状态条');
             return false;
         }
 
-        this.barPiecePrefab = 名字管理器.头顶名字预制体 as Prefab;
-        const 基础材质 = 名字管理器.名字材质 as Material;
+        this.barPiecePrefab = 名字管理器.条片段预制体 as Prefab;
+        const 基础材质 = 名字管理器.名字材质模板 as Material;
         this.hpBarBgMaterial = this.创建Instancing材质(基础材质);
         this.hpBarFillMaterial = this.创建Instancing材质(基础材质);
         this.energyBarBgMaterial = this.创建Instancing材质(基础材质);
@@ -531,12 +531,16 @@ export class NetMessage {
                 old.entityName = entityName
 
                 // if (!thisLocal.scene战斗.battleUI)
-                // 使用3D名字管理器
+                // 使用单位预制中的“名字”节点作为 3D 名字锚点和样式来源
                 if (this.mainTest && this.mainTest.scene战斗 && this.mainTest.scene战斗.名字管理器) {
                     const 名字 = nickName || entityName;
-                    const 名字锚点 = utils.find("NamePos", newNode) || newNode;
-                    // 直接使用单位ID作为实例ID
-                    this.mainTest.scene战斗.名字管理器.添加名字实例(名字, 名字锚点, id, old.获取头顶名字颜色());
+                    const node名字 = utils.find("名字", newNode);
+                    if (node名字) {
+                        // 直接使用单位ID作为实例ID
+                        this.mainTest.scene战斗.名字管理器.添加名字实例(名字, node名字, id, old.获取头顶名字颜色());
+                    } else {
+                        console.warn('[Name3D] 单位预制缺少“名字”节点，跳过添加名字实例:', newNode.name, id);
+                    }
                 } else {
                     console.log('名字管理器未设置，跳过添加名字实例');
                 }
@@ -622,7 +626,7 @@ export class NetMessage {
             }
         }
         
-        // 3D名字绑定 NamePos 后由 Name3DManager 每帧自动采样，无需手动同步位置
+        // 3D名字绑定单位预制中的“名字”节点后由 Name3DManager 自动跟随，无需手动同步位置
     }
     // 示例：处理 GameSvr 的 Say 消息
     private handleGame_Say(arr: any[], idxArr: number): void {
