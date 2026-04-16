@@ -1,4 +1,4 @@
-import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, Label, utils, AnimationClip, director, Animation, Color } from 'cc'
+import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, utils, AnimationClip, director, Animation, Color } from 'cc'
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 
 import { Vec2 } from 'cc'
@@ -26,7 +26,7 @@ import { UI2Prefab } from '../autobind/UI2Prefab'
 import { BattleMoude } from './BattleMoude'
 import { MsgId, 单位类型, 属性类型 } from '../utils/Enum'
 import { 翻译Key } from '../配置/翻译Key'
-import { Name3DManager } from '../manager/Name3DManager'
+import { Label3D } from '../component/Label3D'
 
 const { ccclass, property } = _decorator
 export class ClientEntityComponent {
@@ -34,7 +34,6 @@ export class ClientEntityComponent {
     view: Node
     nodeName: Node
     node描述: Node
-    labelName: Label
     skeletalAnimation: Animation
     initClipName: string = 'idle'
     init初始动作播放速度: number = 1
@@ -79,25 +78,19 @@ export class ClientEntityComponent {
         if (this.node能量条)
             this.node能量条.active = b显示名字
 
-        if (this.nodeName)
+        if (this.nodeName){
             this.nodeName.active = b显示名字
+            const lableName = this.nodeName.getComponent(Label3D)
+            if (lableName){
+                if (b显示单位类型)
+                    lableName.文本 = this.nickName + ' ' + this.entityName
+                else
+                    lableName.文本 = this.nickName
+            }
+        }
 
         if(this.node描述)
             this.node描述.active = b显示名字 && !!this.描述文本
-
-        if (!this.labelName)
-            return
-        
-        if (b显示单位类型)
-            this.labelName.string = this.nickName + ' ' + this.entityName
-        else
-            this.labelName.string = this.nickName
-        this.头顶名字着色()
-    }
-
-    头顶名字着色(): void {
-        if (!this.labelName) return
-        this.labelName.color = this.获取头顶名字颜色()
     }
 
     获取头顶名字颜色(): Color {
@@ -171,8 +164,6 @@ export class Scene战斗 extends Component {
     roles: Node
     @property({ type: AudioSource })
     audioSource: AudioSource
-    @property(Name3DManager)
-    名字管理器: Name3DManager
 
     //鼠标点击世界坐标
     posWorld按下准备拖动地面: Vec3

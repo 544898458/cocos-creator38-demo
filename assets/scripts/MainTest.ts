@@ -30,6 +30,7 @@ import { assetManager } from 'cc';
 import { AudioClip } from 'cc';
 import { toast } from './manager/ToastMgr';
 import { 翻译Key } from './配置/翻译Key';
+import { 文本材质缓存Manager } from './manager/文本材质缓存Manager';
 
 const { ccclass, property } = _decorator;
 
@@ -53,6 +54,8 @@ export class MainTest extends Component {
     cavas: Node = null;
     @property(AudioSource)
     audioManager: AudioSource;
+    @property(文本材质缓存Manager)
+    文本材质缓存: 文本材质缓存Manager = null;
     map玩家场景 = new Map<string, string>//NickName=>SceneName
     b登录成功: boolean = false;
 

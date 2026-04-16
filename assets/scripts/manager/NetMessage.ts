@@ -14,6 +14,7 @@ import { 配置 } from '../配置/配置';
 import { 苔蔓Component } from '../component/苔蔓Component';
 import { 翻译Key } from '../配置/翻译Key';
 import { toast } from './ToastMgr';
+import { Label3D } from '../component/Label3D';
 
 // 聊天消息接口
 interface ChatMessage {
@@ -52,7 +53,7 @@ export class NetMessage {
     private 已打印状态条Instancing = false;
     private 已尝试应用能量条贴图 = false;
     
-    // 3D名字管理器通过 Scene战斗 获取
+    // 3D文本材质缓存通过 MainTest 获取
     
     // 聊天历史记录
     private chatHistory: ChatMessage[] = [];
@@ -107,10 +108,6 @@ export class NetMessage {
         return nextValue;
     }
 
-    private 描述实例键(id: number): string {
-        return `描述:${id}`;
-    }
-
     private 创建Instancing材质(基础材质: Material): Material {
         const 新材质 = new Material();
         新材质.copy(基础材质);
@@ -137,15 +134,14 @@ export class NetMessage {
             return true;
         }
 
-        const scene战斗 = this.mainTest?.scene战斗;
-        const 名字管理器 = scene战斗?.名字管理器;
-        if (!名字管理器?.条片段预制体 || !名字管理器?.名字材质模板) {
+        const 文本材质缓存 = this.mainTest?.文本材质缓存;
+        if (!文本材质缓存?.条片段预制体 || !文本材质缓存?.名字材质模板) {
             console.warn('[HeadBar3D] 缺少条片段预制体或名字材质模板，无法创建3D状态条');
             return false;
         }
 
-        this.barPiecePrefab = 名字管理器.条片段预制体 as Prefab;
-        const 基础材质 = 名字管理器.名字材质模板 as Material;
+        this.barPiecePrefab = 文本材质缓存.条片段预制体 as Prefab;
+        const 基础材质 = 文本材质缓存.名字材质模板 as Material;
         this.hpBarBgMaterial = this.创建Instancing材质(基础材质);
         this.hpBarFillMaterial = this.创建Instancing材质(基础材质);
         this.energyBarBgMaterial = this.创建Instancing材质(基础材质);
@@ -321,17 +317,15 @@ export class NetMessage {
     public setMainTest(mainTest: MainTest): void {
         this.mainTest = mainTest;
         
-        // 名字管理器通过编辑器设置
-        console.log('名字管理器通过编辑器设置');
+        // 文本材质缓存通过编辑器设置
+        console.log('文本材质缓存通过编辑器设置');
     }
 
     private 刷新3D名字颜色(id: number, entity: ClientEntityComponent) {
-        const scene战斗 = this.mainTest?.scene战斗;
-        const 名字管理器 = scene战斗?.名字管理器;
-        if (!名字管理器) return;
+        if (!entity.nodeName?.isValid) return;
         const 名字 = entity.nickName || entity.entityName;
         if (!名字) return;
-        名字管理器.更新名字实例颜色(名字, id, entity.获取头顶名字颜色());
+        entity.nodeName.getComponent(Label3D)?.设置(名字, entity.获取头顶名字颜色());
     }
 
     // 获取聊天历史记录
@@ -535,28 +529,22 @@ export class NetMessage {
 
                 // if (!thisLocal.scene战斗.battleUI)
                 // 使用单位预制中的“名字”节点作为 3D 名字锚点和样式来源
-                if (this.mainTest && this.mainTest.scene战斗 && this.mainTest.scene战斗.名字管理器) {
-                    const 名字 = nickName || entityName;
-                    old.nodeName = utils.find('名字', newNode);
-                    if (old.nodeName) {
-                        this.mainTest.scene战斗.名字管理器.添加名字实例(名字, old.nodeName, id, old.获取头顶名字颜色());
-                    } else {
-                        console.warn('[Name3D] 单位预制缺少“名字”节点，跳过添加名字实例:', newNode.name, id);
-                    }
+                const 名字 = nickName || entityName;
+                old.nodeName = newNode.getChildByName('名字');
+                if (old.nodeName) {
+                    old.nodeName.getComponent(Label3D)?.设置(名字, old.获取头顶名字颜色());
                 } else {
-                    console.log('名字管理器未设置，跳过添加名字实例');
+                    console.warn('[Name3D] 单位预制缺少“名字”节点，跳过添加名字实例:', newNode.name, id);
                 }
 
                 // 血条/能量条改为 3D Mesh（共享材质 + Instancing）
                 this.创建单位3D状态条(id, old, newNode);
 
-                if (this.mainTest && this.mainTest.scene战斗 && this.mainTest.scene战斗.名字管理器) {
-                    old.node描述 = utils.find('描述', newNode);
-                    if (old.node描述) {
-                        old.node描述.active = false;
-                        if (old.描述文本) {
-                            this.mainTest.scene战斗.名字管理器.添加文本实例(old.描述文本, old.node描述, this.描述实例键(id));
-                        }
+                old.node描述 = newNode.getChildByName('描述');
+                if (old.node描述) {
+                    old.node描述.active = false;
+                    if (old.描述文本) {
+                        old.node描述.getComponent(Label3D)?.设置(old.描述文本);
                     }
                 }
 
@@ -717,12 +705,6 @@ export class NetMessage {
         if (!entity) {
             console.warn('无法删除', id);
             return;
-        }
-
-        // 移除3D名字实例
-        if (this.mainTest && this.mainTest.scene战斗 && this.mainTest.scene战斗.名字管理器) {
-            this.mainTest.scene战斗.名字管理器.移除名字实例(entity.nickName || entity.entityName, id);
-            this.mainTest.scene战斗.名字管理器.移除文本实例(this.描述实例键(id));
         }
 
         entity.removeFromParent();
@@ -958,16 +940,14 @@ export class NetMessage {
             entity.node描述 = utils.find('描述', entity.view);
         }
 
-        const 名字管理器 = mainTest.scene战斗.名字管理器;
-        if (!名字管理器 || !entity.node描述) {
+        if (!entity.node描述) {
             return;
         }
 
         if (entity.描述文本) {
-            名字管理器.添加文本实例(entity.描述文本, entity.node描述, this.描述实例键(id));
+            entity.node描述.getComponent(Label3D).文本 = entity.描述文本;
             entity.node描述.active = MainTest.instance.b显示名字;
         } else {
-            名字管理器.移除文本实例(this.描述实例键(id));
             entity.node描述.active = false;
         }
     }
