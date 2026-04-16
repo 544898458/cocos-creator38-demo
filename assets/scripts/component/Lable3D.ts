@@ -40,7 +40,7 @@ export class Lable3D extends Component {
         }
 
         const 绘制文本 = (文本 ?? '').toString();
-        const font = `${Lable3D.字体大小}px "${Lable3D.字体名称}", "PingFang SC", Arial, sans-serif`;
+        const font = `${Lable3D.字体大小}px sans-serif`;
 
         ctx.clearRect(0, 0, width, height);
         ctx.font = font;

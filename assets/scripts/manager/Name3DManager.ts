@@ -4,7 +4,7 @@ import { Lable3D } from '../component/Lable3D';
 
 const { ccclass, property } = _decorator;
 
-type 名字实例 = { id: number; 锚点: Node; 节点: Node; 名字: string; 颜色键: string };
+type 文本实例 = { id: string; 锚点: Node; 节点: Node; 文本: string; 颜色键: string };
 
 @ccclass('Name3DManager')
 export class Name3DManager extends Component {
@@ -16,8 +16,8 @@ export class Name3DManager extends Component {
 
     private 纹理缓存: Map<string, Texture2D> = new Map();
     private 材质缓存: Map<string, Material> = new Map();
-    private 实例数据: Map<string, 名字实例[]> = new Map();
-    private 实例索引: Map<number, string> = new Map();
+    private 实例数据: Map<string, 文本实例[]> = new Map();
+    private 实例索引: Map<string, string> = new Map();
 
     private 已打印硬件Instancing能力 = false;
 
@@ -47,19 +47,24 @@ export class Name3DManager extends Component {
         return `${名字}||${颜色键}`;
     }
 
-    private 查找实例(id: number): { 组键: string; 实例: 名字实例 } | null {
-        const 已知组键 = this.实例索引.get(id);
+    private 规范化实例键(id: number | string): string {
+        return `${id}`;
+    }
+
+    private 查找实例(id: number | string): { 组键: string; 实例: 文本实例 } | null {
+        const 实例键 = this.规范化实例键(id);
+        const 已知组键 = this.实例索引.get(实例键);
         if (已知组键) {
             const arr = this.实例数据.get(已知组键);
-            const inst = arr?.find((v) => v.id === id);
+            const inst = arr?.find((v) => v.id === 实例键);
             if (inst) return { 组键: 已知组键, 实例: inst };
-            this.实例索引.delete(id);
+            this.实例索引.delete(实例键);
         }
 
         for (const [组键, arr] of this.实例数据.entries()) {
-            const inst = arr.find((v) => v.id === id);
+            const inst = arr.find((v) => v.id === 实例键);
             if (inst) {
-                this.实例索引.set(id, 组键);
+                this.实例索引.set(实例键, 组键);
                 return { 组键, 实例: inst };
             }
         }
@@ -70,33 +75,34 @@ export class Name3DManager extends Component {
         this.清空所有实例();
     }
 
-    public 添加名字实例(名字: string, node名字: Node, 实例ID: number, 颜色?: Color) {
-        const 归一化名字 = this.规范化名字(名字);
+    public 添加文本实例(文本: string, node文本: Node, 实例ID: number | string, 颜色?: Color) {
+        const 归一化文本 = this.规范化名字(文本);
         const 归一化颜色 = this.规范化颜色(颜色);
         const 颜色键 = this.颜色转键(归一化颜色);
-        const 名字节点 = node名字;
-        const 目标组键 = this.组键(归一化名字, 颜色键);
-        console.log('添加名字实例:', 归一化名字, '锚点:', 名字节点?.name, '实例ID:', 实例ID, '颜色:', 颜色键);
+        const 实例键 = this.规范化实例键(实例ID);
+        const 文本节点 = node文本;
+        const 目标组键 = this.组键(归一化文本, 颜色键);
+        console.log('添加文本实例:', 归一化文本, '锚点:', 文本节点?.name, '实例ID:', 实例键, '颜色:', 颜色键);
 
-        if (!归一化名字) {
-            console.log('名字为空，跳过');
+        if (!归一化文本) {
+            console.log('文本为空，跳过');
             return;
         }
-        if (!名字节点 || !名字节点.isValid) {
-            console.warn('名字锚点无效，跳过添加实例', 归一化名字, 实例ID);
+        if (!文本节点 || !文本节点.isValid) {
+            console.warn('文本锚点无效，跳过添加实例', 归一化文本, 实例键);
             return;
         }
 
-        const 已有 = this.查找实例(实例ID);
+        const 已有 = this.查找实例(实例键);
         if (已有) {
             const oldGroup = 已有.组键;
             const 实例 = 已有.实例;
-            实例.锚点 = 名字节点;
+            实例.锚点 = 文本节点;
 
             if (oldGroup !== 目标组键) {
                 const oldArr = this.实例数据.get(oldGroup);
                 if (oldArr) {
-                    const idx = oldArr.findIndex((v) => v.id === 实例ID);
+                    const idx = oldArr.findIndex((v) => v.id === 实例键);
                     if (idx >= 0) oldArr.splice(idx, 1);
                     if (oldArr.length === 0) {
                         this.实例数据.delete(oldGroup);
@@ -105,51 +111,56 @@ export class Name3DManager extends Component {
                 }
             }
 
-            实例.节点 = 名字节点;
-            const 材质 = this.获取或创建材质(归一化名字, 归一化颜色);
+            实例.节点 = 文本节点;
+            const 材质 = this.获取或创建材质(归一化文本, 归一化颜色);
             if (材质) {
-                名字节点.active = true;
-                this.应用材质到节点内渲染器(名字节点, 材质, `${归一化名字}@${颜色键}`);
+                文本节点.active = true;
+                this.应用材质到节点内渲染器(文本节点, 材质, `${归一化文本}@${颜色键}`);
             }
 
-            实例.名字 = 归一化名字;
+            实例.文本 = 归一化文本;
             实例.颜色键 = 颜色键;
             if (!this.实例数据.has(目标组键)) this.实例数据.set(目标组键, []);
             const 目标数组 = this.实例数据.get(目标组键)!;
-            if (!目标数组.some((v) => v.id === 实例ID)) 目标数组.push(实例);
-            this.实例索引.set(实例ID, 目标组键);
+            if (!目标数组.some((v) => v.id === 实例键)) 目标数组.push(实例);
+            this.实例索引.set(实例键, 目标组键);
             return;
         }
 
-        const 节点 = this.初始化名字节点(归一化名字, 名字节点, 归一化颜色);
+        const 节点 = this.初始化名字节点(归一化文本, 文本节点, 归一化颜色);
         if (!节点) return;
 
         if (!this.实例数据.has(目标组键)) this.实例数据.set(目标组键, []);
         const 实例数组 = this.实例数据.get(目标组键)!;
-        实例数组.push({ id: 实例ID, 锚点: 名字节点, 节点, 名字: 归一化名字, 颜色键 });
-        this.实例索引.set(实例ID, 目标组键);
+        实例数组.push({ id: 实例键, 锚点: 文本节点, 节点, 文本: 归一化文本, 颜色键 });
+        this.实例索引.set(实例键, 目标组键);
         console.log('添加实例数据，当前实例数量:', 实例数组.length);
     }
 
-    public 移除名字实例(名字: string, 实例ID: number) {
+    public 添加名字实例(名字: string, node名字: Node, 实例ID: number, 颜色?: Color) {
+        this.添加文本实例(名字, node名字, `名字:${实例ID}`, 颜色);
+    }
+
+    public 移除文本实例(实例ID: number | string) {
         const 命中 = this.查找实例(实例ID);
         if (!命中) {
-            console.log('未找到要移除的名字实例，实例ID:', 实例ID, '名字:', this.规范化名字(名字));
+            console.log('未找到要移除的文本实例，实例ID:', this.规范化实例键(实例ID));
             return;
         }
 
         const 组键 = 命中.组键;
         const 实例数组 = this.实例数据.get(组键);
         if (!实例数组) return;
-        const 索引 = 实例数组.findIndex((inst) => inst.id === 实例ID);
+        const 实例键 = this.规范化实例键(实例ID);
+        const 索引 = 实例数组.findIndex((inst) => inst.id === 实例键);
         if (索引 < 0) return;
         const 实例 = 实例数组[索引];
         if (实例.节点 && 实例.节点.isValid) {
             实例.节点.active = false;
         }
         实例数组.splice(索引, 1);
-        this.实例索引.delete(实例ID);
-        console.log('移除名字实例，当前实例数量:', 实例数组.length);
+        this.实例索引.delete(实例键);
+        console.log('移除文本实例，当前实例数量:', 实例数组.length);
 
         if (实例数组.length === 0) {
             this.实例数据.delete(组键);
@@ -157,7 +168,11 @@ export class Name3DManager extends Component {
         }
     }
 
-    public 更新名字实例位置(_名字: string, 实例ID: number, 新位置: Vec3) {
+    public 移除名字实例(_名字: string, 实例ID: number) {
+        this.移除文本实例(`名字:${实例ID}`);
+    }
+
+    public 更新文本实例位置(实例ID: number | string, 新位置: Vec3) {
         const 命中 = this.查找实例(实例ID);
         if (!命中 || !命中.实例.节点 || !命中.实例.节点.isValid) {
             return;
@@ -165,10 +180,18 @@ export class Name3DManager extends Component {
         命中.实例.节点.setWorldPosition(新位置);
     }
 
-    public 更新名字实例颜色(名字: string, 实例ID: number, 颜色: Color) {
+    public 更新名字实例位置(_名字: string, 实例ID: number, 新位置: Vec3) {
+        this.更新文本实例位置(`名字:${实例ID}`, 新位置);
+    }
+
+    public 更新文本实例颜色(文本: string, 实例ID: number | string, 颜色: Color) {
         const 命中 = this.查找实例(实例ID);
         if (!命中) return;
-        this.添加名字实例(名字 || 命中.实例.名字, 命中.实例.锚点, 实例ID, 颜色);
+        this.添加文本实例(文本 || 命中.实例.文本, 命中.实例.锚点, 实例ID, 颜色);
+    }
+
+    public 更新名字实例颜色(名字: string, 实例ID: number, 颜色: Color) {
+        this.更新文本实例颜色(名字, `名字:${实例ID}`, 颜色);
     }
 
     public 清空所有实例() {

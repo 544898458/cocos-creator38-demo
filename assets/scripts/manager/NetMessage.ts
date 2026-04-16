@@ -8,13 +8,12 @@ import { EC } from '../utils/EC';
 import { AudioMgr } from './audio/AudioMgr';
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import * as cc from 'cc';
-import { instantiate, Node, Prefab, resources, SkeletalAnimation, Animation, utils, Label, ParticleSystem, Camera, Quat, Vec3, Vec4, tween, assetManager, AudioClip, ImageAsset, Texture2D, MeshRenderer, Material, Layers, Sprite } from 'cc';
+import { instantiate, Node, Prefab, resources, SkeletalAnimation, Animation, utils, ParticleSystem, Camera, Quat, Vec3, Vec4, tween, assetManager, AudioClip, ImageAsset, Texture2D, MeshRenderer, Material, Layers, Sprite } from 'cc';
 import { ClientEntityComponent } from '../scene/Scene战斗';
 import { 配置 } from '../配置/配置';
 import { 苔蔓Component } from '../component/苔蔓Component';
 import { 翻译Key } from '../配置/翻译Key';
 import { toast } from './ToastMgr';
-import { HeadScale } from '../component/head-scale';
 
 // 聊天消息接口
 interface ChatMessage {
@@ -106,6 +105,10 @@ export class NetMessage {
 
         this.设置实例填充(fillNode, nextValue);
         return nextValue;
+    }
+
+    private 描述实例键(id: number): string {
+        return `描述:${id}`;
     }
 
     private 创建Instancing材质(基础材质: Material): Material {
@@ -534,10 +537,9 @@ export class NetMessage {
                 // 使用单位预制中的“名字”节点作为 3D 名字锚点和样式来源
                 if (this.mainTest && this.mainTest.scene战斗 && this.mainTest.scene战斗.名字管理器) {
                     const 名字 = nickName || entityName;
-                    const node名字 = utils.find("名字", newNode);
-                    if (node名字) {
-                        // 直接使用单位ID作为实例ID
-                        this.mainTest.scene战斗.名字管理器.添加名字实例(名字, node名字, id, old.获取头顶名字颜色());
+                    old.nodeName = utils.find('名字', newNode);
+                    if (old.nodeName) {
+                        this.mainTest.scene战斗.名字管理器.添加名字实例(名字, old.nodeName, id, old.获取头顶名字颜色());
                     } else {
                         console.warn('[Name3D] 单位预制缺少“名字”节点，跳过添加名字实例:', newNode.name, id);
                     }
@@ -548,20 +550,14 @@ export class NetMessage {
                 // 血条/能量条改为 3D Mesh（共享材质 + Instancing）
                 this.创建单位3D状态条(id, old, newNode);
 
-                {
-                    let node所有单位头顶名字 = MainTest.instance.scene战斗.battleUI.uiTransform所有单位头顶名字.node
-                    let nodeRoleName = utils.find("RoleName", node所有单位头顶名字)
-                    old.node描述 = instantiate(nodeRoleName)
-                    old.node描述.active = true
-                    node所有单位头顶名字.addChild(old.node描述)
-                    old.label描述 = old.node描述.getComponent(Label)
-
-                    let headScal = old.node描述.getComponent(HeadScale)
-                    headScal.target = utils.find("描述", newNode)
-                    headScal.camera = MainTest.instance.scene战斗.mainCamera
-                    headScal.camera小地图 = MainTest.instance.scene战斗.camera小地图
-
-                    // console.log(headScal.target)
+                if (this.mainTest && this.mainTest.scene战斗 && this.mainTest.scene战斗.名字管理器) {
+                    old.node描述 = utils.find('描述', newNode);
+                    if (old.node描述) {
+                        old.node描述.active = false;
+                        if (old.描述文本) {
+                            this.mainTest.scene战斗.名字管理器.添加文本实例(old.描述文本, old.node描述, this.描述实例键(id));
+                        }
+                    }
                 }
 
                 let camera3D = utils.find("Main Camera", MainTest.instance.scene战斗.roles.parent).getComponent(Camera)
@@ -724,8 +720,9 @@ export class NetMessage {
         }
 
         // 移除3D名字实例
-        if (this.mainTest && this.mainTest.scene战斗 && this.mainTest.scene战斗.名字管理器 && entity.nickName) {
-            this.mainTest.scene战斗.名字管理器.移除名字实例(entity.nickName, id);
+        if (this.mainTest && this.mainTest.scene战斗 && this.mainTest.scene战斗.名字管理器) {
+            this.mainTest.scene战斗.名字管理器.移除名字实例(entity.nickName || entity.entityName, id);
+            this.mainTest.scene战斗.名字管理器.移除文本实例(this.描述实例键(id));
         }
 
         entity.removeFromParent();
@@ -952,8 +949,26 @@ export class NetMessage {
         const desc = arr[idxArr++];
 
         const entity = mainTest.scene战斗.entities.get(id);
-        if (entity && entity.label描述) {
-            entity.label描述.string = desc;
+        if (!entity) {
+            return;
+        }
+
+        entity.描述文本 = (desc ?? '').toString().trim();
+        if (!entity.node描述?.isValid && entity.view?.isValid) {
+            entity.node描述 = utils.find('描述', entity.view);
+        }
+
+        const 名字管理器 = mainTest.scene战斗.名字管理器;
+        if (!名字管理器 || !entity.node描述) {
+            return;
+        }
+
+        if (entity.描述文本) {
+            名字管理器.添加文本实例(entity.描述文本, entity.node描述, this.描述实例键(id));
+            entity.node描述.active = MainTest.instance.b显示名字;
+        } else {
+            名字管理器.移除文本实例(this.描述实例键(id));
+            entity.node描述.active = false;
         }
     }
     // 处理登录响应

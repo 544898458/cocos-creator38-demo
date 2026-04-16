@@ -35,7 +35,6 @@ export class ClientEntityComponent {
     nodeName: Node
     node描述: Node
     labelName: Label
-    label描述: Label
     skeletalAnimation: Animation
     initClipName: string = 'idle'
     init初始动作播放速度: number = 1
@@ -44,6 +43,7 @@ export class ClientEntityComponent {
     init初始动作结束时刻秒: number = 0
     nickName: string
     entityName: string
+    描述文本: string = ''
     position: Vec3//刚进地图Load没结束无法设置node坐标，暂存
     eulerAngles: Vec3
     node血条: Node
@@ -79,13 +79,14 @@ export class ClientEntityComponent {
         if (this.node能量条)
             this.node能量条.active = b显示名字
 
+        if (this.nodeName)
+            this.nodeName.active = b显示名字
+
         if(this.node描述)
-            this.node描述.active = b显示名字
+            this.node描述.active = b显示名字 && !!this.描述文本
 
         if (!this.labelName)
             return
-
-        this.nodeName.active = b显示名字
         
         if (b显示单位类型)
             this.labelName.string = this.nickName + ' ' + this.entityName
