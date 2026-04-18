@@ -8,7 +8,7 @@ import { EC } from '../utils/EC';
 import { AudioMgr } from './audio/AudioMgr';
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import * as cc from 'cc';
-import { instantiate, Node, Prefab, resources, SkeletalAnimation, Animation, utils, ParticleSystem, Camera, Quat, Vec3, tween, assetManager, AudioClip, ImageAsset, Texture2D, MeshRenderer } from 'cc';
+import { instantiate, Node, Prefab, resources, SkeletalAnimation, Animation, utils, ParticleSystem, Camera, Quat, Vec3, tween, assetManager, AudioClip, ImageAsset, Texture2D, MeshRenderer, BoxCollider } from 'cc';
 import { ClientEntity } from '../scene/ClientEntity';
 import { 配置 } from '../配置/配置';
 import { 苔蔓Component } from '../component/苔蔓Component';
@@ -170,7 +170,7 @@ export class NetMessage {
         const id = arr[idxArr++] as number;
         const nickName = arr[idxArr++];
         const entityName = arr[idxArr++];
-        const prefabName = arr[idxArr++];
+        const prefabName = arr[idxArr++] as string;
         const type = arr[idxArr++] as 单位类型;
         const hpMax = arr[idxArr++];
         const energyMax = arr[idxArr++];
@@ -189,8 +189,6 @@ export class NetMessage {
         entityNew.类型 = type;
         entityNew.position = pos
         entityNew.eulerAngles = Vec3.ZERO
-        entityNew.nickName = nickName
-        entityNew.entityName = entityName
         scene战斗.entities.set(id, entityNew);
 
         if (scene战斗.battleUI.lableCount != undefined)
@@ -204,29 +202,44 @@ export class NetMessage {
             entityNew.init初始动作起始时刻秒 = 单位配置.空闲动作.起始时刻秒
             entityNew.init初始动作结束时刻秒 = 单位配置.空闲动作.结束时刻秒
         }
-
-        let 此预制体回收池 = scene战斗.roles回收池?.getChildByName(prefabName)
-        if (此预制体回收池 && 此预制体回收池.children.length > 0) {
+        
+        entityNew.nickName = nickName
+        entityNew.entityName = entityName
+        dispatcher.emit(EC.AddRole, entityNew)
+        // if(entityNew.类型 == 单位类型.军绿色二足机甲)
+        //     prefabName = '单位/活动单位/Q版女'
+        
+        let 此预制体回收池 = scene战斗.roles回收池.getChildByName(prefabName)
+        if(此预制体回收池 && 此预制体回收池.children.length > 0) {
             let oldNode = 此预制体回收池.children[0];
             oldNode.removeFromParent()
+            const boxCollider = oldNode.getComponent(BoxCollider)
+            if(boxCollider)
+                boxCollider.enabled = true
+            else
+                console.warn(id, '单位预设没有BoxCollider', prefabName)
+            
             oldNode.active = true
             scene战斗.初始化单位节点(entityNew, oldNode, id, hpMax)
-            return
+            
+        }else{
+            resources.load(prefabName, Prefab, (err, prefab) => {
+                if(!prefab){
+                    console.warn(id, '单位预设不存在', prefabName, err)
+                    return;
+                }
+                entityNew = scene战斗.entities.get(id)
+                if (!entityNew) {
+                    console.warn(id, '已离开战斗场景');
+                    return;
+                }
+
+                const newNode = instantiate(prefab);
+
+                // 初始化单位节点
+                scene战斗.初始化单位节点(entityNew, newNode, id, hpMax);
+            })
         }
-
-        resources.load(prefabName, Prefab, (err, prefab) => {
-            if(!prefab){
-                console.warn(id, '单位预设不存在', prefabName, type, err)
-                return;
-            }
-            const entity = scene战斗.entities.get(id)
-            if (!entity) {
-                return;
-            }
-
-            const newNode = instantiate(prefab);
-            scene战斗.初始化单位节点(entityNew, newNode, id, hpMax)
-        })
     }
     private handleGame_NotifyPos(arr: any[], idxArr: number): void {
         const mainTest = this.mainTest;

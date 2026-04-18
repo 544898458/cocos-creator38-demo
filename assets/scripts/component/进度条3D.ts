@@ -1,10 +1,17 @@
-import { _decorator, Component, MeshRenderer, Node } from 'cc';
+import { _decorator, Component, Enum, MeshRenderer, Node } from 'cc';
 
 const { ccclass, property, executeInEditMode } = _decorator;
+
+export enum 进度条3D类型 {
+    血条 = 0,
+    能量条 = 1,
+}
 
 @executeInEditMode(true)
 @ccclass('进度条3D')
 export class 进度条3D extends Component {
+    @property({ type: Enum(进度条3D类型), displayName: '类型' })
+    类型: 进度条3D类型 = 进度条3D类型.血条;
     @property({ type: Node, displayName: '背景节点' })
     背景节点: Node | null = null;
     @property({ type: Node, displayName: '前景节点' })
@@ -36,10 +43,6 @@ export class 进度条3D extends Component {
         this.应用当前值到填充();
     }
 
-    private 是能量条(): boolean {
-        return this.node.name.includes('能量');
-    }
-
     private 计算血条宽(hpMax: number): number {
         return Math.max(0.9, Math.sqrt(hpMax) / 2.35);
     }
@@ -49,11 +52,7 @@ export class 进度条3D extends Component {
     }
 
     private 计算背景宽(最大值: number): number {
-        return this.是能量条() ? this.计算能量条宽(最大值) : this.计算血条宽(最大值);
-    }
-
-    private 计算前景宽(背景宽: number): number {
-        return 背景宽;
+        return this.类型 === 进度条3D类型.血条 ? this.计算血条宽(最大值) : this.计算能量条宽(最大值);
     }
 
     protected onEnable(): void {
@@ -88,13 +87,14 @@ export class 进度条3D extends Component {
             this.node.active = false;
             return;
         }
+
         if (!this.背景节点?.isValid || !this.前景节点?.isValid) {
             console.warn('[HeadBar3D] 进度条3D缺少背景节点或前景节点，请在编辑器绑定', this.node.name);
             return;
         }
 
         const 背景宽 = this.计算背景宽(this._最大值);
-        const 前景宽 = this.计算前景宽(背景宽);
+        const 前景宽 = 背景宽;
         const 背景缩放 = this.背景节点.scale;
         const 前景缩放 = this.前景节点.scale;
         this.背景节点.setScale(背景宽, 背景缩放.y, 背景缩放.z);
@@ -119,9 +119,7 @@ export class 进度条3D extends Component {
 
     public 设置填充(fill: number): void {
         if (!this.前景节点?.isValid) return;
-        let normalizedFill = Number.isFinite(fill) ? Math.max(0, Math.min(1, fill)) : 0;
-        if (normalizedFill > 0.9995) normalizedFill = 1;
-        if (normalizedFill < 0.0005) normalizedFill = 0;
+        const normalizedFill = Number.isFinite(fill) ? Math.max(0, Math.min(1, fill)) : 0;
         this.设置状态条实例填充(normalizedFill);
     }
 

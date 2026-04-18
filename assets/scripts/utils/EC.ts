@@ -23,4 +23,5 @@ export class EC {
     static SHOW_LOGIN_UI = "SHOW_LOGIN_UI";
     
     static SHOW_TOAST = "SHOW_TOAST";
+    static AddRole = "AddRole";
 }

@@ -32,16 +32,19 @@
         "__id__": 10
       },
       {
-        "__id__": 30
+        "__id__": 31
       },
       {
         "__id__": 22
+      },
+      {
+        "__id__": 30
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 32
+      "__id__": 33
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -72,7 +75,7 @@
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 33
+      "__id__": 34
     },
     "_id": "57e1e41c-7dc2-46a2-8867-f147bf517345"
   },
@@ -786,6 +789,10 @@
       "__uuid__": "a4c273b3-6d28-4e6b-9ecf-58f9144f23f3",
       "__expectedType__": "cc.Prefab"
     },
+    "血条背景纹理": null,
+    "血条前景纹理": null,
+    "能量条背景纹理": null,
+    "能量条前景纹理": null,
     "_id": "44vloMxWhBnILQt+N/A3rU"
   },
   {
@@ -1074,10 +1081,54 @@
     "roles": {
       "__id__": 22
     },
+    "roles回收池": {
+      "__id__": 30
+    },
     "audioSource": {
       "__id__": 15
     },
     "_id": "32C+Jz5G5KrZhjAG78r+4s"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Roles回收池",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [],
+    "_prefab": null,
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_mobility": 0,
+    "_layer": 1073741824,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": "57hP3ol8BMLIcp32rhIS7/"
   },
   {
     "__type__": "cc.Node",
@@ -1091,7 +1142,7 @@
     "_active": false,
     "_components": [
       {
-        "__id__": 31
+        "__id__": 32
       }
     ],
     "_prefab": null,
@@ -1130,7 +1181,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 30
+      "__id__": 31
     },
     "_enabled": false,
     "__prefab": null,
@@ -1162,28 +1213,28 @@
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 34
-    },
-    "shadows": {
       "__id__": 35
     },
-    "_skybox": {
+    "shadows": {
       "__id__": 36
     },
-    "fog": {
+    "_skybox": {
       "__id__": 37
     },
-    "octree": {
+    "fog": {
       "__id__": 38
     },
-    "skin": {
+    "octree": {
       "__id__": 39
     },
-    "lightProbeInfo": {
+    "skin": {
       "__id__": 40
     },
-    "postSettings": {
+    "lightProbeInfo": {
       "__id__": 41
+    },
+    "postSettings": {
+      "__id__": 42
     },
     "bakedWithStationaryMainLight": false,
     "bakedWithHighpLightmap": false

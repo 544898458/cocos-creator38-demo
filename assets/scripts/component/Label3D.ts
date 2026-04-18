@@ -1,4 +1,4 @@
-import { _decorator, Color, Component, ImageAsset, MeshRenderer, Texture2D, director, Layers } from 'cc';
+import { _decorator, Color, Component, director, ImageAsset, Layers, MeshRenderer, Texture2D } from 'cc';
 import { MainTest } from '../MainTest';
 import { 文本材质缓存Manager } from '../manager/文本材质缓存Manager';
 
@@ -16,6 +16,7 @@ export class Label3D extends Component {
     }
     set 文本(value: string) {
         this._文本 = value;
+        console.log('Label3D 文本:', this._文本);
         this.刷新显示();
     }
 
@@ -24,7 +25,7 @@ export class Label3D extends Component {
         return this._颜色;
     }
     set 颜色(value: Color) {
-        this._颜色 = value
+        this._颜色 = value;
         this.刷新显示();
     }
 
@@ -32,16 +33,10 @@ export class Label3D extends Component {
     private _颜色: Color = new Color(255, 255, 255, 255);
     private 文本材质缓存: 文本材质缓存Manager | null = null;
     private static 已打印无Canvas警告 = false;
-
     onLoad() {
         this.刷新显示();
     }
 
-    // public 设置(文本: string, 颜色: Color) {
-    //     this._文本 = (文本 ?? '').toString();
-    //     this._颜色 = new Color(颜色.r, 颜色.g, 颜色.b, 颜色.a);
-    //     this.刷新显示();
-    // }
 
     private 刷新显示() {
         if (!this.node?.isValid) return;
@@ -93,8 +88,6 @@ export class Label3D extends Component {
 
             mr.sharedMaterials = [材质];
             mr.setSharedMaterial(材质, 0);
-            const m0 = mr.getSharedMaterial(0);
-            console.log(`[Label3D] 绑定材质 文本=${this._文本} 节点=${mr.node.name} shared0=${m0 ? 'OK' : 'EMPTY'} 同对象=${m0 === 材质}`);
         }
     }
 

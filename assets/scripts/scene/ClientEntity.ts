@@ -63,26 +63,30 @@ export class ClientEntity {
         this.node能量条 = null
     }
     显示头顶名字(b显示单位类型: boolean, b显示名字: boolean): void {
-        if(this.node血条)
-            this.node血条.active = b显示名字
+        if (this.node血条) {
+            this.node血条.active = b显示名字;
+        }
 
-        if (this.node能量条)
-            this.node能量条.active = b显示名字
+        if (this.node能量条) {
+            this.node能量条.active = b显示名字;
+        }
 
-        if (this.nodeName){
-            this.nodeName.active = b显示名字
-            const lableName = this.nodeName.getComponent(Label3D)
-            if (lableName){
-                lableName.颜色 = this.获取头顶名字颜色()
-                if (b显示单位类型)
-                    lableName.文本 = this.nickName + ' ' + this.entityName
-                else
-                    lableName.文本 = this.nickName
+        if (this.nodeName?.isValid) {
+            this.nodeName.active = b显示名字;
+            const lableName3D = this.nodeName.getComponent(Label3D);
+            if (lableName3D) {
+                lableName3D.颜色 = this.获取头顶名字颜色();
+                if (b显示单位类型) {
+                    lableName3D.文本 = this.nickName + ' ' + this.entityName;
+                } else {
+                    lableName3D.文本 = this.nickName;
+                }
             }
         }
 
-        if(this.node描述)
-            this.node描述.active = b显示名字 && !!this.描述文本
+        if (this.node描述?.isValid) {
+            this.node描述.active = b显示名字 && !!this.描述文本;
+        }
     }
 
     获取头顶名字颜色(): Color {
