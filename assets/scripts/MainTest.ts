@@ -7,7 +7,8 @@ import { MsgId, 单位类型, 战局类型, 属性类型 } from './utils/Enum';
 import { resources } from 'cc';
 import { Prefab } from 'cc';
 import { AudioSource } from 'cc';
-import { ClientEntityComponent, Scene战斗 } from './scene/Scene战斗';
+import { Scene战斗 } from './scene/Scene战斗';
+import { ClientEntity } from './scene/ClientEntity';
 import { Vec3 } from 'cc';
 import { instantiate } from 'cc';
 import { director } from 'cc';
@@ -566,7 +567,7 @@ export class MainTest extends Component {
         console.log(event, customEventData)
         this.进Scene战斗(this.map玩家场景.get(customEventData), MsgId.进其他玩家多人战局, 战局类型.四方对战, customEventData)
     }
-    static 播放动作(old: ClientEntityComponent, strClipName: string, loop: boolean, 动作播放速度: number = 1, f动作起始时刻秒: number = 0, f动作结束时刻秒: number = 0) {
+    static 播放动作(old: ClientEntity, strClipName: string, loop: boolean, 动作播放速度: number = 1, f动作起始时刻秒: number = 0, f动作结束时刻秒: number = 0) {
         // console.log('strClipName', strClipName, 'old.view.name', old.view.name, 'loop', loop, '动作播放速度', 动作播放速度, 'f动作起始时刻秒', f动作起始时刻秒, 'f动作结束时刻秒', f动作结束时刻秒)
         const str星2动作: string = 'Take 001'
         if (old.view.name == '跳虫') {
@@ -842,5 +843,4 @@ export class MainTest extends Component {
         })
     }
 }
-
 

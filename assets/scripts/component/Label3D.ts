@@ -37,11 +37,11 @@ export class Label3D extends Component {
         this.刷新显示();
     }
 
-    public 设置(文本: string, 颜色: Color) {
-        this._文本 = (文本 ?? '').toString();
-        this._颜色 = new Color(颜色.r, 颜色.g, 颜色.b, 颜色.a);
-        this.刷新显示();
-    }
+    // public 设置(文本: string, 颜色: Color) {
+    //     this._文本 = (文本 ?? '').toString();
+    //     this._颜色 = new Color(颜色.r, 颜色.g, 颜色.b, 颜色.a);
+    //     this.刷新显示();
+    // }
 
     private 刷新显示() {
         if (!this.node?.isValid) return;

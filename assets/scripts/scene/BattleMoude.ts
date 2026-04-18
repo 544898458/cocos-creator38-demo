@@ -4,7 +4,7 @@ import { dispatcher } from '../manager/event/EventDispatcher';
 import { MsgId } from '../utils/Enum';
 import { Glob } from '../utils/Glob';
 import { Vec3 } from 'cc';
-import { ClientEntityComponent } from './Scene战斗';
+import { ClientEntity } from './ClientEntity';
 
 
 export class BattleMoude extends Component {
@@ -17,7 +17,7 @@ export class BattleMoude extends Component {
     public static _arr选中: number[] = [];
     public static _追加选中: boolean = false;
     fun点击地面创建消息: (Vec3) => object = null//this.createMsgMove强行走//点击地面操作 = 点击地面操作类型.移动单位
-    fun点击单位创建消息: (entity: ClientEntityComponent, id:number) => object = null//this.createMsgMove强行走//点击地面操作 = 点击地面操作类型.移动单位
+    fun点击单位创建消息: (entity: ClientEntity, id:number) => object = null//this.createMsgMove强行走//点击地面操作 = 点击地面操作类型.移动单位
     // 单例初始化方法
     public static init(): void {
         if (!BattleMoude._instance) {

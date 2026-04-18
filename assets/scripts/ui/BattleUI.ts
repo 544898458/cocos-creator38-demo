@@ -1,5 +1,5 @@
 import { _decorator, Node } from 'cc';
-import { ClientEntityComponent } from '../scene/Scene战斗';
+import { ClientEntity } from '../scene/ClientEntity';
 import { Label } from 'cc';
 import { EditBox } from 'cc';
 import { UITransform } from 'cc';
@@ -165,7 +165,7 @@ export class BattleUI extends Dialog {
         //     AudioMgr.inst.playOneShot('BUZZ')
         //     return
         // }
-        BattleMoude.instance.fun点击单位创建消息 = (entity: ClientEntityComponent, id:number):object => {
+        BattleMoude.instance.fun点击单位创建消息 = (entity: ClientEntity, id:number):object => {
             console.log('createMsg跟随', entity, id)
             return [[MsgId.跟随, Glob.getSendMsgSn自增(), 0], id]
         }
@@ -453,7 +453,7 @@ export class BattleUI extends Dialog {
         str详情 += '\n'
         return str详情
     }
-    单位详情(entity: ClientEntityComponent, 类型: 单位类型): string {
+    单位详情(entity: ClientEntity, 类型: 单位类型): string {
         const 单位 = MainTest.instance.配置.find单位(类型)
         const 制造 = MainTest.instance.配置.find制造(类型)
         const 战斗 = MainTest.instance.配置.find战斗(类型)
@@ -651,5 +651,4 @@ export class BattleUI extends Dialog {
         dispatcher.sendArray([[MsgId.乒, Glob.getSendMsgSn自增(), 0]])
     }
 }
-
 

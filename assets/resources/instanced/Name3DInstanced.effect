@@ -86,10 +86,14 @@ CCProgram name3d-fs %{
   };
 
   vec4 frag () {
-    if (barUseFill > 0.5 && v_uv.x > v_fill) {
-      discard;
+    float fillEdge = clamp(v_fill, 0.0, 1.0);
+    if (barUseFill > 0.5 && fillEdge < 0.9995) {
+      if (v_uv.x > min(1.0, fillEdge + 0.0015)) {
+        discard;
+      }
     }
-    vec4 texColor = texture(mainTexture, v_uv);
+    vec2 uv = vec2(clamp(v_uv.x, 0.001, 0.999), clamp(v_uv.y, 0.001, 0.999));
+    vec4 texColor = texture(mainTexture, uv);
     return CCFragOutput(texColor * color);
   }
 }%

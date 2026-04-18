@@ -1,4 +1,4 @@
-import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, utils, AnimationClip, director, Animation, Color } from 'cc'
+import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, utils, AnimationClip, director, Animation, Color, ParticleSystem } from 'cc'
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 
 import { Vec2 } from 'cc'
@@ -15,7 +15,6 @@ import { tween } from 'cc'
 import { Sprite } from 'cc'
 import { SpriteFrame } from 'cc'
 import { ImageAsset } from 'cc'
-import { Tween } from 'cc'
 import { AudioSource } from 'cc'
 import { 苔蔓Component } from '../component/苔蔓Component'
 import { Glob } from '../utils/Glob'
@@ -27,120 +26,10 @@ import { BattleMoude } from './BattleMoude'
 import { MsgId, 单位类型, 属性类型 } from '../utils/Enum'
 import { 翻译Key } from '../配置/翻译Key'
 import { Label3D } from '../component/Label3D'
+import { ClientEntity } from './ClientEntity'
+import { 进度条3D } from '../component/进度条3D'
 
 const { ccclass, property } = _decorator
-export class ClientEntityComponent {
-    static myNickName: string;
-    view: Node
-    nodeName: Node
-    node描述: Node
-    skeletalAnimation: Animation
-    initClipName: string = 'idle'
-    init初始动作播放速度: number = 1
-    init初始动作Loop: boolean = true
-    init初始动作起始时刻秒: number = 0
-    init初始动作结束时刻秒: number = 0
-    nickName: string
-    entityName: string
-    描述文本: string = ''
-    position: Vec3//刚进地图Load没结束无法设置node坐标，暂存
-    eulerAngles: Vec3
-    node血条: Node
-    node血条前景: Node
-    hpMax: number = 0
-    node能量条: Node
-    node能量条前景: Node
-    // 能量: number = 0
-    能量Max: number = 0
-    prefabName: string
-    类型: 单位类型 = 单位类型.单位类型_Invalid_0
-    tween移动: Tween<Node>
-    苔蔓半径: number
-    obj属性数值: object = new Object()
-
-    hp(): number {
-        return this.obj属性数值[属性类型.生命] as number
-    }
-    能量(): number {
-        return this.obj属性数值[属性类型.能量] as number
-    }
-    removeFromParent() {
-        this.view?.removeFromParent()
-        this.nodeName?.removeFromParent()
-        this.node描述?.removeFromParent()
-        this.node血条?.removeFromParent()
-        this.node能量条?.removeFromParent()
-    }
-    显示头顶名字(b显示单位类型: boolean, b显示名字: boolean): void {
-        if(this.node血条)
-            this.node血条.active = b显示名字
-
-        if (this.node能量条)
-            this.node能量条.active = b显示名字
-
-        if (this.nodeName){
-            this.nodeName.active = b显示名字
-            const lableName = this.nodeName.getComponent(Label3D)
-            if (lableName){
-                if (b显示单位类型)
-                    lableName.文本 = this.nickName + ' ' + this.entityName
-                else
-                    lableName.文本 = this.nickName
-            }
-        }
-
-        if(this.node描述)
-            this.node描述.active = b显示名字 && !!this.描述文本
-    }
-
-    获取头顶名字颜色(): Color {
-        if (this.类型 == 单位类型.晶体矿 || this.类型 == 单位类型.燃气矿) {
-            return new Color(170, 255, 255);
-        }
-        else if (this.类型 == 单位类型.光刺 || this.类型 == 单位类型.特效) {
-            return this.判断是否同玩家名着色子弹();
-        }
-        else if (this.类型 == 单位类型.视口) {
-            return new Color(50, 50, 50);
-        }
-        else if (this.hp() <= 0) {
-            return new Color(130, 130, 130);
-        }
-        else {
-            return this.判断是否同玩家名着色单位();
-        }
-    }
-    判断是否同玩家名着色子弹(): Color {
-        if (Glob.myNickName != null) {
-            if (this.nickName != Glob.myNickName) {
-                return new Color(80, 30, 30);
-            }
-            else {
-                return new Color(30, 80, 30);
-            }
-        }
-        return new Color(80, 80, 80);
-    }
-    判断是否同玩家名着色单位(): Color {
-        if (Glob.myNickName != null) {
-            if(this.nickName == '敌人'){
-                return new Color(255, 80, 80)//怪
-            }
-
-            if (this.nickName == Glob.myNickName){
-                return new Color(10, 255, 10);//自己
-            }
-
-            let 配置 = MainTest.instance.配置.find战局(MainTest.instance.战局)
-            if (配置 && 配置.玩家同阵营) {
-                return new Color(150, 255, 150);//友方玩家
-            }
-
-            return new Color(255, 50, 50);//敌方玩家
-        }
-        return new Color(255, 255, 255);
-    }
-}
 
 const prefabName选中特效: string = 'Select'//这里不能用中文，原因不明
 const prefabName范围特效: string = '特效/范围'
@@ -150,7 +39,7 @@ const nodeName地图: string = 'map' //地图前称
 
 @ccclass('Scene战斗')
 export class Scene战斗 extends Component {
-    entities: Map<number, ClientEntityComponent> = new Map<number, ClientEntityComponent>
+    entities: Map<number, ClientEntity> = new Map<number, ClientEntity>
     entityId = new Map<string, number>//uuid=>服务器ID
 
     @property({ type: Node, displayName: "走向的目标点" })
@@ -162,6 +51,7 @@ export class Scene战斗 extends Component {
     camera小地图: Camera
     @property({ type: Node, displayName: "英雄" })
     roles: Node
+    @property(Node) roles回收池: Node
     @property({ type: AudioSource })
     audioSource: AudioSource
 
@@ -180,6 +70,52 @@ export class Scene战斗 extends Component {
     obj已解锁单位: object
     obj属性等级: object
     battleUI: BattleUI = null;
+    public 创建单位3D状态条(id: number, entity: ClientEntity, 单位节点: Node): void {
+        if (单位节点.name === 'smoke') return;
+        const 血条组件 = 单位节点.getChildByName('血条')?.getComponent(进度条3D);
+        if (血条组件) {
+            血条组件.初始化(entity.hpMax初始, entity.hp());
+            if (entity.hpMax初始 > 0) {
+                entity.node血条 = 血条组件.node;
+            } else {
+                entity.node血条 = null;
+            }
+        } else {
+            entity.node血条 = null;
+            if (entity.hpMax初始 > 0) {
+                console.warn('[HeadBar3D] 预制体缺少血条组件(进度条3D)', id, 单位节点.name);
+            }
+        }
+
+        const 能量条组件 = 单位节点.getChildByName('能量条')?.getComponent(进度条3D);
+        if (能量条组件) {
+            能量条组件.初始化(entity.能量Max, entity.能量());
+            if (entity.能量Max > 0) {
+                entity.node能量条 = 能量条组件.node;
+            } else {
+                entity.node能量条 = null;
+            }
+        } else {
+            entity.node能量条 = null;
+            if (entity.能量Max > 0) {
+                console.warn('[HeadBar3D] 预制体缺少能量条组件(进度条3D)', id, 单位节点.name);
+            }
+        }
+
+        this.刷新单位状态条尺寸(entity);
+    }
+
+    public 刷新单位状态条尺寸(entity: ClientEntity): void {
+        if (entity.node血条?.isValid) {
+            const 血条组件 = entity.node血条.getComponent(进度条3D);
+            血条组件?.刷新尺寸(entity.hpMax初始);
+        }
+
+        if (entity.node能量条?.isValid) {
+            const 能量条组件 = entity.node能量条.getComponent(进度条3D);
+            能量条组件?.刷新尺寸(entity.能量Max);
+        }
+    }
     protected onLoad(): void {
         console.log('Scene战斗.onLoad')
         this.Clear然后显示小地图视口框()
@@ -1047,7 +983,7 @@ export class Scene战斗 extends Component {
 
 
     刷新单位名字() {
-        this.entities.forEach((entity: ClientEntityComponent) => {
+        this.entities.forEach((entity: ClientEntity) => {
             entity.显示头顶名字(MainTest.instance.b显示单位类型, MainTest.instance.b显示名字)
         })
     }
@@ -1063,5 +999,75 @@ export class Scene战斗 extends Component {
         let entity = this.entities.get(idEntity)
         entity.苔蔓半径 = 半径
         entity.view?.getChildByName('苔蔓').getComponent(苔蔓Component).Set半径(半径)
+    }
+
+    初始化单位节点(
+        entity: ClientEntity,
+        newNode: Node,
+        id: number,
+        hpMax: number,
+    ): void {
+        console.log('初始化单位节点', entity.类型, newNode.name, id, hpMax)
+        this.roles.addChild(newNode);
+        this.entityId[newNode.uuid] = id;
+        entity.view = newNode
+
+        let 单位配置 = MainTest.instance.配置.find单位(entity.类型)
+        if (newNode.name == '基地')
+            entity.skeletalAnimation = newNode.getChildByName('p_Base_02').getComponent(SkeletalAnimation)
+        else if (newNode.name == '三色坦克')
+            entity.skeletalAnimation = newNode.getChildByName('p_B_tank_03').getComponent(SkeletalAnimation)
+        else if (newNode.name == '跳虫') {
+            entity.skeletalAnimation = newNode.getChildByName('Zergling').getComponent(SkeletalAnimation)
+        } else if (newNode.name == '刺蛇') {
+            entity.skeletalAnimation = newNode.getChildByName('Hydralisk').getComponent(SkeletalAnimation)
+        } else if (newNode.name == '工蜂') {
+            entity.skeletalAnimation = newNode.getChildByName('Drone').getComponent(SkeletalAnimation)
+        } else if (newNode.name == '地堡') {
+            entity.skeletalAnimation = newNode.getChildByName('地堡872面').getComponent(Animation)
+        }
+        else if (单位配置 && 单位配置.动画节点路径) {
+            let node = newNode.getChildByName(单位配置.动画节点路径)
+            if (!node) {
+                console.warn(id, newNode, '骨骼动画节点不存在', 单位配置.动画节点路径)
+                return;
+            }
+            entity.skeletalAnimation = node.getComponent(单位配置.是骨骼动画 ? SkeletalAnimation : Animation)
+        } else if (单位类型.苔蔓 == entity.类型) {
+            entity.view.getChildByName('苔蔓').getComponent(苔蔓Component).Set半径(entity.苔蔓半径)
+        } else {
+            entity.skeletalAnimation = newNode.getComponent(SkeletalAnimation)
+        }
+
+        if (entity.skeletalAnimation != undefined) {
+            MainTest.播放动作(entity, entity.initClipName, entity.init初始动作Loop, entity.init初始动作播放速度, entity.init初始动作起始时刻秒, entity.init初始动作结束时刻秒)
+        }
+
+        const 名字 = entity.nickName || entity.entityName;
+        entity.nodeName = newNode.getChildByName('名字');
+        if (entity.nodeName) {
+            // entity.nodeName.getComponent(Label3D)?.设置(名字, entity.获取头顶名字颜色());
+        } else {
+            console.warn('[Name3D] 单位预制缺少“名字”节点，跳过添加名字实例:', newNode.name, id);
+        }
+
+        entity.node描述 = newNode.getChildByName('描述');
+        if (entity.node描述) {
+            entity.node描述.active = false;
+            if (entity.描述文本) {
+                entity.node描述.getComponent(Label3D).文本 = entity.描述文本;
+            }
+        }
+        this.创建单位3D状态条(id, entity, newNode)
+
+        entity.显示头顶名字(MainTest.instance.b显示单位类型, MainTest.instance.b显示名字)
+
+        if (entity.position != undefined)
+            entity.view.position = entity.position
+
+        if (entity.view.name == '黄光爆闪') {
+            const particleSystem = entity.view.getChildByPath('collectYellow/collectYellow')?.getComponent(ParticleSystem)
+            particleSystem?.play()
+        }
     }
 }
