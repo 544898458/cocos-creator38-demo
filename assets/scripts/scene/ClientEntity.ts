@@ -73,6 +73,7 @@ export class ClientEntity {
             this.nodeName.active = b显示名字
             const lableName = this.nodeName.getComponent(Label3D)
             if (lableName){
+                lableName.颜色 = this.获取头顶名字颜色()
                 if (b显示单位类型)
                     lableName.文本 = this.nickName + ' ' + this.entityName
                 else

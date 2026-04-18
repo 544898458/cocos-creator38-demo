@@ -55,13 +55,6 @@ export class NetMessage {
         console.log('文本材质缓存通过编辑器设置');
     }
 
-    private 刷新3D名字颜色(id: number, entity: ClientEntity) {
-        if (!entity.nodeName?.isValid) return;
-        const 名字 = entity.nickName || entity.entityName;
-        if (!名字) return;
-        entity.nodeName.getComponent(Label3D)?.设置(名字, entity.获取头顶名字颜色());
-    }
-
     // 获取聊天历史记录
     public getChatHistory(): ChatMessage[] {
         return [...this.chatHistory]; // 返回副本以避免外部修改
@@ -552,7 +545,6 @@ export class NetMessage {
                     break;
             }
         }
-        this.刷新3D名字颜色(id, entity);
     }
     private handleGame_SelectRoles(arr: any[], idxArr: number): void {
         const mainTest = this.mainTest;
