@@ -7,8 +7,8 @@ export enum 进度条3D类型 {
     能量条 = 1,
 }
 
-@executeInEditMode(true)
 @ccclass('进度条3D')
+@executeInEditMode(true)
 export class 进度条3D extends Component {
     @property({ type: Enum(进度条3D类型), displayName: '类型' })
     类型: 进度条3D类型 = 进度条3D类型.血条;

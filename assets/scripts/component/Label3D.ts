@@ -17,7 +17,7 @@ export class Label3D extends Component {
     set 文本(value: string) {
         this._文本 = value;
         console.log('Label3D 文本:', this._文本);
-        this.刷新显示();
+        this.刷新材质();
     }
 
     @property({ type: Color, tooltip: '3D 文字颜色。' })
@@ -26,7 +26,7 @@ export class Label3D extends Component {
     }
     set 颜色(value: Color) {
         this._颜色 = value;
-        this.刷新显示();
+        this.刷新材质();
     }
 
     private _文本 = '';
@@ -34,12 +34,13 @@ export class Label3D extends Component {
     private 文本材质缓存: 文本材质缓存Manager | null = null;
     private static 已打印无Canvas警告 = false;
     onLoad() {
-        this.刷新显示();
+        this.刷新材质();
     }
 
 
-    private 刷新显示() {
+    private 刷新材质() {
         if (!this.node?.isValid) return;
+        if (!this.node.active) return;
         if (!this._文本) return;
 
         const 渲染器列表 = this.node.getComponentsInChildren(MeshRenderer);
@@ -60,7 +61,6 @@ export class Label3D extends Component {
             return;
         }
 
-        this.node.active = true;
         for (const mr of 渲染器列表) {
             mr.node.layer = Layers.Enum.DEFAULT;
             mr.visibility = Layers.BitMask.DEFAULT;

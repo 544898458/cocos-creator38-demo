@@ -1,4 +1,3 @@
-// Name3DInstanced.effect
 CCEffect %{
   techniques:
   - name: transparent
@@ -38,7 +37,6 @@ CCProgram name3d-vs %{
     in float a_barFill;
   #endif
 
-  // 实例化平移（每个实例对应一个世界坐标）
   vec4 vert () {
     vec4 position;
     CCVertInput(position);
@@ -47,18 +45,14 @@ CCProgram name3d-vs %{
     CCGetWorldMatrix(matWorld);
 
     vec3 instPos = matWorld[3].xyz;
-
     vec3 worldScale = vec3(length(matWorld[0].xyz), length(matWorld[1].xyz), length(matWorld[2].xyz));
     float sx = worldScale.x;
 
-    // 兼容 Quad 在 XY 或 XZ 平面的情况，并选择对应轴的缩放值
     float ox = position.x;
     bool useY = abs(position.y) > abs(position.z);
     float oy = useY ? position.y : position.z;
     float sy = useY ? worldScale.y : worldScale.z;
 
-    // Billboard：把实例中心转到视空间，再叠加局部顶点偏移
-    // 这样四边形始终面向相机，且保持世界单位大小
     vec4 centerVS = cc_matView * vec4(instPos, 1.0);
     vec4 posVS = centerVS + vec4(ox * sx, oy * sy, 0.0, 0.0);
 
