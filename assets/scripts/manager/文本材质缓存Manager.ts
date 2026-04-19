@@ -1,5 +1,5 @@
 import { _decorator, Component, Material, Texture2D, director, gfx, sys, Color, Vec4 } from 'cc';
-import { Label3D } from '../component/Label3D';
+import { 文本3D } from '../component/文本3D';
 
 const { ccclass, property } = _decorator;
 
@@ -87,7 +87,7 @@ export class 文本材质缓存Manager extends Component {
             return this.纹理缓存.get(名字)!;
         }
 
-        const 纹理 = Label3D.生成文字纹理(名字);
+        const 纹理 = 文本3D.生成文字纹理(名字);
         this.纹理缓存.set(名字, 纹理);
         return 纹理;
     }

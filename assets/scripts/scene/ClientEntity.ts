@@ -2,7 +2,7 @@ import { Node, Vec3, Animation, Color, Tween } from 'cc';
 import { MainTest } from '../MainTest';
 import { Glob } from '../utils/Glob';
 import { 单位类型, 属性类型 } from '../utils/Enum';
-import { Label3D } from '../component/Label3D';
+import { 文本3D } from '../component/文本3D';
 
 export class ClientEntity {
     static myNickName: string;
@@ -73,7 +73,7 @@ export class ClientEntity {
 
         if (this.nodeName?.isValid) {
             this.nodeName.active = b显示名字;
-            const lableName3D = this.nodeName.getComponent(Label3D);
+            const lableName3D = this.nodeName.getComponent(文本3D);
             if (lableName3D) {
                 lableName3D.颜色 = this.获取头顶名字颜色();
                 if (b显示单位类型) {

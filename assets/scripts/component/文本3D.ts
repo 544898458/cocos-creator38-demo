@@ -4,8 +4,8 @@ import { 文本材质缓存Manager } from '../manager/文本材质缓存Manager'
 
 const { ccclass, property } = _decorator;
 
-@ccclass('Lable3D')
-export class Label3D extends Component {
+@ccclass('文本3D')
+export class 文本3D extends Component {
     public static readonly 字体大小 = 32;
     public static readonly 纹理宽度 = 256;
     public static readonly 纹理高度 = 64;
@@ -16,7 +16,7 @@ export class Label3D extends Component {
     }
     set 文本(value: string) {
         this._文本 = value;
-        console.log('Label3D 文本:', this._文本);
+        console.log('文本3D 文本:', this._文本);
         this.刷新材质();
     }
 
@@ -45,19 +45,19 @@ export class Label3D extends Component {
 
         const 渲染器列表 = this.node.getComponentsInChildren(MeshRenderer);
         if (渲染器列表.length === 0) {
-            console.error('Label3D 节点中未找到 MeshRenderer，无法绑定材质:', this.node.name);
+            console.error('文本3D 节点中未找到 MeshRenderer，无法绑定材质:', this.node.name);
             return;
         }
 
         const 文本材质缓存 = this.获取文本材质缓存();
         if (!文本材质缓存) {
-            console.warn('[Label3D] 未找到文本材质缓存，无法刷新文字:', this.node.name, this._文本);
+            console.warn('[文本3D] 未找到文本材质缓存，无法刷新文字:', this.node.name, this._文本);
             return;
         }
 
         const 材质 = 文本材质缓存.获取或创建材质(this._文本, this._颜色);
         if (!材质) {
-            console.warn('[Label3D] 获取材质失败，无法刷新文字:', this.node.name, this._文本);
+            console.warn('[文本3D] 获取材质失败，无法刷新文字:', this.node.name, this._文本);
             return;
         }
 
@@ -109,28 +109,28 @@ export class Label3D extends Component {
     }
 
     public static 生成文字纹理(文本: string): Texture2D {
-        const canvas = Label3D.创建Canvas();
+        const canvas = 文本3D.创建Canvas();
         if (!canvas) {
-            if (!Label3D.已打印无Canvas警告) {
-                Label3D.已打印无Canvas警告 = true;
-                console.warn('[Lable3D] 无法创建 Canvas，名字贴图不可见。');
+            if (!文本3D.已打印无Canvas警告) {
+                文本3D.已打印无Canvas警告 = true;
+                console.warn('[文本3D] 无法创建 Canvas，名字贴图不可见。');
             }
             return new Texture2D();
         }
 
-        const width = Label3D.纹理宽度;
-        const height = Label3D.纹理高度;
+        const width = 文本3D.纹理宽度;
+        const height = 文本3D.纹理高度;
         canvas.width = width;
         canvas.height = height;
 
         const ctx = canvas.getContext?.('2d');
         if (!ctx) {
-            console.warn('[Lable3D] 创建 2D 上下文失败，名字贴图不可见:', 文本);
+            console.warn('[文本3D] 创建 2D 上下文失败，名字贴图不可见:', 文本);
             return new Texture2D();
         }
 
         const 绘制文本 = (文本 ?? '').toString();
-        const font = `${Label3D.字体大小}px sans-serif`;
+        const font = `${文本3D.字体大小}px sans-serif`;
 
         ctx.clearRect(0, 0, width, height);
         ctx.font = font;

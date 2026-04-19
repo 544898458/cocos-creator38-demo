@@ -1,25 +1,21 @@
-import { _decorator, Component, Enum, MeshRenderer, Node } from 'cc';
+import { _decorator, Component, MeshRenderer, Node } from 'cc';
 
 const { ccclass, property, executeInEditMode } = _decorator;
-
-export enum 进度条3D类型 {
-    血条 = 0,
-    能量条 = 1,
-}
 
 @ccclass('进度条3D')
 @executeInEditMode(true)
 export class 进度条3D extends Component {
-    @property({ type: Enum(进度条3D类型), displayName: '类型' })
-    类型: 进度条3D类型 = 进度条3D类型.血条;
     @property({ type: Node, displayName: '背景节点' })
     背景节点: Node | null = null;
     @property({ type: Node, displayName: '前景节点' })
     前景节点: Node | null = null;
     private _最大值 = 100;
     private _当前值 = 100;
-
-    @property({ displayName: '最大值' })
+    
+    @property({ type: Number,serializable: true, tooltip: '大于0生效' })
+    public scale固定宽 = 0;
+    
+    @property({displayName: '最大值' })
     public get 最大值(): number {
         return this._最大值;
     }
@@ -47,12 +43,11 @@ export class 进度条3D extends Component {
         return Math.max(0.9, Math.sqrt(hpMax) / 2.35);
     }
 
-    private 计算能量条宽(energyMax: number): number {
-        return Math.max(0.75, Math.sqrt(energyMax) / 2.5);
-    }
-
     private 计算背景宽(最大值: number): number {
-        return this.类型 === 进度条3D类型.血条 ? this.计算血条宽(最大值) : this.计算能量条宽(最大值);
+        if (this.scale固定宽 > 0) {
+            return this.scale固定宽;
+        }
+        return this.计算血条宽(最大值);
     }
 
     protected onEnable(): void {

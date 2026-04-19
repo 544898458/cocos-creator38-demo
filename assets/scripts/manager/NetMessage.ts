@@ -1,4 +1,4 @@
-﻿// NetMessage.ts
+// NetMessage.ts
 import { Glob } from '../utils/Glob';
 import { MsgId, SayChannel, 单位类型, 属性类型, 战局类型 } from '../utils/Enum';
 import { MainTest } from '../MainTest';
@@ -14,7 +14,7 @@ import { 配置 } from '../配置/配置';
 import { 苔蔓Component } from '../component/苔蔓Component';
 import { 翻译Key } from '../配置/翻译Key';
 import { toast } from './ToastMgr';
-import { Label3D } from '../component/Label3D';
+import { 文本3D } from '../component/文本3D';
 import { 进度条3D } from '../component/进度条3D';
 
 // 聊天消息接口
@@ -611,7 +611,7 @@ export class NetMessage {
         }
 
         if (entity.描述文本) {
-            entity.node描述.getComponent(Label3D).文本 = entity.描述文本;
+            entity.node描述.getComponent(文本3D).文本 = entity.描述文本;
             entity.node描述.active = MainTest.instance.b显示名字;
         } else {
             entity.node描述.active = false;

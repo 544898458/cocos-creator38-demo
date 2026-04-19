@@ -25,7 +25,7 @@ import { UI2Prefab } from '../autobind/UI2Prefab'
 import { BattleMoude } from './BattleMoude'
 import { MsgId, 单位类型, 属性类型 } from '../utils/Enum'
 import { 翻译Key } from '../配置/翻译Key'
-import { Label3D } from '../component/Label3D'
+import { 文本3D } from '../component/文本3D'
 import { ClientEntity } from './ClientEntity'
 import { 进度条3D } from '../component/进度条3D'
 
@@ -1046,7 +1046,7 @@ export class Scene战斗 extends Component {
         const 名字 = entity.nickName || entity.entityName;
         entity.nodeName = newNode.getChildByName('名字');
         if (entity.nodeName) {
-            // entity.nodeName.getComponent(Label3D)?.设置(名字, entity.获取头顶名字颜色());
+            // entity.nodeName.getComponent(文本3D)?.设置(名字, entity.获取头顶名字颜色());
         } else {
             console.warn('[Name3D] 单位预制缺少“名字”节点，跳过添加名字实例:', newNode.name, id);
         }
@@ -1055,7 +1055,7 @@ export class Scene战斗 extends Component {
         if (entity.node描述) {
             entity.node描述.active = false;
             if (entity.描述文本) {
-                entity.node描述.getComponent(Label3D).文本 = entity.描述文本;
+                entity.node描述.getComponent(文本3D).文本 = entity.描述文本;
             }
         }
         this.创建单位3D状态条(id, entity, newNode)
