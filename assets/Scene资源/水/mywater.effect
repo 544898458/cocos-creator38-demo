@@ -1,0 +1,110 @@
+// Effect Syntax Guide: https://docs.cocos.com/creator/manual/zh/shader/index.html
+
+CCEffect %{
+  techniques:
+  - name: opaque
+    passes:
+    - vert: legacy/main-functions/general-vs:vert # builtin header
+      frag: unlit-fs:frag
+      properties: &props
+        shallowColor:   { value: [0.07843, 0.6667, 1, 1], editor: { type: color, tooltip: "浅水颜色" }  }
+        causticStrength:    { value: 0.2,  target: causticParams1.x, editor: { parent: USE_CAUSTIC, tooltip: "焦散强度" } }
+        causticScale:       { value: 2.33,  target: causticParams1.y, editor: { parent: USE_CAUSTIC, tooltip: "焦散缩放" } }
+        causticSpeed:       { value: 0.1,   target: causticParams1.z, editor: { parent: USE_CAUSTIC, tooltip: "焦散速度" } }
+        causticRGBSplit:    { value: 0.35,  target: causticParams1.w, editor: { parent: USE_CAUSTIC, tooltip: "RGB分离程度" } }
+        causticDepth:       { value: 1,  target: causticParams2.x, editor: { parent: USE_CAUSTIC, tooltip: "焦散深度" } }
+        causticColor:       { value: [0.01176, 0.4, 0.47451],   target: causticParams2.yzw, editor: { parent: USE_CAUSTIC, type: color, tooltip: "焦散颜色" } }
+        causticTexture:     { value: white, editor: { parent: USE_CAUSTIC, tooltip: "焦散纹理" } }
+  - name: transparent
+    passes:
+    - vert: general-vs:vert # builtin header
+      frag: unlit-fs:frag
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendSrcAlpha: src_alpha
+          blendDstAlpha: one_minus_src_alpha
+      properties: *props
+}%
+
+CCProgram shared-ubos %{
+  #define pi 3.14
+
+  uniform Water {
+    vec4 shallowColor;
+    vec4 causticParams1;
+    vec4 causticParams2;
+  };
+}%
+
+CCProgram unlit-fs %{
+  precision highp float;
+  #include <shared-ubos>
+  #include <legacy/output>
+  #include <legacy/fog-fs>
+
+  #if USE_CAUSTIC
+    uniform sampler2D causticTexture;
+  #endif
+
+  in vec2 v_uv;
+  in vec3 v_position;
+
+  #if USE_CAUSTIC
+  vec2 panner(vec2 uv, float direction, float speed, vec2 offset, float tiling)
+  {
+      direction = direction * 2. - 1.;
+      vec2 dir = normalize(vec2(cos(pi * direction), sin(pi * direction)));
+      return  (dir * cc_time.x * speed) + offset + (uv * tiling);
+  }
+
+  vec3 rgbSplit(float split, sampler2D tex, vec2 uv)
+  {
+      vec2 UVR = uv + vec2(split, split);
+      vec2 UVG = uv + vec2(split, -split);
+      vec2 UVB = uv + vec2(-split, -split);
+
+      float r = texture(tex, UVR).r;
+      float g = texture(tex, UVG).g;
+      float b = texture(tex, UVB).b;
+
+      return vec3(r,g,b);
+  }
+
+  vec3 caustic()
+  {
+    vec2 uv = v_position.xz;
+
+    float strength = causticParams1.x;
+    float split = causticParams1.w * 0.01;
+    float speed = causticParams1.z;
+    float scale = causticParams1.y;
+
+    vec3 texture1 = rgbSplit(split, causticTexture, panner(uv, 1., speed, vec2(0., 0.), 1./scale));
+    vec3 texture2 = rgbSplit(split, causticTexture, panner(uv, 1., speed, vec2(0., 0.), -1./scale));
+    vec3 textureCombined = min(texture1, texture2);
+
+    return strength * 10. * textureCombined;
+  }
+  #endif
+
+  vec4 frag () {
+    vec4 waterColor = shallowColor;
+    vec4 finalFoamColor = vec4(0.);
+    // caustic
+    vec4 finalCausticColor = vec4(0.);
+    #if USE_CAUSTIC
+      float causticDepth = causticParams2.x;
+      vec3 causticColor = causticParams2.yzw;
+      finalCausticColor.rgb = caustic() * causticColor;
+    #endif
+
+    vec4 finalColor = waterColor + finalFoamColor + finalCausticColor;
+    CC_APPLY_FOG(finalColor, v_position);
+    return CCFragOutput(finalColor);
+  }
+}%
+
+// 欢迎关注【白玉无冰】 https://mp.weixin.qq.com/s/4WwCjWBtZNnONh8hZ7JVDA

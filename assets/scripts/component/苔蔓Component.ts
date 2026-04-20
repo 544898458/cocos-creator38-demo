@@ -46,7 +46,7 @@ export class 苔蔓Component extends Component {
             const angle = (i / this.segments) * Math.PI * 2;
             const x = Math.cos(angle) * this.radius;
             const z = Math.sin(angle) * this.radius;
-            const posWorld节点 = this.node.getWorldPosition(this.node.position);
+            const posWorld节点 = this.node.getWorldPosition();
             const posWorld顶点 = new Vec3(x, 0, z).add(posWorld节点);
 
             // vertices.push(.add3f(posWorld.x, 0, posWorld.z));
