@@ -207,6 +207,7 @@ export class LoginView extends Dialog {
     }
     //点击登录
     onClickLogin(event: Event, customEventData: string) {
+        this.LoginPanel.active = false
         if(配置.正在下载的配置文件数量 > 0){
             toast.showToast(配置.正在下载的配置文件数量 + '个配置文件正在下载，请稍后再试')
             return
@@ -231,7 +232,7 @@ export class LoginView extends Dialog {
         }
 
         MainTest.instance.b登录成功 = false
-        this.LoginPanel.active = false//隐藏主页面
+        this.LoginPanel.active = false
         this.lableMessage.string = 翻译Key.翻译(翻译Key.正在连接)
         Glob.websocket = new WebSocket("wss://" + strGateSvrHost)
         Glob.websocket.binaryType = 'arraybuffer'
