@@ -68,7 +68,8 @@ export class MainTest extends Component {
     static rewardedVideoAd// 定义激励视频广告    微信流量主
     static customAd// 定义原生模板广告    微信流量主
 
-    static ad = null // 定义插屏广告    抖音流量主
+    static ad抖音插屏 = null // 定义插屏广告    抖音流量主
+    static ad抖音激励视频 = null // 定义激励视频广告    抖音流量主
     /**
  *  推荐组件参考代码
  *  核心由 pageManager实例 + openlink值 决定活动，开发者可根据下方代码自行适配
@@ -225,12 +226,52 @@ export class MainTest extends Component {
     }
     static 抖音小游戏初始化(): void {
         console.log('onSecen登录Load,是抖音小游戏')
-        if(!MainTest.ad){
-            MainTest.ad = tt.createInterstitialAd({
+
+        if(!MainTest.ad抖音插屏){
+            MainTest.ad抖音插屏 = tt.createInterstitialAd({
                 adUnitId: 'g1g9i631kh8i71k027',//抖音插屏广告位id，需在抖音广告平台申请
                 });
-                MainTest.ad.load();
-            console.log('抖音插屏广告组件,MainTest.ad', MainTest.ad)
+            MainTest.ad抖音插屏.load();
+            console.log('抖音插屏广告组件,MainTest.ad', MainTest.ad抖音插屏)
+        }
+        
+        if(!MainTest.ad抖音激励视频)
+        {
+            MainTest.ad抖音激励视频 = tt.createRewardedVideoAd({
+                adUnitId: '1hpbllhfeo48mnc12k',//抖音激励视频广告位id，需在抖音广告平台申请
+                });
+            
+            // 监听错误
+            MainTest.ad抖音激励视频.onError((err) => {
+                tt.hideLoading();
+                    switch (err.errCode) {
+                        case 1004:
+                            console.log('无合适的广告')
+                            break;
+                        default:
+                            console.log('更多请参考错误码文档', err)
+                    }
+                });
+
+            // 监听视频播放完成
+            MainTest.ad抖音激励视频.onClose((data) => {
+                    tt.hideLoading();
+                    if (data.isEnded) {
+                        console.log("观看了", data.count, "个视频");
+                    } else {
+                        console.log("未观看完视频");
+                    }
+                    MainTest.instance.on关闭广告(data && data.isEnded)
+                    // tt.redirectTo({
+                    //     url: "/pages/index/index",
+                    // });
+                    // 设置计时器，激励视屏广告展示60s内不能展示插屏广告
+                    // sleep(NEXT_SHOW_TIME).then(() => {
+                    //     canShow = true;
+                    // });
+                });
+            MainTest.ad抖音激励视频.load();
+            console.log('抖音激励视频广告组件,MainTest.ad', MainTest.ad抖音激励视频)
         }
 
         const launchOptions = tt.getLaunchOptionsSync().scene as string
@@ -385,7 +426,7 @@ export class MainTest extends Component {
                 console.error('rewardedVideoAd onError', err.errMsg)
             });
             MainTest.rewardedVideoAd.onClose(res => {
-                MainTest.instance.on关闭广告(res && res.isEnded || res === undefined)
+                MainTest.instance.on关闭广告(res && res.isEnded)
                 // 用户点击了【关闭广告】按钮
                 // 小于 2.1.0 的基础库版本，res 是一个 undefined
                 // if (res && res.isEnded || res === undefined) {
@@ -464,7 +505,24 @@ export class MainTest extends Component {
         // this.scene登录.main = null
         this.scene登录 = null
         if (MainTest.是微信小游戏() || MainTest.是抖音小游戏()) {
-            if (b多人混战) {
+            if (b多人混战) 
+            {
+                if (MainTest.ad抖音激励视频) 
+                {
+                    this.b已显示进战斗场景前的广告 = true
+                    MainTest.ad抖音激励视频.show().then(() => {
+                        // this.b已显示进战斗场景前的广告 = true
+                        // tt.showToast({
+                        // title: '广告显示成功',
+                        // });
+                    }).catch((err) => {
+                        // 展示失败
+                        console.error('抖音激励视频 show 失败', err)
+                        this.b已显示进战斗场景前的广告 = false
+                        this.on关闭广告(false)
+                    })
+                }
+
                 if (MainTest.rewardedVideoAd) {
                     this.b已显示进战斗场景前的广告 = true
                     MainTest.rewardedVideoAd.show().catch((err) => {
@@ -485,13 +543,13 @@ export class MainTest extends Component {
             }
             else 
             {
-                if(MainTest.ad)//插屏广告  抖音流量主
+                if(MainTest.ad抖音插屏)//插屏广告  抖音流量主
                 {
                     this.b已显示进战斗场景前的广告 = true
                     console.log('抖音准备显示插屏广告')
-                    MainTest.ad.show();// 展示插屏广告
+                    MainTest.ad抖音插屏.show();// 展示插屏广告
                     // 设置广告关闭的回调函数
-                    MainTest.ad.onClose(() => {
+                    MainTest.ad抖音插屏.onClose(() => {
                         console.log("抖音插屏广告关闭了");
                         MainTest.instance.on关闭广告()
                         // 休眠60s后把canShow置为true

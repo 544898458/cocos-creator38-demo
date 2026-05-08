@@ -542,11 +542,11 @@
       "1753810040471": {
         "type": "build",
         "id": "1753810040471",
-        "progress": 1,
-        "state": "success",
+        "progress": 0.24545454545454548,
+        "state": "processing",
         "stage": "build",
-        "message": "2026-5-8 22:11:51 build success in 36 s!",
-        "detailMessage": "Asset DB is resume!\r",
+        "message": "构建引擎脚本 start...",
+        "detailMessage": "[buildScriptCommand][[Build.Script.Rollup]] Circular dependency: file:///F:/UGit/cocos-creator38-demo/assets/scripts/MainTest.ts -> file:///F:/UGit/cocos-creator38-demo/assets/scripts/manager/SceneMan...",
         "options": {
           "name": "即时战略指挥",
           "server": "https://cdn.rtsgame.online/bytedance/",
@@ -612,7 +612,7 @@
             "enable": false
           }
         },
-        "time": "2026-5-8 22:11:14",
+        "time": "2026-5-8 22:39:09",
         "dirty": false
       },
       "1754925332894": {
