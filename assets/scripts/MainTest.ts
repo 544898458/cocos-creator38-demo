@@ -65,8 +65,10 @@ export class MainTest extends Component {
     b显示名字: boolean = true
 
     static interstitialAd = null// 定义插屏广告    微信流量主
-    static rewardedVideoAd// 定义激励视频广告
-    static customAd// 定义原生模板广告
+    static rewardedVideoAd// 定义激励视频广告    微信流量主
+    static customAd// 定义原生模板广告    微信流量主
+
+    static ad = null // 定义插屏广告    抖音流量主
     /**
  *  推荐组件参考代码
  *  核心由 pageManager实例 + openlink值 决定活动，开发者可根据下方代码自行适配
@@ -223,6 +225,13 @@ export class MainTest extends Component {
     }
     static 抖音小游戏初始化(): void {
         console.log('onSecen登录Load,是抖音小游戏')
+        if(!MainTest.ad){
+            MainTest.ad = tt.createInterstitialAd({
+                adUnitId: 'g1g9i631kh8i71k027',//抖音插屏广告位id，需在抖音广告平台申请
+                });
+                MainTest.ad.load();
+            console.log('抖音插屏广告组件,MainTest.ad', MainTest.ad)
+        }
 
         const launchOptions = tt.getLaunchOptionsSync().scene as string
         const b从侧边栏进入 = launchOptions == '021036'
@@ -320,102 +329,101 @@ export class MainTest extends Component {
     }
     static 微信小游戏初始化():void
     {
-        let thisLocal = this
-            // 创建插屏广告实例，提前初始化             进入战斗场景时显示
-            if (wx.createInterstitialAd) {
-                MainTest.interstitialAd = wx.createInterstitialAd({
-                    adUnitId: 'adunit-904480d5c9a873be'
-                })
-                MainTest.interstitialAd.onLoad(() => { console.log('插屏 广告加载成功') })
-                MainTest.interstitialAd.onError((err: any) => {
-                    console.error('interstitialAd onError', err.errMsg)
-                });
-                MainTest.interstitialAd.onClose(() => { thisLocal.on关闭广告() })
-                console.log('MainTest.interstitialAd', MainTest.interstitialAd)
-            } else {
-                console.log('微信流量主插屏广告未初始化')
-            }
+        // 创建插屏广告实例，提前初始化             进入战斗场景时显示
+        if (wx.createInterstitialAd) {
+            MainTest.interstitialAd = wx.createInterstitialAd({
+                adUnitId: 'adunit-904480d5c9a873be'
+            })
+            MainTest.interstitialAd.onLoad(() => { console.log('插屏 广告加载成功') })
+            MainTest.interstitialAd.onError((err: any) => {
+                console.error('interstitialAd onError', err.errMsg)
+            });
+            MainTest.interstitialAd.onClose(() => { MainTest.instance.on关闭广告() })
+            console.log('MainTest.interstitialAd', MainTest.interstitialAd)
+        } else {
+            console.log('微信流量主插屏广告未初始化')
+        }
 
-            if (!this.customAd) {
-                // 创建 原生模板 广告实例，提前初始化           首页顶部广告条
-                const size = wx.getSystemInfoSync();
-                const adWidth = 375
-                const adHeight = 150
-                // Calculate centered position
-                const left = (size.screenWidth - adWidth) / 2
-                const top = size.screenHeight - adHeight
-                console.log('left', left, 'size', size)
-                MainTest.customAd = wx.createCustomAd({
-                    adUnitId: 'adunit-cce53ccb600523d1',
-                    style: {
-                        left: left,
-                        top: top,
-                        width: adWidth,
-                        height: adHeight
-                    }
-                })
-
-                console.log('CustomAd', MainTest.customAd)
-                // 监听 原生模板 广告错误事件
-                MainTest.customAd.onError(err => {
-                    console.error('CustomAd onError', err.errMsg)
-                });
-                MainTest.customAd.onLoad(() => console.log('原生模板广告加载成功'))
-                // 在适合的场景显示 原生模板 广告
-                MainTest.customAd.show().then(() => console.log('首次创建后原生模板广告显示成功')).catch(err => console.log('首次创建后原生模板广告显示错误', err))
-
-            } else {
-                MainTest.customAd.show().then(() => console.log('原生模板广告再次显示成功')).catch(err => console.log('原生模板广告再次显示错误', err))
-            }
-
-            if (!MainTest.rewardedVideoAd) {
-                // 创建激励视频广告实例，提前初始化
-                MainTest.rewardedVideoAd = wx.createRewardedVideoAd({
-                    adUnitId: 'adunit-016e0f527a910f13'
-                })
-                MainTest.rewardedVideoAd.onError(err => {
-                    console.error('rewardedVideoAd onError', err.errMsg)
-                });
-                MainTest.rewardedVideoAd.onClose(res => {
-                    MainTest.instance.on关闭广告(res && res.isEnded || res === undefined)
-                    // 用户点击了【关闭广告】按钮
-                    // 小于 2.1.0 的基础库版本，res 是一个 undefined
-                    // if (res && res.isEnded || res === undefined) {
-                    //     // 正常播放结束，可以下发游戏奖励
-                    // }
-                    // else {
-                    //     // 播放中途退出，不下发游戏奖励
-                    // }
-                })
-                console.log('MainTest.rewardedVideoAd', MainTest.rewardedVideoAd)
-            }
-
-            if (!MainTest.recommendPageManager) {
-                if(wx.createPageManager){
-                    MainTest.recommendPageManager = wx.createPageManager();
-                    MainTest.recommendPageManager.load({
-                        openlink: 'TWFRCqV5WeM2AkMXhKwJ03MhfPOieJfAsvXKUbWvQFQtLyyA5etMPabBehga950uzfZcH3Vi3QeEh41xRGEVFw',
-                    }).then((res: any) => {
-                        console.log(res);
-                    })
-                    MainTest.recommendPageManager.on(
-                        'show', // show | destroy | error
-                        () => {
-                            console.log('recommend component show.');
-                        },
-                    )
-                    MainTest.recommendPageManager.on(
-                        'destroy', // show | destroy | error
-                        (res) => {
-                            console.log('recommend component destroy：', res.isRecommended);
-                        },
-                    )
+        if (!this.customAd) {
+            // 创建 原生模板 广告实例，提前初始化           首页顶部广告条
+            const size = wx.getSystemInfoSync();
+            const adWidth = 375
+            const adHeight = 150
+            // Calculate centered position
+            const left = (size.screenWidth - adWidth) / 2
+            const top = size.screenHeight - adHeight
+            console.log('left', left, 'size', size)
+            MainTest.customAd = wx.createCustomAd({
+                adUnitId: 'adunit-cce53ccb600523d1',
+                style: {
+                    left: left,
+                    top: top,
+                    width: adWidth,
+                    height: adHeight
                 }
-                else
-                {
-                    console.log('微信推荐组件未初始化')
-                }
+            })
+
+            console.log('CustomAd', MainTest.customAd)
+            // 监听 原生模板 广告错误事件
+            MainTest.customAd.onError(err => {
+                console.error('CustomAd onError', err.errMsg)
+            });
+            MainTest.customAd.onLoad(() => console.log('原生模板广告加载成功'))
+            // 在适合的场景显示 原生模板 广告
+            MainTest.customAd.show().then(() => console.log('首次创建后原生模板广告显示成功')).catch(err => console.log('首次创建后原生模板广告显示错误', err))
+
+        } else {
+            MainTest.customAd.show().then(() => console.log('原生模板广告再次显示成功')).catch(err => console.log('原生模板广告再次显示错误', err))
+        }
+
+        if (!MainTest.rewardedVideoAd) {
+            // 创建激励视频广告实例，提前初始化
+            MainTest.rewardedVideoAd = wx.createRewardedVideoAd({
+                adUnitId: 'adunit-016e0f527a910f13'
+            })
+            MainTest.rewardedVideoAd.onError(err => {
+                console.error('rewardedVideoAd onError', err.errMsg)
+            });
+            MainTest.rewardedVideoAd.onClose(res => {
+                MainTest.instance.on关闭广告(res && res.isEnded || res === undefined)
+                // 用户点击了【关闭广告】按钮
+                // 小于 2.1.0 的基础库版本，res 是一个 undefined
+                // if (res && res.isEnded || res === undefined) {
+                //     // 正常播放结束，可以下发游戏奖励
+                // }
+                // else {
+                //     // 播放中途退出，不下发游戏奖励
+                // }
+            })
+            console.log('MainTest.rewardedVideoAd', MainTest.rewardedVideoAd)
+        }
+
+        if (!MainTest.recommendPageManager) {
+            if(wx.createPageManager){
+                MainTest.recommendPageManager = wx.createPageManager();
+                MainTest.recommendPageManager.load({
+                    openlink: 'TWFRCqV5WeM2AkMXhKwJ03MhfPOieJfAsvXKUbWvQFQtLyyA5etMPabBehga950uzfZcH3Vi3QeEh41xRGEVFw',
+                }).then((res: any) => {
+                    console.log(res);
+                })
+                MainTest.recommendPageManager.on(
+                    'show', // show | destroy | error
+                    () => {
+                        console.log('recommend component show.');
+                    },
+                )
+                MainTest.recommendPageManager.on(
+                    'destroy', // show | destroy | error
+                    (res) => {
+                        console.log('recommend component destroy：', res.isRecommended);
+                    },
+                )
             }
+            else
+            {
+                console.log('微信推荐组件未初始化')
+            }
+        }
     }
     static onSecen登录Load(): void {
         if (MainTest.是抖音小游戏()) {
@@ -455,7 +463,7 @@ export class MainTest extends Component {
         // this.scene登录.onDestroy()
         // this.scene登录.main = null
         this.scene登录 = null
-        if ((window as any).CC_WECHAT) {
+        if (MainTest.是微信小游戏() || MainTest.是抖音小游戏()) {
             if (b多人混战) {
                 if (MainTest.rewardedVideoAd) {
                     this.b已显示进战斗场景前的广告 = true
@@ -474,10 +482,30 @@ export class MainTest extends Component {
                 } else {
                     console.log('没有插屏广告')
                 }
-            } else {
-                if (MainTest.interstitialAd) {
+            }
+            else 
+            {
+                if(MainTest.ad)//插屏广告  抖音流量主
+                {
                     this.b已显示进战斗场景前的广告 = true
-                    console.log('准备显示插屏广告')
+                    console.log('抖音准备显示插屏广告')
+                    MainTest.ad.show();// 展示插屏广告
+                    // 设置广告关闭的回调函数
+                    MainTest.ad.onClose(() => {
+                        console.log("抖音插屏广告关闭了");
+                        MainTest.instance.on关闭广告()
+                        // 休眠60s后把canShow置为true
+                        // this.afterNext();
+                        // tt.redirectTo({
+                        //     url: "/pages/index/index",
+                        // });
+                    });
+                }
+
+                if (MainTest.interstitialAd) //插屏广告 微信流量主
+                {
+                    this.b已显示进战斗场景前的广告 = true
+                    console.log('微信准备显示插屏广告')
                     MainTest.interstitialAd.show().catch((err) => {
                         this.b已显示进战斗场景前的广告 = false
                         console.error('插屏广告显示失败', err)
