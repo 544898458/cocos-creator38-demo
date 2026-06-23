@@ -1023,8 +1023,6 @@ export class Scene战斗 extends Component {
             entity.skeletalAnimation = newNode.getChildByName('Hydralisk').getComponent(SkeletalAnimation)
         } else if (newNode.name == '工蜂') {
             entity.skeletalAnimation = newNode.getChildByName('Drone').getComponent(SkeletalAnimation)
-        } else if (newNode.name == '地堡') {
-            entity.skeletalAnimation = newNode.getChildByName('地堡872面').getComponent(Animation)
         }
         else if (单位配置 && 单位配置.动画节点路径) {
             let node = newNode.getChildByName(单位配置.动画节点路径)
