@@ -1,8 +1,12 @@
 import { Node, Vec3, Animation, Color, Tween } from 'cc';
 import { MainTest } from '../MainTest';
 import { Glob } from '../utils/Glob';
-import { 单位类型, 属性类型 } from '../utils/Enum';
+import { 单位类型, 属性类型, 种族 } from '../utils/Enum';
 import { 文本3D } from '../component/文本3D';
+
+export const nodeName选中特效 = 'Select'
+export const nodeName攻击范围 = '攻击范围'
+export const nodeName警戒范围 = '警戒范围'
 
 export class ClientEntity {
     static myNickName: string;
@@ -39,6 +43,15 @@ export class ClientEntity {
     removeFromParent() {
         let roles回收池 = this.view && MainTest.instance.scene战斗?.roles回收池
         if(roles回收池) {
+            // 这些节点是运行时挂到单位上的临时表现，不能随单位节点进入对象池。
+            // 否则该预制体下次被复用时，会继承上一个单位的选中/范围状态。
+            for (const nodeName of [nodeName选中特效, nodeName攻击范围, nodeName警戒范围]) {
+                const transientNode = this.view.getChildByName(nodeName)
+                if (transientNode) {
+                    transientNode.removeFromParent()
+                    transientNode.destroy()
+                }
+            }
             this.view.removeFromParent()
             let node = roles回收池.getChildByName(this.prefabName)
             if(!node) {
@@ -90,6 +103,11 @@ export class ClientEntity {
     }
 
     获取头顶名字颜色(): Color {
+        const 单位配置 = MainTest.instance.配置.find单位(this.类型);
+        if (单位配置?.种族 === 种族.无) {
+            return new Color(255, 255, 255);
+        }
+
         if (this.类型 == 单位类型.晶体矿 || this.类型 == 单位类型.燃气矿) {
             return new Color(170, 255, 255);
         }

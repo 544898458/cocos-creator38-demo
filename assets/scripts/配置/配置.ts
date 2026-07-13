@@ -1,7 +1,7 @@
 import { TextAsset } from 'cc'
 import { assetManager } from 'cc'
 import { parse } from 'yaml'
-import { 单位类型, 属性类型, 战局类型 } from '../utils/Enum'
+import { 单位类型, 属性类型, 战局类型, 种族 } from '../utils/Enum'
 import url配置 from './此游戏专用配置'
 export class 动作 {
 	名字或索引: string
@@ -11,6 +11,7 @@ export class 动作 {
 }
 export class 单位配置 {
 	类型: 单位类型
+	种族?: 种族
 	名字Key: string
 	空闲动作: 动作
 	动画节点路径: string

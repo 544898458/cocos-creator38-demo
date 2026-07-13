@@ -26,15 +26,13 @@ import { BattleMoude } from './BattleMoude'
 import { MsgId, 单位类型, 属性类型 } from '../utils/Enum'
 import { 翻译Key } from '../配置/翻译Key'
 import { 文本3D } from '../component/文本3D'
-import { ClientEntity } from './ClientEntity'
+import { ClientEntity, nodeName攻击范围, nodeName警戒范围, nodeName选中特效 } from './ClientEntity'
 import { 进度条3D } from '../component/进度条3D'
 
 const { ccclass, property } = _decorator
 
-const prefabName选中特效: string = 'Select'//这里不能用中文，原因不明
+const prefabName选中特效: string = nodeName选中特效//这里不能用中文，原因不明
 const prefabName范围特效: string = '特效/范围'
-const nodeName攻击范围: string = '攻击范围'
-const nodeName警戒范围: string = '警戒范围'
 const nodeName地图: string = 'map' //地图前称
 
 @ccclass('Scene战斗')
@@ -646,6 +644,12 @@ export class Scene战斗 extends Component {
         }
     }
 
+    移除已删除单位的选中状态(id: number): void {
+        if (BattleMoude._arr选中.includes(id)) {
+            this.选中(BattleMoude._arr选中.filter(选中Id => 选中Id !== id))
+        }
+    }
+
     隐藏选中单位专用按钮() {
         if (!this.battleUI) {
             this.battleUI = MainTest.instance.dialogMgr.getDialog(UI2Prefab.BattleUI_url)?.getComponent(BattleUI);
@@ -1008,6 +1012,14 @@ export class Scene战斗 extends Component {
         hpMax: number,
     ): void {
         console.log('初始化单位节点', entity.类型, newNode.name, id, hpMax)
+        // 对象池的防御性清理：兼容修复前已经带有临时节点的缓存单位。
+        for (const nodeName of [prefabName选中特效, nodeName攻击范围, nodeName警戒范围]) {
+            const transientNode = newNode.getChildByName(nodeName)
+            if (transientNode) {
+                transientNode.removeFromParent()
+                transientNode.destroy()
+            }
+        }
         this.roles.addChild(newNode);
         this.entityId[newNode.uuid] = id;
         entity.view = newNode

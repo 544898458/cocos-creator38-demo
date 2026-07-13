@@ -381,6 +381,7 @@ export class NetMessage {
             return;
         }
 
+        scene战斗.移除已删除单位的选中状态(id);
         entity.removeFromParent();
         scene战斗.entities.delete(id);
 
