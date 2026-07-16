@@ -2,13 +2,16 @@ import { TextAsset } from 'cc'
 import { assetManager } from 'cc'
 import { parse } from 'yaml'
 import { 单位类型, 属性类型, 战局类型, 种族 } from '../utils/Enum'
+import { MainTest } from '../MainTest'
 import url配置 from './此游戏专用配置'
+
 export class 动作 {
 	名字或索引: string
 	播放速度: number
 	起始时刻秒: number
 	结束时刻秒: number
 }
+
 export class 单位配置 {
 	类型: 单位类型
 	种族?: 种族
@@ -19,6 +22,7 @@ export class 单位配置 {
 	受击高度: number
 	是骨骼动画: boolean
 }
+
 export class 战斗配置 {
 	类型: 单位类型
 	f警戒距离: number
@@ -35,25 +39,30 @@ export class 战斗配置 {
 	b可打空中: boolean
 	b可打地面: boolean
 }
+
 export class 制造配置 {
 	类型: 单位类型
 	消耗晶体矿: number
 	消耗燃气矿: number
 	初始HP: number
 }
+
 export class 活动单位配置 {
 	类型: 单位类型
 }
+
 export class 单位属性等级配置 {
 	类型: 单位类型
 	属性: 属性类型
 	等级: number
 	数值: number
 }
+
 export class 建筑单位配置 {
 	类型: 单位类型
 	f半边长: number
 }
+
 export class 战局配置 {
 	类型: 战局类型
 	strSceneName: string
@@ -63,6 +72,7 @@ export class 战局配置 {
 	Https高清贴图: string
 	玩家同阵营: boolean
 }
+
 export class 音乐配置 {
 	编号: number
 	名字Key: string
@@ -70,6 +80,7 @@ export class 音乐配置 {
 	版权Key: string
 	Https音乐: string
 }
+
 export class 配置 {
 	arr单位: Array<单位配置>
 	arr战斗: Array<战斗配置>
@@ -80,6 +91,7 @@ export class 配置 {
 	arr战局: Array<战局配置>
 	arr音乐: Array<音乐配置>
 	static 正在下载的配置文件数量: number = 0
+
 	读取配置文件() {
 		this.读取1个配置文件<单位配置>('单位', (arr) => this.arr单位 = arr)
 		this.读取1个配置文件<战斗配置>('战斗', (arr) => this.arr战斗 = arr)
@@ -90,40 +102,54 @@ export class 配置 {
 		this.读取1个配置文件<战局配置>('战局', (arr) => this.arr战局 = arr)
 		this.读取1个配置文件<音乐配置>('音乐', (arr) => this.arr音乐 = arr)
 	}
+
 	读取1个配置文件<T>(strName: string, fun: (arr: Array<T>) => void) {
 		++配置.正在下载的配置文件数量
 		let url = url配置
 		assetManager.loadRemote(encodeURI(url + strName + '.yaml'), { ext: '.txt' },
 			(err, textAsset: TextAsset) => {
 				console.log(err, textAsset)
-				let arr = parse(textAsset.text) as Array<T>;
+				let arr = parse(textAsset.text) as Array<T>
 				arr.forEach((配置: T) => { console.log(配置) })
 				fun(arr)
 				--配置.正在下载的配置文件数量
-				console.log('配置.正在下载的配置文件数量', 配置.正在下载的配置文件数量)
+				if (配置.正在下载的配置文件数量 == 0) {
+					MainTest.instance.scene登录?.登录界面显示消息(`已下载所有配置文件`)
+					MainTest.instance.scene登录?.显示登录界面()
+				}
+				else
+					MainTest.instance.scene登录?.登录界面显示消息(`还有${配置.正在下载的配置文件数量}个配置文件等待下载……`)
 			})
 	}
+
 	find战斗(类型: 单位类型): 战斗配置 {
 		return this.arr战斗.find((v) => v.类型 == 类型)
 	}
+
 	find单位(类型: 单位类型): 单位配置 {
 		return this.arr单位.find((v) => v.类型 == 类型)
 	}
+
 	find制造(类型: 单位类型): 制造配置 {
 		return this.arr制造.find((v) => v.类型 == 类型)
 	}
+
 	find活动单位(类型: 单位类型): 活动单位配置 {
 		return this.arr活动单位.find((v) => v.类型 == 类型)
 	}
+
 	find建筑单位(类型: 单位类型): 建筑单位配置 {
 		return this.arr建筑单位.find((v) => v.类型 == 类型)
 	}
+
 	find单位属性等级加数值(单位: 单位类型, 属性: 属性类型, 等级: number) {
 		return this.arr单位属性等级.find((v) => v.类型 == 单位 && v.属性 == 属性 && v.等级 == 等级)?.数值
 	}
+
 	find战局(类型: 战局类型): 战局配置 {
 		return this.arr战局.find((v) => v.类型 == 类型)
 	}
+
 	find音乐(编号: number): 音乐配置 {
 		return this.arr音乐.find((v) => v.编号 == 编号)
 	}
