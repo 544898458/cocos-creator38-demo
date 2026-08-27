@@ -570,7 +570,10 @@ export class Scene战斗 extends Component {
             return
         }
 
-        this.clear选中()
+        const entity = this.entities.get(id)
+        if (!entity || Glob.myNickName == null || entity.nickName == Glob.myNickName) {
+            this.clear选中()
+        }
         BattleMoude.instance.send选中([id])
     }
     update(deltaTime: number) {
