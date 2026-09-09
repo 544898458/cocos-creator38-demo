@@ -4,6 +4,7 @@ export class Glob {
     public static HEIGHT: number = 750;
     public static WIDTH: number = 1334;
     public static myNickName: String = null;
+    public static my账号Id: number = 0;
 
     public static websocket: WebSocket;
     private static sendMsgSn: number = 0;

@@ -571,7 +571,7 @@ export class Scene战斗 extends Component {
         }
 
         const entity = this.entities.get(id)
-        if (!entity || Glob.myNickName == null || entity.nickName == Glob.myNickName) {
+        if (!entity || Glob.my账号Id == 0 || entity.u32账号Id == Glob.my账号Id) {
             this.clear选中()
         }
         BattleMoude.instance.send选中([id])

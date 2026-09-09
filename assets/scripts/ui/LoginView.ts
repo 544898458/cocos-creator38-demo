@@ -222,6 +222,7 @@ export class LoginView extends Dialog {
 
     private 登录(strGateSvrHost: string, str登录名: string, strWxLoginCode: string) {
         Glob.myNickName = str登录名
+        Glob.my账号Id = 0
         sys.localStorage.setItem(Glob.KEY_登录名, str登录名)
 
         console.log(str登录名 + "登录游戏")
@@ -478,7 +479,7 @@ export class LoginView extends Dialog {
         MainTest.instance.fun离开战斗场景 = (loginView: LoginView) => loginView.选择单人或多人(false)
         MainTest.instance.onClick获取别人的多人战局列表(event, customEventData)
     }
-    显示战局列表(arrPlayer: string[][], handler: string): void {
+    显示战局列表(arrPlayer: Array<[number, string, string]>, handler: string): void {
         console.log('显示战局列表', arrPlayer, handler)
         this.node单人战局选择种族.active = false
         this.node多人战局面板.active = false
@@ -486,8 +487,9 @@ export class LoginView extends Dialog {
         this.node玩家战局列表.removeAllChildren()
 
         for (let arrNikcScene of arrPlayer) {
-            let nickName = arrNikcScene[0]
-            let sceneName = arrNikcScene[1]
+            let u32账号Id = arrNikcScene[0]
+            let nickName = arrNikcScene[1]
+            let sceneName = arrNikcScene[2]
             let node按钮 = instantiate(this.node个人战局按钮模板)
             node按钮.getChildByName('Label').getComponent(L10nLabel).destroy()
             node按钮.active = true
@@ -497,16 +499,16 @@ export class LoginView extends Dialog {
             clickEventHandler.target = this.node; // 这个 node 节点是你的事件处理代码组件所属的节点
             clickEventHandler.component = 'LoginView';// 这个是脚本类名
             clickEventHandler.handler = handler;
-            clickEventHandler.customEventData = nickName;
+            clickEventHandler.customEventData = u32账号Id.toString();
             button.clickEvents.push(clickEventHandler)
             this.node玩家战局列表.addChild(node按钮)
 
             // 存储玩家场景信息
-            MainTest.instance.map玩家场景.set(nickName, sceneName)
+            MainTest.instance.map玩家场景.set(u32账号Id, sceneName)
         }
     }
     onClick进入别人的个人战局(event: Event, customEventData: string): void {
-        MainTest.instance.onClick进入别人的多人战局(event, customEventData)
+        MainTest.instance.onClick进入别人的个人战局(event, customEventData)
     }
     onClick进入别人的多人战局(event: Event, customEventData: string): void {
         MainTest.instance.onClick进入别人的多人战局(event, customEventData)

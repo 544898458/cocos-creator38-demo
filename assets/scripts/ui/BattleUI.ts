@@ -605,7 +605,7 @@ export class BattleUI extends Dialog {
         let arr选中: number[] = []
         let vec3中心点 = new Vec3(0, 0, 0)
         MainTest.instance.scene战斗.entities.forEach((entity, id, _) => {
-            if(entity.nickName != Glob.myNickName)
+            if(entity.u32账号Id != Glob.my账号Id)
                 return
 
             if(!MainTest.Is活动单位(entity.类型))
@@ -651,4 +651,3 @@ export class BattleUI extends Dialog {
         dispatcher.sendArray([[MsgId.乒, Glob.getSendMsgSn自增(), 0]])
     }
 }
-

@@ -11,6 +11,7 @@ export const nodeName警戒范围 = '警戒范围'
 export class ClientEntity {
     static myNickName: string;
     view: Node
+    u32账号Id: number = 0
     nodeName: Node
     node描述: Node
     skeletalAnimation: Animation
@@ -125,8 +126,8 @@ export class ClientEntity {
         }
     }
     判断是否同玩家名着色子弹(): Color {
-        if (Glob.myNickName != null) {
-            if (this.nickName != Glob.myNickName) {
+        if (Glob.my账号Id > 0) {
+            if (this.u32账号Id != Glob.my账号Id) {
                 return new Color(80, 30, 30);
             }
             else {
@@ -136,12 +137,12 @@ export class ClientEntity {
         return new Color(80, 80, 80);
     }
     判断是否同玩家名着色单位(): Color {
-        if (Glob.myNickName != null) {
+        if (Glob.my账号Id > 0) {
             if(this.nickName == '敌人'){
                 return new Color(255, 80, 80)
             }
 
-            if (this.nickName == Glob.myNickName){
+            if (this.u32账号Id == Glob.my账号Id){
                 return new Color(10, 255, 10);
             }
 

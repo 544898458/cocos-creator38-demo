@@ -168,6 +168,7 @@ export class NetMessage {
 
         const scene战斗 = mainTest.scene战斗;
         const id = arr[idxArr++] as number;
+        const u32账号Id = arr[idxArr++] as number;
         const nickName = arr[idxArr++];
         const entityName = arr[idxArr++];
         const prefabName = arr[idxArr++] as string;
@@ -183,6 +184,7 @@ export class NetMessage {
         }
 
         let entityNew = new ClientEntity();
+        entityNew.u32账号Id = u32账号Id;
         entityNew.hpMax初始 = hpMax;
         entityNew.能量Max = energyMax;
         entityNew.prefabName = prefabName;
@@ -512,7 +514,7 @@ export class NetMessage {
         const mainTest = this.mainTest;
         if (!mainTest || !mainTest.scene登录) return;
 
-        const arr玩家 = arr[idxArr++] as string[][];
+        const arr玩家 = arr[idxArr++] as Array<[number, string, string]>;
         console.log('handleGame_玩家多人战局列表', arr玩家)
         mainTest.scene登录?.显示战局列表(arr玩家, 'onClick进入别人的多人战局')
     }
@@ -620,13 +622,17 @@ export class NetMessage {
     }
     // 处理登录响应
     private handleLoginResponse(payload: any[]): void {
-        const [rpcSnId, result, strMsg, idSvr] = payload as [number, LoginResult, string, number];
+        const [rpcSnId, result, strMsg, idSvr, _str账号, u32账号Id, nickName] = payload as [number, LoginResult, string, number, string, number, string];
 
         console.log('rpcSnId', rpcSnId, 'result', result, 'strMsg', strMsg, 'idSvr', idSvr);
         MainTest.idSvr = idSvr;
 
-        if (result === LoginResult.OK)
+        if (result === LoginResult.OK) {
+            Glob.my账号Id = u32账号Id ?? 0;
+            if (nickName?.length > 0)
+                Glob.myNickName = nickName;
             return;
+        }
 
         //登录失败，显示错误信息
         dispatcher.emit(EC.SHOW_TOAST, strMsg);
@@ -642,7 +648,7 @@ export class NetMessage {
         const mainTest = this.mainTest;
         if (!mainTest || !mainTest.scene登录) return;
 
-        const arr玩家 = arr[idxArr++] as string[][];
+        const arr玩家 = arr[idxArr++] as Array<[number, string, string]>;
         console.log('handleGame_玩家个人战局列表', arr玩家)
         mainTest.scene登录?.显示战局列表(arr玩家, 'onClick进入别人的个人战局')
         console.log('收到玩家个人战局列表:', arr玩家);

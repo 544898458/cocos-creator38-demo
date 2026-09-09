@@ -57,7 +57,7 @@ export class MainTest extends Component {
     audioManager: AudioSource;
     @property(文本材质缓存Manager)
     文本材质缓存: 文本材质缓存Manager = null;
-    map玩家场景 = new Map<string, string>//NickName=>SceneName
+    map玩家场景 = new Map<number, string>//账号Id=>SceneName
     b登录成功: boolean = false;
 
     b显示单位类型: boolean = true
@@ -498,7 +498,7 @@ export class MainTest extends Component {
         }
     }
 
-    进Scene战斗(sceneName: string, idMsg: MsgId, id副本: 战局类型, str房主昵称: string = '', b多人混战: boolean = false) {
+    进Scene战斗(sceneName: string, idMsg: MsgId, id副本: 战局类型, u32房主账号Id: number = 0, b多人混战: boolean = false) {
         this.scene登录.node选择单人或多人.active = false
         this.dialogMgr.closeDialog(UI2Prefab.LoginView_url);
         // this.scene登录.onDestroy()
@@ -592,11 +592,11 @@ export class MainTest extends Component {
                 console.error('战斗UI未找到')
             }
 
-            this.loadMap(sceneName, idMsg, id副本, str房主昵称, b多人混战)
+            this.loadMap(sceneName, idMsg, id副本, u32房主账号Id, b多人混战)
         })
 
     }
-    loadMap(sceneName: string, idMsg: MsgId, id副本: 战局类型, str房主昵称: string = '', b多人混战: boolean): void {
+    loadMap(sceneName: string, idMsg: MsgId, id副本: 战局类型, u32房主账号Id: number = 0, b多人混战: boolean): void {
         //加载地图
         resources.load(sceneName, (err, scene: Prefab) => {
             if (err) {
@@ -608,7 +608,7 @@ export class MainTest extends Component {
 
             // this.nodeSelectSpace.active = false
             if (this.b已显示进战斗场景前的广告) {
-                this.fun关闭广告发消息 = (b已看完激励视频广告): void => this.send进战斗场景(idMsg, id副本, str房主昵称, b已看完激励视频广告)
+                this.fun关闭广告发消息 = (b已看完激励视频广告): void => this.send进战斗场景(idMsg, id副本, u32房主账号Id, b已看完激励视频广告)
                 console.log('已显示插屏广告，等待插屏广告关闭', this.fun关闭广告发消息, this)
                 //5秒内发送登录消息
                 setTimeout(() => {
@@ -616,15 +616,15 @@ export class MainTest extends Component {
                 }, b多人混战 ? 5 * 60000 : 5000)
             } else {
                 console.log('未显示插屏广告，直接进战斗场景', this.fun关闭广告发消息, this)
-                this.send进战斗场景(idMsg, id副本, str房主昵称)
+                this.send进战斗场景(idMsg, id副本, u32房主账号Id)
             }
         })
     }
     static GetMapNode(): Node {
         return director.getScene().getChildByName('MapNode')
     }
-    send进战斗场景(idMsg: MsgId, id副本: 战局类型, str房主昵称, b已看完激励视频广告 = false) {
-        dispatcher.sendArray([[idMsg, 0, 0], id副本, str房主昵称, b已看完激励视频广告])
+    send进战斗场景(idMsg: MsgId, id副本: 战局类型, u32房主账号Id: number, b已看完激励视频广告 = false) {
+        dispatcher.sendArray([[idMsg, 0, 0], id副本, u32房主账号Id, b已看完激励视频广告])
     }
     onClick进单人战局(id: 战局类型) {
         console.log('onClick进单人战局', id)
@@ -647,11 +647,13 @@ export class MainTest extends Component {
     }
     onClick进入别人的个人战局(event: Event, customEventData: string) {
         console.log(event, customEventData)
-        this.进Scene战斗(this.map玩家场景.get(customEventData), MsgId.进其他玩家个人战局, 战局类型.单人ID_非法_MIN, customEventData)
+        const u32账号Id = Number(customEventData)
+        this.进Scene战斗(this.map玩家场景.get(u32账号Id), MsgId.进其他玩家个人战局, 战局类型.单人ID_非法_MIN, u32账号Id)
     }
     onClick进入别人的多人战局(event: Event, customEventData: string) {
         console.log(event, customEventData)
-        this.进Scene战斗(this.map玩家场景.get(customEventData), MsgId.进其他玩家多人战局, 战局类型.四方对战, customEventData)
+        const u32账号Id = Number(customEventData)
+        this.进Scene战斗(this.map玩家场景.get(u32账号Id), MsgId.进其他玩家多人战局, 战局类型.四方对战, u32账号Id)
     }
     static 播放动作(old: ClientEntity, strClipName: string, loop: boolean, 动作播放速度: number = 1, f动作起始时刻秒: number = 0, f动作结束时刻秒: number = 0) {
         // console.log('strClipName', strClipName, 'old.view.name', old.view.name, 'loop', loop, '动作播放速度', 动作播放速度, 'f动作起始时刻秒', f动作起始时刻秒, 'f动作结束时刻秒', f动作结束时刻秒)
@@ -929,4 +931,3 @@ export class MainTest extends Component {
         })
     }
 }
-
