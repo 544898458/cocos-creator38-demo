@@ -1,0 +1,279 @@
+{
+  "ver": "2.3.14",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "a0187480-2486-4e7d-a637-e257d7ed046b",
+  "files": [
+    "__original-animation-0.bin",
+    "__original-animation-1.bin"
+  ],
+  "subMetas": {
+    "30732": {
+      "importer": "gltf-skeleton",
+      "uuid": "a0187480-2486-4e7d-a637-e257d7ed046b@30732",
+      "displayName": "",
+      "id": "30732",
+      "name": "UnnamedSkeleton-0.skeleton",
+      "userData": {
+        "gltfIndex": 0,
+        "jointsLength": 20
+      },
+      "ver": "1.0.1",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "0e5c8": {
+      "importer": "gltf-mesh",
+      "uuid": "a0187480-2486-4e7d-a637-e257d7ed046b@0e5c8",
+      "displayName": "",
+      "id": "0e5c8",
+      "name": "0000_10_03.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 2802
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "fddb2": {
+      "importer": "gltf-mesh",
+      "uuid": "a0187480-2486-4e7d-a637-e257d7ed046b@fddb2",
+      "displayName": "",
+      "id": "fddb2",
+      "name": "0001_10_03.mesh",
+      "userData": {
+        "gltfIndex": 1,
+        "triangleCount": 920
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "d15f4": {
+      "importer": "gltf-animation",
+      "uuid": "a0187480-2486-4e7d-a637-e257d7ed046b@d15f4",
+      "displayName": "",
+      "id": "d15f4",
+      "name": "C4D Animation Take.animation",
+      "userData": {
+        "gltfIndex": 0,
+        "wrapMode": 2,
+        "sample": 30,
+        "span": {
+          "from": 0,
+          "to": 3
+        },
+        "events": []
+      },
+      "ver": "1.0.18",
+      "imported": true,
+      "files": [
+        ".bin"
+      ],
+      "subMetas": {}
+    },
+    "18d6f": {
+      "importer": "gltf-animation",
+      "uuid": "a0187480-2486-4e7d-a637-e257d7ed046b@18d6f",
+      "displayName": "",
+      "id": "18d6f",
+      "name": "mixamo.com.animation",
+      "userData": {
+        "gltfIndex": 1,
+        "wrapMode": 2,
+        "sample": 30,
+        "span": {
+          "from": 0,
+          "to": 0.800000011920929
+        },
+        "events": [
+          {
+            "frame": 0.06666666666666667,
+            "func": "",
+            "params": []
+          },
+          {
+            "frame": 0.06666666666666667,
+            "func": "播放声音",
+            "params": [
+              "音效/机器人脚步_右脚"
+            ]
+          },
+          {
+            "frame": 0.4,
+            "func": "",
+            "params": []
+          },
+          {
+            "frame": 0.4,
+            "func": "播放声音",
+            "params": [
+              "音效/机器人脚步_左脚"
+            ]
+          }
+        ],
+        "embeddedPlayers": [],
+        "editorExtras": {
+          "embeddedPlayerGroups": []
+        },
+        "speed": 1,
+        "auxiliaryCurves": {}
+      },
+      "ver": "1.0.18",
+      "imported": true,
+      "files": [
+        ".bin"
+      ],
+      "subMetas": {}
+    },
+    "f1394": {
+      "importer": "gltf-skeleton",
+      "uuid": "a0187480-2486-4e7d-a637-e257d7ed046b@f1394",
+      "displayName": "",
+      "id": "f1394",
+      "name": "UnnamedSkeleton-1.skeleton",
+      "userData": {
+        "gltfIndex": 1,
+        "jointsLength": 14
+      },
+      "ver": "1.0.1",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "25ce6": {
+      "importer": "gltf-material",
+      "uuid": "a0187480-2486-4e7d-a637-e257d7ed046b@25ce6",
+      "displayName": "",
+      "id": "25ce6",
+      "name": "M_10_03_Body_D01.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "45a0c": {
+      "importer": "gltf-material",
+      "uuid": "a0187480-2486-4e7d-a637-e257d7ed046b@45a0c",
+      "displayName": "",
+      "id": "45a0c",
+      "name": "M_10_03_Arm_D01.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "bccda": {
+      "importer": "gltf-scene",
+      "uuid": "a0187480-2486-4e7d-a637-e257d7ed046b@bccda",
+      "displayName": "",
+      "id": "bccda",
+      "name": "前进Pistol Walk.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "animationImportSettings": [
+      {
+        "name": "C4D Animation Take",
+        "duration": 3,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "C4D Animation Take",
+            "from": 0,
+            "to": 3,
+            "wrapMode": 2,
+            "previousId": "d15f4"
+          }
+        ]
+      },
+      {
+        "name": "mixamo.com",
+        "duration": 0.800000011920929,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "mixamo.com",
+            "from": 0,
+            "to": 0.800000011920929,
+            "wrapMode": 2,
+            "previousId": "18d6f"
+          }
+        ]
+      }
+    ],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "a0187480-2486-4e7d-a637-e257d7ed046b@0e5c8",
+        "a0187480-2486-4e7d-a637-e257d7ed046b@fddb2"
+      ],
+      "skeletons": [
+        "a0187480-2486-4e7d-a637-e257d7ed046b@30732",
+        "a0187480-2486-4e7d-a637-e257d7ed046b@f1394"
+      ],
+      "textures": [],
+      "materials": [
+        "a0187480-2486-4e7d-a637-e257d7ed046b@25ce6",
+        "a0187480-2486-4e7d-a637-e257d7ed046b@45a0c"
+      ],
+      "scenes": [
+        "a0187480-2486-4e7d-a637-e257d7ed046b@bccda"
+      ]
+    }
+  }
+}

@@ -1,0 +1,218 @@
+[
+  {
+    "__type__": "cc.animation.AnimationGraph",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "_native": "",
+    "_layers": [
+      {
+        "__id__": 1
+      }
+    ],
+    "_variables": {
+      "Float Number": {
+        "__id__": 16
+      }
+    }
+  },
+  {
+    "__type__": "cc.animation.Layer",
+    "_stateMachine": {
+      "__id__": 2
+    },
+    "name": "",
+    "weight": 1,
+    "mask": null,
+    "additive": false,
+    "_stashes": {}
+  },
+  {
+    "__type__": "cc.animation.StateMachine",
+    "__editorExtras__": {
+      "name": "",
+      "id": "13ed336e-dd22-4950-baa2-94c679a4b70e",
+      "clone": null
+    },
+    "_states": [
+      {
+        "__id__": 3
+      },
+      {
+        "__id__": 4
+      },
+      {
+        "__id__": 5
+      },
+      {
+        "__id__": 6
+      }
+    ],
+    "_transitions": [],
+    "_entryState": {
+      "__id__": 3
+    },
+    "_exitState": {
+      "__id__": 4
+    },
+    "_anyState": {
+      "__id__": 5
+    }
+  },
+  {
+    "__type__": "cc.animation.State",
+    "__editorExtras__": {
+      "name": "",
+      "id": "2b736033-5871-4209-8c57-cdb531478923",
+      "clone": null,
+      "centerX": -125,
+      "centerY": 0
+    },
+    "name": "Entry"
+  },
+  {
+    "__type__": "cc.animation.State",
+    "__editorExtras__": {
+      "name": "",
+      "id": "8315fa1b-29dd-407f-a353-1a5b031e6c39",
+      "clone": null,
+      "centerX": 125,
+      "centerY": 0
+    },
+    "name": "Exit"
+  },
+  {
+    "__type__": "cc.animation.State",
+    "__editorExtras__": {
+      "name": "",
+      "id": "48db8d60-de3e-4baa-b9ab-e77910606ba2",
+      "clone": null,
+      "centerX": 125,
+      "centerY": 0
+    },
+    "name": "Any"
+  },
+  {
+    "__type__": "cc.animation.Motion",
+    "__editorExtras__": {
+      "name": "",
+      "id": "75287715-304f-426a-a817-bdd474c5d5be",
+      "clone": null,
+      "centerX": -10.5,
+      "centerY": -43.484375
+    },
+    "name": "Blend 2D",
+    "_components": [],
+    "motion": {
+      "__id__": 7
+    },
+    "speed": 1,
+    "speedMultiplier": "",
+    "speedMultiplierEnabled": false,
+    "transitionInEventBinding": {
+      "__id__": 14
+    },
+    "transitionOutEventBinding": {
+      "__id__": 15
+    }
+  },
+  {
+    "__type__": "cc.animation.AnimationBlend2D",
+    "__editorExtras__": {
+      "name": "",
+      "id": "e9fbc5af-0a84-4472-929d-e4bedc571967",
+      "clone": null,
+      "centerX": -265,
+      "centerY": -29
+    },
+    "name": "Blend 2D",
+    "_items": [
+      {
+        "__id__": 8
+      },
+      {
+        "__id__": 10
+      }
+    ],
+    "paramX": {
+      "__id__": 12
+    },
+    "paramY": {
+      "__id__": 13
+    },
+    "_algorithm": 0
+  },
+  {
+    "__type__": "cc.animation.AnimationBlend2DItem",
+    "motion": {
+      "__id__": 9
+    },
+    "threshold": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 1
+    }
+  },
+  {
+    "__type__": "cc.animation.ClipMotion",
+    "__editorExtras__": {
+      "name": "",
+      "id": "bb299ed3-098d-48b4-9392-9ddfcbd4fef4",
+      "clone": null,
+      "centerX": -1.5,
+      "centerY": -59.484375
+    },
+    "clip": {
+      "__uuid__": "a0187480-2486-4e7d-a637-e257d7ed046b@18d6f",
+      "__expectedType__": "cc.AnimationClip"
+    }
+  },
+  {
+    "__type__": "cc.animation.AnimationBlend2DItem",
+    "motion": {
+      "__id__": 11
+    },
+    "threshold": {
+      "__type__": "cc.Vec2",
+      "x": 1,
+      "y": 1
+    }
+  },
+  {
+    "__type__": "cc.animation.ClipMotion",
+    "__editorExtras__": {
+      "name": "",
+      "id": "43833962-cc2c-4511-a6e7-cf89f2da9150",
+      "clone": null,
+      "centerX": -0.5,
+      "centerY": 65.515625
+    },
+    "clip": {
+      "__uuid__": "583e4da9-3a78-423c-85c6-b6df7431382c@18d6f",
+      "__expectedType__": "cc.AnimationClip"
+    }
+  },
+  {
+    "__type__": "cc.animation.BindableNumber",
+    "variable": "Float Number",
+    "value": 0
+  },
+  {
+    "__type__": "cc.animation.BindableNumber",
+    "variable": "Float Number",
+    "value": 0
+  },
+  {
+    "__type__": "cc.animation.AnimationGraphEventBinding",
+    "methodName": ""
+  },
+  {
+    "__type__": "cc.animation.AnimationGraphEventBinding",
+    "methodName": ""
+  },
+  {
+    "__type__": "cc.animation.PlainVariable",
+    "_type": 0,
+    "_value": 0
+  }
+]
