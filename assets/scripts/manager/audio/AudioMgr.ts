@@ -1,5 +1,6 @@
 //AudioMgr.ts
-import { Node, AudioSource, AudioClip, resources, director } from 'cc';
+import { Node, AudioSource, AudioClip, resources, director, Vec3, renderer } from 'cc';
+import { MainTest } from '../../MainTest';
 /**
  * @en
  * this is a sington class for audio play, can be easily called from anywhere in you project.
@@ -61,6 +62,62 @@ export class AudioMgr {
                 }
             });
         }
+    }
+
+    播放声音(strSoundName: string, pos: Vec3) {
+        let volume = 1.0;
+        if (pos && !pos.equals(Vec3.ZERO)) {
+            const scene战斗 = MainTest.instance?.scene战斗;
+            const camera = scene战斗?.mainCamera;
+            if (camera) {
+                // The orthographic camera is clamped to 5..100 by the wheel zoom code.
+                // Map that existing range directly to volume 1..0.
+                const cameraPosition = camera.node.worldPosition;
+                // 沿摄像机自身前方向发射射线，与地面 y=0 求交；
+                // 再把交点垂直提升到摄像机高度，作为听觉上的“耳朵位置”。
+                const forward = camera.node.forward.clone();
+                let distance: number;
+                if (Math.abs(forward.y) > 0.0001) {
+                    const groundY = 0;
+                    const rayDistance = (groundY - cameraPosition.y) / forward.y;
+                    const groundPoint = cameraPosition.clone()
+                        .add(forward.multiplyScalar(rayDistance));
+                    const earPosition = new Vec3(
+                        groundPoint.x,
+                        cameraPosition.y,
+                        groundPoint.z,
+                    );
+                    distance = Vec3.distance(earPosition, pos);
+                } else {
+                    // 摄像机方向接近平行地面时，退回到相机位置距离。
+                    distance = Vec3.distance(cameraPosition, pos);
+                }
+                let maxDistance: number;
+                if (camera.projection === renderer.scene.CameraProjection.ORTHO) {
+                    // 正交投影镜头位置不随滚轮改变，平移距离必须直接参与衰减。
+                    // 镜头越远（orthoHeight 越大），可听范围相应增大。
+                    maxDistance = Math.max(camera.orthoHeight * 1.5, 1);
+                    const referenceDistance = 30;
+                    volume = distance >= maxDistance ? 0 : referenceDistance * referenceDistance /
+                        (referenceDistance * referenceDistance + distance * distance);
+                } else {
+                    // 透视投影近大远小，按视觉效果校准最远听距。
+                    maxDistance = 500;
+                    const minDistance = 5;
+                    const progress = Math.max(0, Math.min(1,
+                        (distance - minDistance) / (maxDistance - minDistance)));
+                    volume = distance <= minDistance ? 1 : Math.pow(1 - progress, 2);
+                }
+                /* {
+                    // 平方反比衰减：距离越近变化越平滑，距离越远衰减越快。
+                    const referenceDistance = 30;
+                    const referenceDistanceSquared = referenceDistance * referenceDistance;
+                    volume = referenceDistanceSquared /
+                        (referenceDistanceSquared + distance * distance);
+                } */
+            }
+        }
+        this.playOneShot(strSoundName, volume);
     }
 
     /**
