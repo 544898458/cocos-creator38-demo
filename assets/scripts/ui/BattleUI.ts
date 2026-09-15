@@ -297,9 +297,6 @@ export class BattleUI extends Dialog {
     onClickAdd飞塔(event: Event, customEventData: string): void {
         MainTest.instance.onClickAdd飞塔(event, customEventData)
     }
-    onClickAdd飞机(event: Event, customEventData: string): void {
-        MainTest.instance.onClickAdd飞机(event, customEventData)
-    }
     onClickAdd工虫(event: Event, customEventData: string): void {
         MainTest.instance.onClickAdd工虫(event, customEventData)
     }

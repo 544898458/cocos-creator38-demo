@@ -35,9 +35,13 @@
       }
     ],
     "_active": true,
-    "_components": [],
+    "_components": [
+      {
+        "__id__": 138
+      }
+    ],
     "_prefab": {
-      "__id__": 138
+      "__id__": 140
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -54,9 +58,9 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
-      "z": 1
+      "x": 2,
+      "y": 2,
+      "z": 2
     },
     "_mobility": 0,
     "_layer": 1073741824,
@@ -111,9 +115,9 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 0.8,
-      "y": 0.8,
-      "z": 0.8
+      "x": 1,
+      "y": 1,
+      "z": 1
     },
     "_mobility": 0,
     "_layer": 1073741824,
@@ -3494,6 +3498,38 @@
     ]
   },
   {
+    "__type__": "cc.BoxCollider",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 139
+    },
+    "_material": null,
+    "_isTrigger": false,
+    "_center": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 1,
+      "z": 0
+    },
+    "_size": {
+      "__type__": "cc.Vec3",
+      "x": 1.5,
+      "y": 2,
+      "z": 1
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "0eIAcsb/lJDKOY8fZoybES"
+  },
+  {
     "__type__": "cc.PrefabInfo",
     "root": {
       "__id__": 1
@@ -3505,16 +3541,16 @@
     "instance": null,
     "targetOverrides": [
       {
-        "__id__": 139
+        "__id__": 141
       },
       {
-        "__id__": 142
+        "__id__": 144
       },
       {
-        "__id__": 145
+        "__id__": 147
       },
       {
-        "__id__": 148
+        "__id__": 150
       }
     ],
     "nestedPrefabInstanceRoots": [
@@ -3535,7 +3571,7 @@
       "__id__": 113
     },
     "sourceInfo": {
-      "__id__": 140
+      "__id__": 142
     },
     "propertyPath": [
       "背景节点"
@@ -3544,7 +3580,7 @@
       "__id__": 113
     },
     "targetInfo": {
-      "__id__": 141
+      "__id__": 143
     }
   },
   {
@@ -3565,7 +3601,7 @@
       "__id__": 113
     },
     "sourceInfo": {
-      "__id__": 143
+      "__id__": 145
     },
     "propertyPath": [
       "前景节点"
@@ -3574,7 +3610,7 @@
       "__id__": 113
     },
     "targetInfo": {
-      "__id__": 144
+      "__id__": 146
     }
   },
   {
@@ -3595,7 +3631,7 @@
       "__id__": 121
     },
     "sourceInfo": {
-      "__id__": 146
+      "__id__": 148
     },
     "propertyPath": [
       "背景节点"
@@ -3604,7 +3640,7 @@
       "__id__": 121
     },
     "targetInfo": {
-      "__id__": 147
+      "__id__": 149
     }
   },
   {
@@ -3625,7 +3661,7 @@
       "__id__": 121
     },
     "sourceInfo": {
-      "__id__": 149
+      "__id__": 151
     },
     "propertyPath": [
       "前景节点"
@@ -3634,7 +3670,7 @@
       "__id__": 121
     },
     "targetInfo": {
-      "__id__": 150
+      "__id__": 152
     }
   },
   {
