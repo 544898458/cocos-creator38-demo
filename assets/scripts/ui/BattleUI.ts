@@ -285,6 +285,13 @@ export class BattleUI extends Dialog {
         let arr = customEventData.split('|')
         MainTest.instance.on升级单位属性(单位类型[arr[0] as keyof typeof 单位类型], 属性类型[arr[1] as keyof typeof 单位类型])
     }
+    onClick升级选项(event: Event, customEventData: string): void {
+        const arr = customEventData.split(',').map(Number)
+        dispatcher.sendArray([[MsgId.升级选项, Glob.getSendMsgSn自增(), 0], arr[0], arr[1]])
+        MainTest.instance.dialogMgr.closeDialog(UI2Prefab.Pop升级选项_url)
+        NetMessage.升级选项排队.shift()
+        NetMessage.显示升级选项()
+    }
     onClickAdd机场(event: Event, customEventData: string): void {
         MainTest.instance.onClickAdd机场(event, customEventData)
     }

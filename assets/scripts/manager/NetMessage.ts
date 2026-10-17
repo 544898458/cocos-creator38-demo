@@ -16,6 +16,8 @@ import { 翻译Key } from '../配置/翻译Key';
 import { toast } from './ToastMgr';
 import { 文本3D } from '../component/文本3D';
 import { 进度条3D } from '../component/进度条3D';
+import { Pop升级选项 } from '../ui/Pop升级选项';
+import { UI2Prefab } from '../autobind/UI2Prefab';
 
 // 聊天消息接口
 interface ChatMessage {
@@ -519,6 +521,40 @@ export class NetMessage {
         mainTest.scene登录?.显示战局列表(arr玩家, 'onClick进入别人的多人战局')
     }
 
+    private handleGame_升级选项(arr: any[], idxArr: number): void {
+        const id单位 = Number(arr[idxArr++] ?? 0);
+        NetMessage.升级选项排队.push({ id单位, 属性: (arr[idxArr++] as number[]) ?? [] });
+        if (NetMessage.升级选项排队.length === 1) NetMessage.显示升级选项();
+    }
+
+    public static 升级选项排队: { id单位: number, 属性: number[] }[] = [];
+    public static 显示升级选项(): void {
+        const options = NetMessage.升级选项排队[0];
+        const scene = MainTest.instance.scene战斗;
+        if (!options || !scene) return;
+        MainTest.instance.dialogMgr.openDialog(UI2Prefab.Pop升级选项_url, null, null, (dlg: any) => {
+            const pop = dlg.getComponent(Pop升级选项);
+            pop.node升级选项列表.removeAllChildren();
+            const labels: Record<number, string> = { [属性类型.火箭弹等级]: '火箭弹', [属性类型.光刺等级]: '光刺', [属性类型.射程等级]: '射程', [属性类型.火焰等级]: '火焰' };
+            for (const 属性 of options.属性) {
+                const node = instantiate(pop.node升级选项模板);
+                node.active = true;
+                pop.node升级选项列表.addChild(node);
+                const label = node.getChildByName('Label')?.getComponent(cc.Label);
+                if (label) label.string = `升级\n${labels[属性] ?? 属性}`;
+                const iconPath: Record<number, string> = { [属性类型.火箭弹等级]: '图片/火箭弹64', [属性类型.光刺等级]: '图片/光刺64', [属性类型.火焰等级]: '图片/火焰64' };
+                const icon = node.getChildByName('Sprite')?.getComponent(cc.Sprite);
+                if (icon && iconPath[属性]) resources.load(iconPath[属性], cc.ImageAsset, (err, image: cc.ImageAsset) => { if (!err && image) icon.spriteFrame = cc.SpriteFrame.createWithImage(image); });
+                const click = new cc.Component.EventHandler();
+                click.target = scene.battleUI.node;
+                click.component = 'BattleUI';
+                click.handler = 'onClick升级选项';
+                click.customEventData = `${options.id单位},${属性}`;
+                node.getComponent(cc.Button).clickEvents.push(click);
+            }
+        });
+    }
+
     private handleGame_Notify属性(arr: any[], idxArr: number): void {
         const mainTest = this.mainTest;
         if (!mainTest || !mainTest.scene战斗) return;
@@ -559,6 +595,19 @@ export class NetMessage {
                         }
                     }
                     break;
+
+                case 属性类型.经验:
+                    if (entity.node经验条?.isValid) {
+                        const expBar3D = entity.node经验条.getComponent(进度条3D);
+                        expBar3D.当前值 = 数值;
+                    }
+                    break;
+                case 属性类型.等级:
+                    if (entity.node经验条?.isValid) {
+                        const expBar3D = entity.node经验条.getComponent(进度条3D);
+                        expBar3D.刷新尺寸(100 * (数值 as number));
+                    }
+                    break;
             }
         }
     }
@@ -585,13 +634,35 @@ export class NetMessage {
         const str声音 = arr[idxArr++];
         const str文本 = arr[idxArr++];
 
-        AudioMgr.inst.playOneShot(str声音);
+        const arrPos = arr[idxArr++];
+        if (arrPos) AudioMgr.inst.播放声音(str声音, new Vec3(...(arrPos as number[])));
+        else AudioMgr.inst.playOneShot(str声音);
 
         if (str文本.length > 0) {
             mainTest.scene战斗.battleUI.lable系统消息.string = str文本;
         }
     }
 
+    private handleGame_Buff列表(arr: any[], idxArr: number): void {
+        if (!this.mainTest?.scene战斗) return
+
+        const idEntity = arr[idxArr++];
+        const arrBuff = arr[idxArr++] as Array<number>
+        const entity = this.mainTest.scene战斗.entities.get(idEntity)
+        if (entity) {
+            entity.setBuff列表(arrBuff)
+        }
+    }
+    private handleGame_锥体特效(arr: any[], idxArr: number): void {
+        const idEntity = arr[idxArr++];
+        const posEntity = new Vec3(...(arr[idxArr++] as number[]));
+        const posTarget = new Vec3(...(arr[idxArr++] as number[]));
+        const f锥体角度 = arr[idxArr++];
+        const f射程米 = arr[idxArr++];
+        const str特效 = arr[idxArr++] as string;
+        console.log('handleGame_锥体特效', idEntity, posEntity, posTarget, f锥体角度, f射程米, str特效)
+        this.mainTest?.scene战斗?.锥体特效(idEntity, posEntity, posTarget, f锥体角度, f射程米, str特效);
+    }
     private handleGame_Entity描述(arr: any[], idxArr: number): void {
         const mainTest = this.mainTest;
         if (!mainTest || !mainTest.scene战斗) return;

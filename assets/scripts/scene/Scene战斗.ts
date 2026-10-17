@@ -1,4 +1,5 @@
-import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, utils, AnimationClip, director, Animation, Color, ParticleSystem } from 'cc'
+import { ResourceUtil } from '../utils/ResourceUtil'
+import { Node, resources, Prefab, instantiate, _decorator, Component, EditBox, Button, Vec3, NodeEventType, EventMouse, geometry, PhysicsSystem, Camera, SkeletalAnimation, utils, AnimationClip, director, Animation, Color, ParticleSystem, Quat } from 'cc'
 import msgpack from "msgpack-lite/dist/msgpack.min.js"
 
 import { Vec2 } from 'cc'
@@ -33,6 +34,7 @@ const { ccclass, property } = _decorator
 
 const prefabName选中特效: string = nodeName选中特效//这里不能用中文，原因不明
 const prefabName范围特效: string = '特效/范围'
+const NodeName特效根 = '特效根'
 const nodeName地图: string = 'map' //地图前称
 
 @ccclass('Scene战斗')
@@ -100,6 +102,12 @@ export class Scene战斗 extends Component {
             }
         }
 
+        const 经验条组件 = 单位节点.getChildByName('经验条')?.getComponent(进度条3D);
+        if (经验条组件 && entity.类型 === 单位类型.机甲) {
+            经验条组件.初始化(100 * entity.等级(), entity.经验());
+            entity.node经验条 = 经验条组件.node;
+        }
+
         this.刷新单位状态条尺寸(entity);
     }
 
@@ -112,6 +120,10 @@ export class Scene战斗 extends Component {
         if (entity.node能量条?.isValid) {
             const 能量条组件 = entity.node能量条.getComponent(进度条3D);
             能量条组件?.刷新尺寸(entity.能量Max);
+        }
+        if (entity.node经验条?.isValid) {
+            const 经验条组件 = entity.node经验条.getComponent(进度条3D);
+            经验条组件?.刷新尺寸(100 * entity.等级());
         }
     }
     protected onLoad(): void {
@@ -1083,4 +1095,84 @@ export class Scene战斗 extends Component {
             particleSystem?.play()
         }
     }
+    锥体特效(idEntity: number, posEntity: Vec3, posTarget: Vec3, f锥体角度: number, f射程米: number, str特效: string): void {
+        // 使用 ResourceUtil.loadEffectRes 利用缓存机制，避免重复加载
+        // 在微信小游戏环境下，直接使用 resources.load 可能有时序问题
+        ResourceUtil.loadEffectRes(str特效, (prefab: Prefab) => {
+            if (!prefab) {
+                console.error('锥体特效: 特效prefab为空，路径:', str特效)
+                return
+            }
+            
+            const 起始位置 = posEntity.clone()
+            const 方向向量原始 = posTarget.clone().subtract(起始位置)
+            const 方向向量长度 = 方向向量原始.length()
+            if (方向向量长度 < 0.001) {
+                console.error('锥体特效: 起始位置和目标位置太接近，无法计算方向', 起始位置, posTarget)
+                return
+            }
+            const 方向归一化 = 方向向量原始.normalize()
+            const 锥体角度 = f锥体角度
+            console.log('锥体特效 起始位置',起始位置, '方向归一化', 方向归一化, '锥体角度', 锥体角度, 'f射程米', f射程米)
+            const 特效根 = this.roles.getChildByName(NodeName特效根)
+            if (!特效根) {
+                console.error('锥体特效 找不到特效根节点:', NodeName特效根)
+                return
+            }
+            const newNode = instantiate(prefab)
+            newNode.name = str特效.replace('/', '')
+            newNode.position = 起始位置
+            const 旋转四元数 = new Quat()
+            Quat.fromViewUp(旋转四元数, 方向归一化.clone(), Vec3.UP)
+            newNode.setRotation(旋转四元数)
+            let nodeNode = newNode.getChildByName('Node')
+            if (!nodeNode) {
+                console.error('锥体特效 找不到Node子节点，特效路径:', str特效)
+                return
+            }
+            let fire01Node = nodeNode.getChildByName('fire01')
+            if (!fire01Node) {
+                console.error('锥体特效 找不到fire01子节点，特效路径:', str特效)
+                return
+            }
+            let particleSystem = fire01Node.getComponent(ParticleSystem)
+            if (!particleSystem) {
+                console.error('锥体特效 找不到ParticleSystem组件，特效路径:', str特效)
+                return
+            }
+            // shapeModule.angle 使用角度（度），锥体角度是全角，需要除以2得到半角
+            particleSystem.shapeModule.angle = 锥体角度 / 2
+            // particleSystem.startLifetime.constant = f射程米/2
+            const f缩放 = f射程米/3
+             fire01Node.setScale(f缩放, f缩放, f缩放)
+            
+            // // 确保节点已激活（微信小游戏环境下可能需要）
+            // newNode.active = true
+            // nodeNode.active = true
+            // fire01Node.active = true
+            
+            特效根.addChild(newNode)
+            
+            // 微信小游戏环境下，延迟一帧播放粒子系统，确保节点已完全添加到场景
+            // if (MainTest.是微信小游戏()) {
+            //     this.scheduleOnce(() => {
+            //         if (newNode.isValid && particleSystem.isValid) {
+            //             particleSystem.play()
+            //         }
+            //     }, 0)
+            // } else {
+            //     particleSystem.play()
+            
+            // }
+            
+            this.scheduleOnce(() => { 
+                if (newNode.isValid && 特效根.isValid) {
+                    特效根.removeChild(newNode)
+                    newNode.destroy() // 销毁节点以释放内存，避免内存泄漏
+                }
+            }, 3)
+        })
+    }
+
+
 }

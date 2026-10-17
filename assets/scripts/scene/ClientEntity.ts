@@ -1,15 +1,17 @@
-import { Node, Vec3, Animation, Color, Tween } from 'cc';
+import { Node, Vec3, resources, Prefab, instantiate, Animation, Color, Tween } from 'cc';
 import { MainTest } from '../MainTest';
 import { Glob } from '../utils/Glob';
-import { 单位类型, 属性类型, 种族 } from '../utils/Enum';
+import { 单位类型, 属性类型, 种族, BuffId } from '../utils/Enum';
 import { 文本3D } from '../component/文本3D';
 
+const NodeName特效根 = '特效根'
 export const nodeName选中特效 = 'Select'
 export const nodeName攻击范围 = '攻击范围'
 export const nodeName警戒范围 = '警戒范围'
 
 export class ClientEntity {
     static myNickName: string;
+    buffList: number[] = []
     view: Node
     u32账号Id: number = 0
     nodeName: Node
@@ -28,12 +30,20 @@ export class ClientEntity {
     node血条: Node
     hpMax初始: number = 0
     node能量条: Node
+    node经验条: Node
     能量Max: number = 0
     prefabName: string
     类型: 单位类型 = 单位类型.单位类型_Invalid_0
     tween移动: Tween<Node>
     苔蔓半径: number
     obj属性数值: object = new Object()
+
+    经验(): number {
+        return this.obj属性数值[属性类型.经验] as number ?? 0
+    }
+    等级(): number {
+        return this.obj属性数值[属性类型.等级] as number ?? 1
+    }
 
     hp(): number {
         return this.obj属性数值[属性类型.生命] as number
@@ -154,5 +164,27 @@ export class ClientEntity {
             return new Color(255, 50, 50);
         }
         return new Color(255, 255, 255);
+    }
+    setBuff列表(arrBuff: number[]): void {
+        this.buffList = arrBuff
+        console.log('setBuff列表', this.buffList)
+        if(!this.view)
+            return
+        let node特效根 = this.view.getChildByName(NodeName特效根)
+        if(!node特效根) 
+            return
+        
+        node特效根.removeAllChildren()
+        arrBuff.forEach(idBuff => {
+            if(idBuff == BuffId.火焰持续扣血)
+                resources.load('特效/着火', Prefab, (err, prefab) => {
+                    if(!prefab) {
+                        console.log('resources.load callback:', err, prefab, '特效/火焰')
+                        return
+                    }
+                     let newNode = instantiate(prefab)
+                     this.view.getChildByName(NodeName特效根).addChild(newNode)
+                })
+        })
     }
 }
