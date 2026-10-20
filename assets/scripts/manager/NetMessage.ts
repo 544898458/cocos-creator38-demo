@@ -599,13 +599,14 @@ export class NetMessage {
                 case 属性类型.经验:
                     if (entity.node经验条?.isValid) {
                         const expBar3D = entity.node经验条.getComponent(进度条3D);
-                        expBar3D.当前值 = 数值;
+                        if (expBar3D) {
+                            expBar3D.当前值 = 数值;
+                        }
                     }
                     break;
                 case 属性类型.等级:
                     if (entity.node经验条?.isValid) {
-                        const expBar3D = entity.node经验条.getComponent(进度条3D);
-                        expBar3D.刷新尺寸(100 * (数值 as number));
+                        mainTest.scene战斗.更新单位经验条(entity);
                     }
                     break;
             }

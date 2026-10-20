@@ -58,6 +58,12 @@ export class 单位属性等级配置 {
 	数值: number
 }
 
+export class 升级配置 {
+	单位: 单位类型
+	等级: number
+	本级满经验: number
+}
+
 export class 建筑单位配置 {
 	类型: 单位类型
 	f半边长: number
@@ -88,6 +94,7 @@ export class 配置 {
 	arr活动单位: Array<活动单位配置>
 	arr建筑单位: Array<建筑单位配置>
 	arr单位属性等级: Array<单位属性等级配置>
+	arr升级: Array<升级配置>
 	arr战局: Array<战局配置>
 	arr音乐: Array<音乐配置>
 	static 正在下载的配置文件数量: number = 0
@@ -99,6 +106,7 @@ export class 配置 {
 		this.读取1个配置文件<活动单位配置>('活动单位', (arr) => this.arr活动单位 = arr)
 		this.读取1个配置文件<建筑单位配置>('建筑单位', (arr) => this.arr建筑单位 = arr)
 		this.读取1个配置文件<单位属性等级配置>('单位属性等级', (arr) => this.arr单位属性等级 = arr)
+		this.读取1个配置文件<升级配置>('升级', (arr) => this.arr升级 = arr)
 		this.读取1个配置文件<战局配置>('战局', (arr) => this.arr战局 = arr)
 		this.读取1个配置文件<音乐配置>('音乐', (arr) => this.arr音乐 = arr)
 	}
@@ -144,6 +152,10 @@ export class 配置 {
 
 	find单位属性等级加数值(单位: 单位类型, 属性: 属性类型, 等级: number) {
 		return this.arr单位属性等级.find((v) => v.类型 == 单位 && v.属性 == 属性 && v.等级 == 等级)?.数值
+	}
+
+	find升级(单位: 单位类型, 等级: number): 升级配置 {
+		return this.arr升级.find((v) => v.单位 == 单位 && v.等级 == 等级)
 	}
 
 	find战局(类型: 战局类型): 战局配置 {

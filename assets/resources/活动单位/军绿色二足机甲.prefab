@@ -40,11 +40,11 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 150
+        "__id__": 152
       }
     ],
     "_prefab": {
-      "__id__": 152
+      "__id__": 154
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -3501,6 +3501,9 @@
       },
       {
         "__id__": 148
+      },
+      {
+        "__id__": 150
       }
     ],
     "removedComponents": []
@@ -3665,6 +3668,22 @@
     ]
   },
   {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 151
+    },
+    "propertyPath": [
+      "scale固定宽"
+    ],
+    "value": 2
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "2erucjBmhDoZa7d7kdhTr0"
+    ]
+  },
+  {
     "__type__": "cc.BoxCollider",
     "_name": "",
     "_objFlags": 0,
@@ -3674,7 +3693,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 151
+      "__id__": 153
     },
     "_material": null,
     "_isTrigger": false,
@@ -3708,16 +3727,22 @@
     "instance": null,
     "targetOverrides": [
       {
-        "__id__": 153
+        "__id__": 155
       },
       {
-        "__id__": 156
+        "__id__": 158
       },
       {
-        "__id__": 159
+        "__id__": 161
       },
       {
-        "__id__": 162
+        "__id__": 164
+      },
+      {
+        "__id__": 167
+      },
+      {
+        "__id__": 170
       }
     ],
     "nestedPrefabInstanceRoots": [
@@ -3741,7 +3766,7 @@
       "__id__": 125
     },
     "sourceInfo": {
-      "__id__": 154
+      "__id__": 156
     },
     "propertyPath": [
       "背景节点"
@@ -3750,7 +3775,7 @@
       "__id__": 125
     },
     "targetInfo": {
-      "__id__": 155
+      "__id__": 157
     }
   },
   {
@@ -3771,7 +3796,7 @@
       "__id__": 125
     },
     "sourceInfo": {
-      "__id__": 157
+      "__id__": 159
     },
     "propertyPath": [
       "前景节点"
@@ -3780,7 +3805,7 @@
       "__id__": 125
     },
     "targetInfo": {
-      "__id__": 158
+      "__id__": 160
     }
   },
   {
@@ -3801,7 +3826,7 @@
       "__id__": 133
     },
     "sourceInfo": {
-      "__id__": 160
+      "__id__": 162
     },
     "propertyPath": [
       "背景节点"
@@ -3810,7 +3835,7 @@
       "__id__": 133
     },
     "targetInfo": {
-      "__id__": 161
+      "__id__": 163
     }
   },
   {
@@ -3831,7 +3856,7 @@
       "__id__": 133
     },
     "sourceInfo": {
-      "__id__": 163
+      "__id__": 165
     },
     "propertyPath": [
       "前景节点"
@@ -3840,13 +3865,73 @@
       "__id__": 133
     },
     "targetInfo": {
-      "__id__": 164
+      "__id__": 166
     }
   },
   {
     "__type__": "cc.TargetInfo",
     "localID": [
       "ad2tVJOHhNcK+CU4wSyV31"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "32JHm2vbVH4ZH/XzYiUEb5"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 133
+    },
+    "sourceInfo": {
+      "__id__": 168
+    },
+    "propertyPath": [
+      "背景节点"
+    ],
+    "target": {
+      "__id__": 133
+    },
+    "targetInfo": {
+      "__id__": 169
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "2erucjBmhDoZa7d7kdhTr0"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "4bWzeuJlxN+4JR4aTHYhE5"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 133
+    },
+    "sourceInfo": {
+      "__id__": 171
+    },
+    "propertyPath": [
+      "前景节点"
+    ],
+    "target": {
+      "__id__": 133
+    },
+    "targetInfo": {
+      "__id__": 172
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "2erucjBmhDoZa7d7kdhTr0"
     ]
   },
   {

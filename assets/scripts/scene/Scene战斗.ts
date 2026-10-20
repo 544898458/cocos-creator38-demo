@@ -102,13 +102,29 @@ export class Scene战斗 extends Component {
             }
         }
 
-        const 经验条组件 = 单位节点.getChildByName('经验条')?.getComponent(进度条3D);
-        if (经验条组件 && entity.类型 === 单位类型.机甲) {
-            经验条组件.初始化(100 * entity.等级(), entity.经验());
-            entity.node经验条 = 经验条组件.node;
-        }
+        this.更新单位经验条(entity, 单位节点, id);
 
         this.刷新单位状态条尺寸(entity);
+    }
+
+    public 更新单位经验条(entity: ClientEntity, 单位节点: Node | null = null, id: number = 0): void {
+        const node经验条 = 单位节点?.getChildByName('经验条') ?? entity.node经验条;
+        if (!node经验条) {
+            entity.node经验条 = null;
+            return;
+        }
+
+        const 经验条组件 = node经验条?.getComponent(进度条3D);
+        if (!经验条组件) {
+            entity.node经验条 = null;
+            if (单位节点) {
+                console.warn('[HeadBar3D] 预制体缺少经验条组件(进度条3D)', id, 单位节点.name);
+            }
+            return;
+        }
+
+        entity.node经验条 = 经验条组件.node;
+        经验条组件.初始化(entity.经验Max(), entity.经验());
     }
 
     public 刷新单位状态条尺寸(entity: ClientEntity): void {
@@ -123,7 +139,7 @@ export class Scene战斗 extends Component {
         }
         if (entity.node经验条?.isValid) {
             const 经验条组件 = entity.node经验条.getComponent(进度条3D);
-            经验条组件?.刷新尺寸(100 * entity.等级());
+            经验条组件?.刷新尺寸(entity.经验Max());
         }
     }
     protected onLoad(): void {

@@ -44,6 +44,9 @@ export class ClientEntity {
     等级(): number {
         return this.obj属性数值[属性类型.等级] as number ?? 1
     }
+    经验Max(): number {
+        return MainTest.instance.配置.find升级(this.类型, this.等级())?.本级满经验 ?? 0
+    }
 
     hp(): number {
         return this.obj属性数值[属性类型.生命] as number
@@ -85,6 +88,7 @@ export class ClientEntity {
         this.描述文本 = ''
         this.node血条 = null
         this.node能量条 = null
+        this.node经验条 = null
     }
     显示头顶名字(b显示单位类型: boolean, b显示名字: boolean): void {
         if (this.node血条) {
@@ -93,6 +97,10 @@ export class ClientEntity {
 
         if (this.node能量条) {
             this.node能量条.active = b显示名字;
+        }
+
+        if (this.node经验条) {
+            this.node经验条.active = b显示名字;
         }
 
         if (this.nodeName?.isValid) {

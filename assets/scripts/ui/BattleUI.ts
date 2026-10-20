@@ -472,6 +472,16 @@ export class BattleUI extends Dialog {
             else
                 str详情 += 翻译Key.翻译(翻译Key.初始HP) + ':' + 制造.初始HP + '\n'
         }
+        if (entity && 类型 === 单位类型.机甲) {
+            const 升级配置 = MainTest.instance.配置.find升级(类型, entity.等级())
+            if (升级配置?.本级满经验 > 0) {
+                str详情 += 翻译Key.翻译(翻译Key.经验) + ':' + entity.经验() + '/' + 升级配置.本级满经验 + '\n'
+                str详情 += 翻译Key.翻译(翻译Key.等级) + ':' + entity.等级() + '\n'
+            } else {
+                str详情 += 翻译Key.翻译(翻译Key.经验) + ':' + entity.经验() + '\n'
+                str详情 += 翻译Key.翻译(翻译Key.满级) + ':' + entity.等级() + '\n'
+            }
+        }
         if (战斗) {
             str详情 += this.属性加等级(翻译Key.翻译(翻译Key.攻击), 战斗.攻击, 类型, 属性类型.攻击)
             str详情 += this.属性加等级(翻译Key.翻译(翻译Key.防御), 战斗.防御, 类型, 属性类型.防御)
