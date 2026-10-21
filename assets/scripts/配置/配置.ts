@@ -14,6 +14,7 @@ export class 动作 {
 
 export class 单位配置 {
 	类型: 单位类型
+	u16初始Hp: number
 	种族?: 种族
 	名字Key: string
 	空闲动作: 动作
@@ -44,7 +45,6 @@ export class 制造配置 {
 	类型: 单位类型
 	消耗晶体矿: number
 	消耗燃气矿: number
-	初始HP: number
 }
 
 export class 活动单位配置 {

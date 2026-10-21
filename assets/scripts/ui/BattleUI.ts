@@ -468,9 +468,9 @@ export class BattleUI extends Dialog {
                 翻译Key.翻译(翻译Key.晶体矿) + ':' + 制造.消耗晶体矿 + '\n' +
                 翻译Key.翻译(翻译Key.燃气矿) + ':' + 制造.消耗燃气矿 + '\n'
             if (entity && entity.hp())
-                str详情 += 'HP:' + entity.hp() + '/' + 制造.初始HP + '\n'
+                str详情 += 'HP:' + entity.hp() + '/' + (类型 === 单位类型.机甲 ? entity.hpMax() : 单位.u16初始Hp) + '\n'
             else
-                str详情 += 翻译Key.翻译(翻译Key.初始HP) + ':' + 制造.初始HP + '\n'
+                str详情 += 翻译Key.翻译(翻译Key.初始HP) + ':' + 单位.u16初始Hp + '\n'
         }
         if (entity && 类型 === 单位类型.机甲) {
             const 升级配置 = MainTest.instance.配置.find升级(类型, entity.等级())

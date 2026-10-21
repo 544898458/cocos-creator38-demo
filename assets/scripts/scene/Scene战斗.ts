@@ -74,15 +74,15 @@ export class Scene战斗 extends Component {
         if (单位节点.name === 'smoke') return;
         const 血条组件 = 单位节点.getChildByName('血条')?.getComponent(进度条3D);
         if (血条组件) {
-            血条组件.初始化(entity.hpMax初始, entity.hp());
-            if (entity.hpMax初始 > 0) {
+            血条组件.初始化(entity.hpMax(), entity.hp());
+            if (entity.hpMax() > 0) {
                 entity.node血条 = 血条组件.node;
             } else {
                 entity.node血条 = null;
             }
         } else {
             entity.node血条 = null;
-            if (entity.hpMax初始 > 0) {
+            if (entity.hpMax() > 0) {
                 console.warn('[HeadBar3D] 预制体缺少血条组件(进度条3D)', id, 单位节点.name);
             }
         }
@@ -130,7 +130,7 @@ export class Scene战斗 extends Component {
     public 刷新单位状态条尺寸(entity: ClientEntity): void {
         if (entity.node血条?.isValid) {
             const 血条组件 = entity.node血条.getComponent(进度条3D);
-            血条组件?.刷新尺寸(entity.hpMax初始);
+            血条组件?.刷新尺寸(entity.hpMax());
         }
 
         if (entity.node能量条?.isValid) {

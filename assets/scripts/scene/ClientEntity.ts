@@ -1,4 +1,4 @@
-import { Node, Vec3, resources, Prefab, instantiate, Animation, Color, Tween } from 'cc';
+import { Node, Vec3, resources, Prefab, instantiate, Animation, Color, Tween, tween } from 'cc';
 import { MainTest } from '../MainTest';
 import { Glob } from '../utils/Glob';
 import { 单位类型, 属性类型, 种族, BuffId } from '../utils/Enum';
@@ -51,8 +51,45 @@ export class ClientEntity {
     hp(): number {
         return this.obj属性数值[属性类型.生命] as number
     }
+    hpMax(): number {
+        return this.obj属性数值[属性类型.最大生命] as number ?? this.hpMax初始
+    }
     能量(): number {
         return this.obj属性数值[属性类型.能量] as number
+    }
+    显示飘字(数值: number, color: Color = new Color(255, 255, 255)): void {
+        if (!this.nodeName?.isValid) {
+            return
+        }
+
+        const node飘字 = instantiate(this.nodeName)
+        const 文本组件 = node飘字.getComponent(文本3D)
+        if (!文本组件) {
+            node飘字.destroy()
+            return
+        }
+
+        const 显示文本 = 数值 > 0 ? '+' + 数值.toString() : 数值.toString()
+        文本组件.文本 = 显示文本
+        文本组件.颜色 = color
+
+        const node飘字父节点 = this.nodeName.parent?.isValid ? this.nodeName.parent : this.view
+        if (!node飘字父节点?.isValid) {
+            node飘字.destroy()
+            return
+        }
+
+        node飘字父节点.addChild(node飘字)
+        node飘字.active = true
+        const pos起始 = this.nodeName.position.clone()
+        node飘字.setPosition(pos起始)
+        node飘字.active = true
+
+        tween(node飘字).to(0.5, { position: pos起始.clone().add3f(0, 0.8, 0) }).call(() => {
+            node飘字.active = false
+            node飘字.removeFromParent()
+            node飘字.destroy()
+        }).start()
     }
     removeFromParent() {
         let roles回收池 = this.view && MainTest.instance.scene战斗?.roles回收池

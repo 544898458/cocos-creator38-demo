@@ -573,6 +573,7 @@ export class NetMessage {
         for (const key in obj属性数值) {
             const 属性 = parseInt(key) as 属性类型;
             const 数值 = obj属性数值[key];
+            const old生命 = entity.hp() ?? 0;
             entity.obj属性数值[属性] = 数值;
 
             switch (属性) {
@@ -584,6 +585,10 @@ export class NetMessage {
                         } else if (entity.hpMax初始 <= 0) {
                             entity.node血条.active = false; // 资源没有血量
                         }
+                    }
+                    if (数值 !== old生命 && 0 < old生命) {
+                        const 变化量 = 数值 - old生命;
+                        entity.显示飘字(变化量, 变化量 < 0 ? new cc.Color(255, 255, 255) : new cc.Color(0, 255, 0));
                     }
                     break;
 
