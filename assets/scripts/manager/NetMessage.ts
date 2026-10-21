@@ -574,6 +574,7 @@ export class NetMessage {
             const 属性 = parseInt(key) as 属性类型;
             const 数值 = obj属性数值[key];
             const old生命 = entity.hp() ?? 0;
+            const old经验 = entity.经验() ?? 0;
             entity.obj属性数值[属性] = 数值;
 
             switch (属性) {
@@ -607,6 +608,9 @@ export class NetMessage {
                         if (expBar3D) {
                             expBar3D.当前值 = 数值;
                         }
+                    }
+                    if (数值 > old经验) {
+                        entity.显示飘字(数值 - old经验, new cc.Color(0, 220, 255));
                     }
                     break;
                 case 属性类型.等级:
