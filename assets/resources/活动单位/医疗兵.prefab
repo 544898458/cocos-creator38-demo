@@ -32,19 +32,22 @@
       },
       {
         "__id__": 46
+      },
+      {
+        "__id__": 63
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 63
+        "__id__": 67
       },
       {
-        "__id__": 65
+        "__id__": 69
       }
     ],
     "_prefab": {
-      "__id__": 67
+      "__id__": 71
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -922,6 +925,94 @@
     }
   },
   {
+    "__type__": "cc.Node",
+    "_name": "特效根",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 64
+      }
+    ],
+    "_prefab": {
+      "__id__": 66
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 2,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_mobility": 0,
+    "_layer": 1073741824,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.UITransform",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 63
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 65
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 100,
+      "height": 100
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "9cCLIAGdpB/aKUUO3xxSSe"
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__id__": 0
+    },
+    "fileId": "a5uCHA5A9BKZx2gjlYP1Xe",
+    "instance": null,
+    "targetOverrides": null,
+    "nestedPrefabInstanceRoots": null
+  },
+  {
     "__type__": "cc.UITransform",
     "_name": "",
     "_objFlags": 0,
@@ -931,7 +1022,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 64
+      "__id__": 68
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -959,7 +1050,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 66
+      "__id__": 70
     },
     "_material": null,
     "_isTrigger": false,
@@ -993,16 +1084,16 @@
     "instance": null,
     "targetOverrides": [
       {
-        "__id__": 68
+        "__id__": 72
       },
       {
-        "__id__": 71
+        "__id__": 75
       },
       {
-        "__id__": 74
+        "__id__": 78
       },
       {
-        "__id__": 77
+        "__id__": 81
       }
     ],
     "nestedPrefabInstanceRoots": [
@@ -1029,7 +1120,7 @@
       "__id__": 21
     },
     "sourceInfo": {
-      "__id__": 69
+      "__id__": 73
     },
     "propertyPath": [
       "背景节点"
@@ -1038,7 +1129,7 @@
       "__id__": 21
     },
     "targetInfo": {
-      "__id__": 70
+      "__id__": 74
     }
   },
   {
@@ -1059,7 +1150,7 @@
       "__id__": 21
     },
     "sourceInfo": {
-      "__id__": 72
+      "__id__": 76
     },
     "propertyPath": [
       "前景节点"
@@ -1068,7 +1159,7 @@
       "__id__": 21
     },
     "targetInfo": {
-      "__id__": 73
+      "__id__": 77
     }
   },
   {
@@ -1089,7 +1180,7 @@
       "__id__": 33
     },
     "sourceInfo": {
-      "__id__": 75
+      "__id__": 79
     },
     "propertyPath": [
       "背景节点"
@@ -1098,7 +1189,7 @@
       "__id__": 33
     },
     "targetInfo": {
-      "__id__": 76
+      "__id__": 80
     }
   },
   {
@@ -1119,7 +1210,7 @@
       "__id__": 33
     },
     "sourceInfo": {
-      "__id__": 78
+      "__id__": 82
     },
     "propertyPath": [
       "前景节点"
@@ -1128,7 +1219,7 @@
       "__id__": 33
     },
     "targetInfo": {
-      "__id__": 79
+      "__id__": 83
     }
   },
   {
