@@ -326,7 +326,7 @@ export class Scene战斗 extends Component {
                     if (BattleMoude.instance.arr巡逻点) {
                         BattleMoude.instance.arr巡逻点.push(vecHitPoint)
                         this.点击地面特效(vecHitPoint)
-                        this.battleUI.lable系统消息.string = vecHitPoint.x.toFixed(1) + ',' + vecHitPoint.y.toFixed(1) + ',' + vecHitPoint.z.toFixed(1) 
+                        this.battleUI.richText系统消息.string = vecHitPoint.x.toFixed(1) + ',' + vecHitPoint.y.toFixed(1) + ',' + vecHitPoint.z.toFixed(1) 
                             + ' ' + 翻译Key.翻译(翻译Key.已添加为巡逻点)
                         return
                     }
@@ -413,7 +413,7 @@ export class Scene战斗 extends Component {
         }
         if (this.posWorld框选起始点) {
             this.posWorld框选起始点 = null
-            this.battleUI.lable系统消息.string = 翻译Key.翻译(翻译Key.已退出框选状态)
+            this.battleUI.richText系统消息.string = 翻译Key.翻译(翻译Key.已退出框选状态)
         }
 
         this.battleUI.恢复战斗界面()
@@ -509,7 +509,7 @@ export class Scene战斗 extends Component {
                 this.b框选等待按下起始点 = false
                 this.posWorld框选起始点 = item.hitPoint.clone()
                 this.pos屏幕框选起始点 = posMouseDown.clone()
-                this.battleUI.lable系统消息.string = 翻译Key.翻译(翻译Key.已开始框选请拖动后放开)
+                this.battleUI.richText系统消息.string = 翻译Key.翻译(翻译Key.已开始框选请拖动后放开)
                 this.battleUI.进入点击地面状态()
                 return
             } else if (this.posWorld框选起始点) {

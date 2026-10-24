@@ -33802,7 +33802,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 380,
-      "height": 21.42
+      "height": 38.419999999999995
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -33816,7 +33816,7 @@
     "fileId": "52JgvHZr9EsaeRwx9REZM7"
   },
   {
-    "__type__": "cc.Label",
+    "__type__": "cc.RichText",
     "_name": "",
     "_objFlags": 0,
     "__editorExtras__": {},
@@ -33827,61 +33827,31 @@
     "__prefab": {
       "__id__": 1534
     },
-    "_customMaterial": null,
-    "_srcBlendFactor": 2,
-    "_dstBlendFactor": 4,
-    "_color": {
+    "_lineHeight": 17,
+    "_string": "<color=#00ff00>_</color>\n<color=#0fffff>_</color>",
+    "_horizontalAlign": 0,
+    "_verticalAlign": 0,
+    "_fontSize": 15,
+    "_fontColor": {
       "__type__": "cc.Color",
       "r": 255,
-      "g": 232,
-      "b": 109,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
-    "_string": "",
-    "_horizontalAlign": 0,
-    "_verticalAlign": 1,
-    "_actualFontSize": 15,
-    "_fontSize": 15,
+    "_maxWidth": 380,
     "_fontFamily": "Arial",
-    "_lineHeight": 17,
-    "_overflow": 3,
-    "_enableWrapText": true,
     "_font": null,
     "_isSystemFontUsed": true,
-    "_spacingX": 0,
-    "_isItalic": false,
-    "_isBold": false,
-    "_isUnderline": false,
-    "_underlineHeight": 2,
+    "_userDefinedFont": null,
     "_cacheMode": 0,
-    "_enableOutline": false,
-    "_outlineColor": {
-      "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
-      "a": 255
-    },
-    "_outlineWidth": 2,
-    "_enableShadow": false,
-    "_shadowColor": {
-      "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
-      "a": 255
-    },
-    "_shadowOffset": {
-      "__type__": "cc.Vec2",
-      "x": 2,
-      "y": 2
-    },
-    "_shadowBlur": 2,
+    "_imageAtlas": null,
+    "_handleTouchEvent": true,
     "_id": ""
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "b9bXhk77hAALGj3+MdwXvv"
+    "fileId": "57pHJ8gUpCfYl3Ut5jlnf3"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -45266,7 +45236,7 @@
     "lable聊天消息": {
       "__id__": 1520
     },
-    "lable系统消息": {
+    "richText系统消息": {
       "__id__": 1533
     },
     "richText任务提示": {
@@ -45350,7 +45320,6 @@
     "toggle建筑单位": {
       "__id__": 123
     },
-    "uiTransform所有单位头顶名字": null,
     "uiTransform剧情对话根": {
       "__id__": 1742
     },

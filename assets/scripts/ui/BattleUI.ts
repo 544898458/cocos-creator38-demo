@@ -60,10 +60,9 @@ export class BattleUI extends Dialog {
     @property(Label) lable建筑单位: Label
     @property({ type: Label, displayName: "聊天消息" })
     lable聊天消息: Label
-    @property({ type: Label, displayName: "系统消息" })
-    lable系统消息: Label
-    @property({ type: RichText }) richText任务提示: Label
-    @property({ type: Label }) lable单位详情: Label
+    @property(RichText) richText系统消息: RichText
+    @property(RichText) richText任务提示: RichText
+    @property(Label) lable单位详情: Label
     @property({ type: Toggle }) toggle点击活动单位都是追加选中: Toggle
     @property({ type: Toggle }) toggle显示单位类型: Toggle
 
@@ -144,7 +143,7 @@ export class BattleUI extends Dialog {
     }
     on集结点(event: Event, customEventData: string) {
         if (0 == BattleMoude._arr选中.length) {
-            this.lable系统消息.string = 翻译Key.翻译(翻译Key.请先选中建筑单位)
+            this.richText系统消息.string = 翻译Key.翻译(翻译Key.请先选中建筑单位)
             AudioMgr.inst.playOneShot('BUZZ')
             return
         }
@@ -154,12 +153,12 @@ export class BattleUI extends Dialog {
             console.log('createMsg造建筑', hitPoint)
             return [[MsgId.建筑产出活动单位的集结点, Glob.getSendMsgSn自增(), 0], [hitPoint.x, hitPoint.y, hitPoint.z], 类型]
         }
-        this.lable系统消息.string = 翻译Key.翻译(翻译Key.请点击地面设置此建筑产出活动单位的集结点)
+        this.richText系统消息.string = 翻译Key.翻译(翻译Key.请点击地面设置此建筑产出活动单位的集结点)
         this.进入点击地面状态()
     }
     on跟随(event: Event, customEventData: string) {
         // if (0 == BattleMoude._arr选中.length) {
-        //     this.lable系统消息.string = '请先选中活动单位'
+        //     this.richText系统消息.string = '请先选中活动单位'
         //     AudioMgr.inst.playOneShot('BUZZ')
         //     return
         // }
@@ -167,19 +166,19 @@ export class BattleUI extends Dialog {
             console.log('createMsg跟随', entity, id)
             return [[MsgId.跟随, Glob.getSendMsgSn自增(), 0], id]
         }
-        this.lable系统消息.string = 翻译Key.翻译(翻译Key.请点击要跟随的目标单位)
+        this.richText系统消息.string = 翻译Key.翻译(翻译Key.请点击要跟随的目标单位)
         this.进入点击地面状态()
     }
     on巡逻(event: Event, customEventData: string) {
         if (0 == BattleMoude._arr选中.length) {
-            this.lable系统消息.string = 翻译Key.翻译(翻译Key.请先选中建筑单位)
+            this.richText系统消息.string = 翻译Key.翻译(翻译Key.请先选中建筑单位)
             AudioMgr.inst.playOneShot('BUZZ')
             return
         }
         // BattleMoude.instance.fun点击单位创建消息 = null
         // BattleMoude.instance.fun点击地面创建消息 = null
         BattleMoude.instance.arr巡逻点 = []
-        this.lable系统消息.string = 翻译Key.翻译(翻译Key.请点击地面设置巡逻点)
+        this.richText系统消息.string = 翻译Key.翻译(翻译Key.请点击地面设置巡逻点)
         this.node确定点击地面.active = true
         this.进入点击地面状态()
     }   
@@ -189,27 +188,27 @@ export class BattleUI extends Dialog {
     }
     on强行走(event: Event, customEventData: string) {
         if (0 == BattleMoude._arr选中.length) {
-            this.lable系统消息.string = 翻译Key.翻译(翻译Key.请先选中建筑单位)
+            this.richText系统消息.string = 翻译Key.翻译(翻译Key.请先选中建筑单位)
             AudioMgr.inst.playOneShot('BUZZ')
             return
         }
         BattleMoude.instance.fun点击地面创建消息 = BattleMoude.instance.createMsgMove强行走
-        this.lable系统消息.string = 翻译Key.翻译(翻译Key.请点击地面确定强行走目的地)
+        this.richText系统消息.string = 翻译Key.翻译(翻译Key.请点击地面确定强行走目的地)
         this.进入点击地面状态()
     }
     on太岁分裂(event: Event, customEventData: string) {
         if (0 == BattleMoude._arr选中.length) {
-            this.lable系统消息.string = 翻译Key.翻译(翻译Key.请先选中建筑单位)
+            this.richText系统消息.string = 翻译Key.翻译(翻译Key.请先选中建筑单位)
             AudioMgr.inst.playOneShot('BUZZ')
             return
         }
         BattleMoude.instance.fun点击地面创建消息 = MainTest.instance.createMsg太岁分裂
-        this.lable系统消息.string = 翻译Key.翻译(翻译Key.请在选中太岁的苔蔓wàn上放置分裂的太岁)
+        this.richText系统消息.string = 翻译Key.翻译(翻译Key.请在选中太岁的苔蔓wàn上放置分裂的太岁)
         this.进入点击地面状态()
     }
     on原地坚守(event: Event, customEventData: string) {
         if (0 == BattleMoude._arr选中.length) {
-            this.lable系统消息.string = 翻译Key.翻译(翻译Key.请先选中建筑单位)
+            this.richText系统消息.string = 翻译Key.翻译(翻译Key.请先选中建筑单位)
             AudioMgr.inst.playOneShot('BUZZ')
             return
         }
@@ -218,7 +217,7 @@ export class BattleUI extends Dialog {
     on框选(event: Event, customEventData: string) {
         MainTest.instance.scene战斗.posWorld框选起始点 = null
         MainTest.instance.scene战斗.b框选等待按下起始点 = true
-        this.lable系统消息.string = 翻译Key.翻译(翻译Key.请在屏幕上拖动以框选单位)
+        this.richText系统消息.string = 翻译Key.翻译(翻译Key.请在屏幕上拖动以框选单位)
         this.进入点击地面状态()
     }
     on聊天框输入结束(editbox: EditBox, customEventData: String) {
@@ -395,7 +394,7 @@ export class BattleUI extends Dialog {
     }
     onClick框选模式(): void {
         this.b菱形框选 = !this.b菱形框选
-        this.lable系统消息.string = 翻译Key.翻译(翻译Key.已切换到) + ' ' + (this.b菱形框选 ? 翻译Key.翻译(翻译Key.菱形框选) : 翻译Key.翻译(翻译Key.正矩形框选)) + ' ' + 翻译Key.翻译(翻译Key.模式)
+        this.richText系统消息.string = 翻译Key.翻译(翻译Key.已切换到) + ' ' + (this.b菱形框选 ? 翻译Key.翻译(翻译Key.菱形框选) : 翻译Key.翻译(翻译Key.正矩形框选)) + ' ' + 翻译Key.翻译(翻译Key.模式)
     }
 
     onSelectUnits(selectUids: number[]): void {
@@ -640,7 +639,7 @@ export class BattleUI extends Dialog {
         
         if(0 >= arr选中.length){
             AudioMgr.inst.playOneShot('BUZZ');
-            this.lable系统消息.string = 翻译Key.翻译(翻译Key.没有可移动的战斗单位)
+            this.richText系统消息.string = 翻译Key.翻译(翻译Key.没有可移动的战斗单位)
             return
         }
 

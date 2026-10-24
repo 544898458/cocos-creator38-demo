@@ -305,7 +305,7 @@ export class NetMessage {
         const battleUI = mainTest.scene战斗.battleUI;
         switch (channel) {
             case SayChannel.系统:
-                if (content.length > 0) battleUI.lable系统消息.string = content;
+                if (content.length > 0) battleUI.richText系统消息.string = content;
                 break;
             case SayChannel.聊天:
                 if (content.length > 0){
@@ -649,7 +649,7 @@ export class NetMessage {
         else AudioMgr.inst.playOneShot(str声音);
 
         if (str文本.length > 0) {
-            mainTest.scene战斗.battleUI.lable系统消息.string = str文本;
+            mainTest.scene战斗.battleUI.richText系统消息.string = str文本;
         }
     }
 
