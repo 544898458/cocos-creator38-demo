@@ -75,6 +75,7 @@ export class LoginView extends Dialog {
     @property(Node) node抖音侧边栏复访教育面板: Node
     @property(Node) node适龄提示: Node
     @property(Node) node登录正式服按钮: Node
+    @property(Node) node登录测试服按钮: Node
 
     @property(RichText) richText公告: RichText
     @property(RichText) richText社区: RichText
@@ -165,6 +166,7 @@ export class LoginView extends Dialog {
             console.log('LoginView.onOpened,是抖音小游戏')
             this.node抖音小游戏面板.active = true
             this.node抖音侧边栏引导按钮.active = MainTest.b显示侧边栏引导按钮
+            this.node登录测试服按钮.active = false //抖音小游戏不允许出现英文（测试服现在服务器配的英文）
             assetManager.loadRemote(encodeURI(host静态 + '公告/社区_抖音小游戏.txt'), (err, textAsset: TextAsset) => {
                 console.log('resources.load callback:', err, textAsset)
                 this.richText社区.string = textAsset.text

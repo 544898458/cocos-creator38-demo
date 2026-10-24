@@ -92,8 +92,6 @@ export class BattleUI extends Dialog {
     @property(Node) node删除自己的单位: Node
     @property(Toggle) toggle建筑单位: Toggle
 
-    @property({ type: UITransform, displayName: "所有单位头顶名字" })
-    uiTransform所有单位头顶名字: UITransform
     @property({ type: UITransform, displayName: "剧情对话根" })
     uiTransform剧情对话根: UITransform
     @property({ type: RichText, displayName: "剧情对话内容" })
