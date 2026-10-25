@@ -2487,10 +2487,37 @@ items:
       isVariant: false
       associations: []
       _variants: []
+  - - AttrName_13
+    - key: AttrName_13
+      value: 光刺
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Settings
+    - key: Settings
+      value: 设置
+      type: 2
+      isVariant: false
+      associations:
+        - sceneUuid: 2bbee97c-bb26-4af8-a5c6-9b4cf87c4529
+          nodeUuid: 85HJc/66pGxr431BKUsYng
+          reference: 2bbee97c-bb26-4af8-a5c6-9b4cf87c4529
+      _variants: []
+  - - QuXiaoDianJiDiMian
+    - key: QuXiaoDianJiDiMian
+      value: 取消点击地面
+      type: 2
+      isVariant: false
+      associations:
+        - sceneUuid: 2bbee97c-bb26-4af8-a5c6-9b4cf87c4529
+          nodeUuid: 506LbkREBFLZD3T0SGR5lv
+          reference: 2bbee97c-bb26-4af8-a5c6-9b4cf87c4529
+      _variants: []
 languageConfig:
   bcp47Tag: zh-Hans-CN
   providerTag: zh-CHS
-  translateFinished: 274
-  translateTotal: 274
+  translateFinished: 282
+  translateTotal: 282
   compileFinished: 0
-  compileTotal: 337
+  compileTotal: 340

@@ -1058,9 +1058,9 @@
     "startLifetime": {
       "__id__": 83
     },
-    "duration": 0.5,
+    "duration": 3,
     "loop": false,
-    "simulationSpeed": 1,
+    "simulationSpeed": 3,
     "playOnAwake": true,
     "gravityModifier": {
       "__id__": 84
@@ -1113,8 +1113,8 @@
       "__id__": 124
     },
     "_prewarm": false,
-    "_capacity": 70,
-    "_simulationSpace": 1,
+    "_capacity": 10,
+    "_simulationSpace": 0,
     "_id": ""
   },
   {
@@ -1183,7 +1183,7 @@
   {
     "__type__": "cc.CurveRange",
     "mode": 0,
-    "constant": 0.2,
+    "constant": 0.5,
     "multiplier": 1
   },
   {
@@ -1266,8 +1266,8 @@
   {
     "__type__": "cc.CurveRange",
     "mode": 3,
-    "constantMin": 0.4,
-    "constantMax": 0.2,
+    "constantMin": 1,
+    "constantMax": 3,
     "multiplier": 1
   },
   {
@@ -1279,7 +1279,7 @@
   {
     "__type__": "cc.CurveRange",
     "mode": 0,
-    "constant": 70,
+    "constant": 10,
     "multiplier": 1
   },
   {
