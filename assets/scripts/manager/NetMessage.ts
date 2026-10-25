@@ -10,6 +10,7 @@ import msgpack from "msgpack-lite/dist/msgpack.min.js"
 import * as cc from 'cc';
 import { instantiate, Node, Prefab, resources, SkeletalAnimation, Animation, utils, ParticleSystem, Camera, Quat, Vec3, tween, assetManager, AudioClip, ImageAsset, Texture2D, MeshRenderer, BoxCollider } from 'cc';
 import { ClientEntity } from '../scene/ClientEntity';
+import { BattleMoude } from '../scene/BattleMoude';
 import { 配置 } from '../配置/配置';
 import { 苔蔓Component } from '../component/苔蔓Component';
 import { 翻译Key } from '../配置/翻译Key';
@@ -575,6 +576,7 @@ export class NetMessage {
             const 数值 = obj属性数值[key];
             const old生命 = entity.hp() ?? 0;
             const old经验 = entity.经验() ?? 0;
+            const old等级 = entity.等级() ?? 0;
             entity.obj属性数值[属性] = 数值;
 
             switch (属性) {
@@ -614,12 +616,38 @@ export class NetMessage {
                     }
                     break;
                 case 属性类型.等级:
+                    if (数值 > 0 && old等级 > 0 && 数值 > old等级) {
+                        this.播放升级特效(entity);
+                    }
+                    entity.显示头顶名字(MainTest.instance.b显示单位类型, MainTest.instance.b显示名字);
                     if (entity.node经验条?.isValid) {
                         mainTest.scene战斗.更新单位经验条(entity);
                     }
                     break;
             }
         }
+
+        if (BattleMoude._arr选中[0] === id) {
+            mainTest.scene战斗.battleUI?.显示选中单位详情(BattleMoude._arr选中);
+        }
+    }
+
+    private 播放升级特效(entity: ClientEntity): void {
+        if (!entity?.view?.isValid) return;
+
+        resources.load('特效/升级', Prefab, (err, prefab) => {
+            if (err || !prefab || !entity.view?.isValid) {
+                console.error('加载升级特效失败', err);
+                return;
+            }
+
+            const node特效 = instantiate(prefab);
+            entity.view.addChild(node特效);
+            node特效.active = true;
+            setTimeout(() => {
+                if (node特效.isValid) node特效.destroy();
+            }, 2000);
+        });
     }
     private handleGame_SelectRoles(arr: any[], idxArr: number): void {
         const mainTest = this.mainTest;

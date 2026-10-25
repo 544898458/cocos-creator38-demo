@@ -145,10 +145,12 @@ export class ClientEntity {
             const lableName3D = this.nodeName.getComponent(文本3D);
             if (lableName3D) {
                 lableName3D.颜色 = this.获取头顶名字颜色();
+                const 等级 = this.obj属性数值[属性类型.等级];
+                const 等级文本 = 等级 > 0 ? ` ${等级}级` : '';
                 if (b显示单位类型) {
-                    lableName3D.文本 = this.nickName + ' ' + this.entityName;
+                    lableName3D.文本 = this.nickName + ' ' + this.entityName + 等级文本;
                 } else {
-                    lableName3D.文本 = this.nickName;
+                    lableName3D.文本 = this.nickName + 等级文本;
                 }
             }
         }

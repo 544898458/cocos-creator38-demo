@@ -478,6 +478,13 @@ export class BattleUI extends Dialog {
                 str详情 += 翻译Key.翻译(翻译Key.经验) + ':' + entity.经验() + '\n'
                 str详情 += 翻译Key.翻译(翻译Key.满级) + ':' + entity.等级() + '\n'
             }
+
+            for (const 属性 of [属性类型.火箭弹等级, 属性类型.光刺等级, 属性类型.射程等级, 属性类型.火焰等级]) {
+                const 等级 = entity.obj属性数值[属性] as number ?? 0
+                if (等级 > 0) {
+                    str详情 += 翻译Key.属性名称翻译(属性) + ':' + 等级 + '级\n'
+                }
+            }
         }
         if (战斗) {
             str详情 += this.属性加等级(翻译Key.翻译(翻译Key.攻击), 战斗.攻击, 类型, 属性类型.攻击)
