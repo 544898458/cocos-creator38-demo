@@ -404,7 +404,9 @@ export class BattleUI extends Dialog {
 
         const map = new Map<string, number>();
         for (let i = 0; i < selectUids.length; i++) {
-            const nickName = MainTest.instance.scene战斗.entities.get(selectUids[i]).entityName;
+            const entity = MainTest.instance.scene战斗.entities.get(selectUids[i]);
+            if (!entity) continue;
+            const nickName = entity.entityName;
             if (map.has(nickName)) {
                 map.set(nickName, map.get(nickName) + 1);
             } else {
@@ -436,8 +438,16 @@ export class BattleUI extends Dialog {
         }
         let id = selectUids[0]
         let entity = MainTest.instance.scene战斗.entities.get(id)
+        this.显示单位详情(entity)
+    }
+    显示单位详情(entity: ClientEntity): void {
+        if (!entity) {
+            this.lable单位详情.string = ''
+            return
+        }
         let str详情 = this.单位详情(entity, entity.类型)
         this.lable单位详情.string = str详情
+        this.lable单位详情.color = entity.获取头顶名字颜色()
     }
     属性加等级(属性名: string, 属性基础值: number, 单位: 单位类型, 属性: 属性类型, 数值单位: string = '', 数值显示倍数: number = 1): string {
         let [属性等级加数值, 属性等级] = this.属性等级加数值(单位, 属性)

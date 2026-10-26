@@ -599,6 +599,13 @@ export class Scene战斗 extends Component {
         }
 
         const entity = this.entities.get(id)
+        if (BattleMoude._arr选中.length === 0
+            && Glob.my账号Id > 0
+            && entity
+            && entity.u32账号Id !== Glob.my账号Id) {
+            this.battleUI?.显示单位详情(entity)
+            return
+        }
         if (!entity || Glob.my账号Id == 0 || entity.u32账号Id == Glob.my账号Id) {
             this.clear选中()
         }
