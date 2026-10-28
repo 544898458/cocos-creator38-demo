@@ -290,7 +290,7 @@ export class Scene战斗 extends Component {
             if (BattleMoude.instance.arr巡逻点) {
 
             }
-            else if (MainTest.instance.funCreateMsg造建筑 !== BattleMoude.instance.fun点击地面创建消息
+            else if (MainTest.instance.createMsg造建筑 !== BattleMoude.instance.fun点击地面创建消息
                 && BattleMoude.instance.createMsgMove强行走 !== BattleMoude.instance.fun点击地面创建消息
             ) {
                 this.恢复战斗界面()//正在强行走、正在摆放建筑物
@@ -314,7 +314,11 @@ export class Scene战斗 extends Component {
                 if (b已处理)
                     return true
 
-                if (item.collider.node.name.substring(0, 3) != nodeName地图) {//单击单位
+                if (    item.collider.node.name.substring(0, 3) != nodeName地图
+                    &&  MainTest.instance.createMsg造建筑 !== BattleMoude.instance.fun点击地面创建消息
+                    &&  BattleMoude.instance.createMsgMove遇敌自动攻击 !== BattleMoude.instance.fun点击地面创建消息
+                    &&  BattleMoude.instance.createMsgMove强行走 !== BattleMoude.instance.fun点击地面创建消息)
+                {
                     this.点击单位(item, b鼠标右键)
                     b已处理 = true
                     return true

@@ -80,7 +80,6 @@ export class MainTest extends Component {
     b已显示进战斗场景前的广告: boolean = false
     配置: 配置 = new 配置()
 
-    funCreateMsg造建筑: (Vec3) => object
     fun离开战斗场景: (loginView: LoginView) => void
     onLoad() {
         // 确保只有一个实例
@@ -171,7 +170,6 @@ export class MainTest extends Component {
     }
     on点击按钮_造建筑(类型: 单位类型) {
         BattleMoude.instance.fun点击地面创建消息 = (hitPoint: Vec3) => this.createMsg造建筑(hitPoint, 类型)
-        this.funCreateMsg造建筑 = BattleMoude.instance.fun点击地面创建消息
         this.scene战斗.battleUI.richText系统消息.string = 翻译Key.翻译(翻译Key.请点击地面放置建筑)
         this.scene战斗.battleUI.进入点击地面状态()
     }

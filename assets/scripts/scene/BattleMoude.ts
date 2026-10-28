@@ -37,7 +37,7 @@ export class BattleMoude extends Component {
         }
     }
     // 创建通用移动消息
-    createMsgMove(hitPoint: Vec3, b遇敌自动攻击: boolean): any[] | null {
+    private createMsgMove(hitPoint: Vec3, b遇敌自动攻击: boolean): any[] | null {
         if (BattleMoude._arr选中.length === 0) return null;
 
         return [
