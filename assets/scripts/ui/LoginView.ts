@@ -39,7 +39,7 @@ export class LoginView extends Dialog {
     sprite背景大图: Sprite
     @property({ type: EditBox })
     editBox登录名: EditBox
-    @property({ type: Node, displayName: "主页面" })
+    @property(Node)
     LoginPanel: Node;
     @property({ type: RichText, displayName: "加载提示" })
     lableMessage: RichText;
@@ -195,6 +195,10 @@ export class LoginView extends Dialog {
                 this.richText社区.string = textAsset.text
             })
         }
+
+        if(配置.已下载所有配置文件()){
+            this.显示登录界面()
+        }
     }
     onClosed(): void {
         console.log("LoginView.onClose")
@@ -244,7 +248,7 @@ export class LoginView extends Dialog {
         //连接发生错误的回调方法
         Glob.websocket.onerror = () => {
             this.lableMessage.string = 翻译Key.翻译(翻译Key.连接错误)
-            this.LoginPanel.active = true//再次显示，可以再点登录
+            this.显示登录界面()//再次显示，可以再点登录
         }
 
         //连接成功建立的回调方法
@@ -357,6 +361,9 @@ export class LoginView extends Dialog {
         this.node单人战局选择种族.active = false
         this.node选择单人或多人.active = false
         this.node单人战局列表_人.active = false
+        this.node单人战局列表_虫.active = false
+        this.node多人战局面板.active = false
+        this.node玩家战局列表面板.active = false
         this.LoginPanel.active = true
         if (Glob.websocket)
             this.lableMessage.string = '连接已断开，已回到登录界面'

@@ -129,6 +129,9 @@ export class 配置 {
 					MainTest.instance.scene登录?.登录界面显示消息(`还有${配置.正在下载的配置文件数量}个配置文件等待下载……`)
 			})
 	}
+	static 已下载所有配置文件(): boolean {
+		return 配置.正在下载的配置文件数量 == 0
+	}
 
 	find战斗(类型: 单位类型): 战斗配置 {
 		return this.arr战斗.find((v) => v.类型 == 类型)
