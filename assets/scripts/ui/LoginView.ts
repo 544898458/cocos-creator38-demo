@@ -196,7 +196,7 @@ export class LoginView extends Dialog {
             })
         }
 
-        if(配置.已下载所有配置文件()){
+        if(配置.已下载所有配置文件() && Glob.websocket == null){
             this.显示登录界面()
         }
     }
