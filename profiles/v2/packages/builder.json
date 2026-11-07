@@ -8,18 +8,18 @@
       "asyncFunctions": false
     },
     "buildPath": "project://build",
-    "outputName": "bytedance-mini-game",
+    "outputName": "wechatgame",
     "mainBundleCompressionType": "merge_dep",
     "platform": "huawei-quick-game",
     "scenes": [
       {
-        "url": "db://assets/resources/main.scene",
-        "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
-        "bundle": "db://assets/resources"
+        "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
+        "url": "db://assets/scene主包/Start.scene"
       },
       {
-        "url": "db://assets/scene主包/Start.scene",
-        "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+        "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+        "url": "db://assets/resources/main.scene",
+        "bundle": "db://assets/resources"
       }
     ],
     "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
@@ -770,6 +770,182 @@
           }
         },
         "time": "2025-10-27 10:30:53",
+        "dirty": false
+      },
+      "1794015218813": {
+        "type": "build",
+        "id": "1794015218813",
+        "progress": 1,
+        "state": "success",
+        "stage": "build",
+        "message": "2026-11-7 10:57:31 build success in 1 min 54 s!",
+        "detailMessage": "build task(wechatgame-Bilibili) in 113864!\r",
+        "options": {
+          "name": "即时战略指挥",
+          "server": "",
+          "engineModulesConfigKey": "migrationsConfig",
+          "platform": "wechatgame",
+          "buildPath": "project://build",
+          "debug": false,
+          "buildMode": "normal",
+          "mangleProperties": false,
+          "md5Cache": true,
+          "skipCompressTexture": false,
+          "sourceMaps": false,
+          "overwriteProjectSettings": {
+            "macroConfig": {
+              "cleanupImageCache": "inherit-project-setting"
+            },
+            "includeModules": {
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting",
+              "gfx-webgl2": "on"
+            }
+          },
+          "nativeCodeBundleMode": "wasm",
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": false,
+          "bundleConfigs": [],
+          "inlineEnum": true,
+          "useBuiltinServer": false,
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "subpackage",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
+          "outputName": "wechatgame-wechatgame",
+          "taskName": "wechatgame-Bilibili",
+          "scenes": [
+            {
+              "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
+              "url": "db://assets/scene主包/Start.scene"
+            },
+            {
+              "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+              "url": "db://assets/resources/main.scene",
+              "bundle": "db://assets/resources"
+            }
+          ],
+          "wasmCompressionMode": false,
+          "binGroupConfig": {
+            "threshold": 16,
+            "enable": false
+          },
+          "packages": {},
+          "__version__": "1.3.9",
+          "__builderUiBuildAllBatchTime": 1794015218809,
+          "__builderUiTaskNavigation": "mw5t9ms7-qzunvgvywd:0",
+          "__builderUiTaskTime": 1794020137196,
+          "logDest": "project://temp/builder/log/wechatgame2026-11-7 09-33.log",
+          "taskId": "1794015218813"
+        },
+        "time": "2026-11-7 10:55:37",
+        "dirty": false
+      },
+      "1794015219159": {
+        "type": "build",
+        "id": "1794015219159",
+        "progress": 1,
+        "state": "failure",
+        "stage": "build",
+        "message": "The build task was interrupted",
+        "detailMessage": "",
+        "options": {
+          "name": "cocos-creator38-demo",
+          "server": "",
+          "engineModulesConfigKey": "migrationsConfig",
+          "platform": "openpaas",
+          "buildPath": "project://build",
+          "debug": false,
+          "buildMode": "normal",
+          "mangleProperties": false,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": "false",
+          "overwriteProjectSettings": {
+            "macroConfig": {
+              "cleanupImageCache": "inherit-project-setting"
+            },
+            "includeModules": {
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting",
+              "gfx-webgl2": "off"
+            }
+          },
+          "nativeCodeBundleMode": "asmjs",
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": false,
+          "bundleConfigs": [],
+          "inlineEnum": true,
+          "useBuiltinServer": false,
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_dep",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "3cfdf5ec-5a6c-4230-97eb-ce6bc3318e92",
+          "outputName": "openpaas",
+          "taskName": "openpaas",
+          "scenes": [
+            {
+              "url": "db://assets/八方汇聚.scene",
+              "uuid": "3cfdf5ec-5a6c-4230-97eb-ce6bc3318e92"
+            },
+            {
+              "url": "db://assets/测试Instancing.scene",
+              "uuid": "2f94eed8-22c0-40c4-b209-5be5c4aab64c"
+            },
+            {
+              "url": "db://assets/resources/main.scene",
+              "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+              "bundle": "db://assets/resources"
+            },
+            {
+              "url": "db://assets/scene主包/Start.scene",
+              "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+            },
+            {
+              "url": "db://assets/mapres/3D复古建筑/3D复古建筑/scene.scene",
+              "uuid": "cc58df02-8cf8-43e7-ae2a-f245a1c2350e"
+            }
+          ],
+          "wasmCompressionMode": false,
+          "binGroupConfig": {
+            "threshold": 16,
+            "enable": false
+          },
+          "packages": {},
+          "__version__": "1.3.9",
+          "__builderUiAutoLinkedBuild": true,
+          "__builderUiBuildAllBatchTime": 1794015218809,
+          "buildStageGroup": {
+            "debug": []
+          },
+          "builderUiPublishAfterBuild": false,
+          "__builderUiTaskNavigation": "mw5qb8wf-in1085a1lh:1",
+          "taskId": "1794015219159",
+          "__builderUiTaskTime": 1794015219159
+        },
+        "time": "2026-11-7 09:33:39",
         "dirty": false
       }
     }
