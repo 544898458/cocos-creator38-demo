@@ -999,6 +999,60 @@ export class Scene战斗 extends Component {
         this.scheduleOnce(this.Clear然后显示小地图视口框, 0.1)
     }
 
+    /**
+     * 设置摄像机水平旋转角度，绕当前对准的地面点公转
+     * @param progress 滑条值 0~1，对应 0~360 度
+     */
+    设置摄像机旋转(progress: number): void {
+        const 目标yaw度 = progress * 360
+        const P = this.获取摄像机对准地面点()
+        if (!P) return
+
+        const cam = this.mainCamera.node
+        const camPos = cam.position
+        const dx = camPos.x - P.x
+        const dz = camPos.z - P.z
+        const 水平距离 = Math.sqrt(dx * dx + dz * dz)
+        const 高度 = camPos.y - P.y
+
+        const yawRad = 目标yaw度 * Math.PI / 180
+        cam.setPosition(
+            P.x - Math.sin(yawRad) * 水平距离,
+            P.y + 高度,
+            P.z - Math.cos(yawRad) * 水平距离
+        )
+        cam.lookAt(P, Vec3.UP)
+
+        this.Clear然后显示小地图视口框()
+    }
+
+    /**
+     * 获取摄像机当前对准的地面点（屏幕中心射线打到地图上的点）
+     * 取离摄像机最近的地图命中，避免射线穿过地面后命中后方碰撞体导致目标点漂移
+     */
+    获取摄像机对准地面点(): Vec3 | null {
+        const size = view.getVisibleSizeInPixel()
+        const center = new Vec3(size.x / 2, size.y / 2)
+        const ray = new geometry.Ray()
+        this.mainCamera.screenPointToRay(center.x, center.y, ray)
+
+        if (PhysicsSystem.instance.raycast(ray)) {
+            let best: PhysicsRayResult = null
+            PhysicsSystem.instance.raycastResults.forEach((item: PhysicsRayResult) => {
+                if (item.collider.node.name.substring(0, 3) !== nodeName地图) return
+                if (!best || item.distance < best.distance) best = item
+            })
+            if (best) return best.hitPoint.clone()
+        }
+
+        // 兜底：与 y=0 地面平面求交
+        const dir = ray.d
+        if (Math.abs(dir.y) < 1e-6) return null
+        const t = -ray.o.y / dir.y
+        if (t < 0) return null
+        return new Vec3(ray.o.x + dir.x * t, 0, ray.o.z + dir.z * t)
+    }
+
     弹丸特效(idEntity: number, idEntityTarget: number, str特效: string): void {
         resources.load(str特效, Prefab, (err, prefab) => {
             if (!prefab) {

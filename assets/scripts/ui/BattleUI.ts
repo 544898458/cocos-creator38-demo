@@ -9,6 +9,7 @@ import { Button } from 'cc';
 import { Toggle } from 'cc';
 import { Layers } from 'cc';
 import { Color } from 'cc';
+import { Slider } from 'cc';
 import { RichText } from 'cc';
 import { 按下按钮显示单位详情Component } from '../component/按下按钮显示单位详情Component';
 import { EventMouse } from 'cc';
@@ -120,7 +121,17 @@ export class BattleUI extends Dialog {
     onOpened(param: any): void {
         dispatcher.on(EC.DIALOGUE, this.剧情对话, this);
         MainTest.instance.scene战斗.battleUI = this//.node.getComponent(BattleUI);
+        if (this.slider摄像机旋转)
+            this.slider摄像机旋转.node.on('slide', this.onSlider摄像机旋转, this)
     }
+
+    @property(Slider)
+    slider摄像机旋转: Slider = null
+
+    onSlider摄像机旋转(slider: Slider): void {
+        MainTest.instance.scene战斗?.设置摄像机旋转(slider.progress)
+    }
+
     onShow(): void {
         console.log('onShow')
         this.lastTitle = this.nodeFightPanel.getChildByName("建筑单位");
