@@ -2514,10 +2514,111 @@ items:
           nodeUuid: 506LbkREBFLZD3T0SGR5lv
           reference: 2bbee97c-bb26-4af8-a5c6-9b4cf87c4529
       _variants: []
+  - - Exp
+    - key: Exp
+      value: 经验
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Level
+    - key: Level
+      value: 等级
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ProjectileFireCount
+    - key: ProjectileFireCount
+      value: >-
+        <color=white>每次发射<outline color=#ff8800
+        width=2>{0}</outline>个</color><br/>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ProjectileFireInterval
+    - key: ProjectileFireInterval
+      value: >-
+        <color=white>每间隔<outline color=#ff8800
+        width=2>{0}</outline>毫秒发射一个</color><br/> 
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ProjectilePenetrate
+    - key: ProjectilePenetrate
+      value: >-
+        <color=white>可穿透<outline color=#ff8800
+        width=2>{0}</outline>个敌人</color><br/> 
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ProjectileAfterDelay
+    - key: ProjectileAfterDelay
+      value: >-
+        <color=white>后摇: <outline color=#ff8800
+        width=2>{0}</outline>毫秒</color><br/> 
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - ProjectileRange
+    - key: ProjectileRange
+      value: >-
+        <color=white>射程: <outline color=#ff8800
+        width=2>{0}{1}</outline>米</color>
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - FlameBuffDamage
+    - key: FlameBuffDamage
+      value: 每{0}毫秒降低{1}生命，持续{2}毫秒
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - FlameConeRange
+    - key: FlameConeRange
+      value: '锥体范围: {0}{1}米'''
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - FlameConeAngle
+    - key: FlameConeAngle
+      value: '锥体角度: {0}°'
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - RangeBonus
+    - key: RangeBonus
+      value: '投射物射程: +{0}米'
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - Upgrade
+    - key: Upgrade
+      value: 升级
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
+  - - RotateCamera
+    - key: RotateCamera
+      value: 旋转视角
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
 languageConfig:
   bcp47Tag: zh-Hans-CN
   providerTag: zh-CHS
   translateFinished: 282
   translateTotal: 282
   compileFinished: 0
-  compileTotal: 340
+  compileTotal: 353

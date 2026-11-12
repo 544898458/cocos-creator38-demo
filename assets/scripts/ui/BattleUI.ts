@@ -121,8 +121,19 @@ export class BattleUI extends Dialog {
     onOpened(param: any): void {
         dispatcher.on(EC.DIALOGUE, this.剧情对话, this);
         MainTest.instance.scene战斗.battleUI = this//.node.getComponent(BattleUI);
-        if (this.slider摄像机旋转)
+        if (this.slider摄像机旋转) {
             this.slider摄像机旋转.node.on('slide', this.onSlider摄像机旋转, this)
+            this.同步摄像机旋转滑条()
+        }
+    }
+
+    /** 把滑条位置同步到当前摄像机角度，避免一拖动就跳变 */
+    private 同步摄像机旋转滑条(): void {
+        if (!this.slider摄像机旋转) return
+        const scene = MainTest.instance.scene战斗
+        if (!scene) return
+        const yaw = scene.获取摄像机当前Yaw度()
+        this.slider摄像机旋转.progress = yaw / 360
     }
 
     @property(Slider)
