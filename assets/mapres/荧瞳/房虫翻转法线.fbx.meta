@@ -758,7 +758,7 @@
         "_techIdx": 0,
         "_defines": [
           {
-            "USE_INSTANCING": true,
+            "USE_NORMAL_MAP": true,
             "DCC_APP_NAME": 2,
             "USE_ALBEDO_MAP": true,
             "HAS_EXPORTED_METALLIC": true
@@ -835,6 +835,10 @@
               "a": 0
             },
             "transparencyFactor": 0,
+            "normalMap": {
+              "__uuid__": "bc6cec55-b593-4c09-9786-82561999f462@6c48a",
+              "__expectedType__": "cc.Texture2D"
+            },
             "metallic": 0.5
           },
           {},

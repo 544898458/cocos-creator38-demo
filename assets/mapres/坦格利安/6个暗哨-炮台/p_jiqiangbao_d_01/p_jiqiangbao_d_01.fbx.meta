@@ -336,6 +336,7 @@
         "_techIdx": 0,
         "_defines": [
           {
+            "USE_NORMAL_MAP": true,
             "USE_INSTANCING": true,
             "USE_ALBEDO_MAP": true
           },
@@ -384,7 +385,7 @@
         "_props": [
           {
             "mainTexture": {
-              "__uuid__": "5234d1e2-56b0-434a-9c3a-3f20a8b8107f@236dd",
+              "__uuid__": "c67c985a-09d3-453d-9d55-43b0f8e37ad0@6c48a",
               "__expectedType__": "cc.Texture2D"
             },
             "shininessExponent": 20,
@@ -394,6 +395,11 @@
               "g": 124,
               "b": 124,
               "a": 255
+            },
+            "normalStrength": 0.5,
+            "normalMap": {
+              "__uuid__": "8aaa8872-14be-48cc-903b-5e2dd619d90a@6c48a",
+              "__expectedType__": "cc.Texture2D"
             }
           },
           {},

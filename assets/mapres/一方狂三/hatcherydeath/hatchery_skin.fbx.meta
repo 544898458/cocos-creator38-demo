@@ -433,6 +433,7 @@
         "_techIdx": 0,
         "_defines": [
           {
+            "USE_NORMAL_MAP": true,
             "USE_INSTANCING": true,
             "USE_ALBEDO_MAP": true
           },
@@ -502,6 +503,11 @@
               "g": 255,
               "b": 255,
               "a": 255
+            },
+            "normalStrength": 0.2,
+            "normalMap": {
+              "__uuid__": "583b8db9-1591-4e97-bf41-16851fa6a60b@6c48a",
+              "__expectedType__": "cc.Texture2D"
             }
           },
           {},
@@ -522,6 +528,7 @@
         "_techIdx": 0,
         "_defines": [
           {
+            "USE_NORMAL_MAP": true,
             "USE_INSTANCING": true,
             "USE_ALBEDO_MAP": true,
             "HAS_EXPORTED_METALLIC": true
@@ -599,6 +606,11 @@
               "a": 255
             },
             "specularFactor": 0,
+            "normalStrength": 0.2,
+            "normalMap": {
+              "__uuid__": "583b8db9-1591-4e97-bf41-16851fa6a60b@6c48a",
+              "__expectedType__": "cc.Texture2D"
+            },
             "metallic": 1
           },
           {},

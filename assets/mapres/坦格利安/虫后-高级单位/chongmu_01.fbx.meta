@@ -406,6 +406,7 @@
         "_techIdx": 0,
         "_defines": [
           {
+            "USE_NORMAL_MAP": true,
             "USE_INSTANCING": true,
             "USE_ALBEDO_MAP": true
           },
@@ -460,10 +461,16 @@
               "b": 231,
               "a": 255
             },
+            "normalStrength": 0.5,
             "mainTexture": {
               "__uuid__": "dda534f2-1164-4110-b38b-df83984190ad@6c48a",
               "__expectedType__": "cc.Texture2D"
-            }
+            },
+            "normalMap": {
+              "__uuid__": "a8632ce2-c868-4cf7-9e5f-fb70628159aa@6c48a",
+              "__expectedType__": "cc.Texture2D"
+            },
+            "sssIntensity": 0.8
           },
           {},
           {},
