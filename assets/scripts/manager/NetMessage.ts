@@ -426,7 +426,9 @@ export class NetMessage {
 
         //加载高清贴图
         const 配置 = MainTest.instance.配置.find战局(战局)
-
+        if(!配置.MeshRenderer路径 || 0 >= 配置.MeshRenderer路径.length)
+            return
+        
         const nodeSpace = utils.find(配置.MeshRenderer路径, MainTest.GetMapNode())
         console.log('进Space', nodeSpace)
         if (!nodeSpace) 
