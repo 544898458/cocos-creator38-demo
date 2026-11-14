@@ -176,9 +176,9 @@
         "_defines": [
           {
             "USE_NORMAL_MAP": true,
-            "USE_INSTANCING": true,
             "USE_ALBEDO_MAP": true,
-            "USE_ROUGHNESS_MAP": true
+            "USE_ROUGHNESS_MAP": true,
+            "USE_ROUGHNESS_CHANNEL": true
           },
           {},
           {},
@@ -228,14 +228,15 @@
               "__uuid__": "5eb2bb63-0955-475a-9d84-739bdfabe81a@6c48a",
               "__expectedType__": "cc.Texture2D"
             },
-            "albedoScale": 0.800000011920929,
+            "albedoScale": 0.5,
+            "roughness": 0.5,
             "roughnessMap": {
               "__uuid__": "9d3fdaa9-ddaa-42f1-a366-3b30dc4408f0@6c48a",
               "__expectedType__": "cc.Texture2D"
             },
-            "metallic": 0,
+            "metallic": 0.1,
             "normalMap": {
-              "__uuid__": "b7ac117c-fe3e-4db7-961c-5593063626e5@6c48a",
+              "__uuid__": "70d744f2-5a0f-4101-894e-457faa555e33@6c48a",
               "__expectedType__": "cc.Texture2D"
             }
           },

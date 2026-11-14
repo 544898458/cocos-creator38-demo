@@ -6,16 +6,21 @@ import { gfx } from "cc";
 export class StaticGeometry implements primitives.IGeometry {
     positions: number[];
     normals?: number[];
+    tangents?: number[];
     colors?: number[];
     uvs?: number[];
     minPos?: { x: number; y: number; z: number; };
     maxPos?: { x: number; y: number; z: number; };
     indices?: number[];
     primitiveMode: gfx.PrimitiveMode = gfx.PrimitiveMode.TRIANGLE_FAN
-    attributes: gfx.Attribute[] = [new gfx.Attribute(gfx.AttributeName.ATTR_NORMAL,gfx.Format.RGB32F)];
+    attributes: gfx.Attribute[] = [
+        new gfx.Attribute(gfx.AttributeName.ATTR_NORMAL, gfx.Format.RGB32F),
+        new gfx.Attribute(gfx.AttributeName.ATTR_TANGENT, gfx.Format.RGBA32F),
+    ];
     constructor(mesh: MeshCreator) {
         this.positions = [];
         this.normals = [];
+        this.tangents = [];
         this.colors = [];
         this.uvs = [];
         this.indices = [];
@@ -30,6 +35,12 @@ export class StaticGeometry implements primitives.IGeometry {
                 this.normals.push(n.x, n.y, n.z);
             } else {
                 this.normals.push(mesh.normal.x, mesh.normal.y, mesh.normal.z);
+            }
+            if (mesh.tangents.length > i) {
+                const t = mesh.tangents[i];
+                this.tangents.push(t.x, t.y, t.z, t.w);
+            } else {
+                this.tangents.push(mesh.tangent.x, mesh.tangent.y, mesh.tangent.z, mesh.tangent.w);
             }
             if (mesh.colors.length > i) {
                 const c = mesh.colors[i];

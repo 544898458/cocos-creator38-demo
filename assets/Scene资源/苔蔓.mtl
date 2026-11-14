@@ -5,40 +5,20 @@
   "__editorExtras__": {},
   "_native": "",
   "_effectAsset": {
-    "__uuid__": "c8f66d17-351a-48da-a12c-0212d28575c4",
+    "__uuid__": "e396231e-43c6-4547-86f5-0ef92bf154ce",
     "__expectedType__": "cc.EffectAsset"
   },
   "_techIdx": 0,
   "_defines": [
     {
-      "USE_INSTANCING": true,
+      "USE_NORMAL_MAP": true,
       "USE_ALBEDO_MAP": true
     },
-    {},
-    {},
     {},
     {},
     {}
   ],
   "_states": [
-    {
-      "rasterizerState": {},
-      "depthStencilState": {},
-      "blendState": {
-        "targets": [
-          {}
-        ]
-      }
-    },
-    {
-      "rasterizerState": {},
-      "depthStencilState": {},
-      "blendState": {
-        "targets": [
-          {}
-        ]
-      }
-    },
     {
       "rasterizerState": {},
       "depthStencilState": {},
@@ -80,18 +60,22 @@
     {
       "mainColor": {
         "__type__": "cc.Color",
-        "r": 213,
-        "g": 124,
-        "b": 54,
+        "r": 255,
+        "g": 112,
+        "b": 0,
         "a": 100
       },
+      "normalStrength": 0.5,
       "mainTexture": {
         "__uuid__": "3b8b18ce-98f7-484b-970a-5f9a21b5eb29@6c48a",
         "__expectedType__": "cc.Texture2D"
-      }
+      },
+      "normalMap": {
+        "__uuid__": "4b41875b-e0f6-497b-bdca-392681f22a66@6c48a",
+        "__expectedType__": "cc.Texture2D"
+      },
+      "extinction": 1
     },
-    {},
-    {},
     {},
     {},
     {}

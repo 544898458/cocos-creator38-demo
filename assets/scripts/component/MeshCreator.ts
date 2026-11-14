@@ -9,8 +9,10 @@ export class MeshCreator {
     public indices: number[] = [];
     public uvs: Vec2[] = [];
     public normals: Vec3[] = [];
+    public tangents: { x: number; y: number; z: number; w: number }[] = [];
 
     public normal: Vec3 = new Vec3(0, 1, 0);
+    public tangent = { x: 1, y: 0, z: 0, w: 1 };
     public color: Color = new Color(1, 1, 1, 1);
 
     public isDynamic = false;
@@ -41,6 +43,7 @@ export class MeshCreator {
         this.indices.length = 0;
         this.uvs.length = 0;
         this.normals.length = 0;
+        this.tangents.length = 0;
     }
 
     public buildMesh() {

@@ -216,16 +216,27 @@
         "__editorExtras__": {},
         "_native": "",
         "_effectAsset": {
-          "__uuid__": "f648964e-8d32-41fc-9ac9-7a1e714dd17b",
+          "__uuid__": "fc0ce5f8-063d-42da-b13a-2fad25abb951",
           "__expectedType__": "cc.EffectAsset"
         },
         "_techIdx": 0,
         "_defines": [
           {
+            "USE_NORMAL_MAP": true,
             "USE_INSTANCING": true,
-            "DCC_APP_NAME": 5,
-            "USE_ALBEDO_MAP": true
+            "USE_ALBEDO_MAP": true,
+            "USE_PBR_MAP": true
           },
+          {
+            "USE_INSTANCING": true,
+            "INVERSE_ALPHA_TEST": true
+          },
+          {
+            "USE_INSTANCING": true,
+            "INVERSE_ALPHA_TEST": true
+          },
+          {},
+          {},
           {},
           {},
           {}
@@ -266,24 +277,137 @@
                 {}
               ]
             }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
           }
         ],
         "_props": [
           {
+            "albedoScale": {
+              "__type__": "cc.Vec3",
+              "x": 5,
+              "y": 6,
+              "z": 5
+            },
+            "occlusion": 0.5,
+            "roughness": 0.1,
+            "metallic": 1,
+            "normalStrength": 5,
+            "anisotropyRotation": 0.5,
             "mainTexture": {
-              "__uuid__": "b1573a6a-74dd-4235-881c-cd5f194edb26@6c48a",
+              "__uuid__": "ead0cf71-e6ee-427b-848c-b416c5ee09c2@6c48a",
               "__expectedType__": "cc.Texture2D"
             },
-            "emissiveScale": 2,
-            "shininessExponent": 15,
-            "specularColor": {
-              "__type__": "cc.Color",
-              "r": 124,
-              "g": 124,
-              "b": 124,
-              "a": 255
-            }
+            "normalMap": {
+              "__uuid__": "d5ebc8d6-1e25-460c-b709-9a87a4673942@6c48a",
+              "__expectedType__": "cc.Texture2D"
+            },
+            "pbrMap": {
+              "__uuid__": "6e43870f-ba8b-4607-a6cb-9f86356c44ac@6c48a",
+              "__expectedType__": "cc.Texture2D"
+            },
+            "roughnessTRT": 0,
+            "IntensityTRT": 1,
+            "ScatterCoefTT": 1
           },
+          {
+            "albedoScale": {
+              "__type__": "cc.Vec3",
+              "x": 5,
+              "y": 6,
+              "z": 5
+            },
+            "occlusion": 0.5,
+            "roughness": 0.2,
+            "metallic": 1,
+            "specularIntensity": 0,
+            "normalStrength": 5,
+            "anisotropyIntensity": 0.5,
+            "anisotropyRotation": 0.5,
+            "mainTexture": {
+              "__uuid__": "ead0cf71-e6ee-427b-848c-b416c5ee09c2@6c48a",
+              "__expectedType__": "cc.Texture2D"
+            },
+            "normalMap": {
+              "__uuid__": "d5ebc8d6-1e25-460c-b709-9a87a4673942@6c48a",
+              "__expectedType__": "cc.Texture2D"
+            },
+            "pbrMap": {
+              "__uuid__": "6e43870f-ba8b-4607-a6cb-9f86356c44ac@6c48a",
+              "__expectedType__": "cc.Texture2D"
+            },
+            "roughnessTRT": 0,
+            "offsetTRT": -0.001,
+            "IntensityTRT": 1,
+            "ScatterCoefTT": 1
+          },
+          {
+            "albedoScale": {
+              "__type__": "cc.Vec3",
+              "x": 5,
+              "y": 6,
+              "z": 5
+            },
+            "occlusion": 0.5,
+            "roughness": 0.2,
+            "metallic": 1,
+            "specularIntensity": 0,
+            "normalStrength": 5,
+            "anisotropyIntensity": 0.5,
+            "anisotropyRotation": 0.5,
+            "mainTexture": {
+              "__uuid__": "ead0cf71-e6ee-427b-848c-b416c5ee09c2@6c48a",
+              "__expectedType__": "cc.Texture2D"
+            },
+            "normalMap": {
+              "__uuid__": "d5ebc8d6-1e25-460c-b709-9a87a4673942@6c48a",
+              "__expectedType__": "cc.Texture2D"
+            },
+            "pbrMap": {
+              "__uuid__": "6e43870f-ba8b-4607-a6cb-9f86356c44ac@6c48a",
+              "__expectedType__": "cc.Texture2D"
+            },
+            "roughnessTRT": 0,
+            "offsetTRT": -0.001,
+            "IntensityTRT": 1,
+            "ScatterCoefTT": 1
+          },
+          {},
+          {},
           {},
           {},
           {}

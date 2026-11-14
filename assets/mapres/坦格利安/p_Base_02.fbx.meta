@@ -344,7 +344,7 @@
         "__editorExtras__": {},
         "_native": "",
         "_effectAsset": {
-          "__uuid__": "f648964e-8d32-41fc-9ac9-7a1e714dd17b",
+          "__uuid__": "2ec11458-f855-4978-b14d-f3ed5cf697fa",
           "__expectedType__": "cc.EffectAsset"
         },
         "_techIdx": 0,
@@ -401,13 +401,9 @@
               "__uuid__": "b5382ce3-e74e-49e7-ac95-8a75b728fbb5@2d0e9",
               "__expectedType__": "cc.Texture2D"
             },
-            "specularColor": {
-              "__type__": "cc.Color",
-              "r": 255,
-              "g": 255,
-              "b": 255,
-              "a": 255
-            },
+            "roughness": 0.5,
+            "metallic": 0.1,
+            "normalStrength": 0.5,
             "normalMap": {
               "__uuid__": "d86c0739-0977-4048-bd51-fc1366126fff@6c48a",
               "__expectedType__": "cc.Texture2D"

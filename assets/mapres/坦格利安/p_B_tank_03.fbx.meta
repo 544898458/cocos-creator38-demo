@@ -444,7 +444,7 @@
         "_techIdx": 0,
         "_defines": [
           {
-            "USE_INSTANCING": true,
+            "USE_NORMAL_MAP": true,
             "USE_ALBEDO_MAP": true
           },
           {},
@@ -509,7 +509,13 @@
               "g": 124,
               "b": 124,
               "a": 255
-            }
+            },
+            "normalStrength": 0.1,
+            "normalMap": {
+              "__uuid__": "58abccde-3082-4114-b6c0-4562583bb080@6c48a",
+              "__expectedType__": "cc.Texture2D"
+            },
+            "metallic": 0.1
           },
           {},
           {},

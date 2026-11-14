@@ -306,6 +306,7 @@
         "_techIdx": 0,
         "_defines": [
           {
+            "USE_NORMAL_MAP": true,
             "DCC_APP_NAME": 1,
             "USE_ALBEDO_MAP": true
           },
@@ -354,7 +355,7 @@
         "_props": [
           {
             "mainTexture": {
-              "__uuid__": "d19b83a1-771f-4134-ab7b-8f678b41ce0f@5cf2f",
+              "__uuid__": "4af1d7ae-05e0-4720-b02d-d41cea9ff4a7@6c48a",
               "__expectedType__": "cc.Texture2D"
             },
             "emissiveScale": 0,
@@ -365,6 +366,11 @@
               "g": 124,
               "b": 124,
               "a": 255
+            },
+            "normalStrength": 0.2,
+            "normalMap": {
+              "__uuid__": "6a0ef670-aa90-4bc2-8ade-69715df6a2a7@6c48a",
+              "__expectedType__": "cc.Texture2D"
             }
           },
           {},
@@ -385,6 +391,7 @@
         "_techIdx": 0,
         "_defines": [
           {
+            "USE_NORMAL_MAP": true,
             "DCC_APP_NAME": 1,
             "USE_ALBEDO_MAP": true,
             "USE_ALPHA_TEST": true
@@ -445,6 +452,10 @@
               "g": 124,
               "b": 124,
               "a": 255
+            },
+            "normalMap": {
+              "__uuid__": "fd59eb92-d912-494e-9fdc-c6d78bb6d951@6c48a",
+              "__expectedType__": "cc.Texture2D"
             }
           },
           {},
