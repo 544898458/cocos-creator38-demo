@@ -29,13 +29,13 @@ import { 翻译Key } from '../配置/翻译Key'
 import { 文本3D } from '../component/文本3D'
 import { ClientEntity, nodeName攻击范围, nodeName警戒范围, nodeName选中特效 } from './ClientEntity'
 import { 进度条3D } from '../component/进度条3D'
+import { 地面碰撞Component } from '../component/地面碰撞Component'
 
 const { ccclass, property } = _decorator
 
 const prefabName选中特效: string = nodeName选中特效//这里不能用中文，原因不明
 const prefabName范围特效: string = '特效/范围'
 const NodeName特效根 = '特效根'
-const nodeName地图: string = 'map' //地图前称
 
 @ccclass('Scene战斗')
 export class Scene战斗 extends Component {
@@ -314,7 +314,7 @@ export class Scene战斗 extends Component {
                 if (b已处理)
                     return true
 
-                if (    item.collider.node.name.substring(0, 3) != nodeName地图)
+                if (!item.collider.node.getComponent(地面碰撞Component))
                 {
                     if( MainTest.instance.createMsg造建筑 == BattleMoude.instance.fun点击地面创建消息
                     // ||  BattleMoude.instance.createMsgMove遇敌自动攻击 == BattleMoude.instance.fun点击地面创建消息
@@ -376,7 +376,7 @@ export class Scene战斗 extends Component {
                 if (b已处理)
                     return
 
-                if (item.collider.node.name.substring(0, 3) != nodeName地图)
+                if (!item.collider.node.getComponent(地面碰撞Component))
                     return
                 if (!this.battleUI) {
                     this.battleUI = MainTest.instance.dialogMgr.getDialog(UI2Prefab.BattleUI_url).getComponent(BattleUI);
@@ -442,7 +442,7 @@ export class Scene战斗 extends Component {
         PhysicsSystem.instance.raycastResults.forEach(
             (result: PhysicsRayResult) => {
                 // console.log('鼠标移动触碰对象', result.collider.node)
-                if (result.collider.node.name.substring(0, 3) == nodeName地图)
+                if (result.collider.node.getComponent(地面碰撞Component))
                     vec点中地面WorldPos = result.hitPoint.clone()
             })
         if (!vec点中地面WorldPos)
@@ -506,7 +506,7 @@ export class Scene战斗 extends Component {
         // }
         this.posWorld按下准备拖动地面 = null
         PhysicsSystem.instance.raycastResults.forEach((item: PhysicsRayResult) => {
-            if (item.collider.node.name.substring(0, 3) != nodeName地图)
+            if (!item.collider.node.getComponent(地面碰撞Component))
                 return
 
             console.log('射线碰撞', item.collider.node.name, item.hitPoint)
@@ -663,7 +663,7 @@ export class Scene战斗 extends Component {
 
         let vec3Grapics: Vec3
         PhysicsSystem.instance.raycastResults.forEach((item: PhysicsRayResult) => {
-            if (item.collider.node.name.substring(0, 3) != nodeName地图)
+            if (!item.collider.node.getComponent(地面碰撞Component))
                 return
 
             vec3Grapics = this.Wolrd3D转Graphics绘图坐标小地图(item.hitPoint)
@@ -977,7 +977,7 @@ export class Scene战斗 extends Component {
             return false
         }
         PhysicsSystem.instance.raycastResults.forEach((item: PhysicsRayResult) => {
-            if (item.collider.node.name.substring(0, 3) != nodeName地图)
+            if (!item.collider.node.getComponent(地面碰撞Component))
                 return
 
             let vec摄像机偏移 = vec.subtract(item.hitPoint)

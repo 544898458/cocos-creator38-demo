@@ -1,7 +1,8 @@
 import { primitives } from 'cc';
 import { gfx } from 'cc';
 import { utils } from 'cc';
-import { _decorator, Component, Node, Mesh, Vec3, Vec2, Material, geometry, MeshRenderer } from 'cc';
+import { _decorator, Component, Node, Mesh, Vec3, Vec2, Material, geometry, MeshRenderer, PhysicsSystem, PhysicsRayResult } from 'cc';
+import { 地面碰撞Component } from './地面碰撞Component';
 import { MeshCreator } from './MeshCreator';
 import { vec2Pool, vec3Pool } from './MathUtils';
 import { Texture } from '../../../extensions/extensions_mesh/@types/packages/engine-extends/@types/glTF';
@@ -23,6 +24,27 @@ export class 苔蔓Component extends Component {
     segments: number = 6; // 圆的分割段数，影响圆的平滑度
 
     _meshCreator: MeshCreator = new MeshCreator(false);
+
+    /**
+     * 从高处向下射线, 采样地图地面的高度(含 2cm 防 z-fighting 偏移)
+     * 未命中地面时返回 null
+     */
+    private 采样地面高度(worldX: number, worldZ: number): number {
+        const startY = this.node.worldPosition.y + 10;
+        const ray = new geometry.Ray(worldX, startY, worldZ, 0, -1, 0);
+        if (!PhysicsSystem.instance.raycast(ray)) {
+            return null;
+        }
+        let 高度: number = null;
+        PhysicsSystem.instance.raycastResults.forEach((item: PhysicsRayResult) => {
+            if (!item.collider.node.getComponent(地面碰撞Component))
+                return
+            if (高度 === null || item.hitPoint.y > 高度)
+                高度 = item.hitPoint.y;
+        });
+        return 高度 === null ? null : 高度 + 0.02;
+    }
+
     start() {
         this.createCircleMesh();
 
@@ -53,9 +75,12 @@ export class 苔蔓Component extends Component {
             let 地板半边长 = 100
             let uv = new Vec2(0.5 + posWorld顶点.x / (2 * 地板半边长), 0.5 + posWorld顶点.z / (2 * 地板半边长))
             uvs.push(uv);
-            vertices2.push(x, 0, z);
+            // 射线采样地面高度, 让苔蔓跟随地面起伏; 未命中保持水平
+            const 高度 = this.采样地面高度(posWorld顶点.x, posWorld顶点.z);
+            const y = 高度 !== null ? 高度 - posWorld节点.y : 0;
+            vertices2.push(x, y, z);
             // console.log('点', x, z);
-            let p = vec3Pool.alloc().set(x, 0, z);
+            let p = vec3Pool.alloc().set(x, y, z);
             this._meshCreator.verticles.push(p);
             this._meshCreator.uvs.push(uv);
         }
