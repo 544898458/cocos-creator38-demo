@@ -12,7 +12,8 @@
   "_defines": [
     {
       "USE_NORMAL_MAP": true,
-      "USE_ALBEDO_MAP": true
+      "USE_ALBEDO_MAP": true,
+      "USE_PBR_MAP": true
     },
     {},
     {},
@@ -64,6 +65,8 @@
         "y": 0.5,
         "z": 0
       },
+      "roughness": 1,
+      "specularIntensity": 1,
       "normalStrength": 0.5,
       "mainTexture": {
         "__uuid__": "3b8b18ce-98f7-484b-970a-5f9a21b5eb29@6c48a",
@@ -71,6 +74,10 @@
       },
       "normalMap": {
         "__uuid__": "4b41875b-e0f6-497b-bdca-392681f22a66@6c48a",
+        "__expectedType__": "cc.Texture2D"
+      },
+      "pbrMap": {
+        "__uuid__": "ea3cf1fc-1521-4b8f-ba2c-a8f260b03bbf@6c48a",
         "__expectedType__": "cc.Texture2D"
       },
       "extinction": 1,

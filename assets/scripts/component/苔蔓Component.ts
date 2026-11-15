@@ -112,7 +112,7 @@ export class 苔蔓Component extends Component {
             meshRenderer.material = this.material;
         }
         
-        assetManager.loadRemote(encodeURI(host静态 + '图片/苔蔓1536.png'), (err, imageAsset: ImageAsset) => {
+        assetManager.loadRemote(encodeURI(host静态 + '图片/苔蔓2048.png'), (err, imageAsset: ImageAsset) => {
             console.log('苔蔓贴图resources.load callback:', err, imageAsset)
             // console.log(this.material.getProperty('albedoMap'))
             // console.log(this.material.getProperty('mainTexture'))
@@ -123,7 +123,7 @@ export class 苔蔓Component extends Component {
 
         })
 
-        assetManager.loadRemote(encodeURI(host静态 + '图片/苔蔓法线贴图1536.png'), (err, imageAsset: ImageAsset) => {
+        assetManager.loadRemote(encodeURI(host静态 + '图片/苔蔓法线贴图2048.png'), (err, imageAsset: ImageAsset) => {
             console.log('苔蔓法线贴图resources.load callback:', err, imageAsset)
             // console.log(this.material.getProperty('albedoMap'))
             // console.log(this.material.getProperty('mainTexture'))
@@ -131,7 +131,16 @@ export class 苔蔓Component extends Component {
             texture.image = imageAsset;
             console.log(texture)
             this.material.setProperty('normalMap', texture);
-
+        })
+      
+        assetManager.loadRemote(encodeURI(host静态 + '图片/苔蔓四通道PBR贴图2048.png'), (err, imageAsset: ImageAsset) => {
+            console.log('苔蔓四通道PBR贴图resources.load callback:', err, imageAsset)
+            // console.log(this.material.getProperty('albedoMap'))
+            // console.log(this.material.getProperty('mainTexture'))
+            let texture:Texture2D = this.material.getProperty('pbrMap') as Texture2D
+            texture.image = imageAsset;
+            console.log(texture)
+            this.material.setProperty('pbrMap', texture);
         })
     }
 
