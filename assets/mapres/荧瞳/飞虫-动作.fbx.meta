@@ -334,16 +334,14 @@
         "__editorExtras__": {},
         "_native": "",
         "_effectAsset": {
-          "__uuid__": "f648964e-8d32-41fc-9ac9-7a1e714dd17b",
+          "__uuid__": "472c676f-9f77-4c8d-b550-17825aa0176b",
           "__expectedType__": "cc.EffectAsset"
         },
         "_techIdx": 0,
         "_defines": [
           {
-            "USE_INSTANCING": true,
-            "DCC_APP_NAME": 2,
-            "USE_ALBEDO_MAP": true,
-            "HAS_EXPORTED_METALLIC": true
+            "USE_NORMAL_MAP": true,
+            "USE_ALBEDO_MAP": true
           },
           {},
           {},
@@ -389,10 +387,6 @@
         ],
         "_props": [
           {
-            "mainTexture": {
-              "__uuid__": "1d083e72-8f71-458b-bd23-32b679a2b5eb@6c48a",
-              "__expectedType__": "cc.Texture2D"
-            },
             "mainColor": {
               "__type__": "cc.Color",
               "r": 231,
@@ -400,19 +394,23 @@
               "b": 231,
               "a": 255
             },
-            "albedoScale": 5,
-            "emissive": {
-              "__type__": "cc.Color",
-              "r": 255,
-              "g": 255,
-              "b": 255,
-              "a": 255
+            "albedoScale": {
+              "__type__": "cc.Vec3",
+              "x": 6,
+              "y": 7,
+              "z": 6
             },
-            "emissiveScale": 0.02,
-            "shininessExponent": 10,
-            "specularFactor": 0,
-            "transparencyFactor": 0,
-            "metallic": 1
+            "roughness": 0.3,
+            "normalStrength": 2,
+            "mainTexture": {
+              "__uuid__": "1d083e72-8f71-458b-bd23-32b679a2b5eb@6c48a",
+              "__expectedType__": "cc.Texture2D"
+            },
+            "normalMap": {
+              "__uuid__": "0da34932-2c31-41ea-bed8-6825eafb0e7d@6c48a",
+              "__expectedType__": "cc.Texture2D"
+            },
+            "sssIntensity": 0
           },
           {},
           {},

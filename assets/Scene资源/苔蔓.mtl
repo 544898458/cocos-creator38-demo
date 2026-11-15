@@ -58,12 +58,11 @@
   ],
   "_props": [
     {
-      "mainColor": {
-        "__type__": "cc.Color",
-        "r": 255,
-        "g": 112,
-        "b": 0,
-        "a": 100
+      "albedoScale": {
+        "__type__": "cc.Vec3",
+        "x": 2,
+        "y": 0.5,
+        "z": 0
       },
       "normalStrength": 0.5,
       "mainTexture": {
@@ -74,7 +73,15 @@
         "__uuid__": "4b41875b-e0f6-497b-bdca-392681f22a66@6c48a",
         "__expectedType__": "cc.Texture2D"
       },
-      "extinction": 1
+      "extinction": 1,
+      "thickness": 3,
+      "scatterColor": {
+        "__type__": "cc.Color",
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      }
     },
     {},
     {},
