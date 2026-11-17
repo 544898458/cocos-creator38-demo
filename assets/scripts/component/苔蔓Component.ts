@@ -112,7 +112,7 @@ export class 苔蔓Component extends Component {
             meshRenderer.material = this.material;
         }
         
-        assetManager.loadRemote(encodeURI(host静态 + '图片/苔蔓2048.png'), (err, imageAsset: ImageAsset) => {
+        assetManager.loadRemote(encodeURI(host静态 + '图片/苔蔓高强降噪2048.png'), (err, imageAsset: ImageAsset) => {
             console.log('苔蔓贴图resources.load callback:', err, imageAsset)
             // console.log(this.material.getProperty('albedoMap'))
             // console.log(this.material.getProperty('mainTexture'))
