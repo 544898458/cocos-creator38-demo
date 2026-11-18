@@ -2,16 +2,16 @@
   "ver": "1.0.27",
   "importer": "image",
   "imported": true,
-  "uuid": "4b306691-2dd5-46e6-b8e3-d4f0456326ef",
+  "uuid": "ab89021e-63d7-437f-9ddb-41860050388a",
   "files": [
-    ".jpg",
-    ".json"
+    ".json",
+    ".png"
   ],
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "4b306691-2dd5-46e6-b8e3-d4f0456326ef@6c48a",
-      "displayName": "objects_02 法线贴图 - 256",
+      "uuid": "ab89021e-63d7-437f-9ddb-41860050388a@6c48a",
+      "displayName": "objects_02 - 四通道PBR贴图 128",
       "id": "6c48a",
       "name": "texture",
       "userData": {
@@ -22,7 +22,7 @@
         "mipfilter": "none",
         "anisotropy": 0,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "4b306691-2dd5-46e6-b8e3-d4f0456326ef",
+        "imageUuidOrDatabaseUri": "ab89021e-63d7-437f-9ddb-41860050388a",
         "visible": false
       },
       "ver": "1.0.22",
@@ -36,7 +36,7 @@
   "userData": {
     "type": "texture",
     "fixAlphaTransparencyArtifacts": false,
-    "hasAlpha": false,
-    "redirect": "4b306691-2dd5-46e6-b8e3-d4f0456326ef@6c48a"
+    "hasAlpha": true,
+    "redirect": "ab89021e-63d7-437f-9ddb-41860050388a@6c48a"
   }
 }
