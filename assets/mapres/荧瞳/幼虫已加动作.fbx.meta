@@ -517,7 +517,7 @@
             "occlusion": 0.4,
             "roughness": 0.4,
             "specularIntensity": 0.4,
-            "normalStrength": 0.5,
+            "normalStrength": 4,
             "mainTexture": {
               "__uuid__": "be940942-de53-4309-b73f-cdd057a75a51@6c48a",
               "__expectedType__": "cc.Texture2D"
@@ -525,8 +525,7 @@
             "normalMap": {
               "__uuid__": "b878b041-8ccf-4ff7-9555-3e73675b0088@6c48a",
               "__expectedType__": "cc.Texture2D"
-            },
-            "sssIntensity": 0.5
+            }
           },
           {},
           {},
