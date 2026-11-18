@@ -234,6 +234,46 @@
       ],
       "subMetas": {}
     },
+    "c4e10": {
+      "importer": "gltf-embeded-image",
+      "uuid": "7ddb54c0-4525-4013-b304-5b0d2e94fcab@c4e10",
+      "displayName": "",
+      "id": "c4e10",
+      "name": "file_02_initialShadingGroup_Normal_1.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": true,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
+    "04f4b": {
+      "importer": "gltf-embeded-image",
+      "uuid": "7ddb54c0-4525-4013-b304-5b0d2e94fcab@04f4b",
+      "displayName": "",
+      "id": "04f4b",
+      "name": "file_02_initialShadingGroup_Roughness_1.image",
+      "userData": {
+        "gltfIndex": 2,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": true,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
     "f8728": {
       "importer": "texture",
       "uuid": "7ddb54c0-4525-4013-b304-5b0d2e94fcab@f8728",
@@ -247,8 +287,8 @@
         "magfilter": "linear",
         "mipfilter": "none",
         "anisotropy": 0,
-        "isUuid": false,
-        "imageUuidOrDatabaseUri": "db://assets/mapres/⊹꙳ ˶˙ᵕ˙˶ ⊹꙳/sourceimages/02_initialShadingGroup_Normal.png"
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "7ddb54c0-4525-4013-b304-5b0d2e94fcab@c4e10"
       },
       "ver": "1.0.22",
       "imported": true,
@@ -293,8 +333,8 @@
         "magfilter": "linear",
         "mipfilter": "none",
         "anisotropy": 0,
-        "isUuid": false,
-        "imageUuidOrDatabaseUri": "db://assets/mapres/⊹꙳ ˶˙ᵕ˙˶ ⊹꙳/sourceimages/02_initialShadingGroup_Roughness.png"
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "7ddb54c0-4525-4013-b304-5b0d2e94fcab@04f4b"
       },
       "ver": "1.0.22",
       "imported": true,
@@ -363,7 +403,7 @@
     "imageMetas": [
       {
         "name": "file_02_initialShadingGroup_Normal_1",
-        "uri": "db://assets/mapres/⊹꙳ ˶˙ᵕ˙˶ ⊹꙳/sourceimages/02_initialShadingGroup_Normal.png"
+        "uri": "7ddb54c0-4525-4013-b304-5b0d2e94fcab@c4e10"
       },
       {
         "name": "file_02_initialShadingGroup_BaseColor_1",
@@ -371,7 +411,7 @@
       },
       {
         "name": "file_02_initialShadingGroup_Roughness_1",
-        "uri": "db://assets/mapres/⊹꙳ ˶˙ᵕ˙˶ ⊹꙳/sourceimages/02_initialShadingGroup_Roughness.png"
+        "uri": "7ddb54c0-4525-4013-b304-5b0d2e94fcab@04f4b"
       },
       {
         "name": "file_02_initialShadingGroup_Metalness_1",

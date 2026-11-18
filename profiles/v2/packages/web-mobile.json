@@ -11,13 +11,13 @@
       "platform": "web-mobile",
       "scenes": [
         {
-          "url": "db://assets/resources/main.scene",
-          "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
-          "bundle": "db://assets/resources"
+          "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
+          "url": "db://assets/scene主包/Start.scene"
         },
         {
-          "url": "db://assets/scene主包/Start.scene",
-          "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+          "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+          "url": "db://assets/resources/main.scene",
+          "bundle": "db://assets/resources"
         }
       ],
       "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
@@ -51,8 +51,22 @@
         "cullEngineAsmJsModule": false,
         "__version__": "1.0.1",
         "useWebGPU": false
+      },
+      "1795012008912": {
+        "useWebGPU": true,
+        "orientation": "auto",
+        "embedWebDebugger": false,
+        "__version__": "1.0.1"
       }
     },
-    "__version__": "1.3.9"
+    "__version__": "1.3.9",
+    "options": {
+      "web-mobile": {
+        "useWebGPU": true,
+        "orientation": "auto",
+        "embedWebDebugger": false,
+        "__version__": "1.0.1"
+      }
+    }
   }
 }

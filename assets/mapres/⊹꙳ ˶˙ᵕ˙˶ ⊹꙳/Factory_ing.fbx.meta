@@ -23,6 +23,26 @@
       ],
       "subMetas": {}
     },
+    "bf285": {
+      "importer": "gltf-embeded-image",
+      "uuid": "fcbb1f73-829e-4236-968d-a4a42ffcb1a0@bf285",
+      "displayName": "",
+      "id": "bf285",
+      "name": "file_01_initialShadingGroup_Normal_1.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": true,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
     "3db19": {
       "importer": "gltf-embeded-image",
       "uuid": "fcbb1f73-829e-4236-968d-a4a42ffcb1a0@3db19",
@@ -56,8 +76,8 @@
         "magfilter": "linear",
         "mipfilter": "none",
         "anisotropy": 0,
-        "isUuid": false,
-        "imageUuidOrDatabaseUri": "db://assets/mapres/⊹꙳ ˶˙ᵕ˙˶ ⊹꙳/Factory/01_initialShadingGroup_Normal.jpeg"
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "fcbb1f73-829e-4236-968d-a4a42ffcb1a0@bf285"
       },
       "ver": "1.0.22",
       "imported": true,
@@ -188,7 +208,7 @@
     "imageMetas": [
       {
         "name": "file_01_initialShadingGroup_Normal_1",
-        "uri": "db://assets/mapres/⊹꙳ ˶˙ᵕ˙˶ ⊹꙳/Factory/01_initialShadingGroup_Normal.jpeg"
+        "uri": "fcbb1f73-829e-4236-968d-a4a42ffcb1a0@bf285"
       },
       {
         "name": "file_01_initialShadingGroup_BaseColor_1",

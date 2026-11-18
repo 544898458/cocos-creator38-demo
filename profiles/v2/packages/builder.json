@@ -57,8 +57,8 @@
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "2026-10-25 15:13:48 build success in 1 min 2 s!",
-        "detailMessage": "refresh db internal success\r",
+        "message": "2026-11-18 22:50:59 build success in 35 s!",
+        "detailMessage": "build task(网页h5) in 34602!\r",
         "options": {
           "name": "RTS Command",
           "server": "",
@@ -122,9 +122,12 @@
           "binGroupConfig": {
             "threshold": 16,
             "enable": false
-          }
+          },
+          "__builderUiTaskNavigation": "mwm8ms8o-o8qzfvii32m:3",
+          "__builderUiTaskTime": 1795013424013,
+          "taskId": "1733855257659"
         },
-        "time": "2026-10-25 15:12:45",
+        "time": "2026-11-18 22:50:24",
         "dirty": false
       },
       "1734472901911": {
@@ -133,8 +136,8 @@
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "2026-10-29 06:16:30 build success in 2 min 29 s!",
-        "detailMessage": "build task(微信小游戏) in 148681!\r",
+        "message": "2026-11-18 22:35:04 build success in 2 min 6 s!",
+        "detailMessage": "Asset DB is resume!\r",
         "options": {
           "name": "即时战略指挥",
           "server": "",
@@ -198,9 +201,12 @@
           "binGroupConfig": {
             "threshold": 16,
             "enable": false
-          }
+          },
+          "__builderUiTaskNavigation": "mwm80fdx-ls77234ufac:2",
+          "taskId": "1734472901911",
+          "__builderUiTaskTime": 1795012377759
         },
-        "time": "2026-10-29 06:14:00",
+        "time": "2026-11-18 22:32:57",
         "dirty": false
       },
       "1747025212998": {
@@ -522,9 +528,9 @@
           "taskName": "wechatgame-001",
           "scenes": [
             {
-              "url": "db://assets/scene/main.scene",
+              "url": "db://assets/resources/main.scene",
               "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
-              "bundle": "db://assets/scene"
+              "bundle": "db://assets/resources"
             },
             {
               "url": "db://assets/scene主包/Start.scene",
@@ -534,7 +540,11 @@
           "wasmCompressionMode": false,
           "packages": {},
           "__version__": "1.3.9",
-          "logDest": "project://temp/builder/log/wechatgame2025-7-27 12-57.log"
+          "logDest": "project://temp/builder/log/wechatgame2025-7-27 12-57.log",
+          "binGroupConfig": {
+            "threshold": 16,
+            "enable": false
+          }
         },
         "time": "2025-7-28 01:08:37",
         "dirty": false
@@ -781,8 +791,8 @@
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "2026-11-15 22:34:00 build success in 2 min 5 s!",
-        "detailMessage": "build task(wechatgame-Bilibili) in 124230!\r",
+        "message": "2026-11-18 22:48:07 build success in 1 min 50 s!",
+        "detailMessage": "build task(wechatgame-Bilibili) in 109995!\r",
         "options": {
           "name": "即时战略指挥",
           "server": "",
@@ -847,12 +857,12 @@
           "packages": {},
           "__version__": "1.3.9",
           "__builderUiBuildAllBatchTime": 1794015218809,
-          "__builderUiTaskNavigation": "mwhxnvua-z8h4lf5roxl:0",
-          "__builderUiTaskTime": 1794753115008,
+          "__builderUiTaskNavigation": "mwm8hln9-sgv4hi6kjb:0",
+          "__builderUiTaskTime": 1795013176359,
           "logDest": "project://temp/builder/log/wechatgame2026-11-7 09-33.log",
           "taskId": "1794015218813"
         },
-        "time": "2026-11-15 22:31:55",
+        "time": "2026-11-18 22:46:16",
         "dirty": false
       },
       "1794015219159": {
@@ -949,6 +959,1155 @@
           "__builderUiTaskTime": 1794015219159
         },
         "time": "2026-11-7 09:33:39",
+        "dirty": false
+      },
+      "1795011413675": {
+        "type": "build",
+        "id": "1795011413675",
+        "progress": 1,
+        "state": "failure",
+        "stage": "build",
+        "message": "The build task was interrupted",
+        "detailMessage": "refresh db internal success\r",
+        "options": {
+          "name": "cocos-creator38-demo",
+          "server": "",
+          "engineModulesConfigKey": "migrationsConfig",
+          "platform": "openpaas",
+          "buildPath": "project://build",
+          "debug": false,
+          "buildMode": "normal",
+          "mangleProperties": false,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": false,
+          "overwriteProjectSettings": {
+            "macroConfig": {
+              "cleanupImageCache": "inherit-project-setting"
+            },
+            "includeModules": {
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting",
+              "gfx-webgl2": "off"
+            }
+          },
+          "nativeCodeBundleMode": "asmjs",
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": false,
+          "bundleConfigs": [],
+          "inlineEnum": true,
+          "useBuiltinServer": false,
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_dep",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "3cfdf5ec-5a6c-4230-97eb-ce6bc3318e92",
+          "outputName": "openpaas-openpaas",
+          "taskName": "openpaas",
+          "scenes": [
+            {
+              "url": "db://assets/八方汇聚.scene",
+              "uuid": "3cfdf5ec-5a6c-4230-97eb-ce6bc3318e92"
+            },
+            {
+              "url": "db://assets/测试Instancing.scene",
+              "uuid": "2f94eed8-22c0-40c4-b209-5be5c4aab64c"
+            },
+            {
+              "url": "db://assets/测试材质.scene",
+              "uuid": "6f34cad8-8533-4088-98dd-79e1e466a2e4"
+            },
+            {
+              "url": "db://assets/resources/main.scene",
+              "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+              "bundle": "db://assets/resources"
+            },
+            {
+              "url": "db://assets/scene主包/Start.scene",
+              "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+            },
+            {
+              "url": "db://assets/mapres/3D复古建筑/3D复古建筑/scene.scene",
+              "uuid": "cc58df02-8cf8-43e7-ae2a-f245a1c2350e"
+            }
+          ],
+          "wasmCompressionMode": false,
+          "binGroupConfig": {
+            "threshold": 16,
+            "enable": false
+          },
+          "packages": {},
+          "__version__": "1.3.9",
+          "__builderUiBuildAllBatchTime": 1795011413644,
+          "__builderUiHomeBuildAll": true,
+          "buildStageGroup": {
+            "debug": []
+          },
+          "builderUiPublishAfterBuild": false,
+          "taskId": "1795011413675",
+          "__builderUiTaskTime": 1795011413675,
+          "logDest": "project://temp/builder/log/openpaas2026-11-18 22-16.log"
+        },
+        "time": "2026-11-18 22:16:53",
+        "dirty": false
+      },
+      "1795011414911": {
+        "type": "build",
+        "id": "1795011414911",
+        "progress": 1,
+        "state": "failure",
+        "stage": "build",
+        "message": "The build task was interrupted",
+        "detailMessage": "",
+        "options": {
+          "name": "即时战略指挥",
+          "server": "",
+          "engineModulesConfigKey": "migrationsConfig",
+          "platform": "wechatgame",
+          "buildPath": "project://build",
+          "debug": false,
+          "buildMode": "normal",
+          "mangleProperties": false,
+          "md5Cache": true,
+          "skipCompressTexture": false,
+          "sourceMaps": "false",
+          "overwriteProjectSettings": {
+            "macroConfig": {
+              "cleanupImageCache": "inherit-project-setting"
+            },
+            "includeModules": {
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting",
+              "gfx-webgl2": "on"
+            }
+          },
+          "nativeCodeBundleMode": "wasm",
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": false,
+          "bundleConfigs": [],
+          "inlineEnum": true,
+          "useBuiltinServer": false,
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "subpackage",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
+          "outputName": "wechatgame-wechatgame-001",
+          "taskName": "wechatgame",
+          "scenes": [
+            {
+              "url": "db://assets/八方汇聚.scene",
+              "uuid": "3cfdf5ec-5a6c-4230-97eb-ce6bc3318e92"
+            },
+            {
+              "url": "db://assets/测试Instancing.scene",
+              "uuid": "2f94eed8-22c0-40c4-b209-5be5c4aab64c"
+            },
+            {
+              "url": "db://assets/测试材质.scene",
+              "uuid": "6f34cad8-8533-4088-98dd-79e1e466a2e4"
+            },
+            {
+              "url": "db://assets/resources/main.scene",
+              "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+              "bundle": "db://assets/resources"
+            },
+            {
+              "url": "db://assets/scene主包/Start.scene",
+              "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+            },
+            {
+              "url": "db://assets/mapres/3D复古建筑/3D复古建筑/scene.scene",
+              "uuid": "cc58df02-8cf8-43e7-ae2a-f245a1c2350e"
+            }
+          ],
+          "wasmCompressionMode": false,
+          "binGroupConfig": {
+            "threshold": 16,
+            "enable": false
+          },
+          "packages": {},
+          "__version__": "1.3.9",
+          "__builderUiBuildAllBatchTime": 1795011413644,
+          "__builderUiHomeBuildAll": true,
+          "taskId": "1795011414911",
+          "__builderUiTaskTime": 1795011414911
+        },
+        "time": "2026-11-18 22:16:54",
+        "dirty": false
+      },
+      "1795011414974": {
+        "type": "build",
+        "id": "1795011414974",
+        "progress": 1,
+        "state": "failure",
+        "stage": "build",
+        "message": "The build task was interrupted",
+        "detailMessage": "",
+        "options": {
+          "name": "即时战略指挥",
+          "server": "https://cdn.rtsgame.online/bytedance/",
+          "engineModulesConfigKey": "migrationsConfig",
+          "platform": "bytedance-mini-game",
+          "buildPath": "project://build",
+          "debug": false,
+          "buildMode": "normal",
+          "mangleProperties": true,
+          "md5Cache": true,
+          "skipCompressTexture": false,
+          "sourceMaps": "false",
+          "overwriteProjectSettings": {
+            "macroConfig": {
+              "cleanupImageCache": "inherit-project-setting"
+            },
+            "includeModules": {
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting",
+              "gfx-webgl2": "on"
+            }
+          },
+          "nativeCodeBundleMode": "both",
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": false,
+          "bundleConfigs": [],
+          "inlineEnum": true,
+          "useBuiltinServer": false,
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_dep",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "3cfdf5ec-5a6c-4230-97eb-ce6bc3318e92",
+          "outputName": "bytedance-mini-game-001",
+          "taskName": "bytedance-mini-game-001",
+          "scenes": [
+            {
+              "url": "db://assets/八方汇聚.scene",
+              "uuid": "3cfdf5ec-5a6c-4230-97eb-ce6bc3318e92"
+            },
+            {
+              "url": "db://assets/测试Instancing.scene",
+              "uuid": "2f94eed8-22c0-40c4-b209-5be5c4aab64c"
+            },
+            {
+              "url": "db://assets/测试材质.scene",
+              "uuid": "6f34cad8-8533-4088-98dd-79e1e466a2e4"
+            },
+            {
+              "url": "db://assets/resources/main.scene",
+              "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+              "bundle": "db://assets/resources"
+            },
+            {
+              "url": "db://assets/scene主包/Start.scene",
+              "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+            },
+            {
+              "url": "db://assets/mapres/3D复古建筑/3D复古建筑/scene.scene",
+              "uuid": "cc58df02-8cf8-43e7-ae2a-f245a1c2350e"
+            }
+          ],
+          "wasmCompressionMode": false,
+          "binGroupConfig": {
+            "threshold": 16,
+            "enable": false
+          },
+          "packages": {},
+          "__version__": "1.3.9",
+          "__builderUiBuildAllBatchTime": 1795011413644,
+          "__builderUiHomeBuildAll": true,
+          "taskId": "1795011414974",
+          "__builderUiTaskTime": 1795011414974
+        },
+        "time": "2026-11-18 22:16:54",
+        "dirty": false
+      },
+      "1795011415011": {
+        "type": "build",
+        "id": "1795011415011",
+        "progress": 1,
+        "state": "failure",
+        "stage": "build",
+        "message": "The build task was interrupted",
+        "detailMessage": "",
+        "options": {
+          "name": "cocos-creator38-demo",
+          "server": "",
+          "engineModulesConfigKey": "migrationsConfig",
+          "platform": "alipay-mini-game",
+          "buildPath": "project://build",
+          "debug": false,
+          "buildMode": "normal",
+          "mangleProperties": false,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": "false",
+          "overwriteProjectSettings": {
+            "macroConfig": {
+              "cleanupImageCache": "inherit-project-setting"
+            },
+            "includeModules": {
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting",
+              "gfx-webgl2": "off"
+            }
+          },
+          "nativeCodeBundleMode": "asmjs",
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": false,
+          "bundleConfigs": [],
+          "inlineEnum": true,
+          "useBuiltinServer": false,
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_dep",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "3cfdf5ec-5a6c-4230-97eb-ce6bc3318e92",
+          "outputName": "alipay-mini-game",
+          "taskName": "alipay-mini-game",
+          "scenes": [
+            {
+              "url": "db://assets/八方汇聚.scene",
+              "uuid": "3cfdf5ec-5a6c-4230-97eb-ce6bc3318e92"
+            },
+            {
+              "url": "db://assets/测试Instancing.scene",
+              "uuid": "2f94eed8-22c0-40c4-b209-5be5c4aab64c"
+            },
+            {
+              "url": "db://assets/测试材质.scene",
+              "uuid": "6f34cad8-8533-4088-98dd-79e1e466a2e4"
+            },
+            {
+              "url": "db://assets/resources/main.scene",
+              "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+              "bundle": "db://assets/resources"
+            },
+            {
+              "url": "db://assets/scene主包/Start.scene",
+              "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+            },
+            {
+              "url": "db://assets/mapres/3D复古建筑/3D复古建筑/scene.scene",
+              "uuid": "cc58df02-8cf8-43e7-ae2a-f245a1c2350e"
+            }
+          ],
+          "wasmCompressionMode": false,
+          "binGroupConfig": {
+            "threshold": 16,
+            "enable": false
+          },
+          "packages": {},
+          "__version__": "1.3.9",
+          "__builderUiBuildAllBatchTime": 1795011413644,
+          "__builderUiHomeBuildAll": true,
+          "taskId": "1795011415011",
+          "__builderUiTaskTime": 1795011415011
+        },
+        "time": "2026-11-18 22:16:55",
+        "dirty": false
+      },
+      "1795011415229": {
+        "type": "build",
+        "id": "1795011415229",
+        "progress": 1,
+        "state": "failure",
+        "stage": "build",
+        "message": "The build task was interrupted",
+        "detailMessage": "",
+        "options": {
+          "name": "cocos-creator38-demo",
+          "server": "",
+          "engineModulesConfigKey": "migrationsConfig",
+          "platform": "oppo-mini-game",
+          "buildPath": "project://build",
+          "debug": false,
+          "buildMode": "normal",
+          "mangleProperties": false,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": "false",
+          "overwriteProjectSettings": {
+            "macroConfig": {
+              "cleanupImageCache": "inherit-project-setting"
+            },
+            "includeModules": {
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting",
+              "gfx-webgl2": "off"
+            }
+          },
+          "nativeCodeBundleMode": "asmjs",
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": false,
+          "bundleConfigs": [],
+          "inlineEnum": true,
+          "useBuiltinServer": false,
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_dep",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "3cfdf5ec-5a6c-4230-97eb-ce6bc3318e92",
+          "outputName": "oppo-mini-game",
+          "taskName": "oppo-mini-game",
+          "scenes": [
+            {
+              "url": "db://assets/八方汇聚.scene",
+              "uuid": "3cfdf5ec-5a6c-4230-97eb-ce6bc3318e92"
+            },
+            {
+              "url": "db://assets/测试Instancing.scene",
+              "uuid": "2f94eed8-22c0-40c4-b209-5be5c4aab64c"
+            },
+            {
+              "url": "db://assets/测试材质.scene",
+              "uuid": "6f34cad8-8533-4088-98dd-79e1e466a2e4"
+            },
+            {
+              "url": "db://assets/resources/main.scene",
+              "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+              "bundle": "db://assets/resources"
+            },
+            {
+              "url": "db://assets/scene主包/Start.scene",
+              "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+            },
+            {
+              "url": "db://assets/mapres/3D复古建筑/3D复古建筑/scene.scene",
+              "uuid": "cc58df02-8cf8-43e7-ae2a-f245a1c2350e"
+            }
+          ],
+          "wasmCompressionMode": false,
+          "binGroupConfig": {
+            "threshold": 16,
+            "enable": false
+          },
+          "buildStageGroup": {
+            "build": [
+              "make"
+            ]
+          },
+          "packages": {},
+          "__version__": "1.3.9",
+          "__builderUiBuildAllBatchTime": 1795011413644,
+          "__builderUiHomeBuildAll": true,
+          "taskId": "1795011415229",
+          "__builderUiTaskTime": 1795011415229
+        },
+        "time": "2026-11-18 22:16:55",
+        "dirty": false
+      },
+      "1795011418468": {
+        "type": "build",
+        "id": "1795011418468",
+        "progress": 1,
+        "state": "failure",
+        "stage": "build",
+        "message": "The build task was interrupted",
+        "detailMessage": "",
+        "options": {
+          "name": "cocos-creator38-demo",
+          "server": "",
+          "engineModulesConfigKey": "migrationsConfig",
+          "platform": "vivo-mini-game",
+          "buildPath": "project://build",
+          "debug": false,
+          "buildMode": "normal",
+          "mangleProperties": false,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": "false",
+          "overwriteProjectSettings": {
+            "macroConfig": {
+              "cleanupImageCache": "inherit-project-setting"
+            },
+            "includeModules": {
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting",
+              "gfx-webgl2": "off"
+            }
+          },
+          "nativeCodeBundleMode": "asmjs",
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": false,
+          "bundleConfigs": [],
+          "inlineEnum": true,
+          "useBuiltinServer": false,
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_dep",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "3cfdf5ec-5a6c-4230-97eb-ce6bc3318e92",
+          "outputName": "vivo-mini-game",
+          "taskName": "vivo-mini-game",
+          "scenes": [
+            {
+              "url": "db://assets/八方汇聚.scene",
+              "uuid": "3cfdf5ec-5a6c-4230-97eb-ce6bc3318e92"
+            },
+            {
+              "url": "db://assets/测试Instancing.scene",
+              "uuid": "2f94eed8-22c0-40c4-b209-5be5c4aab64c"
+            },
+            {
+              "url": "db://assets/测试材质.scene",
+              "uuid": "6f34cad8-8533-4088-98dd-79e1e466a2e4"
+            },
+            {
+              "url": "db://assets/resources/main.scene",
+              "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+              "bundle": "db://assets/resources"
+            },
+            {
+              "url": "db://assets/scene主包/Start.scene",
+              "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+            },
+            {
+              "url": "db://assets/mapres/3D复古建筑/3D复古建筑/scene.scene",
+              "uuid": "cc58df02-8cf8-43e7-ae2a-f245a1c2350e"
+            }
+          ],
+          "wasmCompressionMode": false,
+          "binGroupConfig": {
+            "threshold": 16,
+            "enable": false
+          },
+          "buildStageGroup": {
+            "build": [
+              "make"
+            ]
+          },
+          "packages": {},
+          "__version__": "1.3.9",
+          "__builderUiBuildAllBatchTime": 1795011413644,
+          "__builderUiHomeBuildAll": true,
+          "taskId": "1795011418468",
+          "__builderUiTaskTime": 1795011418468
+        },
+        "time": "2026-11-18 22:16:58",
+        "dirty": false
+      },
+      "1795011418556": {
+        "type": "build",
+        "id": "1795011418556",
+        "progress": 1,
+        "state": "failure",
+        "stage": "build",
+        "message": "The build task was interrupted",
+        "detailMessage": "",
+        "options": {
+          "name": "cocos-creator38-demo",
+          "server": "",
+          "engineModulesConfigKey": "migrationsConfig",
+          "platform": "honor-mini-game",
+          "buildPath": "project://build",
+          "debug": false,
+          "buildMode": "normal",
+          "mangleProperties": false,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": "false",
+          "overwriteProjectSettings": {
+            "macroConfig": {
+              "cleanupImageCache": "inherit-project-setting"
+            },
+            "includeModules": {
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting",
+              "gfx-webgl2": "off"
+            }
+          },
+          "nativeCodeBundleMode": "asmjs",
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": false,
+          "bundleConfigs": [],
+          "inlineEnum": true,
+          "useBuiltinServer": false,
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_dep",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "3cfdf5ec-5a6c-4230-97eb-ce6bc3318e92",
+          "outputName": "honor-mini-game",
+          "taskName": "honor-mini-game",
+          "scenes": [
+            {
+              "url": "db://assets/八方汇聚.scene",
+              "uuid": "3cfdf5ec-5a6c-4230-97eb-ce6bc3318e92"
+            },
+            {
+              "url": "db://assets/测试Instancing.scene",
+              "uuid": "2f94eed8-22c0-40c4-b209-5be5c4aab64c"
+            },
+            {
+              "url": "db://assets/测试材质.scene",
+              "uuid": "6f34cad8-8533-4088-98dd-79e1e466a2e4"
+            },
+            {
+              "url": "db://assets/resources/main.scene",
+              "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+              "bundle": "db://assets/resources"
+            },
+            {
+              "url": "db://assets/scene主包/Start.scene",
+              "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+            },
+            {
+              "url": "db://assets/mapres/3D复古建筑/3D复古建筑/scene.scene",
+              "uuid": "cc58df02-8cf8-43e7-ae2a-f245a1c2350e"
+            }
+          ],
+          "wasmCompressionMode": false,
+          "binGroupConfig": {
+            "threshold": 16,
+            "enable": false
+          },
+          "buildStageGroup": {
+            "build": [
+              "make"
+            ]
+          },
+          "packages": {},
+          "__version__": "1.3.9",
+          "__builderUiBuildAllBatchTime": 1795011413644,
+          "__builderUiHomeBuildAll": true,
+          "taskId": "1795011418556",
+          "__builderUiTaskTime": 1795011418556
+        },
+        "time": "2026-11-18 22:16:58",
+        "dirty": false
+      },
+      "1795011418627": {
+        "type": "build",
+        "id": "1795011418627",
+        "progress": 1,
+        "state": "failure",
+        "stage": "build",
+        "message": "The build task was interrupted",
+        "detailMessage": "",
+        "options": {
+          "name": "即时战略指挥",
+          "server": "",
+          "engineModulesConfigKey": "migrationsConfig",
+          "platform": "huawei-quick-game",
+          "buildPath": "project://build",
+          "debug": false,
+          "buildMode": "normal",
+          "mangleProperties": false,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": "false",
+          "overwriteProjectSettings": {
+            "macroConfig": {
+              "cleanupImageCache": "inherit-project-setting"
+            },
+            "includeModules": {
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting",
+              "gfx-webgl2": "on"
+            }
+          },
+          "nativeCodeBundleMode": "both",
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": false,
+          "bundleConfigs": [],
+          "inlineEnum": true,
+          "useBuiltinServer": false,
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_dep",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "3cfdf5ec-5a6c-4230-97eb-ce6bc3318e92",
+          "outputName": "huawei-quick-game-huawei-quick-game",
+          "taskName": "huawei-quick-game",
+          "scenes": [
+            {
+              "url": "db://assets/八方汇聚.scene",
+              "uuid": "3cfdf5ec-5a6c-4230-97eb-ce6bc3318e92"
+            },
+            {
+              "url": "db://assets/测试Instancing.scene",
+              "uuid": "2f94eed8-22c0-40c4-b209-5be5c4aab64c"
+            },
+            {
+              "url": "db://assets/测试材质.scene",
+              "uuid": "6f34cad8-8533-4088-98dd-79e1e466a2e4"
+            },
+            {
+              "url": "db://assets/resources/main.scene",
+              "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+              "bundle": "db://assets/resources"
+            },
+            {
+              "url": "db://assets/scene主包/Start.scene",
+              "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+            },
+            {
+              "url": "db://assets/mapres/3D复古建筑/3D复古建筑/scene.scene",
+              "uuid": "cc58df02-8cf8-43e7-ae2a-f245a1c2350e"
+            }
+          ],
+          "wasmCompressionMode": false,
+          "binGroupConfig": {
+            "threshold": 16,
+            "enable": false
+          },
+          "buildStageGroup": {
+            "build": [
+              "make"
+            ]
+          },
+          "packages": {},
+          "__version__": "1.3.9",
+          "__builderUiBuildAllBatchTime": 1795011413644,
+          "__builderUiHomeBuildAll": true,
+          "taskId": "1795011418627",
+          "__builderUiTaskTime": 1795011418627
+        },
+        "time": "2026-11-18 22:16:58",
+        "dirty": false
+      },
+      "1795011418699": {
+        "type": "build",
+        "id": "1795011418699",
+        "progress": 1,
+        "state": "failure",
+        "stage": "build",
+        "message": "The build task was interrupted",
+        "detailMessage": "",
+        "options": {
+          "name": "cocos-creator38-demo",
+          "server": "",
+          "engineModulesConfigKey": "migrationsConfig",
+          "platform": "taobao-mini-game",
+          "buildPath": "project://build",
+          "debug": false,
+          "buildMode": "normal",
+          "mangleProperties": false,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": "false",
+          "overwriteProjectSettings": {
+            "macroConfig": {
+              "cleanupImageCache": "inherit-project-setting"
+            },
+            "includeModules": {
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting",
+              "gfx-webgl2": "off"
+            }
+          },
+          "nativeCodeBundleMode": "asmjs",
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": false,
+          "bundleConfigs": [],
+          "inlineEnum": true,
+          "useBuiltinServer": false,
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_dep",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "3cfdf5ec-5a6c-4230-97eb-ce6bc3318e92",
+          "outputName": "taobao-mini-game",
+          "taskName": "taobao-mini-game",
+          "scenes": [
+            {
+              "url": "db://assets/八方汇聚.scene",
+              "uuid": "3cfdf5ec-5a6c-4230-97eb-ce6bc3318e92"
+            },
+            {
+              "url": "db://assets/测试Instancing.scene",
+              "uuid": "2f94eed8-22c0-40c4-b209-5be5c4aab64c"
+            },
+            {
+              "url": "db://assets/测试材质.scene",
+              "uuid": "6f34cad8-8533-4088-98dd-79e1e466a2e4"
+            },
+            {
+              "url": "db://assets/resources/main.scene",
+              "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+              "bundle": "db://assets/resources"
+            },
+            {
+              "url": "db://assets/scene主包/Start.scene",
+              "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+            },
+            {
+              "url": "db://assets/mapres/3D复古建筑/3D复古建筑/scene.scene",
+              "uuid": "cc58df02-8cf8-43e7-ae2a-f245a1c2350e"
+            }
+          ],
+          "wasmCompressionMode": false,
+          "binGroupConfig": {
+            "threshold": 16,
+            "enable": false
+          },
+          "packages": {},
+          "__version__": "1.3.9",
+          "__builderUiBuildAllBatchTime": 1795011413644,
+          "__builderUiHomeBuildAll": true,
+          "taskId": "1795011418699",
+          "__builderUiTaskTime": 1795011418699
+        },
+        "time": "2026-11-18 22:16:58",
+        "dirty": false
+      },
+      "1795011419069": {
+        "type": "build",
+        "id": "1795011419069",
+        "progress": 1,
+        "state": "failure",
+        "stage": "build",
+        "message": "The build task was interrupted",
+        "detailMessage": "",
+        "options": {
+          "name": "cocos-creator38-demo",
+          "server": "",
+          "engineModulesConfigKey": "migrationsConfig",
+          "platform": "fb-instant-games",
+          "buildPath": "project://build",
+          "debug": false,
+          "buildMode": "normal",
+          "mangleProperties": false,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": "false",
+          "overwriteProjectSettings": {
+            "macroConfig": {
+              "cleanupImageCache": "inherit-project-setting"
+            },
+            "includeModules": {
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting",
+              "gfx-webgl2": "off"
+            }
+          },
+          "nativeCodeBundleMode": "asmjs",
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": false,
+          "bundleConfigs": [],
+          "inlineEnum": true,
+          "useBuiltinServer": false,
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_dep",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "3cfdf5ec-5a6c-4230-97eb-ce6bc3318e92",
+          "outputName": "fb-instant-games",
+          "taskName": "fb-instant-games",
+          "scenes": [
+            {
+              "url": "db://assets/八方汇聚.scene",
+              "uuid": "3cfdf5ec-5a6c-4230-97eb-ce6bc3318e92"
+            },
+            {
+              "url": "db://assets/测试Instancing.scene",
+              "uuid": "2f94eed8-22c0-40c4-b209-5be5c4aab64c"
+            },
+            {
+              "url": "db://assets/测试材质.scene",
+              "uuid": "6f34cad8-8533-4088-98dd-79e1e466a2e4"
+            },
+            {
+              "url": "db://assets/resources/main.scene",
+              "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+              "bundle": "db://assets/resources"
+            },
+            {
+              "url": "db://assets/scene主包/Start.scene",
+              "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+            },
+            {
+              "url": "db://assets/mapres/3D复古建筑/3D复古建筑/scene.scene",
+              "uuid": "cc58df02-8cf8-43e7-ae2a-f245a1c2350e"
+            }
+          ],
+          "wasmCompressionMode": false,
+          "binGroupConfig": {
+            "threshold": 16,
+            "enable": false
+          },
+          "packages": {},
+          "__version__": "1.3.9",
+          "__builderUiBuildAllBatchTime": 1795011413644,
+          "__builderUiHomeBuildAll": true,
+          "taskId": "1795011419069",
+          "__builderUiTaskTime": 1795011419069
+        },
+        "time": "2026-11-18 22:16:59",
+        "dirty": false
+      },
+      "1795011419391": {
+        "type": "build",
+        "id": "1795011419391",
+        "progress": 1,
+        "state": "failure",
+        "stage": "build",
+        "message": "The build task was interrupted",
+        "detailMessage": "",
+        "options": {
+          "name": "cocos-creator38-demo",
+          "server": "",
+          "engineModulesConfigKey": "migrationsConfig",
+          "platform": "google-play",
+          "buildPath": "project://build",
+          "debug": false,
+          "buildMode": "normal",
+          "mangleProperties": false,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": "false",
+          "overwriteProjectSettings": {
+            "macroConfig": {
+              "cleanupImageCache": "inherit-project-setting"
+            },
+            "includeModules": {
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting",
+              "gfx-webgl2": "off"
+            }
+          },
+          "nativeCodeBundleMode": "wasm",
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": false,
+          "bundleConfigs": [],
+          "inlineEnum": true,
+          "useBuiltinServer": false,
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_dep",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "3cfdf5ec-5a6c-4230-97eb-ce6bc3318e92",
+          "outputName": "google-play",
+          "taskName": "google-play",
+          "scenes": [
+            {
+              "url": "db://assets/八方汇聚.scene",
+              "uuid": "3cfdf5ec-5a6c-4230-97eb-ce6bc3318e92"
+            },
+            {
+              "url": "db://assets/测试Instancing.scene",
+              "uuid": "2f94eed8-22c0-40c4-b209-5be5c4aab64c"
+            },
+            {
+              "url": "db://assets/测试材质.scene",
+              "uuid": "6f34cad8-8533-4088-98dd-79e1e466a2e4"
+            },
+            {
+              "url": "db://assets/resources/main.scene",
+              "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+              "bundle": "db://assets/resources"
+            },
+            {
+              "url": "db://assets/scene主包/Start.scene",
+              "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332"
+            },
+            {
+              "url": "db://assets/mapres/3D复古建筑/3D复古建筑/scene.scene",
+              "uuid": "cc58df02-8cf8-43e7-ae2a-f245a1c2350e"
+            }
+          ],
+          "wasmCompressionMode": false,
+          "binGroupConfig": {
+            "threshold": 16,
+            "enable": false
+          },
+          "packages": {},
+          "__version__": "1.3.9",
+          "__builderUiBuildAllBatchTime": 1795011413644,
+          "__builderUiHomeBuildAll": true,
+          "taskId": "1795011419391",
+          "__builderUiTaskTime": 1795011419391
+        },
+        "time": "2026-11-18 22:16:59",
+        "dirty": false
+      },
+      "1795012008912": {
+        "type": "build",
+        "id": "1795012008912",
+        "progress": 1,
+        "state": "success",
+        "stage": "build",
+        "message": "2026-11-18 22:28:34 build success in 1 min 45 s!",
+        "detailMessage": "Asset DB is resume!\r",
+        "options": {
+          "name": "RTS Command",
+          "server": "",
+          "engineModulesConfigKey": "migrationsConfig",
+          "platform": "web-mobile",
+          "buildPath": "project://build",
+          "debug": true,
+          "buildMode": "normal",
+          "mangleProperties": true,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": false,
+          "overwriteProjectSettings": {
+            "includeModules": {
+              "gfx-webgl2": "on",
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting"
+            },
+            "macroConfig": {
+              "cleanupImageCache": "inherit-project-setting"
+            }
+          },
+          "nativeCodeBundleMode": "wasm",
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": false,
+          "bundleConfigs": [],
+          "inlineEnum": true,
+          "useBuiltinServer": false,
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_all_json",
+          "useSplashScreen": false,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
+          "outputName": "web-mobile-web-mobile",
+          "taskName": "web-mobile",
+          "scenes": [
+            {
+              "uuid": "2193cf07-4b8f-499a-80b0-d0ce44b1b332",
+              "url": "db://assets/scene主包/Start.scene"
+            },
+            {
+              "uuid": "57e1e41c-7dc2-46a2-8867-f147bf517345",
+              "url": "db://assets/resources/main.scene",
+              "bundle": "db://assets/resources"
+            }
+          ],
+          "wasmCompressionMode": false,
+          "binGroupConfig": {
+            "threshold": 16,
+            "enable": false
+          },
+          "packages": {},
+          "__version__": "1.3.9",
+          "__builderUiTaskNavigation": "mwm7qfty-ew12h2dblil:2",
+          "taskId": "1795012008912",
+          "__builderUiTaskTime": 1795012008912,
+          "logDest": "project://temp/builder/log/web-mobile2026-11-18 22-26.log"
+        },
+        "time": "2026-11-18 22:26:48",
         "dirty": false
       }
     }
