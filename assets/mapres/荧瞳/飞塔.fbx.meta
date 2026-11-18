@@ -951,7 +951,8 @@
               "y": 4,
               "z": 4
             },
-            "normalStrength": 2,
+            "roughness": 0.2,
+            "normalStrength": 5,
             "mainTexture": {
               "__uuid__": "c29b3e9a-9d86-4f49-86b1-d9ac2e4de3cb@6c48a",
               "__expectedType__": "cc.Texture2D"
@@ -959,8 +960,7 @@
             "normalMap": {
               "__uuid__": "c49f5dbe-7da6-4418-9f8b-22bce0ccc54f@6c48a",
               "__expectedType__": "cc.Texture2D"
-            },
-            "sssIntensity": 0.6
+            }
           },
           {},
           {},
