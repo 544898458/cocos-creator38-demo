@@ -554,13 +554,12 @@ export class NetMessage {
         MainTest.instance.dialogMgr.openDialog(UI2Prefab.Pop升级选项_url, null, null, (dlg: any) => {
             const pop = dlg.getComponent(Pop升级选项);
             pop.node升级选项列表.removeAllChildren();
-            const labels: Record<number, string> = { [属性类型.火箭弹等级]: '火箭弹', [属性类型.光刺等级]: '光刺', [属性类型.射程等级]: '射程', [属性类型.火焰等级]: '火焰' };
             for (const 属性 of options.属性) {
                 const node = instantiate(pop.node升级选项模板);
                 node.active = true;
                 pop.node升级选项列表.addChild(node);
                 const label = node.getChildByName('Label')?.getComponent(cc.Label);
-                if (label) label.string = `升级\n${labels[属性] ?? 属性}`;
+                if (label) label.string = 翻译Key.翻译(翻译Key.升级) + '\n' + 翻译Key.属性名称翻译(属性 as 属性类型);
                 const iconPath: Record<number, string> = { [属性类型.火箭弹等级]: '图片/火箭弹64', [属性类型.光刺等级]: '图片/光刺64', [属性类型.火焰等级]: '图片/火焰64' };
                 const icon = node.getChildByName('Sprite')?.getComponent(cc.Sprite);
                 if (icon && iconPath[属性]) resources.load(iconPath[属性], cc.ImageAsset, (err, image: cc.ImageAsset) => { if (!err && image) icon.spriteFrame = cc.SpriteFrame.createWithImage(image); });
