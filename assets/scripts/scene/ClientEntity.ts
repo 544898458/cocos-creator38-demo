@@ -2,6 +2,7 @@ import { Node, Vec3, resources, Prefab, instantiate, Animation, Color, Tween, tw
 import { MainTest } from '../MainTest';
 import { Glob } from '../utils/Glob';
 import { 单位类型, 属性类型, 种族, BuffId } from '../utils/Enum';
+import { 翻译Key } from '../配置/翻译Key';
 import { 文本3D } from '../component/文本3D';
 
 const NodeName特效根 = '特效根'
@@ -146,7 +147,7 @@ export class ClientEntity {
             if (lableName3D) {
                 lableName3D.颜色 = this.获取头顶名字颜色();
                 const 等级 = this.obj属性数值[属性类型.等级];
-                const 等级文本 = 等级 > 0 ? ` ${等级}级` : '';
+                const 等级文本 = 等级 > 0 ? ' ' + 翻译Key.翻译格式化(翻译Key.等级格式, 等级) : '';
                 if (b显示单位类型) {
                     lableName3D.文本 = this.nickName + ' ' + this.entityName + 等级文本;
                 } else {

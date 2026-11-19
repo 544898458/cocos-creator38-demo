@@ -514,7 +514,7 @@ export class BattleUI extends Dialog {
             for (const 属性 of [属性类型.火箭弹等级, 属性类型.光刺等级, 属性类型.射程等级, 属性类型.火焰等级]) {
                 const 等级 = entity.obj属性数值[属性] as number ?? 0
                 if (等级 > 0) {
-                    str详情 += 翻译Key.属性名称翻译(属性) + ':' + 等级 + '级\n'
+                    str详情 += 翻译Key.翻译格式化(翻译Key.属性等级格式, 翻译Key.属性名称翻译(属性), 等级) + '\n'
                 }
             }
         }

@@ -62,6 +62,7 @@ export class 翻译Key {
     static 满级 = 'MaxLevel'//'等级:${entity.等级()}满级'
     static 人在线 = 'RenZaiXian'//'${count}人在线:'
     static 等级格式 = 'LevelFormat'//'Level {0}' 格式字符串，{0}会被替换为等级数字
+    static 属性等级格式 = 'AttrLevelFormat'//'{0}:{1}级' 格式字符串，{0}=属性名 {1}=等级数字
     static 聊天历史记录 = 'ChatHistory'//'聊天历史记录'
     static 游戏攻略 = 'GameStrategy'//'游戏攻略'
     static 每次发射 = 'ProjectileFireCount'//'每次发射{0}个' 格式字符串
