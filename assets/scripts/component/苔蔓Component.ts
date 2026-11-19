@@ -5,7 +5,6 @@ import { _decorator, Component, Node, Mesh, Vec3, Vec2, Material, geometry, Mesh
 import { 地面碰撞Component } from './地面碰撞Component';
 import { MeshCreator } from './MeshCreator';
 import { vec2Pool, vec3Pool } from './MathUtils';
-import { Texture } from '../../../extensions/extensions_mesh/@types/packages/engine-extends/@types/glTF';
 import { assetManager } from 'cc';
 import { Texture2D } from 'cc';
 import { ImageAsset } from 'cc';
@@ -48,6 +47,13 @@ export class 苔蔓Component extends Component {
     start() {
         this.createCircleMesh();
 
+    }
+
+    private 设置镜像采样(贴图: Texture2D): void {
+        if (!贴图) return
+        const 镜像 = (Texture2D as any).WrapMode?.MIRRORED_REPEAT ?? (gfx as any).Address?.MIRROR
+        if (镜像 === undefined) return
+        贴图.setWrapMode(镜像, 镜像)
     }
 
     createCircleMesh() {
@@ -111,13 +117,18 @@ export class 苔蔓Component extends Component {
             meshRenderer.mesh = mesh;
             meshRenderer.material = this.material;
         }
-        
+
+        this.设置镜像采样(this.material?.getProperty('mainTexture') as Texture2D)
+        this.设置镜像采样(this.material?.getProperty('normalMap') as Texture2D)
+        this.设置镜像采样(this.material?.getProperty('pbrMap') as Texture2D)
+
         assetManager.loadRemote(encodeURI(host静态 + '图片/苔蔓高强降噪2048.png'), (err, imageAsset: ImageAsset) => {
             console.log('苔蔓贴图resources.load callback:', err, imageAsset)
             // console.log(this.material.getProperty('albedoMap'))
             // console.log(this.material.getProperty('mainTexture'))
             let texture:Texture2D = this.material.getProperty('mainTexture') as Texture2D
             texture.image = imageAsset;
+            this.设置镜像采样(texture)
             console.log(texture)
             this.material.setProperty('mainTexture', texture);
 
@@ -129,6 +140,7 @@ export class 苔蔓Component extends Component {
             // console.log(this.material.getProperty('mainTexture'))
             let texture:Texture2D = this.material.getProperty('normalMap') as Texture2D
             texture.image = imageAsset;
+            this.设置镜像采样(texture)
             console.log(texture)
             this.material.setProperty('normalMap', texture);
         })
@@ -139,6 +151,7 @@ export class 苔蔓Component extends Component {
             // console.log(this.material.getProperty('mainTexture'))
             let texture:Texture2D = this.material.getProperty('pbrMap') as Texture2D
             texture.image = imageAsset;
+            this.设置镜像采样(texture)
             console.log(texture)
             this.material.setProperty('pbrMap', texture);
         })
