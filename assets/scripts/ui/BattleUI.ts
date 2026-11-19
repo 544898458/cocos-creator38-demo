@@ -1,4 +1,4 @@
-import { _decorator, Node } from 'cc';
+import { _decorator, Node, Component, instantiate } from 'cc';
 import { ClientEntity } from '../scene/ClientEntity';
 import { Label } from 'cc';
 import { EditBox } from 'cc';
@@ -21,7 +21,7 @@ import { SpriteFrame } from 'cc';
 import { dispatcher } from '../manager/event/EventDispatcher';
 import { EC } from '../utils/EC';
 import { BattleMoude } from '../scene/BattleMoude';
-import { MsgId, 单位类型, 属性类型, 战局类型 } from '../utils/Enum';
+import { MsgId, 单位类型, 属性类型, 战局类型, BuffId } from '../utils/Enum';
 import { Vec3 } from 'cc';
 import { Glob } from '../utils/Glob';
 import { map } from 'yaml/dist/schema/common/map';
@@ -114,7 +114,10 @@ export class BattleUI extends Dialog {
 
     @property(Node)node按钮详情: Node
     @property(RichText)richEdit按钮详情: RichText
+    @property(Node) node装备栏: Node
+    @property(Node) node装备栏项模板: Node
 
+    entity主角: ClientEntity
 
     lastTitle: Node
     b菱形框选: boolean = false //切换菱形框选和矩形框选两种模式
@@ -311,6 +314,124 @@ export class BattleUI extends Dialog {
         NetMessage.升级选项排队.shift()
         NetMessage.显示升级选项()
     }
+    更新装备栏(selectUids: number[]): void {
+        const entities = MainTest.instance.scene战斗?.entities
+        let hero: ClientEntity = null
+        for (const id of selectUids) {
+            const entity = entities?.get(id)
+            if (entity && entity.类型 === 单位类型.机甲 && entity.u32账号Id === Glob.my账号Id) {
+                hero = entity
+                break
+            }
+        }
+        this.entity主角 = hero
+        if (!this.node装备栏) return
+        this.node装备栏.active = !!hero
+        if (hero) this.显示装备栏()
+    }
+    显示装备栏(): void {
+        const entity = this.entity主角
+        if (!entity || !this.node装备栏 || !this.node装备栏项模板) return
+        this.node装备栏.removeAllChildren()
+        for (const 属性 of [属性类型.火箭弹等级, 属性类型.光刺等级, 属性类型.射程等级, 属性类型.火焰等级, 属性类型.黄光爆闪等级]) {
+            const 等级 = Number(entity.obj属性数值[属性] ?? 0)
+            if (等级 <= 0) continue
+            const 属性配置 = MainTest.instance.配置.find属性(属性)
+            if (!属性配置) continue
+
+            const node装备栏项 = instantiate(this.node装备栏项模板)
+            node装备栏项.active = true
+            node装备栏项.getChildByName('Label').getComponent(Label).string =
+                翻译Key.属性名称翻译(属性) + '\n' + 翻译Key.翻译格式化(翻译Key.等级格式, 等级)
+
+            const clickEventHandler = new Component.EventHandler()
+            clickEventHandler.target = this.node
+            clickEventHandler.component = 'BattleUI'
+            clickEventHandler.handler = 'on点击装备栏'
+            clickEventHandler.customEventData = 属性.toString()
+
+            resources.load(属性配置.图标, ImageAsset, (err, imageAsset) => {
+                if (err) {
+                    console.error('读取属性图标失败:', 属性配置.图标, err)
+                    return
+                }
+                node装备栏项.getChildByName('Sprite').getComponent(Sprite).spriteFrame = SpriteFrame.createWithImage(imageAsset)
+            })
+            node装备栏项.getComponent(Button).clickEvents.push(clickEventHandler)
+            this.node装备栏.addChild(node装备栏项)
+        }
+    }
+    private 投射物详情(属性: 属性类型): void {
+        const entity = this.entity主角
+        const 投射物等级 = Number(entity.obj属性数值[属性] ?? 0)
+        const 射程等级 = Number(entity.obj属性数值[属性类型.射程等级] ?? 0)
+        let str射程等级 = ''
+        if (射程等级 > 0) {
+            const 射程升级配置 = MainTest.instance.配置.find射程升级(射程等级)
+            str射程等级 = '+' + (射程升级配置?.增程米 ?? 0)
+        }
+
+        dialogMgr.openDialog(UI2Prefab.PopView_url, null, null, (dlg: Dialog): void => {
+            const popView = dlg.getComponent(PopView)
+            popView.label标题.string = 翻译Key.属性名称翻译(属性).replace('\n', '') + ' (' + 翻译Key.翻译格式化(翻译Key.等级格式, 投射物等级) + ')'
+            const 投射物升级配置 = MainTest.instance.配置.find投射物升级(属性, 投射物等级)
+            const 属性配置 = MainTest.instance.配置.find属性(属性)
+            popView.richText内容.string = 翻译Key.翻译(属性配置?.描述翻译Key) + '\n' +
+                翻译Key.翻译格式化(翻译Key.每次发射, 投射物升级配置?.发射数量 ?? 0) +
+                翻译Key.翻译格式化(翻译Key.每间隔发射, 投射物升级配置?.发射间隔毫秒 ?? 0) +
+                翻译Key.翻译格式化(翻译Key.可穿透, (投射物升级配置?.伤敌数 ?? 1) - 1) +
+                翻译Key.翻译格式化(翻译Key.后摇, 投射物升级配置?.后摇毫秒 ?? 0) +
+                翻译Key.翻译格式化(翻译Key.射程, 投射物升级配置?.射程米 ?? 0, str射程等级)
+        })
+    }
+    private 射程详情(属性: 属性类型): void {
+        const 射程等级 = Number(this.entity主角.obj属性数值[属性] ?? 0)
+        const 射程升级配置 = MainTest.instance.配置.find射程升级(射程等级)
+        dialogMgr.openDialog(UI2Prefab.PopView_url, null, null, (dlg: Dialog): void => {
+            const popView = dlg.getComponent(PopView)
+            popView.label标题.string = 翻译Key.属性名称翻译(属性).replace('\n', '') + ' (' + 翻译Key.翻译格式化(翻译Key.等级格式, 射程等级) + ')'
+            popView.richText内容.string = 翻译Key.翻译格式化(翻译Key.射程增程, 射程升级配置?.增程米 ?? 0)
+        })
+    }
+    on点击装备栏(event: Event, customEventData: string): void {
+        const 属性 = parseInt(customEventData) as 属性类型
+        switch (属性) {
+            case 属性类型.火箭弹等级:
+            case 属性类型.光刺等级:
+                this.投射物详情(属性)
+                break
+            case 属性类型.射程等级:
+                this.射程详情(属性)
+                break
+            case 属性类型.火焰等级:
+                this.火焰详情(属性)
+                break
+            case 属性类型.黄光爆闪等级:
+                break
+        }
+    }
+    private 火焰详情(属性: 属性类型): void {
+        const entity = this.entity主角
+        const 火焰等级 = Number(entity.obj属性数值[属性] ?? 0)
+        const 火焰升级配置 = MainTest.instance.配置.find火焰升级(火焰等级)
+        const 射程等级 = Number(entity.obj属性数值[属性类型.射程等级] ?? 0)
+        let str射程等级 = ''
+        if (射程等级 > 0) {
+            const 射程升级配置 = MainTest.instance.配置.find射程升级(射程等级)
+            str射程等级 = '+' + (射程升级配置?.增程米 ?? 0)
+        }
+        const 火焰Buff升级配置 = MainTest.instance.配置.findBuff(BuffId.火焰持续扣血, 火焰等级)
+        const 属性配置 = MainTest.instance.配置.find属性(属性)
+        dialogMgr.openDialog(UI2Prefab.PopView_url, null, null, (dlg: Dialog): void => {
+            const popView = dlg.getComponent(PopView)
+            popView.label标题.string = 翻译Key.属性名称翻译(属性).replace('\n', '') + ' (' + 翻译Key.翻译格式化(翻译Key.等级格式, 火焰等级) + ')'
+            popView.richText内容.string = 翻译Key.翻译(属性配置?.描述翻译Key) + '\n' +
+                翻译Key.翻译格式化(翻译Key.火焰Buff伤害, 火焰Buff升级配置?.间隔时长 ?? 0, -(火焰Buff升级配置?.变化值 ?? 0), 火焰Buff升级配置?.持续时长 ?? 0) + '\n' +
+                翻译Key.翻译格式化(翻译Key.锥体范围, 火焰升级配置?.射程米 ?? 0, str射程等级) + '\n' +
+                翻译Key.翻译格式化(翻译Key.锥体角度, 火焰升级配置?.锥体角度 ?? 0) + '\n' +
+                翻译Key.翻译格式化(翻译Key.后摇, 火焰升级配置?.后摇毫秒 ?? 0) + '\n'
+        })
+    }
     onClickAdd机场(event: Event, customEventData: string): void {
         MainTest.instance.onClickAdd机场(event, customEventData)
     }
@@ -420,6 +541,7 @@ export class BattleUI extends Dialog {
     }
 
     onSelectUnits(selectUids: number[]): void {
+        this.更新装备栏(selectUids)
         this.显示选中单位详情(selectUids)
 
         this.node_selectedList.removeAllChildren();

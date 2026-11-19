@@ -1,9 +1,9 @@
 import { TextAsset } from 'cc'
 import { assetManager } from 'cc'
 import { parse } from 'yaml'
-import { 单位类型, 属性类型, 战局类型, 种族 } from '../utils/Enum'
+import { 单位类型, 属性类型, 战局类型, 种族, BuffId } from '../utils/Enum'
 import { MainTest } from '../MainTest'
-import url配置 from './此游戏专用配置'
+import url配置, { url源配置 } from './此游戏专用配置'
 
 export class 动作 {
 	名字或索引: string
@@ -88,6 +88,40 @@ export class 音乐配置 {
 	Https音乐: string
 }
 
+export class 投射物升级配置 {
+	属性: 属性类型
+	等级: number
+	发射数量: number
+	发射间隔毫秒: number
+	伤敌数: number
+	后摇毫秒: number
+	射程米: number
+}
+export class 属性配置 {
+	属性: 属性类型
+	描述翻译Key: string
+	图标: string
+}
+export class 射程升级配置 {
+	等级: number
+	增程米: number
+}
+export class 火焰升级配置 {
+	等级: number
+	射程米: number
+	锥体角度: number
+	后摇毫秒: number
+}
+export class Buff配置 {
+	ID: BuffId
+	等级: number
+	属性: 属性类型
+	变化值: number
+	间隔时长: number
+	持续时长: number
+	可叠加: boolean
+}
+
 export class 配置 {
 	arr单位: Array<单位配置>
 	arr战斗: Array<战斗配置>
@@ -98,6 +132,11 @@ export class 配置 {
 	arr升级: Array<升级配置>
 	arr战局: Array<战局配置>
 	arr音乐: Array<音乐配置>
+	arr投射物升级: Array<投射物升级配置>
+	arr属性: Array<属性配置>
+	arr射程升级: Array<射程升级配置>
+	arr火焰升级: Array<火焰升级配置>
+	arrBuff: Array<Buff配置>
 	static 正在下载的配置文件数量: number = 0
 
 	读取配置文件() {
@@ -110,11 +149,16 @@ export class 配置 {
 		this.读取1个配置文件<升级配置>('升级', (arr) => this.arr升级 = arr)
 		this.读取1个配置文件<战局配置>('战局', (arr) => this.arr战局 = arr)
 		this.读取1个配置文件<音乐配置>('音乐', (arr) => this.arr音乐 = arr)
+		this.读取1个配置文件<投射物升级配置>('投射物升级', (arr) => this.arr投射物升级 = arr, url源配置)
+		this.读取1个配置文件<属性配置>('属性', (arr) => this.arr属性 = arr, url源配置)
+		this.读取1个配置文件<射程升级配置>('射程升级', (arr) => this.arr射程升级 = arr, url源配置)
+		this.读取1个配置文件<火焰升级配置>('火焰升级', (arr) => this.arr火焰升级 = arr, url源配置)
+		this.读取1个配置文件<Buff配置>('Buff', (arr) => this.arrBuff = arr, url源配置)
 	}
 
-	读取1个配置文件<T>(strName: string, fun: (arr: Array<T>) => void) {
+	读取1个配置文件<T>(strName: string, fun: (arr: Array<T>) => void, url配置源: string = url配置) {
 		++配置.正在下载的配置文件数量
-		let url = url配置
+		let url = url配置源
 		assetManager.loadRemote(encodeURI(url + strName + '.yaml'), { ext: '.txt' },
 			(err, textAsset: TextAsset) => {
 				console.log(err, textAsset)
@@ -160,6 +204,21 @@ export class 配置 {
 
 	find升级(单位: 单位类型, 等级: number): 升级配置 {
 		return this.arr升级.find((v) => v.单位 == 单位 && v.等级 == 等级)
+	}
+	find投射物升级(属性: 属性类型, 等级: number): 投射物升级配置 {
+		return this.arr投射物升级?.find((v) => v.属性 == 属性 && v.等级 == 等级)
+	}
+	find属性(属性: 属性类型): 属性配置 {
+		return this.arr属性?.find((v) => v.属性 == 属性)
+	}
+	find射程升级(等级: number): 射程升级配置 {
+		return this.arr射程升级?.find((v) => v.等级 == 等级)
+	}
+	find火焰升级(等级: number): 火焰升级配置 {
+		return this.arr火焰升级?.find((v) => v.等级 == 等级)
+	}
+	findBuff(ID: BuffId, 等级: number): Buff配置 {
+		return this.arrBuff?.find((v) => v.ID == ID && v.等级 == 等级)
 	}
 
 	find战局(类型: 战局类型): 战局配置 {

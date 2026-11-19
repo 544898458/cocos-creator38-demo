@@ -644,8 +644,13 @@ export class NetMessage {
             }
         }
 
+        const battleUI = mainTest.scene战斗.battleUI;
+        if (battleUI?.entity主角 === entity) {
+            battleUI.显示装备栏();
+        }
+
         if (BattleMoude._arr选中[0] === id) {
-            mainTest.scene战斗.battleUI?.显示选中单位详情(BattleMoude._arr选中);
+            battleUI?.显示选中单位详情(BattleMoude._arr选中);
         }
     }
 
