@@ -366,7 +366,7 @@ export class LoginView extends Dialog {
         this.node玩家战局列表面板.active = false
         this.LoginPanel.active = true
         if (Glob.websocket)
-            this.lableMessage.string = '连接已断开，已回到登录界面'
+            this.lableMessage.string = 翻译Key.翻译(翻译Key.连接已断开)
     }
 
     //游戏讨论关于

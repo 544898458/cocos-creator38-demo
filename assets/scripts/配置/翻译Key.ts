@@ -77,6 +77,7 @@ export class 翻译Key {
     static 场景加载完成 = 'SceneLoaded' //'场景加载完成！'
     static 升级 = 'Upgrade' //'升级'
     static 个配置文件正在下载中 = 'CountConfigFileDownloading' //'个配置文件正在下载中，请稍后再试' 格式字符串
+    static 已下载所有配置文件 = 'AllConfigDownloaded' //'已下载所有配置文件'
     static 贡献者名单 = 'ContributorsList' //'贡献者名单'
     static 单玩家战局 = 'SinglePlayerBattle'
     static 多玩家战局 = 'MultiPlayerBattle'

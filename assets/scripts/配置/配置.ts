@@ -3,6 +3,7 @@ import { assetManager } from 'cc'
 import { parse } from 'yaml'
 import { 单位类型, 属性类型, 战局类型, 种族, BuffId } from '../utils/Enum'
 import { MainTest } from '../MainTest'
+import { 翻译Key } from './翻译Key'
 import url配置, { url源配置 } from './此游戏专用配置'
 
 export class 动作 {
@@ -167,11 +168,11 @@ export class 配置 {
 				fun(arr)
 				--配置.正在下载的配置文件数量
 				if (配置.正在下载的配置文件数量 == 0) {
-					MainTest.instance.scene登录?.登录界面显示消息(`已下载所有配置文件`)
+					MainTest.instance.scene登录?.登录界面显示消息(翻译Key.翻译(翻译Key.已下载所有配置文件))
 					MainTest.instance.scene登录?.显示登录界面()
 				}
 				else
-					MainTest.instance.scene登录?.登录界面显示消息(`还有${配置.正在下载的配置文件数量}个配置文件等待下载……`)
+					MainTest.instance.scene登录?.登录界面显示消息(`${配置.正在下载的配置文件数量}${翻译Key.翻译(翻译Key.个配置文件正在下载中)}`)
 			})
 	}
 	static 已下载所有配置文件(): boolean {

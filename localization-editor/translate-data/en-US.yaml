@@ -151,6 +151,13 @@ items:
       isVariant: false
       associations: []
       _variants: []
+  - - AllConfigDownloaded
+    - key: AllConfigDownloaded
+      value: All configuration files downloaded
+      type: 4
+      isVariant: false
+      associations: []
+      _variants: []
   - - ContributorsList
     - key: ContributorsList
       value: "<b>Music:</b> EinhornN7 Xie Yubo (QQ 2990490699), Wuya Producer (QQ 2998975740), Dianbo Baoji (QQ 1106551898)\r\n<b>Homepage Background:</b> Bu Wen Qing Yin (QQ 3969340418) <b>Levels:</b> A Shrimp Under the Sun (QQ 1179331661)\r\n<b>3D Models:</b> TripoAI, Hunyuan AI <b>Image Matting:</b> Doubao AI <b>Ground Textures:</b> Quark AI, Doubao AI\r\n<b>Avatar Images:</b> ERNIE Bot AI <b>Music:</b> SunoAI <b>Assisted Programming:</b> Tongyi Lingma AI, Cursor AI\r\n<b>Rigging/Animation:</b> Gu He (QQ 3223213062), mixamo.com\r\n<b>Rigging/Animation:</b> Xiao Bai Ayi (QQ 3276812319), Jiu Li Qing An (QQ 284102069)\r\n<b>Rigging/Animation:</b> Da Ci Hua (QQ 3029823814), Heng (QQ 2682677034)\r\n<b>Rigging/Animation:</b> Tian Kong Zhi Yi (QQ 349070005), Shi Zhong (QQ 1136976220)\r\n<b>Rigging/Animation:</b> Hahaha (QQ 2517969872), Yi Fang Kuang San (QQ 1256604813)\r\n<b>Models/Animation:</b> ⊹꙳ ˶˙ᵕ˙˶ ⊹꙳ (QQ 2104435032), <color=#a0ff50>Ying Tong (QQ 287859992), Brawl Stars (QQ 2930801690)</color>\r\n<b>Voice Acting:</b> Wu Meng (QQ 1744500392), Shui Bo He (QQ 1982131539), luvvoice.com, speechgen.io\r\n<b>Voice Acting:</b> Ruo You Dao Xin (QQ 1602576119), Tan (QQ 1514475926), <color=#a0ff50>Ling Xiao (QQ 2862703087)</color>\r\n<b>Programming:</b> Huo Fenghuang (QQ 75187631), <color=#a0ff50>Jiang Chen Wan Yin Shi (QQ 3380125833)</color>\r\n<b>Programming:</b> Zhuang Yuan (QQ 2516080307), kunnka (QQ 954436840), Sakuragi Hanamichi (QQ 251949672)\r\n<b>Game Engine:</b> Cocos Creator 3.8"
@@ -437,7 +444,7 @@ items:
       _variants: []
   - - ZhongYangFangShou_WanJiaHeZuo
     - key: ZhongYangFangShou_WanJiaHeZuo
-      value: "Central Defense - Co-op (You're the Host)\r\n<size=10>Other players can join your match. The match ends if you leave the scene.</size>"
+      value: "<size=18>Central Defense - Co-op (You're the Host)</size>\r\n<size=10>Other players can join your match. The match ends if you leave the scene.</size>"
       type: 4
       isVariant: false
       associations: []
@@ -2335,7 +2342,7 @@ items:
       _variants: []
   - - YiDaYi_PvE
     - key: YiDaYi_PvE
-      value: "1v1 (vs AI)\r\n<size=12>Other players can spectate your battle. Exiting the scene will end the battle.</size>"
+      value: "1v1 (vs AI)\r\n<size=10>Other players can spectate your battle. Exiting the scene will end the battle.</size>"
       type: 4
       isVariant: false
       associations: []
@@ -2573,4 +2580,4 @@ languageConfig:
   translateFinished: 287
   translateTotal: 853
   compileFinished: 0
-  compileTotal: 355
+  compileTotal: 359
