@@ -1,0 +1,106 @@
+{
+  "__type__": "cc.Material",
+  "_name": "",
+  "_objFlags": 0,
+  "__editorExtras__": {},
+  "_native": "",
+  "_effectAsset": {
+    "__uuid__": "aa9c54d7-d0df-40b3-9316-111f167b4385",
+    "__expectedType__": "cc.EffectAsset"
+  },
+  "_techIdx": 0,
+  "_defines": [
+    {
+      "USE_NORMAL_MAP": true,
+      "USE_ALBEDO_MAP": true,
+      "USE_PBR_MAP": true
+    },
+    {},
+    {},
+    {}
+  ],
+  "_states": [
+    {
+      "rasterizerState": {},
+      "depthStencilState": {},
+      "blendState": {
+        "targets": [
+          {}
+        ]
+      }
+    },
+    {
+      "rasterizerState": {},
+      "depthStencilState": {},
+      "blendState": {
+        "targets": [
+          {}
+        ]
+      }
+    },
+    {
+      "rasterizerState": {},
+      "depthStencilState": {},
+      "blendState": {
+        "targets": [
+          {}
+        ]
+      }
+    },
+    {
+      "rasterizerState": {},
+      "depthStencilState": {},
+      "blendState": {
+        "targets": [
+          {}
+        ]
+      }
+    }
+  ],
+  "_props": [
+    {
+      "albedoScale": {
+        "__type__": "cc.Vec3",
+        "x": 2,
+        "y": 0.5,
+        "z": 0
+      },
+      "occlusion": 0.5,
+      "mainTexture": {
+        "__uuid__": "4186abea-11e8-49d5-aff6-e106a4985abb@6c48a",
+        "__expectedType__": "cc.Texture2D"
+      },
+      "normalMap": {
+        "__uuid__": "4b41875b-e0f6-497b-bdca-392681f22a66@6c48a",
+        "__expectedType__": "cc.Texture2D"
+      },
+      "pbrMap": {
+        "__uuid__": "ea3cf1fc-1521-4b8f-ba2c-a8f260b03bbf@6c48a",
+        "__expectedType__": "cc.Texture2D"
+      },
+      "extinction": 1,
+      "thickness": 3,
+      "scatterColor": {
+        "__type__": "cc.Color",
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "flowMap": {
+        "__uuid__": "9cfd0ec1-e319-4e64-af7c-cc5a71e7f8eb@6c48a",
+        "__expectedType__": "cc.Texture2D"
+      },
+      "flowParams": {
+        "__type__": "cc.Vec4",
+        "x": 0.01,
+        "y": 0.01,
+        "z": 0.5,
+        "w": 1
+      }
+    },
+    {},
+    {},
+    {}
+  ]
+}
