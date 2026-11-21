@@ -448,19 +448,19 @@ export class NetMessage {
             })
         }
 
-        // if(配置.Https高清法线贴图 && 0 < 配置.Https高清法线贴图.length)
-        // {
-        //     assetManager.loadRemote(encodeURI(配置.Https高清法线贴图), (err, imageAsset: ImageAsset) => {
-        //         console.log('地图高清法线贴图resources.load callback:', err, imageAsset)
-        //         const meshRenderer = nodeSpace.getComponent(MeshRenderer);
-        //         console.log(meshRenderer.material.getProperty('albedoMap'))
-        //         console.log(meshRenderer.material.getProperty('mainTexture'))
-        //         let texture:Texture2D = meshRenderer.material.getProperty('normalMap') as Texture2D
-        //         texture.image = imageAsset;
-        //         console.log(texture)
-        //         meshRenderer.material.setProperty('normalMap', texture);
-        //     })
-        // }
+        if(配置.Https高清法线贴图 && 0 < 配置.Https高清法线贴图.length)
+        {
+            assetManager.loadRemote(encodeURI(配置.Https高清法线贴图), (err, imageAsset: ImageAsset) => {
+                console.log('地图高清法线贴图resources.load callback:', err, imageAsset)
+                const meshRenderer = nodeSpace.getComponent(MeshRenderer);
+                console.log(meshRenderer.material.getProperty('albedoMap'))
+                console.log(meshRenderer.material.getProperty('mainTexture'))
+                let texture:Texture2D = meshRenderer.material.getProperty('normalMap') as Texture2D
+                texture.image = imageAsset;
+                console.log(texture)
+                meshRenderer.material.setProperty('normalMap', texture);
+            })
+        }
     }
 
     private handleGame_苔蔓半径(arr: any[], idxArr: number): void {

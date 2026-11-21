@@ -145,16 +145,16 @@ export class 苔蔓Component extends Component {
             this.material.setProperty('normalMap', texture);
         })
       
-        // assetManager.loadRemote(encodeURI(host静态 + '图片/苔蔓四通道PBR贴图2048.png'), (err, imageAsset: ImageAsset) => {
-        //     console.log('苔蔓四通道PBR贴图resources.load callback:', err, imageAsset)
-        //     // console.log(this.material.getProperty('albedoMap'))
-        //     // console.log(this.material.getProperty('mainTexture'))
-        //     let texture:Texture2D = this.material.getProperty('pbrMap') as Texture2D
-        //     texture.image = imageAsset;
-        //     this.设置镜像采样(texture)
-        //     console.log(texture)
-        //     this.material.setProperty('pbrMap', texture);
-        // })
+        assetManager.loadRemote(encodeURI(host静态 + '图片/苔蔓四通道PBR贴图2048.png'), (err, imageAsset: ImageAsset) => {
+            console.log('苔蔓四通道PBR贴图resources.load callback:', err, imageAsset)
+            // console.log(this.material.getProperty('albedoMap'))
+            // console.log(this.material.getProperty('mainTexture'))
+            let texture:Texture2D = this.material.getProperty('pbrMap') as Texture2D
+            texture.image = imageAsset;
+            this.设置镜像采样(texture)
+            console.log(texture)
+            this.material.setProperty('pbrMap', texture);
+        })
     }
 
     Set半径(半径: number) {
